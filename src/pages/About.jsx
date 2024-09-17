@@ -13,7 +13,7 @@ import Faqs from "./HomeComponents/Faqs";
 
 function About() {
   return (
-    <div className=" w-full flex flex-col">
+    <div className=" w-full flex flex-col bg-[#F5F5F5]">
       <div className=" pt-[130px]    bg-[linear-gradient(to_right,#4f4f4f0e_1px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_1px,transparent_0.1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])] overflow-hidden  sm:h-[100vh]  flex  items-center  w-full">
         <div className=" w-[90%] mx-auto flex justify-between ">
           <div className=" flex-1   flex flex-col justify-end">

@@ -6,7 +6,7 @@ import { logo } from "../../assets";
 function Header() {
   const [course, setCourse] = useState(false);
   return (
-    <header className=" w-full   fixed z-50 bg-white/70 backdrop-blur-sm">
+    <header className=" w-full   fixed z-50 bg-[#F5F5F5]/70 backdrop-blur-sm">
       <div className=" bg-[#1A1A1A]">
         <p className=" text-[18px] text-[#FFFFFF] font-[300]  text-center p-[16px]">
           We're offering Data Consultation Services. Book now to get updated
@@ -39,29 +39,35 @@ function Header() {
             About
           </NavLink>
           <NavLink
-            className={({ isActive }) =>
-              isActive ? "text-[#1A1A1A] relative" : ""
-            }
+            className=" group-hover:hidden relative "
             onClick={() => setCourse(!course)}>
             Courses <KeyboardArrowDownIcon />
             {course && (
-              <div className=" text-[16px]  font-[400] text-[#1A1A1A80]  flex flex-col items-start gap-[10px] absolute bg-[#F0F0F0]   rounded-tr-[20px] rounded-br-[20px] rounded-bl-[20px] z-40">
-                <div className="  font-[400] text-[16px]  p-[24px] flex flex-col ">
-                  <Link to="/dataanalystics" className=" p-[16px] ">
+              <div className=" text-[16px]  font-[400] text-[#1A1A1A80]  flex flex-col items-start gap-[10px] absolute bg-[#F0F0F0]   rounded-tr-[20px] rounded-br-[20px] rounded-bl-[20px] z-40  group">
+                <div className="  font-[400] text-[16px]  p-[12px] flex flex-col ">
+                  <Link
+                    to="/dataanalystics"
+                    className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px]">
                     Data Analystics
                   </Link>
-                  <Link to="/datascience" className=" p-[16px] ">
+                  <Link
+                    to="/datascience"
+                    className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px] ">
                     Data Science
                   </Link>
-                  <Link to="/webdevelopment" className=" p-[16px] ">
+                  <Link
+                    to="/webdevelopment"
+                    className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px] ">
                     Web Development
                   </Link>
                   <Link
                     to="/cloudcomputing"
-                    className=" p-[16px]  whitespace-nowrap">
+                    className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px]  whitespace-nowrap">
                     Cloud Computing & DevOps
                   </Link>
-                  <Link to="/machinelearning" className=" p-[16px] ">
+                  <Link
+                    to="/machinelearning"
+                    className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px] ">
                     Machine Learning
                   </Link>
                 </div>

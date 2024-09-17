@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Reviewimg } from "../../assets";
 
 function Ourmission() {
+  const [vision, setVision] = useState(false);
   const button = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -48,57 +49,119 @@ function Ourmission() {
           Our <span className=" text-[#034FE3]">mission </span>and{" "}
           <span className=" text-[#034FE3]">vision</span>
         </p>
-        <div className=" mt-[43px] p-[4px] flex gap-[68px] items-center bg-[#E9E9E9] rounded-full w-[398px] ">
-          <button className=" text-[18px] font-[500] text-[#034FE3]  relative w-fit">
-            {button} <span className=" absolute top-4 left-20">Mission</span>
+        <div className=" mt-[43px] p-[4px] flex gap-[68px] items-center justify-between bg-[#E9E9E9] rounded-full w-[398px] ">
+          <button
+            onClick={() => setVision(false)}
+            className={` text-[18px] font-[500] text-[#034FE3]  relative w-fit  ${
+              !vision && "text-[18px] font-[500]"
+            } `}>
+            {!vision && button}{" "}
+            <span
+              className={`${
+                !vision
+                  ? "absolute top-4 left-20 text-[#034FE3]"
+                  : " pl-20 text-center text-[#1A1A1ACC]"
+              }`}>
+              Mission
+            </span>
           </button>
-          <button className=" text-[18px] font-[500] text-[#1A1A1ACC]">
-            Vission
+          <button
+            onClick={() => setVision(true)}
+            className={`${vision && "text-[18px] font-[500] relative w-fit"}`}>
+            {vision && button}{" "}
+            <span
+              className={`${
+                vision
+                  ? "absolute top-4 right-20 text-[#034FE3]"
+                  : " pr-20 text-[#1A1A1ACC]"
+              } `}>
+              Vission
+            </span>
           </button>
         </div>
       </div>
-      <div className="  w-fit mt-[68px] mb-[180px] flex gap-[32px] bg-[#EBECED] rounded-r-[10px]">
-        <img
-          className=" w-[486px] h-[648px] rounded-l-[10px]"
-          src={Reviewimg}
-          alt=""
-        />
-        <div className=" flex flex-col gap-[40px] px-[24px] ">
-          <h2 className=" text-[40px] text-[#034FE3] font-[600]">
-            We are on a mission to:
-          </h2>
-          <span className=" w-full bg-[#1A1A1A1A] h-[0.5px]"></span>
-          <section className=" text-[#1A1A1ACC] flex flex-col gap-[40px] w-[651px]">
-            <p className=" flex gap-[14px] font-[300] text-[20px] items-baseline">
-              <span>{dot}</span>{" "}
-              <span>
-                Empower individuals across Africa with cutting edge tech skills,
-                nurturing a diverse and inclusive tech talent ecosystem.
-              </span>
-            </p>
-            <p className=" flex gap-[14px] font-[300] text-[20px] items-baseline">
-              <span>{dot}</span>{" "}
-              <span>
-                Fuel exponential growth for businesses of all sizes, providing
-                data-driven strategies that unlock new possibilities.
-              </span>
-            </p>
-            <p className=" flex gap-[14px] font-[300] text-[20px] items-baseline">
-              <span>{dot}</span>{" "}
-              <span>
-                Connect trained talents with local and international
-                opportunities, bridging the digital divide, and fostering
-                collaboration and economic prosperity.
-              </span>
-            </p>
-          </section>
-          <section className=" px-[32px] pt-[32px]">
-            <button className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white py-[14px] px-[32px] text-[20px] font-[700] w-fit">
-              Partner with us
-            </button>
-          </section>
+      {!vision ? (
+        <div className="  w-fit mt-[68px] mb-[180px] flex gap-[32px] bg-[#EBECED] rounded-r-[10px]">
+          <img
+            className=" w-[486px] h-[648px] rounded-l-[10px]"
+            src={Reviewimg}
+            alt=""
+          />
+          <div className=" flex flex-col gap-[40px] px-[24px]  justify-center">
+            <h2 className=" text-[40px] text-[#034FE3] font-[600]">
+              We are on a mission to:
+            </h2>
+            <span className=" w-full bg-[#1A1A1A1A] h-[0.5px]"></span>
+            <section className=" text-[#1A1A1ACC] flex flex-col gap-[40px] w-[651px]">
+              <p className=" flex gap-[14px] font-[300] text-[20px] items-baseline">
+                <span>{dot}</span>{" "}
+                <span>
+                  Empower individuals across Africa with cutting edge tech
+                  skills, nurturing a diverse and inclusive tech talent
+                  ecosystem.
+                </span>
+              </p>
+              <p className=" flex gap-[14px] font-[300] text-[20px] items-baseline">
+                <span>{dot}</span>{" "}
+                <span>
+                  Fuel exponential growth for businesses of all sizes, providing
+                  data-driven strategies that unlock new possibilities.
+                </span>
+              </p>
+              <p className=" flex gap-[14px] font-[300] text-[20px] items-baseline">
+                <span>{dot}</span>{" "}
+                <span>
+                  Connect trained talents with local and international
+                  opportunities, bridging the digital divide, and fostering
+                  collaboration and economic prosperity.
+                </span>
+              </p>
+            </section>
+            <section className=" px-[32px] pt-[32px]">
+              <button className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white py-[14px] px-[32px] text-[20px] font-[700] w-fit">
+                Partner with us
+              </button>
+            </section>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="  w-fit mt-[68px] mb-[180px] flex gap-[32px] bg-[#EBECED] rounded-r-[10px]">
+          <img
+            className=" w-[486px] h-[648px] rounded-l-[10px]"
+            src={Reviewimg}
+            alt=""
+          />
+          <div className=" flex flex-col gap-[40px] px-[24px] justify-center">
+            <h2 className=" text-[40px] text-[#034FE3] font-[600]">
+              At Zion Tech Hub,
+            </h2>
+            <span className=" w-full bg-[#1A1A1A1A] h-[0.5px]"></span>
+            <section className=" text-[#1A1A1ACC] flex flex-col gap-[40px] w-[651px]">
+              <p className=" flex gap-[14px] font-[300] text-[20px] items-baseline">
+                <span>{dot}</span>{" "}
+                <span>
+                  We envision a transformed Africa, empowered by revolutionary
+                  technological innovations, and recognized as a global hub of
+                  creativity and progress.
+                </span>
+              </p>
+              <p className=" flex gap-[14px] font-[300] text-[20px] items-baseline">
+                <span>{dot}</span>{" "}
+                <span>
+                  We strive to be the leading data consultancy in Africa,
+                  providing strategic insights that fuel phenomenal growth for
+                  businesses within and beyond the continent.
+                </span>
+              </p>
+            </section>
+            <section className=" px-[32px] pt-[32px]">
+              <button className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white py-[14px] px-[32px] text-[20px] font-[700] w-fit">
+                Partner with us
+              </button>
+            </section>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
