@@ -12,11 +12,14 @@ import WebDevelopment from "./pages/Courses/WebDevelopment";
 import DataAnalysis from "./pages/Courses/DataAnalysis";
 import DataScience from "./pages/Courses/DataScience";
 import FullHome from "./pages/HomeComponents/FullHome";
+import Scrolltotop from "./components/Scrolltotop";
 
 function App() {
   return (
     <div className="">
       <Router>
+        <Scrolltotop />
+
         <Routes>
           <Route path="/" element={<Head />}>
             <Route path="/" element={<FullHome />} />
