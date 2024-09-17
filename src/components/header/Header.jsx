@@ -2,19 +2,15 @@ import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { logo } from "../../assets";
+import Topheader from "./Topheader";
 
 function Header() {
   const [course, setCourse] = useState(false);
   return (
     <header className=" w-full   fixed z-50 bg-[#F5F5F5]/70 backdrop-blur-sm">
-      <div className=" bg-[#1A1A1A]">
-        <p className=" text-[18px] text-[#FFFFFF] font-[300]  text-center p-[16px]">
-          We're offering Data Consultation Services. Book now to get updated
-          with your business.{" "}
-          <span className=" font-[600] underline  px-5">Book Now</span>
-        </p>
-      </div>
-      <div className=" flex justify-between items-center max-w-[90%] mx-auto  font-sans p-[10px]">
+      <Topheader />
+
+      <div className=" flex justify-between items-center max-w-[90%] mx-auto  font-sans py-[10px]">
         {/* logo */}
         <section className=" flex-1 text-xl font-bold flex items-baseline gap-1">
           <div className="">
