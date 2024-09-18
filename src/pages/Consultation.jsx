@@ -143,13 +143,18 @@ function Consultation() {
 
       <div className="">
         {/* our approach */}
-        <div className="   max-w-[88%] mx-auto border-l border-gray-200 ">
+        <div className="   max-w-[88%] mx-auto border-l border-gray-200  pb-[180px]">
           <Overview />
           <ServiceOffered />
-          <Industriesserved />
+        </div>
+
+        <div className=" w-full  bg-[#EBECED] ">
+          <div className=" flex flex-col max-w-[94%] ml-auto border-l border-gray-300  overflow-x-hidden ">
+            <Industriesserved />
+          </div>
         </div>
         {/* course content */}
-        <div className=" flex flex-col max-w-[88%] mx-auto border-l border-gray-300 ">
+        <div className=" flex flex-col max-w-[88%] mx-auto border-l border-gray-300  pt-[180px]">
           <Ourapproach />
         </div>
 
