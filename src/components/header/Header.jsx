@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { logo } from "../../assets";
 import Topheader from "./Topheader";
+import { Menu } from "@mui/material";
 
 function Header() {
   const [course, setCourse] = useState(false);
@@ -15,7 +16,7 @@ function Header() {
         <section className=" flex-1 text-xl font-bold flex items-baseline gap-1">
           <div className="">
             <img
-              className=" w-[95px] h-[51px]   object-cover"
+              className=" sm:w-[95px] sm:h-[51px] w-[67px] h-[39px]   object-cover"
               src={logo}
               alt=""
             />
@@ -23,7 +24,7 @@ function Header() {
         </section>
 
         {/*  navigation  & signin/profile  */}
-        <section className=" flex flex-1 items-center justify-between text-[16px] font-[400]   text-gray-500 ">
+        <section className=" sm:flex hidden flex-1 items-center justify-between text-[16px] font-[400]   text-gray-500 ">
           <NavLink
             to="/"
             className={({ isActive }) => (isActive ? "text-[#1A1A1A]" : "")}>
@@ -86,6 +87,12 @@ function Header() {
             <Link to="/enroll"> Enroll</Link>
           </button>
         </section>
+        <div className=" sm:hidden flex  gap-[27px] items-center">
+          <button className=" bg-[#034FE3] text-white font-[500] rounded-[5px] text-[14px] px-[20px] py-[10px]">
+            <Link to="/enroll"> Enroll</Link>
+          </button>
+          <span className=" text-[28px] text-[#333333]">&#9776;</span>
+        </div>
       </div>
     </header>
   );
