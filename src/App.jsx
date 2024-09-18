@@ -27,13 +27,13 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/consult" element={<Consultation />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/enroll" element={<Enroll />} />
             <Route path="/datascience" element={<DataScience />} />
             <Route path="/dataanalystics" element={<DataAnalysis />} />
             <Route path="/webdevelopment" element={<WebDevelopment />} />
             <Route path="/cloudcomputing" element={<CloudComputing />} />
             <Route path="/machinelearning" element={<MachineLearning />} />
           </Route>
+          <Route path="/enroll" element={<Enroll />} />
         </Routes>
       </Router>
     </div>
