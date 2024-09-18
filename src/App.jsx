@@ -16,7 +16,7 @@ import Scrolltotop from "./components/Scrolltotop";
 
 function App() {
   return (
-    <div className="">
+    <div className=" overflow-hidden">
       <Router>
         <Scrolltotop />
 

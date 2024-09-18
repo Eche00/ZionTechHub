@@ -12,7 +12,7 @@ import Services from "./Services";
 
 function FullHome() {
   return (
-    <div className=" bg-[#F5F5F5]">
+    <div className=" bg-[#F5F5F5] ">
       <Home />
       <div className=" w-full  backdrop-blur-none z-50 ">
         <div className=" flex flex-col max-w-[88%] mx-auto border-l border-gray-300">

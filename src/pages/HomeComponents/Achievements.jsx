@@ -74,9 +74,9 @@ function Achievements() {
   );
   return (
     <div className=" relative py-[150px] flex flex-col gap-[60px]">
-      <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute top-[169px] -left-[1.5px]"></span>
+      <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute top-[157px] -left-[1.5px]"></span>
       <div className=" px-2 ">
-        <p className=" font-[600] text-[48px] text-[#333]">
+        <p className=" font-[600] sm:text-[48px] text-[32px] text-[#333] sm:w-full w-[300px]">
           Our achievements at {" "}
           <span className=" text-[#034FE3]">Zion Tech Hub</span>
         </p>
@@ -85,31 +85,37 @@ function Achievements() {
           year.
         </p>
       </div>
-      <div className="flex gap-[30px] items-center ">
-        <section className=" flex-1 flex flex-col items-center justify-center bg-black h-[316px] rounded-[10px]">
+      <div className="flex sm:flex-row flex-col gap-[30px] sm:items-center sm:h-fit h-[750px]">
+        <section className=" flex-1 flex flex-col items-center justify-center bg-black sm:h-[316px] h-[553px] rounded-[10px]">
           <div className=" flex gap-[14px] items-center justify-center">
             {individual}
-            <span className=" text-[64px] font-[700] text-[#6D9357]">321</span>
+            <span className=" sm:text-[64px] text-[48px]  font-[700] text-[#6D9357]">
+              321
+            </span>
           </div>
-          <p className=" text-[20px] font-[400] text-[#6D9357] text-center">
+          <p className=" sm:text-[20px] text-[16px]  font-[400] text-[#6D9357] text-center">
             data analysts and data <br /> scientists trained
           </p>
         </section>
         <section className=" flex-1 flex flex-col items-center justify-center bg-black h-[316px] rounded-[10px]">
           <div className=" flex gap-[14px] items-center justify-center">
             {individual2}
-            <span className=" text-[64px] font-[700] text-[#034FE3]">63%</span>
+            <span className=" sm:text-[64px] text-[48px]  font-[700] text-[#034FE3]">
+              63%
+            </span>
           </div>
-          <p className=" text-[20px] font-[400] text-[#034FE3] text-center">
+          <p className=" sm:text-[20px] text-[16px] font-[400] text-[#034FE3] text-center">
             connected to local and <br /> global opportunities.
           </p>
         </section>
         <section className=" flex-1 flex flex-col items-center justify-center bg-black h-[316px] rounded-[10px]">
           <div className=" flex gap-[14px] items-center justify-center">
             {world}
-            <span className=" text-[64px] font-[700] text-[#DDA249]">12</span>
+            <span className=" sm:text-[64px] text-[48px]  font-[700] text-[#DDA249]">
+              12
+            </span>
           </div>
-          <p className=" text-[20px] font-[400] text-[#DDA249] text-center">
+          <p className=" sm:text-[20px] text-[16px] font-[400] text-[#DDA249] text-center">
             different countries
           </p>
         </section>
