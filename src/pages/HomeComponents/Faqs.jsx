@@ -3,19 +3,21 @@ import React from "react";
 
 function Faqs() {
   return (
-    <div className=" relative">
-      <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute top-[19px] -left-[1.5px]"></span>
-      <div className=" px-2 ">
-        <p className=" font-[600] text-[48px] text-[#333]">
-          <span className=" text-[#034FE3]">Frequently</span> Asked Questions
+    <div className=" relative pb-[100px]">
+      <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[19px] top-[10px] -left-[1.5px]"></span>
+      <div className=" px-[20px] ">
+        <p className=" font-[600] sm:text-[48px] text-[36px] text-[#333] sm:w-full w-[260px]">
+          <span className=" text-[#034FE3]">Frequently</span>{" "}
+          <span className=" text-[#034FE3] sm:text-[#333]">Asked</span>{" "}
+          Questions
         </p>
-        <p className=" text-[18px] font-[300] text-[#1A1A1A66]">
+        <p className=" sm:text-[18px] text-[16px] font-[300] text-[#1A1A1A66]">
           Have any questions? Check them here
         </p>
       </div>
 
       <div className=" my-[69px] flex flex-wrap gap-[69px] max-w-[1265px] text-[#1A1A1A]">
-        <section className=" p-[40px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px]">
+        <section className="   sm:py-[40] sm:px-[40px] py-[40px] px-[20px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px] ">
           <span className="w-[45px] h-[45px]  bg-white flex items-center justify-center p-[10px] rounded-[5px] border border-gray-400">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -29,15 +31,15 @@ function Faqs() {
               />
             </svg>
           </span>
-          <h3 className="  font-[600] text-[28px] pb-[42px]">
+          <h3 className="  font-[600] sm:text-[28px] text-[20px] sm:h-[84px]  w-fit">
             Is it a physical training?
           </h3>
-          <p className=" w-[446px] font-[300] text-[24px]">
+          <p className=" sm:w-[446px] w-[305px] font-[300] sm:text-[24px] text-[16px]">
             Our training is majorly virtual with physical training available
             only in Port Harcourt and Anambra state{" "}
           </p>
         </section>
-        <section className=" p-[40px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px]">
+        <section className="sm:py-[40] sm:px-[40px] py-[40px] px-[20px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px] ">
           <span className="w-[45px] h-[45px]  bg-white flex items-center justify-center p-[10px] rounded-[5px] border border-gray-400">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -57,15 +59,15 @@ function Faqs() {
               />
             </svg>
           </span>
-          <h3 className="  font-[600] text-[28px] pb-[42px]">
+          <h3 className="  font-[600] sm:text-[28px] text-[20px] h-[84px]  w-fit">
             What is the schedule of <br /> the program?
           </h3>
-          <p className=" w-[446px] font-[300] text-[24px]">
+          <p className=" sm:w-[446px] w-[305px] font-[300] sm:text-[24px] text-[16px]">
             Depending on the course, it could be a 3 month or 6 month long
             program. Weekend and weekdays sessions are available{" "}
           </p>
         </section>
-        <section className=" p-[40px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px]">
+        <section className=" sm:py-[40] sm:px-[40px] py-[40px] px-[20px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px] ">
           <span className="w-[45px] h-[45px]  bg-white flex items-center justify-center p-[10px] rounded-[5px] border border-gray-400">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -83,15 +85,15 @@ function Faqs() {
               />
             </svg>
           </span>
-          <h3 className="  font-[600] text-[28px] pb-[42px]">
+          <h3 className=" font-[600] sm:text-[28px] text-[20px] h-[84px]  w-fit">
             Are your certificates <br /> globally recognized?
           </h3>
-          <p className=" w-[446px] font-[300] text-[24px]">
+          <p className=" sm:w-[446px] w-[305px] font-[300] sm:text-[24px] text-[16px]">
             The Zion Tech certificates is globally recognized, with strong
             recognition in Europe and Africa
           </p>
         </section>
-        <section className=" p-[40px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px]">
+        <section className=" sm:py-[40] sm:px-[40px] py-[40px] px-[20px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px] ">
           <span className="w-[45px] h-[45px]  bg-white flex items-center justify-center p-[10px] rounded-[5px] border border-gray-400">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -113,11 +115,11 @@ function Faqs() {
               />
             </svg>
           </span>
-          <h3 className="  font-[600] text-[28px] pb-[42px]">
+          <h3 className="  font-[600] sm:text-[28px] text-[20px] h-[84px]  w-fit">
             What are the requirements <br />
             for the program?
           </h3>
-          <p className=" w-[446px] font-[300] text-[24px]">
+          <p className=" sm:w-[446px] w-[305px] font-[300] sm:text-[24px] text-[16px] whitespace-nowrap">
             a working PC, consistency and commitment
           </p>
         </section>

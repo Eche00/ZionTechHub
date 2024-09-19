@@ -41,7 +41,7 @@ function Benefits() {
   return (
     <div className="py-[80px] relative ">
       <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[99px] top-[89px] -left-[1.5px]"></span>
-      <div className=" px-2 ">
+      <div className=" px-[20px] ">
         <p className=" font-[600] sm:text-[48px] text-[36px] text-[#333]  w-[320px] sm:w-full">
           <span className=" text-[#034FE3]">Benefits</span> Of Training With Us
         </p>

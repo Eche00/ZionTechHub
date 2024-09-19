@@ -18,9 +18,9 @@ function Coursecard({ course }) {
   );
   return (
     <div className=" flex flex-col w-fit  gap-[12px] bg-[#F0F0F0]  rounded-[10px] overflow-hidden border border-gray-400">
-      <div className=" relative   border-[#034FE3]   border-b-4 rounded-t-[10px] overflow-hidden">
+      <div className=" relative   border-[#034FE3]   border-b-4 rounded-t-[10px] overflow-hidden w-fit">
         <img
-          className=" w-[414.772px] h-[220.536px] object-cover border-[#034FE3]  border-2 overflow-hidden rounded-[10px]"
+          className=" sm:w-[414.772px] sm:h-[220.536px] w-[350px] h-[220.536px] object-cover border-[#034FE3]  border-2 overflow-hidden rounded-[10px]"
           src={course.img}
           alt=""
         />
@@ -43,13 +43,15 @@ function Coursecard({ course }) {
           </p>
         </section>
       </div>
-      <div className=" flex flex-col gap-[24px] w-full text-[#1A1A1ACC]  border-gray-400">
+      <div className=" flex flex-col gap-[24px] sm:w-full w-fit text-[#1A1A1ACC]  border-gray-400">
         <div className=" flex flex-col gap-[10px] px-[24px]">
           <p className=" flex items-center py-[6px] px-[8px] border border-gray-300 gap-[4px] rounded-[5px] w-fit text-[12px] font-[400]">
             {book} {course.time}
           </p>
-          <p className=" text-[24px] font-[600]">{course.category}</p>
-          <p className=" text-[16px] font-[300] w-[367px] h-[48px]">
+          <p className=" sm:text-[24px] text-[20px] font-[600]">
+            {course.category}
+          </p>
+          <p className=" sm:text-[16px] text-[14px] font-[300] sm:w-[367px] w-[302px] h-[48px]">
             {course.message}
           </p>
         </div>
@@ -60,7 +62,7 @@ function Coursecard({ course }) {
               src={individual}
               alt=""
             />
-            <div className=" flex flex-col justify-center text-[#1A1A1ACC]">
+            <div className=" flex flex-col justify-center text-[#1A1A1ACC] ">
               <p className=" text-[16px] font-[700]">Ndomo Godsent</p>
               <p className=" text-yellow-400  text-[12px] font-[400] flex items-center ">
                 <Star fontSize="small" />
@@ -69,7 +71,9 @@ function Coursecard({ course }) {
             </div>
           </section>
           <section>
-            <p className=" text-[24px] font-[700]">${course.price}</p>
+            <p className=" sm:text-[24px] text-[20px] font-[700]">
+              ${course.price}
+            </p>
           </section>
         </div>
       </div>

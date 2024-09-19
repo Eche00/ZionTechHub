@@ -27,32 +27,32 @@ function Consultingsection() {
     <div className=" my-[300px]">
       <div className=" max-w-[1265px]   flex flex-col gap-[48px] bg-[#EBECED] p-[48px] rounded-[10px] relative">
         <div className=" flex flex-col gap-[32px] ">
-          <section className=" flex flex-col">
-            <h1 className=" text-[48px] font-[600] text-[#333333]">
+          <section className=" flex flex-col sm:pt-0 pt-[100px]">
+            <h1 className=" sm:text-[48px] text-[36px] sm:w-full w-[305px] font-[600] text-[#333333]">
               Our consultancy sector{" "}
             </h1>
-            <p className=" text-[24px] font-[600] text-[#1A1A1A66]">
+            <p className=" sm:text-[24px] text-[20px] font-[600] text-[#1A1A1A66]">
               Domain Areas;
             </p>
           </section>
           <ul>
-            <li className=" flex gap-[14px] text-[24px] font-[300] items-center">
+            <li className=" flex gap-[14px] sm:text-[24px] text-[18px] font-[300] items-center">
               <span>{checkMark}</span>Financial analytics{" "}
             </li>
-            <li className=" flex gap-[14px] text-[24px] font-[300] items-center">
+            <li className=" flex gap-[14px] sm:text-[24px] text-[18px] font-[300] items-center">
               <span>{checkMark}</span>Business Intelligence Analytics{" "}
             </li>
-            <li className=" flex gap-[14px] text-[24px] font-[300] items-center">
+            <li className=" flex gap-[14px] sm:text-[24px] text-[18px] font-[300] items-center">
               <span>{checkMark}</span>Healthcare Analytics
             </li>
           </ul>
           <img
-            className=" w-[470px] h-[302.509px] object-cover absolute -top-1/3 right-0 border border-black rounded-[5px]"
+            className=" sm:w-[470px] sm:h-[302.509px] w-[295px] h-[190px] object-cover absolute sm:-top-1/3 -top-[20%] sm:right-0 right-[7%] border border-black rounded-[5px]"
             src="'"
             alt="image"
           />
         </div>
-        <button className=" py-[10px] px-[32px] rounded-[5px] bg-[#034FE3] text-[20px] font-[700] w-fit text-white">
+        <button className=" sm:py-[10px] py-[14px] px-[32px] rounded-[5px] bg-[#034FE3] sm:text-[20px] text-[18px] font-[700] w-fit text-white">
           Learn more
         </button>
       </div>

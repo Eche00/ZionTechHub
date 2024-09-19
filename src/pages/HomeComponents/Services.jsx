@@ -6,8 +6,8 @@ import { individual } from "../../assets";
 function Services() {
   return (
     <div className=" relative py-[80px]">
-      <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute top-[99px] -left-[1.5px]"></span>
-      <div className=" px-2  pb-[69px]">
+      <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[99px] top-[90px] -left-[1.5px]"></span>
+      <div className=" px-[20px]  pb-[69px]">
         <p className=" font-[600] sm:text-[48px] text-[36px] text-[#333] w-[265px] sm:w-full">
           <span className=" text-[#034FE3]">Our services</span> created for you
         </p>

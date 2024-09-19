@@ -75,7 +75,7 @@ function Achievements() {
   return (
     <div className=" relative py-[150px] flex flex-col gap-[60px]">
       <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute top-[157px] -left-[1.5px]"></span>
-      <div className=" px-2 ">
+      <div className=" px-[20px] ">
         <p className=" font-[600] sm:text-[48px] text-[32px] text-[#333] sm:w-full w-[300px]">
           Our achievements at {" "}
           <span className=" text-[#034FE3]">Zion Tech Hub</span>

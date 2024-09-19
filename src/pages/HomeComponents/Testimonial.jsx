@@ -6,8 +6,8 @@ function Testimonial() {
   return (
     <div className=" relative pb-[150px] ">
       <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[19px] top-[10px] -left-[1.5px]"></span>
-      <div className=" px-2  pb-[69px]">
-        <p className=" font-[600] sm:text-[48px] text-[36px] w-[265px] sm:w-fulls text-[#333]">
+      <div className=" px-[20px]  pb-[69px]">
+        <p className=" font-[600] sm:text-[48px] text-[36px] w-[265px] sm:w-full text-[#333]">
           <span className=" text-[#034FE3]">See the results</span> of our
           training
         </p>

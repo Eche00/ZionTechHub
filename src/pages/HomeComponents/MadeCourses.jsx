@@ -58,7 +58,7 @@ function MadeCourses() {
   return (
     <div className=" relative pt-[80px] ">
       <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[99px] top-[85px] -left-[1.5px]"></span>
-      <div className=" px-2   sm:w-full w-[300px]">
+      <div className=" px-[20px]   sm:w-full w-[300px]">
         <p className=" font-[600] sm:text-[48px] text-[32px]  text-[#333]">
           <span className=" text-[#034FE3]">Ready-made courses</span> for your
           success
@@ -82,7 +82,7 @@ function MadeCourses() {
               </p>
             </div>
             <img
-              className=" sm:hidden flex w-full h-[210px] my-2 rounded-[10px] object-cover"
+              className=" sm:hidden flex w-[354px] h-[210px] my-2 rounded-[10px] object-cover"
               src={Reviewimg}
               alt=""
             />
@@ -101,7 +101,7 @@ function MadeCourses() {
               </p>
             </div>
             <img
-              className=" sm:hidden flex w-full h-[210px] my-2 rounded-[10px] object-cover"
+              className=" sm:hidden flex w-[354px] h-[210px] my-2 rounded-[10px] object-cover"
               src={Reviewimg}
               alt=""
             />
@@ -120,7 +120,7 @@ function MadeCourses() {
               </p>
             </div>
             <img
-              className=" sm:hidden flex w-full h-[210px] my-2 rounded-[10px] object-cover"
+              className=" sm:hidden flex w-[354px] h-[210px] my-2 rounded-[10px] object-cover"
               src={Reviewimg}
               alt=""
             />
