@@ -11,6 +11,15 @@ import reviewprofile2 from "./reviewprofile2.jpeg";
 import reviewprofile3 from "./reviewprofile3.jpeg";
 import reviewprofile4 from "./reviewprofile4.jpeg";
 import googlemeet from "./googlemeet.png";
+import certificatehome from "./certificatehome.png";
+import skillimagehome from "./skillimagehome.png";
+import collabimagehome from "./collabimagehome.png";
+import SirGodsentprofile from "./SirGodsentprofile.jpeg";
+import linkedlncover from "./linkedlncover.jpeg";
+import secondlogo from "./secondlogo.png";
+import unilogo from "./unilogo.png";
+import consultancyhome from "./consultancyhome.png";
+import consultafrica from "./consultafrica.png";
 
 export {
   logo,
@@ -26,4 +35,13 @@ export {
   reviewprofile3,
   reviewprofile4,
   googlemeet,
+  certificatehome,
+  skillimagehome,
+  collabimagehome,
+  SirGodsentprofile,
+  linkedlncover,
+  secondlogo,
+  unilogo,
+  consultancyhome,
+  consultafrica,
 };

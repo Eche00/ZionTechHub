@@ -1,4 +1,5 @@
 import React from "react";
+import { consultafrica, consultancyhome } from "../../assets";
 
 function Consultingsection() {
   const checkMark = (
@@ -47,8 +48,13 @@ function Consultingsection() {
             </li>
           </ul>
           <img
-            className=" sm:w-[470px] sm:h-[302.509px] w-[295px] h-[190px] object-cover absolute sm:-top-1/3 -top-[20%] sm:right-0 right-[7%] border border-black rounded-[5px]"
-            src="'"
+            className=" sm:w-[470px] sm:h-[302.509px] w-[295px] h-[190px] object-cover absolute sm:-top-1/3 -top-[20%] sm:right-0 right-[7%] border  rounded-[5px]"
+            src={consultancyhome}
+            alt="image"
+          />
+          <img
+            className=" w-[31px] h-[35px] sm:w-[50px] sm:h-[55px] object-cover absolute sm:top-[3%] top-[-2.5%] sm:right-[51px] bg-blue-100 right-[16%] border  rounded-[5px]"
+            src={consultafrica}
             alt="image"
           />
         </div>

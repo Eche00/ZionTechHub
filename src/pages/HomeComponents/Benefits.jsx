@@ -1,5 +1,16 @@
 import React from "react";
-import { Reviewimg, enterprice, individual, logo } from "../../assets";
+import {
+  Reviewimg,
+  SirGodsentprofile,
+  certificatehome,
+  collabimagehome,
+  enterprice,
+  individual,
+  linkedlncover,
+  logo,
+  secondlogo,
+  unilogo,
+} from "../../assets";
 
 function Benefits() {
   const dot = (
@@ -68,13 +79,13 @@ function Benefits() {
             </div>
             <div className=" bg-[#F5F5F5] ml-1 flex items-center justify-center sm:py-[20px] py-[15px] sm:rounded-l-[10px]  sm:rounded-none rounded-[10px]">
               <img
-                className=" sm:w-[381px] sm:h-[268px] w-[244px] h-[172px] border border-black"
-                src=""
+                className=" sm:w-[381px] sm:h-[268px] w-[244px] h-[172px] object-cover rounded-[10px]"
+                src={certificatehome}
                 alt="img"
               />
             </div>
           </section>
-          <section className=" flex flex-col justify-between   border border-gray-400 rounded-[10px] bg-white">
+          <section className=" flex flex-col justify-between   border border-gray-400 rounded-[10px] bg-[#F5F5F5]  pt-[10px]">
             <div className=" sm:px-[32px] px-[20px] pb-[24px] pt-[36px] text-[#626262] flex flex-col gap-[20px]">
               <p className=" flex sm:text-[12px] text-[10px] font-[700] items-center gap-[5px] px-[14px] sm:py-[10px] py-[8px] bg-[#D6E2D3] rounded-[10px] w-fit text-[#527455]">
                 {dot} REAL WORLD PRACTICES
@@ -88,76 +99,76 @@ function Benefits() {
                 the gap between theory and practice.
               </p>
             </div>
-            <div className=" bg-[#F5F5F5] ml-[14px] flex flex-col  rounded-tl-[10px] rounded-bl-[10px]">
-              <div className=" flex  gap-[16px] px-[40px] items-center border-b border-gray-300 py-[20px]">
-                <span className=" p-[19px] bg-[#E1E1E1] rounded-full ">
+            <div className=" bg-[#F5F5F5] ml-[14px] flex flex-col  rounded-tl-[10px] rounded-bl-[10px] overflow-hidden ">
+              <div className=" flex  gap-[16px] sm:px-[40px] px-[20px] items-center border-b border-gray-300 py-[20px]">
+                <span className=" sm:p-[19px] p-[10px] bg-[#E1E1E1] rounded-full ">
                   {flash}
                 </span>
-                <p className=" text-[24px] font-[600] text-[#527455]">
+                <p className=" sm:text-[24px] text-[13px] font-[600] text-[#527455] whitespace-nowrap">
                   Apply your skills on real world tasks{" "}
                 </p>
               </div>
-              <div className="  px-[40px]   py-[20px] w-[759px] overflow-scroll">
-                <div className="flex flex-wrap items-center  gap-[24px]  w-[800px] ">
-                  <p className=" p-[10px] flex items-center justify-center border-[#527455] rounded-full text-[#527455] border-[3px] text-[20px] font-[600] gap-[12px]">
+              <div className="  px-[40px]   py-[30px] sm:w-[759px]  w-[459px] overflow-scroll ">
+                <div className="flex flex-wrap items-center  gap-[24px]  sm:w-[800px] w-[700px]  ">
+                  <p className=" sm:p-[10px] p-[5px] flex items-center justify-center border-[#527455] rounded-full text-[#527455] border-[3px] sm:text-[20px] text-[12px] font-[600] gap-[12px]">
                     <img
-                      className=" w-[45px] h-[45px] rounded-full object-cover"
+                      className=" sm:w-[45px] sm:h-[45px] w-[36px] h-[36px] rounded-full object-cover"
                       src={Reviewimg}
                       alt=""
                     />
                     <span className=" pr-[10px]">Zapier</span>{" "}
                   </p>
-                  <p className=" p-[10px] flex items-center justify-center border-[#527455] rounded-full text-[#527455] border-[3px] text-[20px] font-[600] gap-[12px]">
+                  <p className=" sm:p-[10px] p-[5px] flex items-center justify-center border-[#527455] rounded-full text-[#527455] border-[3px] sm:text-[20px] text-[12px] font-[600] gap-[12px]">
                     <img
-                      className=" w-[45px] h-[45px] rounded-full object-cover"
+                      className=" sm:w-[45px] sm:h-[45px] w-[36px] h-[36px] rounded-full object-cover"
                       src={Reviewimg}
                       alt=""
                     />
                     <span className=" pr-[10px]">Slack</span>
                   </p>
-                  <p className=" p-[10px] flex items-center justify-center border-[#527455] rounded-full text-[#527455] border-[3px] text-[20px] font-[600] gap-[12px]">
+                  <p className=" sm:p-[10px] p-[5px] flex items-center justify-center border-[#527455] rounded-full text-[#527455] border-[3px] sm:text-[20px] text-[12px] font-[600] gap-[12px]">
                     <img
-                      className=" w-[45px] h-[45px] rounded-full object-cover"
+                      className=" sm:w-[45px] sm:h-[45px] w-[36px] h-[36px] rounded-full object-cover"
                       src={Reviewimg}
                       alt=""
                     />
                     <span className=" pr-[10px]">Google Analystics</span>
                   </p>
-                  <p className=" p-[10px] flex items-center justify-center border-[#527455] rounded-full text-[#527455] border-[3px] text-[20px] font-[600] gap-[12px]">
+                  <p className=" sm:p-[10px] p-[5px] flex items-center justify-center border-[#527455] rounded-full text-[#527455] border-[3px] sm:text-[20px] text-[12px] font-[600] gap-[12px]">
                     <img
-                      className=" w-[45px] h-[45px] rounded-full object-cover"
+                      className=" sm:w-[45px] sm:h-[45px] w-[36px] h-[36px] rounded-full object-cover"
                       src={Reviewimg}
                       alt=""
                     />
                     <span className=" pr-[10px]">R Studio</span>
                   </p>
-                  <p className=" p-[10px] flex items-center justify-center border-[#527455] rounded-full text-[#527455] border-[3px] text-[20px] font-[600] gap-[12px]">
+                  <p className=" sm:p-[10px] p-[5px] flex items-center justify-center border-[#527455] rounded-full text-[#527455] border-[3px] sm:text-[20px] text-[12px] font-[600] gap-[12px]">
                     <img
-                      className=" w-[45px] h-[45px] rounded-full object-cover"
+                      className=" sm:w-[45px] sm:h-[45px] w-[36px] h-[36px] rounded-full object-cover"
                       src={Reviewimg}
                       alt=""
                     />
                     <span className=" pr-[10px]">Google Sheets</span>
                   </p>
-                  <p className=" p-[10px] flex items-center justify-center border-[#527455] rounded-full text-[#527455] border-[3px] text-[20px] font-[600] gap-[12px]">
+                  <p className=" sm:p-[10px] p-[5px] flex items-center justify-center border-[#527455] rounded-full text-[#527455] border-[3px] sm:text-[20px] text-[12px] font-[600] gap-[12px]">
                     <img
-                      className=" w-[45px] h-[45px] rounded-full object-cover"
+                      className=" sm:w-[45px] sm:h-[45px] w-[36px] h-[36px] rounded-full object-cover"
                       src={Reviewimg}
                       alt=""
                     />
                     <span className=" pr-[10px]">Excel</span>
                   </p>
-                  <p className=" p-[10px] flex items-center justify-center border-[#527455] rounded-full text-[#527455] border-[3px] text-[20px] font-[600] gap-[12px]">
+                  <p className=" sm:p-[10px] p-[5px] flex items-center justify-center border-[#527455] rounded-full text-[#527455] border-[3px] sm:text-[20px] text-[12px] font-[600] gap-[12px]">
                     <img
-                      className=" w-[45px] h-[45px] rounded-full object-cover"
+                      className=" sm:w-[45px] sm:h-[45px] w-[36px] h-[36px] rounded-full object-cover"
                       src={Reviewimg}
                       alt=""
                     />
                     <span className=" pr-[10px]">Discord</span>
                   </p>
-                  <p className=" p-[10px] flex items-center justify-center border-[#527455] rounded-full text-[#527455] border-[3px] text-[20px] font-[600] gap-[12px]">
+                  <p className=" sm:p-[10px] p-[5px] flex items-center justify-center border-[#527455] rounded-full text-[#527455] border-[3px] sm:text-[20px] text-[12px] font-[600] gap-[12px]">
                     <img
-                      className=" w-[45px] h-[45px] rounded-full object-cover"
+                      className=" sm:w-[45px] sm:h-[45px] w-[36px] h-[36px] rounded-full object-cover"
                       src={Reviewimg}
                       alt=""
                     />
@@ -170,7 +181,7 @@ function Benefits() {
         </div>
         {/* second part */}
         <div className=" flex sm:flex-row flex-col gap-[24px]">
-          <section className=" flex flex-col justify-between   border border-gray-400 rounded-[10px] bg-white">
+          <section className=" flex flex-col justify-between   border border-gray-400 rounded-[10px] bg-[#F5F5F5] overflow-hidden">
             <div className=" sm:px-[32px] px-[20px] pb-[24px] pt-[36px] text-[#626262] flex flex-col gap-[20px]">
               <p className=" flex sm:text-[12px] text-[10px] font-[700] items-center gap-[5px] px-[14px] py-[10px] bg-[#E1E7F5] rounded-[10px] w-fit text-[#4768A8]">
                 {dot} OPTIMIZATION
@@ -186,41 +197,49 @@ function Benefits() {
                 collaborators.
               </p>
             </div>
-            <div className=" ml-[14px] flex  flex-col overflow-scroll  rounded-tl-[10px] rounded-bl-[10px] w-[709px]">
-              <div className="w-[864px]">
+            <div className=" ml-[14px] flex  flex-col overflow-scroll  rounded-tl-[10px] rounded-bl-[10px] w-[709px] bg-[#FFFFFF]">
+              <div className="sm:w-[864px] w-[468px]">
                 <img
-                  className=" w-full h-[172px] object-cover"
-                  src={Reviewimg}
+                  className=" w-full sm:h-[172px] h-[120px] object-cover"
+                  src={linkedlncover}
                   alt=""
                 />
-                <div className=" flex justify-between relative">
+                <div className=" flex sm:justify-between relative">
                   <img
-                    className=" absolute w-[120px] h-[120px] rounded-full -top-[80px] left-5 border-[4px] border-white"
-                    src={Reviewimg}
+                    className=" absolute sm:w-[120px] sm:h-[120px] w-[60px] h-[60px] rounded-full sm:-top-[80px] sm:left-5 -top-[30px] left-5 border-[4px] border-white object-cover"
+                    src={SirGodsentprofile}
                     alt=""
                   />
-                  <section className=" flex  flex-col flex-1 px-[27px] pt-[44px]">
-                    <p className=" text-[24px] font-[600] text-[#1A1A1ACC]">
+                  <section className=" flex  flex-col flex-1 sm:px-[27px] px-[20px] sm:pt-[44px] pt-[24px]">
+                    <p className=" sm:text-[24px] text-[16px] font-[600] text-[#1A1A1ACC]">
                       Ndomo Godsent
                     </p>
-                    <p className=" text-[18px] font-[300] text-[#1A1A1ACC] pb-[8px]">
+                    <p className=" sm:text-[18px] text-[14px] font-[300] text-[#1A1A1ACC] sm:pb-[8px] pb-[4px]">
                       Data analyst
                     </p>
-                    <p className=" text-[14px] font-[500] text-[#1A1A1ACC]">
+                    <p className=" sm:text-[14px] text-[12px] font-[500] text-[#1A1A1ACC]">
                       Location . Contact info
                     </p>
                   </section>
-                  <section className=" flex-1  flex justify-center items-center">
+                  <section className=" flex-1  flex sm:justify-center items-center  justify-start">
                     <div className="flex flex-col items-start">
-                      <div className=" flex items-center gap-[16px] justify-center">
-                        <img className=" w-[40px] h-[40px]" src={logo} alt="" />{" "}
-                        <p className=" text-[16px] font-[600] text-[#1A1A1ACC] pb-[8px]">
+                      <div className=" flex items-center sm:gap-[16px] gap-[8px] justify-center">
+                        <img
+                          className="w-[40px] sm:h-[40px]  h-[30px]"
+                          src={secondlogo}
+                          alt=""
+                        />{" "}
+                        <p className=" sm:text-[16px] text-[10px] font-[600] text-[#1A1A1ACC] pb-[8px]">
                           Zion Tech Hub
                         </p>
                       </div>
-                      <div className=" flex items-center gap-[16px] justify-center">
-                        <img className=" w-[40px] h-[40px]" src={logo} alt="" />{" "}
-                        <p className=" text-[16px] font-[600] text-[#1A1A1ACC] pb-[8px]">
+                      <div className=" flex items-center sm:gap-[16px] gap-[8px] justify-center">
+                        <img
+                          className="w-[40px] sm:h-[40px]  h-[30px]"
+                          src={unilogo}
+                          alt=""
+                        />{" "}
+                        <p className=" sm:text-[16px] text-[10px] font-[600] text-[#1A1A1ACC] pb-[8px]">
                           Univesity of PH
                         </p>
                       </div>
@@ -231,7 +250,7 @@ function Benefits() {
             </div>
           </section>
           {/* part 2 of part 2 */}
-          <section className=" flex flex-col   border border-gray-400 rounded-[10px] bg-white sm:py-[14px] p-[14px]">
+          <section className=" flex flex-col   border border-gray-400 rounded-[10px] bg-[#F5F5F5] sm:py-[14px] p-[14px]">
             <div className=" sm:px-[32px] px-[10px] pb-[24px] pt-[20px]  flex flex-col gap-[20px] text-[#A85847]">
               <p className=" flex sm:text-[12px] text-[10px] font-[700] items-center gap-[5px] px-[14px] py-[10px] bg-[#F5E9E1] rounded-[10px] w-fit">
                 {dot} INTERNSHIPS
@@ -257,12 +276,12 @@ function Benefits() {
         </div>
         {/* third part */}
         <div className=" flex sm:flex-row flex-col gap-[24px] max-w-[1300px] overflow-hidden">
-          <div className=" w-fit flex flex-col py-[14px] justify-between   border border-gray-400 rounded-[10px] bg-white">
+          <div className=" w-fit flex flex-col py-[14px] justify-between   border border-gray-400 rounded-[10px] bg-[#F5F5F5]">
             <section className=" sm:ml-[14px] px-[14px] sm:px-0 flex  flex-col overflow-scroll  rounded-tl-[10px] rounded-bl-[10px]  sm:w-[617px]">
-              <div className="sm:w-[864px]">
+              <div className="sm:w-[724px]">
                 <img
                   className=" sm:w-full w-[324px] sm:h-[250px] h-[121px] object-cover"
-                  src={Reviewimg}
+                  src={collabimagehome}
                   alt=""
                 />
               </div>
@@ -283,10 +302,10 @@ function Benefits() {
           {/* 3rd part 2 */}
           <div className="  flex flex-col py-[14px]   border border-gray-400 rounded-[10px] bg-white">
             <section className=" ml-[14px] flex  flex-col overflow-scroll  rounded-tl-[10px] rounded-bl-[10px] w-[617px] h-[250px]">
-              <div className="pl-[60px] pt-[50px]">
-                <section className=" rounded-[10px] border border-gray-400  w-fit">
-                  <article className=" flex items-center  px-[32px] py-[14px] border-b border-gray-400 gap-[16px] text-[#36303099]">
-                    <p className="text-[16px] font-[400]">
+              <div className="sm:pl-[60px] sm:pt-[50px] pt-[20px]">
+                <section className=" rounded-t-[10px] border border-gray-400  sm:w-fit w-[962px]">
+                  <article className=" flex items-center  px-[32px] py-[14px] border-b border-gray-400 gap-[16px] text-[#3e363699]">
+                    <p className="sm:text-[16px] text-[14px] font-[400]">
                       <b>Michael</b> started a call in
                     </p>
                     <p className="text-[14px] font-[400] py-[6px] px-[14px] bg-[#1A1A1A1A] rounded-[10px]">
@@ -296,14 +315,16 @@ function Benefits() {
                   </article>
                   <article className=" py-[16px] px-[32px] flex gap-[24px]">
                     <img
-                      className=" w-[120px] h-[60px] rounded-full"
+                      className=" w-[60px] h-[60px] rounded-full"
                       src={Reviewimg}
                       alt=""
                     />
                     <div className=" flex flex-col gap-[24px] ">
                       <section className=" flex gap-[10px] items-center">
-                        <p className="text-[16px] font-[400]">Michael</p>
-                        <p className="text-[14px] font-[400] py-[6px] px-[14px] bg-[#034FE31A] text-[#034FE3] rounded-[10px]">
+                        <p className="sm:text-[16px] text-[14px] font-[400]">
+                          Michael
+                        </p>
+                        <p className="sm:text-[14px] text-[12px] font-[400] py-[6px] px-[14px] bg-[#034FE31A] text-[#034FE3] rounded-[10px]">
                           Verified Mentor
                         </p>
                         <p className="text-[16px] font-[400]">36 sec ago</p>

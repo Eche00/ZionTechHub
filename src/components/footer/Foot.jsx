@@ -35,16 +35,16 @@ function Foot() {
   return (
     <footer className=" bg-[#E7E7E7]">
       <div className=" pt-[110px] ">
-        <div className=" max-w-[70%] mx-auto flex items-center justify-between pb-[55px] border-b border-black">
-          <div className=" flex flex-col gap-[32px] items-start">
+        <div className=" sm:max-w-[70%] max-w-full mx-auto flex sm:flex-row flex-col sm:items-center px-[20px] sm:px-0 justify-between pb-[55px] border-b border-black">
+          <div className=" flex flex-col gap-[32px] items-start pb-[48px] sm:pb-0">
             <img
-              className=" w-[95px] h-[51px]  border-none object-cover"
+              className=" sm:w-[95px] w-[89px] h-[51px]  border-none object-cover"
               src={logo}
               alt=""
             />
             <div className=" flex gap-[32px]">
               <section className=" flex flex-col gap-[8px]">
-                <p className=" text-[14px] font-[400] text-[#040505CC]">
+                <p className=" sm:text-[14px] text-[12px] font-[400] text-[#040505CC]">
                   Email
                 </p>
                 <p className=" font-[400] text-[16px] text-[#040505]">
@@ -52,7 +52,7 @@ function Foot() {
                 </p>
               </section>
               <section className=" flex flex-col gap-[8px]">
-                <p className=" text-[14px] font-[400] text-[#040505CC]">
+                <p className=" sm:text-[14px] text-[12px] font-[400] text-[#040505CC]">
                   Phone Number
                 </p>
                 <p className=" font-[400] text-[16px] text-[#040505]">
@@ -61,22 +61,22 @@ function Foot() {
               </section>
             </div>
           </div>
-          <div className=" flex flex-col gap-[32px]">
+          <div className=" flex flex-col gap-[32px]  ">
             <h3 className=" font-[600] text-24px] text-[#040505]">
               Start your training with <br /> Zion Tech Hub
             </h3>
             <section className=" flex gap-[10px]">
-              <button className=" py-[12px] px-[24px] gap-[10px] flex items-center justify-center  bg-[#2563EB] text-[18px] text-white font-[500] rounded-[10px] ">
+              <button className=" py-[12px] sm:px-[24px] px-[20px] gap-[10px] flex items-center justify-center  bg-[#2563EB] sm:text-[18px] text-[16px] text-white font-[500] rounded-[10px] ">
                 Enroll <ArrowForward />
               </button>
-              <button className=" py-[12px] px-[24px] ] flex items-center justify-center text-[18px]  font-[400] rounded-[10px] border border-gray-300 ">
+              <button className=" py-[12px] sm:px-[24px] px-[20px] flex items-center justify-center sm:text-[18px] text-[16px]  font-[400] rounded-[10px] border border-gray-300 ">
                 Book a Consultation
               </button>
             </section>
           </div>
         </div>
 
-        <div className=" max-w-[70%] mx-auto pt-[55px] flex justify-between">
+        <div className=" sm:max-w-[70%] max-w-full mx-auto pt-[55px] flex sm:flex-row flex-col justify-between items-center sm:gap-0 gap-[24px]">
           <section className=" flex items-center  text-[14px] font-[400] text-[#040505] gap-[8px]">
             {" "}
             <span>{checkMark}</span> Follow us on all Platforms
@@ -104,7 +104,7 @@ function Foot() {
             </a>
           </section>
         </div>
-        <div className=" text-[220px] font-[900] text-[#C3C3C333] p-0 m-0">
+        <div className=" sm:text-[220px] text-[80px] whitespace-nowrap font-[900] text-[#C3C3C333] p-0 m-0">
           ZION TECH HUB
         </div>
       </div>
