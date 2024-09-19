@@ -57,20 +57,19 @@ function MadeCourses() {
   );
   return (
     <div className=" relative pt-[80px] ">
-      <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute top-[99px] -left-[1.5px]"></span>
-      <div className=" px-2  ">
-        <p className=" font-[600] text-[48px] text-[#333]">
+      <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[99px] top-[85px] -left-[1.5px]"></span>
+      <div className=" px-2   sm:w-full w-[300px]">
+        <p className=" font-[600] sm:text-[48px] text-[32px]  text-[#333]">
           <span className=" text-[#034FE3]">Ready-made courses</span> for your
           success
         </p>
-        <p className=" text-[18px] font-[300] text-[#1A1A1A66]">
+        <p className=" sm:text-[18px] text-[16px]  font-[300] text-[#1A1A1A66]">
           Our trainings and courses are delicately specified to prove its
           tailored to your needs.
         </p>
       </div>
-
-      <div className=" py-[107px] flex gap-[107px] items-center justify-center">
-        <div className="flex flex-col gap-[74px]  w-[357px] px-[30px]">
+      <div className=" py-[107px] flex gap-[107px] sm:items-center sm:justify-center">
+        <div className="flex flex-col gap-[74px]  w-[357px] sm:px-[30px] ">
           <section className=" flex flex-col gap-[24px]">
             <span className=" border border-[#034FE399] w-fit p-[10px] rounded-[5px]">
               {individual}
@@ -82,13 +81,18 @@ function MadeCourses() {
                 next cohort. Payments will be made on Whatsapp.
               </p>
             </div>
+            <img
+              className=" sm:hidden flex w-full h-[210px] my-2 rounded-[10px] object-cover"
+              src={Reviewimg}
+              alt=""
+            />
           </section>
           <section className=" flex flex-col gap-[24px]">
-            <span className=" border border-gray-400 w-fit p-[10px] rounded-[5px]">
+            <span className=" border sm:border-gray-400 border-[#0F973D] w-fit p-[10px] rounded-[5px] ">
               {whatsapp}
             </span>
             <div>
-              <h3 className="text-[20px] font-[600] text-[#626262]">
+              <h3 className="text-[20px] font-[600] sm:text-[#626262] text-[#0F973D]">
                 Join the community
               </h3>{" "}
               <p className="text-[14px] font-[300] text-[#1A1A1ACC] w-[357px]">
@@ -96,13 +100,18 @@ function MadeCourses() {
                 with you in every step of your training.
               </p>
             </div>
+            <img
+              className=" sm:hidden flex w-full h-[210px] my-2 rounded-[10px] object-cover"
+              src={Reviewimg}
+              alt=""
+            />
           </section>{" "}
           <section className=" flex flex-col gap-[24px]">
-            <span className=" border border-gray-400 w-fit p-[10px] rounded-[5px]">
+            <span className=" border sm:border-gray-400 border-[#DDA249] w-fit p-[10px] rounded-[5px]">
               {google}
             </span>
             <div>
-              <h3 className="text-[20px] font-[600] text-[#626262]">
+              <h3 className="text-[20px] font-[600] sm:text-[#626262] text-[#DDA249]">
                 Classes on Meet
               </h3>{" "}
               <p className="text-[14px] font-[300] text-[#1A1A1ACC] w-[357px]">
@@ -110,9 +119,14 @@ function MadeCourses() {
                 <br /> be held virtually on Google Meet.
               </p>
             </div>
+            <img
+              className=" sm:hidden flex w-full h-[210px] my-2 rounded-[10px] object-cover"
+              src={Reviewimg}
+              alt=""
+            />
           </section>
         </div>
-        <div className=" flex-1">
+        <div className=" flex-1 sm:flex hidden">
           <img
             className=" h-[717px] w-full object-cover rounded-t-[10px]"
             src={Reviewimg}

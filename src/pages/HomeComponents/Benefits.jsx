@@ -40,47 +40,49 @@ function Benefits() {
   );
   return (
     <div className="py-[80px] relative ">
-      <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute top-[99px] -left-[1.5px]"></span>
+      <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[99px] top-[89px] -left-[1.5px]"></span>
       <div className=" px-2 ">
-        <p className=" font-[600] text-[48px] text-[#333]">
+        <p className=" font-[600] sm:text-[48px] text-[36px] text-[#333]  w-[320px] sm:w-full">
           <span className=" text-[#034FE3]">Benefits</span> Of Training With Us
         </p>
-        <p className=" text-[18px] font-[300] text-[#1A1A1A66]">
+        <p className=" text-[18px] font-[300] text-[#1A1A1A66]  w-[340px] sm:w-full">
           With these benefits, you wouldn’t want to learn anywhere else :)
         </p>
       </div>
 
       <div className=" py-[76px] gap-[24px] flex flex-col">
-        <div className=" flex gap-[24px]">
-          <section className=" flex flex-col   border border-gray-400 rounded-[10px] bg-white py-[14px] pl-[14px]">
-            <div className=" px-[32px] pb-[24px] pt-[36px] text-[#626262] flex flex-col gap-[20px]">
-              <p className=" flex text-[12px] font-[700] items-center gap-[5px] px-[14px] py-[10px] bg-[#E2E2E2] rounded-[10px] w-fit">
+        <div className=" flex sm:flex-row flex-col gap-[24px]">
+          <section className=" flex flex-col   border border-gray-400 rounded-[10px] bg-white sm:py-[14px] sm:pl-[14px] sm:p-0 p-[14px]">
+            <div className=" sm:px-[32px] px-[10px] pb-[24px] pt-[36px] text-[#626262] flex flex-col gap-[20px]">
+              <p className=" flex sm:text-[12px] text-[10px] font-[700] items-center gap-[5px] px-[14px] sm:py-[10px] py-[8px] bg-[#E2E2E2] rounded-[10px] w-fit">
                 {dot} CREDENTIALS
               </p>
-              <p className="  text-[28px] font-[600]">Certifications</p>
-              <p className="  text-[18px] font-[300] w-[404px]">
+              <p className="  sm:text-[28px] text-[20px] font-[600]">
+                Certifications
+              </p>
+              <p className="  sm:text-[18px] text-[14px] font-[300] sm:w-[404px]">
                 Upon completing our courses, you will earn industry-recognized
                 certifications that validate your expertise and enhance your
                 professional credentials.
               </p>
             </div>
-            <div className=" bg-[#F5F5F5] ml-1 flex items-center justify-center py-[20px] rounded-tl-[10px] rounded-bl-[10px]">
+            <div className=" bg-[#F5F5F5] ml-1 flex items-center justify-center sm:py-[20px] py-[15px] sm:rounded-l-[10px]  sm:rounded-none rounded-[10px]">
               <img
-                className=" w-[381px] h-[268px] border border-black"
+                className=" sm:w-[381px] sm:h-[268px] w-[244px] h-[172px] border border-black"
                 src=""
                 alt="img"
               />
             </div>
           </section>
           <section className=" flex flex-col justify-between   border border-gray-400 rounded-[10px] bg-white">
-            <div className=" px-[32px] pb-[24px] pt-[36px] text-[#626262] flex flex-col gap-[20px]">
-              <p className=" flex text-[12px] font-[700] items-center gap-[5px] px-[14px] py-[10px] bg-[#D6E2D3] rounded-[10px] w-fit text-[#527455]">
+            <div className=" sm:px-[32px] px-[20px] pb-[24px] pt-[36px] text-[#626262] flex flex-col gap-[20px]">
+              <p className=" flex sm:text-[12px] text-[10px] font-[700] items-center gap-[5px] px-[14px] sm:py-[10px] py-[8px] bg-[#D6E2D3] rounded-[10px] w-fit text-[#527455]">
                 {dot} REAL WORLD PRACTICES
               </p>
-              <p className="  text-[28px] font-[600] text-[#527455]">
+              <p className="  text-[20px] sm:text-[28px] font-[600] text-[#527455]">
                 Hands on real world projects
               </p>
-              <p className="  text-[18px] font-[300] w-[695px]">
+              <p className=" text-[14px]  sm:text-[18px] font-[300] sm:w-[695px]">
                 Our training programs include hands-on real-world projects that
                 allow you to apply your skills in practical scenarios, bridging
                 the gap between theory and practice.
@@ -167,18 +169,18 @@ function Benefits() {
           </section>
         </div>
         {/* second part */}
-        <div className=" flex gap-[24px]">
+        <div className=" flex sm:flex-row flex-col gap-[24px]">
           <section className=" flex flex-col justify-between   border border-gray-400 rounded-[10px] bg-white">
-            <div className=" px-[32px] pb-[24px] pt-[36px] text-[#626262] flex flex-col gap-[20px]">
-              <p className=" flex text-[12px] font-[700] items-center gap-[5px] px-[14px] py-[10px] bg-[#E1E7F5] rounded-[10px] w-fit text-[#4768A8]">
+            <div className=" sm:px-[32px] px-[20px] pb-[24px] pt-[36px] text-[#626262] flex flex-col gap-[20px]">
+              <p className=" flex sm:text-[12px] text-[10px] font-[700] items-center gap-[5px] px-[14px] py-[10px] bg-[#E1E7F5] rounded-[10px] w-fit text-[#4768A8]">
                 {dot} OPTIMIZATION
               </p>
-              <p className="  text-[28px] font-[600] text-[#4768A8]">
+              <p className="  sm:text-[28px] text-[20px] font-[600] text-[#4768A8]">
                 LinkedIn Branding
               </p>
-              <p className="  text-[18px] font-[300] w-[645px]">
+              <p className="  sm:text-[18px] text-[14px] font-[300] sm:w-[620px] ">
                 By optimizing your profile, we carryout effective LinkedIn
-                branding that <br /> positions you for global opportunities by
+                branding that positions you for global opportunities by
                 showcasing your expertise, achievements, and unique value
                 proposition to a wide audience of potential employers and
                 collaborators.
@@ -228,16 +230,16 @@ function Benefits() {
               </div>
             </div>
           </section>
-          {/* part 2 of part 1 */}
-          <section className=" flex flex-col   border border-gray-400 rounded-[10px] bg-white py-[14px] p-[14px]">
-            <div className=" px-[32px] pb-[24px] pt-[20px]  flex flex-col gap-[20px] text-[#A85847]">
-              <p className=" flex text-[12px] font-[700] items-center gap-[5px] px-[14px] py-[10px] bg-[#F5E9E1] rounded-[10px] w-fit">
+          {/* part 2 of part 2 */}
+          <section className=" flex flex-col   border border-gray-400 rounded-[10px] bg-white sm:py-[14px] p-[14px]">
+            <div className=" sm:px-[32px] px-[10px] pb-[24px] pt-[20px]  flex flex-col gap-[20px] text-[#A85847]">
+              <p className=" flex sm:text-[12px] text-[10px] font-[700] items-center gap-[5px] px-[14px] py-[10px] bg-[#F5E9E1] rounded-[10px] w-fit">
                 {dot} INTERNSHIPS
               </p>
-              <p className="  text-[28px] font-[600]">
+              <p className="  sm:text-[28px] text-[20px] font-[600]">
                 Internship Opportunities{" "}
               </p>
-              <p className="  text-[18px] font-[300] w-[440px] text-[#626262]">
+              <p className="  sm:text-[18px] text-[14px] font-[300] sm:w-[440px] w-[306px] text-[#626262]">
                 Our internship opportunities provide valuable hands-on
                 experience and exposure to real-world projects, allowing you to
                 apply your skills in a professional setting and gain insights
@@ -254,23 +256,23 @@ function Benefits() {
           </section>
         </div>
         {/* third part */}
-        <div className=" flex gap-[24px] max-w-[1300px] overflow-hidden">
+        <div className=" flex sm:flex-row flex-col gap-[24px] max-w-[1300px] overflow-hidden">
           <div className=" w-fit flex flex-col py-[14px] justify-between   border border-gray-400 rounded-[10px] bg-white">
-            <section className=" ml-[14px] flex  flex-col overflow-scroll  rounded-tl-[10px] rounded-bl-[10px]  w-[617px]">
-              <div className="w-[864px]">
+            <section className=" sm:ml-[14px] px-[14px] sm:px-0 flex  flex-col overflow-scroll  rounded-tl-[10px] rounded-bl-[10px]  sm:w-[617px]">
+              <div className="sm:w-[864px]">
                 <img
-                  className=" w-full h-[250px] object-cover"
+                  className=" sm:w-full w-[324px] sm:h-[250px] h-[121px] object-cover"
                   src={Reviewimg}
                   alt=""
                 />
               </div>
             </section>
 
-            <section className=" pt-[36px] px-[28px]">
-              <h3 className=" text-[28px] font-[600] text-[#6C47A8]">
-                Collaboration on projects with industry <br /> experts{" "}
+            <section className=" pt-[36px] sm:px-[28px] px-[14px]">
+              <h3 className=" sm:text-[28px] text-[20px]  font-[600] text-[#6C47A8]">
+                Collaboration on projects with industry experts{" "}
               </h3>
-              <p className=" text-[18px] font-[300] text-[#1A1A1A66] w-[573px] ">
+              <p className=" sm:text-[18px] text-[14px] font-[300] text-[#1A1A1A66] sm:w-[573px] ">
                 Collaborating on projects with industry experts offers you the
                 unique opportunity to gain insights from seasoned professionals,
                 enhancing your skills and understanding through practical,
@@ -317,12 +319,11 @@ function Benefits() {
                 </section>
               </div>
             </section>
-            <section className=" pt-[36px] px-[32px]">
-              <h3 className=" text-[28px] font-[600] text-[#D564BC]">
-                Mentorship from seasoned data <br />
-                experts
+            <section className=" pt-[36px] sm:px-[32px] px-[20px]">
+              <h3 className=" sm:text-[28px] text-[20px] font-[600] text-[#D564BC] sm:w-[440px] w-[280px]">
+                Mentorship from seasoned data experts
               </h3>
-              <p className=" text-[18px] font-[300] text-[#1A1A1A66] w-[573px] ">
+              <p className=" sm:text-[18px] text-[14px] font-[300] text-[#1A1A1A66] sm:w-[573px] ">
                 Receive personalized guidance from seasoned experts who provide
                 valuable insights and practical advice, helping you navigate
                 your career path with confidence.

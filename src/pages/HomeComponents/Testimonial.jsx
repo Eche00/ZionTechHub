@@ -5,13 +5,13 @@ import { ArrowBack, ArrowForward } from "@mui/icons-material";
 function Testimonial() {
   return (
     <div className=" relative pb-[150px] ">
-      <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute top-[19px] -left-[1.5px]"></span>
+      <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[19px] top-[10px] -left-[1.5px]"></span>
       <div className=" px-2  pb-[69px]">
-        <p className=" font-[600] text-[48px] text-[#333]">
+        <p className=" font-[600] sm:text-[48px] text-[36px] w-[265px] sm:w-fulls text-[#333]">
           <span className=" text-[#034FE3]">See the results</span> of our
           training
         </p>
-        <div className=" flex items-center max-w-[80%] mr-auto justify-between">
+        <div className=" flex sm:flex-row flex-col sm:items-center max-w-[80%] mr-auto sm:justify-between items-start justify-start sm:gap-0 gap-[24px]">
           <p className=" text-[18px] font-[300] text-[#1A1A1A66]">
             See what others are achieving through learning with us.{" "}
           </p>
@@ -26,10 +26,10 @@ function Testimonial() {
         </div>
       </div>
       <div className=" overflow-x-scroll ">
-        <div className=" relative flex w-[3600px] gap-[24px] overflow-scroll  pr-[10px]">
+        <div className=" relative flex w-[3600px] sm:gap-[24px] gap-[20px] overflow-scroll  pr-[10px]">
           {PopularCourseslib.map((course) => (
             <img
-              className=" w-[445px] h-[445px] object-cover"
+              className=" sm:w-[445px] sm:h-[445px] w-[344px] h-[344px] object-cover"
               src={course.img}
               alt=""
             />
