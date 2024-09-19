@@ -1,18 +1,31 @@
-import { Reviewimg } from "../assets";
+import {
+  reviewprofile1,
+  reviewprofile2,
+  reviewprofile3,
+  reviewprofile4,
+} from "../assets";
 
 const HomeReview = [
   {
-    img: Reviewimg,
+    img: reviewprofile1,
     message:
       "I  was happy learning with Zion Tech Hub. The team made sure we weren’t overwhelmed lea...",
   },
-  { img: Reviewimg, message: "message message message" },
-  { img: Reviewimg, message: "message message message" },
-  { img: Reviewimg, message: "message message message" },
-  { img: Reviewimg, message: "message message message 4" },
-  { img: Reviewimg, message: "message message message 5" },
-  { img: Reviewimg, message: "end2" },
-  { img: Reviewimg, message: "end" },
+  {
+    img: reviewprofile2,
+    message:
+      "I  was happy learning with Zion Tech Hub. The team made sure we weren’t overwhelmed lea...",
+  },
+  {
+    img: reviewprofile3,
+    message:
+      "I  was happy learning with Zion Tech Hub. The team made sure we weren’t overwhelmed lea...",
+  },
+  {
+    img: reviewprofile4,
+    message:
+      "I  was happy learning with Zion Tech Hub. The team made sure we weren’t overwhelmed lea...",
+  },
 ];
 
 export default HomeReview;

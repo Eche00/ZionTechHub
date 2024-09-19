@@ -1,5 +1,5 @@
 import React from "react";
-import { Reviewimg } from "../../assets";
+import { Classeshome, Joinhome, Registerhome } from "../../assets";
 
 function MadeCourses() {
   const individual = (
@@ -82,8 +82,8 @@ function MadeCourses() {
               </p>
             </div>
             <img
-              className=" sm:hidden flex w-[354px] h-[210px] my-2 rounded-[10px] object-cover"
-              src={Reviewimg}
+              className=" sm:hidden flex w-[353px] h-[209px] my-2 rounded-[10px] object-cover"
+              src={Registerhome}
               alt=""
             />
           </section>
@@ -101,8 +101,8 @@ function MadeCourses() {
               </p>
             </div>
             <img
-              className=" sm:hidden flex w-[354px] h-[210px] my-2 rounded-[10px] object-cover"
-              src={Reviewimg}
+              className=" sm:hidden flex w-[353px] h-[209px] my-2 rounded-[10px] object-cover"
+              src={Joinhome}
               alt=""
             />
           </section>{" "}
@@ -120,8 +120,8 @@ function MadeCourses() {
               </p>
             </div>
             <img
-              className=" sm:hidden flex w-[354px] h-[210px] my-2 rounded-[10px] object-cover"
-              src={Reviewimg}
+              className=" sm:hidden flex w-[353px] h-[209px] my-2 rounded-[10px] object-cover"
+              src={Classeshome}
               alt=""
             />
           </section>
@@ -129,7 +129,7 @@ function MadeCourses() {
         <div className=" flex-1 sm:flex hidden">
           <img
             className=" h-[717px] w-full object-cover rounded-t-[10px]"
-            src={Reviewimg}
+            src={Registerhome}
             alt=""
           />
         </div>

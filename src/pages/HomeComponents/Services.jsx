@@ -1,7 +1,7 @@
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import React from "react";
 import ServicesContent from "../../lib/ServicesContent";
-import { individual } from "../../assets";
+import { googlemeet } from "../../assets";
 
 function Services() {
   return (
@@ -48,7 +48,7 @@ function Services() {
                 </p>
                 <img
                   className=" sm:w-[247px] sm:h-[45px] w-[89px] h-[16px] object-cover"
-                  src={individual}
+                  src={googlemeet}
                   alt=""
                 />
               </section>
