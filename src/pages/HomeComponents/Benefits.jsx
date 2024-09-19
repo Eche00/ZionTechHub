@@ -85,7 +85,7 @@ function Benefits() {
               />
             </div>
           </section>
-          <section className=" flex flex-col justify-between   border border-gray-400 rounded-[10px] bg-[#F5F5F5]  pt-[10px]">
+          <section className=" flex flex-col justify-between   border border-gray-400 rounded-[10px] bg-white  pt-[10px]">
             <div className=" sm:px-[32px] px-[20px] pb-[24px] pt-[36px] text-[#626262] flex flex-col gap-[20px]">
               <p className=" flex sm:text-[12px] text-[10px] font-[700] items-center gap-[5px] px-[14px] sm:py-[10px] py-[8px] bg-[#D6E2D3] rounded-[10px] w-fit text-[#527455]">
                 {dot} REAL WORLD PRACTICES
