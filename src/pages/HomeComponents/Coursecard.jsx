@@ -1,5 +1,5 @@
 import React from "react";
-import { individual } from "../../assets";
+import { SirGodsentprofile, individual } from "../../assets";
 import { Star } from "@mui/icons-material";
 
 function Coursecard({ course }) {
@@ -59,7 +59,7 @@ function Coursecard({ course }) {
           <section className=" flex gap-[10px]">
             <img
               className=" w-[32px] h-[32px] rounded-full object-cover"
-              src={individual}
+              src={SirGodsentprofile}
               alt=""
             />
             <div className=" flex flex-col justify-center text-[#1A1A1ACC] ">

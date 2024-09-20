@@ -2,17 +2,24 @@ import React from "react";
 import {
   Reviewimg,
   SirGodsentprofile,
+  amazonlogo,
+  applelogo,
   certificatehome,
   collabimagehome,
   discord,
+  emojiprofile,
   enterprice,
   excel,
   googleanalytics,
+  googlelogo,
   googlesheets,
   individual,
   linkedlncover,
   logo,
+  metalogo,
   microsoft,
+  microsoftlogo,
+  notionlogo,
   rstudio,
   secondlogo,
   slack,
@@ -258,7 +265,7 @@ function Benefits() {
             </div>
           </section>
           {/* part 2 of part 2 */}
-          <section className=" flex flex-col   border border-gray-400 rounded-[10px] bg-[#F5F5F5] sm:py-[14px] p-[14px]">
+          <section className=" flex flex-col   border border-gray-400 rounded-[10px] bg-[#F5F5F5] sm:py-[14px] p-[14px] overflow-hidden">
             <div className=" sm:px-[32px] px-[10px] pb-[24px] pt-[20px]  flex flex-col gap-[20px] text-[#A85847]">
               <p className=" flex sm:text-[12px] text-[10px] font-[700] items-center gap-[5px] px-[14px] py-[10px] bg-[#F5E9E1] rounded-[10px] w-fit">
                 {dot} INTERNSHIPS
@@ -273,12 +280,50 @@ function Benefits() {
                 into your chosen field.
               </p>
             </div>
-            <div className=" bg-[#EEEEEE] ml-1 flex items-center justify-center py-[20px] rounded-tl-[10px] rounded-bl-[10px]">
-              <img
-                className=" w-[381px] h-[268px] border border-black"
-                src=""
-                alt="img"
-              />
+            <div className="   flex items-center justify-center relative sm:h-fit h-[300px]">
+              <div className=" absolute  sm:top-5 top-14 p-[40px]  border-[6px] border-[#F5E9E1] rounded-full sm:w-fit w-[450px]">
+                <div className=" p-[40px]  border-[6px] border-[#F5E9E1] rounded-full">
+                  <div className=" p-[40px]  border-[6px] border-[#F5E9E1] rounded-full">
+                    <div className=" p-[40px]  border-[6px] border-[#F5E9E1] rounded-full">
+                      <img
+                        className=" sm:w-[100px] sm:h-[100px] w-[84px] h-[84px] object-cover rounded-full  "
+                        src={emojiprofile}
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </div>
+                <img
+                  className=" sm:w-[60px] sm:h-[60px] w-[50px] h-[50px] rounded-full object-cover absolute bottom-[42%] sm:left-5 left-8"
+                  src={metalogo}
+                  alt=""
+                />
+                <img
+                  className="  sm:w-[60px] sm:h-[60px] w-[50px] h-[50px]  rounded-full object-cover absolute bottom-[60%] left-[55px]"
+                  src={applelogo}
+                  alt=""
+                />
+                <img
+                  className="  sm:w-[60px] sm:h-[60px] w-[50px] h-[50px]  rounded-full object-cover absolute bottom-[80%] left-[120px]"
+                  src={googlelogo}
+                  alt=""
+                />
+                <img
+                  className="  sm:w-[60px] sm:h-[60px] w-[50px] h-[50px]  rounded-full object-cover absolute bottom-[72%] right-[160px]"
+                  src={microsoftlogo}
+                  alt=""
+                />
+                <img
+                  className="  sm:w-[60px] sm:h-[60px] w-[50px] h-[50px]  rounded-full object-cover absolute bottom-[60%] right-[55px]"
+                  src={amazonlogo}
+                  alt=""
+                />
+                <img
+                  className="  sm:w-[60px] sm:h-[60px] w-[50px] h-[50px]  rounded-full object-cover absolute bottom-[38.5%] sm:right-5 right-8"
+                  src={notionlogo}
+                  alt=""
+                />
+              </div>
             </div>
           </section>
         </div>

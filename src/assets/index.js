@@ -50,6 +50,13 @@ import googlesheets from "./googlesheets.png";
 import excel from "./excel.png";
 import discord from "./discord.png";
 import microsoft from "./microsoft.png";
+import googlelogo from "./googlelogo.png";
+import metalogo from "./metalogo.png";
+import amazonlogo from "./amazonlogo.png";
+import notionlogo from "./notionlogo.png";
+import microsoftlogo from "./microsoftlogo.png";
+import applelogo from "./applelogo.png";
+import emojiprofile from "./emojiprofile.jpeg";
 
 export {
   logo,
@@ -104,4 +111,11 @@ export {
   discord,
   microsoft,
   zapier,
+  googlelogo,
+  metalogo,
+  amazonlogo,
+  notionlogo,
+  microsoftlogo,
+  applelogo,
+  emojiprofile,
 };

@@ -72,6 +72,178 @@ function Achievements() {
       />
     </svg>
   );
+  const dot1 = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="60"
+      height="30"
+      viewBox="0 0 60 30"
+      fill="none">
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M60 30C60 13.4314 46.5685 0 30 0C13.4315 0 0 13.4314 0 30H60Z"
+        fill="#BAD1AB"
+      />
+    </svg>
+  );
+  const dot2 = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none">
+      <circle cx="10" cy="10" r="10" fill="#BAD1AB" />
+    </svg>
+  );
+  const dot3 = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none">
+      <circle cx="10" cy="10" r="10" fill="#BAD1AB" />
+    </svg>
+  );
+
+  const dot4 = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="25"
+      height="25"
+      viewBox="0 0 25 25"
+      fill="none">
+      <circle cx="12.5" cy="12.5" r="12.5" fill="#BAD1AB" />
+    </svg>
+  );
+  const dot5 = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="10"
+      height="10"
+      viewBox="0 0 10 10"
+      fill="none">
+      <circle cx="5" cy="5" r="5" fill="#BAD1AB" />
+    </svg>
+  );
+
+  const dot6 = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="60"
+      height="30"
+      viewBox="0 0 60 30"
+      fill="none">
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M60 30C60 13.4315 46.5685 0 30 0C13.4315 0 0 13.4315 0 30H60Z"
+        fill="#034FE3"
+        fill-opacity="0.2"
+      />
+    </svg>
+  );
+  const dot7 = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none">
+      <circle cx="10" cy="10" r="10" fill="#034FE3" fill-opacity="0.2" />
+    </svg>
+  );
+  const dot8 = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="15"
+      height="15"
+      viewBox="0 0 15 15"
+      fill="none">
+      <circle cx="7.5" cy="7.5" r="7.5" fill="#034FE3" fill-opacity="0.2" />
+    </svg>
+  );
+
+  const dot9 = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="25"
+      height="25"
+      viewBox="0 0 25 25"
+      fill="none">
+      <circle cx="12.5" cy="12.5" r="12.5" fill="#034FE3" fill-opacity="0.2" />
+    </svg>
+  );
+  const dot10 = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="10"
+      height="10"
+      viewBox="0 0 10 10"
+      fill="none">
+      <circle cx="5" cy="5" r="5" fill="#034FE3" fill-opacity="0.2" />
+    </svg>
+  );
+
+  const dot11 = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="60"
+      height="30"
+      viewBox="0 0 60 30"
+      fill="none">
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M60 30C60 13.4315 46.5685 0 30 0C13.4315 0 0 13.4315 0 30H60Z"
+        fill="#DDB16F"
+        fill-opacity="0.4"
+      />
+    </svg>
+  );
+  const dot12 = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none">
+      <circle cx="10" cy="10" r="10" fill="#DDB16F" fill-opacity="0.4" />
+    </svg>
+  );
+  const dot13 = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="15"
+      height="15"
+      viewBox="0 0 15 15"
+      fill="none">
+      <circle cx="7.5" cy="7.5" r="7.5" fill="#DDB16F" fill-opacity="0.4" />
+    </svg>
+  );
+
+  const dot14 = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="25"
+      height="25"
+      viewBox="0 0 25 25"
+      fill="none">
+      <circle cx="12.5" cy="12.5" r="12.5" fill="#DDB16F" fill-opacity="0.4" />
+    </svg>
+  );
+  const dot15 = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="10"
+      height="10"
+      viewBox="0 0 10 10"
+      fill="none">
+      <circle cx="5" cy="5" r="5" fill="#DDB16F" fill-opacity="0.4" />
+    </svg>
+  );
   return (
     <div className=" relative py-[150px] flex flex-col gap-[60px]">
       <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute top-[157px] -left-[1.5px]"></span>
@@ -86,7 +258,7 @@ function Achievements() {
         </p>
       </div>
       <div className="flex sm:flex-row flex-col gap-[30px] sm:items-center sm:h-fit h-[750px]">
-        <section className=" flex-1 flex flex-col items-center justify-center bg-black sm:h-[316px] h-[553px] rounded-[10px]">
+        <section className=" flex-1 flex flex-col items-center justify-center bg-[#D3DDCD66] sm:h-[316px] h-[553px] rounded-[10px] relative">
           <div className=" flex gap-[14px] items-center justify-center">
             {individual}
             <span className=" sm:text-[64px] text-[48px]  font-[700] text-[#6D9357]">
@@ -96,8 +268,27 @@ function Achievements() {
           <p className=" sm:text-[20px] text-[16px]  font-[400] text-[#6D9357] text-center">
             data analysts and data <br /> scientists trained
           </p>
+          <span className=" absolute bottom-0 right-5">{dot1}</span>
+          <span className=" absolute sm:bottom-10 bottom-3 sm:left-[150px] left-[100px]">
+            {dot2}
+          </span>
+          <span className=" absolute sm:bottom-[80px] bottom-[60px] left-0">
+            {dot2}
+          </span>
+          <span className=" absolute sm:bottom-[110px] bottom-[80px] right-12">
+            {dot3}
+          </span>
+          <span className=" absolute sm:bottom-[200px] bottom-[150px] sm:left-20 left-14">
+            {dot2}
+          </span>
+          <span className=" absolute sm:bottom-[230px] bottom-[160px] right-20">
+            {dot4}
+          </span>
+          <span className=" absolute sm:bottom-[290px] bottom-[210px] sm:left-[160px] left-[100px]">
+            {dot5}
+          </span>
         </section>
-        <section className=" flex-1 flex flex-col items-center justify-center bg-black h-[316px] rounded-[10px]">
+        <section className=" flex-1 flex flex-col items-center justify-center bg-[#034FE30D] h-[316px] rounded-[10px] relative">
           <div className=" flex gap-[14px] items-center justify-center">
             {individual2}
             <span className=" sm:text-[64px] text-[48px]  font-[700] text-[#034FE3]">
@@ -107,8 +298,27 @@ function Achievements() {
           <p className=" sm:text-[20px] text-[16px] font-[400] text-[#034FE3] text-center">
             connected to local and <br /> global opportunities.
           </p>
+          <span className=" absolute bottom-0 right-5">{dot6}</span>
+          <span className=" absolute sm:bottom-10 bottom-3 sm:left-[150px] left-[100px]">
+            {dot7}
+          </span>
+          <span className=" absolute sm:bottom-[80px] bottom-[60px] left-0">
+            {dot7}
+          </span>
+          <span className=" absolute sm:bottom-[110px] bottom-[80px] right-12">
+            {dot8}
+          </span>
+          <span className=" absolute sm:bottom-[200px] bottom-[150px] sm:left-20 left-14">
+            {dot7}
+          </span>
+          <span className=" absolute sm:bottom-[230px] bottom-[160px] right-20">
+            {dot9}
+          </span>
+          <span className=" absolute sm:bottom-[290px] bottom-[210px] sm:left-[160px] left-[100px]">
+            {dot10}
+          </span>
         </section>
-        <section className=" flex-1 flex flex-col items-center justify-center bg-black h-[316px] rounded-[10px]">
+        <section className=" flex-1 flex flex-col items-center justify-center bg-[#F1D3AF66] h-[316px] rounded-[10px] relative">
           <div className=" flex gap-[14px] items-center justify-center">
             {world}
             <span className=" sm:text-[64px] text-[48px]  font-[700] text-[#DDA249]">
@@ -118,6 +328,25 @@ function Achievements() {
           <p className=" sm:text-[20px] text-[16px] font-[400] text-[#DDA249] text-center">
             different countries
           </p>
+          <span className=" absolute bottom-0 right-5">{dot11}</span>
+          <span className=" absolute sm:bottom-10 bottom-3 sm:left-[150px] left-[100px]">
+            {dot12}
+          </span>
+          <span className=" absolute sm:bottom-[80px] bottom-[60px] left-0">
+            {dot12}
+          </span>
+          <span className=" absolute sm:bottom-[110px] bottom-[80px] right-12">
+            {dot13}
+          </span>
+          <span className=" absolute sm:bottom-[200px] bottom-[150px] sm:left-20 left-14">
+            {dot12}
+          </span>
+          <span className=" absolute sm:bottom-[230px] bottom-[160px] right-20">
+            {dot14}
+          </span>
+          <span className=" absolute sm:bottom-[290px] bottom-[210px] sm:left-[160px] left-[100px]">
+            {dot15}
+          </span>
         </section>
       </div>
     </div>
