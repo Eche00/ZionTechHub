@@ -15,26 +15,26 @@ function FullHome() {
     <div className=" bg-[#F5F5F5] ">
       <Home />
       <div className=" w-full  backdrop-blur-none z-50 ">
-        <div className=" flex flex-col max-w-[88%] mx-auto border-l border-gray-300">
+        <div className=" flex flex-col sm:max-w-[88%] max-w-[92%] mx-auto border-l border-gray-300">
           <Achievements />
         </div>
         <div className=" w-full  bg-[#F5F5F5]">
-          <div className=" flex flex-col max-w-[94%] ml-auto border-l border-gray-300 ">
+          <div className=" flex flex-col sm:max-w-[94%] max-w-[96%] ml-auto border-l border-gray-300 ">
             <MadeCourses />
           </div>
         </div>
         <div className=" w-full  bg-[#EBECED]">
-          <div className=" flex flex-col max-w-[94%] ml-auto border-l border-gray-300  overflow-x-hidden ">
+          <div className=" flex flex-col sm:max-w-[94%] max-w-[96%] ml-auto border-l border-gray-300  overflow-x-hidden ">
             <Services />
           </div>
         </div>
         <div className=" w-full bg-[#F5F5F5]">
-          <div className=" flex flex-col max-w-[88%] mx-auto border-l border-gray-300 ">
+          <div className=" flex flex-col sm:max-w-[88%] max-w-[92%] mx-auto border-l border-gray-300 ">
             <Benefits />
           </div>
         </div>
         <div className=" w-full bg-[#F5F5F5]">
-          <div className=" flex flex-col max-w-[94%] ml-auto border-l border-gray-300  overflow-x-hidden">
+          <div className=" flex flex-col sm:max-w-[94%] max-w-[96%] ml-auto border-l border-gray-300  overflow-x-hidden">
             <Testimonial />
             <PopularCourses />
           </div>
@@ -42,7 +42,7 @@ function FullHome() {
 
         <NextCohort />
         <div className=" w-full bg-[#F5F5F5]">
-          <div className=" flex flex-col max-w-[88%] mx-auto border-l border-gray-300 ">
+          <div className=" flex flex-col sm:max-w-[88%] max-w-[92%] mx-auto border-l border-gray-300 ">
             <Consultingsection />
             <Faqs />
           </div>

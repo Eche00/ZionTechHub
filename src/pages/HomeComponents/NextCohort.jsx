@@ -36,9 +36,9 @@ function NextCohort() {
   );
   return (
     <div className=" bg-[#EBECED]">
-      <div className=" flex flex-col max-w-[88%] mx-auto sm:border-l sm:border-gray-300">
+      <div className=" flex flex-col sm:max-w-[88%] max-w-full mx-auto sm:border-l sm:border-gray-300 ">
         <div className=" w-full  flex sm:flex-row flex-col items-center py-[82px]">
-          <div className=" flex flex-1 flex-wrap sm:gap-[24px] gap-[15px]">
+          <div className=" flex flex-1 items-center justify-center flex-wrap sm:gap-[24px] gap-[10px]">
             <section className="   shadow-[24px 24px 140px 0px rgba(0, 0, 0, 0.15)]">
               <article className=" flex flex-col sm:gap-[30px] gap-[10px] items-center justify-center sm:w-[290px] sm:h-[355px] w-[160px] h-[180px] bg-white sm:rounded-[30px] rounded-[20px]">
                 <div>{individual}</div>
@@ -88,19 +88,19 @@ function NextCohort() {
               </article>
             </section>
           </div>
-          <div className=" flex-1 flex flex-col gap-[29px] sm:items-start sm:justify-start items-center justify-center ">
-            <div className=" flex  flex-col gap-[24px] text-[#1A1A1ACC] ">
-              <h1 className=" sm:text-[96px] text-[56px] font-[700] ">
+          <div className=" flex-1 flex flex-col gap-[29px] sm:items-start sm:justify-start items-center justify-center  ">
+            <div className=" flex  flex-col gap-[24px] text-[#1A1A1ACC]  ">
+              <h1 className=" sm:text-[96px] text-[56px] font-[700] sm:px-0 px-[10px]">
                 <span className=" text-[#034FE3]">Join </span>Our <br /> Next
                 Cohort
               </h1>
-              <p className=" sm:text-[28px] text-[20px] font-[300] sm:w-[658px] w-[353px]">
+              <p className=" sm:text-[28px] text-[20px] font-[300] sm:w-[658px] w-[353px] sm:px-0 px-[10px]">
                 We believe in the words of our students, with each student and
                 client, we get closer to our vision <br />{" "}
                 <b className="  font-[600]  text-black">one step at a time.</b>
               </p>
             </div>
-            <div className=" flex gap-[24px] rounded-[10px] ">
+            <div className=" flex sm:gap-[24px] gap-[12px] rounded-[10px] sm:px-0 px-[10px]">
               <button className=" py-[10px] px-[32px] bg-[#034FE3] text-white sm:text-[20px] text-[18px] whitespace-nowrap font-[700] rounded-[5px] shadow-[24px 24px 40px 0px rgba(0, 0, 0, 0.10)">
                 Apply now
               </button>
