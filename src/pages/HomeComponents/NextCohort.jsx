@@ -34,6 +34,71 @@ function NextCohort() {
       />
     </svg>
   );
+  const world = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="48"
+      height="48"
+      viewBox="0 0 48 48"
+      fill="none">
+      <path
+        d="M14 6.676C17.039 4.9178 20.489 3.99459 24 4C35.046 4 44 12.954 44 24C44 35.046 35.046 44 24 44C12.954 44 4 35.046 4 24C4 20.358 4.974 16.94 6.676 14"
+        stroke="#4768A8"
+        stroke-width="3"
+        stroke-linecap="round"
+      />
+      <path
+        d="M29.656 38.142C28.914 40 28.032 41.472 27.062 42.478C26.09 43.482 25.05 44 24 44C22.95 44 21.91 43.482 20.94 42.478C19.968 41.472 19.086 39.998 18.344 38.142C17.6 36.284 17.01 34.082 16.608 31.654C16.1979 29.1234 15.9946 26.5636 16 24C16 21.374 16.206 18.772 16.608 16.346C17.01 13.92 17.6 11.716 18.344 9.85799C19.086 7.99999 19.968 6.52799 20.938 5.52199C21.91 4.51999 22.95 3.99999 24 3.99999C25.05 3.99999 26.09 4.51799 27.06 5.52199C28.032 6.52799 28.914 8.00199 29.656 9.85799C30.4 11.716 30.99 13.918 31.39 16.346C31.794 18.772 32 21.374 32 24C32 26.626 31.792 29.228 31.39 31.654M4 24H20M44 24H28"
+        stroke="#4768A8"
+        stroke-width="3"
+        stroke-linecap="round"
+      />
+    </svg>
+  );
+
+  const calender = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="49"
+      height="48"
+      viewBox="0 0 49 48"
+      fill="none">
+      <path
+        d="M28.5 44H20.5C12.958 44 9.186 44 6.844 41.656C4.5 39.314 4.5 35.542 4.5 28V24C4.5 16.458 4.5 12.686 6.844 10.344C9.186 8 12.958 8 20.5 8H28.5C36.042 8 39.814 8 42.156 10.344C44.5 12.686 44.5 16.458 44.5 24V28C44.5 35.542 44.5 39.314 42.156 41.656C40.85 42.964 39.1 43.542 36.5 43.796M14.5 8V5M34.5 8V5M43.5 18H22M4.5 18H12.25"
+        stroke="#4768A8"
+        stroke-width="3"
+        stroke-linecap="round"
+      />
+      <path
+        d="M36.5 34C36.5 34.5304 36.2893 35.0391 35.9142 35.4142C35.5391 35.7893 35.0304 36 34.5 36C33.9696 36 33.4609 35.7893 33.0858 35.4142C32.7107 35.0391 32.5 34.5304 32.5 34C32.5 33.4696 32.7107 32.9609 33.0858 32.5858C33.4609 32.2107 33.9696 32 34.5 32C35.0304 32 35.5391 32.2107 35.9142 32.5858C36.2893 32.9609 36.5 33.4696 36.5 34ZM36.5 26C36.5 26.5304 36.2893 27.0391 35.9142 27.4142C35.5391 27.7893 35.0304 28 34.5 28C33.9696 28 33.4609 27.7893 33.0858 27.4142C32.7107 27.0391 32.5 26.5304 32.5 26C32.5 25.4696 32.7107 24.9609 33.0858 24.5858C33.4609 24.2107 33.9696 24 34.5 24C35.0304 24 35.5391 24.2107 35.9142 24.5858C36.2893 24.9609 36.5 25.4696 36.5 26ZM26.5 34C26.5 34.5304 26.2893 35.0391 25.9142 35.4142C25.5391 35.7893 25.0304 36 24.5 36C23.9696 36 23.4609 35.7893 23.0858 35.4142C22.7107 35.0391 22.5 34.5304 22.5 34C22.5 33.4696 22.7107 32.9609 23.0858 32.5858C23.4609 32.2107 23.9696 32 24.5 32C25.0304 32 25.5391 32.2107 25.9142 32.5858C26.2893 32.9609 26.5 33.4696 26.5 34ZM26.5 26C26.5 26.5304 26.2893 27.0391 25.9142 27.4142C25.5391 27.7893 25.0304 28 24.5 28C23.9696 28 23.4609 27.7893 23.0858 27.4142C22.7107 27.0391 22.5 26.5304 22.5 26C22.5 25.4696 22.7107 24.9609 23.0858 24.5858C23.4609 24.2107 23.9696 24 24.5 24C25.0304 24 25.5391 24.2107 25.9142 24.5858C26.2893 24.9609 26.5 25.4696 26.5 26ZM16.5 34C16.5 34.5304 16.2893 35.0391 15.9142 35.4142C15.5391 35.7893 15.0304 36 14.5 36C13.9696 36 13.4609 35.7893 13.0858 35.4142C12.7107 35.0391 12.5 34.5304 12.5 34C12.5 33.4696 12.7107 32.9609 13.0858 32.5858C13.4609 32.2107 13.9696 32 14.5 32C15.0304 32 15.5391 32.2107 15.9142 32.5858C16.2893 32.9609 16.5 33.4696 16.5 34ZM16.5 26C16.5 26.5304 16.2893 27.0391 15.9142 27.4142C15.5391 27.7893 15.0304 28 14.5 28C13.9696 28 13.4609 27.7893 13.0858 27.4142C12.7107 27.0391 12.5 26.5304 12.5 26C12.5 25.4696 12.7107 24.9609 13.0858 24.5858C13.4609 24.2107 13.9696 24 14.5 24C15.0304 24 15.5391 24.2107 15.9142 24.5858C16.2893 24.9609 16.5 25.4696 16.5 26Z"
+        fill="#4768A8"
+      />
+    </svg>
+  );
+
+  const verified = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="49"
+      height="48"
+      viewBox="0 0 49 48"
+      fill="none">
+      <path
+        d="M24.5 4L29.753 7.832L36.256 7.82L38.253 14.008L43.521 17.82L41.5 24L43.521 30.18L38.253 33.992L36.256 40.18L29.753 40.168L24.5 44L19.247 40.168L12.744 40.18L10.747 33.992L5.479 30.18L7.5 24L5.479 17.82L10.747 14.008L12.744 7.82L19.247 7.832L24.5 4Z"
+        stroke="#4768A8"
+        stroke-width="4"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M17.5 24L22.5 29L32.5 19"
+        stroke="#4768A8"
+        stroke-width="4"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
   return (
     <div className=" bg-[#EBECED]">
       <div className=" flex flex-col sm:max-w-[88%] max-w-full mx-auto sm:border-l sm:border-gray-300 ">
@@ -54,7 +119,7 @@ function NextCohort() {
             </section>
             <section className=" shadow-[24px 24px 140px 0px rgba(0, 0, 0, 0.15)]">
               <article className=" flex flex-col sm:gap-[30px] gap-[10px] items-center justify-center sm:w-[290px] sm:h-[355px] w-[160px] h-[180px] bg-white sm:rounded-[30px] rounded-[20px] border border-[#1A1A1A4D]">
-                <div>{individual}</div>
+                <div>{world}</div>
                 <div className=" flex flex-col items-center justify-center text-[#1A1A1ACC] gap-[6px]">
                   <h2 className=" sm:text-[84px] text-[36px] font-[700]">12</h2>
                   <p className=" sm:text-[24px] text-[14px] font-[300]">
@@ -65,7 +130,7 @@ function NextCohort() {
             </section>
             <section className=" shadow-[24px 24px 140px 0px rgba(0, 0, 0, 0.15)]">
               <article className=" flex flex-col sm:gap-[30px] gap-[10px] items-center justify-center sm:w-[290px] sm:h-[355px] w-[160px] h-[180px] bg-white sm:rounded-[30px] rounded-[20px] border border-[#1A1A1A4D]">
-                <div>{individual}</div>
+                <div>{calender}</div>
                 <div className=" flex flex-col items-center justify-center text-[#1A1A1ACC] gap-[6px]">
                   <h2 className=" sm:text-[84px] text-[36px] font-[700]">12</h2>
                   <p className=" sm:text-[24px] text-[14px] font-[300]">
@@ -76,7 +141,7 @@ function NextCohort() {
             </section>
             <section className=" shadow-[24px 24px 140px 0px rgba(0, 0, 0, 0.15)]">
               <article className=" flex flex-col sm:gap-[30px] gap-[10px] items-center justify-center sm:w-[290px] sm:h-[355px] w-[160px] h-[180px] bg-white sm:rounded-[30px] rounded-[20px] border border-[#1A1A1A4D]">
-                <div>{individual}</div>
+                <div>{verified}</div>
                 <div className=" flex flex-col items-center justify-center text-[#1A1A1ACC] gap-[6px]">
                   <h2 className=" sm:text-[84px] text-[36px] font-[700]">
                     98%

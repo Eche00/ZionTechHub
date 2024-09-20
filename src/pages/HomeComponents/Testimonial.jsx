@@ -1,6 +1,7 @@
 import React from "react";
-import PopularCourseslib from "../../lib/PopularCourses";
+
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
+import Testimonials from "../../lib/Testimonial";
 
 function Testimonial() {
   return (
@@ -27,10 +28,10 @@ function Testimonial() {
       </div>
       <div className=" overflow-x-scroll ">
         <div className=" relative flex w-[3600px] sm:gap-[24px] gap-[20px] overflow-scroll  pr-[10px]">
-          {PopularCourseslib.map((course) => (
+          {Testimonials.map((testimonial) => (
             <img
               className=" sm:w-[445px] sm:h-[445px] w-[344px] h-[344px] object-cover"
-              src={course.img}
+              src={testimonial.image}
               alt=""
             />
           ))}

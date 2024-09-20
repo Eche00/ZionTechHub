@@ -4,12 +4,20 @@ import {
   SirGodsentprofile,
   certificatehome,
   collabimagehome,
+  discord,
   enterprice,
+  excel,
+  googleanalytics,
+  googlesheets,
   individual,
   linkedlncover,
   logo,
+  microsoft,
+  rstudio,
   secondlogo,
+  slack,
   unilogo,
+  zapier,
 } from "../../assets";
 
 function Benefits() {
@@ -113,7 +121,7 @@ function Benefits() {
                   <p className=" sm:p-[10px] p-[5px] flex items-center justify-center border-[#527455] rounded-full text-[#527455] border-[3px] sm:text-[20px] text-[12px] font-[600] gap-[12px]">
                     <img
                       className=" sm:w-[45px] sm:h-[45px] w-[36px] h-[36px] rounded-full object-cover"
-                      src={Reviewimg}
+                      src={zapier}
                       alt=""
                     />
                     <span className=" pr-[10px]">Zapier</span>{" "}
@@ -121,7 +129,7 @@ function Benefits() {
                   <p className=" sm:p-[10px] p-[5px] flex items-center justify-center border-[#527455] rounded-full text-[#527455] border-[3px] sm:text-[20px] text-[12px] font-[600] gap-[12px]">
                     <img
                       className=" sm:w-[45px] sm:h-[45px] w-[36px] h-[36px] rounded-full object-cover"
-                      src={Reviewimg}
+                      src={slack}
                       alt=""
                     />
                     <span className=" pr-[10px]">Slack</span>
@@ -129,7 +137,7 @@ function Benefits() {
                   <p className=" sm:p-[10px] p-[5px] flex items-center justify-center border-[#527455] rounded-full text-[#527455] border-[3px] sm:text-[20px] text-[12px] font-[600] gap-[12px]">
                     <img
                       className=" sm:w-[45px] sm:h-[45px] w-[36px] h-[36px] rounded-full object-cover"
-                      src={Reviewimg}
+                      src={googleanalytics}
                       alt=""
                     />
                     <span className=" pr-[10px]">Google Analystics</span>
@@ -137,7 +145,7 @@ function Benefits() {
                   <p className=" sm:p-[10px] p-[5px] flex items-center justify-center border-[#527455] rounded-full text-[#527455] border-[3px] sm:text-[20px] text-[12px] font-[600] gap-[12px]">
                     <img
                       className=" sm:w-[45px] sm:h-[45px] w-[36px] h-[36px] rounded-full object-cover"
-                      src={Reviewimg}
+                      src={rstudio}
                       alt=""
                     />
                     <span className=" pr-[10px]">R Studio</span>
@@ -145,7 +153,7 @@ function Benefits() {
                   <p className=" sm:p-[10px] p-[5px] flex items-center justify-center border-[#527455] rounded-full text-[#527455] border-[3px] sm:text-[20px] text-[12px] font-[600] gap-[12px]">
                     <img
                       className=" sm:w-[45px] sm:h-[45px] w-[36px] h-[36px] rounded-full object-cover"
-                      src={Reviewimg}
+                      src={googlesheets}
                       alt=""
                     />
                     <span className=" pr-[10px]">Google Sheets</span>
@@ -153,7 +161,7 @@ function Benefits() {
                   <p className=" sm:p-[10px] p-[5px] flex items-center justify-center border-[#527455] rounded-full text-[#527455] border-[3px] sm:text-[20px] text-[12px] font-[600] gap-[12px]">
                     <img
                       className=" sm:w-[45px] sm:h-[45px] w-[36px] h-[36px] rounded-full object-cover"
-                      src={Reviewimg}
+                      src={excel}
                       alt=""
                     />
                     <span className=" pr-[10px]">Excel</span>
@@ -161,7 +169,7 @@ function Benefits() {
                   <p className=" sm:p-[10px] p-[5px] flex items-center justify-center border-[#527455] rounded-full text-[#527455] border-[3px] sm:text-[20px] text-[12px] font-[600] gap-[12px]">
                     <img
                       className=" sm:w-[45px] sm:h-[45px] w-[36px] h-[36px] rounded-full object-cover"
-                      src={Reviewimg}
+                      src={discord}
                       alt=""
                     />
                     <span className=" pr-[10px]">Discord</span>
@@ -169,7 +177,7 @@ function Benefits() {
                   <p className=" sm:p-[10px] p-[5px] flex items-center justify-center border-[#527455] rounded-full text-[#527455] border-[3px] sm:text-[20px] text-[12px] font-[600] gap-[12px]">
                     <img
                       className=" sm:w-[45px] sm:h-[45px] w-[36px] h-[36px] rounded-full object-cover"
-                      src={Reviewimg}
+                      src={microsoft}
                       alt=""
                     />
                     <span className=" pr-[10px]">Microsoft</span>

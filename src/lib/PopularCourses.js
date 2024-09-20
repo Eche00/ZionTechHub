@@ -1,8 +1,13 @@
-import { Reviewimg } from "../assets";
+import {
+  popularcourseimg1,
+  popularcourseimg2,
+  popularcourseimg3,
+  popularcourseimg4,
+} from "../assets";
 
 const PopularCourseslib = [
   {
-    img: Reviewimg,
+    img: popularcourseimg1,
     message:
       "This course will take you through the basics and fundamentals of data analytics.",
     views: "122",
@@ -13,8 +18,9 @@ const PopularCourseslib = [
     price: "65.5",
   },
   {
-    img: Reviewimg,
-    message: "message message message1",
+    img: popularcourseimg2,
+    message:
+      "This course will take you through the basics and fundamentals of data analytics.",
     views: "122",
     Videotime: "1hr 25mins",
     time: "12 weeks long",
@@ -23,8 +29,9 @@ const PopularCourseslib = [
     price: "65.5",
   },
   {
-    img: Reviewimg,
-    message: "message message message2",
+    img: popularcourseimg3,
+    message:
+      "This course will take you through the basics and fundamentals of data analytics.",
     views: "122",
     Videotime: "1hr 25mins",
     time: "12 weeks long",
@@ -33,48 +40,9 @@ const PopularCourseslib = [
     price: "65.5",
   },
   {
-    img: Reviewimg,
-    message: "message message message3",
-    views: "122",
-    Videotime: "1hr 25mins",
-    time: "12 weeks long",
-    category: "Data Analystics",
-    rating: "4.8",
-    price: "65.5",
-  },
-  {
-    img: Reviewimg,
-    message: "message message message4",
-    views: "122",
-    Videotime: "1hr 25mins",
-    time: "12 weeks long",
-    category: "Data Analystics",
-    rating: "4.8",
-    price: "65.5",
-  },
-  {
-    img: Reviewimg,
-    message: "message message message5",
-    views: "122",
-    Videotime: "1hr 25mins",
-    time: "12 weeks long",
-    category: "Data Analystics",
-    rating: "4.8",
-    price: "65.5",
-  },
-  {
-    img: Reviewimg,
-    message: "message message message6",
-    views: "122",
-    Videotime: "1hr 25mins",
-    time: "12 weeks long",
-    category: "Data Analystics",
-    rating: "4.8",
-    price: "65.5",
-  },
-  {
-    img: Reviewimg,
-    message: "message message message7",
+    img: popularcourseimg4,
+    message:
+      "This course will take you through the basics and fundamentals of data analytics.",
     views: "122",
     Videotime: "1hr 25mins",
     time: "12 weeks long",
