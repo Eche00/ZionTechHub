@@ -1,5 +1,5 @@
 import React from "react";
-import { Reviewimg } from "../../assets";
+import { Reviewimg, SirGodsentprofile } from "../../assets";
 
 function Foundermessage() {
   const linkedld = (
@@ -32,7 +32,7 @@ function Foundermessage() {
                 <div className=" sm:p-[39px] p-[20px] border border-[#034FE333] rounded-full">
                   <img
                     className=" sm:w-[284px] sm:h-[284px]  w-[172px] h-[172px] object-cover rounded-full  "
-                    src={Reviewimg}
+                    src={SirGodsentprofile}
                     alt=""
                   />
                 </div>

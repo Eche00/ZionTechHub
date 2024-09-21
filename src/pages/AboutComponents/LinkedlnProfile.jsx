@@ -17,22 +17,15 @@ function LinkedlnProfile() {
   );
   return (
     <div>
-      <div className=" flex relative overflow-y-hidden">
-        <div className=" absolute right-[300px] top-20 p-[32px]">
-          <img
-            className=" w-[397px] h-[796.283px] object-cover  "
-            src={Reviewimg}
-            alt=""
-          />
-        </div>
+      <div className=" flex relative overflow-y-hidden  sm:flex-row flex-col">
         <section className="py-[110px]">
-          <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute top-[129px] -left-[1.5px]"></span>
+          <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[129px] top-[120px] -left-[1.5px]"></span>
           <div className=" px-[20px] flex flex-col ">
-            <p className=" font-[600] text-[48px] text-[#333]">
+            <p className=" font-[600] sm:text-[48px] text-[36px] w-[265px] sm:w-full text-[#333]">
               Get in touch <span className=" text-[#034FE3]">on LinkedIn</span>
             </p>
             <section className=" py-[32px] flex flex-col gap-[32px]">
-              <p className=" text-[18px] font-[300] text-[#1a1a1a66] w-[430px]">
+              <p className=" text-[18px] font-[300] text-[#1a1a1a66] sm:w-[430px] w-[325px]">
                 Search for Zion Tech Hub, follow and send us a dm letting us
                 know if you are interested in joining our community so we an add
                 you up!
@@ -45,6 +38,15 @@ function LinkedlnProfile() {
             </section>
           </div>
         </section>
+        <div className="sm:h-fit h-[337px] ">
+          <div className=" absolute sm:right-[300px] sm:top-20 top-[60%] p-[32px]">
+            <img
+              className=" sm:w-[397px] sm:h-[796.283px] w-[321px] h-[645px] object-cover  "
+              src={Reviewimg}
+              alt=""
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

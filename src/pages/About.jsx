@@ -94,8 +94,7 @@ function About() {
             <ContactUs />
           </div>
 
-          <div>design</div>
-          <div className=" flex flex-col sm:max-w-[88%] max-w-[92%] mx-auto border-l border-gray-300 ">
+          <div className=" flex flex-col sm:max-w-[88%] max-w-[92%] mx-auto border-l border-gray-300  ">
             <Faqs />
           </div>
         </div>
