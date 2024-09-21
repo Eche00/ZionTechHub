@@ -5,6 +5,7 @@ import useMeasure from "react-use-measure";
 import { animate, useMotionValue, motion } from "framer-motion";
 import { enterprice, individual, logo, startups } from "../assets";
 import { ArrowForward } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 function Home() {
   let [ref, { width }] = useMeasure();
@@ -139,7 +140,8 @@ function Home() {
               <img src={startups} alt="" /> Startups
             </div>
             <div className=" flex gap-[24px] items-center justify-center">
-              <img src={enterprice} alt="" /> Enterprice
+              <img src={enterprice} alt="" /> Enterprice{" "}
+              <Link to="/about">trial</Link>
             </div>
           </div>
         </div>
