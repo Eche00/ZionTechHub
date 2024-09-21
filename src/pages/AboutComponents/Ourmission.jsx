@@ -3,22 +3,18 @@ import { Reviewimg } from "../../assets";
 
 function Ourmission() {
   const [vision, setVision] = useState(false);
-  const button = (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="188"
-      height="50"
-      viewBox="0 0 188 50"
-      fill="none">
-      <rect
-        y="0.442383"
-        width="188"
-        height="49.1156"
-        rx="24.5578"
-        fill="white"
-      />
-    </svg>
-  );
+  const [mission, setMission] = useState(true);
+  const Mission = (e) => {
+    e.preventDefault();
+    setMission(true);
+    setVision(false);
+  };
+  const Vision = (e) => {
+    e.preventDefault();
+    setMission(false);
+    setVision(true);
+  };
+
   const dot = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -43,57 +39,48 @@ function Ourmission() {
   );
   return (
     <div className=" relative">
-      <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute top-[19px] -left-[1.5px]"></span>
+      <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[19px] top-[5px] -left-[1.5px]"></span>
       <div className=" px-[20px] ">
-        <p className=" font-[600] text-[48px] text-[#333]">
+        <p className=" font-[600] sm:text-[48px] text-[32px] text-[#333]">
           Our <span className=" text-[#034FE3]">mission </span>and{" "}
           <span className=" text-[#034FE3]">vision</span>
         </p>
-        <div className=" mt-[43px] p-[4px] flex gap-[68px] items-center justify-between bg-[#E9E9E9] rounded-full w-[398px] ">
+
+        <div className=" mt-[43px]   flex items-center justify-between bg-[#E9E9E9] rounded-full sm:w-[398px] w-[337px]  p-[4px]">
           <button
-            onClick={() => setVision(false)}
-            className={` text-[18px] font-[500] text-[#034FE3]  relative w-fit  ${
-              !vision && "text-[18px] font-[500]"
-            } `}>
-            {!vision && button}{" "}
-            <span
-              className={`${
-                !vision
-                  ? "absolute top-4 left-20 text-[#034FE3]"
-                  : " pl-20 text-center text-[#1A1A1ACC]"
-              }`}>
-              Mission
-            </span>
+            onClick={Mission}
+            className={
+              mission
+                ? " flex-1 bg-white rounded-full py-[12px] text-[#034FE3] whitespace-nowrap  text-[18px] font-[500]"
+                : " flex-1 text-[18px] font-[500] text-[#1A1A1ACC]"
+            }>
+            Mission
           </button>
           <button
-            onClick={() => setVision(true)}
-            className={`${vision && "text-[18px] font-[500] relative w-fit"}`}>
-            {vision && button}{" "}
-            <span
-              className={`${
-                vision
-                  ? "absolute top-4 right-20 text-[#034FE3]"
-                  : " pr-20 text-[#1A1A1ACC]"
-              } `}>
-              Vission
-            </span>
+            onClick={Vision}
+            className={
+              vision
+                ? " flex-1 bg-white rounded-full py-[12px] text-[#034FE3] whitespace-nowrap  text-[18px] font-[500]"
+                : " flex-1 text-[18px] font-[500] text-[#1A1A1ACC]"
+            }>
+            Vision
           </button>
         </div>
       </div>
       {!vision ? (
-        <div className="  w-fit mt-[68px] mb-[180px] flex gap-[32px] bg-[#EBECED] rounded-r-[10px]">
+        <div className="  w-fit mt-[68px] mb-[180px] flex  sm:flex-row flex-col gap-[32px] bg-[#EBECED] rounded-r-[10px]">
           <img
-            className=" w-[486px] h-[648px] rounded-l-[10px]"
+            className=" sm:w-[486px] w-[357px] sm:h-[648px] h-[191px] rounded-l-[10px] object-cover sm:rounded-tr-none rounded-tr-[10px]"
             src={Reviewimg}
             alt=""
           />
-          <div className=" flex flex-col gap-[40px] px-[24px]  justify-center">
-            <h2 className=" text-[40px] text-[#034FE3] font-[600]">
+          <div className=" flex flex-col sm:gap-[40px] gap-[10px] px-[24px]  justify-center">
+            <h2 className=" sm:text-[40px] text-[32px] sm:w-full w-[309px] text-[#034FE3] font-[600]">
               We are on a mission to:
             </h2>
             <span className=" w-full bg-[#1A1A1A1A] h-[0.5px]"></span>
-            <section className=" text-[#1A1A1ACC] flex flex-col gap-[40px] w-[651px]">
-              <p className=" flex gap-[14px] font-[300] text-[20px] items-baseline">
+            <section className=" text-[#1A1A1ACC] flex flex-col gap-[40px] sm:w-[651px] w-[277px]">
+              <p className=" flex gap-[14px] font-[300] sm:text-[20px] text-[18px] items-baseline">
                 <span>{dot}</span>{" "}
                 <span>
                   Empower individuals across Africa with cutting edge tech
@@ -101,14 +88,14 @@ function Ourmission() {
                   ecosystem.
                 </span>
               </p>
-              <p className=" flex gap-[14px] font-[300] text-[20px] items-baseline">
+              <p className=" flex gap-[14px] font-[300] sm:text-[20px] text-[18px] items-baseline">
                 <span>{dot}</span>{" "}
                 <span>
                   Fuel exponential growth for businesses of all sizes, providing
                   data-driven strategies that unlock new possibilities.
                 </span>
               </p>
-              <p className=" flex gap-[14px] font-[300] text-[20px] items-baseline">
+              <p className=" flex gap-[14px] font-[300] sm:text-[20px] text-[18px] items-baseline">
                 <span>{dot}</span>{" "}
                 <span>
                   Connect trained talents with local and international
@@ -117,7 +104,7 @@ function Ourmission() {
                 </span>
               </p>
             </section>
-            <section className=" px-[32px] pt-[32px]">
+            <section className=" px-[32px] sm:pt-[32px] sm:pb-0 pb-[50px]">
               <button className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white py-[14px] px-[32px] text-[20px] font-[700] w-fit">
                 Partner with us
               </button>
@@ -125,19 +112,19 @@ function Ourmission() {
           </div>
         </div>
       ) : (
-        <div className="  w-fit mt-[68px] mb-[180px] flex gap-[32px] bg-[#EBECED] rounded-r-[10px]">
+        <div className="  w-fit mt-[68px] mb-[180px] flex  sm:flex-row flex-col gap-[32px] bg-[#EBECED] rounded-r-[10px]">
           <img
-            className=" w-[486px] h-[648px] rounded-l-[10px]"
+            className=" sm:w-[486px] w-[357px] sm:h-[648px] h-[191px] rounded-l-[10px] object-cover sm:rounded-tr-none rounded-tr-[10px]"
             src={Reviewimg}
             alt=""
           />
-          <div className=" flex flex-col gap-[40px] px-[24px] justify-center">
-            <h2 className=" text-[40px] text-[#034FE3] font-[600]">
+          <div className=" flex flex-col sm:gap-[40px] gap-[10px] px-[24px] justify-center">
+            <h2 className=" sm:text-[40px] text-[32px] sm:w-full w-[309px] text-[#034FE3] font-[600]">
               At Zion Tech Hub,
             </h2>
             <span className=" w-full bg-[#1A1A1A1A] h-[0.5px]"></span>
-            <section className=" text-[#1A1A1ACC] flex flex-col gap-[40px] w-[651px]">
-              <p className=" flex gap-[14px] font-[300] text-[20px] items-baseline">
+            <section className=" text-[#1A1A1ACC] flex flex-col gap-[40px] sm:w-[651px] w-[277px]">
+              <p className=" flex gap-[14px] font-[300] sm:text-[20px] text-[18px] items-baseline">
                 <span>{dot}</span>{" "}
                 <span>
                   We envision a transformed Africa, empowered by revolutionary
@@ -145,7 +132,7 @@ function Ourmission() {
                   creativity and progress.
                 </span>
               </p>
-              <p className=" flex gap-[14px] font-[300] text-[20px] items-baseline">
+              <p className=" flex gap-[14px] font-[300] sm:text-[20px] text-[18px] items-baseline">
                 <span>{dot}</span>{" "}
                 <span>
                   We strive to be the leading data consultancy in Africa,
@@ -154,7 +141,7 @@ function Ourmission() {
                 </span>
               </p>
             </section>
-            <section className=" px-[32px] pt-[32px]">
+            <section className=" px-[32px] sm:pt-[32px] sm:pb-0 pb-[50px]">
               <button className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white py-[14px] px-[32px] text-[20px] font-[700] w-fit">
                 Partner with us
               </button>

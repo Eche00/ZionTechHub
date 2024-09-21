@@ -31,7 +31,7 @@ function Topheader() {
             ? " flex w-full bg-[#1A1A1A] items-center justify-center"
             : " hidden"
         }>
-        <p className=" text-[18px] text-[#FFFFFF] font-[300]   p-[16px]">
+        <p className=" sm:text-[18px] text-[14px] text-[#FFFFFF] font-[300]   p-[16px]">
           We're offering Data Consultation Services. Book now to get updated
           with your business.{" "}
           <span className=" font-[600] underline  px-5">Book Now</span>

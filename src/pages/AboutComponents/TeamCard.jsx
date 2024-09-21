@@ -17,14 +17,16 @@ function TeamCard({ team }) {
   return (
     <div className=" relative w-fit">
       <img
-        className="w-[318px] h-[404px] rounded-[10px] object-cover"
+        className="sm:w-[318px] sm:h-[404px] w-[280px] h-[300px] rounded-[10px] object-cover"
         src={team.img}
         alt=""
       />
       <div className=" absolute bottom-[20px] w-[90%] left-[15px]  flex justify-between px-[17px] py-[14px] bg-white/30 backdrop-blur-lg rounded-[10px]">
         <section className=" flex flex-col gap-[6px]">
-          <p className=" text-[20px] font-[600] text-[#1A1A1A]">{team.name}</p>
-          <p className=" text-[16px] font-[400] text-[#1A1A1A80]">
+          <p className=" sm:text-[20px] text-[16px] font-[600] text-[#1A1A1A]">
+            {team.name}
+          </p>
+          <p className=" sm:text-[16px] text-[12px] font-[400] text-[#1A1A1A80]">
             {team.positions}
           </p>
         </section>

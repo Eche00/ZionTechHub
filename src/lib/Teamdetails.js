@@ -33,6 +33,8 @@ const TeamDetails = [
   },
   { img: Reviewimg, name: "Data Analystics", positions: "end2" },
   { img: Reviewimg, name: "Data Analystics", positions: "end" },
+  { img: Reviewimg, name: "Data Analystics", positions: "end" },
+  { img: Reviewimg, name: "Data Analystics", positions: "end" },
 ];
 
 export default TeamDetails;

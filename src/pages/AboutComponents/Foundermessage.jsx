@@ -18,28 +18,31 @@ function Foundermessage() {
   return (
     <div className="relative pb-[272px]">
       {" "}
-      <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute top-[19px] -left-[1.5px]"></span>
+      <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[19px] top-[8px] -left-[1.5px]"></span>
       <div className=" px-[20px]">
-        <p className=" font-[600] text-[48px] text-[#333]">
+        <p className=" font-[600] sm:text-[48px] text-[36px] text-[#333]">
           <span className=" text-[#034FE3]">Message</span> from our founder
         </p>
       </div>
       <div className=" flex flex-col gap-[32px] py-[32px] px-[20px] ">
-        <div className=" absolute right-32 top-0 p-[32px]  border border-[#034FE314] rounded-full">
-          <div className=" p-[37px]  border border-[#034FE314] rounded-full">
-            <div className=" p-[38px]  border border-[#034FE31A] rounded-full">
-              <div className=" p-[39px] border border-[#034FE333] rounded-full">
-                <img
-                  className=" w-[284px] h-[284px] object-cover rounded-full  "
-                  src={Reviewimg}
-                  alt=""
-                />
+        <div className="sm:h-fit h-[337px]">
+          <div className=" absolute sm:right-32 sm:top-0 top-[120px] sm:p-[32px] p-[20px]  border border-[#034FE314] rounded-full ">
+            <div className=" sm:p-[37px] p-[20px]  border border-[#034FE314] rounded-full">
+              <div className=" sm:p-[38px] p-[20px]  border border-[#034FE31A] rounded-full">
+                <div className=" sm:p-[39px] p-[20px] border border-[#034FE333] rounded-full">
+                  <img
+                    className=" sm:w-[284px] sm:h-[284px]  w-[172px] h-[172px] object-cover rounded-full  "
+                    src={Reviewimg}
+                    alt=""
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
+
         <div className=" flex flex-col gap-[36px]">
-          <p className=" w-[620px] text-[20px] text-[#1A1A1ACC] font-[300]">
+          <p className=" sm:w-[620px] w-[341px] sm:text-[20px] text-[18px] text-[#1A1A1ACC] font-[300]">
             We envision a transformed Africa, empowered by revolutionary
             technological innovations, and recognized as a global hub of
             creativity and progress.
