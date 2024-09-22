@@ -1,5 +1,11 @@
 import React from "react";
-import { Reviewimg } from "../../assets";
+import {
+  Reviewimg,
+  Sirgodsentsecondprofile,
+  abouthero4,
+  teamprofile2,
+  teamprofile3,
+} from "../../assets";
 
 function AboutUs() {
   return (
@@ -11,7 +17,7 @@ function AboutUs() {
           <section className=" flex gap-[14px] ">
             <img
               className=" w-[60px] h-[60px] rounded-full object-cover"
-              src={Reviewimg}
+              src={Sirgodsentsecondprofile}
               alt=""
             />
             <article className=" flex flex-col gap-[6px]">
@@ -23,7 +29,7 @@ function AboutUs() {
           <section className=" flex gap-[14px] ">
             <img
               className=" w-[60px] h-[60px] rounded-full object-cover"
-              src={Reviewimg}
+              src={teamprofile2}
               alt=""
             />
             <article className=" flex flex-col gap-[6px]">
@@ -35,7 +41,7 @@ function AboutUs() {
           <section className=" flex gap-[14px] ">
             <img
               className=" w-[60px] h-[60px] rounded-full object-cover"
-              src={Reviewimg}
+              src={teamprofile3}
               alt=""
             />
             <article className=" flex flex-col gap-[6px]">
@@ -67,7 +73,7 @@ function AboutUs() {
         <section className="sm:pt-0 pt-[60px]">
           <img
             className=" sm:h-[564px] sm:w-[599px] h-[335px] w-[357px] object-cover rounded-[10px]"
-            src={Reviewimg}
+            src={abouthero4}
             alt=""
           />
         </section>

@@ -1,5 +1,10 @@
 import React from "react";
-import { Reviewimg } from "../../assets";
+import {
+  Reviewimg,
+  partnerlogo1,
+  partnerlogo2,
+  partnerlogo3,
+} from "../../assets";
 
 function Partners() {
   return (
@@ -19,21 +24,21 @@ function Partners() {
           <section className=" p-[10px] border-r border-[#034FE31A]">
             <img
               className=" sm:h-[98px] sm:w-[216px] h-[98px] w-[174px] object-cover"
-              src={Reviewimg}
+              src={partnerlogo1}
               alt=""
             />
           </section>
           <section className=" p-[10px] border-r border-[#034FE31A]">
             <img
               className=" sm:h-[98px] sm:w-[216px] h-[98px] w-[174px] object-cover"
-              src={Reviewimg}
+              src={partnerlogo2}
               alt=""
             />
           </section>
           <section className=" p-[10px] border-r border-[#034FE31A]">
             <img
               className=" sm:h-[98px] sm:w-[216px] h-[98px] w-[174px] object-cover"
-              src={Reviewimg}
+              src={partnerlogo3}
               alt=""
             />
           </section>

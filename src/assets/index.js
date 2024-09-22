@@ -57,6 +57,28 @@ import notionlogo from "./notionlogo.png";
 import microsoftlogo from "./microsoftlogo.png";
 import applelogo from "./applelogo.png";
 import emojiprofile from "./emojiprofile.jpeg";
+import abouthero1 from "./abouthero1.png";
+import abouthero2 from "./abouthero2.png";
+import abouthero3 from "./abouthero3.png";
+import abouthero4 from "./abouthero4.png";
+import aboutfaqbg from "./aboutfaqbg.png";
+import mobile from "./mobile.png";
+import chiefoperator from "./chiefoperatorprofile.png";
+import missionimage from "./missionimage.jpeg";
+import visionimage from "./visionimage.png";
+import partnerlogo1 from "./partnerlogo1.jpeg";
+import partnerlogo2 from "./partnerlogo2.jpeg";
+import partnerlogo3 from "./partnerlogo3.jpeg";
+import Sirgodsentsecondprofile from "./Sirgodsentsecondprofile.jpeg";
+import teamprofile2 from "./teamprofile2.png";
+import teamprofile3 from "./teamprofile3.jpeg";
+import teamprofile4 from "./teamprofile4.jpeg";
+import teamprofile5 from "./teamprofile5.jpeg";
+import teamprofile6 from "./teamprofile6.jpeg";
+import teamprofile7 from "./teamprofile7.jpeg";
+import teamprofile8 from "./teamprofile8.jpeg";
+import teamprofile9 from "./teamprofile9.jpeg";
+import teamprofile10 from "./teamprofile10.jpeg";
 
 export {
   logo,
@@ -118,4 +140,26 @@ export {
   microsoftlogo,
   applelogo,
   emojiprofile,
+  abouthero1,
+  abouthero2,
+  abouthero3,
+  abouthero4,
+  aboutfaqbg,
+  mobile,
+  chiefoperator,
+  missionimage,
+  visionimage,
+  partnerlogo1,
+  partnerlogo2,
+  partnerlogo3,
+  Sirgodsentsecondprofile,
+  teamprofile10,
+  teamprofile2,
+  teamprofile3,
+  teamprofile4,
+  teamprofile5,
+  teamprofile6,
+  teamprofile7,
+  teamprofile8,
+  teamprofile9,
 };

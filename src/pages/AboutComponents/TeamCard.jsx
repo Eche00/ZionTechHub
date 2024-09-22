@@ -17,7 +17,7 @@ function TeamCard({ team }) {
   return (
     <div className=" relative w-fit">
       <img
-        className="sm:w-[318px] sm:h-[404px] w-[280px] h-[300px] rounded-[10px] object-cover"
+        className="sm:w-[318px] sm:h-[404px] w-[280px] h-[300px] rounded-[10px] object-cover grayscale"
         src={team.img}
         alt=""
       />

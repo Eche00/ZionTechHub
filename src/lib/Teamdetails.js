@@ -1,40 +1,68 @@
-import { Reviewimg } from "../assets";
+import {
+  Reviewimg,
+  SirGodsentprofile,
+  teamprofile10,
+  teamprofile2,
+  teamprofile3,
+  teamprofile4,
+  teamprofile5,
+  teamprofile6,
+  teamprofile7,
+  teamprofile8,
+  teamprofile9,
+} from "../assets";
 
 const TeamDetails = [
   {
-    img: Reviewimg,
-    name: "Data Analystics",
-    positions: "positions ",
+    img: SirGodsentprofile,
+    name: "Ndoma Godsent",
+    positions: "Chief Executive Officer ",
   },
   {
-    img: Reviewimg,
-    name: "Data Analystics",
-    positions: "positions ",
+    img: teamprofile2,
+    name: "Mba Olumba",
+    positions: "Chief Operations Officer ",
   },
   {
-    img: Reviewimg,
-    name: "Data Analystics",
-    positions: "positions ",
+    img: teamprofile3,
+    name: "Afolami Timothy",
+    positions: "Chief Technical Officer ",
   },
   {
-    img: Reviewimg,
-    name: "Data Analystics",
-    positions: "positions ",
+    img: teamprofile4,
+    name: "John Eze",
+    positions: "Associate Operations and Training ",
   },
   {
-    img: Reviewimg,
-    name: "Data Analystics",
-    positions: "positions  4",
+    img: teamprofile5,
+    name: "Victory Brown",
+    positions: "Chief Growth Officer  ",
   },
   {
-    img: Reviewimg,
-    name: "Data Analystics",
-    positions: "positions  5",
+    img: teamprofile6,
+    name: "Ibukunoluwa  Deji-Abdul",
+    positions: "Human Resource Personnel",
   },
-  { img: Reviewimg, name: "Data Analystics", positions: "end2" },
-  { img: Reviewimg, name: "Data Analystics", positions: "end" },
-  { img: Reviewimg, name: "Data Analystics", positions: "end" },
-  { img: Reviewimg, name: "Data Analystics", positions: "end" },
+  {
+    img: teamprofile7,
+    name: "Lois Ukpong",
+    positions: "Head of Corporate Communications",
+  },
+  {
+    img: teamprofile8,
+    name: "Igboekwu Emilia",
+    positions: "Chief Financial Officer",
+  },
+  {
+    img: teamprofile9,
+    name: "Friday Love",
+    positions: "Digital Marketing Associate",
+  },
+  {
+    img: teamprofile10,
+    name: "Samuel Sowah",
+    positions: "Associate, Research Strategy and Intelligence",
+  },
 ];
 
 export default TeamDetails;

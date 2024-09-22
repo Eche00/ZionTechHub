@@ -31,7 +31,7 @@ function Topheader() {
             ? " flex w-full bg-[#1A1A1A] items-center justify-center"
             : " hidden"
         }>
-        <p className=" sm:text-[18px] text-[14px] text-[#FFFFFF] font-[300]   p-[16px]">
+        <p className=" sm:text-[18px] text-[12px] text-[#FFFFFF] font-[300]   p-[16px]">
           We're offering Data Consultation Services. Book now to get updated
           with your business.{" "}
           <span className=" font-[600] underline  px-5">Book Now</span>
@@ -44,13 +44,15 @@ function Topheader() {
         className={({ isActive }) =>
           isActive ? " flex w-full bg-[#1A1A1A] items-center " : " hidden"
         }>
-        <div className=" w-[90%] mx-auto flex items-center justify-between py-[8px] ">
+        <div className=" w-[90%] mx-auto flex items-center justify-between sm:py-[8px]  py-[16px]">
           <section className=" flex-1 ">
-            <article className=" flex items-center gap-[5px]">
-              <h2 className=" text-[18px] font-[600] text-white">
+            <article className=" flex items-center sm:gap-[5px] ">
+              <h2 className=" sm:text-[18px] text-[12px] font-[600] text-white">
                 Complete Data Analytics Course:
               </h2>
-              <p className=" text-[16px] font-[600] text-white">4.8</p>
+              <p className=" sm:text-[16px] text-[12px] font-[600] text-white">
+                4.8
+              </p>
               <p className=" text-[12px] font-[400] text-white underline flex items-center">
                 <span className=" text-[#034FE3]">
                   <Star fontSize="medium" />
@@ -58,9 +60,11 @@ function Topheader() {
                 (75,765 reviews)
               </p>
             </article>
-            <p className=" text-[14px] font-[700] text-white">Starts Aug 21</p>
+            <p className=" sm:text-[14px] text-[12px] font-[700] text-white">
+              Starts Aug 21
+            </p>
           </section>
-          <section className=" flex flex-1 items-center justify-between text-[16px] font-[400]   text-gray-500 ">
+          <section className=" sm:flex  hidden flex-1 items-center justify-between text-[16px] font-[400]   text-gray-500 ">
             <NavLink
               to="/"
               className={({ isActive }) => (isActive ? "text-[#1A1A1A]" : "")}>

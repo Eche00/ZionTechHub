@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Reviewimg } from "../../assets";
+import { missionimage, visionimage } from "../../assets";
 
 function Ourmission() {
   const [vision, setVision] = useState(false);
@@ -71,7 +71,7 @@ function Ourmission() {
         <div className="  w-fit mt-[68px] mb-[180px] flex  sm:flex-row flex-col gap-[32px] bg-[#EBECED] rounded-r-[10px]">
           <img
             className=" sm:w-[486px] w-[357px] sm:h-[648px] h-[191px] rounded-l-[10px] object-cover sm:rounded-tr-none rounded-tr-[10px]"
-            src={Reviewimg}
+            src={missionimage}
             alt=""
           />
           <div className=" flex flex-col sm:gap-[40px] gap-[10px] px-[24px]  justify-center">
@@ -115,7 +115,7 @@ function Ourmission() {
         <div className="  w-fit mt-[68px] mb-[180px] flex  sm:flex-row flex-col gap-[32px] bg-[#EBECED] rounded-r-[10px]">
           <img
             className=" sm:w-[486px] w-[357px] sm:h-[648px] h-[191px] rounded-l-[10px] object-cover sm:rounded-tr-none rounded-tr-[10px]"
-            src={Reviewimg}
+            src={visionimage}
             alt=""
           />
           <div className=" flex flex-col sm:gap-[40px] gap-[10px] px-[24px] justify-center">

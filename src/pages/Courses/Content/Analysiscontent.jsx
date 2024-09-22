@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { ArrowBackIos } from "@mui/icons-material";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { Reviewimg, individual } from "../../../assets";
+import {
+  Reviewimg,
+  SirGodsentprofile,
+  googlemeet,
+  individual,
+} from "../../../assets";
 
 function Analysiscontent() {
   const button = (
@@ -67,74 +72,20 @@ function Analysiscontent() {
 
   return (
     <div className=" relative pb-[180px]">
-      <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute top-[19px] -left-[1.5px]"></span>
+      <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[19px] top-[6px] -left-[1.5px]"></span>
       <div className=" px-[20px]  pb-[68px]">
-        <p className=" font-[600] text-[48px] text-[#333]">
+        <p className=" font-[600] sm:text-[48px] text-[32px] text-[#333]">
           <span className=" text-[#034FE3]">Course </span>content
         </p>
-        <div
-          className={
-            !firstmonth && !secondmonth && !thirdmonth
-              ? ` mt-[43px] px-[4px] py-[20px]  flex gap-[68px] items-center justify-between bg-[#E9E9E9] rounded-full w-[597px]  `
-              : ` mt-[43px] p-[4px] flex gap-[68px] items-center justify-between bg-[#E9E9E9] rounded-full w-[597px]  `
-          }>
-          <button
-            onClick={firstM}
-            className={`${
-              firstmonth && "text-[18px] font-[500] relative w-fit"
-            }`}>
-            {firstmonth && button}{" "}
-            <span
-              className={`${
-                firstmonth
-                  ? "absolute top-4 left-20 text-[#034FE3]"
-                  : " pl-20 text-center text-[#1A1A1ACC]"
-              }`}>
-              Month 1
-            </span>
-          </button>
-          <button
-            onClick={secondM}
-            className={`${
-              secondmonth && "text-[18px] font-[500] relative w-fit"
-            }`}>
-            {secondmonth && button}{" "}
-            <span
-              className={`${
-                secondmonth
-                  ? "absolute top-4 right-20 text-[#034FE3]"
-                  : " pr-20 text-[#1A1A1ACC]" &&
-                    thirdmonth &&
-                    " pl-20 text-[#1A1A1ACC] "
-              } `}>
-              Month 2
-            </span>
-          </button>
-          <button
-            onClick={thirdM}
-            className={`${
-              thirdmonth && "text-[18px] font-[500] relative w-fit"
-            }`}>
-            {thirdmonth && button}{" "}
-            <span
-              className={`${
-                thirdmonth
-                  ? "absolute top-4 right-20 text-[#034FE3]"
-                  : " pr-20 text-[#1A1A1ACC] "
-              } `}>
-              Month 3
-            </span>
-          </button>
-        </div>
       </div>
-      <p className=" text-[24px] font-[500] text-[#1A1A1AB2] px-[20px] pb-[24px]">
-        Session Breakdown SQL Curriculum
-      </p>
-      <div className="flex gap-[25px] w-[1238px] ">
+
+      <div className="flex sm:flex-row flex-col-reverse gap-[25px] sm:w-[1238px] ">
+        {/* course content section  */}
         <div className=" flex-1 flex flex-col rounded-tr-[10px] overflow-hidden border border-gray-300 h-fit">
+          {/* first month  */}
           <div>
             <div
-              className="py-[24px] px-[40px] flex gap-[10px] items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer "
+              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   sm:w-full"
               onClick={firstM}>
               {" "}
               {firstmonth ? (
@@ -142,185 +93,187 @@ function Analysiscontent() {
               ) : (
                 <KeyboardArrowDownIcon fontSize="large" />
               )}
-              <p className=" text-[20px] font-[600] text-[#1A1A1A]">
+              <p className=" sm:text-[20px] text-[18px] sm:w-full w-[287px] font-[600] text-[#1A1A1A]">
                 Month 1: Foundations of Data Analytics
               </p>
             </div>
             {firstmonth && (
               <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Overview of data analytics and its
                   significance in business and industry
                 </p>
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span> Understanding the data analytics lifecycle:
                   data collection, processing, analysis, and visualization
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span> Introduction to tools and technologies:
                   Excel, SQL, Python/R, Tableau
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span> Techniques for data collection from various
                   sources (databases, APIs, web scraping)
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span> Data cleaning and preprocessing: handling
                   missing values, outliers, and duplicates
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span> Data transformation: normalizing, encoding
                   categorical variables, and feature <br /> scaling
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span> Introduction to descriptive statistics:
                   mean, median, mode, standard deviation, variance
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span> Visualizing data with charts and graphs
                   (histograms, box plots, scatter plots)
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span>Identifying patterns, trends, and
                   correlations in data using EDA techniques
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span> Basics of SQL for data manipulation:
                   SELECT, INSERT, UPDATE, DELETE
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span> Writing complex queries: JOINs, subqueries,
                   and aggregations
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span> Introduction to database management systems
                   (DBMS) and SQL best practices
                 </p>
               </section>
             )}
           </div>
+          {/* second month  */}
           <div>
             <div
-              className="py-[24px] px-[40px] flex gap-[10px] items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer "
+              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit  sm:w-full"
               onClick={secondM}>
               {secondmonth ? (
                 <KeyboardArrowUpIcon fontSize="large" />
               ) : (
                 <KeyboardArrowDownIcon fontSize="large" />
               )}
-              <p className=" text-[20px] font-[600] text-[#1A1A1A]">
+              <p className=" sm:text-[20px] text-[18px] sm:w-full w-[287px] font-[600] text-[#1A1A1A]">
                 Month 2: Data Analysis Techniques
               </p>
             </div>{" "}
             {secondmonth && (
               <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span>Using Excel for data manipulation and
                   analysis
                 </p>
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span> Advanced Excel functions: VLOOKUP,
                   PivotTables, and data visualization
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span> Automating tasks with Excel macros
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span> Principles of effective data visualization
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span>Creating dashboards and reports using
                   Tableau/Power BI
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span> Introduction to data storytelling:
                   communicating insights effectively
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span> Introduction to inferential statistics:
                   hypothesis testing, confidence intervals
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span> Understanding correlation and regression
                   analysis
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span> Applying statistical techniques to
                   real-world datasets
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span> Setting up the Python/R environment for
                   data analysis
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span> Using libraries like Pandas, NumPy (Python)
                   or dplyr, tidyr (R) for data manipulation
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span>Data visualization with Matplotlib/Seaborn
                   (Python) or ggplot2 (R)
                 </p>
               </section>
             )}
           </div>{" "}
+          {/* third month  */}
           <div>
             <div
-              className="py-[24px] px-[40px] flex gap-[10px] items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer "
+              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit sm:w-full "
               onClick={thirdM}>
               {thirdmonth ? (
                 <KeyboardArrowUpIcon fontSize="large" />
               ) : (
                 <KeyboardArrowDownIcon fontSize="large" />
               )}
-              <p className=" text-[20px] font-[600] text-[#1A1A1A]">
+              <p className=" sm:text-[20px] text-[18px] sm:w-full w-[287px] font-[600] text-[#1A1A1A]">
                 Month 3: Advanced Data Analytics and Capstone Project
               </p>
             </div>
             {thirdmonth && (
               <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span>Introduction to predictive modeling and
                   machine learning basics
                 </p>
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span> Building and evaluating simple models
                   (linear regression, decision trees)
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span> Time series forecasting techniques
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span> Introduction to big data concepts and
                   technologies (Hadoop, Spark)
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span>Overview of cloud-based analytics platforms
                   (AWS, Google Cloud, Azure)
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span> Using big data tools for data processing
                   and analysis
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span> Defining the problem statement and
                   objectives for the project
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span> Collecting and preparing data for analysis
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span> Designing the analysis framework and
                   selecting appropriate tools
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span> Conducting data analysis and generating
                   insights
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span> Creating visualizations and compiling the
                   final report
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center sm:w-full w-[329px]">
                   <span>{dot}</span> Presenting findings and recommendations to
                   peers and mentors
                 </p>
@@ -328,24 +281,25 @@ function Analysiscontent() {
             )}
           </div>
         </div>
-        <div className="flex flex-col gap-[36px] py-[32px] px-[48px] bg-[#EBECED] rounded-[10px] border border-gray-300 h-fit">
-          <section className=" flex flex-col gap-[24px]">
+        {/* instructor section  */}
+        <div className="flex flex-col gap-[36px] sm:py-[32px] py-[24px] sm:px-[48px] px-[20px] bg-[#EBECED] rounded-[10px] border border-gray-300 h-fit w-fit">
+          <section className=" flex flex-col gap-[24px] ">
             <section className=" flex flex-col">
               {" "}
-              <h2 className=" text-[24px] text-[#034FE3] font-[600]">
+              <h2 className=" sm:text-[24px] text-[20px] text-[#034FE3] font-[600] w-fit">
                 Instructor
               </h2>
-              <p className=" text-[16px] text-[#1A1A1ACC] font-[300]">
+              <p className=" text-[16px] text-[#1A1A1ACC] font-[300] w-fit">
                 Certified Trainer at Zion Tech Hub
               </p>
             </section>
-            <section className=" flex  gap-[14px]">
+            <section className=" flex  gap-[14px] ">
               <img
-                className="w-[60px] h-[60px] object-cover rounded-full"
-                src={Reviewimg}
+                className="sm:w-[60px] sm:h-[60px] w-[50px] h-[50px] object-cover rounded-full"
+                src={SirGodsentprofile}
                 alt=""
               />
-              <div className=" flex flex-col text-[#1A1A1A]">
+              <div className=" flex flex-col text-[#1A1A1A] w-fit">
                 <p className=" text-[18px] font-[600]">Ndoma Godsent</p>
                 <p className=" text-[12px] font-[300]">
                   Co-Founder, Data Analyst
@@ -353,12 +307,12 @@ function Analysiscontent() {
               </div>
             </section>
           </section>
-          <span className=" h-[1px] w-[317px] bg-[#1A1A1A1A]"></span>
-          <section className="flex gap-[12px]">
-            <p className=" text-[20px] font-[300] ">Live on</p>{" "}
+          <span className=" h-[1px] sm:w-[317px] w-[300px] bg-[#1A1A1A1A]"></span>
+          <section className="flex gap-[12px] w-fit">
+            <p className=" sm:text-[20px] text-[18px] font-[300] ">Live on</p>{" "}
             <img
-              className=" w-[193px] h-[35px] object-cover "
-              src={individual}
+              className=" sm:w-[193px] sm:h-[35px] w-[139px] h-[25px] object-cover "
+              src={googlemeet}
               alt=""
             />
           </section>

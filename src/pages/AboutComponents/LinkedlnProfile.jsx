@@ -1,5 +1,5 @@
 import React from "react";
-import { Reviewimg } from "../../assets";
+import { Reviewimg, mobile } from "../../assets";
 
 function LinkedlnProfile() {
   const linkedld = (
@@ -42,7 +42,7 @@ function LinkedlnProfile() {
           <div className=" absolute sm:right-[300px] sm:top-20 top-[60%] p-[32px]">
             <img
               className=" sm:w-[397px] sm:h-[796.283px] w-[321px] h-[645px] object-cover  "
-              src={Reviewimg}
+              src={mobile}
               alt=""
             />
           </div>

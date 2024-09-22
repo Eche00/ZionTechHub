@@ -1,6 +1,12 @@
 import { ArrowForward } from "@mui/icons-material";
 import React from "react";
-import { Reviewimg, googlemeet, individual } from "../assets";
+import {
+  abouthero1,
+  abouthero2,
+  abouthero3,
+  googlemeet,
+  individual,
+} from "../assets";
 import { div } from "framer-motion/client";
 import AboutUs from "./AboutComponents/AboutUs";
 import Ourmission from "./AboutComponents/Ourmission";
@@ -48,18 +54,18 @@ function About() {
             <div className=" flex  sm:gap-[17px] gap-[10px]">
               <img
                 className=" sm:w-[268px] sm:h-[464px]  w-[154px] h-[267px] object-cover  rounded-[10px]"
-                src={Reviewimg}
+                src={abouthero1}
                 alt=""
               />
               <section className=" flex flex-col sm:gap-[17px] gap-[10px]">
                 <img
-                  className=" sm:w-[334px] sm:h-[286px]  w-[192px] h-[165px] object-cover rounded-[10px]"
-                  src={Reviewimg}
+                  className=" sm:w-[334px] sm:h-[286px]  w-[192px] h-[165px] object-cover rounded-[10px] "
+                  src={abouthero2}
                   alt=""
                 />
                 <img
                   className=" sm:w-[334px] sm:h-[162px]  w-[192px] h-[93px] object-cover rounded-[10px]"
-                  src={Reviewimg}
+                  src={abouthero3}
                   alt=""
                 />
               </section>
