@@ -155,6 +155,8 @@ function DataAnalysis() {
               </button>
             </div>
           </div>
+          {/* hero images */}
+
           <div className=" flex-1 flex justify-end sm:pt-0 pt-10">
             <div className=" flex flex-col  sm:gap-[34px] gap-[20px]  bg-[#F1F1F1] rounded-[10px] sm:p-[23px] p-[10px] shadow-lg">
               <div className=" grid grid-cols-3 sm:gap-x-[31.6px] sm:gap-y-[19.25px] gap-x-[15px] gap-y-[12px]">
@@ -215,7 +217,7 @@ function DataAnalysis() {
           </div>
         </div>
         {/* course info  */}
-        <div className=" flex sm:flex-row flex-col justify-around sm:items-center  max-w-[80%] mx-auto  text-[24px] font-[400] text-[#1A1A1A] bg-[#EBECED] rounded-[10px] py-[36px] sm:px-0 px-[40px] sm:gap-0 gap-[24px]">
+        <div className=" flex sm:flex-row flex-col justify-around sm:items-center  max-w-[90%] mx-auto  text-[24px] font-[400] text-[#1A1A1A] bg-[#EBECED] rounded-[10px] py-[36px] sm:px-0 px-[40px] sm:gap-0 gap-[24px]">
           <section className=" flex flex-col">
             <h3 className="text-[24px] font-[600] text-[#1A1A1A] flex gap-[8px] items-center">
               <span className=" text-[#034FE3] ">
@@ -292,7 +294,7 @@ function DataAnalysis() {
               Skills you’ll gain from training with us
             </p>
           </div>
-          <div className="flex sm:flex-row sm:flex-wrap flex-col py-[68px] gap-[32px] w-[1292px] px-[20px]">
+          <div className="flex sm:flex-row sm:flex-wrap flex-col py-[68px] gap-[32px] w-[1292px] sm:px-[20px] px-[10px]">
             <p className="px-[32px] py-[10px]  text-[18px] font-[600] text-[#1A1A1ACC] bg-[#EBECED]  w-fit rounded-[10px]">
               Data Cleaning and Preparation
             </p>{" "}

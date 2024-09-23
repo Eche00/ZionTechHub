@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { Reviewimg, individual } from "../../../assets";
+import {
+  Reviewimg,
+  SirGodsentprofile,
+  googlemeet,
+  individual,
+} from "../../../assets";
 import { ArrowBackIos } from "@mui/icons-material";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -67,18 +72,19 @@ function ScienceContent() {
 
   return (
     <div className=" relative pb-[180px]">
-      <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute top-[19px] -left-[1.5px]"></span>
+      <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[19px] top-[6px] -left-[1.5px]"></span>
       <div className=" px-[20px]  pb-[68px]">
-        <p className=" font-[600] text-[48px] text-[#333]">
+        <p className=" font-[600] sm:text-[48px] text-[32px] text-[#333]">
           <span className=" text-[#034FE3]">Course </span>content
         </p>
       </div>
 
-      <div className="flex gap-[25px] w-[1238px] ">
+      <div className="flex sm:flex-row flex-col-reverse gap-[25px] sm:w-[1238px] ">
         <div className=" flex-1 flex flex-col rounded-tr-[10px] overflow-hidden border border-gray-300 h-fit">
+          {/* first month  */}
           <div>
             <div
-              className="py-[24px] px-[40px] flex gap-[10px] items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer "
+              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   sm:w-full"
               onClick={firstM}>
               {" "}
               {firstmonth ? (
@@ -86,169 +92,171 @@ function ScienceContent() {
               ) : (
                 <KeyboardArrowDownIcon fontSize="large" />
               )}
-              <p className=" text-[20px] font-[600] text-[#1A1A1A]">
+              <p className=" sm:text-[20px] text-[18px] sm:w-full w-[287px] font-[600] text-[#1A1A1A]">
                 Month 1: Foundations of Data Science
               </p>
             </div>
             {firstmonth && (
               <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Overview of the data science lifecycle
                 </p>
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Understanding the role of a data scientist
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Setting up the development environment
                   (Python, Jupyter Notebooks, R)
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Data types and structures
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Importing data from various sources (CSV,
                   Excel, SQL, APIs)
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Data cleaning techniques: handling missing
                   data, data transformation, and normalization
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Descriptive statistics (mean, median, mode,
                   variance)
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Data visualization basics with Matplotlib
                   and Seaborn
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span>Identifying trends, patterns, and outliers
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Probability theory and distributions
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Hypothesis testing and confidence intervals
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Correlation and covariance
                 </p>
               </section>
             )}
           </div>
+          {/* second month  */}
           <div>
             <div
-              className="py-[24px] px-[40px] flex gap-[10px] items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer "
+              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-full"
               onClick={secondM}>
               {secondmonth ? (
                 <KeyboardArrowUpIcon fontSize="large" />
               ) : (
                 <KeyboardArrowDownIcon fontSize="large" />
               )}
-              <p className=" text-[20px] font-[600] text-[#1A1A1A]">
+              <p className=" sm:text-[20px] text-[18px] sm:w-full w-[257px] font-[600] text-[#1A1A1A]">
                 Month 2: Core Data Science Skills
               </p>
             </div>{" "}
             {secondmonth && (
               <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span>Overview of machine learning concepts
                 </p>
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Supervised vs. unsupervised learning
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Introduction to linear regression and
                   classification
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Decision trees, random forests, and support
                   vector machines (SVM)
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span>Clustering algorithms (K-means, hierarchical
                   clustering)
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Model evaluation: accuracy, precision,
                   recall, F1-score
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Advanced data visualization techniques with
                   Tableau or Power BI
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Creating interactive dashboards
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Storytelling with data: how to present your
                   findings effectively
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Introduction to big data concepts and tools
                   (Hadoop, Spark)
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Working with large datasets in Python
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span>Introduction to SQL for data querying and
                   management
                 </p>
               </section>
             )}
           </div>{" "}
+          {/* third month  */}
           <div>
             <div
-              className="py-[24px] px-[40px] flex gap-[10px] items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer "
+              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   sm:w-full"
               onClick={thirdM}>
               {thirdmonth ? (
                 <KeyboardArrowUpIcon fontSize="large" />
               ) : (
                 <KeyboardArrowDownIcon fontSize="large" />
               )}
-              <p className=" text-[20px] font-[600] text-[#1A1A1A]">
+              <p className=" sm:text-[20px] text-[18px] sm:w-full w-[287px] font-[600] text-[#1A1A1A]">
                 Month 3: Applied Data Science and Projects
               </p>
             </div>
             {thirdmonth && (
               <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span>Introduction to time series data
                 </p>
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Time series forecasting methods (ARIMA,
                   exponential smoothing)
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Dealing with seasonality and trends
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Basics of text mining and NLP
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span>Sentiment analysis and text classification
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Introduction to word embeddings and topic
                   modeling
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Choosing a data science project
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Data collection and preparation
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Project planning and defining objectives
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Implementing your data science project
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Analyzing results and drawing conclusions
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Preparing a final report and presenting
                   your project
                 </p>
@@ -256,24 +264,25 @@ function ScienceContent() {
             )}
           </div>
         </div>
-        <div className="flex flex-col gap-[36px] py-[32px] px-[48px] bg-[#EBECED] rounded-[10px] border border-gray-300 h-fit">
-          <section className=" flex flex-col gap-[24px]">
+        {/* instructor section  */}
+        <div className="flex flex-col gap-[36px] sm:py-[32px] py-[24px] sm:px-[48px] px-[20px] bg-[#EBECED] rounded-[10px] border border-gray-300 h-fit w-fit">
+          <section className=" flex flex-col gap-[24px] ">
             <section className=" flex flex-col">
               {" "}
-              <h2 className=" text-[24px] text-[#034FE3] font-[600]">
+              <h2 className=" sm:text-[24px] text-[20px] text-[#034FE3] font-[600] w-fit">
                 Instructor
               </h2>
-              <p className=" text-[16px] text-[#1A1A1ACC] font-[300]">
+              <p className=" text-[16px] text-[#1A1A1ACC] font-[300] w-fit">
                 Certified Trainer at Zion Tech Hub
               </p>
             </section>
-            <section className=" flex  gap-[14px]">
+            <section className=" flex  gap-[14px] ">
               <img
-                className="w-[60px] h-[60px] object-cover rounded-full"
-                src={Reviewimg}
+                className="sm:w-[60px] sm:h-[60px] w-[50px] h-[50px] object-cover rounded-full"
+                src={SirGodsentprofile}
                 alt=""
               />
-              <div className=" flex flex-col text-[#1A1A1A]">
+              <div className=" flex flex-col text-[#1A1A1A] w-fit">
                 <p className=" text-[18px] font-[600]">Ndoma Godsent</p>
                 <p className=" text-[12px] font-[300]">
                   Co-Founder, Data Analyst
@@ -281,12 +290,12 @@ function ScienceContent() {
               </div>
             </section>
           </section>
-          <span className=" h-[1px] w-[317px] bg-[#1A1A1A1A]"></span>
-          <section className="flex gap-[12px]">
-            <p className=" text-[20px] font-[300] ">Live on</p>{" "}
+          <span className=" h-[1px] sm:w-[317px] w-[300px] bg-[#1A1A1A1A]"></span>
+          <section className="flex gap-[12px] w-fit">
+            <p className=" sm:text-[20px] text-[18px] font-[300] ">Live on</p>{" "}
             <img
-              className=" w-[193px] h-[35px] object-cover "
-              src={individual}
+              className=" sm:w-[193px] sm:h-[35px] w-[139px] h-[25px] object-cover "
+              src={googlemeet}
               alt=""
             />
           </section>

@@ -97,7 +97,7 @@ function Analysiscontent() {
               </p>
             </div>
             {firstmonth && (
-              <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
+              <section className=" flex flex-col bg-[#F0F0F0] text-[#6f6262cc]">
                 <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Overview of data analytics and its
                   significance in business and industry
