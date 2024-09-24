@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { Reviewimg, individual } from "../../../assets";
+import {
+  Reviewimg,
+  SirGodsentprofile,
+  googlemeet,
+  individual,
+} from "../../../assets";
 import { ArrowBackIos } from "@mui/icons-material";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -107,18 +112,20 @@ function MachineLearningcontent() {
 
   return (
     <div className=" relative pb-[180px]">
-      <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute top-[19px] -left-[1.5px]"></span>
+      <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[19px] top-[6px] -left-[1.5px]"></span>
       <div className=" px-[20px]  pb-[68px]">
-        <p className=" font-[600] text-[48px] text-[#333]">
+        <p className=" font-[600] sm:text-[48px] text-[32px] text-[#333]">
           <span className=" text-[#034FE3]">Course </span>content
         </p>
       </div>
 
-      <div className="flex gap-[25px] w-[1238px] ">
+      <div className="flex sm:flex-row flex-col-reverse gap-[25px] sm:w-[1238px] ">
+        {/* course content section  */}
         <div className=" flex-1 flex flex-col rounded-tr-[10px] overflow-hidden border border-gray-300 h-fit">
+          {/* first month  */}
           <div>
             <div
-              className="py-[24px] px-[40px] flex gap-[10px] items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer "
+              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   sm:w-full"
               onClick={firstM}>
               {" "}
               {firstmonth ? (
@@ -126,343 +133,349 @@ function MachineLearningcontent() {
               ) : (
                 <KeyboardArrowDownIcon fontSize="large" />
               )}
-              <p className=" text-[20px] font-[600] text-[#1A1A1A]">
+              <p className=" sm:text-[20px] text-[18px] w-full  font-[600] text-[#1A1A1A]">
                 Month 1: Foundations of Machine Learning
               </p>
             </div>
             {firstmonth && (
-              <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <section className=" flex flex-col bg-[#F0F0F0] text-[#482525cc]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span>Overview of machine learning concepts
                 </p>
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span>Types of machine learning: supervised,
                   unsupervised, and reinforcement learning
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span>Machine learning lifecycle and workflow
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Introduction to Python/R for machine
                   learning
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Key libraries: NumPy, Pandas, Matplotlib,
                   scikit-learn
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Setting up the development environment
                   (Jupyter Notebooks, IDEs)
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Data cleaning and wrangling techniques
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Feature scaling and normalization
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Handling missing values and outliers
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Descriptive statistics and data
                   visualization
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Identifying patterns and correlations
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Using libraries like Seaborn and Plotly for
                   visualization
                 </p>{" "}
               </section>
             )}
           </div>
+          {/* second month  */}
           <div>
             <div
-              className="py-[24px] px-[40px] flex gap-[10px] items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer "
+              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   sm:w-full"
               onClick={secondM}>
               {secondmonth ? (
                 <KeyboardArrowUpIcon fontSize="large" />
               ) : (
                 <KeyboardArrowDownIcon fontSize="large" />
               )}
-              <p className=" text-[20px] font-[600] text-[#1A1A1A]">
+              <p className=" sm:text-[20px] text-[18px] w-full  font-[600] text-[#1A1A1A]">
                 Month 2: Supervised Learning
               </p>
             </div>{" "}
             {secondmonth && (
               <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span>Linear regression and multiple linear
                   regression
                 </p>
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Polynomial regression and regularization
                   techniques (Ridge, Lasso)
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Model evaluation metrics (MSE, RMSE, R^2)
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span>Logistic regression and its variants
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span>Decision trees and random forests
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Support Vector Machines (SVM) and K-Nearest
                   Neighbors (KNN)
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Cross-validation and train-test split
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Hyperparameter tuning with GridSearchCV and
                   RandomizedSearchCV
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span>Evaluating classification models (accuracy,
                   precision, recall, F1-score)
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span>Case studies and real-world examples
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span>Implementing regression and classification
                   models on sample datasets
                 </p>{" "}
               </section>
             )}
           </div>{" "}
+          {/* third month  */}
           <div>
             <div
-              className="py-[24px] px-[40px] flex gap-[10px] items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer "
+              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   sm:w-full"
               onClick={thirdM}>
               {thirdmonth ? (
                 <KeyboardArrowUpIcon fontSize="large" />
               ) : (
                 <KeyboardArrowDownIcon fontSize="large" />
               )}
-              <p className=" text-[20px] font-[600] text-[#1A1A1A]">
+              <p className=" sm:text-[20px] text-[18px] w-full  font-[600] text-[#1A1A1A]">
                 Month 3: Unsupervised Learning
               </p>
             </div>
             {thirdmonth && (
               <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span>K-Means clustering and hierarchical
                   clustering
                 </p>
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> DBSCAN and other clustering algorithms
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Evaluating clustering results
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span>Principal Component Analysis (PCA)
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span>t-Distributed Stochastic Neighbor Embedding
                   (t-SNE)
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Feature extraction and selection techniques
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Market basket analysis
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Apriori algorithm and FP-Growth
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Interpreting association rules
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Implementing clustering and dimensionality
                   reduction on real-world data
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Case studies and project work
                 </p>{" "}
               </section>
             )}
           </div>
+          {/* fourth month  */}
           <div>
             <div
-              className="py-[24px] px-[40px] flex gap-[10px] items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer "
+              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   sm:w-full"
               onClick={fourthM}>
               {fourthmonth ? (
                 <KeyboardArrowUpIcon fontSize="large" />
               ) : (
                 <KeyboardArrowDownIcon fontSize="large" />
               )}
-              <p className=" text-[20px] font-[600] text-[#1A1A1A]">
+              <p className=" sm:text-[20px] text-[18px] w-full  font-[600] text-[#1A1A1A]">
                 Month 4: Advanced Topics in Machine Learning
               </p>
             </div>
             {fourthmonth && (
               <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span>Bagging, boosting, and stacking methods
                 </p>
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Understanding Random Forests, Gradient
                   Boosting Machines (GBM), and XGBoost
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Basics of neural networks and deep learning
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Architecture of neural networks (input,
                   hidden, output layers)
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span>Activation functions and backpropagation
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Introduction to TensorFlow and Keras
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Building and training basic neural networks
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Introduction to Convolutional Neural
                   Networks (CNNs) and Recurrent Neural Networks (RNNs)
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Implementing deep learning models on sample
                   datasets
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span>Hands-on projects using TensorFlow/Keras
                 </p>{" "}
               </section>
             )}
           </div>
+          {/* fifth month  */}
           <div>
             <div
-              className="py-[24px] px-[40px] flex gap-[10px] items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer "
+              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   sm:w-full"
               onClick={fifthM}>
               {fifthmonth ? (
                 <KeyboardArrowUpIcon fontSize="large" />
               ) : (
                 <KeyboardArrowDownIcon fontSize="large" />
               )}
-              <p className=" text-[20px] font-[600] text-[#1A1A1A]">
+              <p className=" sm:text-[20px] text-[18px] w-full  font-[600] text-[#1A1A1A]">
                 Month 5: Special Topics and Advanced Techniques
               </p>
             </div>
             {fifthmonth && (
               <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span>Deploying machine learning models to
                   production
                 </p>
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Introduction to model serving tools and
                   frameworks (Flask, FastAPI, Docker)
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Basics of NLP and text preprocessing
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Text classification and sentiment analysis
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span>Introduction to word embeddings (Word2Vec,
                   GloVe)
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Time series forecasting methods
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> ARIMA and exponential smoothing
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Handling seasonality and trends
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Introduction to Reinforcement Learning
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Advanced hyperparameter tuning and
                   optimization techniques
                 </p>{" "}
               </section>
             )}
           </div>
+          {/* sixth month  */}
           <div>
             <div
-              className="py-[24px] px-[40px] flex gap-[10px] items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer "
+              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   sm:w-full"
               onClick={sixthM}>
               {sixthmonth ? (
                 <KeyboardArrowUpIcon fontSize="large" />
               ) : (
                 <KeyboardArrowDownIcon fontSize="large" />
               )}
-              <p className=" text-[20px] font-[600] text-[#1A1A1A]">
+              <p className=" sm:text-[20px] text-[18px] w-full  font-[600] text-[#1A1A1A]">
                 Month 6: Capstone Project and Review
               </p>
             </div>
             {sixthmonth && (
               <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span>Defining project objectives and scope
                 </p>
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Data collection and preprocessing for the
                   project
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Designing the machine learning pipeline
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Building and training machine learning
                   models
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span>Evaluating and optimizing models
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Preparing a detailed project report
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Presenting findings and results to peers
                   and mentors
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Resume building and LinkedIn profile
                   optimization
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Preparing for machine learning interviews
                 </p>{" "}
-                <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
                   <span>{dot}</span> Networking and job search strategies
                 </p>{" "}
               </section>
             )}
           </div>
         </div>
-        <div className="flex flex-col gap-[36px] py-[32px] px-[48px] bg-[#EBECED] rounded-[10px] border border-gray-300 h-fit">
-          <section className=" flex flex-col gap-[24px]">
+        {/* instructor section  */}
+        <div className="flex flex-col gap-[36px] sm:py-[32px] py-[24px] sm:px-[48px] px-[20px] bg-[#EBECED] rounded-[10px] border border-gray-300 h-fit w-fit">
+          <section className=" flex flex-col gap-[24px] ">
             <section className=" flex flex-col">
               {" "}
-              <h2 className=" text-[24px] text-[#034FE3] font-[600]">
+              <h2 className=" sm:text-[24px] text-[20px] text-[#034FE3] font-[600] w-fit">
                 Instructor
               </h2>
-              <p className=" text-[16px] text-[#1A1A1ACC] font-[300]">
+              <p className=" text-[16px] text-[#1A1A1ACC] font-[300] w-fit">
                 Certified Trainer at Zion Tech Hub
               </p>
             </section>
-            <section className=" flex  gap-[14px]">
+            <section className=" flex  gap-[14px] ">
               <img
-                className="w-[60px] h-[60px] object-cover rounded-full"
-                src={Reviewimg}
+                className="sm:w-[60px] sm:h-[60px] w-[50px] h-[50px] object-cover rounded-full"
+                src={SirGodsentprofile}
                 alt=""
               />
-              <div className=" flex flex-col text-[#1A1A1A]">
+              <div className=" flex flex-col text-[#1A1A1A] w-fit">
                 <p className=" text-[18px] font-[600]">Ndoma Godsent</p>
                 <p className=" text-[12px] font-[300]">
                   Co-Founder, Data Analyst
@@ -470,12 +483,12 @@ function MachineLearningcontent() {
               </div>
             </section>
           </section>
-          <span className=" h-[1px] w-[317px] bg-[#1A1A1A1A]"></span>
-          <section className="flex gap-[12px]">
-            <p className=" text-[20px] font-[300] ">Live on</p>{" "}
+          <span className=" h-[1px] sm:w-[317px] w-[300px] bg-[#1A1A1A1A]"></span>
+          <section className="flex gap-[12px] w-fit">
+            <p className=" sm:text-[20px] text-[18px] font-[300] ">Live on</p>{" "}
             <img
-              className=" w-[193px] h-[35px] object-cover "
-              src={individual}
+              className=" sm:w-[193px] sm:h-[35px] w-[139px] h-[25px] object-cover "
+              src={googlemeet}
               alt=""
             />
           </section>
