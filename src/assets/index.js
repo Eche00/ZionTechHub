@@ -79,6 +79,40 @@ import teamprofile7 from "./teamprofile7.jpeg";
 import teamprofile8 from "./teamprofile8.jpeg";
 import teamprofile9 from "./teamprofile9.jpeg";
 import teamprofile10 from "./teamprofile10.jpeg";
+import analysticshero1 from "./analysticshero1.png";
+import analysticshero2 from "./analysticshero2.png";
+import analysticshero3 from "./analysticshero3.png";
+import analysticshero4 from "./analysticshero4.png";
+import analysticshero5 from "./analysticshero5.png";
+import analysticshero6 from "./analysticshero6.png";
+
+import sciencehero1 from "./sciencehero1.png";
+import sciencehero2 from "./sciencehero2.png";
+import sciencehero3 from "./sciencehero3.png";
+import sciencehero4 from "./sciencehero4.png";
+import sciencehero5 from "./sciencehero5.png";
+import sciencehero6 from "./sciencehero6.png";
+
+import webhero1 from "./webhero1.png";
+import webhero2 from "./webhero2.png";
+import webhero3 from "./webhero3.png";
+import webhero4 from "./webhero4.png";
+import webhero5 from "./webhero5.png";
+import webhero6 from "./webhero6.png";
+
+import cloudhero1 from "./cloudhero1.png";
+import cloudhero2 from "./cloudhero2.png";
+import cloudhero3 from "./cloudhero3.png";
+import cloudhero4 from "./cloudhero4.png";
+import cloudhero5 from "./cloudhero5.png";
+import cloudhero6 from "./cloudhero6.png";
+
+import machinehero1 from "./machinehero1.png";
+import machinehero2 from "./machinehero2.png";
+import machinehero3 from "./machinehero3.png";
+import machinehero4 from "./machinehero4.png";
+import machinehero5 from "./machinehero5.png";
+import machinehero6 from "./machinehero6.png";
 
 export {
   logo,
@@ -162,4 +196,34 @@ export {
   teamprofile7,
   teamprofile8,
   teamprofile9,
+  analysticshero1,
+  analysticshero2,
+  analysticshero3,
+  analysticshero4,
+  analysticshero5,
+  analysticshero6,
+  sciencehero1,
+  sciencehero2,
+  sciencehero3,
+  sciencehero4,
+  sciencehero5,
+  sciencehero6,
+  webhero1,
+  webhero2,
+  webhero3,
+  webhero4,
+  webhero5,
+  webhero6,
+  cloudhero1,
+  cloudhero2,
+  cloudhero3,
+  cloudhero4,
+  cloudhero5,
+  cloudhero6,
+  machinehero1,
+  machinehero2,
+  machinehero3,
+  machinehero4,
+  machinehero5,
+  machinehero6,
 };

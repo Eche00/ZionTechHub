@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 function Header() {
   return (
     <header>
-      <div className=" w-full   fixed  z-50 bg-[#F5F5F5]/70 backdrop-blur-sm">
+      <div className=" w-full   fixed  z-50 bg-[#F5F5F5]/60  backdrop-blur-sm">
         <Topheader />
       </div>
       <NavLink

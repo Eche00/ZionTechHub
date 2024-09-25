@@ -26,7 +26,7 @@ function Navbar() {
   );
   return (
     <div>
-      <div className="relative">
+      <div className="relative ">
         <div className=" flex justify-between items-center max-w-[90%] mx-auto  font-sans py-[10px] ">
           {/* logo */}
           <section className=" flex-1 text-xl font-bold flex items-baseline gap-1">

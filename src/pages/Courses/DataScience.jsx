@@ -5,6 +5,12 @@ import {
   enterprice,
   googlemeet,
   individual,
+  sciencehero1,
+  sciencehero2,
+  sciencehero3,
+  sciencehero4,
+  sciencehero5,
+  sciencehero6,
   startups,
 } from "../../assets";
 import Faqs from "../HomeComponents/Faqs";
@@ -125,8 +131,8 @@ function DataScience() {
     <div className="bg-[#F5F5F5]">
       {" "}
       {/* hero section  */}
-      <div className=" pt-[130px]    bg-[linear-gradient(to_right,#4f4f4f0e_1px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_1px,transparent_0.1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])]   sm:h-[100vh]   w-full">
-        <div className=" w-[90%] mx-auto flex justify-between   py-[100px] sm:flex-row flex-col">
+      <div className="   bg-[linear-gradient(to_right,#4f4f4f0e_1px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_1px,transparent_0.1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])]   sm:h-[80vh]   w-full">
+        <div className=" w-[90%] mx-auto flex justify-between   py-[70px] sm:flex-row flex-col">
           <div className=" flex-1   flex flex-col justify-end">
             <div className=" flex flex-col gap-[24px]">
               <p className=" sm:text-[14px] text-[12px]  font-[400] py-[10px] sm:px-[24px] px-[14px] border rounded-full w-fit ">
@@ -160,33 +166,33 @@ function DataScience() {
             <div className=" flex flex-col  sm:gap-[34px] gap-[20px]  bg-[#F1F1F1] rounded-[10px] sm:p-[23px] p-[10px] shadow-lg">
               <div className=" grid grid-cols-3 sm:gap-x-[31.6px] sm:gap-y-[19.25px] gap-x-[15px] gap-y-[12px]">
                 <img
-                  className=" sm:w-[146.64px] sm:h-[146.64px] w-[97px] h-[97px] rounded-[10px]"
-                  src={Reviewimg}
+                  className=" sm:w-[146.64px] sm:h-[146.64px] w-[97px] h-[97px] rounded-[10px] object-cover"
+                  src={sciencehero1}
                   alt=""
                 />
                 <img
-                  className=" sm:w-[146.64px] sm:h-[146.64px] w-[97px] h-[97px] rounded-[10px]"
-                  src={Reviewimg}
+                  className=" sm:w-[146.64px] sm:h-[146.64px] w-[97px] h-[97px] rounded-[10px] object-cover"
+                  src={sciencehero2}
                   alt=""
                 />
                 <img
-                  className=" sm:w-[146.64px] sm:h-[146.64px] w-[97px] h-[97px] rounded-[10px]"
-                  src={Reviewimg}
+                  className=" sm:w-[146.64px] sm:h-[146.64px] w-[97px] h-[97px] rounded-[10px] object-cover"
+                  src={sciencehero3}
                   alt=""
                 />
                 <img
-                  className=" sm:w-[146.64px] sm:h-[146.64px] w-[97px] h-[97px] rounded-[10px]"
-                  src={Reviewimg}
+                  className=" sm:w-[146.64px] sm:h-[146.64px] w-[97px] h-[97px] rounded-[10px] object-cover"
+                  src={sciencehero4}
                   alt=""
                 />
                 <img
-                  className=" sm:w-[146.64px] sm:h-[146.64px] w-[97px] h-[97px] rounded-[10px]"
-                  src={Reviewimg}
+                  className=" sm:w-[146.64px] sm:h-[146.64px] w-[97px] h-[97px] rounded-[10px] object-cover"
+                  src={sciencehero5}
                   alt=""
                 />
                 <img
-                  className=" sm:w-[146.64px] sm:h-[146.64px] w-[97px] h-[97px] rounded-[10px]"
-                  src={Reviewimg}
+                  className=" sm:w-[146.64px] sm:h-[146.64px] w-[97px] h-[97px] rounded-[10px] object-cover"
+                  src={sciencehero6}
                   alt=""
                 />
               </div>
@@ -216,7 +222,7 @@ function DataScience() {
           </div>
         </div>
         {/* course info  */}
-        <div className=" flex sm:flex-row flex-col justify-around sm:items-center  max-w-[90%] mx-auto  text-[24px] font-[400] text-[#1A1A1A] bg-[#EBECED] rounded-[10px] py-[36px] sm:px-0 px-[40px] sm:gap-0 gap-[24px]">
+        <div className=" flex sm:flex-row flex-col justify-around sm:items-center  sm:max-w-[80%] max-w-[90%] mx-auto  text-[24px] font-[400] text-[#1A1A1A] bg-[#EBECED] rounded-[10px] py-[36px] sm:px-0 px-[40px] sm:gap-0 gap-[24px]">
           <section className=" flex flex-col">
             <h3 className="text-[24px] font-[600] text-[#1A1A1A] flex gap-[8px] items-center">
               <span className=" text-[#034FE3] ">
@@ -260,7 +266,7 @@ function DataScience() {
       {/* component 2 */}
       <div className="">
         {/* what to expect */}
-        <div className=" pt-[180px]  sm:max-w-[88%] max-w-[92%] mx-auto border-l border-gray-200 relative">
+        <div className=" pt-[180px]  sm:max-w-[80%] max-w-[92%] mx-auto border-l border-gray-200 relative">
           <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[199px] top-[185px] -left-[1.5px]"></span>
           <div className=" px-[20px] ">
             <p className=" font-[600] sm:text-[48px] text-[32px] text-[#333]">
@@ -283,7 +289,7 @@ function DataScience() {
           </div>
         </div>
         {/* skills to gain section */}
-        <div className=" py-[160px]  sm:max-w-[88%] max-w-[92%] mx-auto border-l border-gray-200 relative">
+        <div className=" py-[160px]  sm:max-w-[80%] max-w-[92%] mx-auto border-l border-gray-200 relative">
           <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[179px] top-[165px] -left-[1.5px]"></span>
           <div className=" px-[20px] ">
             <p className=" font-[600] sm:text-[48px] text-[32px] text-[#333]">
@@ -325,7 +331,7 @@ function DataScience() {
           </div>
         </div>
         {/* details to know section */}
-        <div className=" sm:pb-[180px] pb-[100px]  sm:max-w-[88%] max-w-[92%] mx-auto border-l border-gray-200 relative">
+        <div className=" sm:pb-[180px] pb-[100px]  sm:max-w-[80%] max-w-[92%] mx-auto border-l border-gray-200 relative">
           <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[19px] top-[6px] -left-[1.5px]"></span>
           <div className=" px-[20px] ">
             <p className=" font-[600] sm:text-[48px] text-[32px] text-[#333]">
@@ -354,14 +360,14 @@ function DataScience() {
           </div>
         </div>
         {/* course content */}
-        <div className=" flex flex-col  sm:max-w-[88%] max-w-[92%] mx-auto border-l border-gray-300 ">
+        <div className=" flex flex-col  sm:max-w-[80%] max-w-[92%] mx-auto border-l border-gray-300 ">
           <ScienceContent />
         </div>
 
-        <div className=" flex flex-col sm:max-w-[94%] max-w-[96%]  ml-auto border-l border-gray-300  overflow-x-hidden">
+        <div className=" flex flex-col sm:max-w-[90%] max-w-[96%]  ml-auto border-l border-gray-300  overflow-x-hidden">
           <CoursesTestimonial />
         </div>
-        <div className=" flex flex-col  sm:max-w-[88%] max-w-[92%] mx-auto border-l border-gray-300 ">
+        <div className=" flex flex-col  sm:max-w-[80%] max-w-[92%] mx-auto border-l border-gray-300 ">
           <Faqs />
         </div>
       </div>
