@@ -122,10 +122,10 @@ function DataAnalysis() {
     </svg>
   );
   return (
-    <div className="bg-[#F5F5F5]">
+    <div className="bg-[#F5F5F5] z-0">
       {" "}
       {/* hero section  */}
-      <div className=" pt-[130px]    bg-[linear-gradient(to_right,#4f4f4f0e_1px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_1px,transparent_0.1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])]   sm:h-[100vh]   w-full">
+      <div className=" pt-[50px]     bg-[linear-gradient(to_right,#4f4f4f0e_1px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_1px,transparent_0.1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])]   sm:h-[100vh]   w-full">
         <div className=" w-[90%] mx-auto flex justify-between   py-[100px] sm:flex-row flex-col">
           <div className=" flex-1   flex flex-col justify-end">
             <div className=" flex flex-col gap-[24px]">

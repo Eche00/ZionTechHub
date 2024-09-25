@@ -2,6 +2,7 @@ import { Star } from "@mui/icons-material";
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import Navbar from "./Navbar";
 
 function Topheader() {
   const [course, setCourse] = useState(false);
@@ -12,30 +13,29 @@ function Topheader() {
       <NavLink
         to="/"
         className={({ isActive }) =>
-          isActive
-            ? " flex w-full bg-[#1A1A1A] items-center justify-center"
-            : " hidden"
+          isActive ? " flex w-full   justify-center flex-col" : " hidden"
         }>
-        <p className=" sm:text-[18px] text-[14px] text-[#FFFFFF] font-[300]   p-[16px]">
+        <p className=" sm:text-[18px] text-[14px] text-[#FFFFFF] font-[300]   p-[16px] bg-[#1A1A1A] w-full  text-center">
           We're offering Data Consultation Services. Book now to get updated
           with your business.{" "}
           <span className=" font-[600] underline  px-5">Book Now</span>
         </p>
+
+        <Navbar />
       </NavLink>
 
       {/* about */}
       <NavLink
         to="/about"
         className={({ isActive }) =>
-          isActive
-            ? " flex w-full bg-[#1A1A1A] items-center justify-center"
-            : " hidden"
+          isActive ? " flex w-full  justify-center flex-col" : " hidden"
         }>
-        <p className=" sm:text-[18px] text-[12px] text-[#FFFFFF] font-[300]   p-[16px]">
+        <p className=" sm:text-[18px] text-[14px] text-[#FFFFFF] font-[300]   p-[16px] bg-[#1A1A1A] w-full  text-center">
           We're offering Data Consultation Services. Book now to get updated
           with your business.{" "}
           <span className=" font-[600] underline  px-5">Book Now</span>
         </p>
+        <Navbar />
       </NavLink>
 
       {/* data analysis */}
@@ -502,30 +502,28 @@ function Topheader() {
       <NavLink
         to="/consult"
         className={({ isActive }) =>
-          isActive
-            ? " flex w-full bg-[#1A1A1A] items-center justify-center"
-            : " hidden"
+          isActive ? " flex w-full  justify-center flex-col" : " hidden"
         }>
-        <p className=" text-[18px] text-[#FFFFFF] font-[300]   p-[16px]">
+        <p className=" sm:text-[18px] text-[14px] text-[#FFFFFF] font-[300]   p-[16px] bg-[#1A1A1A] w-full  text-center">
           We're offering Data Consultation Services. Book now to get updated
           with your business.{" "}
           <span className=" font-[600] underline  px-5">Book Now</span>
         </p>
+        <Navbar />
       </NavLink>
 
       {/* contact */}
       <NavLink
         to="/contact"
         className={({ isActive }) =>
-          isActive
-            ? " flex w-full bg-[#1A1A1A] items-center justify-center"
-            : " hidden"
+          isActive ? " flex w-full  justify-center flex-col" : " hidden"
         }>
-        <p className=" text-[18px] text-[#FFFFFF] font-[300]   p-[16px]">
+        <p className=" sm:text-[18px] text-[14px] text-[#FFFFFF] font-[300]   p-[16px] bg-[#1A1A1A] w-full  text-center">
           We're offering Data Consultation Services. Book now to get updated
           with your business.{" "}
           <span className=" font-[600] underline  px-5">Book Now</span>
         </p>
+        <Navbar />
       </NavLink>
     </div>
   );
