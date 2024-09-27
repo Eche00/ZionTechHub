@@ -1,11 +1,9 @@
 import { ArrowForward, Star } from "@mui/icons-material";
 import React from "react";
 import {
-  Reviewimg,
-  enterprice,
+  certificate1,
+  certificate2,
   googlemeet,
-  individual,
-  startups,
   webhero1,
   webhero2,
   webhero3,
@@ -346,15 +344,15 @@ function WebDevelopment() {
           <div className="flex sm:flex-row flex-col  py-[68px] sm:gap-[94px] gap-[36px]">
             <section className=" w-fit sm:p-[52px]  p-[32px] bg-[#EBECED] rounded-[10px]">
               <img
-                className=" sm:w-[448.09px] sm:h-[315.19px] w-[281px] h-[199px]  object-cover "
-                src={Reviewimg}
+                className=" sm:w-[448.09px] sm:h-[315.19px] w-[281px] h-[199px]  object-cover  rounded-[10px] "
+                src={certificate1}
                 alt=""
               />
             </section>
             <section className=" w-fit  sm:p-[52px]  p-[32px] bg-[#EBECED] rounded-[10px]">
               <img
-                className=" sm:w-[448.09px] sm:h-[315.19px] w-[281px] h-[199px] object-cover "
-                src={Reviewimg}
+                className=" sm:w-[448.09px] sm:h-[315.19px] w-[281px] h-[199px] object-cover  rounded-[10px] "
+                src={certificate2}
                 alt=""
               />
             </section>

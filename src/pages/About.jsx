@@ -16,12 +16,17 @@ import Partners from "./AboutComponents/Partners";
 import LinkedlnProfile from "./AboutComponents/LinkedlnProfile";
 import ContactUs from "./AboutComponents/ContactUs";
 import Faqs from "./HomeComponents/Faqs";
+import { motion } from "framer-motion";
 
 function About() {
   return (
     <div className=" w-full flex flex-col bg-[#F5F5F5]">
       <div className=" pt-[130px]    bg-[linear-gradient(to_right,#4f4f4f0e_1px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_1px,transparent_0.1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])] overflow-hidden  sm:h-[100vh]  flex  items-center  w-full">
-        <div className=" w-[90%] mx-auto flex sm:flex-row flex-col justify-between  sm:gap-0 gap-[50px]">
+        <motion.div
+          initial={{ opacity: 0.45 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1, ease: "linear" }}
+          className=" w-[90%] mx-auto flex sm:flex-row flex-col justify-between  sm:gap-0 gap-[50px]">
           <div className=" flex-1   flex flex-col justify-end sm:pt-0 pt-[80px]">
             <div className=" flex flex-col gap-[24px]">
               <p className=" sm:text-[14px] text-[12px]  font-[400] py-[10px] sm:px-[24px] px-[14px] border rounded-full w-fit ">
@@ -71,7 +76,7 @@ function About() {
               </section>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
       <div className=" w-full bg-[#F5F5F5]">
         <div>

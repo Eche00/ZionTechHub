@@ -70,6 +70,10 @@ import partnerlogo1 from "./partnerlogo1.jpeg";
 import partnerlogo2 from "./partnerlogo2.jpeg";
 import partnerlogo3 from "./partnerlogo3.jpeg";
 import Sirgodsentsecondprofile from "./Sirgodsentsecondprofile.jpeg";
+
+import certificate1 from "./certificate1.png";
+import certificate2 from "./certificate2.png";
+
 import teamprofile2 from "./teamprofile2.png";
 import teamprofile3 from "./teamprofile3.jpeg";
 import teamprofile4 from "./teamprofile4.jpeg";
@@ -79,6 +83,7 @@ import teamprofile7 from "./teamprofile7.jpeg";
 import teamprofile8 from "./teamprofile8.jpeg";
 import teamprofile9 from "./teamprofile9.jpeg";
 import teamprofile10 from "./teamprofile10.jpeg";
+
 import analysticshero1 from "./analysticshero1.png";
 import analysticshero2 from "./analysticshero2.png";
 import analysticshero3 from "./analysticshero3.png";
@@ -226,4 +231,6 @@ export {
   machinehero4,
   machinehero5,
   machinehero6,
+  certificate1,
+  certificate2,
 };

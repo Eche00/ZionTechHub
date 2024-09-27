@@ -97,7 +97,11 @@ function Home() {
           ))}
         </motion.div>
         <div className=" w-full absolute z-0 top-[130px] bottom-0    bg-[linear-gradient(to_right,#4f4f4f0e_1px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_1px,transparent_0.1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])] overflow-hidden">
-          <div className="  max-w-[90%] mx-auto flex sm:flex-row flex-col justify-center sm:mb-[100px] mb-[125px] items-center">
+          <motion.div
+            initial={{ opacity: 0.45 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 1, ease: "linear" }}
+            className="  max-w-[90%] mx-auto flex sm:flex-row flex-col justify-center sm:mb-[100px] mb-[125px] items-center">
             <div className=" flex-1 gap-[200px] pt-[180px]">
               <div className=" flex flex-col gap-[24px]">
                 <p className=" text-[14px]  font-[400] py-[10px] px-[24px] border rounded-full w-fit ">
@@ -131,7 +135,7 @@ function Home() {
                 <section className="flex sm:hidden">{bitt}</section>
               </div>
             </div>
-          </div>
+          </motion.div>
           <div className=" flex sm:flex-row flex-col justify-around items-center sm:gap-0 gap-[32px]  max-w-[90%] mx-auto sm:my-[20px] text-[24px] font-[400] text-[#1A1A1A] border border-gray-400 rounded-[10px] sm:py-[22px] py-[20px]">
             <div className=" flex gap-[24px] items-center justify-center">
               <img src={individual} alt="" /> Individuals

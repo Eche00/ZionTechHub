@@ -1,17 +1,15 @@
 import { ArrowForward, Star } from "@mui/icons-material";
 import React from "react";
 import {
-  Reviewimg,
+  certificate1,
+  certificate2,
   cloudhero1,
   cloudhero2,
   cloudhero3,
   cloudhero4,
   cloudhero5,
   cloudhero6,
-  enterprice,
   googlemeet,
-  individual,
-  startups,
 } from "../../assets";
 import Faqs from "../HomeComponents/Faqs";
 import CoursesTestimonial from "./CoursesTestimonial";
@@ -275,7 +273,7 @@ function CloudComputing() {
           </div>
           <div className="flex flex-wrap py-[68px] gap-y-[68px] gap-x-[48px]">
             {ExpectComputing.map((expect) => (
-              <section className=" flex sm:gap-[14px] sm:py-[48px] py-[36px] sm:px-[36px] px-[16px]  items-baseline bg-[#EBECED] rounded-[10px]">
+              <section className=" flex sm:gap-[14px] sm:py-[48px] py-[36px] sm:px-[36px] px-[16px]  items-baseline bg-[#EBECED] rounded-[10px] sm:h-[300px]">
                 <span>{dot}</span>
                 <p className="font-[600] sm:text-[20px] text-[16px] text-[#1A1A1ACC] w-[298px] h-[165px]">
                    {" "}
@@ -348,15 +346,15 @@ function CloudComputing() {
           <div className="flex sm:flex-row flex-col  py-[68px] sm:gap-[94px] gap-[36px]">
             <section className=" w-fit sm:p-[52px]  p-[32px] bg-[#EBECED] rounded-[10px]">
               <img
-                className=" sm:w-[448.09px] sm:h-[315.19px] w-[281px] h-[199px]  object-cover "
-                src={Reviewimg}
+                className=" sm:w-[448.09px] sm:h-[315.19px] w-[281px] h-[199px]  object-cover  rounded-[10px]"
+                src={certificate1}
                 alt=""
               />
             </section>
             <section className=" w-fit  sm:p-[52px]  p-[32px] bg-[#EBECED] rounded-[10px]">
               <img
-                className=" sm:w-[448.09px] sm:h-[315.19px] w-[281px] h-[199px] object-cover "
-                src={Reviewimg}
+                className=" sm:w-[448.09px] sm:h-[315.19px] w-[281px] h-[199px] object-cover  rounded-[10px]"
+                src={certificate2}
                 alt=""
               />
             </section>
