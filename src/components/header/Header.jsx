@@ -6,13 +6,13 @@ import { NavLink } from "react-router-dom";
 function Header() {
   return (
     <header>
-      <div className=" w-full   fixed  z-50 bg-[#F5F5F5]/60  backdrop-blur-sm">
+      <div className=" w-full   fixed  z-50 bg-[#F5F5F5]/60  backdrop-blur-sm ">
         <Topheader />
       </div>
       <NavLink
         to="/dataanalystics"
         className={({ isActive }) => (isActive ? " w-full " : " hidden")}>
-        <div className="pt-20  ">
+        <div className="pt-20  z-0">
           <Navbar />
         </div>
       </NavLink>

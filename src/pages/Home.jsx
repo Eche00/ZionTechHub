@@ -107,7 +107,7 @@ function Home() {
                 <p className=" text-[14px]  font-[400] py-[10px] px-[24px] border rounded-full w-fit ">
                   TRAINING & CONSULTATION
                 </p>
-                <h1 className=" text-[#1A1A1A] font-[700] sm:text-[64px] text-[40px]   sm:w-full w-[340px]">
+                <h1 className=" text-[#1A1A1A] font-[700] sm:text-[64px] text-[40px]   sm:w-full w-[340px] sm:leading-[130%] sm:tracker-[1.28px] leading-[120%] tracker-[0.8px]">
                   Raising World Talents through
                   <span className=" text-[#034FE3]"> Training</span>
                 </h1>

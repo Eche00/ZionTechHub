@@ -2,12 +2,16 @@ import { Phone } from "@mui/icons-material";
 import { div } from "framer-motion/client";
 import React from "react";
 import Contactfaqs from "./Contactuscomponenet/Contactfaqs";
+import { motion } from "framer-motion";
 
 function Contact() {
   return (
     <div>
       <div className=" pt-[130px]    bg-[linear-gradient(to_right,#4f4f4f0e_1px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_1px,transparent_0.1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])]   sm:h-[100vh]   w-full">
-        <div>
+        <motion.div
+          initial={{ opacity: 0.45 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1, ease: "linear" }}>
           <div className=" flex items-center justify-center pt-[150px]">
             <div className=" flex flex-col gap-[24px] items-center">
               <p className=" text-[14px]  font-[400] py-[10px] px-[24px] border rounded-full w-fit ">
@@ -88,7 +92,7 @@ function Contact() {
               </section>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
       <Contactfaqs />
     </div>

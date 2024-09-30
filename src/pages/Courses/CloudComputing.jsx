@@ -15,6 +15,7 @@ import Faqs from "../HomeComponents/Faqs";
 import CoursesTestimonial from "./CoursesTestimonial";
 import ExpectComputing from "../../lib/ExpectComputing";
 import CloudComputingcontent from "./Content/Cloudcomputingcontent";
+import { motion } from "framer-motion";
 
 function CloudComputing() {
   const dot = (
@@ -129,13 +130,17 @@ function CloudComputing() {
     <div className="bg-[#F5F5F5]">
       {" "}
       <div className="     bg-[linear-gradient(to_right,#4f4f4f0e_1px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_1px,transparent_0.1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])]   sm:h-[80vh]   w-full">
-        <div className=" w-[90%] mx-auto flex sm:flex-row flex-col justify-between   py-[70px]">
+        <motion.div
+          initial={{ opacity: 0.45 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1, ease: "linear" }}
+          className=" w-[90%] mx-auto flex sm:flex-row flex-col justify-between   py-[70px]">
           <div className=" flex-1   flex flex-col justify-end">
             <div className=" flex flex-col gap-[24px]">
               <p className=" sm:text-[14px] text-[12px]  font-[400] py-[10px] sm:px-[24px] px-[14px] border rounded-full w-fit ">
                 TRAINING & CONSULTATION
               </p>
-              <h1 className=" text-[#1A1A1A] font-[700] sm:text-[64px] text-[40px] sm:w-full w-[320px] sm:whitespace-nowrap">
+              <h1 className=" text-[#1A1A1A] font-[700] sm:text-[64px] text-[40px] sm:w-full w-[320px] sm:whitespace-nowrap sm:leading-[130%] sm:tracker-[1.28px] leading-[120%] tracker-[0.8px]">
                 Cloud Computing & <br />
                 <span className=" text-[#034FE3]">DevOps</span> Training
               </h1>
@@ -218,7 +223,7 @@ function CloudComputing() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
         {/* course info  */}
         <div className=" flex sm:flex-row flex-col justify-around sm:items-center sm:max-w-[80%]  max-w-[90%] mx-auto  text-[24px] font-[400] text-[#1A1A1A] bg-[#EBECED] rounded-[10px] py-[36px] sm:px-0 px-[40px] sm:gap-0 gap-[24px]">
           <section className=" flex flex-col">

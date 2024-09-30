@@ -4,6 +4,7 @@ import { logo } from "../../assets";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { KeyboardArrowRight } from "@mui/icons-material";
+import { motion } from "framer-motion";
 
 function Navbar() {
   const [course, setCourse] = useState(false);
@@ -40,7 +41,7 @@ function Navbar() {
           </section>
 
           {/*  navigation  & signin/profile  */}
-          <section className=" sm:flex hidden flex-1 items-center justify-between text-[16px] font-[400]   text-gray-500  ">
+          <section className=" sm:flex hidden flex-1 items-center justify-between text-[16px] font-[400]   text-gray-500 ">
             <NavLink
               to="/"
               className={({ isActive }) => (isActive ? "text-[#1A1A1A]" : "")}>
@@ -52,40 +53,38 @@ function Navbar() {
               About
             </NavLink>
             <NavLink
-              className=" group-hover:hidden relative "
+              className=" group group-hover:block relative  "
               onClick={() => setCourse(!course)}>
               Courses <KeyboardArrowDownIcon />
-              {course && (
-                <div className=" text-[16px]  font-[400] text-[#1A1A1A80]  flex flex-col items-start gap-[10px] absolute bg-[#F0F0F0]   rounded-tr-[20px] rounded-br-[20px] rounded-bl-[20px] z-40  group">
-                  <div className="  font-[400] text-[16px]  p-[12px] flex flex-col ">
-                    <Link
-                      to="/dataanalystics"
-                      className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px]">
-                      Data Analystics
-                    </Link>
-                    <Link
-                      to="/datascience"
-                      className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px] ">
-                      Data Science
-                    </Link>
-                    <Link
-                      to="/webdevelopment"
-                      className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px] ">
-                      Web Development
-                    </Link>
-                    <Link
-                      to="/cloudcomputing"
-                      className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px]  whitespace-nowrap">
-                      Cloud Computing & DevOps
-                    </Link>
-                    <Link
-                      to="/machinelearning"
-                      className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px] ">
-                      Machine Learning
-                    </Link>
-                  </div>
+              <div className=" text-[16px]  font-[400] text-[#1A1A1A80]  flex flex-col items-start gap-[10px] absolute bg-[#F0F0F0]   rounded-tr-[20px] rounded-br-[20px] rounded-bl-[20px] z-40  ">
+                <div className="  font-[400] text-[16px]  p-[12px] hidden group-hover:flex flex-col">
+                  <Link
+                    to="/dataanalystics"
+                    className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px]">
+                    Data Analystics
+                  </Link>
+                  <Link
+                    to="/datascience"
+                    className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px] ">
+                    Data Science
+                  </Link>
+                  <Link
+                    to="/webdevelopment"
+                    className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px] ">
+                    Web Development
+                  </Link>
+                  <Link
+                    to="/cloudcomputing"
+                    className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px]  whitespace-nowrap">
+                    Cloud Computing & DevOps
+                  </Link>
+                  <Link
+                    to="/machinelearning"
+                    className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px] ">
+                    Machine Learning
+                  </Link>
                 </div>
-              )}
+              </div>
             </NavLink>
 
             <NavLink
@@ -103,7 +102,7 @@ function Navbar() {
               <Link to="/enroll"> Enroll</Link>
             </button>
           </section>
-          <div className=" sm:hidden flex  gap-[27px] items-center">
+          <div className=" sm:hidden flex  gap-[27px] items-center overflow-hidden z-0">
             <button className=" bg-[#034FE3] text-white font-[500] rounded-[5px] text-[14px] px-[20px] py-[10px]">
               <Link to="/enroll"> Enroll</Link>
             </button>
@@ -113,7 +112,11 @@ function Navbar() {
               &#9776;
             </span>
             {nav && (
-              <div className=" flex sm:hidden flex-col absolute left-0 right-0 top-0 bg-[#FFFFFF]">
+              <motion.div
+                initial={{ y: -200 }}
+                whileInView={{ y: 0 }}
+                transition={{ duration: 1, ease: "linear" }}
+                className=" flex sm:hidden flex-col absolute left-0 right-0 top-0 bg-[#FFFFFF]">
                 <section className=" flex items-center justify-end">
                   <span
                     className=" py-[24px] px-[20px]"
@@ -191,7 +194,7 @@ function Navbar() {
                     Contact
                   </Link>
                 </div>
-              </div>
+              </motion.div>
             )}
           </div>
         </div>

@@ -7,20 +7,25 @@ import Ourapproach from "./ConsultationComponent/Ourapproach";
 import Overview from "./ConsultationComponent/Overview";
 import ServiceOffered from "./ConsultationComponent/ServiceOffered";
 import Industriesserved from "./ConsultationComponent/Industriesserved";
+import { motion } from "framer-motion";
 
 function Consultation() {
   return (
     <div className="bg-[#F5F5F5]">
       <div className=" pt-[130px]    bg-[linear-gradient(to_right,#4f4f4f0e_1px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_1px,transparent_0.1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])]   sm:h-[100vh]   w-full">
-        <div className=" w-[90%] mx-auto flex justify-between   py-[100px] items-center">
+        <motion.div
+          initial={{ opacity: 0.45 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1, ease: "linear" }}
+          className=" w-[90%] mx-auto flex justify-between   py-[100px] items-center">
           <div className=" flex-1   flex flex-col justify-end ">
             <div className=" flex flex-col gap-[24px]">
               <p className=" text-[14px]  font-[400] py-[10px] px-[24px] border rounded-full w-fit ">
                 TRAINING & CONSULTATION
               </p>
-              <h1 className=" text-[#1A1A1A] font-[700] text-[64px] whitespace-nowrap">
+              <h1 className=" text-[#1A1A1A] font-[700] text-[64px] whitespace-nowrap sm:leading-[130%] sm:tracker-[1.28px] leading-[120%] tracker-[0.8px]">
                 Data
-                <span className=" text-[#034FE3]">Consultation</span>
+                <span className=" text-[#034FE3]"> Consultation </span>
               </h1>
               <p className=" text-[#1A1A1A] font-[300] text-[16px]">
                 Discover how our data consultation services can transform your{" "}
@@ -137,7 +142,7 @@ function Consultation() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
       {/* second component */}
 

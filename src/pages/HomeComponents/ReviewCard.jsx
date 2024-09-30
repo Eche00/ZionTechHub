@@ -15,17 +15,6 @@ function ReviewCard({ review }) {
           {review.message}
         </p>
       </div>
-      <div className=" flex w-full items-start">
-        <button className=" sm:px-[62px] px-[42px] py-[6px] text-center sm:text-[14px] text-[12px] font-[500] text-[#1A1A1A] gap-[8px] flex items-center">
-          see review{" "}
-          <span className=" sm:hidden flex">
-            <ArrowForward fontSize="" />
-          </span>
-          <span className=" sm:flex hidden">
-            <ArrowForward />
-          </span>
-        </button>
-      </div>
     </div>
   );
 }
