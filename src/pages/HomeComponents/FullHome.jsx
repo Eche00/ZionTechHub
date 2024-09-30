@@ -42,7 +42,7 @@ function FullHome() {
 
         <NextCohort />
         <div className=" w-full bg-[#F5F5F5]">
-          <div className=" flex flex-col sm:max-w-[88%] max-w-[92%] mx-auto border-l border-gray-300 ">
+          <div className=" flex flex-col sm:max-w-[88%] lg:max-w-[92%] xl:max-w-[100%] mx-auto border-l border-gray-300 ">
             <Consultingsection />
             <Faqs />
           </div>

@@ -159,7 +159,7 @@ function MadeCourses() {
               </p>
             </div>
             <img
-              className=" sm:hidden flex w-[343px] h-[200px] my-2 rounded-[10px] object-cover"
+              className=" sm:hidden flex w-[343px] h-[200px] my-2 rounded-[10px] object-cover "
               src={Registerhome}
               alt=""
             />

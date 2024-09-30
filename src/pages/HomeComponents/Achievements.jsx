@@ -257,7 +257,7 @@ function Achievements() {
           year.
         </p>
       </div>
-      <div className="flex sm:flex-row flex-col gap-[30px] sm:items-center sm:h-fit h-[750px]">
+      <div className="flex sm:flex-row  flex-col gap-[30px] sm:items-center sm:h-fit h-[750px]">
         <section className=" flex-1 flex flex-col items-center justify-center bg-[#D3DDCD66] sm:h-[316px] h-[553px] rounded-[10px] relative">
           <div className=" flex gap-[14px] items-center justify-center">
             {individual}

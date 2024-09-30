@@ -13,7 +13,7 @@ function AboutUs() {
       <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute top-[78px] -left-[1.5px]"></span>
       <div className=" px-[20px] ">
         <p className=" font-[500] text-[24px] text-[#333]">Our Founders</p>
-        <div className=" pt-[43px] flex sm:gap-[36px] gap-[64px] sm:items-center sm:flex-row flex-col">
+        <div className=" pt-[43px] flex sm:gap-[36px] md:flex-row md:gap-[10px] gap-[64px] sm:items-center sm:flex-row flex-col">
           <section className=" flex gap-[14px] ">
             <img
               className=" w-[60px] h-[60px] rounded-full object-cover"
@@ -52,7 +52,7 @@ function AboutUs() {
         </div>
       </div>
 
-      <div className=" flex  justify-between relative py-[180px]  sm:flex-row flex-col">
+      <div className=" flex  justify-between relative py-[180px]  sm:flex-row flex-col md:flex-row">
         <section className=" flex flex-col gap-[24px] px-[20px]">
           <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[199px] top-[185px] -left-[1.5px]"></span>
 

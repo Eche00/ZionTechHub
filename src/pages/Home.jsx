@@ -101,7 +101,7 @@ function Home() {
             initial={{ opacity: 0.45 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1, ease: "linear" }}
-            className="  max-w-[90%] mx-auto flex sm:flex-row flex-col justify-center sm:mb-[100px] mb-[125px] items-center">
+            className="  max-w-[90%] mx-auto flex sm:flex-row md:flex-row flex-col justify-center sm:mb-[100px] mb-[125px] items-center ">
             <div className=" flex-1 gap-[200px] pt-[180px]">
               <div className=" flex flex-col gap-[24px]">
                 <p className=" text-[14px]  font-[400] py-[10px] px-[24px] border rounded-full w-fit ">
@@ -136,8 +136,8 @@ function Home() {
               </div>
             </div>
           </motion.div>
-          <div className=" flex sm:flex-row flex-col justify-around items-center sm:gap-0 gap-[32px]  max-w-[90%] mx-auto sm:my-[20px] text-[24px] font-[400] text-[#1A1A1A] border border-gray-400 rounded-[10px] sm:py-[22px] py-[20px]">
-            <div className=" flex gap-[24px] items-center justify-center">
+          <div className=" flex sm:flex-row flex-col justify-around items-center sm:gap-0 gap-[32px]  max-w-[90%] mx-auto sm:my-[20px] text-[24px] font-[400] text-[#1A1A1A] border border-gray-400 rounded-[10px] sm:py-[22px] py-[20px] md:flex-row">
+            <div className=" flex gap-[24px] items-center justify-center ">
               <img src={individual} alt="" /> Individuals
             </div>
             <div className=" flex gap-[24px] items-center justify-center">

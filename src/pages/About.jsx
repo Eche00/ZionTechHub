@@ -1,12 +1,6 @@
 import { ArrowForward } from "@mui/icons-material";
 import React from "react";
-import {
-  abouthero1,
-  abouthero2,
-  abouthero3,
-  googlemeet,
-  individual,
-} from "../assets";
+import { abouthero1, abouthero2, abouthero3, googlemeet } from "../assets";
 import { div } from "framer-motion/client";
 import AboutUs from "./AboutComponents/AboutUs";
 import Ourmission from "./AboutComponents/Ourmission";
@@ -26,8 +20,8 @@ function About() {
           initial={{ opacity: 0.45 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1, ease: "linear" }}
-          className=" w-[90%] mx-auto flex sm:flex-row flex-col justify-between  sm:gap-0 gap-[50px]">
-          <div className=" flex-1   flex flex-col justify-end sm:pt-0 pt-[80px]">
+          className=" w-[90%] mx-auto flex sm:flex-row flex-col justify-between  sm:gap-0 gap-[50px] md:flex-row">
+          <div className=" flex-1   flex flex-col justify-end sm:pt-0 pt-[80px] ">
             <div className=" flex flex-col gap-[24px]">
               <p className=" sm:text-[14px] text-[12px]  font-[400] py-[10px] sm:px-[24px] px-[14px] border rounded-full w-fit ">
                 SEE YOU AT THE TOP!
@@ -80,32 +74,32 @@ function About() {
       </div>
       <div className=" w-full bg-[#F5F5F5]">
         <div>
-          <div className=" flex flex-col sm:max-w-[88%] max-w-[92%] mx-auto border-l border-gray-300 ">
+          <div className=" flex flex-col sm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%]  mx-auto border-l border-[#034FE31A] ">
             <AboutUs />
             <Ourmission />
           </div>
 
-          <div className=" flex flex-col sm:max-w-[94%] max-w-[96%] ml-auto border-l border-gray-300  ">
+          <div className=" flex flex-col sm:max-w-[94%] md:max-w-[96%] lg:max-w-[96%] xl:max-w-[98%]  ml-auto border-l border-[#034FE31A]  ">
             <Team />
           </div>
-          <div className=" flex flex-col sm:max-w-[88%] max-w-[92%] mx-auto border-l border-gray-300 ">
+          <div className=" flex flex-col sm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%] -w-[92%] mx-auto border-l border-[#034FE31A] ">
             <Foundermessage />
           </div>
 
-          <div className=" flex flex-col sm:max-w-[94%] max-w-[96%] ml-auto border-l border-gray-300 ">
+          <div className=" flex flex-col sm:max-w-[94%] md:max-w-[96%] lg:max-w-[96%] xl:max-w-[98%]  ml-auto border-l border-[#034FE31A] ">
             <Partners />
           </div>
           <div className=" w-full  bg-[#EBECED]">
-            <div className=" sm:max-w-[94%] max-w-[96%] ml-auto border-l border-gray-300 ">
+            <div className=" sm:max-w-[94%] md:max-w-[96%] lg:max-w-[96%] xl:max-w-[98%] ml-auto border-l border-[#034FE31A] ">
               <LinkedlnProfile />
             </div>
           </div>
 
-          <div className=" flex flex-col sm:max-w-[88%] max-w-[92%] mx-auto border-l border-gray-300 ">
+          <div className=" flex flex-col sm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%]  mx-auto border-l border-[#034FE31A] ">
             <ContactUs />
           </div>
 
-          <div className=" flex flex-col sm:max-w-[88%] max-w-[92%] mx-auto border-l border-gray-300  ">
+          <div className=" flex flex-col sm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%] mx-auto border-l border-[#034FE31A]  ">
             <Faqs />
           </div>
         </div>

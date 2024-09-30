@@ -26,10 +26,10 @@ function Foundermessage() {
       </div>
       <div className=" flex flex-col gap-[32px] py-[32px] px-[20px] ">
         <div className="sm:h-fit h-[337px]">
-          <div className=" absolute sm:right-32 sm:top-0 top-[120px] sm:p-[32px] p-[20px]  border border-[#034FE314] rounded-full ">
-            <div className=" sm:p-[37px] p-[20px]  border border-[#034FE314] rounded-full">
-              <div className=" sm:p-[38px] p-[20px]  border border-[#034FE31A] rounded-full">
-                <div className=" sm:p-[39px] p-[20px] border border-[#034FE333] rounded-full">
+          <div className=" absolute sm:right-32 sm:top-0 top-[120px] sm:p-[32px] md:p-[20px] lg:p-[18px] xl:p-[15px]  border border-[#034FE314] rounded-full ">
+            <div className=" sm:p-[37px] md:p-[20px] lg:p-[18px] xl:p-[15px]  border border-[#034FE314] rounded-full">
+              <div className=" sm:p-[38px] md:p-[20px] lg:p-[18px] xl:p-[15px]  border border-[#034FE31A] rounded-full">
+                <div className=" sm:p-[39px] md:p-[20px] lg:p-[18px] xl:p-[15px] border border-[#034FE333] rounded-full">
                   <img
                     className=" sm:w-[284px] sm:h-[284px]  w-[172px] h-[172px] object-cover rounded-full  "
                     src={SirGodsentprofile}
@@ -41,8 +41,8 @@ function Foundermessage() {
           </div>
         </div>
 
-        <div className=" flex flex-col gap-[36px]">
-          <p className=" sm:w-[620px] w-[341px] sm:text-[20px] text-[18px] text-[#1A1A1ACC] font-[300]">
+        <div className=" flex flex-col gap-[36px] md:items-end sm:items-start">
+          <p className=" sm:w-[620px] md:w-[341px] lg:w-[341px] w-[341px] sm:text-[20px] text-[18px] text-[#1A1A1ACC] font-[300]">
             We envision a transformed Africa, empowered by revolutionary
             technological innovations, and recognized as a global hub of
             creativity and progress.
