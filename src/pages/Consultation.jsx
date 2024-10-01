@@ -1,13 +1,13 @@
 import React from "react";
-import { Reviewimg, individual } from "../assets";
+import { Reviewimg, googlemeet, individual } from "../assets";
 import { ArrowForward, Star } from "@mui/icons-material";
-import Faqs from "./HomeComponents/Faqs";
-import CoursesTestimonial from "./Courses/CoursesTestimonial";
 import Ourapproach from "./ConsultationComponent/Ourapproach";
 import Overview from "./ConsultationComponent/Overview";
 import ServiceOffered from "./ConsultationComponent/ServiceOffered";
 import Industriesserved from "./ConsultationComponent/Industriesserved";
 import { motion } from "framer-motion";
+import ContactUsc from "./ConsultationComponent/AboutUsc";
+import Engagement from "./ConsultationComponent/Engagement";
 
 function Consultation() {
   return (
@@ -20,37 +20,36 @@ function Consultation() {
           className=" w-[90%] mx-auto flex justify-between   py-[100px] items-center">
           <div className=" flex-1   flex flex-col justify-end ">
             <div className=" flex flex-col gap-[24px]">
-              <p className=" text-[14px]  font-[400] py-[10px] px-[24px] border rounded-full w-fit ">
+              <p className=" sm:text-[14px] text-[12px]  font-[400] py-[10px] sm:px-[24px] px-[14px] border rounded-full w-fit ">
                 TRAINING & CONSULTATION
               </p>
-              <h1 className=" text-[#1A1A1A] font-[700] text-[64px] whitespace-nowrap sm:leading-[130%] sm:tracker-[1.28px] leading-[120%] tracker-[0.8px]">
+              <h1 className=" text-[#1A1A1A] font-[700] sm:text-[64px] text-[40px] sm:w-full w-[320px] sm:whitespace-nowrap sm:leading-[130%] sm:tracker-[1.28px] leading-[120%] tracker-[0.8px] whitespace-nowrap">
                 Data
                 <span className=" text-[#034FE3]"> Consultation </span>
               </h1>
-              <p className=" text-[#1A1A1A] font-[300] text-[16px]">
+              <p className=" text-[#1A1A1A] font-[300] sm:text-[24px] text-[18px] sm:w-[690px] w-[335px]">
                 Discover how our data consultation services can transform your{" "}
-                <br />
                 business. Explore our offerings and see why so many
-                organizations <br /> trust Zion Tech Hub as their data
-                consultation partner.
+                organizations trust Zion Tech Hub as their data consultation
+                partner.
               </p>
               <p className=" text-[#1A1A1A66] font-[300] text-[20px] flex items-center gap-[12px] ">
                 Live on{" "}
                 <img
-                  className=" w-[193px] h-[35px] object-cover"
-                  src={individual}
+                  className=" sm:w-[193px] sm:h-[35px] w-[159px] h-[29px] object-cover"
+                  src={googlemeet}
                   alt=""
                 />
               </p>
             </div>
-            <div className=" flex gap-[24px] pt-[70px]">
-              <button className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white py-[20px] px-[36px] text-[18px] font-[500]">
+            <div className=" flex gap-[24px] sm:pt-[70px] pt-[36px]">
+              <button className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white sm:py-[20px] sm:px-[36px] py-[12px] px-[24px] sm:text-[18px] text-[16px] font-[500]">
                 Enroll for the next cohort
                 <ArrowForward />
               </button>
             </div>
           </div>
-          <div className=" flex-1 flex pl-[50px] items-center">
+          <div className=" flex-1 sm:flex hidden pl-[50px] items-center">
             <div className=" flex flex-col  gap-[14px]  h-fit items-end justify-center">
               <section className=" w-[180px] h-[180px] rounded-[10px] flex flex-col bg-[#D3DDCD66] px-[16px] justify-center">
                 <h2 className=" text-[56px] text-[#6D9357] font-[700]">10+</h2>
@@ -162,12 +161,13 @@ function Consultation() {
         <div className=" flex flex-col max-w-[88%] mx-auto border-l border-gray-300  pt-[180px]">
           <Ourapproach />
         </div>
-
-        <div className=" flex flex-col max-w-[94%] ml-auto border-l border-gray-300  overflow-x-hidden">
-          <CoursesTestimonial />
+        <div className=" w-full bg-[#F5F5F5]">
+          <div className=" flex flex-col sm:max-w-[94%] md:max-w-[96%] lg:max-w-[96%] xl:max-w-[98%] ml-auto border-l border-gray-300  overflow-x-hidden">
+            <Engagement />
+          </div>
         </div>
-        <div className=" flex flex-col max-w-[88%] mx-auto border-l border-gray-300 ">
-          <Faqs />
+        <div className=" flex flex-col sm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%]  mx-auto border-l border-[#034FE31A] ">
+          <ContactUsc />
         </div>
       </div>
     </div>

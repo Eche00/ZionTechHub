@@ -27,29 +27,31 @@ function Overview() {
   return (
     <div>
       <div className=" pt-[50px]  relative">
-        <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute top-[69px] -left-[1.5px]"></span>
+        <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute md:top-[69px] top-[57px] -left-[1.5px]"></span>
         <div className=" px-2 ">
-          <p className=" font-[600] text-[48px] text-[#333]">Overview</p>
+          <p className=" font-[600] md:text-[48px] text-[32px] text-[#333]">
+            Overview
+          </p>
         </div>
       </div>
-      <div className=" flex gap-[72px] pt-[68px]">
+      <div className=" flex flex-col sm:flex-row sm:gap-[72px] gap-[40px] pt-[68px]">
         <div className=" w-fit relative">
-          <section className="w-[155px] h-[129px] bg-[#034FE31A] rounded-[10px] absolute top-0 right-0"></section>
+          <section className="md:w-[155px] md:h-[129px] w-[98px] h-[81px]  bg-[#034FE31A] rounded-[10px] absolute top-0 right-0"></section>
           <img
-            className="w-[558px] h-[645px] object-cover rounded-[10px]"
+            className="md:w-[558px] md:h-[645px] w-[352px] h-[408px] object-cover rounded-[10px]"
             src={Reviewimg}
             alt=""
           />
           <section className="w-[155px] h-[129px] bg-[#034FE31A] rounded-[10px] absolute bottom-0 left-0"></section>
         </div>
-        <div className=" flex flex-col gap-[64px] items-center justify-center">
+        <div className=" flex flex-col md:gap-[64px] gap-[40px] items-center justify-center">
           <section className=" flex gap-[14px] items-baseline">
             <span>{dot}</span>
             <section className=" flex flex-col gap-[24px]">
-              <h2 className=" text-[32px] font-[600] text-[#034FE3]">
+              <h2 className=" md:text-[32px] text-[20px] font-[600] text-[#034FE3]">
                 In today's data-driven world,
               </h2>
-              <p className=" text-[20px] font-[300] text-[#1A1A1ACC] w-[580px]">
+              <p className=" md:text-[20px] text-[16px] font-[300] text-[#1A1A1ACC] md:w-[580px] w-[316]">
                 making informed decisions requires more than just access to
                 data; it demands insightful analysis and strategic planning. Our
                 data consultation services are designed to help organizations
@@ -62,10 +64,10 @@ function Overview() {
           <section className=" flex gap-[14px] items-baseline">
             <span>{dot}</span>
             <section className=" flex flex-col gap-[24px]">
-              <h2 className=" text-[32px] font-[600] text-[#034FE3]">
+              <h2 className=" md:text-[32px] text-[20px]  font-[600] text-[#034FE3]">
                 At Zion Tech Hub,
               </h2>
-              <p className=" text-[20px] font-[300] text-[#1A1A1ACC] w-[580px]">
+              <p className="md:text-[20px] text-[16px] font-[300] text-[#1A1A1ACC] md:w-[580px] w-[316]">
                 we are committed to empowering businesses with the tools and
                 expertise they need to navigate the complex landscape of data.
                 Our team of seasoned data consultants brings a wealth of
