@@ -102,7 +102,7 @@ function Navbar() {
               <Link to="/enroll"> Enroll</Link>
             </button>
           </section>
-          <div className=" sm:hidden flex  gap-[27px] items-center overflow-hidden z-0">
+          <div className=" sm:hidden flex  gap-[27px] items-center z-0">
             <button className=" bg-[#034FE3] text-white font-[500] rounded-[5px] text-[14px] px-[20px] py-[10px]">
               <Link to="/enroll"> Enroll</Link>
             </button>
