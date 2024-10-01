@@ -70,7 +70,7 @@ function ContactUs() {
   );
   return (
     <div className="pt-[324px] pb-[88px]">
-      <div className=" flex flex-col py-[36px] px-[48px] items-center  gap-[36px] bg-[#034FE3] rounded-[10px] ">
+      <div className=" flex flex-col py-[36px] px-[48px] items-center  gap-[36px] bg-[#034FE3] rounded-[10px] md:mx-0 lg:mx-3 xl:mx-5">
         <div>
           <h1 className=" sm:text-[48px] text-[36px] font-[700] text-[#FFFFFF]">
             Contact Us

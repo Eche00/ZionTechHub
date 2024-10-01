@@ -118,7 +118,7 @@ function Ourmission() {
             src={visionimage}
             alt=""
           />
-          <div className=" flex flex-col sm:gap-[40px] gap-[10px] px-[24px] justify-center">
+          <div className=" flex flex-col sm:gap-[40px] gap-[10px] lg:px-[24px] xl:px-[10px] justify-center">
             <h2 className=" sm:text-[40px] text-[32px] sm:w-full w-[309px] text-[#034FE3] font-[600]">
               At Zion Tech Hub,
             </h2>
