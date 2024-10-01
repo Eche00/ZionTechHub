@@ -112,89 +112,87 @@ function Navbar() {
               &#9776;
             </span>
             {nav && (
-              <motion.div
-                initial={{ y: -200 }}
-                whileInView={{ y: 0 }}
-                transition={{ duration: 1, ease: "linear" }}
-                className=" flex sm:hidden flex-col absolute left-0 right-0 top-0 bg-[#FFFFFF]">
-                <section className=" flex items-center justify-end">
-                  <span
-                    className=" py-[24px] px-[20px]"
-                    onClick={() => setNav(false)}>
-                    {exit}
-                  </span>
-                </section>
-
-                <div className=" flex flex-col">
-                  <Link
-                    to="/"
-                    onClick={() => setNav(false)}
-                    className=" py-[15px] px-[20px] text-[14px] text-[#1A1A1A] border-b border-[#C3C3C3]">
-                    Home
-                  </Link>
-                  <Link
-                    to="/about"
-                    onClick={() => setNav(false)}
-                    className=" py-[15px] px-[20px] text-[14px] text-[#1A1A1A] border-b border-[#C3C3C3]">
-                    About Us
-                  </Link>
-                  <p className=" py-[15px] px-[20px] text-[14px] text-[#1A1A1A] flex items-center justify-between border-b border-[#C3C3C3] relative">
-                    Courses
-                    <span onClick={() => setCourse(!course)}>
-                      {course ? (
-                        <KeyboardArrowUpIcon />
-                      ) : (
-                        <KeyboardArrowDownIcon />
-                      )}
+              <div className="bg-black/50 absolute top-0 left-0 right-0 bottom-0 z-10 h-screen">
+                <div className=" flex sm:hidden flex-col absolute left-0 right-0 top-0 bg-[#FFFFFF] duration-300 z-50">
+                  <section className=" flex items-center justify-end">
+                    <span
+                      className=" py-[24px] px-[20px]"
+                      onClick={() => setNav(false)}>
+                      {exit}
                     </span>
-                    {course && (
-                      <div className="    flex flex-col  absolute top-[100%] left-0 right-0 bg-[#F6F6F6]  ">
-                        <div
-                          className=" text-[#1A1A1A]  flex flex-col "
-                          onClick={() => setNav(false)}>
-                          <Link
-                            to="/dataanalystics"
-                            className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">
-                            Data Analystics <KeyboardArrowRight />
-                          </Link>
-                          <Link
-                            to="/datascience"
-                            className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">
-                            Data Science <KeyboardArrowRight />
-                          </Link>
-                          <Link
-                            to="/webdevelopment"
-                            className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">
-                            Web Development <KeyboardArrowRight />
-                          </Link>
-                          <Link
-                            to="/cloudcomputing"
-                            className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">
-                            Cloud Computing & DevOps <KeyboardArrowRight />
-                          </Link>
-                          <Link
-                            to="/machinelearning"
-                            className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">
-                            Machine Learning <KeyboardArrowRight />
-                          </Link>
+                  </section>
+
+                  <div className=" flex flex-col">
+                    <Link
+                      to="/"
+                      onClick={() => setNav(false)}
+                      className=" py-[15px] px-[20px] text-[14px] text-[#1A1A1A] border-b border-[#C3C3C3]">
+                      Home
+                    </Link>
+                    <Link
+                      to="/about"
+                      onClick={() => setNav(false)}
+                      className=" py-[15px] px-[20px] text-[14px] text-[#1A1A1A] border-b border-[#C3C3C3]">
+                      About Us
+                    </Link>
+                    <p className=" py-[15px] px-[20px] text-[14px] text-[#1A1A1A] flex items-center justify-between border-b border-[#C3C3C3] relative">
+                      Courses
+                      <span onClick={() => setCourse(!course)}>
+                        {course ? (
+                          <KeyboardArrowUpIcon />
+                        ) : (
+                          <KeyboardArrowDownIcon />
+                        )}
+                      </span>
+                      {course && (
+                        <div className="    flex flex-col  absolute top-[100%] left-0 right-0 bg-[#F6F6F6]  ">
+                          <div
+                            className=" text-[#1A1A1A]  flex flex-col "
+                            onClick={() => setNav(false)}>
+                            <Link
+                              to="/dataanalystics"
+                              className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">
+                              Data Analystics <KeyboardArrowRight />
+                            </Link>
+                            <Link
+                              to="/datascience"
+                              className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">
+                              Data Science <KeyboardArrowRight />
+                            </Link>
+                            <Link
+                              to="/webdevelopment"
+                              className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">
+                              Web Development <KeyboardArrowRight />
+                            </Link>
+                            <Link
+                              to="/cloudcomputing"
+                              className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">
+                              Cloud Computing & DevOps <KeyboardArrowRight />
+                            </Link>
+                            <Link
+                              to="/machinelearning"
+                              className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">
+                              Machine Learning <KeyboardArrowRight />
+                            </Link>
+                          </div>
                         </div>
-                      </div>
-                    )}
-                  </p>
-                  <Link
-                    to="/consult"
-                    onClick={() => setNav(false)}
-                    className=" py-[15px] px-[20px] text-[14px] text-[#1A1A1A] border-b border-[#C3C3C3]">
-                    Consultation
-                  </Link>
-                  <Link
-                    to="/contact"
-                    onClick={() => setNav(false)}
-                    className=" py-[15px] px-[20px] text-[14px] text-[#1A1A1A] border-b border-[#C3C3C3]">
-                    Contact
-                  </Link>
+                      )}
+                    </p>
+                    <Link
+                      to="/consult"
+                      onClick={() => setNav(false)}
+                      className=" py-[15px] px-[20px] text-[14px] text-[#1A1A1A] border-b border-[#C3C3C3]">
+                      Consultation
+                    </Link>
+                    <Link
+                      to="/contact"
+                      onClick={() => setNav(false)}
+                      className=" py-[15px] px-[20px] text-[14px] text-[#1A1A1A] border-b border-[#C3C3C3]">
+                      Contact
+                    </Link>
+                  </div>
                 </div>
-              </motion.div>
+              </div>
             )}
           </div>
         </div>

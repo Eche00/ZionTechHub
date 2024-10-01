@@ -46,7 +46,7 @@ function Ourmission() {
           <span className=" text-[#034FE3]">vision</span>
         </p>
 
-        <div className=" mt-[43px]   flex items-center justify-between bg-[#E9E9E9] rounded-full sm:w-[398px] w-[337px]  p-[4px]">
+        <div className=" mt-[43px]   flex items-center justify-between bg-[#E9E9E9] rounded-full sm:w-[398px] md:w-[337px] lg:w-[337px] xl:w-[310px]  p-[4px]">
           <button
             onClick={Mission}
             className={
@@ -70,11 +70,11 @@ function Ourmission() {
       {!vision ? (
         <div className="  w-fit mt-[68px] mb-[180px] flex  sm:flex-row flex-col gap-[32px] bg-[#EBECED] rounded-r-[10px]">
           <img
-            className=" sm:w-[486px] w-[357px] sm:h-[648px] h-[191px] rounded-l-[10px] object-cover sm:rounded-tr-none rounded-tr-[10px]"
+            className=" sm:w-[486px] md:w-[357px] lg:w-[357px] xl:w-[340px] sm:h-[648px] h-[191px] rounded-l-[10px] object-cover sm:rounded-tr-none rounded-tr-[10px]"
             src={missionimage}
             alt=""
           />
-          <div className=" flex flex-col sm:gap-[40px] gap-[10px] px-[24px]  justify-center">
+          <div className=" flex flex-col sm:gap-[40px] gap-[10px] lg:px-[24px] xl:px-[10px]  justify-center">
             <h2 className=" sm:text-[40px] text-[32px] sm:w-full w-[309px] text-[#034FE3] font-[600]">
               We are on a mission to:
             </h2>
@@ -114,7 +114,7 @@ function Ourmission() {
       ) : (
         <div className="  w-fit mt-[68px] mb-[180px] flex  sm:flex-row flex-col gap-[32px] bg-[#EBECED] rounded-r-[10px]">
           <img
-            className=" sm:w-[486px] w-[357px] sm:h-[648px] h-[191px] rounded-l-[10px] object-cover sm:rounded-tr-none rounded-tr-[10px]"
+            className=" sm:w-[486px] md:w-[357px] lg:w-[357px] xl:w-[340px] sm:h-[648px] h-[191px] rounded-l-[10px] object-cover sm:rounded-tr-none rounded-tr-[10px]"
             src={visionimage}
             alt=""
           />
