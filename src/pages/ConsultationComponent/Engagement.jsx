@@ -40,16 +40,16 @@ function Engagement() {
       <div className=" overflow-x-scroll ">
         <div className=" relative flex w-[3600px]  overflow-scroll  pr-[10px]">
           {EngagementM.map((engagement) => (
-            <div className="flex py-[78px] px-[52px] border-y border-r border-[#034FE3] bg-[#EBECED]">
-              <div className="flex flex-col gap-[48px]">
+            <div className="flex md:py-[78px] md:px-[52px] py-[60px] px-[40px] border-y border-r border-[#034FE3] bg-[#EBECED]">
+              <div className="flex flex-col md:gap-[48px] gap-[37px]">
                 <span className="p-[10px] bg-[#F0F0F0] border  rounded-[5px] w-fit">
                   {company}
                 </span>
                 <section className="flex flex-col gap-[10px]">
-                  <h3 className=" text-[24px] text-[#034FE3] font-[600]">
+                  <h3 className=" md:text-[24px] text-[18px] text-[#034FE3] font-[600]">
                     {engagement.headmsg}
                   </h3>
-                  <p className=" text-[20px]  font-[400] w-[293px]">
+                  <p className=" md:text-[20px] text-[15px]  font-[400] md:w-[293px] w-[230px]">
                     {engagement.message}
                   </p>
                 </section>

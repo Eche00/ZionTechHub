@@ -42,7 +42,7 @@ function Overview() {
             src={Reviewimg}
             alt=""
           />
-          <section className="w-[155px] h-[129px] bg-[#034FE31A] rounded-[10px] absolute bottom-0 left-0"></section>
+          <section className="md:w-[155px] md:h-[129px] w-[98px] h-[81px] bg-[#034FE31A] rounded-[10px] absolute bottom-0 left-0"></section>
         </div>
         <div className=" flex flex-col md:gap-[64px] gap-[40px] items-center justify-center">
           <section className=" flex gap-[14px] items-baseline">

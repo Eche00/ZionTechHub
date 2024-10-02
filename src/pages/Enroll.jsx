@@ -32,7 +32,7 @@ function Enroll() {
         </section>
       </div>
 
-      <div className=" flex items-center justify-center  h-[100vh]">
+      <div className=" flex md:items-center justify-center  md:h-[100vh] h-[120vh]">
         <div className=" flex flex-col items-center gap-[24px]">
           <div className=" w-fit border-[3px] border-[#FFFFFF] rounded-full">
             <img
