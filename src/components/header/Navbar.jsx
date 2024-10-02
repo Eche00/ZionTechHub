@@ -4,7 +4,6 @@ import { logo } from "../../assets";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { KeyboardArrowRight } from "@mui/icons-material";
-import { motion } from "framer-motion";
 
 function Navbar() {
   const [course, setCourse] = useState(false);
@@ -25,6 +24,10 @@ function Navbar() {
       />
     </svg>
   );
+  const handleClose = () => {
+    setNav(false);
+    setCourse(false);
+  };
   return (
     <div>
       <div className="relative ">
@@ -144,11 +147,12 @@ function Navbar() {
                           <KeyboardArrowDownIcon />
                         )}
                       </span>
+                      {/* opened course content in mobile view  */}
                       {course && (
-                        <div className="    flex flex-col  absolute top-[100%] left-0 right-0 bg-[#F6F6F6]  ">
-                          <div
-                            className=" text-[#1A1A1A]  flex flex-col "
-                            onClick={() => setNav(false)}>
+                        <div
+                          className="    flex flex-col  absolute top-[100%] left-0 right-0 bg-[#F6F6F6]  "
+                          onClick={handleClose}>
+                          <div className=" text-[#1A1A1A]  flex flex-col ">
                             <Link
                               to="/dataanalystics"
                               className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">

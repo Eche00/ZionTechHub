@@ -125,7 +125,7 @@ function CloudComputingcontent() {
           {/* first month  */}
           <div>
             <div
-              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   sm:w-full"
+              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   md:w-full"
               onClick={firstM}>
               {" "}
               {firstmonth ? (
@@ -133,44 +133,44 @@ function CloudComputingcontent() {
               ) : (
                 <KeyboardArrowDownIcon fontSize="large" />
               )}
-              <p className=" sm:text-[20px] text-[18px] sm:w-full w-[287px] font-[600] text-[#1A1A1A]">
+              <p className=" sm:text-[20px] text-[18px] md:w-full w-[287px] font-[600] text-[#1A1A1A]">
                 Month 1: Introduction to Cloud Computing
               </p>
             </div>
             {firstmonth && (
               <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span>Introduction to cloud computing concepts
                 </p>
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Understanding cloud service models: IaaS,
                   PaaS, SaaS
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Cloud deployment models: Public, private,
                   hybrid, and multi-cloud
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Overview of major cloud providers: AWS,
                   Azure, Google Cloud
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Setting up cloud accounts and understanding
                   billing and cost management
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Introduction to virtualization and
                   hypervisors
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Creating and managing virtual machines
                   (VMs) in the cloud
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Basics of cloud networking: VPC, subnets,
                   security groups
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Configuring and managing cloud networks
                 </p>{" "}
               </section>
@@ -179,49 +179,49 @@ function CloudComputingcontent() {
           {/* second month  */}
           <div>
             <div
-              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   sm:w-full"
+              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   md:w-full"
               onClick={secondM}>
               {secondmonth ? (
                 <KeyboardArrowUpIcon fontSize="large" />
               ) : (
                 <KeyboardArrowDownIcon fontSize="large" />
               )}
-              <p className=" sm:text-[20px] text-[18px] sm:w-full w-[287px] font-[600] text-[#1A1A1A]">
+              <p className=" sm:text-[20px] text-[18px] md:w-full w-[287px] font-[600] text-[#1A1A1A]">
                 Month 2: Infrastructure as Code (IaC)
               </p>
             </div>{" "}
             {secondmonth && (
               <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span>Understanding Infrastructure as Code
                   principles
                 </p>
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Overview of IaC tools: Terraform, AWS
                   CloudFormation, Ansible
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Setting up Terraform environment
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Writing Terraform scripts to provision
                   cloud infrastructure
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span>Managing infrastructure with Terraform state
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Modularizing Terraform configurations
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Using AWS CloudFormation to automate AWS
                   resource management
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Introduction to Ansible for configuration
                   management
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Writing Ansible playbooks to automate
                   server configuration
                 </p>{" "}
@@ -231,51 +231,51 @@ function CloudComputingcontent() {
           {/* third month  */}
           <div>
             <div
-              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   sm:w-full"
+              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   md:w-full"
               onClick={thirdM}>
               {thirdmonth ? (
                 <KeyboardArrowUpIcon fontSize="large" />
               ) : (
                 <KeyboardArrowDownIcon fontSize="large" />
               )}
-              <p className=" sm:text-[20px] text-[18px] sm:w-full w-[287px] font-[600] text-[#1A1A1A]">
+              <p className=" sm:text-[20px] text-[18px] md:w-full w-[287px] font-[600] text-[#1A1A1A]">
                 Month 3: Continuous Integration/Continuous Deployment (CI/CD)
               </p>
             </div>
             {thirdmonth && (
               <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span>Introduction to Continuous Integration and
                   Continuous Deployment
                 </p>
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Benefits of CI/CD in DevOps
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Overview of CI/CD tools: Jenkins, GitLab
                   CI, CircleCI
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Setting up Jenkins for CI/CD
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span>Creating and managing Jenkins pipelines
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Integrating Jenkins with version control
                   systems (Git)
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Setting up CI/CD pipelines in GitLab
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Integrating Docker with CI/CD pipelines for
                   containerized deployments
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Automated testing in CI/CD pipelines
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Deploying applications to cloud
                   environments using CI/CD
                 </p>{" "}
@@ -285,57 +285,57 @@ function CloudComputingcontent() {
           {/* fourth month  */}
           <div>
             <div
-              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   sm:w-full"
+              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   md:w-full"
               onClick={fourthM}>
               {fourthmonth ? (
                 <KeyboardArrowUpIcon fontSize="large" />
               ) : (
                 <KeyboardArrowDownIcon fontSize="large" />
               )}
-              <p className=" sm:text-[20px] text-[18px] sm:w-full w-[287px] font-[600] text-[#1A1A1A]">
+              <p className=" sm:text-[20px] text-[18px] md:w-full w-[287px] font-[600] text-[#1A1A1A]">
                 Month 4: Containerization and Orchestration
               </p>
             </div>
             {fourthmonth && (
               <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span>Understanding containerization concepts
                 </p>
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Installing and using Docker for container
                   management
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Building and managing Docker images and
                   containers
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Orchestrating multi-container applications
                   with Docker Compose
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span>Managing container clusters with Docker
                   Swarm
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Understanding Kubernetes architecture and
                   components
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Setting up a Kubernetes cluster (Minikube,
                   EKS, GKE)
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Deploying applications to Kubernetes
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Managing Kubernetes deployments, services,
                   and pods
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Kubernetes networking and storage
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Monitoring and scaling Kubernetes clusters
                 </p>{" "}
               </section>
@@ -344,50 +344,50 @@ function CloudComputingcontent() {
           {/* fifth month  */}
           <div>
             <div
-              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   sm:w-full"
+              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   md:w-full"
               onClick={fifthM}>
               {fifthmonth ? (
                 <KeyboardArrowUpIcon fontSize="large" />
               ) : (
                 <KeyboardArrowDownIcon fontSize="large" />
               )}
-              <p className=" sm:text-[20px] text-[18px] sm:w-full w-[287px] font-[600] text-[#1A1A1A]">
+              <p className=" sm:text-[20px] text-[18px] md:w-full w-[287px] font-[600] text-[#1A1A1A]">
                 Month 5: Monitoring, Logging, and Security
               </p>
             </div>
             {fifthmonth && (
               <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span>Introduction to cloud monitoring tools:
                   Prometheus, CloudWatch, Grafana
                 </p>
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Setting up monitoring dashboards and alerts
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Introduction to log management tools: ELK
                   Stack (Elasticsearch, Logstash, Kibana)
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Collecting and analyzing logs for cloud
                   applications
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span>Identity and Access Management (IAM) in the
                   cloud
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Securing cloud resources with encryption,
                   firewalls, and security groups
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Compliance and governance in the cloud
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Planning and implementing disaster recovery
                   strategies
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Automating incident response and recovery
                   processes
                 </p>{" "}
@@ -397,61 +397,61 @@ function CloudComputingcontent() {
           {/* sixth month  */}
           <div>
             <div
-              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   sm:w-full"
+              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   md:w-full"
               onClick={sixthM}>
               {sixthmonth ? (
                 <KeyboardArrowUpIcon fontSize="large" />
               ) : (
                 <KeyboardArrowDownIcon fontSize="large" />
               )}
-              <p className=" sm:text-[20px] text-[18px] sm:w-full w-[287px] font-[600] text-[#1A1A1A]">
+              <p className=" sm:text-[20px] text-[18px] md:w-full w-[287px] font-[600] text-[#1A1A1A]">
                 Month 6: Capstone Project and Advanced Topics
               </p>
             </div>
             {sixthmonth && (
               <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span>Choosing a cloud computing or DevOps project
                 </p>
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Defining project objectives and
                   requirements
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Designing the project architecture
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Implementing Infrastructure as Code (IaC)
                   for the project
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span>Setting up CI/CD pipelines and container
                   orchestration
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Applying monitoring, logging, and security
                   measures
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Conducting thorough testing of the project
                   components
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Optimizing cloud resources for performance
                   and cost-efficiency
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Finalizing project documentation
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Presenting the capstone project to peers
                   and mentors
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Receiving feedback and making final
                   adjustments
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  sm:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                   <span>{dot}</span> Preparing for real-world application and
                   deployment
                 </p>{" "}

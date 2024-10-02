@@ -104,7 +104,7 @@ function Foot() {
             </a>
           </section>
         </div>
-        <div className=" sm:text-[220px] text-[80px] whitespace-nowrap font-[900] text-[#C3C3C333] p-0 m-0">
+        <div className=" sm:text-[220px] md:text-[120px] text-[80px] whitespace-nowrap font-[900] text-[#C3C3C333] p-0 m-0">
           ZION TECH HUB
         </div>
       </div>

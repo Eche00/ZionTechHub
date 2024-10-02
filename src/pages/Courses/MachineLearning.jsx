@@ -135,8 +135,8 @@ function MachineLearning() {
           initial={{ opacity: 0.45 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1, ease: "linear" }}
-          className=" w-[90%] mx-auto flex justify-between   py-[70px] sm:flex-row flex-col">
-          <div className=" flex-1   flex flex-col justify-end">
+          className=" w-[90%] mx-auto flex justify-between   py-[70px] md:flex-row flex-col">
+          <div className=" flex-1   flex flex-col justify-end  ">
             <div className=" flex flex-col gap-[24px]">
               <p className=" sm:text-[14px] text-[12px]  font-[400] py-[10px] sm:px-[24px] px-[14px] border rounded-full w-fit ">
                 TRAINING & CONSULTATION
@@ -271,16 +271,16 @@ function MachineLearning() {
       {/* component 2 */}
       <div className="">
         {/* what to expect section */}
-        <div className=" pt-[180px]  sm:max-w-[80%] max-w-[92%] mx-auto border-l border-gray-200 relative">
+        <div className=" pt-[180px]  ssm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%] mx-auto border-l border-gray-200 relative">
           <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[199px] top-[185px] -left-[1.5px]"></span>
           <div className=" px-[20px] ">
             <p className=" font-[600] sm:text-[48px] text-[32px] text-[#333]">
               <span className=" text-[#034FE3]">What </span>to expect
             </p>
           </div>
-          <div className="flex flex-wrap py-[68px] gap-y-[68px] gap-x-[48px]">
+          <div className="flex flex-wrap py-[68px] sm:gap-y-[68px] sm:gap-x-[48px] gap-y-[24px] lg:gap-x-[5px] ">
             {ExpectMachine.map((expect) => (
-              <section className=" flex sm:gap-[14px] sm:py-[48px] py-[36px] sm:px-[36px] px-[16px]  items-baseline bg-[#EBECED] rounded-[10px]">
+              <section className=" flex sm:gap-[14px] sm:py-[48px] py-[36px] sm:px-[36px] lg:px-[16px] px-[10px]  items-baseline bg-[#EBECED] rounded-[10px]">
                 <span>{dot}</span>
                 <p className="font-[600] sm:text-[20px] text-[16px] text-[#1A1A1ACC] w-[298px] h-[165px]">
                    {" "}
@@ -294,7 +294,7 @@ function MachineLearning() {
           </div>
         </div>
         {/* skills to gain section */}
-        <div className=" py-[160px]  sm:max-w-[80%] max-w-[92%] mx-auto border-l border-gray-200 relative">
+        <div className=" py-[160px]  ssm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%] mx-auto border-l border-gray-200 relative">
           <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[179px] top-[165px] -left-[1.5px]"></span>
           <div className=" px-[20px] ">
             <p className=" font-[600] sm:text-[48px] text-[32px] text-[#333]">
@@ -305,7 +305,7 @@ function MachineLearning() {
               tech hub.
             </p>
           </div>
-          <div className="flex sm:flex-row sm:flex-wrap flex-col py-[68px] gap-[32px] w-[1292px] sm:px-[20px] px-[10px]">
+          <div className="flex md:flex-row md:flex-wrap flex-col py-[68px] gap-[32px] sm:w-[1292px] sm:px-[20px] px-[10px]">
             <p className="px-[32px] py-[10px]  text-[18px] font-[600] text-[#1A1A1ACC] bg-[#EBECED]  w-fit rounded-[10px]">
               Machine Learning Algorithms
             </p>{" "}
@@ -342,7 +342,7 @@ function MachineLearning() {
           </div>
         </div>
         {/* details to know section */}
-        <div className=" sm:pb-[180px] pb-[100px]  sm:max-w-[80%] max-w-[92%] mx-auto border-l border-gray-200 relative">
+        <div className=" sm:pb-[180px] pb-[100px]  ssm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%] mx-auto border-l border-gray-200 relative">
           <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[19px] top-[6px] -left-[1.5px]"></span>
           <div className=" px-[20px] ">
             <p className=" font-[600] sm:text-[48px] text-[32px] text-[#333]">
@@ -354,14 +354,14 @@ function MachineLearning() {
             </p>
           </div>
           <div className="flex sm:flex-row flex-col  py-[68px] sm:gap-[94px] gap-[36px]">
-            <section className=" w-fit sm:p-[52px]  p-[32px] bg-[#EBECED] rounded-[10px]">
+            <section className=" w-fit md:p-[52px]  lg:p-[32px] p-[25px] bg-[#EBECED] rounded-[10px]">
               <img
                 className=" sm:w-[448.09px] sm:h-[315.19px] w-[281px] h-[199px]  object-cover  rounded-[10px]"
                 src={certificate1}
                 alt=""
               />
             </section>
-            <section className=" w-fit  sm:p-[52px]  p-[32px] bg-[#EBECED] rounded-[10px]">
+            <section className=" w-fit  md:p-[52px]  lg:p-[32px] p-[25px] bg-[#EBECED] rounded-[10px]">
               <img
                 className=" sm:w-[448.09px] sm:h-[315.19px] w-[281px] h-[199px] object-cover  rounded-[10px]"
                 src={certificate2}
@@ -371,14 +371,14 @@ function MachineLearning() {
           </div>
         </div>
         {/* course content */}
-        <div className=" flex flex-col  sm:max-w-[80%] max-w-[92%] mx-auto border-l border-gray-300 ">
+        <div className=" flex flex-col  ssm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%] mx-auto border-l border-gray-300 ">
           <MachineLearningcontent />
         </div>
 
-        <div className=" flex flex-col sm:max-w-[90%] max-w-[96%]  ml-auto border-l border-gray-300  overflow-x-hidden">
+        <div className=" flex flex-col sm:max-w-[94%] md:max-w-[96%] lg:max-w-[96%] xl:max-w-[98%]  ml-auto border-l border-gray-300  overflow-x-hidden">
           <CoursesTestimonial />
         </div>
-        <div className=" flex flex-col  sm:max-w-[80%] max-w-[92%] mx-auto border-l border-gray-300 ">
+        <div className=" flex flex-col  ssm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%] mx-auto border-l border-gray-300 ">
           <Faqs />
         </div>
       </div>

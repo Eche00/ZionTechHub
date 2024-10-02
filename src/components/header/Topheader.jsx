@@ -15,7 +15,7 @@ function Topheader() {
         className={({ isActive }) =>
           isActive ? " flex w-full   justify-center flex-col" : " hidden"
         }>
-        <p className=" sm:text-[18px] text-[14px] text-[#FFFFFF] font-[300]   p-[16px] bg-[#1A1A1A] w-full  text-center">
+        <p className=" md:text-[18px] lg:text-[14px] text-[12px] text-[#FFFFFF] font-[300]   p-[16px] bg-[#1A1A1A] w-full  text-center">
           We're offering Data Consultation Services. Book now to get updated
           with your business.{" "}
           <span className=" font-[600] underline  px-5">Book Now</span>
@@ -30,7 +30,7 @@ function Topheader() {
         className={({ isActive }) =>
           isActive ? " flex w-full  justify-center flex-col" : " hidden"
         }>
-        <p className=" sm:text-[18px] text-[14px] text-[#FFFFFF] font-[300]   p-[16px] bg-[#1A1A1A] w-full  text-center">
+        <p className=" md:text-[18px] lg:text-[14px] text-[12px] text-[#FFFFFF] font-[300]   p-[16px] bg-[#1A1A1A] w-full  text-center">
           We're offering Data Consultation Services. Book now to get updated
           with your business.{" "}
           <span className=" font-[600] underline  px-5">Book Now</span>
@@ -47,7 +47,7 @@ function Topheader() {
         <div className=" w-[90%] mx-auto flex items-center justify-between sm:py-[8px]  py-[16px]">
           <section className=" flex-1 ">
             <article className=" flex items-center sm:gap-[5px] ">
-              <h2 className=" sm:text-[18px] text-[12px] font-[600] text-white">
+              <h2 className=" md:text-[18px] lg:text-[12px] text-[10px] font-[600] text-white">
                 Complete Data Analytics Course:
               </h2>
               <p className=" sm:text-[16px] text-[12px] font-[600] text-white">
@@ -231,7 +231,7 @@ function Topheader() {
         <div className=" w-[95%] sm:w-[90%] mx-auto flex items-center justify-between sm:py-[8px]  py-[16px]">
           <section className=" flex-1 ">
             <article className=" flex items-center sm:gap-[5px]  whitespace-nowrap">
-              <h2 className=" sm:text-[18px] text-[12px] font-[600] text-white">
+              <h2 className=" md:text-[18px] lg:text-[12px] text-[11.5px] font-[600] text-white">
                 Complete Web Development Course:
               </h2>
               <p className=" sm:text-[16px] text-[12px] font-[600] text-white">
@@ -504,7 +504,7 @@ function Topheader() {
         className={({ isActive }) =>
           isActive ? " flex w-full  justify-center flex-col" : " hidden"
         }>
-        <p className=" sm:text-[18px] text-[14px] text-[#FFFFFF] font-[300]   p-[16px] bg-[#1A1A1A] w-full  text-center">
+        <p className=" md:text-[18px] lg:text-[14px] text-[12px] text-[#FFFFFF] font-[300]   p-[16px] bg-[#1A1A1A] w-full  text-center">
           We're offering Data Consultation Services. Book now to get updated
           with your business.{" "}
           <span className=" font-[600] underline  px-5">Book Now</span>
@@ -518,7 +518,7 @@ function Topheader() {
         className={({ isActive }) =>
           isActive ? " flex w-full  justify-center flex-col" : " hidden"
         }>
-        <p className=" sm:text-[18px] text-[14px] text-[#FFFFFF] font-[300]   p-[16px] bg-[#1A1A1A] w-full  text-center">
+        <p className=" md:text-[18px] lg:text-[14px] text-[12px] text-[#FFFFFF] font-[300]   p-[16px] bg-[#1A1A1A] w-full  text-center">
           We're offering Data Consultation Services. Book now to get updated
           with your business.{" "}
           <span className=" font-[600] underline  px-5">Book Now</span>

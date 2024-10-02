@@ -16,8 +16,8 @@ function Faqs() {
         </p>
       </div>
 
-      <div className=" my-[69px] flex flex-wrap gap-[69px] max-w-[1265px] text-[#1A1A1A]">
-        <section className="   sm:py-[40] sm:px-[40px] py-[40px] px-[20px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px] ">
+      <div className=" my-[69px] flex flex-wrap sm:gap-[69px] md:gap-[30px] gap-[69px] max-w-[1265px] text-[#1A1A1A]">
+        <section className="   sm:py-[40] sm:px-[40px] py-[40px] lg:px-[20px] px-[15px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px] ">
           <span className="w-[45px] h-[45px]  bg-white flex items-center justify-center p-[10px] rounded-[5px] border border-gray-400">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +39,7 @@ function Faqs() {
             only in Port Harcourt and Anambra state{" "}
           </p>
         </section>
-        <section className="sm:py-[40] sm:px-[40px] py-[40px] px-[20px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px] ">
+        <section className="sm:py-[40] sm:px-[40px] py-[40px] lg:px-[20px] px-[15px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px] ">
           <span className="w-[45px] h-[45px]  bg-white flex items-center justify-center p-[10px] rounded-[5px] border border-gray-400">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +67,7 @@ function Faqs() {
             program. Weekend and weekdays sessions are available{" "}
           </p>
         </section>
-        <section className=" sm:py-[40] sm:px-[40px] py-[40px] px-[20px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px] ">
+        <section className=" sm:py-[40] sm:px-[40px] py-[40px] lg:px-[20px] px-[15px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px] ">
           <span className="w-[45px] h-[45px]  bg-white flex items-center justify-center p-[10px] rounded-[5px] border border-gray-400">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +93,7 @@ function Faqs() {
             recognition in Europe and Africa
           </p>
         </section>
-        <section className=" sm:py-[40] sm:px-[40px] py-[40px] px-[20px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px] ">
+        <section className=" sm:py-[40] sm:px-[40px] py-[40px] lg:px-[20px] px-[15px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px] ">
           <span className="w-[45px] h-[45px]  bg-white flex items-center justify-center p-[10px] rounded-[5px] border border-gray-400">
             <svg
               xmlns="http://www.w3.org/2000/svg"

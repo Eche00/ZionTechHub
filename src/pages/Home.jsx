@@ -87,7 +87,7 @@ function Home() {
   );
   return (
     <div className=" w-full h-fit overflow-hidden relative pt-[130px] z-30">
-      <div className=" sm:h-[100vh] h-[1300px]">
+      <div className=" md:h-[100vh] h-[1300px]">
         <motion.div
           className=" absolute top-[130px] z-30 flex  gap-[24px]   "
           ref={ref}
