@@ -3,18 +3,23 @@ import React from "react";
 
 function Contactfaqs() {
   return (
-    <div className=" flex flex-col items-center justify-center py-[150px]">
-      <div className=" px-2 ">
-        <p className=" font-[600] text-[48px] text-[#333] text-center">
-          Frequently Asked Questions
+    <div className=" flex flex-col md:items-center justify-center py-[150px] md:max-w-full max-w-[95%] mx-auto md:border-none border-l border-[#EBECED] relative">
+      <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute top-[157px] -left-[1.5px] flex md:hidden"></span>
+      <div className=" md:px-0 px-[20px] ">
+        <p className=" font-[600] md:text-[48px] text-[36px] md:w-full w-[260px] text-[#333] md:text-center">
+          <span className=" md:text-[#1A1A1A] text-[#034FE3]">
+            {" "}
+            Frequently Asked{" "}
+          </span>{" "}
+          Questions
         </p>
-        <p className=" text-[18px] font-[300] text-[#1A1A1A66] text-center">
+        <p className=" text-[18px] font-[300] text-[#1A1A1A66] md:text-center">
           Have any questions? Check them here
         </p>
       </div>
 
-      <div className=" my-[69px] flex flex-wrap gap-[69px] max-w-[90%] justify-center text-[#1A1A1A]">
-        <section className=" p-[40px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px]">
+      <div className=" my-[69px] flex flex-wrap gap-[69px] md:max-w-[90%] md:justify-center text-[#1A1A1A]">
+        <section className=" md:p-[40px] p-[24px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px]">
           <span className="w-[45px] h-[45px]  bg-white flex items-center justify-center p-[10px] rounded-[5px] border border-gray-400">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -28,15 +33,15 @@ function Contactfaqs() {
               />
             </svg>
           </span>
-          <h3 className="  font-[600] text-[28px] pb-[42px]">
+          <h3 className="  font-[600] md:text-[28px] text-[20px] pb-[42px]">
             Is it a physical training?
           </h3>
-          <p className=" w-[446px] font-[300] text-[24px]">
+          <p className=" md:w-[446px] w-[305px] font-[300] md:text-[24px] text-[16px]">
             Our training is majorly virtual with physical training available
             only in Port Harcourt and Anambra state{" "}
           </p>
         </section>
-        <section className=" p-[40px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px]">
+        <section className=" md:p-[40px] p-[24px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px]">
           <span className="w-[45px] h-[45px]  bg-white flex items-center justify-center p-[10px] rounded-[5px] border border-gray-400">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -56,15 +61,15 @@ function Contactfaqs() {
               />
             </svg>
           </span>
-          <h3 className="  font-[600] text-[28px] pb-[42px]">
+          <h3 className="  font-[600] md:text-[28px] text-[20px] pb-[42px]">
             What is the schedule of <br /> the program?
           </h3>
-          <p className=" w-[446px] font-[300] text-[24px]">
+          <p className=" md:w-[446px] w-[305px] font-[300] md:text-[24px] text-[16px]">
             Depending on the course, it could be a 3 month or 6 month long
             program. Weekend and weekdays sessions are available{" "}
           </p>
         </section>
-        <section className=" p-[40px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px]">
+        <section className=" md:p-[40px] p-[24px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px]">
           <span className="w-[45px] h-[45px]  bg-white flex items-center justify-center p-[10px] rounded-[5px] border border-gray-400">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -82,15 +87,15 @@ function Contactfaqs() {
               />
             </svg>
           </span>
-          <h3 className="  font-[600] text-[28px] pb-[42px]">
+          <h3 className="  font-[600] md:text-[28px] text-[20px] pb-[42px]">
             Are your certificates <br /> globally recognized?
           </h3>
-          <p className=" w-[446px] font-[300] text-[24px]">
+          <p className=" md:w-[446px] w-[305px] font-[300] md:text-[24px] text-[16px]">
             The Zion Tech certificates is globally recognized, with strong
             recognition in Europe and Africa
           </p>
         </section>
-        <section className=" p-[40px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px]">
+        <section className=" md:p-[40px] p-[24px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px]">
           <span className="w-[45px] h-[45px]  bg-white flex items-center justify-center p-[10px] rounded-[5px] border border-gray-400">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -112,11 +117,11 @@ function Contactfaqs() {
               />
             </svg>
           </span>
-          <h3 className="  font-[600] text-[28px] pb-[42px]">
+          <h3 className="  font-[600] md:text-[28px] text-[20px] pb-[42px]">
             What are the requirements <br />
             for the program?
           </h3>
-          <p className=" w-[446px] font-[300] text-[24px]">
+          <p className=" md:w-[446px] w-[305px] font-[300] md:text-[24px] text-[16px]">
             a working PC, consistency and commitment
           </p>
         </section>

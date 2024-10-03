@@ -38,7 +38,7 @@ function Engagement() {
         </div>
       </div>
       <div className=" overflow-x-scroll ">
-        <div className=" relative flex w-[3600px]  overflow-scroll  pr-[10px]">
+        <div className=" relative flex md:w-[2100px] w-[1600px]  overflow-scroll  ">
           {EngagementM.map((engagement) => (
             <div className="flex md:py-[78px] md:px-[52px] py-[60px] px-[40px] border-y border-r border-[#034FE3] bg-[#EBECED]">
               <div className="flex flex-col md:gap-[48px] gap-[37px]">

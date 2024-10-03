@@ -1,20 +1,44 @@
 import React, { useState } from "react";
 import { Reviewimg, logo } from "../assets";
-import { Link } from "react-router-dom";
-
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Battery0Bar } from "@mui/icons-material";
 
+import { Link, NavLink } from "react-router-dom";
+import { KeyboardArrowRight } from "@mui/icons-material";
+
 function Enroll() {
   const [course, setCourse] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState("Select Course");
+  const [coursee, setCoursee] = useState(false);
+  const [nav, setNav] = useState(false);
 
+  // state to handle course selection
   const handleSelectedCourse = (e) => {
     setCourse(false);
     setSelectedCourse(e.target.value);
   };
 
+  const exit = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="19"
+      height="19"
+      viewBox="0 0 19 19"
+      fill="none">
+      <path
+        d="M18 1L1.66666 17.3333M1.66666 1L18 17.3333"
+        stroke="#333333"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+  const handleClose = () => {
+    setNav(false);
+    setCourse(false);
+  };
   return (
     <div className="">
       <div className=" flex justify-between items-center max-w-[90%] mx-auto  font-sans py-[10px]">
@@ -30,6 +54,97 @@ function Enroll() {
             </Link>
           </div>
         </section>
+        <div className=" sm:hidden flex  gap-[27px] items-center z-0">
+          <span
+            className=" text-[28px] text-[#333333] cursor-pointer"
+            onClick={() => setNav(true)}>
+            &#9776;
+          </span>
+          {nav && (
+            <div className="bg-black/50 absolute top-0 left-0 right-0 bottom-0 z-10 h-screen">
+              <div className=" flex sm:hidden flex-col absolute left-0 right-0 top-0 bg-[#FFFFFF] duration-300 z-50">
+                <section className=" flex items-center justify-end">
+                  <span
+                    className=" py-[24px] px-[20px]"
+                    onClick={() => setNav(false)}>
+                    {exit}
+                  </span>
+                </section>
+
+                <div className=" flex flex-col">
+                  <Link
+                    to="/"
+                    onClick={() => setNav(false)}
+                    className=" py-[15px] px-[20px] text-[14px] text-[#1A1A1A] border-b border-[#C3C3C3]">
+                    Home
+                  </Link>
+                  <Link
+                    to="/about"
+                    onClick={() => setNav(false)}
+                    className=" py-[15px] px-[20px] text-[14px] text-[#1A1A1A] border-b border-[#C3C3C3]">
+                    About Us
+                  </Link>
+                  <p className=" py-[15px] px-[20px] text-[14px] text-[#1A1A1A] flex items-center justify-between border-b border-[#C3C3C3] relative">
+                    Courses
+                    <span onClick={() => setCoursee(!coursee)}>
+                      {coursee ? (
+                        <KeyboardArrowUpIcon />
+                      ) : (
+                        <KeyboardArrowDownIcon />
+                      )}
+                    </span>
+                    {/* opened coursee content in mobile view  */}
+                    {coursee && (
+                      <div
+                        className="    flex flex-col  absolute top-[100%] left-0 right-0 bg-[#F6F6F6]  "
+                        onClick={handleClose}>
+                        <div className=" text-[#1A1A1A]  flex flex-col ">
+                          <Link
+                            to="/dataanalystics"
+                            className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">
+                            Data Analystics <KeyboardArrowRight />
+                          </Link>
+                          <Link
+                            to="/datascience"
+                            className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">
+                            Data Science <KeyboardArrowRight />
+                          </Link>
+                          <Link
+                            to="/webdevelopment"
+                            className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">
+                            Web Development <KeyboardArrowRight />
+                          </Link>
+                          <Link
+                            to="/cloudcomputing"
+                            className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">
+                            Cloud Computing & DevOps <KeyboardArrowRight />
+                          </Link>
+                          <Link
+                            to="/machinelearning"
+                            className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">
+                            Machine Learning <KeyboardArrowRight />
+                          </Link>
+                        </div>
+                      </div>
+                    )}
+                  </p>
+                  <Link
+                    to="/consult"
+                    onClick={() => setNav(false)}
+                    className=" py-[15px] px-[20px] text-[14px] text-[#1A1A1A] border-b border-[#C3C3C3]">
+                    Consultation
+                  </Link>
+                  <Link
+                    to="/contact"
+                    onClick={() => setNav(false)}
+                    className=" py-[15px] px-[20px] text-[14px] text-[#1A1A1A] border-b border-[#C3C3C3]">
+                    Contact
+                  </Link>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
 
       <div className=" flex md:items-center justify-center  md:h-[100vh] h-[120vh]">
@@ -42,9 +157,11 @@ function Enroll() {
             />
           </div>
           <div className=" flex flex-col p-[32px] gap-[48px] bg-[#FFFFFF] rounded-[10px]">
-            <section className=" flex flex-col items-center justify-center text-center text-[#1A1A1ACC] gap-[12px]">
-              <h1 className=" text-[32px] font-[600]">Send us a message</h1>
-              <p className=" text-[16px] font-[300] ">
+            <section className=" flex flex-col items-center justify-center text-center text-[#1A1A1ACC] md:gap-[12px] gap-[8px]">
+              <h1 className=" md:text-[32px] text-[24px] font-[600]">
+                Send us a message
+              </h1>
+              <p className=" md:text-[16px] text-[12px] font-[300] ">
                 Hey 👋 Send us a message on Whatsapp to process <br /> your
                 enrollment. See you at the top!
               </p>
@@ -73,7 +190,7 @@ function Enroll() {
                     className="text-[#1A1A1ACC]"
                     onClick={() => setCourse(!course)}>
                     {" "}
-                    {course ? (
+                    {coursee ? (
                       <KeyboardArrowUpIcon fontSize="medium" />
                     ) : (
                       <KeyboardArrowDownIcon fontSize="medium" />

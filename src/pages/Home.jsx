@@ -87,6 +87,9 @@ function Home() {
   );
   return (
     <div className=" w-full h-fit overflow-hidden relative pt-[130px] z-30">
+      <span className="  md:h-[104px] md:w-[104px] h-[50px] w-[50px]   bg-[#034FE30D] absolute md:top-[50px] md:right-[640px] top-[130px] right-[60px] z-50"></span>
+      <span className="  md:h-[104px] md:w-[104px] w-[50px] h-[50px]  bg-[#034FE30D] absolute md:top-[400px] md:left-[314px] top-[330px] left-0  z-50"></span>
+
       <div className=" md:h-[100vh] h-[1300px]">
         <motion.div
           className=" absolute top-[130px] z-30 flex  gap-[24px]   "
@@ -96,7 +99,7 @@ function Home() {
             <ReviewCard review={review} />
           ))}
         </motion.div>
-        <div className=" w-full absolute z-0 top-[130px] bottom-0    bg-[linear-gradient(to_right,#4f4f4f0e_1px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_1px,transparent_0.1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])] overflow-hidden">
+        <div className=" w-full absolute z-0 top-[130px] bottom-0    bg-[linear-gradient(to_right,#4f4f4f0e_1px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_1px,transparent_0.1px)] md:bg-[size:104px_104px] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])] overflow-hidden">
           <motion.div
             initial={{ opacity: 0.45 }}
             whileInView={{ opacity: 1 }}

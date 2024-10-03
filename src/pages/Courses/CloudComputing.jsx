@@ -128,8 +128,9 @@ function CloudComputing() {
   );
   return (
     <div className="bg-[#F5F5F5]">
-      {" "}
-      <div className="     bg-[linear-gradient(to_right,#4f4f4f0e_1px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_1px,transparent_0.1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])]   sm:h-[80vh]   w-full">
+      <span className="  md:h-[104px] md:w-[104px] h-[50px] w-[50px]   bg-[#034FE30D] absolute md:top-[50px] md:right-[640px] top-[134px] right-[60px] "></span>
+      <span className="  md:h-[104px] md:w-[104px] w-[50px] h-[50px]  bg-[#034FE30D] absolute md:top-[350px] md:left-[314px] top-[282px] left-0  "></span>{" "}
+      <div className="     bg-[linear-gradient(to_right,#4f4f4f0e_1px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_1px,transparent_0.1px)] md:bg-[size:104px_104px] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])]   sm:h-[80vh]   w-full">
         <motion.div
           initial={{ opacity: 0.45 }}
           whileInView={{ opacity: 1 }}
@@ -278,7 +279,7 @@ function CloudComputing() {
           </div>
           <div className="flex flex-wrap py-[68px] sm:gap-y-[68px] sm:gap-x-[48px] gap-y-[24px] lg:gap-x-[5px] ">
             {ExpectComputing.map((expect) => (
-              <section className=" flex sm:gap-[14px] sm:py-[48px] py-[36px] sm:px-[36px] lg:px-[16px] px-[10px]  items-baseline bg-[#EBECED] rounded-[10px]">
+              <section className=" flex md:gap-[14px] gap-[5px] sm:py-[48px] py-[36px] sm:px-[36px] lg:px-[16px] px-[10px]  items-baseline bg-[#EBECED] rounded-[10px]">
                 <span>{dot}</span>
                 <p className="font-[600] sm:text-[20px] text-[16px] text-[#1A1A1ACC] w-[298px] h-[165px]">
                    {" "}
