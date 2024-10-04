@@ -23,7 +23,7 @@ function Webcontent() {
         <p className=" font-[600] text-[48px] text-[#333]">
           <span className=" text-[#034FE3]">Course </span>content
         </p>
-        <div className=" mt-[43px]   flex items-center justify-between bg-[#E9E9E9] rounded-full w-[597px] ">
+        <div className=" mt-[43px]   flex items-center justify-between bg-[#E9E9E9] rounded-full w-[597px]  ">
           <button
             onClick={handleFrontEnd}
             className={

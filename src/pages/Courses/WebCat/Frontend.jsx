@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { Reviewimg, individual } from "../../../assets";
+import {
+  Reviewimg,
+  SirGodsentprofile,
+  googlemeet,
+  individual,
+} from "../../../assets";
 
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -90,11 +95,11 @@ function Frontend() {
     </svg>
   );
   return (
-    <div className="flex gap-[25px] w-[1238px] ">
+    <div className="flex sm:flex-row flex-col-reverse gap-[25px] sm:w-[1238px] ">
       <div className=" flex-1 flex flex-col rounded-tr-[10px] overflow-hidden border border-gray-300 h-fit">
         <div>
           <div
-            className="py-[24px] px-[40px] flex gap-[10px] items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer "
+            className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   md:w-full"
             onClick={firstM}>
             {" "}
             {firstmonth ? (
@@ -102,28 +107,28 @@ function Frontend() {
             ) : (
               <KeyboardArrowDownIcon fontSize="large" />
             )}
-            <p className=" text-[20px] font-[600] text-[#1A1A1A]">
+            <p className=" sm:text-[20px] text-[18px] md:w-full w-[287px] font-[600] text-[#1A1A1A]">
               Month 1: Introduction to Web Development
             </p>
           </div>
           {firstmonth && (
-            <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+            <section className=" flex flex-col bg-[#F0F0F0] text-[#a04e4ecc]">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span>Introduction to HTML
               </p>
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span> Basic HTML tags and structure
               </p>{" "}
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span> Creating simple web pages
               </p>{" "}
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span> Introduction to CSS
               </p>{" "}
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span> Basic styling: colors, fonts, and layout
               </p>{" "}
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span> DCSS box model and positioning
               </p>{" "}
             </section>
@@ -131,35 +136,35 @@ function Frontend() {
         </div>
         <div>
           <div
-            className="py-[24px] px-[40px] flex gap-[10px] items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer "
+            className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   md:w-full"
             onClick={secondM}>
             {secondmonth ? (
               <KeyboardArrowUpIcon fontSize="large" />
             ) : (
               <KeyboardArrowDownIcon fontSize="large" />
             )}
-            <p className=" text-[20px] font-[600] text-[#1A1A1A]">
+            <p className=" sm:text-[20px] text-[18px] md:w-full w-[287px] font-[600] text-[#1A1A1A]">
               Month 2: Advanced HTML and CSS
             </p>
           </div>{" "}
           {secondmonth && (
             <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span>HTML5 features and elements
               </p>
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span> Forms and input types
               </p>{" "}
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span> Semantic HTML
               </p>{" "}
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span> Advanced CSS: Flexbox and Grid
               </p>{" "}
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span>Responsive design principles
               </p>{" "}
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span> Media queries and mobile-first design
               </p>{" "}
             </section>
@@ -167,35 +172,35 @@ function Frontend() {
         </div>{" "}
         <div>
           <div
-            className="py-[24px] px-[40px] flex gap-[10px] items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer "
+            className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   md:w-full"
             onClick={thirdM}>
             {thirdmonth ? (
               <KeyboardArrowUpIcon fontSize="large" />
             ) : (
               <KeyboardArrowDownIcon fontSize="large" />
             )}
-            <p className=" text-[20px] font-[600] text-[#1A1A1A]">
+            <p className=" sm:text-[20px] text-[18px] md:w-full w-[287px] font-[600] text-[#1A1A1A]">
               Month 3: JavaScript Basics
             </p>
           </div>
           {thirdmonth && (
             <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span>Introduction to JavaScript
               </p>
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span> Basic syntax and operators
               </p>{" "}
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span> Functions, loops, and conditionals
               </p>{" "}
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span> DOM manipulation
               </p>{" "}
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span>Event handling
               </p>{" "}
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span> Introduction to JSON and AJAX
               </p>{" "}
             </section>
@@ -203,34 +208,34 @@ function Frontend() {
         </div>
         <div>
           <div
-            className="py-[24px] px-[40px] flex gap-[10px] items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer "
+            className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   md:w-full"
             onClick={fourthM}>
             {fourthmonth ? (
               <KeyboardArrowUpIcon fontSize="large" />
             ) : (
               <KeyboardArrowDownIcon fontSize="large" />
             )}
-            <p className=" text-[20px] font-[600] text-[#1A1A1A]">
+            <p className=" sm:text-[20px] text-[18px] md:w-full w-[287px] font-[600] text-[#1A1A1A]">
               Month 4: Advanced JavaScript and Frameworks
             </p>
           </div>
           {fourthmonth && (
             <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span>Advanced JavaScript concepts: closures,
                 promises, and async/await
               </p>
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span> Error handling and debugging
               </p>{" "}
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span> Introduction to front-end frameworks: React
                 or Vue.js
               </p>{" "}
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span> Setting up the development environment
               </p>{" "}
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span>Building a simple application with the chosen
                 framework
               </p>{" "}
@@ -239,34 +244,34 @@ function Frontend() {
         </div>
         <div>
           <div
-            className="py-[24px] px-[40px] flex gap-[10px] items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer "
+            className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   md:w-full"
             onClick={fifthM}>
             {fifthmonth ? (
               <KeyboardArrowUpIcon fontSize="large" />
             ) : (
               <KeyboardArrowDownIcon fontSize="large" />
             )}
-            <p className=" text-[20px] font-[600] text-[#1A1A1A]">
+            <p className=" sm:text-[20px] text-[18px] md:w-full w-[287px] font-[600] text-[#1A1A1A]">
               Month 5: Tools and Best Practices
             </p>
           </div>
           {fifthmonth && (
             <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span>Version control with Git and GitHub
               </p>
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span> Code editors and integrated development
                 environments (IDEs)
               </p>{" "}
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span> Introduction to build tools and task runners
                 (e.g., Webpack, Babel)
               </p>{" "}
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span> Testing and debugging front-end code
               </p>{" "}
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span>Performance optimization and best practices
               </p>{" "}
             </section>
@@ -274,62 +279,63 @@ function Frontend() {
         </div>
         <div>
           <div
-            className="py-[24px] px-[40px] flex gap-[10px] items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer "
+            className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   md:w-full"
             onClick={sixthM}>
             {sixthmonth ? (
               <KeyboardArrowUpIcon fontSize="large" />
             ) : (
               <KeyboardArrowDownIcon fontSize="large" />
             )}
-            <p className=" text-[20px] font-[600] text-[#1A1A1A]">
+            <p className=" sm:text-[20px] text-[18px] md:w-full w-[287px] font-[600] text-[#1A1A1A]">
               Month 6: Project Development and Deployment
             </p>
           </div>
           {sixthmonth && (
             <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span>Project planning and design
               </p>
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span> Building a complete front-end application
                 from scratch
               </p>{" "}
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span> Deployment and hosting options (e.g.,
                 Netlify, Vercel)
               </p>{" "}
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span> Continuous integration and deployment (CI/CD)
                 basics
               </p>{" "}
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span>Final project presentation and review
               </p>{" "}
-              <p className=" text-[20px] font-[300] flex gap-[14px] py-[24px] px-[48px] items-center">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span> Portfolio development and career advice
               </p>{" "}
             </section>
           )}
         </div>
       </div>
-      <div className="flex flex-col gap-[36px] py-[32px] px-[48px] bg-[#EBECED] rounded-[10px] border border-gray-300 h-fit">
-        <section className=" flex flex-col gap-[24px]">
+      {/* instructor section  */}
+      <div className="flex flex-col gap-[36px] sm:py-[32px] py-[24px] sm:px-[48px] px-[20px] bg-[#EBECED] rounded-[10px] border border-gray-300 h-fit w-fit">
+        <section className=" flex flex-col gap-[24px] ">
           <section className=" flex flex-col">
             {" "}
-            <h2 className=" text-[24px] text-[#034FE3] font-[600]">
+            <h2 className=" sm:text-[24px] text-[20px] text-[#034FE3] font-[600] w-fit">
               Instructor
             </h2>
-            <p className=" text-[16px] text-[#1A1A1ACC] font-[300]">
+            <p className=" text-[16px] text-[#1A1A1ACC] font-[300] w-fit">
               Certified Trainer at Zion Tech Hub
             </p>
           </section>
-          <section className=" flex  gap-[14px]">
+          <section className=" flex  gap-[14px] ">
             <img
-              className="w-[60px] h-[60px] object-cover rounded-full"
-              src={Reviewimg}
+              className="sm:w-[60px] sm:h-[60px] w-[50px] h-[50px] object-cover rounded-full"
+              src={SirGodsentprofile}
               alt=""
             />
-            <div className=" flex flex-col text-[#1A1A1A]">
+            <div className=" flex flex-col text-[#1A1A1A] w-fit">
               <p className=" text-[18px] font-[600]">Ndoma Godsent</p>
               <p className=" text-[12px] font-[300]">
                 Co-Founder, Data Analyst
@@ -337,12 +343,12 @@ function Frontend() {
             </div>
           </section>
         </section>
-        <span className=" h-[1px] w-[317px] bg-[#1A1A1A1A]"></span>
-        <section className="flex gap-[12px]">
-          <p className=" text-[20px] font-[300] ">Live on</p>{" "}
+        <span className=" h-[1px] sm:w-[317px] w-[300px] bg-[#1A1A1A1A]"></span>
+        <section className="flex gap-[12px] w-fit">
+          <p className=" sm:text-[20px] text-[18px] font-[300] ">Live on</p>{" "}
           <img
-            className=" w-[193px] h-[35px] object-cover "
-            src={individual}
+            className=" sm:w-[193px] sm:h-[35px] w-[139px] h-[25px] object-cover "
+            src={googlemeet}
             alt=""
           />
         </section>
