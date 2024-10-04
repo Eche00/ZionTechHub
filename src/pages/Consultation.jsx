@@ -1,5 +1,16 @@
 import React from "react";
-import { Reviewimg, googlemeet, individual } from "../assets";
+import {
+  Reviewimg,
+  consulthero1,
+  consulthero2,
+  consulthero3,
+  consultprofile,
+  googlemeet,
+  individual,
+  nigeria,
+  uk,
+  usa,
+} from "../assets";
 import { ArrowForward, Star } from "@mui/icons-material";
 import Ourapproach from "./ConsultationComponent/Ourapproach";
 import Overview from "./ConsultationComponent/Overview";
@@ -74,19 +85,19 @@ function Consultation() {
                     </p>
                   </section>
                   <img
-                    className=" w-[60px] h-[60px] rounded-full border-[4px] border-[#FFFFFF]"
-                    src={Reviewimg}
+                    className=" w-[60px] h-[60px] rounded-full border-[4px] border-[#FFFFFF] object-cover"
+                    src={consultprofile}
                     alt=""
                   />
                 </section>
                 <img
-                  className=" w-[180px] h-[180px] rounded-[10px]"
-                  src={Reviewimg}
+                  className=" w-[180px] h-[180px] rounded-[10px] object-cover"
+                  src={consulthero1}
                   alt=""
                 />
                 <img
-                  className=" w-[180px] h-[180px] rounded-[10px]"
-                  src={Reviewimg}
+                  className=" w-[180px] h-[180px] rounded-[10px] object-cover"
+                  src={consulthero2}
                   alt=""
                 />
               </div>
@@ -100,8 +111,8 @@ function Consultation() {
                   </p>
                 </section>
                 <img
-                  className=" w-[180px] h-[180px] rounded-[10px]"
-                  src={Reviewimg}
+                  className=" w-[180px] h-[180px] rounded-[10px] object-cover"
+                  src={consulthero3}
                   alt=""
                 />
                 <section className=" w-[180px] h-[180px] rounded-[10px] flex flex-col bg-[#F1D3AF66] px-[16px] justify-center">
@@ -117,17 +128,17 @@ function Consultation() {
                   <section className="relative w-[80px] h-[40px]">
                     <img
                       className=" w-[40px] h-[40px] rounded-full absolute left-0 z-10"
-                      src={Reviewimg}
+                      src={usa}
                       alt=""
                     />
                     <img
                       className=" w-[40px] h-[40px] rounded-full absolute left-[25px] z-20"
-                      src={Reviewimg}
+                      src={uk}
                       alt=""
                     />
                     <img
                       className=" w-[40px] h-[40px] rounded-full absolute left-[50px]  z-30"
-                      src={Reviewimg}
+                      src={nigeria}
                       alt=""
                     />
                   </section>

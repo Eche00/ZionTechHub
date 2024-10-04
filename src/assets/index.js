@@ -119,6 +119,18 @@ import machinehero4 from "./machinehero4.png";
 import machinehero5 from "./machinehero5.png";
 import machinehero6 from "./machinehero6.png";
 
+import consulthero1 from "./consulthero1.png";
+import consulthero2 from "./consulthero2.png";
+import consulthero3 from "./consulthero3.png";
+import consultservice from "./consultservice.png";
+import enrollbg from "./enrollbg.png";
+import techhublogo from "./techhublogo.jpeg";
+
+import consultprofile from "./consultprofile.jpeg";
+import usa from "./usa.png";
+import uk from "./uk.png";
+import nigeria from "./nigeria.png";
+
 export {
   logo,
   Reviewimg,
@@ -233,4 +245,14 @@ export {
   machinehero6,
   certificate1,
   certificate2,
+  consulthero1,
+  consulthero2,
+  consulthero3,
+  consultservice,
+  enrollbg,
+  techhublogo,
+  consultprofile,
+  usa,
+  uk,
+  nigeria,
 };

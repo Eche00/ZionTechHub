@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Reviewimg, logo } from "../assets";
+import { Reviewimg, logo, techhublogo } from "../assets";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Battery0Bar } from "@mui/icons-material";
 
 import { Link, NavLink } from "react-router-dom";
 import { KeyboardArrowRight } from "@mui/icons-material";
+import "./Enroll.css";
 
 function Enroll() {
   const [course, setCourse] = useState(false);
@@ -147,12 +148,12 @@ function Enroll() {
         </div>
       </div>
 
-      <div className=" flex md:items-center justify-center  md:h-[100vh] h-[120vh]">
+      <div className=" flex md:items-center justify-center  md:h-[100vh] h-[120vh] one">
         <div className=" flex flex-col items-center gap-[24px]">
           <div className=" w-fit border-[3px] border-[#FFFFFF] rounded-full">
             <img
               className=" w-[100px] h-[100px] object-cover rounded-full"
-              src={Reviewimg}
+              src={techhublogo}
               alt=""
             />
           </div>
