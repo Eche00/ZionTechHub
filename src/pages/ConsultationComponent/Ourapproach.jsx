@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Approach.css";
 
 function Ourapproach() {
   return (
@@ -11,32 +12,42 @@ function Ourapproach() {
       </div>
 
       <div className=" flex md:flex-row flex-col gap-[20px]">
-        <section className=" bg-[#EBECED] items-center flex h-[144px]  md:gap-0 gap-[62px]">
-          <p className=" text-[128px] font-[400] text-[#1A1A1A0D]">1</p>
+        <section className=" bg-[#EBECED] items-center flex h-[144px]  md:gap-0 gap-[62px] overflow-hidden">
+          <p className=" text-[128px]  text-[#1A1A1A0D] shrikhand-regular leading-[150%]">
+            1
+          </p>
           <p className="text-[20px]  font-[600] pr-[18px]">
             Initial Consultation
           </p>
         </section>
-        <section className=" bg-[#EBECED] items-center flex h-[144px] md:gap-0 gap-[62px]">
-          <p className=" text-[128px] font-[400] text-[#1A1A1A0D]">2</p>
+        <section className=" bg-[#EBECED] items-center flex h-[144px] md:gap-0 gap-[62px] overflow-hidden">
+          <p className=" text-[128px] font-[400] text-[#1A1A1A0D] shrikhand-regular leading-[150%]">
+            2
+          </p>
           <p className="text-[20px]  font-[600] pr-[18px]">
             Requirement <br />
             Analysis
           </p>
         </section>
-        <section className=" bg-[#EBECED] items-center flex h-[144px] md:gap-0 gap-[62px]">
-          <p className=" text-[128px] font-[400] text-[#1A1A1A0D]">3</p>
+        <section className=" bg-[#EBECED] items-center flex h-[144px] md:gap-0 gap-[62px]  overflow-hidden">
+          <p className=" text-[128px] font-[400] text-[#1A1A1A0D] shrikhand-regular leading-[150%]">
+            3
+          </p>
           <p className="text-[20px]  font-[600] pr-[18px]">Solution Design</p>
         </section>
         <section className=" bg-[#EBECED] items-center flex h-[144px] md:gap-0 gap-[62px]">
-          <p className=" text-[128px] font-[400] text-[#1A1A1A0D]">4</p>
+          <p className=" text-[128px] font-[400] text-[#1A1A1A0D] shrikhand-regular leading-[150%]">
+            4
+          </p>
           <p className="text-[20px]  font-[600] pr-[18px]">
             Implementation <br />
             and Integration
           </p>
         </section>
-        <section className=" bg-[#EBECED] items-center flex h-[144px] md:gap-0 gap-[62px]">
-          <p className=" text-[128px] font-[400] text-[#1A1A1A0D]">5</p>
+        <section className=" bg-[#EBECED] items-center flex h-[144px] md:gap-0 gap-[62px]  overflow-hidden">
+          <p className=" text-[128px] font-[400] text-[#1A1A1A0D] shrikhand-regular leading-[150%]">
+            5
+          </p>
           <p className="text-[20px]  font-[600] pr-[18px]">
             Training & Support
           </p>
