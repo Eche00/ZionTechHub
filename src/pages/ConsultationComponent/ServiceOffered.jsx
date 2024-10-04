@@ -42,7 +42,7 @@ function ServiceOffered() {
       <div className=" mt-[68px] flex py-[40px] lg:px-[10px] px-[15px] bg-[#EBECED] rounded-[10px] gap-[48px] w-fit  sm:flex-row flex-col">
         <div className=" w-fit">
           <img
-            className=" sm::w-[361px] md:w-[600px] md:h-[410px] lg:w-[332px] w-[312px] h-[200px]  object-cover rounded-[10px] "
+            className=" sm:w-[361px] md:w-[600px] md:h-[410px] lg:w-[332px] w-[312px] h-[200px]  object-cover rounded-[10px] "
             src={consultservice}
             alt=""
           />

@@ -1,5 +1,19 @@
 import React from "react";
-import { Reviewimg } from "../../assets";
+import {
+  Reviewimg,
+  logo1,
+  logo10,
+  logo11,
+  logo12,
+  logo2,
+  logo3,
+  logo4,
+  logo5,
+  logo6,
+  logo7,
+  logo8,
+  logo9,
+} from "../../assets";
 
 function Industriesserved() {
   return (
@@ -24,62 +38,21 @@ function Industriesserved() {
           <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
             <img
               className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-              src={Reviewimg}
+              src={logo1}
               alt=""
             />
           </section>
           <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
             <img
               className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-              src={Reviewimg}
+              src={logo2}
               alt=""
             />
           </section>
           <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
             <img
               className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-              src={Reviewimg}
-              alt=""
-            />
-          </section>
-        </div>
-        {/* columns */}
-        <div className=" flex flex-col justify-center gap-[10px]">
-          <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
-            <img
-              className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-              src={Reviewimg}
-              alt=""
-            />
-          </section>
-          <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
-            <img
-              className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-              src={Reviewimg}
-              alt=""
-            />
-          </section>
-        </div>
-        {/* columns */}
-        <div className=" flex flex-col gap-[10px]">
-          <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
-            <img
-              className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-              src={Reviewimg}
-              alt=""
-            />
-          </section>
-          <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
-            <img
-              className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-              src={Reviewimg}
-              alt=""
-            />
-          </section>
-          <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
-            <img
-              className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-              src={Reviewimg}
+              src={logo3}
               alt=""
             />
           </section>
@@ -89,14 +62,14 @@ function Industriesserved() {
           <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
             <img
               className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-              src={Reviewimg}
+              src={logo4}
               alt=""
             />
           </section>
           <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
             <img
               className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-              src={Reviewimg}
+              src={logo5}
               alt=""
             />
           </section>
@@ -106,21 +79,21 @@ function Industriesserved() {
           <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
             <img
               className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-              src={Reviewimg}
+              src={logo6}
               alt=""
             />
           </section>
           <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
             <img
               className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-              src={Reviewimg}
+              src={logo7}
               alt=""
             />
           </section>
           <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
             <img
               className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-              src={Reviewimg}
+              src={logo8}
               alt=""
             />
           </section>
@@ -130,14 +103,14 @@ function Industriesserved() {
           <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
             <img
               className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-              src={Reviewimg}
+              src={logo9}
               alt=""
             />
           </section>
           <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
             <img
               className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-              src={Reviewimg}
+              src={logo10}
               alt=""
             />
           </section>
@@ -147,21 +120,21 @@ function Industriesserved() {
           <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
             <img
               className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-              src={Reviewimg}
+              src={logo2}
               alt=""
             />
           </section>
           <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
             <img
               className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-              src={Reviewimg}
+              src={logo6}
               alt=""
             />
           </section>
           <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
             <img
               className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-              src={Reviewimg}
+              src={logo5}
               alt=""
             />
           </section>
@@ -171,14 +144,14 @@ function Industriesserved() {
           <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
             <img
               className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-              src={Reviewimg}
+              src={logo11}
               alt=""
             />
           </section>
           <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
             <img
               className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-              src={Reviewimg}
+              src={logo12}
               alt=""
             />
           </section>
@@ -188,21 +161,62 @@ function Industriesserved() {
           <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
             <img
               className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-              src={Reviewimg}
+              src={logo4}
               alt=""
             />
           </section>
           <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
             <img
               className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-              src={Reviewimg}
+              src={logo3}
               alt=""
             />
           </section>
           <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
             <img
               className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-              src={Reviewimg}
+              src={logo7}
+              alt=""
+            />
+          </section>
+        </div>
+        {/* columns */}
+        <div className=" flex flex-col justify-center gap-[10px]">
+          <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
+            <img
+              className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
+              src={logo1}
+              alt=""
+            />
+          </section>
+          <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
+            <img
+              className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
+              src={logo8}
+              alt=""
+            />
+          </section>
+        </div>
+        {/* columns */}
+        <div className=" flex flex-col gap-[10px]">
+          <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
+            <img
+              className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
+              src={logo12}
+              alt=""
+            />
+          </section>
+          <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
+            <img
+              className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
+              src={logo2}
+              alt=""
+            />
+          </section>
+          <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
+            <img
+              className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
+              src={logo11}
               alt=""
             />
           </section>
@@ -216,62 +230,21 @@ function Industriesserved() {
             <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
               <img
                 className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-                src={Reviewimg}
+                src={logo1}
                 alt=""
               />
             </section>
             <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
               <img
                 className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-                src={Reviewimg}
+                src={logo2}
                 alt=""
               />
             </section>
             <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
               <img
                 className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-                src={Reviewimg}
-                alt=""
-              />
-            </section>
-          </div>
-          {/* columns */}
-          <div className=" flex flex-col justify-center gap-[10px]">
-            <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
-              <img
-                className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-                src={Reviewimg}
-                alt=""
-              />
-            </section>
-            <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
-              <img
-                className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-                src={Reviewimg}
-                alt=""
-              />
-            </section>
-          </div>
-          {/* columns */}
-          <div className=" flex flex-col gap-[10px]">
-            <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
-              <img
-                className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-                src={Reviewimg}
-                alt=""
-              />
-            </section>
-            <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
-              <img
-                className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-                src={Reviewimg}
-                alt=""
-              />
-            </section>
-            <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
-              <img
-                className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-                src={Reviewimg}
+                src={logo3}
                 alt=""
               />
             </section>
@@ -281,14 +254,14 @@ function Industriesserved() {
             <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
               <img
                 className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-                src={Reviewimg}
+                src={logo4}
                 alt=""
               />
             </section>
             <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
               <img
                 className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-                src={Reviewimg}
+                src={logo5}
                 alt=""
               />
             </section>
@@ -298,21 +271,21 @@ function Industriesserved() {
             <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
               <img
                 className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-                src={Reviewimg}
+                src={logo6}
                 alt=""
               />
             </section>
             <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
               <img
                 className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-                src={Reviewimg}
+                src={logo7}
                 alt=""
               />
             </section>
             <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
               <img
                 className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-                src={Reviewimg}
+                src={logo8}
                 alt=""
               />
             </section>
@@ -322,14 +295,14 @@ function Industriesserved() {
             <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
               <img
                 className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-                src={Reviewimg}
+                src={logo9}
                 alt=""
               />
             </section>
             <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
               <img
                 className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-                src={Reviewimg}
+                src={logo10}
                 alt=""
               />
             </section>
@@ -339,21 +312,21 @@ function Industriesserved() {
             <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
               <img
                 className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-                src={Reviewimg}
+                src={logo2}
                 alt=""
               />
             </section>
             <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
               <img
                 className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-                src={Reviewimg}
+                src={logo6}
                 alt=""
               />
             </section>
             <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
               <img
                 className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-                src={Reviewimg}
+                src={logo5}
                 alt=""
               />
             </section>
@@ -363,14 +336,14 @@ function Industriesserved() {
             <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
               <img
                 className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-                src={Reviewimg}
+                src={logo11}
                 alt=""
               />
             </section>
             <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
               <img
                 className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-                src={Reviewimg}
+                src={logo12}
                 alt=""
               />
             </section>
@@ -380,21 +353,62 @@ function Industriesserved() {
             <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
               <img
                 className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-                src={Reviewimg}
+                src={logo4}
                 alt=""
               />
             </section>
             <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
               <img
                 className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-                src={Reviewimg}
+                src={logo3}
                 alt=""
               />
             </section>
             <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
               <img
                 className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
-                src={Reviewimg}
+                src={logo7}
+                alt=""
+              />
+            </section>
+          </div>
+          {/* columns */}
+          <div className=" flex flex-col justify-center gap-[10px]">
+            <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
+              <img
+                className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
+                src={logo1}
+                alt=""
+              />
+            </section>
+            <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
+              <img
+                className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
+                src={logo8}
+                alt=""
+              />
+            </section>
+          </div>
+          {/* columns */}
+          <div className=" flex flex-col gap-[10px]">
+            <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
+              <img
+                className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
+                src={logo12}
+                alt=""
+              />
+            </section>
+            <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
+              <img
+                className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
+                src={logo2}
+                alt=""
+              />
+            </section>
+            <section className=" w-fit  p-[31px] bg-[#F7F7F7] border-[5px] border-[#034FE30D] rounded-[10px]">
+              <img
+                className=" w-[48px] h-[48px]  object-cover rounded-[10px]"
+                src={logo11}
                 alt=""
               />
             </section>
