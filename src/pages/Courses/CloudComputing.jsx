@@ -16,6 +16,7 @@ import CoursesTestimonial from "./CoursesTestimonial";
 import ExpectComputing from "../../lib/ExpectComputing";
 import CloudComputingcontent from "./Content/Cloudcomputingcontent";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 function CloudComputing() {
   const dot = (
@@ -159,10 +160,12 @@ function CloudComputing() {
               </p>
             </div>
             <div className=" flex gap-[24px] sm:pt-[50px] pt-[36px]">
-              <button className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white sm:py-[20px] sm:px-[36px] py-[12px] px-[24px] sm:text-[18px] text-[16px] font-[500]">
+              <Link
+                to="/enroll"
+                className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white sm:py-[20px] sm:px-[36px] py-[12px] px-[24px] sm:text-[18px] text-[16px] font-[500]">
                 Enroll for the next cohort
                 <ArrowForward />
-              </button>
+              </Link>
             </div>
           </div>
           {/* hero images */}

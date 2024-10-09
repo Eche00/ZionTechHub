@@ -8,6 +8,7 @@ import {
   Instagram,
   Twitter,
 } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 function Foot() {
   const checkMark = (
@@ -66,12 +67,16 @@ function Foot() {
               Start your training with <br /> Zion Tech Hub
             </h3>
             <section className=" flex gap-[10px]">
-              <button className=" py-[12px] sm:px-[24px] px-[20px] gap-[10px] flex items-center justify-center  bg-[#2563EB] sm:text-[18px] text-[16px] text-white font-[500] rounded-[10px] ">
+              <Link
+                to="/enroll"
+                className=" py-[12px] sm:px-[24px] px-[20px] gap-[10px] flex items-center justify-center  bg-[#2563EB] sm:text-[18px] text-[16px] text-white font-[500] rounded-[10px] ">
                 Enroll <ArrowForward />
-              </button>
-              <button className=" py-[12px] sm:px-[24px] px-[20px] flex items-center justify-center sm:text-[18px] text-[16px]  font-[400] rounded-[10px] border border-gray-300 ">
+              </Link>
+              <Link
+                to="/consult"
+                className=" py-[12px] sm:px-[24px] px-[20px] flex items-center justify-center sm:text-[18px] text-[16px]  font-[400] rounded-[10px] border border-gray-300 ">
                 Book a Consultation
-              </button>
+              </Link>
             </section>
           </div>
         </div>

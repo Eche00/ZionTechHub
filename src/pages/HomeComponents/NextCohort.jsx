@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function NextCohort() {
   const individual = (
@@ -166,9 +167,11 @@ function NextCohort() {
               </p>
             </div>
             <div className=" flex sm:gap-[24px] gap-[12px] rounded-[10px] sm:px-0 px-[10px]">
-              <button className=" py-[10px] px-[32px] bg-[#034FE3] text-white sm:text-[20px] text-[18px] whitespace-nowrap font-[700] rounded-[5px] shadow-[24px 24px 40px 0px rgba(0, 0, 0, 0.10)">
+              <Link
+                to="/enroll"
+                className=" py-[10px] px-[32px] bg-[#034FE3] text-white sm:text-[20px] text-[18px] whitespace-nowrap font-[700] rounded-[5px] shadow-[24px 24px 40px 0px rgba(0, 0, 0, 0.10) flex items-center">
                 Apply now
-              </button>
+              </Link>
               <section className=" sm:py-[10px] py-[8px] text-[#1A1A1ACC] bg-[#F0F0F0] rounded-[10px] flex sm:gap-[12px] gap-[8px]">
                 <div className=" flex flex-col items-center px-[10px]">
                   <p className=" sm:text-[10px] text-[8px] font-[400]">

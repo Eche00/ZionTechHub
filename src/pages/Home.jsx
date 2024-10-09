@@ -120,13 +120,17 @@ function Home() {
                 </p>
               </div>
               <div className=" flex sm:flex-row flex-col gap-[24px] sm:py-[70px] py-[10px] w-fit">
-                <button className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white sm:py-[20px] sm:px-[36px] py-[12px] px-[24px] text-[16px] sm:text-[18px] font-[500] w-fit">
+                <Link
+                  to="/enroll"
+                  className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white sm:py-[20px] sm:px-[36px] py-[12px] px-[24px] text-[16px] sm:text-[18px] font-[500] w-fit">
                   Start Your New Chapter <ArrowForward />
-                </button>
-                <button className=" sm:py-[10px] py-[12px] px-[24px] text-[16px] sm:text-[18px] font-[400] border  rounded-[10px] s">
+                </Link>
+                <Link
+                  to="/consult"
+                  className=" sm:py-[10px] py-[12px] px-[24px] text-[16px] sm:text-[18px] font-[400] border  rounded-[10px] flex items-center justify-center">
                   {" "}
                   Book a Consultation
-                </button>
+                </Link>
               </div>
             </div>
             <div className=" flex-1 flex  relative sm:pt-[50px] z-10">

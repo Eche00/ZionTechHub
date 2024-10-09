@@ -19,6 +19,7 @@ import Industriesserved from "./ConsultationComponent/Industriesserved";
 import { motion } from "framer-motion";
 import ContactUsc from "./ConsultationComponent/AboutUsc";
 import Engagement from "./ConsultationComponent/Engagement";
+import { Link } from "react-router-dom";
 
 function Consultation() {
   return (
@@ -56,10 +57,12 @@ function Consultation() {
               </p>
             </div>
             <div className=" flex gap-[24px] sm:pt-[70px] pt-[36px]">
-              <button className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white sm:py-[20px] sm:px-[36px] py-[12px] px-[24px] sm:text-[18px] text-[16px] font-[500]">
+              <Link
+                to="/enroll"
+                className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white sm:py-[20px] sm:px-[36px] py-[12px] px-[24px] sm:text-[18px] text-[16px] font-[500]">
                 Enroll for the next cohort
                 <ArrowForward />
-              </button>
+              </Link>
             </div>
           </div>
           <div className=" flex-1 sm:flex hidden pl-[50px] items-center">

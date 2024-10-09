@@ -1,5 +1,6 @@
 import React from "react";
 import { consultafrica, consultancyhome } from "../../assets";
+import { Link } from "react-router-dom";
 
 function Consultingsection() {
   const checkMark = (
@@ -58,9 +59,11 @@ function Consultingsection() {
             alt="image"
           />
         </div>
-        <button className=" sm:py-[10px] py-[14px] px-[32px] rounded-[5px] bg-[#034FE3] sm:text-[20px] text-[18px] font-[700] w-fit text-white">
+        <Link
+          to="/consult"
+          className=" sm:py-[10px] py-[14px] px-[32px] rounded-[5px] bg-[#034FE3] sm:text-[20px] text-[18px] font-[700] w-fit text-white">
           Learn more
-        </button>
+        </Link>
       </div>
     </div>
   );
