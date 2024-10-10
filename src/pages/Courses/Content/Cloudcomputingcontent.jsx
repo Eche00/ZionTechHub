@@ -125,7 +125,7 @@ function CloudComputingcontent() {
           {/* first month  */}
           <div>
             <div
-              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   md:w-full"
+              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-full"
               onClick={firstM}>
               {" "}
               {firstmonth ? (
@@ -179,7 +179,7 @@ function CloudComputingcontent() {
           {/* second month  */}
           <div>
             <div
-              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   md:w-full"
+              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-full"
               onClick={secondM}>
               {secondmonth ? (
                 <KeyboardArrowUpIcon fontSize="large" />
@@ -231,7 +231,7 @@ function CloudComputingcontent() {
           {/* third month  */}
           <div>
             <div
-              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   md:w-full"
+              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-full"
               onClick={thirdM}>
               {thirdmonth ? (
                 <KeyboardArrowUpIcon fontSize="large" />
@@ -285,7 +285,7 @@ function CloudComputingcontent() {
           {/* fourth month  */}
           <div>
             <div
-              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   md:w-full"
+              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-full"
               onClick={fourthM}>
               {fourthmonth ? (
                 <KeyboardArrowUpIcon fontSize="large" />
@@ -344,7 +344,7 @@ function CloudComputingcontent() {
           {/* fifth month  */}
           <div>
             <div
-              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   md:w-full"
+              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-full"
               onClick={fifthM}>
               {fifthmonth ? (
                 <KeyboardArrowUpIcon fontSize="large" />
@@ -397,7 +397,7 @@ function CloudComputingcontent() {
           {/* sixth month  */}
           <div>
             <div
-              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   md:w-full"
+              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-full"
               onClick={sixthM}>
               {sixthmonth ? (
                 <KeyboardArrowUpIcon fontSize="large" />

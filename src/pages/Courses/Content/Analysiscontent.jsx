@@ -84,7 +84,7 @@ function Analysiscontent() {
           {/* first month  */}
           <div>
             <div
-              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   md:w-full"
+              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-full"
               onClick={firstM}>
               {" "}
               {firstmonth ? (
@@ -152,7 +152,7 @@ function Analysiscontent() {
           {/* second month  */}
           <div>
             <div
-              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit  md:w-full"
+              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-full"
               onClick={secondM}>
               {secondmonth ? (
                 <KeyboardArrowUpIcon fontSize="large" />
@@ -217,7 +217,7 @@ function Analysiscontent() {
           {/* third month  */}
           <div>
             <div
-              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit md:w-full "
+              className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-full "
               onClick={thirdM}>
               {thirdmonth ? (
                 <KeyboardArrowUpIcon fontSize="large" />

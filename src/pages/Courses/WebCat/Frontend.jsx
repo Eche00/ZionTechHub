@@ -99,7 +99,7 @@ function Frontend() {
       <div className=" flex-1 flex flex-col rounded-tr-[10px] overflow-hidden border border-gray-300 h-fit">
         <div>
           <div
-            className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   md:w-full"
+            className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-full"
             onClick={firstM}>
             {" "}
             {firstmonth ? (
@@ -107,12 +107,12 @@ function Frontend() {
             ) : (
               <KeyboardArrowDownIcon fontSize="large" />
             )}
-            <p className=" sm:text-[20px] text-[18px] md:w-full w-[287px] font-[600] text-[#1A1A1A]">
+            <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
               Month 1: Introduction to Web Development
             </p>
           </div>
           {firstmonth && (
-            <section className=" flex flex-col bg-[#F0F0F0] text-[#a04e4ecc]">
+            <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1A]">
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
                 <span>{dot}</span>Introduction to HTML
               </p>
@@ -136,14 +136,14 @@ function Frontend() {
         </div>
         <div>
           <div
-            className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   md:w-full"
+            className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-full"
             onClick={secondM}>
             {secondmonth ? (
               <KeyboardArrowUpIcon fontSize="large" />
             ) : (
               <KeyboardArrowDownIcon fontSize="large" />
             )}
-            <p className=" sm:text-[20px] text-[18px] md:w-full w-[287px] font-[600] text-[#1A1A1A]">
+            <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
               Month 2: Advanced HTML and CSS
             </p>
           </div>{" "}
@@ -172,14 +172,14 @@ function Frontend() {
         </div>{" "}
         <div>
           <div
-            className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   md:w-full"
+            className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-full"
             onClick={thirdM}>
             {thirdmonth ? (
               <KeyboardArrowUpIcon fontSize="large" />
             ) : (
               <KeyboardArrowDownIcon fontSize="large" />
             )}
-            <p className=" sm:text-[20px] text-[18px] md:w-full w-[287px] font-[600] text-[#1A1A1A]">
+            <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
               Month 3: JavaScript Basics
             </p>
           </div>
@@ -208,14 +208,14 @@ function Frontend() {
         </div>
         <div>
           <div
-            className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   md:w-full"
+            className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-full"
             onClick={fourthM}>
             {fourthmonth ? (
               <KeyboardArrowUpIcon fontSize="large" />
             ) : (
               <KeyboardArrowDownIcon fontSize="large" />
             )}
-            <p className=" sm:text-[20px] text-[18px] md:w-full w-[287px] font-[600] text-[#1A1A1A]">
+            <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
               Month 4: Advanced JavaScript and Frameworks
             </p>
           </div>
@@ -244,14 +244,14 @@ function Frontend() {
         </div>
         <div>
           <div
-            className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   md:w-full"
+            className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-full"
             onClick={fifthM}>
             {fifthmonth ? (
               <KeyboardArrowUpIcon fontSize="large" />
             ) : (
               <KeyboardArrowDownIcon fontSize="large" />
             )}
-            <p className=" sm:text-[20px] text-[18px] md:w-full w-[287px] font-[600] text-[#1A1A1A]">
+            <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
               Month 5: Tools and Best Practices
             </p>
           </div>
@@ -279,14 +279,14 @@ function Frontend() {
         </div>
         <div>
           <div
-            className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-fit   md:w-full"
+            className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-full"
             onClick={sixthM}>
             {sixthmonth ? (
               <KeyboardArrowUpIcon fontSize="large" />
             ) : (
               <KeyboardArrowDownIcon fontSize="large" />
             )}
-            <p className=" sm:text-[20px] text-[18px] md:w-full w-[287px] font-[600] text-[#1A1A1A]">
+            <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
               Month 6: Project Development and Deployment
             </p>
           </div>
