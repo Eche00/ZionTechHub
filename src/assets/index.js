@@ -145,6 +145,7 @@ import logo11 from "./logo11.png";
 import logo12 from "./logo12.png";
 
 import linkedlnprofileimg from "./linkedlnprofileimg.png";
+import overviewimg from "./overviewimg.jpeg";
 
 export {
   logo,
@@ -283,4 +284,5 @@ export {
   logo11,
   logo12,
   linkedlnprofileimg,
+  overviewimg,
 };
