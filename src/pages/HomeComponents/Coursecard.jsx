@@ -63,7 +63,7 @@ function Coursecard({ course }) {
               alt=""
             />
             <div className=" flex flex-col justify-center text-[#1A1A1ACC] ">
-              <p className=" text-[16px] font-[700]">Ndomo Godsent</p>
+              <p className=" text-[16px] font-[700]">Ndoma Godsent</p>
               <p className=" text-yellow-400  text-[12px] font-[400] flex items-center ">
                 <Star fontSize="small" />
                 <span className=" text-[#1A1A1ACC]">{course.rating}</span>

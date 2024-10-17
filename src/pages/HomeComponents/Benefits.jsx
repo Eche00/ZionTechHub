@@ -38,6 +38,36 @@ function Benefits() {
       <circle cx="5.5" cy="5.5" r="5" fill="#626262" />
     </svg>
   );
+  const greendot = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="11"
+      height="11"
+      viewBox="0 0 11 11"
+      fill="none">
+      <circle cx="5.5" cy="5.5" r="5" fill="#527455" />
+    </svg>
+  );
+  const bluedot = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="11"
+      height="11"
+      viewBox="0 0 11 11"
+      fill="none">
+      <circle cx="5.5" cy="5.5" r="5" fill="#4768A8" />
+    </svg>
+  );
+  const orangedot = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="11"
+      height="11"
+      viewBox="0 0 11 11"
+      fill="none">
+      <circle cx="5.5" cy="5.5" r="5" fill="#A85847" />
+    </svg>
+  );
 
   const flash = (
     <svg
@@ -62,6 +92,16 @@ function Benefits() {
           />
         </clipPath>
       </defs>
+    </svg>
+  );
+  const mprofile = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="61"
+      height="60"
+      viewBox="0 0 61 60"
+      fill="none">
+      <circle cx="30.5" cy="30" r="30" fill="#33502A" />
     </svg>
   );
   return (
@@ -103,7 +143,7 @@ function Benefits() {
           <section className=" flex flex-col justify-between   border border-gray-400 rounded-[10px] bg-white  pt-[10px]">
             <div className=" sm:px-[32px] px-[20px] pb-[24px] pt-[36px] text-[#626262] flex flex-col gap-[20px]">
               <p className=" flex sm:text-[12px] text-[10px] font-[700] items-center gap-[5px] px-[14px] sm:py-[10px] py-[8px] bg-[#D6E2D3] rounded-[10px] w-fit text-[#527455]">
-                {dot} REAL WORLD PRACTICES
+                {greendot} REAL WORLD PRACTICES
               </p>
               <p className="  text-[20px] sm:text-[28px] font-[600] text-[#527455]">
                 Hands on real world projects
@@ -123,7 +163,7 @@ function Benefits() {
                   Apply your skills on real world tasks{" "}
                 </p>
               </div>
-              <div className="  px-[40px]   py-[30px] sm:w-[759px]  w-[459px] overflow-scroll ">
+              <div className="  px-[40px]   py-[30px] sm:w-[759px]  w-[459px] overflow-scroll  scrollbar-hide">
                 <div className="flex flex-wrap items-center  gap-[24px]  sm:w-[800px] w-[700px]  ">
                   <p className=" sm:p-[10px] p-[5px] flex items-center justify-center border-[#527455] rounded-full text-[#527455] border-[3px] sm:text-[20px] text-[12px] font-[600] gap-[12px]">
                     <img
@@ -199,7 +239,7 @@ function Benefits() {
           <section className=" flex flex-col justify-between   border border-gray-400 rounded-[10px] bg-[#F5F5F5] overflow-hidden">
             <div className=" sm:px-[32px] px-[20px] pb-[24px] pt-[36px] text-[#626262] flex flex-col gap-[20px]">
               <p className=" flex sm:text-[12px] text-[10px] font-[700] items-center gap-[5px] px-[14px] py-[10px] bg-[#E1E7F5] rounded-[10px] w-fit text-[#4768A8]">
-                {dot} OPTIMIZATION
+                {bluedot} OPTIMIZATION
               </p>
               <p className="  sm:text-[28px] text-[20px] font-[600] text-[#4768A8]">
                 LinkedIn Branding
@@ -212,7 +252,7 @@ function Benefits() {
                 collaborators.
               </p>
             </div>
-            <div className=" ml-[14px] flex  flex-col overflow-scroll  rounded-tl-[10px] rounded-bl-[10px] w-[709px] bg-[#FFFFFF]">
+            <div className=" ml-[14px] flex  flex-col overflow-scroll  rounded-tl-[10px] rounded-bl-[10px] w-[709px] bg-[#FFFFFF] scrollbar-hide">
               <div className="sm:w-[864px] w-[468px]">
                 <img
                   className=" w-full sm:h-[172px] h-[120px] object-cover"
@@ -268,7 +308,7 @@ function Benefits() {
           <section className=" flex flex-col   border border-gray-400 rounded-[10px] bg-[#F5F5F5] sm:py-[14px] p-[14px] overflow-hidden">
             <div className=" sm:px-[32px] px-[10px] pb-[24px] pt-[20px]  flex flex-col gap-[20px] text-[#A85847]">
               <p className=" flex sm:text-[12px] text-[10px] font-[700] items-center gap-[5px] px-[14px] py-[10px] bg-[#F5E9E1] rounded-[10px] w-fit">
-                {dot} INTERNSHIPS
+                {orangedot} INTERNSHIPS
               </p>
               <p className="  sm:text-[28px] text-[20px] font-[600]">
                 Internship Opportunities{" "}
@@ -354,7 +394,7 @@ function Benefits() {
           </div>
           {/* 3rd part 2 */}
           <div className="  flex flex-col py-[14px]   border border-gray-400 rounded-[10px] bg-white">
-            <section className=" ml-[14px] flex  flex-col overflow-scroll  rounded-tl-[10px] rounded-bl-[10px] w-[617px] h-[250px]">
+            <section className=" ml-[14px] flex  flex-col overflow-scroll  rounded-tl-[10px] rounded-bl-[10px] w-[617px] h-[250px] scrollbar-hide">
               <div className="sm:pl-[60px] sm:pt-[50px] pt-[20px]">
                 <section className=" rounded-t-[10px] border border-gray-400  sm:w-fit w-[962px]">
                   <article className=" flex items-center  px-[32px] py-[14px] border-b border-gray-400 gap-[16px] text-[#3e363699]">
@@ -367,11 +407,12 @@ function Benefits() {
                     <p className="text-[14px] font-[400]">2 Mentors present</p>
                   </article>
                   <article className=" py-[16px] px-[32px] flex gap-[24px]">
-                    <img
-                      className=" w-[60px] h-[60px] rounded-full"
-                      src={Reviewimg}
-                      alt=""
-                    />
+                    <article className=" w-fit relative">
+                      {mprofile}
+                      <p className="font-[400] text-[24px] text-[#FFFFFF] absolute  m-auto top-[10%] left-[32%]">
+                        M
+                      </p>
+                    </article>
                     <div className=" flex flex-col gap-[24px] ">
                       <section className=" flex gap-[10px] items-center">
                         <p className="sm:text-[16px] text-[14px] font-[400]">

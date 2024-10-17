@@ -1,37 +1,35 @@
 import React from "react";
 
 function TeamCard({ team }) {
-  const llogo = (
+  const logo = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
-      viewBox="0 0 24 24"
+      viewBox="0 0 18 18"
       fill="none">
       <path
-        d="M19 3C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19ZM18.5 18.5V13.2C18.5 12.3354 18.1565 11.5062 17.5452 10.8948C16.9338 10.2835 16.1046 9.94 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17C14.6813 12.17 15.0374 12.3175 15.2999 12.5801C15.5625 12.8426 15.71 13.1987 15.71 13.57V18.5H18.5ZM6.88 8.56C7.32556 8.56 7.75288 8.383 8.06794 8.06794C8.383 7.75288 8.56 7.32556 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19C6.43178 5.19 6.00193 5.36805 5.68499 5.68499C5.36805 6.00193 5.19 6.43178 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56ZM8.27 18.5V10.13H5.5V18.5H8.27Z"
-        fill="#333333"
+        d="M16 0C16.5304 0 17.0391 0.210714 17.4142 0.585786C17.7893 0.960859 18 1.46957 18 2V16C18 16.5304 17.7893 17.0391 17.4142 17.4142C17.0391 17.7893 16.5304 18 16 18H2C1.46957 18 0.960859 17.7893 0.585786 17.4142C0.210714 17.0391 0 16.5304 0 16V2C0 1.46957 0.210714 0.960859 0.585786 0.585786C0.960859 0.210714 1.46957 0 2 0H16ZM15.5 15.5V10.2C15.5 9.33539 15.1565 8.5062 14.5452 7.89483C13.9338 7.28346 13.1046 6.94 12.24 6.94C11.39 6.94 10.4 7.46 9.92 8.24V7.13H7.13V15.5H9.92V10.57C9.92 9.8 10.54 9.17 11.31 9.17C11.6813 9.17 12.0374 9.3175 12.2999 9.58005C12.5625 9.8426 12.71 10.1987 12.71 10.57V15.5H15.5ZM3.88 5.56C4.32556 5.56 4.75288 5.383 5.06794 5.06794C5.383 4.75288 5.56 4.32556 5.56 3.88C5.56 2.95 4.81 2.19 3.88 2.19C3.43178 2.19 3.00193 2.36805 2.68499 2.68499C2.36805 3.00193 2.19 3.43178 2.19 3.88C2.19 4.81 2.95 5.56 3.88 5.56ZM5.27 15.5V7.13H2.5V15.5H5.27Z"
+        fill="#034FE3"
       />
     </svg>
   );
   return (
-    <div className=" relative w-fit">
+    <div className=" relative w-fit group grayscale hover:grayscale-0   hover:text-[#034FE3] text-[#1A1A1A]">
       <img
-        className="sm:w-[318px] sm:h-[404px] w-[280px] h-[300px] rounded-[10px] object-cover grayscale"
+        className="sm:w-[318px] sm:h-[404px] w-[280px] h-[300px] rounded-[10px] object-cover cursor-pointer duration-300"
         src={team.img}
         alt=""
       />
-      <div className=" absolute bottom-[20px] w-[90%] left-[15px]  flex justify-between px-[17px] py-[14px] bg-white/30 backdrop-blur-lg rounded-[10px]">
+      <div className=" absolute bottom-[20px] w-[90%] left-[15px]  flex justify-between px-[17px] py-[14px] bg-white/50 backdrop-blur-lg rounded-[10px]">
         <section className=" flex flex-col gap-[6px]">
-          <p className=" sm:text-[20px] text-[16px] font-[600] text-[#1A1A1A]">
-            {team.name}
-          </p>
-          <p className=" sm:text-[16px] text-[12px] font-[400] text-[#1A1A1A80]">
+          <p className=" sm:text-[20px] text-[16px] font-[600] ">{team.name}</p>
+          <p className=" sm:text-[16px] text-[12px] font-[400]  text-[#1A1A1A80]">
             {team.positions}
           </p>
         </section>
         <section className=" flex  items-center justify-center">
-          <span className=" bg-white p-[8px] rounded-md">{llogo}</span>
+          <span className=" bg-white p-[8px] rounded-md ">{logo}</span>
         </section>
       </div>
     </div>

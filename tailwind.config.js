@@ -4,6 +4,7 @@ export default {
   theme: {
     extend: {},
     screens: {
+      smm: "1300px", // desktop view
       sm: "900px", // desktop view
       md: "750px", // tablet view
       lg: "370px", // iPhone sizes
@@ -11,5 +12,5 @@ export default {
       "2xl": "1024px", // Desktop, laptops
     },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar-hide")],
 };

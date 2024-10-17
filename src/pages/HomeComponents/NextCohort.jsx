@@ -105,10 +105,10 @@ function NextCohort() {
       <div className=" flex flex-col sm:max-w-[88%] max-w-full mx-auto sm:border-l sm:border-gray-300 ">
         <div className=" w-full  flex sm:flex-row flex-col items-center py-[82px] md:flex-row">
           <div className=" flex flex-1 items-center justify-center flex-wrap sm:gap-[24px] gap-[10px] ">
-            <section className="   shadow-[24px 24px 140px 0px rgba(0, 0, 0, 0.15)]">
-              <article className=" flex flex-col sm:gap-[30px] gap-[10px] items-center justify-center sm:w-[290px] sm:h-[355px] w-[160px] h-[180px] bg-white sm:rounded-[30px] rounded-[20px]">
+            <section className="    ">
+              <article className=" flex flex-col sm:gap-[30px] gap-[10px] items-center justify-center sm:w-[290px] sm:h-[335px] w-[160px] h-[180px] bg-white sm:rounded-[30px] rounded-[20px] shadow-lg">
                 <div>{individual}</div>
-                <div className=" flex flex-col items-center justify-center text-[#1A1A1ACC] gap-[6px]">
+                <div className=" flex flex-col items-center justify-center text-[#1A1A1ACC] ">
                   <h2 className=" sm:text-[84px] text-[36px] font-[700]">
                     321
                   </h2>
@@ -119,9 +119,9 @@ function NextCohort() {
               </article>
             </section>
             <section className=" shadow-[24px 24px 140px 0px rgba(0, 0, 0, 0.15)]">
-              <article className=" flex flex-col sm:gap-[30px] gap-[10px] items-center justify-center sm:w-[290px] sm:h-[355px] w-[160px] h-[180px] bg-white sm:rounded-[30px] rounded-[20px] border border-[#1A1A1A4D]">
+              <article className=" flex flex-col sm:gap-[30px] gap-[10px] items-center justify-center sm:w-[290px] sm:h-[335px] w-[160px] h-[180px] bg-white sm:rounded-[30px] rounded-[20px] border border-[#1A1A1A4D]">
                 <div>{world}</div>
-                <div className=" flex flex-col items-center justify-center text-[#1A1A1ACC] gap-[6px]">
+                <div className=" flex flex-col items-center justify-center text-[#1A1A1ACC] ">
                   <h2 className=" sm:text-[84px] text-[36px] font-[700]">12</h2>
                   <p className=" sm:text-[24px] text-[14px] font-[300]">
                     Countries globally
@@ -130,9 +130,9 @@ function NextCohort() {
               </article>
             </section>
             <section className=" shadow-[24px 24px 140px 0px rgba(0, 0, 0, 0.15)]">
-              <article className=" flex flex-col sm:gap-[30px] gap-[10px] items-center justify-center sm:w-[290px] sm:h-[355px] w-[160px] h-[180px] bg-white sm:rounded-[30px] rounded-[20px] border border-[#1A1A1A4D]">
+              <article className=" flex flex-col sm:gap-[30px] gap-[10px] items-center justify-center sm:w-[290px] sm:h-[335px] w-[160px] h-[180px] bg-white sm:rounded-[30px] rounded-[20px] border border-[#1A1A1A4D]">
                 <div>{calender}</div>
-                <div className=" flex flex-col items-center justify-center text-[#1A1A1ACC] gap-[6px]">
+                <div className=" flex flex-col items-center justify-center text-[#1A1A1ACC] ">
                   <h2 className=" sm:text-[84px] text-[36px] font-[700]">12</h2>
                   <p className=" sm:text-[24px] text-[14px] font-[300]">
                     Weeks long
@@ -141,9 +141,9 @@ function NextCohort() {
               </article>
             </section>
             <section className=" shadow-[24px 24px 140px 0px rgba(0, 0, 0, 0.15)]">
-              <article className=" flex flex-col sm:gap-[30px] gap-[10px] items-center justify-center sm:w-[290px] sm:h-[355px] w-[160px] h-[180px] bg-white sm:rounded-[30px] rounded-[20px] border border-[#1A1A1A4D]">
+              <article className=" flex flex-col sm:gap-[30px] gap-[10px] items-center justify-center sm:w-[290px] sm:h-[335px] w-[160px] h-[180px] bg-white sm:rounded-[30px] rounded-[20px] border border-[#1A1A1A4D]">
                 <div>{verified}</div>
-                <div className=" flex flex-col items-center justify-center text-[#1A1A1ACC] gap-[6px]">
+                <div className=" flex flex-col items-center justify-center text-[#1A1A1ACC] ">
                   <h2 className=" sm:text-[84px] text-[36px] font-[700]">
                     98%
                   </h2>
@@ -154,9 +154,9 @@ function NextCohort() {
               </article>
             </section>
           </div>
-          <div className=" flex-1 flex flex-col gap-[29px] sm:items-start sm:justify-start items-center justify-center  ">
+          <div className=" flex-1 flex flex-col gap-[29px] sm:items-start sm:justify-start items-center justify-center   h-fit">
             <div className=" flex  flex-col gap-[24px] text-[#1A1A1ACC]  ">
-              <h1 className=" sm:text-[96px] text-[56px] font-[700] sm:px-0 px-[10px]">
+              <h1 className=" sm:text-[96px] text-[56px] font-[700] sm:px-0 px-[10px] sm:leading-[130%] sm:tracker-[1.28px] leading-[120%] tracker-[0.8px]">
                 <span className=" text-[#034FE3]">Join </span>Our <br /> Next
                 Cohort
               </h1>
@@ -169,7 +169,7 @@ function NextCohort() {
             <div className=" flex sm:gap-[24px] gap-[12px] rounded-[10px] sm:px-0 px-[10px]">
               <Link
                 to="/enroll"
-                className=" py-[10px] px-[32px] bg-[#034FE3] text-white sm:text-[20px] text-[18px] whitespace-nowrap font-[700] rounded-[5px] shadow-[24px 24px 40px 0px rgba(0, 0, 0, 0.10) flex items-center">
+                className=" py-[10px] px-[32px] bg-[#034FE3] text-white sm:text-[20px] text-[18px] whitespace-nowrap font-[700] rounded-[5px] shadow-[24px 24px 40px 0px rgba(0, 0, 0, 0.10) flex items-center shadow-lg">
                 Apply now
               </Link>
               <section className=" sm:py-[10px] py-[8px] text-[#1A1A1ACC] bg-[#F0F0F0] rounded-[10px] flex sm:gap-[12px] gap-[8px]">

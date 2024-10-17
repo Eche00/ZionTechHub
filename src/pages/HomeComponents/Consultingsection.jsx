@@ -61,7 +61,7 @@ function Consultingsection() {
         </div>
         <Link
           to="/consult"
-          className=" sm:py-[10px] py-[14px] px-[32px] rounded-[5px] bg-[#034FE3] sm:text-[20px] text-[18px] font-[700] w-fit text-white">
+          className=" sm:py-[10px] py-[14px] px-[32px] rounded-[5px] bg-[#034FE3] sm:text-[20px] text-[18px] font-[700] w-fit text-white tracker-[1.6px] shadow-md">
           Learn more
         </Link>
       </div>

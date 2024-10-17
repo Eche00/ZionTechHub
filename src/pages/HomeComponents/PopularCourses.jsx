@@ -14,8 +14,8 @@ function PopularCourses() {
           Highest rated and sort after trainings.
         </p>
       </div>
-      <div className=" overflow-x-scroll ">
-        <div className=" relative flex sm:w-[1800px] w-[1500px] gap-[36px] overflow-scroll  pr-[10px]">
+      <div className=" overflow-x-scroll  scrollbar-hide">
+        <div className=" relative flex sm:w-[1800px] w-[1500px] gap-[36px] overflow-scroll  pr-[10px] scrollbar-hide">
           {PopularCourseslib.map((course) => (
             <Coursecard key={course.message} course={course} />
           ))}

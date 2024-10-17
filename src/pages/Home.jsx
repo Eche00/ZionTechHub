@@ -90,7 +90,7 @@ function Home() {
       <span className="  md:h-[104px] md:w-[104px] h-[50px] w-[50px]   bg-[#034FE30D] absolute md:top-[50px] md:right-[640px] top-[130px] right-[60px] z-50"></span>
       <span className="  md:h-[104px] md:w-[104px] w-[50px] h-[50px]  bg-[#034FE30D] absolute md:top-[400px] md:left-[314px] top-[330px] left-0  z-50"></span>
 
-      <div className=" sm:h-[130vh]  md:h-[90vh]  h-[1300px]">
+      <div className=" smm:h-[100vh] sm:h-[130vh]  md:h-[90vh]  h-[1300px]">
         <motion.div
           className=" absolute top-[130px] z-30 flex  gap-[24px]   "
           ref={ref}
@@ -137,7 +137,7 @@ function Home() {
               <section className="sm:flex hidden">{africabig}</section>
               <section className="flex sm:hidden">{africasmall}</section>
 
-              <div className=" absolute sm:bottom-[100px] sm:right-[130px] bottom-8 right-6 ">
+              <div className=" absolute smm:bottom-[100px] smm:right-[130px] sm:bottom-[50px] sm:right-[20px] bottom-8 right-6 ">
                 <section className="sm:flex hidden">{bit}</section>
                 <section className="flex sm:hidden">{bitt}</section>
               </div>
