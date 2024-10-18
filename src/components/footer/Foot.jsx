@@ -36,7 +36,7 @@ function Foot() {
   return (
     <footer className=" bg-[#E7E7E7]">
       <div className=" pt-[110px] ">
-        <div className=" sm:max-w-[85%] max-w-full mx-auto flex sm:flex-row flex-col sm:items-center px-[20px] sm:px-0 justify-between pb-[55px] border-b border-black">
+        <div className="  smm:max-w-[80%] sm:max-w-[88%] max-w-full mx-auto flex sm:flex-row flex-col sm:items-center px-[20px] sm:px-0 justify-between pb-[55px] border-b border-black">
           <div className=" flex flex-col gap-[32px] items-start pb-[48px] sm:pb-0">
             <img
               className=" sm:w-[95px] w-[89px] h-[51px]  border-none object-cover"
@@ -81,7 +81,7 @@ function Foot() {
           </div>
         </div>
 
-        <div className=" sm:max-w-[85%] max-w-full mx-auto pt-[55px] flex sm:flex-row flex-col justify-between items-center sm:gap-0 gap-[24px]">
+        <div className=" smm:max-w-[80%] sm:max-w-[88%] max-w-full mx-auto pt-[55px] flex sm:flex-row flex-col justify-between items-center sm:gap-0 gap-[24px]">
           <section className=" flex items-center  text-[14px] font-[400] text-[#040505] gap-[8px]">
             {" "}
             <span>{checkMark}</span> Follow us on all Platforms

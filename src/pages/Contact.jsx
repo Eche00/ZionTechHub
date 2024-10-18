@@ -87,7 +87,7 @@ function Contact() {
     <div className="relative">
       <span className="  md:h-[104px] md:w-[104px] h-[50px] w-[50px]   bg-[#034FE30D] absolute md:top-[50px] md:right-[640px] top-[150px] right-[60px] "></span>
       <span className="  md:h-[104px] md:w-[104px] w-[50px] h-[50px]  bg-[#034FE30D] absolute md:top-[417px] md:left-[314px] top-[300px] left-0  "></span>
-      <div className=" pt-[130px]    bg-[linear-gradient(to_right,#4f4f4f0e_1px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_1px,transparent_0.1px)] md:bg-[size:104px_104px] bg-[size:50px_50px]  [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])]   sm:h-[100vh]   w-full">
+      <div className=" pt-[130px]    bg-[linear-gradient(to_right,#4f4f4f0e_1px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_1px,transparent_0.1px)] md:bg-[size:104px_104px] bg-[size:50px_50px]  [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])]   sm:h-[100vh]   w-full border-b">
         <motion.div
           initial={{ opacity: 0.45 }}
           whileInView={{ opacity: 1 }}
@@ -106,7 +106,7 @@ function Contact() {
             </div>
           </div>
           {/* part 2 */}
-          <div className=" flex flex-wrap  gap-[33px] items-center justify-center py-[100px]">
+          <div className=" flex flex-wrap  gap-[33px] items-center justify-center py-[100px] ">
             {/* count  */}
             <div className=" py-[25px] px-[40px] flex flex-col gap-[48px] border border-[#1A1A1A33] rounded-[10px] bg-[#F0F0F0] md:w-fit w-[90%]">
               <span className=" p-[10px] rounded-[5px] border border-[#1A1A1A33] w-fit">
@@ -159,12 +159,12 @@ function Contact() {
               </section>
             </div>
             {/* count  */}
-            <div className=" py-[25px] px-[40px] flex flex-col gap-[48px] border border-[#1A1A1A33] rounded-[10px] bg-[#F0F0F0] md:w-fit w-[90%]">
+            <div className=" py-[25px] px-[40px] flex flex-col gap-[48px] border border-[#1A1A1A33] rounded-[10px] bg-[#F0F0F0] md:w-fit w-[90%] ">
               <span className=" p-[10px] rounded-[5px] border border-[#1A1A1A33] w-fit">
                 {linkedln}
               </span>
-              <section className="text-[#1A1A1A] flex flex-col gap-[24px]">
-                <p className=" text-[18px] font-[200] ">
+              <section className="text-[#1A1A1A] flex flex-col gap-[24px] ">
+                <p className=" text-[18px] font-[200]  pr-[35px]">
                   <span className=" text-[24px] font-[600] ">
                     Chat on LinkedIn
                   </span>{" "}

@@ -90,7 +90,7 @@ function Home() {
       <span className="  md:h-[104px] md:w-[104px] h-[50px] w-[50px]   bg-[#034FE30D] absolute md:top-[50px] md:right-[640px] top-[130px] right-[60px] z-50"></span>
       <span className="  md:h-[104px] md:w-[104px] w-[50px] h-[50px]  bg-[#034FE30D] absolute md:top-[400px] md:left-[314px] top-[330px] left-0  z-50"></span>
 
-      <div className=" smm:h-[100vh] sm:h-[130vh]  md:h-[90vh]  h-[1300px]">
+      <div className=" smm:h-[96vh] sm:h-[130vh]  md:h-[90vh]  h-[1300px]">
         <motion.div
           className=" absolute top-[130px] z-30 flex  gap-[24px]   "
           ref={ref}
@@ -99,7 +99,7 @@ function Home() {
             <ReviewCard review={review} />
           ))}
         </motion.div>
-        <div className=" w-full absolute z-0 top-[130px] bottom-0    bg-[linear-gradient(to_right,#4f4f4f0e_1px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_1px,transparent_0.1px)] md:bg-[size:104px_104px] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])] overflow-hidden">
+        <div className=" w-full absolute z-0 top-[130px] bottom-0    bg-[linear-gradient(to_right,#4f4f4f0e_1px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_1px,transparent_0.1px)] md:bg-[size:104px_104px] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])] overflow-hidden border-b">
           <motion.div
             initial={{ opacity: 0.45 }}
             whileInView={{ opacity: 1 }}
@@ -143,7 +143,7 @@ function Home() {
               </div>
             </div>
           </motion.div>
-          <div className=" flex sm:flex-row flex-col justify-around items-center sm:gap-0 gap-[32px]  max-w-[90%] mx-auto sm:my-[20px] text-[24px] font-[400] text-[#1A1A1A] border border-gray-400 rounded-[10px] sm:py-[22px] py-[20px] md:flex-row">
+          <div className=" flex sm:flex-row flex-col justify-around items-center sm:gap-0 gap-[32px]  max-w-[90%] mx-auto sm:my-[20px] text-[24px] font-[400] text-[#1A1A1A] border border-gray-400 rounded-[10px] sm:py-[30px] py-[20px] md:flex-row">
             <div className=" flex gap-[24px] items-center justify-center ">
               <img src={individual} alt="" /> Individuals
             </div>

@@ -79,7 +79,7 @@ function ScienceContent() {
         </p>
       </div>
 
-      <div className="flex sm:flex-row flex-col-reverse gap-[25px] sm:w-[1238px] ">
+      <div className="flex sm:flex-row flex-col-reverse gap-[25px] smm:w-[1238px] sm:w-[1150px] ">
         <div className=" flex-1 flex flex-col rounded-tr-[10px] overflow-hidden border border-gray-300 h-fit">
           {/* first month  */}
           <div>

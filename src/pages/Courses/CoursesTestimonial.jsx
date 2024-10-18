@@ -25,7 +25,7 @@ function CoursesTestimonial() {
         </div>
       </div>
       <div className=" overflow-x-scroll ">
-        <div className=" relative flex w-[3600px] sm:gap-[24px] gap-[20px] overflow-scroll  pr-[10px]">
+        <div className=" relative flex w-[3600px] sm:gap-[24px] gap-[20px] overflow-scroll  pr-[10px] scrollbar-hide">
           {Testimonials.map((testimonial) => (
             <img
               className=" sm:w-[445px] sm:h-[445px] w-[344px] h-[344px] object-cover"

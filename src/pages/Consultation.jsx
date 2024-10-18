@@ -163,26 +163,26 @@ function Consultation() {
 
       <div className="">
         {/* our approach */}
-        <div className="   sm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%]   mx-auto border-l border-gray-200  pb-[180px]">
+        <div className="   smm:max-w-[80%] sm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%]   mx-auto border-l border-gray-200  pb-[180px]">
           <Overview />
           <ServiceOffered />
         </div>
 
         <div className=" w-full  bg-[#EBECED] ">
-          <div className=" flex flex-col md:max-w-[94%] w-[100%] ml-auto border-l border-gray-300  overflow-x-hidden md:pb-0 pb-[100px]">
+          <div className=" flex flex-col  smm:max-w-[90%] sm:max-w-[94%] md:max-w-[94%] w-[100%] ml-auto border-l border-gray-300  overflow-x-hidden md:pb-0 pb-[100px]">
             <Industriesserved />
           </div>
         </div>
         {/* course content */}
-        <div className=" flex flex-col sm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%]   mx-auto border-l border-gray-300  pt-[180px]">
+        <div className=" flex flex-col smm:max-w-[80%] sm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%]   mx-auto border-l border-gray-300  pt-[180px]">
           <Ourapproach />
         </div>
         <div className=" w-full bg-[#F5F5F5]">
-          <div className=" flex flex-col sm:max-w-[94%] md:max-w-[96%] lg:max-w-[96%] xl:max-w-[98%] ml-auto border-l border-gray-300  overflow-x-hidden">
+          <div className=" flex flex-col smm:max-w-[90%] sm:max-w-[94%] md:max-w-[96%] lg:max-w-[96%] xl:max-w-[98%] ml-auto border-l border-gray-300  overflow-x-hidden">
             <Engagement />
           </div>
         </div>
-        <div className=" flex flex-col sm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%]  mx-auto border-l border-[#034FE31A] ">
+        <div className=" flex flex-col smm:max-w-[80%] sm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%]  mx-auto border-l border-[#034FE31A] ">
           <ContactUsc />
         </div>
       </div>

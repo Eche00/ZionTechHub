@@ -131,7 +131,7 @@ function CloudComputing() {
     <div className="bg-[#F5F5F5]">
       <span className="  md:h-[104px] md:w-[104px] h-[50px] w-[50px]   bg-[#034FE30D] absolute md:top-[50px] md:right-[640px] top-[134px] right-[60px] "></span>
       <span className="  md:h-[104px] md:w-[104px] w-[50px] h-[50px]  bg-[#034FE30D] absolute md:top-[350px] md:left-[314px] top-[282px] left-0  "></span>{" "}
-      <div className="     bg-[linear-gradient(to_right,#4f4f4f0e_1px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_1px,transparent_0.1px)] md:bg-[size:104px_104px] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])]   sm:h-[80vh]   w-full">
+      <div className="     bg-[linear-gradient(to_right,#4f4f4f0e_1px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_1px,transparent_0.1px)] md:bg-[size:104px_104px] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])]   smm:h-[78vh] sm:h-[90vh]   w-full border-b">
         <motion.div
           initial={{ opacity: 0.45 }}
           whileInView={{ opacity: 1 }}
@@ -229,7 +229,7 @@ function CloudComputing() {
           </div>
         </motion.div>
         {/* course info  */}
-        <div className=" flex sm:flex-row flex-col justify-around sm:items-center sm:max-w-[80%]  max-w-[90%] mx-auto  text-[24px] font-[400] text-[#1A1A1A] bg-[#EBECED] rounded-[10px] py-[36px] sm:px-0 px-[40px] sm:gap-0 gap-[24px]">
+        <div className=" flex sm:flex-row flex-col justify-around sm:items-center smm:max-w-[80%] sm:max-w-[88%]  max-w-[90%] mx-auto  text-[24px] font-[400] text-[#1A1A1A] bg-[#EBECED] rounded-[10px] py-[36px] sm:px-0 px-[40px] sm:gap-0 gap-[24px] shadow-2xl">
           <section className=" flex flex-col">
             <h3 className="text-[24px] font-[600] text-[#1A1A1A] flex gap-[8px] items-center">
               <span className=" text-[#034FE3] ">
@@ -273,7 +273,7 @@ function CloudComputing() {
       {/* component 2 */}
       <div className="">
         {/* what to expect section */}
-        <div className=" pt-[180px]  sm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%] mx-auto border-l border-gray-200 relative">
+        <div className=" pt-[180px]  smm:max-w-[80%] sm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%] mx-auto border-l border-gray-200 relative">
           <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[199px] top-[185px] -left-[1.5px]"></span>
           <div className=" px-[20px] ">
             <p className=" font-[600] sm:text-[48px] text-[32px] text-[#333]">
@@ -296,7 +296,7 @@ function CloudComputing() {
           </div>
         </div>
         {/* skills to gain  section*/}
-        <div className=" py-[160px]  sm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%] mx-auto border-l border-gray-200 relative">
+        <div className=" py-[160px]  smm:max-w-[80%] sm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%] mx-auto border-l border-gray-200 relative">
           <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[179px] top-[165px] -left-[1.5px]"></span>
           <div className=" px-[20px] ">
             <p className=" font-[600] sm:text-[48px] text-[32px] text-[#333]">
@@ -341,7 +341,7 @@ function CloudComputing() {
           </div>
         </div>
         {/* details to know section */}
-        <div className=" sm:pb-[180px] pb-[100px]  sm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%] mx-auto border-l border-gray-200 relative">
+        <div className=" sm:pb-[180px] pb-[100px]  smm:max-w-[80%] sm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%] mx-auto border-l border-gray-200 relative">
           <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[19px] top-[6px] -left-[1.5px]"></span>
           <div className=" px-[20px] ">
             <p className=" font-[600] sm:text-[48px] text-[32px] text-[#333]">
@@ -370,14 +370,14 @@ function CloudComputing() {
           </div>
         </div>
         {/* course content */}
-        <div className=" flex flex-col sm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%] mx-auto border-l border-gray-300 ">
+        <div className=" flex flex-col smm:max-w-[80%] sm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%] mx-auto border-l border-gray-300 ">
           <CloudComputingcontent />
         </div>
 
-        <div className=" flex flex-col sm:max-w-[94%] md:max-w-[96%] lg:max-w-[96%] xl:max-w-[98%]  ml-auto border-l border-gray-300  overflow-x-hidden">
+        <div className=" flex flex-col smm:max-w-[90%] sm:max-w-[94%] md:max-w-[96%] lg:max-w-[96%] xl:max-w-[98%]  ml-auto border-l border-gray-300  overflow-x-hidden">
           <CoursesTestimonial />
         </div>
-        <div className=" flex flex-col  sm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%] mx-auto border-l border-gray-300 ">
+        <div className=" flex flex-col  smm:max-w-[80%] sm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%] mx-auto border-l border-gray-300 ">
           <Faqs />
         </div>
       </div>

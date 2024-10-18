@@ -19,7 +19,7 @@ function About() {
       <span className="  md:h-[104px] md:w-[104px] h-[50px] w-[50px]   bg-[#034FE30D] absolute md:top-[50px] md:right-[640px] top-[150px] right-[60px] "></span>
       <span className="  md:h-[104px] md:w-[104px] w-[50px] h-[50px]  bg-[#034FE30D] absolute md:top-[400px] md:left-[314px] top-[300px] left-0  "></span>
 
-      <div className=" pt-[130px]    bg-[linear-gradient(to_right,#4f4f4f0e_1px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_1px,transparent_0.1px)] md:bg-[size:104px_104px] bg-[size:50px_50px]  [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])] overflow-hidden  sm:h-[100vh]  flex  items-center  w-full">
+      <div className=" pt-[130px]    bg-[linear-gradient(to_right,#4f4f4f0e_1px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_1px,transparent_0.1px)] md:bg-[size:104px_104px] bg-[size:50px_50px]  [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])] overflow-hidden  sm:h-[100vh]  flex  items-center  w-full border-b">
         <motion.div
           initial={{ opacity: 0.45 }}
           whileInView={{ opacity: 1 }}
@@ -80,32 +80,32 @@ function About() {
       </div>
       <div className=" w-full bg-[#F5F5F5]">
         <div>
-          <div className=" flex flex-col sm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%]  mx-auto border-l border-[#034FE31A] ">
+          <div className=" flex flex-col smm:max-w-[80%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%]  mx-auto border-l border-[#034FE31A] ">
             <AboutUs />
             <Ourmission />
           </div>
 
-          <div className=" flex flex-col sm:max-w-[94%] md:max-w-[96%] lg:max-w-[96%] xl:max-w-[98%]  ml-auto border-l border-[#034FE31A]  ">
+          <div className=" flex flex-col smm:max-w-[90%] md:max-w-[96%] lg:max-w-[96%] xl:max-w-[98%]  ml-auto border-l border-[#034FE31A]  ">
             <Team />
           </div>
-          <div className=" flex flex-col sm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%] -w-[92%] mx-auto border-l border-[#034FE31A] ">
+          <div className=" flex flex-col smm:max-w-[80%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%]  mx-auto border-l border-[#034FE31A] ">
             <Foundermessage />
           </div>
 
-          <div className=" flex flex-col sm:max-w-[94%] md:max-w-[96%] lg:max-w-[96%] xl:max-w-[98%]  ml-auto border-l border-[#034FE31A] ">
+          <div className=" flex flex-col smm:max-w-[90%] md:max-w-[96%] lg:max-w-[96%] xl:max-w-[98%]  ml-auto border-l border-[#034FE31A] ">
             <Partners />
           </div>
           <div className=" w-full  bg-[#EBECED]">
-            <div className=" sm:max-w-[94%] md:max-w-[96%] lg:max-w-[96%] xl:max-w-[98%] ml-auto border-l border-[#034FE31A] ">
+            <div className=" smm:max-w-[90%] md:max-w-[96%] lg:max-w-[96%] xl:max-w-[98%] ml-auto border-l border-[#034FE31A] ">
               <LinkedlnProfile />
             </div>
           </div>
 
-          <div className=" flex flex-col sm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%]  mx-auto border-l border-[#034FE31A] ">
+          <div className=" flex flex-col smm:max-w-[80%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%]  mx-auto border-l border-[#034FE31A] ">
             <ContactUs />
           </div>
 
-          <div className=" flex flex-col sm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%] mx-auto border-l border-[#034FE31A]  ">
+          <div className=" flex flex-col smm:max-w-[80%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%] mx-auto border-l border-[#034FE31A]  ">
             <Faqs />
           </div>
         </div>

@@ -102,7 +102,7 @@ function NextCohort() {
   );
   return (
     <div className=" bg-[#EBECED]">
-      <div className=" flex flex-col sm:max-w-[88%] max-w-full mx-auto sm:border-l sm:border-gray-300 ">
+      <div className=" flex flex-col sm:max-w-[80%] max-w-full mx-auto sm:border-l sm:border-gray-300 ">
         <div className=" w-full  flex sm:flex-row flex-col items-center py-[82px] md:flex-row">
           <div className=" flex flex-1 items-center justify-center flex-wrap sm:gap-[24px] gap-[10px] ">
             <section className="    ">

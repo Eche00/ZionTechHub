@@ -37,7 +37,7 @@ function Engagement() {
           </section>
         </div>
       </div>
-      <div className=" overflow-x-scroll ">
+      <div className=" overflow-x-scroll  scrollbar-hide">
         <div className=" relative flex md:w-[2100px] w-[1600px]  overflow-scroll  ">
           {EngagementM.map((engagement) => (
             <div className="flex md:py-[78px] md:px-[52px] py-[60px] px-[40px] border-y border-r border-[#034FE3] bg-[#EBECED]">

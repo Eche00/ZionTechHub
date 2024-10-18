@@ -15,7 +15,7 @@ function Team() {
           hub.
         </p>
       </div>
-      <div className=" overflow-x-scroll ">
+      <div className=" overflow-x-scroll  scrollbar-hide">
         <div className=" relative flex sm:w-[3400px] w-[3100px] gap-[24px] overflow-scroll  pr-[10px]">
           {TeamDetails.map((team) => (
             <TeamCard key={team.name} team={team} />

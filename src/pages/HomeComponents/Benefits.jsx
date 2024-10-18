@@ -163,7 +163,7 @@ function Benefits() {
                   Apply your skills on real world tasks{" "}
                 </p>
               </div>
-              <div className="  px-[40px]   py-[30px] sm:w-[759px]  w-[459px] overflow-scroll  scrollbar-hide">
+              <div className="  px-[40px]   py-[30px] sm:w-[759px]  w-[459px] overflow-scroll  scrollbar-hide  ">
                 <div className="flex flex-wrap items-center  gap-[24px]  sm:w-[800px] w-[700px]  ">
                   <p className=" sm:p-[10px] p-[5px] flex items-center justify-center border-[#527455] rounded-full text-[#527455] border-[3px] sm:text-[20px] text-[12px] font-[600] gap-[12px]">
                     <img
