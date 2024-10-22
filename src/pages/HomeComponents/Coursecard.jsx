@@ -45,13 +45,13 @@ function Coursecard({ course }) {
       </div>
       <div className=" flex flex-col gap-[24px] sm:w-full w-fit text-[#1A1A1ACC]  border-gray-400">
         <div className=" flex flex-col gap-[10px] px-[24px]">
-          <p className=" flex items-center py-[6px] px-[8px] border border-gray-300 gap-[4px] rounded-[5px] w-fit text-[12px] font-[400]">
+          <p className=" flex items-center py-[6px] px-[8px] border border-gray-300 gap-[4px] rounded-[5px] w-fit text-[12px] font-[400] font-[Lato]">
             {book} {course.time}
           </p>
-          <p className=" sm:text-[24px] text-[20px] font-[600]">
+          <p className=" sm:text-[24px] text-[20px] font-[600] font-[Lato]">
             {course.category}
           </p>
-          <p className=" sm:text-[16px] text-[14px] font-[300] sm:w-[367px] w-[302px] h-[48px]">
+          <p className=" sm:text-[16px] text-[14px] font-[300] sm:w-[367px] w-[302px] h-[48px]  font-[Lato]">
             {course.message}
           </p>
         </div>
@@ -63,7 +63,9 @@ function Coursecard({ course }) {
               alt=""
             />
             <div className=" flex flex-col justify-center text-[#1A1A1ACC] ">
-              <p className=" text-[16px] font-[700]">Ndoma Godsent</p>
+              <p className=" text-[16px] font-[700] font-[Lato]">
+                Ndoma Godsent
+              </p>
               <p className=" text-yellow-400  text-[12px] font-[400] flex items-center ">
                 <Star fontSize="small" />
                 <span className=" text-[#1A1A1ACC]">{course.rating}</span>
