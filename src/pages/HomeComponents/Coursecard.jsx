@@ -71,7 +71,7 @@ function Coursecard({ course }) {
             </div>
           </section>
           <section>
-            <p className=" sm:text-[24px] text-[20px] font-[700]">
+            <p className=" sm:text-[24px] text-[20px] font-[700] font-[Lato]">
               ${course.price}
             </p>
           </section>
