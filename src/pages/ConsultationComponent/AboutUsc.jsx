@@ -110,9 +110,11 @@ function ContactUsc() {
               <h3 className=" text-[24px] font-[400]">
                 Our Whatsapp Community{" "}
               </h3>
-              <p className=" sm:text-[18px] text-[16px] underline font-[300]">
+              <a
+                href="https://chat.whatsapp.com/Ziontechhub"
+                className=" sm:text-[18px] text-[16px] underline font-[300]">
                 Click here to join us{" "}
-              </p>
+              </a>
             </section>
           </section>
 
@@ -123,9 +125,11 @@ function ContactUsc() {
               <h3 className=" text-[24px] font-[400]">
                 Follow Us on our Socials{" "}
               </h3>
-              <p className=" sm:text-[18px] text-[16px] underline font-[300]">
+              <a
+                href="https://tr.ee/suerg04Bvk"
+                className=" sm:text-[18px] text-[16px] underline font-[300]">
                 Click here to follow our pages
-              </p>
+              </a>
             </section>
           </section>
         </div>

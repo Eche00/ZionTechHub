@@ -171,7 +171,11 @@ function Contact() {
                   <br />
                   Chat to us on LinkedIn
                 </p>
-                <p className=" text-[18px] font-[600] underline">Click here</p>
+                <a
+                  href="https://www.linkedin.com/company/zion-tech-hub/?viewAsMember=true"
+                  className=" text-[18px] font-[600] underline">
+                  Click here
+                </a>
               </section>
             </div>
             {/* count  */}

@@ -31,9 +31,11 @@ function LinkedlnProfile() {
                 you up!
               </p>
               <div>
-                <button className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white py-[14px] px-[32px] text-[20px] font-[600]">
-                  Reach out on {linkedld}
-                </button>
+                <a href="https://www.linkedin.com/company/zion-tech-hub/?viewAsMember=true">
+                  <button className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white py-[14px] px-[32px] text-[20px] font-[600]">
+                    Reach out on {linkedld}
+                  </button>
+                </a>
               </div>
             </section>
           </div>
