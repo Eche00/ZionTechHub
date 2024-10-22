@@ -39,7 +39,7 @@ function Services() {
             We offer amazing services crafted specially for you here at zion
             tech hub.
           </p>
-          <section className=" flex items-center justify-center gap-[10px]">
+          <section className=" sm:flex items-center justify-center gap-[10px] hidden">
             <span className=" border   text-gray-500 rounded-full p-2">
               <ArrowBack />
             </span>

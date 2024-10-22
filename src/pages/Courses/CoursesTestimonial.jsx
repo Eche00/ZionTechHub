@@ -14,7 +14,7 @@ function CoursesTestimonial() {
           <p className=" text-[18px] font-[300] text-[#1A1A1A66]">
             Why people choose Zion Tech Hub for their career
           </p>
-          <section className=" sm:flex hidden items-center justify-center gap-[10px]">
+          <section className=" sm:flex hidden items-center justify-center gap-[10px] hidden">
             <span className=" border   text-gray-500 rounded-full p-2">
               <ArrowBack />
             </span>
