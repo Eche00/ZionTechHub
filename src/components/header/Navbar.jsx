@@ -96,6 +96,11 @@ function Navbar() {
               Consultation
             </NavLink>
             <NavLink
+              to="/partnerwithus"
+              className={({ isActive }) => (isActive ? "text-[#1A1A1A]" : "")}>
+              Partner with us
+            </NavLink>
+            <NavLink
               to="/contact"
               className={({ isActive }) => (isActive ? "text-[#1A1A1A]" : "")}>
               Contact
@@ -187,6 +192,12 @@ function Navbar() {
                       onClick={() => setNav(false)}
                       className=" py-[15px] px-[20px] text-[14px] text-[#1A1A1A] border-b border-[#C3C3C3]">
                       Consultation
+                    </Link>
+                    <Link
+                      to="/partnerwithus"
+                      onClick={() => setNav(false)}
+                      className=" py-[15px] px-[20px] text-[14px] text-[#1A1A1A] border-b border-[#C3C3C3]">
+                      Partner with us
                     </Link>
                     <Link
                       to="/contact"

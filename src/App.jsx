@@ -13,6 +13,7 @@ import DataAnalysis from "./pages/Courses/DataAnalysis";
 import DataScience from "./pages/Courses/DataScience";
 import FullHome from "./pages/HomeComponents/FullHome";
 import Scrolltotop from "./components/Scrolltotop";
+import PartnerWithUs from "./pages/PartnerWithUs";
 
 function App() {
   return (
@@ -27,6 +28,8 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/consult" element={<Consultation />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/partnerwithus" element={<PartnerWithUs />} />
+
             <Route path="/datascience" element={<DataScience />} />
             <Route path="/dataanalystics" element={<DataAnalysis />} />
             <Route path="/webdevelopment" element={<WebDevelopment />} />

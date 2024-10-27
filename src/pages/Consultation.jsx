@@ -34,8 +34,18 @@ function Consultation() {
           className=" w-[90%] mx-auto flex justify-between   py-[100px] items-center">
           <div className=" flex-1   flex flex-col justify-end ">
             <div className=" flex flex-col gap-[24px]">
-              <p className=" sm:text-[14px] text-[12px]  font-[400] py-[10px] sm:px-[24px] px-[14px] border rounded-full w-fit ">
-                TRAINING & CONSULTATION
+              <p className=" sm:text-[14px] text-[12px]  font-[400] py-[10px] sm:px-[24px] px-[14px] border rounded-full w-fit  flex items-center gap-[10px]">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="8"
+                    height="9"
+                    viewBox="0 0 8 9"
+                    fill="none">
+                    <circle cx="4" cy="4.5" r="4" fill="#034FE3" />
+                  </svg>
+                </span>{" "}
+                CONSULTATION
               </p>
               <h1 className=" text-[#1A1A1A] font-[700] sm:text-[64px] text-[40px] sm:w-full w-[320px] sm:whitespace-nowrap sm:leading-[130%] sm:tracker-[1.28px] leading-[120%] tracker-[0.8px] whitespace-nowrap">
                 Data

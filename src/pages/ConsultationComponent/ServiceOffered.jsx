@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Reviewimg, consultservice } from "../../assets";
+import BookConsultation from "./BookConsultation";
 
 function ServiceOffered() {
+  const [bookConsultation, setBookConsultation] = useState();
   const dot = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22,10 +24,11 @@ function ServiceOffered() {
       </defs>
     </svg>
   );
+
   return (
     <div>
       {" "}
-      <div className=" pt-[180px]  relative">
+      <div className=" pt-[180px]  relative ">
         <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute md:top-[199px] top-[185px] -left-[1.5px]"></span>
         <div className=" px-2 ">
           <p className=" font-[600] md:text-[48px] text-[32px] text-[#333]">
@@ -83,13 +86,20 @@ function ServiceOffered() {
             </section>
           </div>
           <div>
-            <button className=" py-[14px] px-[32px] border  rounded-[10px] bg-[#034FE3] text-white text-[18px] font-[700]">
+            <button
+              className=" py-[14px] px-[32px] border  rounded-[10px] bg-[#034FE3] text-white text-[18px] font-[700]"
+              onClick={() => setBookConsultation(!bookConsultation)}>
               {" "}
               Book my Consultation
             </button>
           </div>
         </div>
       </div>
+      {bookConsultation && (
+        <div className=" fixed top-0 left-0 bottom-0  w-full bg-black/50 ">
+          <BookConsultation />
+        </div>
+      )}
     </div>
   );
 }

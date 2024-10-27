@@ -147,6 +147,12 @@ import logo12 from "./logo12.png";
 import linkedlnprofileimg from "./linkedlnprofileimg.png";
 import overviewimg from "./overviewimg.jpeg";
 
+import partnerimg1 from "./partnerimg1.jpeg";
+import partnerimg2 from "./partnerimg2.png";
+import partnerimg3 from "./partnerimg3.png";
+
+import industryhero from "./industryhero.png";
+
 export {
   logo,
   Reviewimg,
@@ -285,4 +291,8 @@ export {
   logo12,
   linkedlnprofileimg,
   overviewimg,
+  partnerimg1,
+  partnerimg2,
+  partnerimg3,
+  industryhero,
 };

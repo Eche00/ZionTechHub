@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { missionimage, visionimage } from "../../assets";
+import { Link } from "react-router-dom";
 
 function Ourmission() {
   const [vision, setVision] = useState(false);
@@ -105,9 +106,11 @@ function Ourmission() {
               </p>
             </section>
             <section className=" px-[32px] sm:pt-[32px] sm:pb-0 pb-[50px]">
-              <button className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white py-[14px] px-[32px] text-[20px] font-[700] w-fit">
+              <Link
+                to="/partnerwithus"
+                className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white py-[14px] px-[32px] text-[20px] font-[700] w-fit">
                 Partner with us
-              </button>
+              </Link>
             </section>
           </div>
         </div>
