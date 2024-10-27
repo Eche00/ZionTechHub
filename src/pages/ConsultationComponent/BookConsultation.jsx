@@ -1,12 +1,12 @@
 import React from "react";
-import { Reviewimg } from "../../assets";
+import { consultationpopup } from "../../assets";
 
 function BookConsultation() {
   return (
     <div className="bg-[#FFF] w-fit mx-auto  h-[688px] rounded-[10px] mt-[130px] p-[26px]">
       <div className=" flex  gap-[52px] ">
         <img
-          src={Reviewimg}
+          src={consultationpopup}
           className="h-[635px] w-[469px] object-cover rounded-[5px]"
           alt=""
         />

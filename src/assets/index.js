@@ -152,6 +152,7 @@ import partnerimg2 from "./partnerimg2.png";
 import partnerimg3 from "./partnerimg3.png";
 
 import industryhero from "./industryhero.png";
+import consultationpopup from "./consultationpopup.png";
 
 export {
   logo,
@@ -295,4 +296,5 @@ export {
   partnerimg2,
   partnerimg3,
   industryhero,
+  consultationpopup,
 };
