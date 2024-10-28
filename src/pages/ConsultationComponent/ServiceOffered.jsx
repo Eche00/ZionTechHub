@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Reviewimg, consultservice } from "../../assets";
 import BookConsultation from "./BookConsultation";
+import { motion } from "framer-motion";
 
 function ServiceOffered() {
   const [bookConsultation, setBookConsultation] = useState();
@@ -96,9 +97,13 @@ function ServiceOffered() {
         </div>
       </div>
       {bookConsultation && (
-        <div className=" fixed top-0 left-0 bottom-0  w-full bg-black/50 ">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1, ease: "linear", delay: 0.45 }}
+          className=" fixed top-0 left-0 bottom-0  w-full bg-black/50 ">
           <BookConsultation />
-        </div>
+        </motion.div>
       )}
     </div>
   );
