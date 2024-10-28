@@ -43,12 +43,12 @@ function IndustryAndExpertise() {
             dedicated to <br className=" hidden md:flex" />{" "}
             excellence and result
           </p>
-          <Link
-            to="/enroll"
+          <a
+            href="mailto:info@ziontechhub.com"
             className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white sm:py-[12px] sm:px-[32px] py-[12px] px-[24px] text-[16px] sm:text-[18px] font-[500] w-fit">
             Partner with us
             <ArrowForward />
-          </Link>
+          </a>
         </div>
         <img
           className="sm:w-[574px] sm:h-[500px] w-[357px] h-[335px] object-cover rounded-[10px]"

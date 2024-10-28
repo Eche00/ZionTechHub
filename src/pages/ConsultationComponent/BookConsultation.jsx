@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { consultationpopup } from "../../assets";
 import { motion } from "framer-motion";
+import { Battery0Bar } from "@mui/icons-material";
 
 function BookConsultation() {
   const [pickDate, setPickDate] = useState(false);
+  const [pickService, setPickService] = useState(false);
+  const [service, setService] = useState("Service sector");
+  const [formData, setFormData] = useState({});
+
   const calendar = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -31,6 +36,33 @@ function BookConsultation() {
       />
     </svg>
   );
+
+  const arrowdown = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="25"
+      height="25"
+      viewBox="0 0 25 25"
+      fill="none">
+      <path
+        d="M8.5625 10.5337L13.5625 15.5337L18.5625 10.5337"
+        stroke="#1A1A1A"
+        stroke-opacity="0.4"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+
+  const handleSelectedService = (e) => {
+    setService(e.target.id);
+  };
+
+  const handleSubmit = () => {
+    setFormData(e.target.id);
+    console.log(formData);
+  };
   return (
     <div className="bg-[#FFF] w-fit mx-auto  h-[688px] rounded-[10px] mt-[130px] md:p-[26px] p-[18px]">
       <div className=" flex  gap-[52px]  md:flex-row flex-col">
@@ -51,18 +83,22 @@ function BookConsultation() {
           <p className="md:text-[16px] text-[14px] font-[300] pb-[33px]">
             Fill in the input fields with relevant information.
           </p>
-          <form className=" flex flex-col gap-[25px] relative" action="">
+          <form
+            className=" flex flex-col gap-[25px] relative"
+            onSubmit={handleSubmit}>
             {/* inputs  */}
             <div className=" flex gap-[14px]">
               <input
                 className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[14px] text-[rgba(26, 26, 26, 0.50)] rounded-[5px] md:w-full w-[150px]"
                 type="text"
                 placeholder="First name"
+                id="firstname"
               />
               <input
                 className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[14px] text-[rgba(26, 26, 26, 0.50)] rounded-[5px] md:w-full w-[150px]"
                 type="text"
                 placeholder="Last name"
+                id="lastname"
               />
             </div>
             {/* inputs  */}
@@ -70,15 +106,83 @@ function BookConsultation() {
               className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[14px] text-[rgba(26, 26, 26, 0.50)] rounded-[5px] md:w-full w-[320px] "
               type="text"
               placeholder="Email"
-            />
-            <input
-              className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[14px] text-[rgba(26, 26, 26, 0.50)] rounded-[5px] md:w-full w-[320px]"
-              type="text"
-              placeholder="Service sector"
+              id="email"
             />
 
             <section
-              className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[14px]  rounded-[5px] md:w-full w-[320px] flex items-center justify-between  cursor-pointer"
+              className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[14px]  rounded-[5px] md:w-full w-[320px] flex items-center justify-between  cursor-pointer relative"
+              onClick={() => setPickService(!pickService)}>
+              <p className="text-gray-400">{service}</p>
+              {arrowdown}
+              {pickService && (
+                <div className=" absolute  -left-[1px] -right-[1px] top-[50px] border border-[#C7D1D4] bg-[#FFFFFF] text-[12px] font-[500] text-[#1A1A1A99] rounded-b-[10px] overflow-hidden z-10">
+                  <button
+                    value="
+                        Data Analytics
+                        "
+                    type="button"
+                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    onClick={handleSelectedService}>
+                    <span>
+                      <Battery0Bar />
+                    </span>{" "}
+                    Data Analytics
+                  </button>
+                  <button
+                    value="
+                        Data Science
+                        "
+                    type="button"
+                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    onClick={handleSelectedService}>
+                    <span>
+                      <Battery0Bar />
+                    </span>{" "}
+                    Data Science
+                  </button>
+                  <button
+                    value="
+                        Web Development
+                        "
+                    type="button"
+                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    onClick={handleSelectedService}>
+                    <span>
+                      <Battery0Bar />
+                    </span>{" "}
+                    Web Development
+                  </button>
+
+                  <button
+                    value="
+                        Cloud Computing & DevOps
+                        "
+                    type="button"
+                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    onClick={handleSelectedService}>
+                    <span>
+                      <Battery0Bar />
+                    </span>{" "}
+                    Cloud Computing & DevOps
+                  </button>
+                  <button
+                    value="
+                         Machine Learning
+                        "
+                    type="button"
+                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    onClick={handleSelectedService}>
+                    <span>
+                      <Battery0Bar />
+                    </span>{" "}
+                    Machine Learning
+                  </button>
+                </div>
+              )}
+            </section>
+
+            <section
+              className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[14px]  rounded-[5px] md:w-full w-[320px] flex items-center justify-between  cursor-pointer relative"
               onClick={() => setPickDate(!pickDate)}>
               <p className="text-gray-400">Choose date and time</p>
               {calendar}
@@ -86,14 +190,16 @@ function BookConsultation() {
 
             <textarea
               name=""
-              id=""
+              id="message"
               placeholder="Leave a message"
               className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[14px] text-[rgba(26, 26, 26, 0.50)] rounded-[5px] md:w-full w-[320px] h-[148px] flex items-start resize-none"></textarea>
-            <button className=" bg-[#034FE3] text-[#FFF] font-[600] text-[16px] py-[13px] rounded-[6px]">
+            <button
+              className=" bg-[#034FE3] text-[#FFF] font-[600] text-[16px] py-[13px] rounded-[6px]"
+              type="button">
               Book now
             </button>
             {/* calendar  */}
-            {pickDate && <div className="absolute">hello</div>}
+            {pickDate && <p></p>}
           </form>
         </motion.div>
       </div>

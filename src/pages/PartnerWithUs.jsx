@@ -374,7 +374,7 @@ function PartnerWithUs() {
                     <circle cx="4" cy="4.5" r="4" fill="#034FE3" />
                   </svg>
                 </span>{" "}
-                CONSULTATION
+                PARTNER WITH US
               </p>
               <h1 className=" text-[#1A1A1A] font-[700] sm:text-[64px] text-[40px]   sm:w-full w-[340px] sm:leading-[130%] sm:tracker-[1.28px] leading-[120%] tracker-[0.8px]">
                 Join a Network Dedicated To
@@ -391,12 +391,12 @@ function PartnerWithUs() {
               </p>
             </div>
             <div className=" flex sm:flex-row flex-col gap-[24px] sm:py-[70px] py-[10px] w-fit">
-              <Link
-                to="/enroll"
+              <a
+                href="mailto:info@ziontechhub.com"
                 className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white sm:py-[20px] sm:px-[36px] py-[12px] px-[24px] text-[16px] sm:text-[18px] font-[500] w-fit">
                 Partner with us
                 <ArrowForward />
-              </Link>
+              </a>
             </div>
           </div>
           {/* edit  */}
