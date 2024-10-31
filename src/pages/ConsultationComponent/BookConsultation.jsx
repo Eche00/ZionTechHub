@@ -15,8 +15,9 @@ import {
   getSortedDays,
   range,
 } from "../../lib/Dateinfos/Datelogic";
+import CloseIcon from "@mui/icons-material/Close";
 
-function BookConsultation({ handleClose }) {
+function BookConsultation(props) {
   const [pickDate, setPickDate] = useState(false);
   const [pickService, setPickService] = useState(false);
   const [formData, setFormData] = useState({
@@ -143,19 +144,24 @@ function BookConsultation({ handleClose }) {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1, ease: "linear", delay: 1 }}
           className=" flex flex-col relative">
-          <h2 className="md:text-[36px] text-[24px] font-[600] text-[#034FE3]">
-            Book Your Consultation
+          <h2 className="md:text-[36px] text-[30px] font-[600] text-[#034FE3] flex items-center justify-between">
+            Book Your Consultation{" "}
+            <span
+              className=" text-[#1A1A1A80] cursor-pointer"
+              onClick={props.handleClose}>
+              <CloseIcon />
+            </span>
           </h2>
-          <p className="md:text-[16px] text-[14px] font-[300] pb-[33px]">
+          <p className="md:text-[16px] text-[16px] font-[300] pb-[33px]">
             Fill in the input fields with relevant information.
           </p>
           <form
             className=" flex flex-col gap-[25px] relative"
             onSubmit={handleSubmit}>
             {/* inputs  */}
-            <div className=" flex gap-[14px]">
+            <div className=" flex gap-[16px]">
               <input
-                className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[14px] text-[rgba(26, 26, 26, 0.50)] rounded-[5px] md:w-full w-[150px] border-none"
+                className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[16px] text-[rgba(26, 26, 26, 0.50)] rounded-[5px] md:w-[207px] w-[150px] border-none"
                 type="text"
                 placeholder="First name"
                 id="firstname"
@@ -165,7 +171,7 @@ function BookConsultation({ handleClose }) {
                 required
               />
               <input
-                className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[14px] text-[rgba(26, 26, 26, 0.50)] rounded-[5px] md:w-full w-[150px] border-none"
+                className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[16px] text-[rgba(26, 26, 26, 0.50)] rounded-[5px] md:w-[207px] w-[150px] border-none"
                 type="text"
                 placeholder="Last name"
                 id="lastname"
@@ -177,7 +183,7 @@ function BookConsultation({ handleClose }) {
             </div>
             {/* inputs  */}
             <input
-              className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[14px] text-[rgba(26, 26, 26, 0.50)] rounded-[5px] md:w-full w-[320px] border-none"
+              className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[16px] text-[rgba(26, 26, 26, 0.50)] rounded-[5px] md:w-full w-[320px] border-none"
               type="text"
               placeholder="Email"
               id="email"
@@ -188,7 +194,7 @@ function BookConsultation({ handleClose }) {
             />
 
             <section
-              className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[14px]  rounded-[5px] md:w-full w-[320px] flex items-center justify-between  cursor-pointer relative"
+              className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[16px]  rounded-[5px] md:w-full w-[320px] flex items-center justify-between  cursor-pointer relative"
               onClick={() => setPickService(!pickService)}>
               <p className="text-gray-400"> {formData.service}</p>
               {arrowdown}
@@ -200,7 +206,7 @@ function BookConsultation({ handleClose }) {
 
                         "
                     type="button"
-                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    className="  flex gap-[12px] py-[16px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
                     onClick={(e) =>
                       setFormData({ ...formData, service: e.target.value })
                     }>
@@ -212,7 +218,7 @@ function BookConsultation({ handleClose }) {
 
                         "
                     type="button"
-                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    className="  flex gap-[12px] py-[16px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
                     onClick={(e) =>
                       setFormData({ ...formData, service: e.target.value })
                     }>
@@ -224,7 +230,7 @@ function BookConsultation({ handleClose }) {
 
                         "
                     type="button"
-                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    className="  flex gap-[12px] py-[16px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
                     onClick={(e) =>
                       setFormData({ ...formData, service: e.target.value })
                     }>
@@ -236,7 +242,7 @@ function BookConsultation({ handleClose }) {
 
                         "
                     type="button"
-                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    className="  flex gap-[12px] py-[16px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
                     onClick={(e) =>
                       setFormData({ ...formData, service: e.target.value })
                     }>
@@ -248,7 +254,7 @@ function BookConsultation({ handleClose }) {
 
                         "
                     type="button"
-                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    className="  flex gap-[12px] py-[16px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
                     onClick={(e) =>
                       setFormData({ ...formData, service: e.target.value })
                     }>
@@ -260,7 +266,7 @@ function BookConsultation({ handleClose }) {
 
                         "
                     type="button"
-                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    className="  flex gap-[12px] py-[16px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
                     onClick={(e) =>
                       setFormData({ ...formData, service: e.target.value })
                     }>
@@ -272,7 +278,7 @@ function BookConsultation({ handleClose }) {
 
                         "
                     type="button"
-                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    className="  flex gap-[12px] py-[16px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
                     onClick={(e) =>
                       setFormData({ ...formData, service: e.target.value })
                     }>
@@ -284,7 +290,7 @@ function BookConsultation({ handleClose }) {
 
                         "
                     type="button"
-                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    className="  flex gap-[12px] py-[16px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
                     onClick={(e) =>
                       setFormData({ ...formData, service: e.target.value })
                     }>
@@ -296,7 +302,7 @@ function BookConsultation({ handleClose }) {
 
                         "
                     type="button"
-                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    className="  flex gap-[12px] py-[16px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
                     onClick={(e) =>
                       setFormData({ ...formData, service: e.target.value })
                     }>
@@ -308,7 +314,7 @@ function BookConsultation({ handleClose }) {
 
                         "
                     type="button"
-                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    className="  flex gap-[12px] py-[16px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
                     onClick={(e) =>
                       setFormData({ ...formData, service: e.target.value })
                     }>
@@ -320,7 +326,7 @@ function BookConsultation({ handleClose }) {
 
                         "
                     type="button"
-                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    className="  flex gap-[12px] py-[16px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
                     onClick={(e) =>
                       setFormData({ ...formData, service: e.target.value })
                     }>
@@ -332,7 +338,7 @@ function BookConsultation({ handleClose }) {
 
                         "
                     type="button"
-                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    className="  flex gap-[12px] py-[16px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
                     onClick={(e) =>
                       setFormData({ ...formData, service: e.target.value })
                     }>
@@ -344,7 +350,7 @@ function BookConsultation({ handleClose }) {
 
                         "
                     type="button"
-                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    className="  flex gap-[12px] py-[16px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
                     onClick={(e) =>
                       setFormData({ ...formData, service: e.target.value })
                     }>
@@ -355,7 +361,7 @@ function BookConsultation({ handleClose }) {
                         Research and Development
                         "
                     type="button"
-                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    className="  flex gap-[12px] py-[16px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
                     onClick={(e) =>
                       setFormData({ ...formData, service: e.target.value })
                     }>
@@ -366,7 +372,7 @@ function BookConsultation({ handleClose }) {
                          Non-Profit Organizations
                         "
                     type="button"
-                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    className="  flex gap-[12px] py-[16px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
                     onClick={(e) =>
                       setFormData({ ...formData, service: e.target.value })
                     }>
@@ -377,7 +383,7 @@ function BookConsultation({ handleClose }) {
             </section>
 
             <section
-              className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[14px]  rounded-[5px] md:w-full w-[320px] flex items-center justify-between  cursor-pointer relative"
+              className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[16px]  rounded-[5px] md:w-full w-[320px] flex items-center justify-between  cursor-pointer relative"
               onClick={() => setPickDate(!pickDate)}>
               <p className="text-gray-400">
                 {formData?.date === "" ? (
@@ -397,7 +403,7 @@ function BookConsultation({ handleClose }) {
                 setFormData({ ...formData, message: e.target.value })
               }
               required
-              className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[14px] text-[rgba(26, 26, 26, 0.50)] rounded-[5px] md:w-full w-[320px] md:h-[148px] h-[120px] flex items-start resize-none border-none"></textarea>
+              className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[16px] text-[rgba(26, 26, 26, 0.50)] rounded-[5px] md:w-full w-[320px] md:h-[148px] h-[120px] flex items-start resize-none border-none"></textarea>
             <button
               className=" bg-[#034FE3] text-[#FFF] font-[600] text-[16px] py-[13px] rounded-[6px]"
               type="submit">
