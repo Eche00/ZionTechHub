@@ -1,13 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { consultationpopup } from "../../assets";
 import { motion } from "framer-motion";
-import { Battery0Bar } from "@mui/icons-material";
+import {
+  ArrowBackIosNew,
+  ArrowForwardIos,
+  Battery0Bar,
+} from "@mui/icons-material";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import "./Date.css";
+import { monthNamme } from "../../lib/Dateinfos/MMYY";
+import {
+  getNumberOfDaysInMonth,
+  getSortedDays,
+  range,
+} from "../../lib/Dateinfos/Datelogic";
 
-function BookConsultation() {
+function BookConsultation({ handleClose }) {
   const [pickDate, setPickDate] = useState(false);
   const [pickService, setPickService] = useState(false);
-  const [service, setService] = useState("Service sector");
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    firstname: " ",
+    lastname: "",
+    email: "",
+    message: " ",
+    service: "Service selector",
+    date: "",
+  });
 
   const calendar = (
     <svg
@@ -55,16 +74,63 @@ function BookConsultation() {
     </svg>
   );
 
-  const handleSelectedService = (e) => {
-    setService(e.target.id);
+  // habdling all concerning date picking itself
+  const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
+  const [currentyear, setCurrentYear] = useState(new Date().getFullYear());
+  const [selectedDate, setSelectedDate] = useState();
+
+  const nextMonth = (e) => {
+    e.preventDefault();
+    if (currentMonth < 11) {
+      setCurrentMonth((prev) => prev + 1);
+    } else {
+      setCurrentMonth(0);
+      setCurrentMonth((prev) => prev + 1);
+    }
+  };
+  const prevMonth = (e) => {
+    e.preventDefault();
+
+    if (currentMonth > 0) {
+      setCurrentMonth((prev) => prev - 1);
+    } else {
+      setCurrentMonth(11);
+      setCurrentMonth((prev) => prev - 1);
+    }
+  };
+  const handleSelection = (e) => {
+    e.preventDefault();
+
+    if (e.target.id === "day") {
+      setSelectedDate(
+        new Date(currentyear, currentMonth, e.target.getAttribute("data-day"))
+      );
+    }
+  };
+  const handleSelectionSubmit = (e) => {
+    e.preventDefault();
+    setFormData({ ...formData, date: selectedDate.toLocaleDateString() });
+    console.log(selectedDate);
+    setPickDate(false);
   };
 
-  const handleSubmit = () => {
-    setFormData(e.target.id);
+  // form data  submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (formData.service === "Service selector") {
+      alert("Please select  a service");
+      return;
+    }
+    if (formData.date === "") {
+      alert("Please select  a date ");
+      return;
+    }
+
     console.log(formData);
+    handleClose;
   };
   return (
-    <div className="bg-[#FFF] w-fit mx-auto  h-[688px] rounded-[10px] mt-[130px] md:p-[26px] p-[18px]">
+    <div className="bg-[#FFF] w-fit mx-auto  md:h-[688px] rounded-[10px] mt-[130px] md:p-[26px] p-[18px] overscroll-none overflow-y-scroll">
       <div className=" flex  gap-[52px]  md:flex-row flex-col">
         <img
           src={consultationpopup}
@@ -76,7 +142,7 @@ function BookConsultation() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1, ease: "linear", delay: 1 }}
-          className=" flex flex-col">
+          className=" flex flex-col relative">
           <h2 className="md:text-[36px] text-[24px] font-[600] text-[#034FE3]">
             Book Your Consultation
           </h2>
@@ -89,30 +155,42 @@ function BookConsultation() {
             {/* inputs  */}
             <div className=" flex gap-[14px]">
               <input
-                className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[14px] text-[rgba(26, 26, 26, 0.50)] rounded-[5px] md:w-full w-[150px]"
+                className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[14px] text-[rgba(26, 26, 26, 0.50)] rounded-[5px] md:w-full w-[150px] border-none"
                 type="text"
                 placeholder="First name"
                 id="firstname"
+                onChange={(e) =>
+                  setFormData({ ...formData, firstname: e.target.value })
+                }
+                required
               />
               <input
-                className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[14px] text-[rgba(26, 26, 26, 0.50)] rounded-[5px] md:w-full w-[150px]"
+                className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[14px] text-[rgba(26, 26, 26, 0.50)] rounded-[5px] md:w-full w-[150px] border-none"
                 type="text"
                 placeholder="Last name"
                 id="lastname"
+                onChange={(e) =>
+                  setFormData({ ...formData, lastname: e.target.value })
+                }
+                required
               />
             </div>
             {/* inputs  */}
             <input
-              className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[14px] text-[rgba(26, 26, 26, 0.50)] rounded-[5px] md:w-full w-[320px] "
+              className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[14px] text-[rgba(26, 26, 26, 0.50)] rounded-[5px] md:w-full w-[320px] border-none"
               type="text"
               placeholder="Email"
               id="email"
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
+              required
             />
 
             <section
               className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[14px]  rounded-[5px] md:w-full w-[320px] flex items-center justify-between  cursor-pointer relative"
               onClick={() => setPickService(!pickService)}>
-              <p className="text-gray-400">{service}</p>
+              <p className="text-gray-400"> {formData.service}</p>
               {arrowdown}
               {pickService && (
                 <div className=" absolute  -left-[1px] -right-[1px] top-[50px] border border-[#C7D1D4] bg-[#FFFFFF] text-[12px] font-[500] text-[#1A1A1A99] rounded-b-[10px] overflow-hidden z-10">
@@ -122,7 +200,9 @@ function BookConsultation() {
                         "
                     type="button"
                     className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
-                    onClick={handleSelectedService}>
+                    onClick={(e) =>
+                      setFormData({ ...formData, service: e.target.value })
+                    }>
                     <span>
                       <Battery0Bar />
                     </span>{" "}
@@ -134,7 +214,9 @@ function BookConsultation() {
                         "
                     type="button"
                     className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
-                    onClick={handleSelectedService}>
+                    onClick={(e) =>
+                      setFormData({ ...formData, service: e.target.value })
+                    }>
                     <span>
                       <Battery0Bar />
                     </span>{" "}
@@ -146,7 +228,9 @@ function BookConsultation() {
                         "
                     type="button"
                     className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
-                    onClick={handleSelectedService}>
+                    onClick={(e) =>
+                      setFormData({ ...formData, service: e.target.value })
+                    }>
                     <span>
                       <Battery0Bar />
                     </span>{" "}
@@ -159,7 +243,9 @@ function BookConsultation() {
                         "
                     type="button"
                     className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
-                    onClick={handleSelectedService}>
+                    onClick={(e) =>
+                      setFormData({ ...formData, service: e.target.value })
+                    }>
                     <span>
                       <Battery0Bar />
                     </span>{" "}
@@ -171,7 +257,9 @@ function BookConsultation() {
                         "
                     type="button"
                     className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
-                    onClick={handleSelectedService}>
+                    onClick={(e) =>
+                      setFormData({ ...formData, service: e.target.value })
+                    }>
                     <span>
                       <Battery0Bar />
                     </span>{" "}
@@ -184,7 +272,13 @@ function BookConsultation() {
             <section
               className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[14px]  rounded-[5px] md:w-full w-[320px] flex items-center justify-between  cursor-pointer relative"
               onClick={() => setPickDate(!pickDate)}>
-              <p className="text-gray-400">Choose date and time</p>
+              <p className="text-gray-400">
+                {formData?.date === "" ? (
+                  "Choose date and time"
+                ) : (
+                  <span>{formData.date}</span>
+                )}
+              </p>
               {calendar}
             </section>
 
@@ -192,15 +286,74 @@ function BookConsultation() {
               name=""
               id="message"
               placeholder="Leave a message"
-              className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[14px] text-[rgba(26, 26, 26, 0.50)] rounded-[5px] md:w-full w-[320px] h-[148px] flex items-start resize-none"></textarea>
+              onChange={(e) =>
+                setFormData({ ...formData, message: e.target.value })
+              }
+              required
+              className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[14px] text-[rgba(26, 26, 26, 0.50)] rounded-[5px] md:w-full w-[320px] md:h-[148px] h-[120px] flex items-start resize-none border-none"></textarea>
             <button
               className=" bg-[#034FE3] text-[#FFF] font-[600] text-[16px] py-[13px] rounded-[6px]"
-              type="button">
+              type="submit">
               Book now
             </button>
-            {/* calendar  */}
-            {pickDate && <p></p>}
           </form>
+          {/* calendar  */}
+          {pickDate && (
+            <div className="absolute top-[140px] md:left-[8%] left-[0%] py-[10px] px-[20px] rounded-[10px] bg-[#FFF] shadow-md">
+              <div>
+                <section className=" flex gap-[8px]  items-center justify-between">
+                  <button onClick={prevMonth}>
+                    <ArrowBackIosNew fontSize="small" />
+                  </button>{" "}
+                  <p className="font-[400] text-[18px] text-[#131A29] w-[217px] text-center">
+                    {monthNamme[currentMonth]} {currentyear}
+                  </p>
+                  <button onClick={nextMonth}>
+                    <ArrowForwardIos fontSize="small" />
+                  </button>{" "}
+                </section>
+                <section className="text-[20] text-[#C4C4C4] font-[500] grid grid-cols-7 gap-[8px]">
+                  {getSortedDays(currentyear, currentMonth).map((day) => (
+                    <p className="p-[8px]  text-center">{day}</p>
+                  ))}
+                </section>
+                <form onSubmit={handleSelectionSubmit}>
+                  <section
+                    className="text-[20] text-[#C4C4C4] font-[500] grid grid-cols-7 gap-[8px]"
+                    onClick={handleSelection}>
+                    {range(
+                      1,
+                      getNumberOfDaysInMonth(currentyear, currentMonth) + 1
+                    ).map((day) => (
+                      <p
+                        className={
+                          selectedDate?.getTime() ===
+                          new Date(currentyear, currentMonth, day).getTime()
+                            ? "p-[8px]  text-center rounded-[8px] bg-[#F5F5F5] border-2 border-[#034FE3] text-[#034FE3] cursor-pointer"
+                            : "p-[8px]  text-center rounded-[8px] bg-[#F5F5F5] text-[#131A29] cursor-pointer"
+                        }
+                        id="day"
+                        data-day={day}>
+                        {day}
+                      </p>
+                    ))}
+                  </section>
+                  <section className="flex justify-between pt-[10px] gap-[16px]">
+                    <button
+                      className="bg-[#DDD] py-[13px]  text-[16px] font-[500] text-[#888888] rounded-[8px] flex-1"
+                      onClick={() => setPickDate(!pickDate)}>
+                      Cancel
+                    </button>
+                    <button
+                      className="bg-[#034FE3] py-[13px]  text-[16px] font-[500] text-white rounded-[8px] flex-1"
+                      type="submit">
+                      Choose Date
+                    </button>
+                  </section>
+                </form>
+              </div>
+            </div>
+          )}
         </motion.div>
       </div>
     </div>

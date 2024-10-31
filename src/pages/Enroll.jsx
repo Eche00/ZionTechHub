@@ -10,15 +10,13 @@ import "./Enroll.css";
 
 function Enroll() {
   const [course, setCourse] = useState(false);
-  const [selectedCourse, setSelectedCourse] = useState("Select Course");
+  const [selectCourse, setSelectCourse] = useState(false);
   const [coursee, setCoursee] = useState(false);
   const [nav, setNav] = useState(false);
-
-  // state to handle course selection
-  const handleSelectedCourse = (e) => {
-    setCourse(false);
-    setSelectedCourse(e.target.value);
-  };
+  const [formData, setFormData] = useState({
+    name: "",
+    course: "Select course",
+  });
 
   const exit = (
     <svg
@@ -39,6 +37,16 @@ function Enroll() {
   const handleClose = () => {
     setNav(false);
     setCourse(false);
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (formData.course === "Select course") {
+      setSelectCourse(true);
+      return;
+    }
+    setSelectCourse(false);
+
+    console.log(formData);
   };
   return (
     <div className="">
@@ -167,7 +175,7 @@ function Enroll() {
                 enrollment. See you at the top!
               </p>
             </section>
-            <form className=" flex flex-col gap-[24px]">
+            <form className=" flex flex-col gap-[24px]" onSubmit={handleSubmit}>
               <section className="flex flex-col gap-[10px]">
                 <p className=" text-[#6B6F71] text-[12px] font-[500]">
                   Full Name
@@ -176,36 +184,44 @@ function Enroll() {
                   className=" py-[18px] px-[16px] border border-[#C7D1D4] rounded-[10px] text-[#1A1A1ACC] placeholder:text-[#1A1A1A33]"
                   type="text"
                   placeholder="Enter your full name"
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
+                  required
                 />
               </section>
               <section className="flex flex-col gap-[10px]">
                 <p className=" text-[#6B6F71] text-[12px] font-[500]">
                   Select Course
                 </p>
-                <button
+                <div
                   className=" py-[18px] px-[16px] text-[14px] font-[400] text-[#1A1A1A33] border border-[#C7D1D4] rounded-[10px] flex justify-between items-center relative"
                   type="button">
-                  {selectedCourse}
+                  {formData.course}
 
                   <span
                     className="text-[#1A1A1ACC]"
                     onClick={() => setCourse(!course)}>
                     {" "}
-                    {coursee ? (
+                    {course ? (
                       <KeyboardArrowUpIcon fontSize="medium" />
                     ) : (
                       <KeyboardArrowDownIcon fontSize="medium" />
                     )}
                   </span>
                   {course && (
-                    <div className=" absolute  -left-[1px] -right-[1px] top-[50px] border border-[#C7D1D4] bg-[#FFFFFF] text-[12px] font-[500] text-[#1A1A1A99] rounded-b-[10px] overflow-hidden">
+                    <div
+                      className=" absolute  -left-[1px] -right-[1px] top-[50px] border border-[#C7D1D4] bg-[#FFFFFF] text-[12px] font-[500] text-[#1A1A1A99] rounded-b-[10px] overflow-hidden"
+                      onClick={() => setCourse(!course)}>
                       <button
                         value="
                         Data Analytics
                         "
                         type="button"
                         className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
-                        onClick={handleSelectedCourse}>
+                        onClick={(e) =>
+                          setFormData({ ...formData, course: e.target.value })
+                        }>
                         <span>
                           <Battery0Bar />
                         </span>{" "}
@@ -217,7 +233,9 @@ function Enroll() {
                         "
                         type="button"
                         className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
-                        onClick={handleSelectedCourse}>
+                        onClick={(e) =>
+                          setFormData({ ...formData, course: e.target.value })
+                        }>
                         <span>
                           <Battery0Bar />
                         </span>{" "}
@@ -229,7 +247,9 @@ function Enroll() {
                         "
                         type="button"
                         className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
-                        onClick={handleSelectedCourse}>
+                        onClick={(e) =>
+                          setFormData({ ...formData, course: e.target.value })
+                        }>
                         <span>
                           <Battery0Bar />
                         </span>{" "}
@@ -242,7 +262,9 @@ function Enroll() {
                         "
                         type="button"
                         className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
-                        onClick={handleSelectedCourse}>
+                        onClick={(e) =>
+                          setFormData({ ...formData, course: e.target.value })
+                        }>
                         <span>
                           <Battery0Bar />
                         </span>{" "}
@@ -254,7 +276,9 @@ function Enroll() {
                         "
                         type="button"
                         className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
-                        onClick={handleSelectedCourse}>
+                        onClick={(e) =>
+                          setFormData({ ...formData, course: e.target.value })
+                        }>
                         <span>
                           <Battery0Bar />
                         </span>{" "}
@@ -262,7 +286,12 @@ function Enroll() {
                       </button>
                     </div>
                   )}
-                </button>
+                </div>
+                {selectCourse && (
+                  <p className=" text-[16px] font-bold text-red-500 ">
+                    Please select a course
+                  </p>
+                )}
                 <button className="py-[18px] px-[16px] rounded-[10px] text-white bg-[#207C3F] mt-[14px]">
                   Say Hi
                 </button>

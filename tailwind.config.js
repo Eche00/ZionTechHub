@@ -1,6 +1,8 @@
 /** @type {import('tailwindcss').Config} */
+const flowbite = require("flowbite-react/tailwind");
+
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}", flowbite.content()],
   theme: {
     extend: {},
     screens: {
@@ -12,5 +14,5 @@ export default {
       "2xl": "1024px", // Desktop, laptops
     },
   },
-  plugins: [require("tailwind-scrollbar-hide")],
+  plugins: [flowbite.plugin(), require("tailwind-scrollbar-hide")],
 };

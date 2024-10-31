@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { Reviewimg, consultservice } from "../../assets";
 import BookConsultation from "./BookConsultation";
 import { motion } from "framer-motion";
+import { Modal } from "flowbite-react";
 
 function ServiceOffered() {
   const [bookConsultation, setBookConsultation] = useState();
+  const [modal, setModal] = useState(false);
+
   const dot = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -89,7 +92,10 @@ function ServiceOffered() {
           <div>
             <button
               className=" py-[14px] px-[32px] border  rounded-[10px] bg-[#034FE3] text-white text-[18px] font-[700]"
-              onClick={() => setBookConsultation(!bookConsultation)}>
+              onClick={() => {
+                setModal(true);
+                setBookConsultation(!bookConsultation);
+              }}>
               {" "}
               Book my Consultation
             </button>
@@ -97,13 +103,18 @@ function ServiceOffered() {
         </div>
       </div>
       {bookConsultation && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1, ease: "linear", delay: 0.45 }}
-          className=" fixed top-0 left-0 bottom-0  w-full bg-black/50 ">
-          <BookConsultation />
-        </motion.div>
+        <Modal
+          show={modal}
+          popup
+          className=" fixed top-0 left-0 bottom-0  w-full bg-black/50  z-20 overscroll-none ">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 1, ease: "linear", delay: 0.45 }}
+            className=" fixed top-0 left-0 bottom-0  w-full  z-20 overscroll-none lg:overscroll-none xl:overflow-scroll">
+            <BookConsultation handleClose={() => setModal(false)} />
+          </motion.div>
+        </Modal>
       )}
     </div>
   );
