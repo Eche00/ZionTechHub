@@ -193,77 +193,184 @@ function BookConsultation({ handleClose }) {
               <p className="text-gray-400"> {formData.service}</p>
               {arrowdown}
               {pickService && (
-                <div className=" absolute  -left-[1px] -right-[1px] top-[50px] border border-[#C7D1D4] bg-[#FFFFFF] text-[12px] font-[500] text-[#1A1A1A99] rounded-b-[10px] overflow-hidden z-10">
+                <div className=" absolute  -left-[1px] -right-[1px] top-[50px] border border-[#C7D1D4] bg-[#FFFFFF] text-[12px] font-[500] text-[#1A1A1A99] rounded-b-[10px] h-[230px] z-10 overflow-scroll scrollbar-hide">
                   <button
                     value="
-                        Data Analytics
-                        "
-                    type="button"
-                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
-                    onClick={(e) =>
-                      setFormData({ ...formData, service: e.target.value })
-                    }>
-                    <span>
-                      <Battery0Bar />
-                    </span>{" "}
-                    Data Analytics
-                  </button>
-                  <button
-                    value="
-                        Data Science
-                        "
-                    type="button"
-                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
-                    onClick={(e) =>
-                      setFormData({ ...formData, service: e.target.value })
-                    }>
-                    <span>
-                      <Battery0Bar />
-                    </span>{" "}
-                    Data Science
-                  </button>
-                  <button
-                    value="
-                        Web Development
-                        "
-                    type="button"
-                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
-                    onClick={(e) =>
-                      setFormData({ ...formData, service: e.target.value })
-                    }>
-                    <span>
-                      <Battery0Bar />
-                    </span>{" "}
-                    Web Development
-                  </button>
+                                          Healthcare
 
-                  <button
-                    value="
-                        Cloud Computing & DevOps
                         "
                     type="button"
                     className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
                     onClick={(e) =>
                       setFormData({ ...formData, service: e.target.value })
                     }>
-                    <span>
-                      <Battery0Bar />
-                    </span>{" "}
-                    Cloud Computing & DevOps
+                    Healthcare
                   </button>
                   <button
                     value="
-                         Machine Learning
+                                           Finance
+
                         "
                     type="button"
                     className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
                     onClick={(e) =>
                       setFormData({ ...formData, service: e.target.value })
                     }>
-                    <span>
-                      <Battery0Bar />
-                    </span>{" "}
-                    Machine Learning
+                    Finance
+                  </button>
+                  <button
+                    value="
+                                           Retail
+
+                        "
+                    type="button"
+                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    onClick={(e) =>
+                      setFormData({ ...formData, service: e.target.value })
+                    }>
+                    Retail
+                  </button>
+                  <button
+                    value="
+                                          Manufacturing
+
+                        "
+                    type="button"
+                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    onClick={(e) =>
+                      setFormData({ ...formData, service: e.target.value })
+                    }>
+                    Manufacturing
+                  </button>
+                  <button
+                    value="
+                                           Telecommunications
+
+                        "
+                    type="button"
+                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    onClick={(e) =>
+                      setFormData({ ...formData, service: e.target.value })
+                    }>
+                    Telecommunications
+                  </button>{" "}
+                  <button
+                    value="
+                                           Education
+
+                        "
+                    type="button"
+                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    onClick={(e) =>
+                      setFormData({ ...formData, service: e.target.value })
+                    }>
+                    Education
+                  </button>
+                  <button
+                    value="
+                        Marketing and Advertising
+
+                        "
+                    type="button"
+                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    onClick={(e) =>
+                      setFormData({ ...formData, service: e.target.value })
+                    }>
+                    Marketing and Advertising
+                  </button>
+                  <button
+                    value="
+                       Transportation and Logistics
+
+                        "
+                    type="button"
+                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    onClick={(e) =>
+                      setFormData({ ...formData, service: e.target.value })
+                    }>
+                    Transportation and Logistics
+                  </button>
+                  <button
+                    value="
+                        Energy and Utilities
+
+                        "
+                    type="button"
+                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    onClick={(e) =>
+                      setFormData({ ...formData, service: e.target.value })
+                    }>
+                    Energy and Utilities
+                  </button>
+                  <button
+                    value="
+                         Government
+
+                        "
+                    type="button"
+                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    onClick={(e) =>
+                      setFormData({ ...formData, service: e.target.value })
+                    }>
+                    Government
+                  </button>
+                  <button
+                    value="
+                        Real Estate
+
+                        "
+                    type="button"
+                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    onClick={(e) =>
+                      setFormData({ ...formData, service: e.target.value })
+                    }>
+                    Real Estate
+                  </button>
+                  <button
+                    value="
+                        Information Technology
+
+                        "
+                    type="button"
+                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    onClick={(e) =>
+                      setFormData({ ...formData, service: e.target.value })
+                    }>
+                    Information Technology
+                  </button>
+                  <button
+                    value="
+                        Sports and Entertainment
+
+                        "
+                    type="button"
+                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    onClick={(e) =>
+                      setFormData({ ...formData, service: e.target.value })
+                    }>
+                    Sports and Entertainment
+                  </button>
+                  <button
+                    value="
+                        Research and Development
+                        "
+                    type="button"
+                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    onClick={(e) =>
+                      setFormData({ ...formData, service: e.target.value })
+                    }>
+                    Research and Development
+                  </button>
+                  <button
+                    value="
+                         Non-Profit Organizations
+                        "
+                    type="button"
+                    className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                    onClick={(e) =>
+                      setFormData({ ...formData, service: e.target.value })
+                    }>
+                    Non-Profit Organizations
                   </button>
                 </div>
               )}
