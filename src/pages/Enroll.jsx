@@ -44,6 +44,22 @@ function Enroll() {
       setSelectCourse(true);
       return;
     }
+    try {
+      let number = "+2348055094738";
+      let url =
+        "https://wa.me/" +
+        number +
+        "?text=" +
+        "FullName: " +
+        " " +
+        formData.name +
+        "%0a" +
+        "Course: " +
+        " " +
+        formData.course +
+        "%0a";
+      window.open(url, "_blank").focus();
+    } catch (error) {}
     setSelectCourse(false);
 
     console.log(formData);
