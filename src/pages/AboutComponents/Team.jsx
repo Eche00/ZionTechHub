@@ -5,6 +5,8 @@ import TeamDetails from "../../lib/Teamdetails";
 function Team() {
   return (
     <div className=" relative pb-[180px] ">
+      <span className="  h-[100px] w-[100px]    bg-[#EBECED] border-[1px] border-[#034FE30D] absolute -top-[0px] right-[300px] md:flex hidden"></span>{" "}
+      <span className="  h-[100px] w-[100px]    bg-[#EBECED] border-[1px] border-[#034FE30D] absolute -top-[100px] right-[400px] md:flex hidden"></span>{" "}
       <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[19px] top-[5px] -left-[1.5px]"></span>
       <div className=" px-[20px] pb-[69px]">
         <p className=" font-[600] sm:text-[48px] text-[32px] text-[#333]">

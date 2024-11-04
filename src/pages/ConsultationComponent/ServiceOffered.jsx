@@ -30,8 +30,10 @@ function ServiceOffered() {
   );
 
   return (
-    <div>
-      {" "}
+    <div className="relative">
+      <span className="  h-[100px] w-[100px]    bg-[#EBECED] border-[1px] border-[#034FE30D] absolute -bottom-[150px] right-[100px] md:flex hidden"></span>{" "}
+      <span className="  h-[100px] w-[100px]    bg-[#EBECED] border-[1px] border-[#034FE30D] absolute -bottom-[50px] right-[200px] md:flex hidden"></span>{" "}
+      <span className="  h-[100px] w-[100px]    bg-[#EBECED] border-[1px] border-[#034FE30D] absolute -bottom-[50px] right-[0px] md:flex hidden"></span>{" "}
       <div className=" pt-[180px]  relative ">
         <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute md:top-[199px] top-[185px] -left-[1.5px]"></span>
         <div className=" px-2 ">

@@ -6,10 +6,15 @@ import startups from "./startups.svg";
 import Registerhome from "./Registerhome.png";
 import Classeshome from "./Classeshome.png";
 import Joinhome from "./Joinhome.png";
-import reviewprofile1 from "./reviewprofile1.jpeg";
-import reviewprofile2 from "./reviewprofile2.jpeg";
-import reviewprofile3 from "./reviewprofile3.jpeg";
-import reviewprofile4 from "./reviewprofile4.jpeg";
+import reviewimg1 from "./reviewimg1.png";
+import reviewimg2 from "./reviewimg2.png";
+import reviewimg3 from "./reviewimg3.png";
+import reviewimg4 from "./reviewimg4.png";
+import reviewimg5 from "./reviewimg5.png";
+import reviewimg6 from "./reviewimg6.png";
+import reviewimg7 from "./reviewimg7.png";
+import reviewimg8 from "./reviewimg8.png";
+
 import googlemeet from "./googlemeet.png";
 import certificatehome from "./certificatehome.png";
 import skillimagehome from "./skillimagehome.png";
@@ -163,10 +168,14 @@ export {
   Registerhome,
   Classeshome,
   Joinhome,
-  reviewprofile1,
-  reviewprofile2,
-  reviewprofile3,
-  reviewprofile4,
+  reviewimg1,
+  reviewimg2,
+  reviewimg3,
+  reviewimg4,
+  reviewimg5,
+  reviewimg6,
+  reviewimg7,
+  reviewimg8,
   googlemeet,
   certificatehome,
   skillimagehome,

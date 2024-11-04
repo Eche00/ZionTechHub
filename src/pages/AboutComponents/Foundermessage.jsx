@@ -16,15 +16,19 @@ function Foundermessage() {
     </svg>
   );
   return (
-    <div className="relative pb-[272px]">
-      {" "}
-      <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[19px] top-[8px] -left-[1.5px]"></span>
+    <div className="relative pb-[272px] mt-[50px]">
+      <div className=" z-0">
+        <span className="  h-[100px] w-[100px]    bg-[#EBECED] border-[1px] border-[#034FE30D] absolute  -top-[230px] right-[100px] md:flex hidden"></span>{" "}
+        <span className="  h-[100px] w-[100px]    bg-[#EBECED] border-[1px] border-[#034FE30D] absolute -top-[130px] right-[200px] md:flex hidden"></span>{" "}
+        <span className="  h-[100px] w-[100px]    bg-[#EBECED] border-[1px] border-[#034FE30D] absolute -top-[30px] right-[300px] md:flex hidden z-0"></span>{" "}
+      </div>
+      <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[19px] top-[58px] -left-[1.5px] "></span>
       <div className=" px-[20px]">
         <p className=" font-[600] sm:text-[48px] text-[36px] text-[#333]">
           <span className=" text-[#034FE3]">Message</span> from our founder
         </p>
       </div>
-      <div className=" flex flex-col gap-[32px] py-[32px] px-[20px] ">
+      <div className=" flex flex-col gap-[32px] py-[32px] px-[20px]  bg-[#F5F5F5] z-10">
         <div className="sm:h-fit h-[337px]">
           <div className=" absolute sm:right-32 sm:top-0 top-[120px] sm:p-[32px] md:p-[20px] lg:p-[18px] xl:p-[15px]  border border-[#034FE314] rounded-full ">
             <div className=" sm:p-[37px] md:p-[20px] lg:p-[18px] xl:p-[15px]  border border-[#034FE314] rounded-full">

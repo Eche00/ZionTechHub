@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { consultationpopup } from "../../assets";
 import { motion } from "framer-motion";
 import {
@@ -16,8 +16,10 @@ import {
   range,
 } from "../../lib/Dateinfos/Datelogic";
 import CloseIcon from "@mui/icons-material/Close";
+import emailjs from "@emailjs/browser";
 
 function BookConsultation(props) {
+  const form = useRef();
   const [pickDate, setPickDate] = useState(false);
   const [pickService, setPickService] = useState(false);
   const [formData, setFormData] = useState({
@@ -127,11 +129,43 @@ function BookConsultation(props) {
       return;
     }
 
+    // let email = "info@ziontechhub.com";
+    // let subject = encodeURIComponent("Booking Consultation");
+    // let body = encodeURIComponent(
+    //   `FirstName: ${formData.firstname}\.LastName: ${formData.lastname}\n: ${formData.email}\nService: ${formData.service}\nDate: ${formData.date}\nMessage: ${formData.message}`
+    // );
+
+    // let url = `mailto:${email}?subject=${subject}&body=${body}`;
+
+    // try {
+    //   window.open(url, "_blank").focus();
+    // } catch (error) {
+    //   console.error("Error opening mailto link:", error);
+    // }
+    const templateParams = {
+      firstname: `${formData.firstname}`,
+      lastname: `${formData.lastname}`,
+      email: `${formData.email}`,
+      message: `${formData.message}`,
+      service: `${formData.service}`,
+      date: `${formData.date}`,
+    };
+    emailjs
+      .sendForm("service_iwidouq", "template_gk6r6pn", templateParams, {
+        publicKey: "QYyx2zmQ0wVh2EUZw",
+      })
+      .then(
+        () => {
+          console.log("SUCCESS!");
+        },
+        (error) => {
+          console.log("FAILED...", error);
+        }
+      );
     console.log(formData);
-    handleClose;
   };
   return (
-    <div className="bg-[#FFF] w-fit mx-auto  md:h-[688px] rounded-[10px] mt-[130px] md:p-[26px] p-[18px] overscroll-none overflow-y-scroll">
+    <div className="bg-[#FFF] w-fit mx-auto  md:h-[688px] rounded-[10px] mt-[130px] md:p-[26px] p-[18px] overscroll-none overflow-y-scroll relative">
       <div className=" flex  gap-[52px]  md:flex-row flex-col">
         <img
           src={consultationpopup}
@@ -156,6 +190,7 @@ function BookConsultation(props) {
             Fill in the input fields with relevant information.
           </p>
           <form
+            ref={form}
             className=" flex flex-col gap-[25px] relative"
             onSubmit={handleSubmit}>
             {/* inputs  */}
@@ -165,6 +200,7 @@ function BookConsultation(props) {
                 type="text"
                 placeholder="First name"
                 id="firstname"
+                name="firstname"
                 onChange={(e) =>
                   setFormData({ ...formData, firstname: e.target.value })
                 }
@@ -175,6 +211,7 @@ function BookConsultation(props) {
                 type="text"
                 placeholder="Last name"
                 id="lastname"
+                name="lastname"
                 onChange={(e) =>
                   setFormData({ ...formData, lastname: e.target.value })
                 }
@@ -187,6 +224,7 @@ function BookConsultation(props) {
               type="text"
               placeholder="Email"
               id="email"
+              name="email"
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })
               }
@@ -196,7 +234,13 @@ function BookConsultation(props) {
             <section
               className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[16px]  rounded-[5px] md:w-full w-[320px] flex items-center justify-between  cursor-pointer relative"
               onClick={() => setPickService(!pickService)}>
-              <p className="text-gray-400"> {formData.service}</p>
+              <input
+                type="text"
+                name="service"
+                className="text-gray-400 bg-transparent border-none"
+                disabled
+                value={formData.service}
+              />
               {arrowdown}
               {pickService && (
                 <div className=" absolute  -left-[1px] -right-[1px] top-[50px] border border-[#C7D1D4] bg-[#FFFFFF] text-[12px] font-[500] text-[#1A1A1A99] rounded-b-[10px] h-[230px] z-10 overflow-scroll scrollbar-hide">

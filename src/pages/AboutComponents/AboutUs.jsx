@@ -70,12 +70,16 @@ function AboutUs() {
             through informed data driven decisions
           </p>
         </section>
-        <section className="sm:pt-0 pt-[60px]">
+        <section className="sm:pt-0 pt-[60px] relative">
+          <span className="  h-[100px] w-[100px]    bg-[#EBECED] border-[1px] border-[#034FE30D] absolute -top-[150px] -left-[50px]  md:flex hidden"></span>{" "}
+          <span className="  h-[50px] w-[100px]    bg-[#EBECED] border-[1px] border-[#034FE30D] absolute -top-[50px] left-[50px]  md:flex hidden z-0"></span>{" "}
           <img
-            className=" sm:h-[564px] sm:w-[599px] h-[335px] w-[357px] object-cover rounded-[10px]"
+            className=" sm:h-[564px] sm:w-[599px] h-[335px] w-[357px] object-cover rounded-[10px] z-50"
             src={abouthero4}
             alt=""
           />
+          <span className="  h-[100px] w-[100px]    bg-[#EBECED] border-[1px] border-[#034FE30D] absolute -top-[150px] left-[350px]  md:flex hidden"></span>{" "}
+          <span className="  h-[50px] w-[100px]    bg-[#EBECED] border-[1px] border-[#034FE30D] absolute -top-[50px] left-[250px]  md:flex hidden z-0"></span>{" "}
         </section>
       </div>
     </div>
