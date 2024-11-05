@@ -1,12 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { consultationpopup } from "../../assets";
 import { motion } from "framer-motion";
-import {
-  ArrowBackIosNew,
-  ArrowForwardIos,
-  Battery0Bar,
-} from "@mui/icons-material";
-import DatePicker from "react-datepicker";
+import { ArrowBackIosNew, ArrowForwardIos } from "@mui/icons-material";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Date.css";
 import { monthNamme } from "../../lib/Dateinfos/MMYY";
@@ -19,7 +14,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import emailjs from "@emailjs/browser";
 
 function BookConsultation(props) {
-  const form = useRef();
   const [pickDate, setPickDate] = useState(false);
   const [pickService, setPickService] = useState(false);
   const [formData, setFormData] = useState({
@@ -30,6 +24,7 @@ function BookConsultation(props) {
     service: "Service selector",
     date: "",
   });
+  const form = useRef(formData);
 
   const calendar = (
     <svg
@@ -129,40 +124,21 @@ function BookConsultation(props) {
       return;
     }
 
-    // let email = "info@ziontechhub.com";
-    // let subject = encodeURIComponent("Booking Consultation");
-    // let body = encodeURIComponent(
-    //   `FirstName: ${formData.firstname}\.LastName: ${formData.lastname}\n: ${formData.email}\nService: ${formData.service}\nDate: ${formData.date}\nMessage: ${formData.message}`
-    // );
-
-    // let url = `mailto:${email}?subject=${subject}&body=${body}`;
-
-    // try {
-    //   window.open(url, "_blank").focus();
-    // } catch (error) {
-    //   console.error("Error opening mailto link:", error);
-    // }
-    const templateParams = {
-      firstname: `${formData.firstname}`,
-      lastname: `${formData.lastname}`,
-      email: `${formData.email}`,
-      message: `${formData.message}`,
-      service: `${formData.service}`,
-      date: `${formData.date}`,
-    };
     emailjs
-      .sendForm("service_iwidouq", "template_gk6r6pn", templateParams, {
+      .send("service_iwidouq", "template_gk6r6pn", formData, {
         publicKey: "QYyx2zmQ0wVh2EUZw",
       })
       .then(
         () => {
+          alert("Sent");
+          e.target.reset();
+
           console.log("SUCCESS!");
         },
         (error) => {
           console.log("FAILED...", error);
         }
       );
-    console.log(formData);
   };
   return (
     <div className="bg-[#FFF] w-fit mx-auto  md:h-[688px] rounded-[10px] mt-[130px] md:p-[26px] p-[18px] overscroll-none overflow-y-scroll relative">
@@ -433,14 +409,27 @@ function BookConsultation(props) {
                 {formData?.date === "" ? (
                   "Choose date and time"
                 ) : (
-                  <span>{formData.date}</span>
+                  <span>
+                    {
+                      <input
+                        className="bg-transparent"
+                        disabled
+                        name="date"
+                        id="date"
+                        value={formData.date}
+                        onChange={(e) =>
+                          setFormData({ ...formData, date: e.target.value })
+                        }
+                      />
+                    }
+                  </span>
                 )}
               </p>
               {calendar}
             </section>
 
             <textarea
-              name=""
+              name="message"
               id="message"
               placeholder="Leave a message"
               onChange={(e) =>
