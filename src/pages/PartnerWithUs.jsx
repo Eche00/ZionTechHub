@@ -392,7 +392,7 @@ function PartnerWithUs() {
             </div>
             <div className=" flex sm:flex-row flex-col gap-[24px] sm:py-[70px] py-[10px] w-fit">
               <a
-                href="mailto:info@ziontechhub.com"
+                href="mailto:info@ziontechub.com"
                 className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white sm:py-[20px] sm:px-[36px] py-[12px] px-[24px] text-[16px] sm:text-[18px] font-[500] w-fit">
                 Partner with us
                 <ArrowForward />

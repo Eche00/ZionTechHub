@@ -160,14 +160,13 @@ function MadeCourses() {
               classes && "h-[535px] duration-500"
             }`}></span>
           <section
+            onClick={handleEnrollDisplay}
             className={
               enroll
                 ? " flex flex-col gap-[24px] group "
                 : " flex flex-col gap-[24px] group sm:grayscale"
             }>
-            <span
-              className=" border border-[#034FE399] w-fit p-[10px] rounded-[5px] cursor-pointer "
-              onClick={handleEnrollDisplay}>
+            <span className=" border border-[#034FE399] w-fit p-[10px] rounded-[5px] cursor-pointer ">
               {individual}
             </span>
             <div>
@@ -185,14 +184,13 @@ function MadeCourses() {
             />
           </section>
           <section
+            onClick={handleJoinDisplay}
             className={
               join
                 ? " flex flex-col gap-[24px] group "
                 : " flex flex-col gap-[24px] group sm:grayscale "
             }>
-            <span
-              className=" border  border-[#0F973D] w-fit p-[10px] rounded-[5px] cursor-pointer "
-              onClick={handleJoinDisplay}>
+            <span className=" border  border-[#0F973D] w-fit p-[10px] rounded-[5px] cursor-pointer ">
               {whatsapp}
             </span>
             <div>
@@ -214,14 +212,13 @@ function MadeCourses() {
             />
           </section>{" "}
           <section
+            onClick={handleClassesDisplay}
             className={
               classes
                 ? " flex flex-col gap-[24px] group "
                 : " flex flex-col gap-[24px] group sm:grayscale "
             }>
-            <span
-              className=" border  border-[#DDA249] w-fit p-[10px] rounded-[5px] cursor-pointer "
-              onClick={handleClassesDisplay}>
+            <span className=" border  border-[#DDA249] w-fit p-[10px] rounded-[5px] cursor-pointer ">
               {google}
             </span>
             <div>
@@ -241,21 +238,21 @@ function MadeCourses() {
           </section>
         </div>
         <div className=" flex-1 sm:flex hidden   shadow-xl  rounded-[10px] overflow-y-hidden">
-          {enroll && (
+          {enroll && !join && !classes && (
             <img
               className=" h-[717px] w-full object-cover rounded-t-[10px]"
               src={Registerhome}
               alt=""
             />
           )}
-          {join && (
+          {enroll && join && !classes && (
             <img
               className=" h-[717px] w-full object-cover rounded-t-[10px]"
               src={Joinhome}
               alt=""
             />
           )}{" "}
-          {classes && (
+          {enroll && join && classes && (
             <img
               className=" h-[717px] w-full object-cover rounded-t-[10px]"
               src={Classeshome}

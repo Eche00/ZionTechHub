@@ -44,7 +44,7 @@ function IndustryAndExpertise() {
             excellence and result
           </p>
           <a
-            href="mailto:info@ziontechhub.com"
+            href="mailto:info@ziontechub.com"
             className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white sm:py-[12px] sm:px-[32px] py-[12px] px-[24px] text-[16px] sm:text-[18px] font-[500] w-fit">
             Partner with us
             <ArrowForward />
@@ -66,7 +66,7 @@ function IndustryAndExpertise() {
             {star}
             {star}
           </div>
-          <p className="md:text-[14px] test-[12px] font-[400] text-[#162915]  w-[250px]">
+          <p className="md:text-[14px] test-[12px] font-[400] text-[#162915]  w-[250px] text-center">
             <i>
               “Zion Tech Hub offers the agility, innovation, and drive to create
               measurable impact."

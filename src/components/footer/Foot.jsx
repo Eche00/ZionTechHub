@@ -61,7 +61,7 @@ function Foot() {
                   Email
                 </p>
                 <p className=" font-[400] text-[16px] text-[#040505]">
-                  info@ziontechhub.com
+                  info@ziontechub.com
                 </p>
               </section>
               <section className=" flex flex-col gap-[8px]">

@@ -243,7 +243,7 @@ function BookConsultation(props) {
               />
               {arrowdown}
               {pickService && (
-                <div className=" absolute  -left-[1px] -right-[1px] top-[50px] border border-[#C7D1D4] bg-[#FFFFFF] text-[12px] font-[500] text-[#1A1A1A99] rounded-b-[10px] h-[230px] z-10 overflow-scroll scrollbar-hide">
+                <div className=" absolute  -left-[1px] -right-[1px] top-[50px] border border-[#C7D1D4] bg-[#FFFFFF] text-[12px] font-[500] text-[#1A1A1A99] rounded-b-[10px] h-[250px] z-10 overflow-scroll scrollbar-hide">
                   <button
                     value="
                                           Healthcare
