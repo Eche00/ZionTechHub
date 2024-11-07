@@ -136,7 +136,7 @@ function BookConsultation(props) {
       .then(
         () => {
           setLoading(false);
-          setSent(false);
+          setSent(true);
           e.target.reset();
           console.log("SUCCESS!");
         },
@@ -216,13 +216,7 @@ function BookConsultation(props) {
             <section
               className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[16px]  rounded-[5px] md:w-full w-[320px] flex items-center justify-between  cursor-pointer relative"
               onClick={() => setPickService(!pickService)}>
-              <input
-                type="text"
-                name="service"
-                className="text-gray-400 bg-transparent border-none"
-                disabled
-                value={formData.service}
-              />
+              <p className="text-gray-400">{formData.service}</p>
               {arrowdown}
               {pickService && (
                 <div className=" absolute  -left-[1px] -right-[1px] top-[50px] border border-[#C7D1D4] bg-[#FFFFFF] text-[12px] font-[500] text-[#1A1A1A99] rounded-b-[10px] h-[250px] z-10 overflow-scroll scrollbar-hide">
@@ -444,10 +438,10 @@ function BookConsultation(props) {
               required
               className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[16px] text-[rgba(26, 26, 26, 0.50)] rounded-[5px] md:w-full w-[320px] md:h-[148px] h-[120px] flex items-start resize-none border-none"></textarea>
             <button
-              className=" bg-[#034FE3] text-[#FFF] font-[600] text-[16px] py-[13px] rounded-[6px] md:w-full w-[320px]"
+              className=" bg-[#034FE3] text-[#FFF] font-[600] text-[16px] py-[13px] rounded-[6px] md:w-full w-[320px] disabled:cursor-not-allowed disabled:bg-[#0350e0d4]"
               disabled={loading}
               type="submit">
-              Book now
+              {loading ? "Booking.." : "Book now"}
             </button>
             {sent && (
               <p className=" text-[#034FE3]  font-[600] text-[14px] rounded-[6px] text-center absolute bottom-[50px] right-0">
