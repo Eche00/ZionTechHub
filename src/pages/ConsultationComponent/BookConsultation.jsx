@@ -14,6 +14,9 @@ import CloseIcon from "@mui/icons-material/Close";
 import emailjs from "@emailjs/browser";
 
 function BookConsultation(props) {
+  const [loading, setLoading] = useState(false);
+  const [sent, setSent] = useState(false);
+
   const [pickDate, setPickDate] = useState(false);
   const [pickService, setPickService] = useState(false);
   const [formData, setFormData] = useState({
@@ -115,6 +118,8 @@ function BookConsultation(props) {
   // form data  submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+
     if (formData.service === "Service selector") {
       alert("Please select  a service");
       return;
@@ -130,13 +135,14 @@ function BookConsultation(props) {
       })
       .then(
         () => {
-          alert("Sent");
+          setLoading(false);
+          setSent(false);
           e.target.reset();
-
           console.log("SUCCESS!");
         },
         (error) => {
           console.log("FAILED...", error);
+          setLoading(false);
         }
       );
   };
@@ -154,7 +160,7 @@ function BookConsultation(props) {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1, ease: "linear", delay: 1 }}
           className=" flex flex-col relative">
-          <h2 className="md:text-[36px] text-[30px] font-[600] text-[#034FE3] flex items-center justify-between">
+          <h2 className="md:text-[36px] text-[24px] font-[600] text-[#034FE3] flex items-center justify-between">
             Book Your Consultation{" "}
             <span
               className=" text-[#1A1A1A80] cursor-pointer"
@@ -162,7 +168,7 @@ function BookConsultation(props) {
               <CloseIcon />
             </span>
           </h2>
-          <p className="md:text-[16px] text-[16px] font-[300] pb-[33px]">
+          <p className="md:text-[16px] text-[14px] font-[300] pb-[33px]">
             Fill in the input fields with relevant information.
           </p>
           <form
@@ -438,10 +444,16 @@ function BookConsultation(props) {
               required
               className=" p-[13px] bg-[#F6F6F6]  font-[300] md:text-[16px] text-[16px] text-[rgba(26, 26, 26, 0.50)] rounded-[5px] md:w-full w-[320px] md:h-[148px] h-[120px] flex items-start resize-none border-none"></textarea>
             <button
-              className=" bg-[#034FE3] text-[#FFF] font-[600] text-[16px] py-[13px] rounded-[6px]"
+              className=" bg-[#034FE3] text-[#FFF] font-[600] text-[16px] py-[13px] rounded-[6px] md:w-full w-[320px]"
+              disabled={loading}
               type="submit">
               Book now
             </button>
+            {sent && (
+              <p className=" text-[#034FE3]  font-[600] text-[14px] rounded-[6px] text-center absolute bottom-[50px] right-0">
+                -Form submitted-
+              </p>
+            )}
           </form>
           {/* calendar  */}
           {pickDate && (
@@ -491,6 +503,7 @@ function BookConsultation(props) {
                       Cancel
                     </button>
                     <button
+                      disabled={loading}
                       className="bg-[#034FE3] py-[13px]  text-[16px] font-[500] text-white rounded-[8px] flex-1"
                       type="submit">
                       Choose Date
