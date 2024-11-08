@@ -1,5 +1,5 @@
 export const monthNamme = [
-  "Janyary",
+  "January",
   "February",
   "March",
   "April",

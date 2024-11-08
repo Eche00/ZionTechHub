@@ -45,7 +45,8 @@ function Services() {
             </span>
             <span
               className="bg-[#034FE30D]  text-blue-500 rounded-full p-2 cursor-pointer"
-              onClick={scroll}>
+              // onClick={scroll}
+            >
               <ArrowForward />
             </span>
           </section>

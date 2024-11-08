@@ -79,6 +79,7 @@ function BookConsultation(props) {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
   const [currentyear, setCurrentYear] = useState(new Date().getFullYear());
   const [selectedDate, setSelectedDate] = useState();
+  const minDate = new Date();
 
   const nextMonth = (e) => {
     e.preventDefault();
@@ -113,6 +114,9 @@ function BookConsultation(props) {
     setFormData({ ...formData, date: selectedDate.toLocaleDateString() });
     console.log(selectedDate);
     setPickDate(false);
+  };
+  const getTimefromState = (_day) => {
+    return new Date(currentyear, currentMonth, _day).getTime();
   };
 
   // form data  submission
@@ -477,17 +481,18 @@ function BookConsultation(props) {
                       1,
                       getNumberOfDaysInMonth(currentyear, currentMonth) + 1
                     ).map((day) => (
-                      <p
+                      <button
                         className={
                           selectedDate?.getTime() ===
                           new Date(currentyear, currentMonth, day).getTime()
-                            ? "p-[8px]  text-center rounded-[8px] bg-[#F5F5F5] border-2 border-[#034FE3] text-[#034FE3] cursor-pointer"
-                            : "p-[8px]  text-center rounded-[8px] bg-[#F5F5F5] text-[#131A29] cursor-pointer"
+                            ? `p-[8px]  text-center rounded-[8px] bg-[#F5F5F5] border-2 border-[#034FE3] text-[#034FE3] cursor-pointer disabled:cursor-not-allowed `
+                            : `p-[8px]  text-center rounded-[8px] bg-[#F5F5F5] text-[#131A29] cursor-pointer disabled:cursor-not-allowed `
                         }
+                        disabled={minDate?.getTime() > getTimefromState(day)}
                         id="day"
                         data-day={day}>
                         {day}
-                      </p>
+                      </button>
                     ))}
                   </section>
                   <section className="flex justify-between pt-[10px] gap-[16px]">
