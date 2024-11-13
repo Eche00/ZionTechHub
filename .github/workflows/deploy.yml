@@ -18,6 +18,9 @@ jobs:
         with:
           node-version: "20.10.0" # Specify the Node.js version to use
 
+      - name: Check Node.js Version
+        run: node -v # Debugging step to verify Node version
+
       - name: Install dependencies
         run: npm install # Install dependencies from package.json
 
@@ -36,9 +39,9 @@ jobs:
           echo "Deploying version ${{ env.VERSION }} to cPanel via FTPS"
           set -x  # Enable debugging output (prints commands as they are run)
           lftp -e "
-            set ftp:ssl-allow true;  # Enable SSL encryption for FTPS
-            set ftp:ssl-force true;  # Force SSL connection
-            open -u ${ {secrets.CPANEL_USERNAME} },${ {secrets.CPANEL_PASSWORD} } ftps://${ {secrets.CPANEL_HOST} };  # FTPS connection to cPanel
-            mirror -R ./build/ ${ {secrets.CPANEL_DESTINATION} };  # Upload build folder to cPanel (destination folder)
-            bye  # Close the connection
+            set ftp:ssl-allow true;
+            set ftp:ssl-force true;
+            open -u ${ {secrets.CPANEL_USERNAME} },${ {secrets.CPANEL_PASSWORD} } ftps://${ {secrets.CPANEL_HOST} };
+            mirror -R ./build/ ${ {secrets.CPANEL_DESTINATION} };
+            bye
           "
