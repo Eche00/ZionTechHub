@@ -1,0 +1,43 @@
+name: Deploy React to cPanel via FTPS
+
+on:
+  push:
+    branches:
+      - main # Trigger the action when pushing to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest # Use Ubuntu latest version for the runner
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2 # Check out your code from GitHub repository
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20.10.0" # Specify the Node.js version to use
+
+      - name: Install dependencies
+        run: npm install # Install dependencies from package.json
+
+      - name: Build the app
+        run: npm run build # Build the React app into the 'build' folder
+
+      - name: Get Version Tag
+        id: version
+        run: echo "::set-output name=version::$(git describe --tags)" # Get the Git version tag for this deployment
+
+      - name: Install lftp
+        run: sudo apt-get install lftp # Install lftp for FTPS support
+
+      - name: Deploy to cPanel via FTPS
+        run: |
+          echo "Deploying version ${{ steps.version.outputs.version }} to cPanel via FTPS"
+          lftp -e "
+            set ftp:ssl-allow true;  # Enable SSL encryption for FTPS
+            set ftp:ssl-force true;  # Force SSL connection
+            open -u ${ {secrets.CPANEL_USERNAME} },${ {secrets.CPANEL_PASSWORD} } ftps://${ {secrets.CPANEL_HOST} };  # FTPS connection to cPanel
+            mirror -R ./build/ ${ {secrets.CPANEL_DESTINATION} };  # Upload build folder to cPanel (destination folder)
+            bye  # Close the connection
+          "
