@@ -29,5 +29,5 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }} # FTP Username
           password: ${{ secrets.FTP_PASSWORD }} # FTP Password
           local-dir: dist/ # Local build directory
-          server-dir: public_html # Destination directory on the FTP server
+          server-dir: public_html/ # Destination directory on the FTP server (with trailing slash)
           protocol: ftp # Use "ftp" for FTP (or "ftps" for FTPS)
