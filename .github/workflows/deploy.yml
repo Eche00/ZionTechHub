@@ -11,10 +11,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3 # Updated to v3 to avoid Node 12 deprecation
+        uses: actions/checkout@v3 # Use the latest v3 to avoid Node 12 deprecation
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3 # Updated to v3 for Node 20 support
+        uses: actions/setup-node@v3 # Setup Node.js with version 20.x
         with:
           node-version: "20.10.0" # Specify the Node.js version to use
 
@@ -29,7 +29,7 @@ jobs:
 
       - name: Get Version Tag
         id: version
-        run: echo "VERSION=$(git describe --tags)" >> $GITHUB_ENV # Use Environment Files instead of set-output.
+        run: echo "VERSION=$(git describe --tags)" >> $GITHUB_ENV # Use Environment Files instead of set-output
 
       - name: Install lftp
         run: sudo apt-get install lftp # Install lftp for FTPS support
@@ -39,9 +39,9 @@ jobs:
           echo "Deploying version ${{ env.VERSION }} to cPanel via FTPS"
           set -x  # Enable debugging output (prints commands as they are run)
           lftp -e "
-            set ftp:ssl-allow true;
-            set ftp:ssl-force true;
-            open -u ${{ secrets.CPANEL_USERNAME }},${{ secrets.CPANEL_PASSWORD }} ftps://${{ secrets.CPANEL_HOST }};
-            mirror -R ./build/ ${{ secrets.CPANEL_DESTINATION }};
-            bye
+            set ftp:ssl-allow true;  # Enable SSL for FTPS
+            set ftp:ssl-force true;  # Force SSL for FTPS connection
+            open -u ${{ secrets.CPANEL_USERNAME }},${{ secrets.CPANEL_PASSWORD }} ftps://${{ secrets.CPANEL_HOST }};  # FTPS connection
+            mirror -R ./build/ ${{ secrets.CPANEL_DESTINATION }};  # Upload the build folder to cPanel destination
+            bye  # Finish the FTP session
           "
