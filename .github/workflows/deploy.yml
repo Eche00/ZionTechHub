@@ -34,7 +34,7 @@ jobs:
       - name: Install lftp
         run: sudo apt-get install lftp # Install lftp for FTPS support
 
-        - name: Deploy to cPanel via FTPS
+      - name: Deploy to cPanel via FTPS
         run: |
           echo "Deploying version ${{ env.VERSION }} to cPanel via FTPS"
           set -x  # Enable debugging output (prints commands as they are run)
@@ -45,4 +45,3 @@ jobs:
             mirror -R ./build/ ${{ secrets.CPANEL_DESTINATION }};
             bye
           "
-      
