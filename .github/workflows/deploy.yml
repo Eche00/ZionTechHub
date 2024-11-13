@@ -1,16 +1,32 @@
-on: push
-name: 🚀 Deploy website on push
-jobs:
-  web-deploy:
-    name: 🎉 Deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: 🚚 Get latest code
-        uses: actions/checkout@v4
+name: Deploy React to cPanel via FTP
 
-      - name: 📂 Sync files
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the app
+        run: npm run build
+
+      - name: Install lftp
+        run: sudo apt-get install lftp
+
+      - name: Deploy to cPanel via FTPS or FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ftp.ziontechub.com
-          username: zion@ziontechub.com
-          password: ${{ secrets.ftp_password }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          secure: true # FTPS, set to false for FTP if FTPS isn't supported
+          passive: true # Optional, set to false if you're facing issues with passive mode
