@@ -34,6 +34,7 @@ jobs:
       - name: Deploy to cPanel via FTPS
         run: |
           echo "Deploying version ${{ env.VERSION }} to cPanel via FTPS"
+          set -x  # Enable debugging output (prints commands as they are run)
           lftp -e "
             set ftp:ssl-allow true;  # Enable SSL encryption for FTPS
             set ftp:ssl-force true;  # Force SSL connection
