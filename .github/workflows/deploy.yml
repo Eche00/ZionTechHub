@@ -1,47 +1,16 @@
-name: Deploy React to cPanel via FTPS
-
-on:
-  push:
-    branches:
-      - main # Trigger the action when pushing to the main branch
-
+on: push
+name: 🚀 Deploy website on push
 jobs:
-  deploy:
-    runs-on: ubuntu-latest # Use Ubuntu latest version for the runner
-
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3 # Use the latest v3 to avoid Node 12 deprecation
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3 # Setup Node.js with version 20.x
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          node-version: "20.10.0" # Specify the Node.js version to use
-
-      - name: Check Node.js Version
-        run: node -v # Debugging step to verify Node version
-
-      - name: Install dependencies
-        run: npm install # Install dependencies from package.json
-
-      - name: Build the app
-        run: npm run build # Build the React app into the 'build' folder
-
-      - name: Get Version Tag
-        id: version
-        run: echo "VERSION=$(git describe --tags)" >> $GITHUB_ENV # Use Environment Files instead of set-output
-
-      - name: Install lftp
-        run: sudo apt-get install lftp # Install lftp for FTPS support
-
-      - name: Deploy to cPanel via FTPS
-        run: |
-          echo "Deploying version ${{ env.VERSION }} to cPanel via FTPS"
-          set -x  # Enable debugging output (prints commands as they are run)
-          lftp -e "
-            set ftp:ssl-allow true;  # Enable SSL for FTPS
-            set ftp:ssl-force true;  # Force SSL for FTPS connection
-            open -u ${{ secrets.CPANEL_USERNAME }},${{ secrets.CPANEL_PASSWORD }} ftps://${{ secrets.CPANEL_HOST }};  # FTPS connection
-            mirror -R ./build/ ${{ secrets.CPANEL_DESTINATION }};  # Upload the build folder to cPanel destination
-            bye  # Finish the FTP session
-          "
+          server: ftp.samkirkland.com
+          username: myFtpUserName
+          password: ${{ secrets.ftp_password }}
