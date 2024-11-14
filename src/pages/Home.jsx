@@ -99,7 +99,7 @@ function Home() {
             <ReviewCard review={review} />
           ))}
         </motion.div>
-        <div className=" w-full absolute z-0 top-[130px] bottom-0    bg-[linear-gradient(to_right,#4f4f4f0e_1px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_1px,transparent_0.1px)] md:bg-[size:104px_104px] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])] overflow-hidden border-b">
+        <div className=" w-full absolute z-0 top-[130px] bottom-0    bg-[linear-gradient(to_right,#4f4f4f0e_0.8px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_0.8px,transparent_0.1px)] md:bg-[size:104px_104px] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])] overflow-hidden border-b">
           <motion.div
             initial={{ opacity: 0.45 }}
             whileInView={{ opacity: 1 }}

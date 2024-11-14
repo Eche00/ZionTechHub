@@ -132,7 +132,7 @@ function WebDevelopment() {
       <span className="  md:h-[104px] md:w-[104px] h-[50px] w-[50px]   bg-[#034FE30D] absolute md:top-[50px] md:right-[640px] top-[134px] right-[60px] "></span>
       <span className="  md:h-[104px] md:w-[104px] w-[50px] h-[50px]  bg-[#034FE30D] absolute md:top-[350px] md:left-[314px] top-[282px] left-0  "></span>{" "}
       {/* hero section  */}
-      <div className="    bg-[linear-gradient(to_right,#4f4f4f0e_1px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_1px,transparent_0.1px)] md:bg-[size:104px_104px] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])]   smm:h-[78vh] sm:h-[90vh]   w-full border-b">
+      <div className="    bg-[linear-gradient(to_right,#4f4f4f0e_0.8px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_0.8px,transparent_0.1px)] md:bg-[size:104px_104px] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])]   smm:h-[78vh] sm:h-[90vh]   w-full border-b">
         <motion.div
           initial={{ opacity: 0.45 }}
           whileInView={{ opacity: 1 }}
