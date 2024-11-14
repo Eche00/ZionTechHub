@@ -275,7 +275,7 @@ function DataAnalysis() {
       {/* component 2 */}
       <div className="">
         {/* what to expect section */}
-        <div className=" pt-[310px]  smm:max-w-[80%] sm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%] mx-auto border-l border-gray-200 relative">
+        <div className=" sm:pt-[310px] pt-[180px]  smm:max-w-[80%] sm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%] mx-auto border-l border-gray-200 relative">
           <span className="  h-[100px] w-[100px]    bg-[#EBECED] border-[1px] border-[#034FE30D] absolute top-[280px] right-[100px] md:flex hidden"></span>{" "}
           <span className="  h-[100px] w-[100px]    bg-[#EBECED] border-[1px] border-[#034FE30D] absolute top-[180px] right-[0px] md:flex hidden"></span>{" "}
           <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[329px] top-[185px] -left-[1.5px]"></span>

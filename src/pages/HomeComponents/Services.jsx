@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import ServicesContent from "../../lib/ServicesContent";
 import { googlemeet } from "../../assets";
 import { animate, useMotionValue, motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 function Services() {
   const widthC = "300";
@@ -72,9 +73,12 @@ function Services() {
                 </section>
                 <span className=" sm:w-[457px]  h-[1px] bg-[#1A1A1A1A]"></span>
                 <section className=" flex gap-[12px] items-center ">
-                  <p className="  sm:text-[20px] text-[16px] font-[300] text-[#1A1A1ACC]">
+                  <Link
+                    className="  sm:text-[20px] text-[16px] font-[300] text-[#1A1A1ACC]"
+                    to="/enroll">
                     Live on
-                  </p>
+                  </Link>
+
                   <img
                     className=" sm:w-[247px] sm:h-[45px] w-[89px] h-[16px] object-cover"
                     src={googlemeet}

@@ -485,7 +485,7 @@ function BookConsultation(props) {
                         className={
                           selectedDate?.getTime() ===
                           new Date(currentyear, currentMonth, day).getTime()
-                            ? `p-[8px]  text-center rounded-[8px] bg-[#F5F5F5] border-2 border-[#034FE3] text-[#034FE3] cursor-pointer disabled:cursor-not-allowed `
+                            ? `p-[8px]  text-center rounded-[8px] bg-[#F5F5F5] border-2 border-[#034FE3] text-[#034FE3] cursor-pointer disabled:cursor-not-allowed  `
                             : `p-[8px]  text-center rounded-[8px] bg-[#F5F5F5] text-[#131A29] cursor-pointer disabled:cursor-not-allowed `
                         }
                         disabled={minDate?.getTime() > getTimefromState(day)}
