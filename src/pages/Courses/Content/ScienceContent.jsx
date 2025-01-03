@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import Datasci from "../ScienceCat/Datasci";
+import Sql from "../ScienceCat/Sql";
+import Excel from "../ScienceCat/Excel";
+import PowerBi from "../ScienceCat/PowerBi";
 
 function ScienceContent() {
   const [dataScience, setDataScience] = useState(true);
@@ -89,7 +93,10 @@ function ScienceContent() {
           </button>
         </div>
       </div>
-      {/* {frontEnd ? <Frontend /> : <Backend />} */}
+      {dataScience && <Datasci />}
+      {sql && <Sql />}
+      {power && <PowerBi />}
+      {excel && <Excel />}
     </div>
   );
 }
