@@ -484,10 +484,10 @@ function MachineLearningcontent() {
             </section>
           </section>
           <span className=" h-[1px] sm:w-[317px] w-[300px] bg-[#1A1A1A1A]"></span>
-          <section className="flex gap-[12px] w-fit">
+          <section className="flex gap-[12px] w-fit items-center">
             <p className=" sm:text-[20px] text-[18px] font-[300] ">Live on</p>{" "}
             <img
-              className=" sm:w-[193px] sm:h-[35px] w-[139px] h-[25px] object-cover "
+              className=" w-[100px] h-[36px] object-cover"
               src={googlemeet}
               alt=""
             />

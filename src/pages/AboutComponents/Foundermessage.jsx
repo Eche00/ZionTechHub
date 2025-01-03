@@ -22,7 +22,7 @@ function Foundermessage() {
         <span className="  h-[100px] w-[100px]    bg-[#EBECED] border-[1px] border-[#034FE30D] absolute -top-[130px] right-[200px] md:flex hidden"></span>{" "}
         <span className="  h-[100px] w-[100px]    bg-[#EBECED] border-[1px] border-[#034FE30D] absolute -top-[30px] right-[300px] md:flex hidden z-0"></span>{" "}
       </div>
-      <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[19px] top-[58px] -left-[1.5px] "></span>
+      <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[19px] top-[10px] -left-[1.5px] "></span>
       <div className=" px-[20px]">
         <p className=" font-[600] sm:text-[48px] text-[36px] text-[#333]">
           <span className=" text-[#034FE3]">Message</span> from our founder

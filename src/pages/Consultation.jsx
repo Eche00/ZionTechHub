@@ -60,7 +60,7 @@ function Consultation() {
               <p className=" text-[#1A1A1A66] font-[300] text-[20px] flex items-center gap-[12px] ">
                 Live on{" "}
                 <img
-                  className=" sm:w-[193px] sm:h-[35px] w-[159px] h-[29px] object-cover"
+                  className=" w-[100px] h-[36px]  object-cover"
                   src={googlemeet}
                   alt=""
                 />

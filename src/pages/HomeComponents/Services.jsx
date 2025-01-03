@@ -80,7 +80,7 @@ function Services() {
                   </Link>
 
                   <img
-                    className=" sm:w-[247px] sm:h-[45px] w-[89px] h-[16px] object-cover"
+                    className=" w-[100px] h-[36px] "
                     src={googlemeet}
                     alt=""
                   />

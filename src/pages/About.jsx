@@ -40,7 +40,7 @@ function About() {
               <p className=" text-[#1A1A1A66] font-[300] text-[20px]  items-center gap-[12px]  sm:flex hidden">
                 Live on{" "}
                 <img
-                  className=" w-[193px] h-[35px] object-cover"
+                  className=" w-[100px] h-[36px] object-cover"
                   src={googlemeet}
                   alt=""
                 />

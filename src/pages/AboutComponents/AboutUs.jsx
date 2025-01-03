@@ -33,8 +33,10 @@ function AboutUs() {
               alt=""
             />
             <article className=" flex flex-col gap-[6px]">
-              <p className=" text-[18px] font-[600]">Ndoma Godsent</p>
-              <p className=" text-[12px] font-[300]">Chief Executive Officer</p>
+              <p className=" text-[18px] font-[600]">Mba Olumba</p>
+              <p className=" text-[12px] font-[300]">
+                Chief Operations Officer{" "}
+              </p>
             </article>
           </section>{" "}
           <span className=" h-[47px]  border border-dashed border-[#034FE326] sm:flex hidden"></span>
@@ -45,8 +47,8 @@ function AboutUs() {
               alt=""
             />
             <article className=" flex flex-col gap-[6px]">
-              <p className=" text-[18px] font-[600]">Ndoma Godsent</p>
-              <p className=" text-[12px] font-[300]">Chief Executive Officer</p>
+              <p className=" text-[18px] font-[600]">Afolami Timothy</p>
+              <p className=" text-[12px] font-[300]">Chief Technical Officer</p>
             </article>
           </section>
         </div>

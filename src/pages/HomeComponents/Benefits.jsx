@@ -267,7 +267,7 @@ function Benefits() {
                   />
                   <section className=" flex  flex-col flex-1 sm:px-[27px] px-[20px] sm:pt-[44px] pt-[24px]">
                     <p className=" sm:text-[24px] text-[16px] font-[600] text-[#1A1A1ACC]">
-                      Ndomo Godsent
+                      Ndoma Godsent
                     </p>
                     <p className=" sm:text-[18px] text-[14px] font-[300] text-[#1A1A1ACC] sm:pb-[8px] pb-[4px]">
                       Data analyst
