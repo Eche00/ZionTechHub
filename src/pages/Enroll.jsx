@@ -40,28 +40,28 @@ function Enroll() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (formData.course === "Select course") {
-      setSelectCourse(true);
-      return;
-    }
-    try {
-      let number = "+2348055094738";
-      let url =
-        "https://wa.me/" +
-        number +
-        "?text=" +
-        "FullName: " +
-        " " +
-        formData.name +
-        "%0a" +
-        "Course: " +
-        " " +
-        formData.course +
-        "%0a";
-      window.open(url, "_blank").focus();
-    } catch (error) {}
-    setSelectCourse(false);
-
+    // if (formData.course === "Select course") {
+    //   setSelectCourse(true);
+    //   return;
+    // }
+    // try {
+    //   let number = "+2348055094738";
+    //   let url =
+    //     "https://wa.me/" +
+    //     number +
+    //     "?text=" +
+    //     "FullName: " +
+    //     " " +
+    //     formData.name +
+    //     "%0a" +
+    //     "Course: " +
+    //     " " +
+    //     formData.course +
+    //     "%0a";
+    //   window.open(url, "_blank").focus();
+    // } catch (error) {}
+    // setSelectCourse(false);
+    alert("Registration for Cohort 7.0 has ended.");
     console.log(formData);
   };
   return (
@@ -308,9 +308,12 @@ function Enroll() {
                     Please select a course
                   </p>
                 )}
-                <button className="py-[18px] px-[16px] rounded-[10px] text-white bg-[#207C3F] mt-[14px]">
+                <button className="py-[18px] px-[16px] rounded-[10px] text-white bg-[#207C3F] mt-[14px] cursor-not-allowed">
                   Say Hi
                 </button>
+                <p className=" text-[14px] font-bold text-red-500  text-center">
+                  Registration for Cohort 7.0 has ended.
+                </p>
               </section>
             </form>
           </div>
