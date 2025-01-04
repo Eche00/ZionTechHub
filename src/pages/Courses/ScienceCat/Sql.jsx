@@ -259,48 +259,42 @@ function Sql() {
               <KeyboardArrowDownIcon fontSize="large" />
             )}
             <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
-              Month 3: JavaScript Basics
+               Session 3: Data Manipulation and Filtering
             </p>
           </div>
           {thirdmonth && (
             <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1A]">
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>1. Introduction to SQL
+                <span>{dot}</span>1. Data Manipulation         
               </p>
-              <div className=" pl-[50px] flex flex-col gap-[]">
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                  - Definition and purpose of SQL
+              <div className=" pl-[50px] flex flex-col gap-[15px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:px-[48px]  px-[16px] items-center  md:w-full w-[329px]">
+                  - INSERT statement
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                  - Understanding relational databases
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:px-[48px]  px-[16px] items-center  md:w-full w-[329px]">
+                  - UPDATE statement
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                  - Overview of Database Management Systems (DBMS)
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:px-[48px]  px-[16px] items-center  md:w-full w-[329px]">
+                  - DELETE statement
                 </p>{" "}
               </div>
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> 2. Basic SQL Syntax
+                <span>{dot}</span> 2. Query Filtering and Sorting      
               </p>{" "}
-              <div className=" pl-[50px] flex flex-col gap-[]">
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                     - SELECT statement
+              <div className=" pl-[50px] flex flex-col gap-[15px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px]  sm:px-[48px]  px-[16px] items-center  md:w-full w-[329px]">
+                     - WHERE clause for filtering data
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                     - FROM clause
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px]  sm:px-[48px]  px-[16px] items-center  md:w-full w-[329px]">
+                     - AND, OR conditions
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                     - WHERE clause
-                </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                  {" "}
-                  - ORDER BY clause
-                </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                     - GROUP BY clause
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px]  sm:px-[48px]  px-[16px] items-center  md:w-full w-[329px]">
+                        - ORDER BY clause for sorting data (Ascending and
+                  Descending)
                 </p>{" "}
               </div>
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Assignment
+                <span>{dot}</span> Assignment 3
               </p>{" "}
             </section>
           )}
@@ -315,48 +309,62 @@ function Sql() {
               <KeyboardArrowDownIcon fontSize="large" />
             )}
             <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
-              Month 4: Advanced JavaScript and Frameworks
+              Session 4: Aggregation and Joins
             </p>
           </div>
           {fourthmonth && (
             <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1A]">
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>1. Introduction to SQL
+                <span>{dot}</span>1. Data Aggregation            
               </p>
               <div className=" pl-[50px] flex flex-col gap-[]">
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                  - Definition and purpose of SQL
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px]  sm:px-[48px]  px-[16px] items-center  md:w-full w-[329px]">
+                  - SUM function
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                  - Understanding relational databases
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px]  sm:px-[48px]  px-[16px] items-center  md:w-full w-[329px]">
+                  - AVG function
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                  - Overview of Database Management Systems (DBMS)
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px]  sm:px-[48px]  px-[16px] items-center  md:w-full w-[329px]">
+                  - COUNT function
+                </p>{" "}
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px]  sm:px-[48px]  px-[16px] items-center  md:w-full w-[329px]">
+                  - MIN function
                 </p>{" "}
               </div>
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> 2. Basic SQL Syntax
+                <span>{dot}</span> 2. Joins and Relationships            
               </p>{" "}
               <div className=" pl-[50px] flex flex-col gap-[]">
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                     - SELECT statement
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px]  sm:px-[48px]  px-[16px] items-center  md:w-full w-[329px]">
+                     - INNER JOIN
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                     - FROM clause
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px]  sm:px-[48px]  px-[16px] items-center  md:w-full w-[329px]">
+                     - LEFT JOIN
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                     - WHERE clause
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px]  sm:px-[48px]  px-[16px] items-center  md:w-full w-[329px]">
+                     - RIGHT JOIN
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px]  sm:px-[48px]  px-[16px] items-center  md:w-full w-[329px]">
                   {" "}
-                  - ORDER BY clause
-                </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                     - GROUP BY clause
+                  - FULL OUTER JOIN
                 </p>{" "}
               </div>
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Assignment
+                <span>{dot}</span> 3. Advanced Joins and Set Operations      
+              </p>{" "}
+              <div className=" pl-[50px] flex flex-col gap-[]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px]  sm:px-[48px]  px-[16px] items-center  md:w-full w-[329px]">
+                     - CROSS JOIN
+                </p>{" "}
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px]  sm:px-[48px]  px-[16px] items-center  md:w-full w-[329px]">
+                     - UNION, INTERSECT, EXCEPT
+                </p>{" "}
+              </div>
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
+                <span>{dot}</span> Assignment 4
+              </p>{" "}
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
+                <span>{dot}</span> Assignment 5
               </p>{" "}
             </section>
           )}
@@ -371,48 +379,38 @@ function Sql() {
               <KeyboardArrowDownIcon fontSize="large" />
             )}
             <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
-              Month 5: Tools and Best Practices
+              Session 5: Advanced Query Techniques
             </p>
           </div>
           {fifthmonth && (
             <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1A]">
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>1. Introduction to SQL
+                <span>{dot}</span>1. Subqueries
               </p>
-              <div className=" pl-[50px] flex flex-col gap-[]">
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                  - Definition and purpose of SQL
+              <div className=" pl-[50px] flex flex-col gap-[15px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px]  sm:px-[48px]  px-[16px] items-center  md:w-full w-[329px]">
+                  - Subqueries used in filtering data
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                  - Understanding relational databases
-                </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                  - Overview of Database Management Systems (DBMS)
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px]  sm:px-[48px]  px-[16px] items-center  md:w-full w-[329px]">
+                  - Correlated subqueries
                 </p>{" "}
               </div>
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> 2. Basic SQL Syntax
+                <span>{dot}</span>2. Views
               </p>{" "}
-              <div className=" pl-[50px] flex flex-col gap-[]">
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                     - SELECT statement
+              <div className=" pl-[50px] flex flex-col gap-[15px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:px-[48px]  px-[16px] items-center  md:w-full w-[329px]">
+                  - Creating views
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                     - FROM clause
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:px-[48px]  px-[16px] items-center  md:w-full w-[329px]">
+                  - Modifying views
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                     - WHERE clause
-                </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                  {" "}
-                  - ORDER BY clause
-                </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                     - GROUP BY clause
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:px-[48px]  px-[16px] items-center  md:w-full w-[329px]">
+                  - Dropping views
                 </p>{" "}
               </div>
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Assignment
+                <span>{dot}</span> Assignment 6
               </p>{" "}
             </section>
           )}
@@ -427,48 +425,32 @@ function Sql() {
               <KeyboardArrowDownIcon fontSize="large" />
             )}
             <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
-              Month 6: Project Development and Deployment
+              Session 6: Conditional Logic and Data Import/Export
             </p>
           </div>
           {sixthmonth && (
             <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1A]">
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>1. Introduction to SQL
+                <span>{dot}</span>1. Case Statements
               </p>
               <div className=" pl-[50px] flex flex-col gap-[]">
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                  - Definition and purpose of SQL
-                </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                  - Understanding relational databases
-                </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                  - Overview of Database Management Systems (DBMS)
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px]  sm:px-[48px]  px-[16px] items-center  md:w-full w-[329px]">
+                  - Using CASE statements for conditional logic
                 </p>{" "}
               </div>
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> 2. Basic SQL Syntax
+                <span>{dot}</span> 2. Data Import and Export
               </p>{" "}
               <div className=" pl-[50px] flex flex-col gap-[]">
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                     - SELECT statement
-                </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                     - FROM clause
-                </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                     - WHERE clause
-                </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                  {" "}
-                  - ORDER BY clause
-                </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                     - GROUP BY clause
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px]  sm:px-[48px]  px-[16px] items-center  md:w-full w-[329px]">
+                  - Importing and exporting data (e.g., CSV, JSON)
                 </p>{" "}
               </div>
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Assignment
+                <span>{dot}</span> Project 1
+              </p>{" "}
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
+                <span>{dot}</span> Assignment 7
               </p>{" "}
             </section>
           )}
@@ -483,48 +465,35 @@ function Sql() {
               <KeyboardArrowDownIcon fontSize="large" />
             )}
             <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
-              Month 6: Project Development and Deployment
+              Session 7: Intermediate Level Concepts
             </p>
           </div>
           {seventhmonth && (
             <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1A]">
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>1. Introduction to SQL
+                <span>{dot}</span>1. Case Statements
               </p>
               <div className=" pl-[50px] flex flex-col gap-[]">
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                  - Definition and purpose of SQL
-                </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                  - Understanding relational databases
-                </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                  - Overview of Database Management Systems (DBMS)
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px]  sm:px-[48px]  px-[16px] items-center  md:w-full w-[329px]">
+                  - Using CASE statements for conditional logic
                 </p>{" "}
               </div>
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> 2. Basic SQL Syntax
+                <span>{dot}</span> 2. Data Integrity
               </p>{" "}
               <div className=" pl-[50px] flex flex-col gap-[]">
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                     - SELECT statement
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px]  sm:px-[48px]  px-[16px] items-center  md:w-full w-[329px]">
+                  - Primary key constraint
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                     - FROM clause
-                </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                     - WHERE clause
-                </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                  {" "}
-                  - ORDER BY clause
-                </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                     - GROUP BY clause
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px]  sm:px-[48px]  px-[16px] items-center  md:w-full w-[329px]">
+                  - Foreign key constraint
                 </p>{" "}
               </div>
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Assignment
+                <span>{dot}</span> Project 2
+              </p>{" "}
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
+                <span>{dot}</span> Assignment 8
               </p>{" "}
             </section>
           )}
@@ -539,49 +508,36 @@ function Sql() {
               <KeyboardArrowDownIcon fontSize="large" />
             )}
             <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
-              Month 5: Tools and Best Practices
+              Session 8: Advanced Techniques, Assignments, and Career
             </p>
           </div>
           {eightmonth && (
             <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1A]">
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>1. Introduction to SQL
+                <span>{dot}</span>1. Error Handling and Debugging
               </p>
-              <div className=" pl-[50px] flex flex-col gap-[]">
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                  - Definition and purpose of SQL
+              <div className=" pl-[50px] flex flex-col gap-[15px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px]  sm:px-[48px]  px-[16px] items-center  md:w-full w-[329px]">
+                  - Handling errors in SQL
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                  - Understanding relational databases
-                </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                  - Overview of Database Management Systems (DBMS)
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px]  sm:px-[48px]  px-[16px] items-center  md:w-full w-[329px]">
+                  - Debugging techniques for troubleshooting queries
                 </p>{" "}
               </div>
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> 2. Basic SQL Syntax
+                <span>{dot}</span> Project 3 & 4
               </p>{" "}
-              <div className=" pl-[50px] flex flex-col gap-[]">
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                     - SELECT statement
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
+                <span>{dot}</span>3. Feedback and Career Guidance
+              </p>
+              <div className=" pl-[50px] flex flex-col gap-[15px]">
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px]  sm:px-[48px]  px-[16px] items-center  md:w-full w-[329px]">
+                  - Feedback and corrections from the facilitator
                 </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                     - FROM clause
-                </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                     - WHERE clause
-                </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                  {" "}
-                  - ORDER BY clause
-                </p>{" "}
-                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                     - GROUP BY clause
+                <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px]  sm:px-[48px]  px-[16px] items-center  md:w-full w-[329px]">
+                  - Career session
                 </p>{" "}
               </div>
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Assignment
-              </p>{" "}
             </section>
           )}
         </div>

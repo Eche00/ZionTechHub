@@ -33,6 +33,9 @@ function powerBi() {
   const [fourthmonth, setFourthMonth] = useState(false);
   const [fifthmonth, setFifthMonth] = useState(false);
   const [sixthmonth, setSixtMonth] = useState(false);
+  const [seventhmonth, setSeventhMonth] = useState(false);
+  const [eighthmonth, setEighthMonth] = useState(false);
+
   const firstM = (e) => {
     e.preventDefault();
     setFirstMonth(!firstmonth);
@@ -41,6 +44,8 @@ function powerBi() {
     setFourthMonth(false);
     setFifthMonth(false);
     setSixtMonth(false);
+    setSeventhMonth(false);
+    setEighthMonth(false);
   };
   const secondM = (e) => {
     e.preventDefault();
@@ -51,6 +56,8 @@ function powerBi() {
     setFourthMonth(false);
     setFifthMonth(false);
     setSixtMonth(false);
+    setSeventhMonth(false);
+    setEighthMonth(false);
   };
   const thirdM = (e) => {
     e.preventDefault();
@@ -60,6 +67,8 @@ function powerBi() {
     setFourthMonth(false);
     setFifthMonth(false);
     setSixtMonth(false);
+    setSeventhMonth(false);
+    setEighthMonth(false);
   };
   const fourthM = (e) => {
     e.preventDefault();
@@ -69,6 +78,8 @@ function powerBi() {
     setFourthMonth(!fourthmonth);
     setFifthMonth(false);
     setSixtMonth(false);
+    setSeventhMonth(false);
+    setEighthMonth(false);
   };
   const fifthM = (e) => {
     e.preventDefault();
@@ -78,6 +89,8 @@ function powerBi() {
     setFourthMonth(false);
     setFifthMonth(!fifthmonth);
     setSixtMonth(false);
+    setSeventhMonth(false);
+    setEighthMonth(false);
   };
   const sixthM = (e) => {
     e.preventDefault();
@@ -87,6 +100,30 @@ function powerBi() {
     setFourthMonth(false);
     setFifthMonth(false);
     setSixtMonth(!sixthmonth);
+    setSeventhMonth(false);
+    setEighthMonth(false);
+  };
+  const seventhM = (e) => {
+    e.preventDefault();
+    setFirstMonth(false);
+    setSecondMonth(false);
+    setThirdtMonth(false);
+    setFourthMonth(false);
+    setFifthMonth(false);
+    setSixtMonth(false);
+    setSeventhMonth(!seventhmonth);
+    setEighthMonth(false);
+  };
+  const eighthM = (e) => {
+    e.preventDefault();
+    setFirstMonth(false);
+    setSecondMonth(false);
+    setThirdtMonth(false);
+    setFourthMonth(false);
+    setFifthMonth(false);
+    setSixtMonth(false);
+    setSeventhMonth(false);
+    setEighthMonth(!eighthmonth);
   };
   return (
     <div className="flex sm:flex-row flex-col-reverse gap-[25px] smm:w-[1238px] sm:w-[1150px] ">
@@ -102,28 +139,29 @@ function powerBi() {
               <KeyboardArrowDownIcon fontSize="large" />
             )}
             <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
-              Month 1: Introduction to Web Development
+              Session _1A :Introduction to Power BI
             </p>
           </div>
           {firstmonth && (
             <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1A]">
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Introduction to HTML
+                <span>{dot}</span>Understanding Business Intelligence with Power
+                BI
               </p>
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Basic HTML tags and structure
+                <span>{dot}</span> Role of Power BI in modern data analytics
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Creating simple web pages
+                <span>{dot}</span> Comparing Power BI with other BI tools like
+                Tableau
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Introduction to CSS
+                <span>{dot}</span> Overview of Microsoft Power Platform and
+                Power BI products
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Basic styling: colors, fonts, and layout
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> DCSS box model and positioning
+                <span>{dot}</span> Transitioning from Excel to Power BI for data
+                analysis
               </p>{" "}
             </section>
           )}
@@ -138,28 +176,28 @@ function powerBi() {
               <KeyboardArrowDownIcon fontSize="large" />
             )}
             <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
-              Month 2: Advanced HTML and CSS
+              Session_1B: Power BI Desktop Essentials
             </p>
           </div>{" "}
           {secondmonth && (
             <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>HTML5 features and elements
+                <span>{dot}</span>Installing and navigating Power BI Desktop
               </p>
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Forms and input types
+                <span>{dot}</span> Exploring Power BI Desktop interface
+                components
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Semantic HTML
+                <span>{dot}</span> Connecting to data sources: Excel, SQL
+                Server, Web, etc.
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Advanced CSS: Flexbox and Grid
+                <span>{dot}</span> Data import methods: Import vs. DirectQuery
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Responsive design principles
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Media queries and mobile-first design
+                <span>{dot}</span>Overview of Power BI Service and mobile
+                capabilities
               </p>{" "}
             </section>
           )}
@@ -174,28 +212,30 @@ function powerBi() {
               <KeyboardArrowDownIcon fontSize="large" />
             )}
             <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
-              Month 3: JavaScript Basics
+              Session _2A: Building Your First Power BI Report
             </p>
           </div>
           {thirdmonth && (
             <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Introduction to JavaScript
+                <span>{dot}</span> Importing and transforming data in Power BI
+                Desktop
               </p>
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Basic syntax and operators
+                <span>{dot}</span>  Creating visualizations: Bar, line, pie
+                charts, etc.
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Functions, loops, and conditionals
+                <span>{dot}</span>  Adding interactivity with slicers, filters,
+                and drill-down paths
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> DOM manipulation
+                <span>{dot}</span> Saving and publishing reports to Power BI
+                Service
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Event handling
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Introduction to JSON and AJAX
+                <span>{dot}</span>Exploring Power BI Service features:
+                Dashboards, data refresh, mobile access
               </p>{" "}
             </section>
           )}
@@ -210,28 +250,22 @@ function powerBi() {
               <KeyboardArrowDownIcon fontSize="large" />
             )}
             <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
-              Month 4: Advanced JavaScript and Frameworks
+              Session _2B: Data Transformation and Modeling 2.1. Power Query
+              Essentials
             </p>
           </div>
           {fourthmonth && (
             <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Advanced JavaScript concepts: closures,
-                promises, and async/await
+                <span>{dot}</span>Introduction to Power Query and Query Editor
               </p>
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Error handling and debugging
+                <span>{dot}</span> Data transformation tasks: Cleaning, shaping,
+                and combining data
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Introduction to front-end frameworks: React
-                or Vue.js
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Setting up the development environment
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Building a simple application with the chosen
-                framework
+                <span>{dot}</span> Removing duplicates, handling errors, and
+                data type conversions
               </p>{" "}
             </section>
           )}
@@ -246,27 +280,26 @@ function powerBi() {
               <KeyboardArrowDownIcon fontSize="large" />
             )}
             <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
-              Month 5: Tools and Best Practices
+              Session _3A: Data Modeling in Power BI
             </p>
           </div>
           {fifthmonth && (
             <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Version control with Git and GitHub
+                <span>{dot}</span>Understanding data modeling concepts and best
+                practices
               </p>
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Code editors and integrated development
-                environments (IDEs)
+                <span>{dot}</span> Creating relationships between tables:
+                One-to-one, one-to-many, many-to-many
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Introduction to build tools and task runners
-                (e.g., Webpack, Babel)
+                <span>{dot}</span> Working with calculated columns and measures
+                for enhanced analysis
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Testing and debugging front-end code
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Performance optimization and best practices
+                <span>{dot}</span> Implementing data hierarchies and custom sort
+                orders
               </p>{" "}
             </section>
           )}
@@ -281,32 +314,84 @@ function powerBi() {
               <KeyboardArrowDownIcon fontSize="large" />
             )}
             <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
-              Month 6: Project Development and Deployment
+              Session _3B: Advanced Data Visualization Techniques
             </p>
           </div>
           {sixthmonth && (
             <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Project planning and design
+                <span>{dot}</span>Exploring advanced chart types: Treemap,
+                scatter, funnel, gauge, etc.
               </p>
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Building a complete front-end application
-                from scratch
+                <span>{dot}</span> Customizing visuals: Formatting, colors,
+                axes, legends, and tooltips
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Deployment and hosting options (e.g.,
-                Netlify, Vercel)
+                <span>{dot}</span> Creating dynamic and interactive reports with
+                bookmarks and buttons
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Continuous integration and deployment (CI/CD)
-                basics
+                <span>{dot}</span> Assignment  Incorporating custom visuals and
+                third-party integrations7
+              </p>{" "}
+            </section>
+          )}
+        </div>
+        <div>
+          <div
+            className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-full"
+            onClick={seventhM}>
+            {seventhmonth ? (
+              <KeyboardArrowUpIcon fontSize="large" />
+            ) : (
+              <KeyboardArrowDownIcon fontSize="large" />
+            )}
+            <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
+              Session_4A: DAX Fundamentals and Advanced Calculations
+            </p>
+          </div>
+          {seventhmonth && (
+            <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
+                <span>{dot}</span>Introduction to DAX
+              </p>
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
+                <span>{dot}</span> Understanding Data Analysis Expressions (DAX)
+                syntax and concepts
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Final project presentation and review
+                <span>{dot}</span>Working with tables, columns, and rows in DAX
+                expressions
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Portfolio development and career advice
+                <span>{dot}</span> Introduction to row context and filter
+                context
               </p>{" "}
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
+                <span>{dot}</span>Basic DAX Functions
+              </p>{" "}
+            </section>
+          )}
+        </div>
+        <div>
+          <div
+            className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-full"
+            onClick={eighthM}>
+            {eighthmonth ? (
+              <KeyboardArrowUpIcon fontSize="large" />
+            ) : (
+              <KeyboardArrowDownIcon fontSize="large" />
+            )}
+            <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
+              Session _4B: Capstone projects for project portfolio.
+            </p>
+          </div>
+          {eighthmonth && (
+            <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
+                <span>{dot}</span>Capstone projects for project portfolio.
+              </p>
             </section>
           )}
         </div>

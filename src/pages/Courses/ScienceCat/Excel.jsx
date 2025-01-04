@@ -33,17 +33,10 @@ function Excel() {
   const [fourthmonth, setFourthMonth] = useState(false);
   const [fifthmonth, setFifthMonth] = useState(false);
   const [sixthmonth, setSixtMonth] = useState(false);
-
   const [seventhmonth, setSeventhMonth] = useState(false);
   const [eighthmonth, setEighthMonth] = useState(false);
   const [ninethmonth, setNinethtMonth] = useState(false);
-  const [tenthmonth, setTenthMonth] = useState(false);
-  const [eleventhmonth, setEleventhMonth] = useState(false);
-  const [twelvethmonth, setTwelvethMonth] = useState(false);
-  const [thirtheenthmonth, setThirtheenthMonth] = useState(false);
-  const [fourtenthmonth, setFourtenthMonth] = useState(false);
-  const [fifteenthmonth, setFifteenthtMonth] = useState(false);
-  const [sixteenthmonth, setSixteenthMonth] = useState(false);
+
   const firstM = (e) => {
     e.preventDefault();
     setFirstMonth(!firstmonth);
@@ -55,13 +48,6 @@ function Excel() {
     setSeventhMonth(false);
     setEighthMonth(false);
     setNinethtMonth(false);
-    setTenthMonth(false);
-    setEleventhMonth(false);
-    setTwelvethMonth(false);
-    setThirtheenthMonth(false);
-    setFourtenthMonth(false);
-    setFifteenthtMonth(false);
-    setSixteenthMonth(false);
   };
   const secondM = (e) => {
     e.preventDefault();
@@ -75,13 +61,6 @@ function Excel() {
     setSeventhMonth(false);
     setEighthMonth(false);
     setNinethtMonth(false);
-    setTenthMonth(false);
-    setEleventhMonth(false);
-    setTwelvethMonth(false);
-    setThirtheenthMonth(false);
-    setFourtenthMonth(false);
-    setFifteenthtMonth(false);
-    setSixteenthMonth(false);
   };
   const thirdM = (e) => {
     e.preventDefault();
@@ -94,13 +73,6 @@ function Excel() {
     setSeventhMonth(false);
     setEighthMonth(false);
     setNinethtMonth(false);
-    setTenthMonth(false);
-    setEleventhMonth(false);
-    setTwelvethMonth(false);
-    setThirtheenthMonth(false);
-    setFourtenthMonth(false);
-    setFifteenthtMonth(false);
-    setSixteenthMonth(false);
   };
   const fourthM = (e) => {
     e.preventDefault();
@@ -113,13 +85,6 @@ function Excel() {
     setSeventhMonth(false);
     setEighthMonth(false);
     setNinethtMonth(false);
-    setTenthMonth(false);
-    setEleventhMonth(false);
-    setTwelvethMonth(false);
-    setThirtheenthMonth(false);
-    setFourtenthMonth(false);
-    setFifteenthtMonth(false);
-    setSixteenthMonth(false);
   };
   const fifthM = (e) => {
     e.preventDefault();
@@ -132,13 +97,6 @@ function Excel() {
     setSeventhMonth(false);
     setEighthMonth(false);
     setNinethtMonth(false);
-    setTenthMonth(false);
-    setEleventhMonth(false);
-    setTwelvethMonth(false);
-    setThirtheenthMonth(false);
-    setFourtenthMonth(false);
-    setFifteenthtMonth(false);
-    setSixteenthMonth(false);
   };
   const sixthM = (e) => {
     e.preventDefault();
@@ -151,13 +109,6 @@ function Excel() {
     setSeventhMonth(false);
     setEighthMonth(false);
     setNinethtMonth(false);
-    setTenthMonth(false);
-    setEleventhMonth(false);
-    setTwelvethMonth(false);
-    setThirtheenthMonth(false);
-    setFourtenthMonth(false);
-    setFifteenthtMonth(false);
-    setSixteenthMonth(false);
   };
   const seventhM = (e) => {
     e.preventDefault();
@@ -170,13 +121,6 @@ function Excel() {
     setSeventhMonth(!seventhmonth);
     setEighthMonth(false);
     setNinethtMonth(false);
-    setTenthMonth(false);
-    setEleventhMonth(false);
-    setTwelvethMonth(false);
-    setThirtheenthMonth(false);
-    setFourtenthMonth(false);
-    setFifteenthtMonth(false);
-    setSixteenthMonth(false);
   };
   const eighthM = (e) => {
     e.preventDefault();
@@ -189,13 +133,6 @@ function Excel() {
     setSeventhMonth(false);
     setEighthMonth(!eighthmonth);
     setNinethtMonth(false);
-    setTenthMonth(false);
-    setEleventhMonth(false);
-    setTwelvethMonth(false);
-    setThirtheenthMonth(false);
-    setFourtenthMonth(false);
-    setFifteenthtMonth(false);
-    setSixteenthMonth(false);
   };
   const ninethM = (e) => {
     e.preventDefault();
@@ -208,147 +145,8 @@ function Excel() {
     setSeventhMonth(false);
     setEighthMonth(false);
     setNinethtMonth(!ninethmonth);
-    setTenthMonth(false);
-    setEleventhMonth(false);
-    setTwelvethMonth(false);
-    setThirtheenthMonth(false);
-    setFourtenthMonth(false);
-    setFifteenthtMonth(false);
-    setSixteenthMonth(false);
   };
-  const tenthM = (e) => {
-    e.preventDefault();
-    setFirstMonth(false);
-    setSecondMonth(false);
-    setThirdtMonth(false);
-    setFourthMonth(false);
-    setFifthMonth(false);
-    setSixtMonth(false);
-    setSeventhMonth(false);
-    setEighthMonth(false);
-    setNinethtMonth(false);
-    setTenthMonth(!tenthmonth);
-    setEleventhMonth(false);
-    setTwelvethMonth(false);
-    setThirtheenthMonth(false);
-    setFourtenthMonth(false);
-    setFifteenthtMonth(false);
-    setSixteenthMonth(false);
-  };
-  const eleventhM = (e) => {
-    e.preventDefault();
-    setFirstMonth(false);
-    setSecondMonth(false);
-    setThirdtMonth(false);
-    setFourthMonth(false);
-    setFifthMonth(false);
-    setSixtMonth(false);
-    setSeventhMonth(false);
-    setEighthMonth(false);
-    setNinethtMonth(false);
-    setTenthMonth(false);
-    setEleventhMonth(!eleventhmonth);
-    setTwelvethMonth(false);
-    setThirtheenthMonth(false);
-    setFourtenthMonth(false);
-    setFifteenthtMonth(false);
-    setSixteenthMonth(false);
-  };
-  const twelvethM = (e) => {
-    e.preventDefault();
-    setFirstMonth(false);
-    setSecondMonth(false);
-    setThirdtMonth(false);
-    setFourthMonth(false);
-    setFifthMonth(false);
-    setSixtMonth(false);
-    setSeventhMonth(false);
-    setEighthMonth(false);
-    setNinethtMonth(false);
-    setTenthMonth(false);
-    setEleventhMonth(false);
-    setTwelvethMonth(!twelvethmonth);
-    setThirtheenthMonth(false);
-    setFourtenthMonth(false);
-    setFifteenthtMonth(false);
-    setSixteenthMonth(false);
-  };
-  const thirtheenthM = (e) => {
-    e.preventDefault();
-    setFirstMonth(false);
-    setSecondMonth(false);
-    setThirdtMonth(false);
-    setFourthMonth(false);
-    setFifthMonth(false);
-    setSixtMonth(false);
-    setSeventhMonth(false);
-    setEighthMonth(false);
-    setNinethtMonth(false);
-    setTenthMonth(false);
-    setEleventhMonth(false);
-    setTwelvethMonth(false);
-    setThirtheenthMonth(!thirtheenthmonth);
-    setFourtenthMonth(false);
-    setFifteenthtMonth(false);
-    setSixteenthMonth(false);
-  };
-  const fourtenthM = (e) => {
-    e.preventDefault();
-    setFirstMonth(false);
-    setSecondMonth(false);
-    setThirdtMonth(false);
-    setFourthMonth(false);
-    setFifthMonth(false);
-    setSixtMonth(false);
-    setSeventhMonth(false);
-    setEighthMonth(false);
-    setNinethtMonth(false);
-    setTenthMonth(false);
-    setEleventhMonth(false);
-    setTwelvethMonth(false);
-    setThirtheenthMonth(false);
-    setFourtenthMonth(!fourtenthmonth);
-    setFifteenthtMonth(false);
-    setSixteenthMonth(false);
-  };
-  const fifteenthM = (e) => {
-    e.preventDefault();
-    setFirstMonth(false);
-    setSecondMonth(false);
-    setThirdtMonth(false);
-    setFourthMonth(false);
-    setFifthMonth(false);
-    setSixtMonth(false);
-    setSeventhMonth(false);
-    setEighthMonth(false);
-    setNinethtMonth(false);
-    setTenthMonth(false);
-    setEleventhMonth(false);
-    setTwelvethMonth(false);
-    setThirtheenthMonth(false);
-    setFourtenthMonth(false);
-    setFifteenthtMonth(!fifteenthmonth);
-    setSixteenthMonth(false);
-  };
-  const sixteenthM = (e) => {
-    e.preventDefault();
-    setFirstMonth(false);
-    setSecondMonth(false);
-    setThirdtMonth(false);
-    setFourthMonth(false);
-    setFifthMonth(false);
-    setSixtMonth(false);
-    setSeventhMonth(false);
-    setEighthMonth(false);
-    setNinethtMonth(false);
-    setTenthMonth(false);
-    setEleventhMonth(false);
-    setTwelvethMonth(false);
-    setThirtheenthMonth(false);
-    setFourtenthMonth(false);
-    setFifteenthtMonth(false);
-    setSixteenthMonth(!sixteenthmonth);
-  };
+
   return (
     <div className="flex sm:flex-row flex-col-reverse gap-[25px] smm:w-[1238px] sm:w-[1150px] ">
       <div className=" flex-1 flex flex-col rounded-tr-[10px] overflow-hidden border border-gray-300 h-fit">
@@ -363,28 +161,36 @@ function Excel() {
               <KeyboardArrowDownIcon fontSize="large" />
             )}
             <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
-              Month 1: Introduction to Web Development
+              Session_1A: Introduction to Excel
             </p>
           </div>
           {firstmonth && (
             <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1A]">
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Introduction to HTML
+                <span>{dot}</span>Overview of Excel interface: Introduction to
+                Excel's ribbon, tabs, and basic functions.
               </p>
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Basic HTML tags and structure
+                <span>{dot}</span> Understanding workbooks, worksheets, rows,
+                columns, and cells: Explanation of the structure of Excel files.
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Creating simple web pages
+                <span>{dot}</span> Navigating Excel workbooks efficiently:
+                Techniques for moving around workbooks using scrollbars,
+                keyboard shortcuts, and navigation panes.
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Introduction to CSS
+                <span>{dot}</span>  Basic Spreadsheet Operations
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Basic styling: colors, fonts, and layout
+                <span>{dot}</span> Entering and formatting data: Methods for
+                inputting data into cells and basic formatting options such as
+                font styles, colors, and cell alignment 
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> DCSS box model and positioning
+                <span>{dot}</span> Using basic formulas and functions:
+                Introduction to arithmetic operations (e.g., addition,
+                subtraction) and functions like SUM, AVERAGE, SUMIFS, IF(AND)...
               </p>{" "}
             </section>
           )}
@@ -399,28 +205,30 @@ function Excel() {
               <KeyboardArrowDownIcon fontSize="large" />
             )}
             <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
-              Month 2: Advanced HTML and CSS
+              Session _1B: Introduction to absolute and relative cell
+              referencing and calculations 
             </p>
           </div>{" "}
           {secondmonth && (
             <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>HTML5 features and elements
+                <span>{dot}</span>Understanding relative and absolute cell
+                references, performing simple calculations with cells
               </p>
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Forms and input types
+                <span>{dot}</span> Managing Worksheets: Renaming, inserting, and
+                deleting worksheets: How to modify worksheet names and add or
+                remove worksheets from a workbook.
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Semantic HTML
+                <span>{dot}</span> Moving and copying data between worksheets:
+                Techniques for transferring data between different sheets within
+                a workbook 
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Advanced CSS: Flexbox and Grid
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Responsive design principles
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Media queries and mobile-first design
+                <span>{dot}</span> Organizing data with grouping and outlining
+                features: Using grouping and outlining to organize and collapse
+                rows or columns for better data visibility 
               </p>{" "}
             </section>
           )}
@@ -435,28 +243,44 @@ function Excel() {
               <KeyboardArrowDownIcon fontSize="large" />
             )}
             <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
-              Month 3: JavaScript Basics
+              Session _2A: Understanding and working with Data Analysis Tools
             </p>
           </div>
           {thirdmonth && (
             <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Introduction to JavaScript
+                <span>{dot}</span>Sorting and filtering data effectively:
+                Sorting data alphabetically or numerically, applying filters to
+                view specific subsets of data
               </p>
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Basic syntax and operators
+                <span>{dot}</span> Introduction to conditional formatting for
+                data visualization: Applying conditional formatting rules to
+                highlight data based on specific criteria 
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Functions, loops, and conditionals
+                <span>{dot}</span> Creating simple charts: Generating basic
+                charts such as columns, pie charts or line charts to visualize
+                data and trends 
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> DOM manipulation
+                <span>{dot}</span> Text and String Functions; <br />
+                CONCATENATE, TEXT, LEN, LEFT, RIGHT, MID: Concatenating strings,
+                formatting text, calculating the length of text strings and
+                extracting substrings 
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Event handling
+                <span>{dot}</span>UPPER, LOWER, PROPER: Converting text to
+                uppercase, lowercase, or proper case.
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Introduction to JSON and AJAX
+                <span>{dot}</span> FIND, SEARCH, REPLACE: Finding and replacing
+                text within strings.
+              </p>{" "}
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
+                <span>{dot}</span> TRIM, CLEAN, SUBSTITUTE: Removing extra
+                spaces, non-printable characters, and substituting text within
+                strings.
               </p>{" "}
             </section>
           )}
@@ -471,28 +295,23 @@ function Excel() {
               <KeyboardArrowDownIcon fontSize="large" />
             )}
             <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
-              Month 4: Advanced JavaScript and Frameworks
+              Session _2B: Advanced Formulas and Functions (Intermediate level)
             </p>
           </div>
           {fourthmonth && (
             <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Advanced JavaScript concepts: closures,
-                promises, and async/await
+                <span>{dot}</span>Utilizing logical functions: Understanding IF,
+                AND, OR functions for conditional logic.
               </p>
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Error handling and debugging
+                <span>{dot}</span>Working with lookup and reference functions:
+                Exploring VLOOKUP, HLOOKUP, INDEX, MATCH functions for searching
+                and retrieving data 
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Introduction to front-end frameworks: React
-                or Vue.js
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Setting up the development environment
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Building a simple application with the chosen
-                framework
+                <span>{dot}</span> Harnessing the power of array formulas: Using
+                array formulas for complex calculations across ranges of data.
               </p>{" "}
             </section>
           )}
@@ -507,27 +326,31 @@ function Excel() {
               <KeyboardArrowDownIcon fontSize="large" />
             )}
             <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
-              Month 5: Tools and Best Practices
+              Data Management Techniques 
             </p>
           </div>
           {fifthmonth && (
             <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Version control with Git and GitHub
+                <span>{dot}</span>Implementing data validation: Setting up
+                validation rules to control data input.
               </p>
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Code editors and integrated development
-                environments (IDEs)
+                <span>{dot}</span> Consolidating data from multiple sources:
+                Combining data from different sheets or workbooks using
+                consolidation tools.
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Introduction to build tools and task runners
-                (e.g., Webpack, Babel)
+                <span>{dot}</span> Analyzing data efficiently using pivot tables
+                and pivot charts: Creating pivot tables to summarize and analyze
+                large datasets.
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Testing and debugging front-end code
+                <span>{dot}</span> Aggregate Functions
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Performance optimization and best practices
+                <span>{dot}</span>IFS, SWITCH: Simplifying nested IF statements
+                or multiple conditions using IFS or SWITCH functions.
               </p>{" "}
             </section>
           )}
@@ -542,31 +365,42 @@ function Excel() {
               <KeyboardArrowDownIcon fontSize="large" />
             )}
             <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
-              Month 6: Project Development and Deployment
+              Session_ 3A: Advanced Data Analysis (Advance level)
             </p>
           </div>
           {sixthmonth && (
             <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Project planning and design
+                <span>{dot}</span>Utilizing advanced sorting and filtering
+                techniques: Sorting data by multiple criteria, using advanced
+                filtering options.
               </p>
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Building a complete front-end application
-                from scratch
+                <span>{dot}</span> Employing subtotal and database functions for
+                data summarization: Generating subtotals and summaries for large
+                datasets.
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Deployment and hosting options (e.g.,
-                Netlify, Vercel)
+                <span>{dot}</span> Performing what-if analysis with Goal Seek
+                and Scenario Manager: Using these tools to analyze different
+                scenarios and achieve desired results 
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Continuous integration and deployment (CI/CD)
-                basics
+                <span>{dot}</span> Advanced Charting Techniques
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Final project presentation and review
+                <span>{dot}</span>Creating dynamic charts with named ranges and
+                data validation: Building charts that automatically update with
+                changes to data ranges.
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Portfolio development and career advice
+                <span>{dot}</span> Exploring advanced chart types: Generating
+                combo charts, sparklines, and other specialized chart types.
+              </p>{" "}
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
+                <span>{dot}</span> Enhancing charts with trendlines and
+                secondary axes: Adding trendlines and secondary axes to
+                visualize trends and comparisons.
               </p>{" "}
             </section>
           )}
@@ -581,31 +415,38 @@ function Excel() {
               <KeyboardArrowDownIcon fontSize="large" />
             )}
             <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
-              Month 6: Project Development and Deployment
+              Session _3B: Data Analysis with PivotTables
             </p>
           </div>
           {seventhmonth && (
             <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Project planning and design
+                <span>{dot}</span>Creating and customizing pivot tables and
+                pivot charts: Setting up pivot tables and pivot charts to
+                summarize and analyze data
               </p>
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Building a complete front-end application
-                from scratch
+                <span>{dot}</span> Enhancing interactivity with slicers,
+                timelines, and calculated fields: Adding slicers and timelines
+                to filter pivot table data dynamically.
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Deployment and hosting options (e.g.,
-                Netlify, Vercel)
+                <span>{dot}</span>Implementing advanced pivot table techniques:
+                Using calculated fields, grouping data, and formatting pivot
+                tables for better analysis 
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Continuous integration and deployment (CI/CD)
-                basics
+                <span>{dot}</span> Data Visualization and Dashboards
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Final project presentation and review
+                <span>{dot}</span> Applying design principles for effective data
+                visualization: Designing visually appealing and informative
+                dashboards.
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Portfolio development and career advice
+                <span>{dot}</span> Constructing interactive dashboards with
+                Excel: Building interactive dashboards that allow users to
+                explore data dynamically.
               </p>{" "}
             </section>
           )}
@@ -620,31 +461,48 @@ function Excel() {
               <KeyboardArrowDownIcon fontSize="large" />
             )}
             <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
-              Month 6: Project Development and Deployment
+              Session_4A : Excel Macros and VBA Programming
             </p>
           </div>
           {eighthmonth && (
             <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Project planning and design
+                <span>{dot}</span>Recording and running macros for task
+                automation: Automating repetitive tasks by recording and
+                executing macros.
               </p>
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Building a complete front-end application
-                from scratch
+                <span>{dot}</span> Introduction to Visual Basic for Applications
+                (VBA): Understanding the basics of VBA programming language.
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Deployment and hosting options (e.g.,
-                Netlify, Vercel)
+                <span>{dot}</span> Developing VBA macros to automate complex
+                tasks and streamline workflows: Writing and debugging VBA code
+                to customize Excel functionality.
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Continuous integration and deployment (CI/CD)
-                basics
+                <span>{dot}</span> Date Functions
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Final project presentation and review
+                <span>{dot}</span>DATE, DATEVALUE, DAY, MONTH, YEAR: Extracting
+                components of dates, converting text to dates.
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Portfolio development and career advice
+                <span>{dot}</span> WEEKDAY, WEEKNUM: Determining the day of the
+                week or week number from a given date.
+              </p>{" "}
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
+                <span>{dot}</span> EOMONTH, WORKDAY, NETWORKDAYS: Calculating
+                end-of-month dates, workdays, and the number of working days
+                between two dates.
+              </p>{" "}
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
+                <span>{dot}</span>DATEDIF: Calculating the difference between
+                two dates in various units (e.g., years, months, days).
+              </p>{" "}
+              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
+                <span>{dot}</span> TODAY, NOW: Returning the current date or
+                date and time.
               </p>{" "}
             </section>
           )}
@@ -659,304 +517,23 @@ function Excel() {
               <KeyboardArrowDownIcon fontSize="large" />
             )}
             <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
-              Month 6: Project Development and Deployment
+              Session _4B: Final Assessment and Additional Topics 
             </p>
           </div>
           {ninethmonth && (
             <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Project planning and design
+                <span>{dot}</span>Excel assignment after every class.
               </p>
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Building a complete front-end application
-                from scratch
+                <span>{dot}</span> 3 solid real-world projects. 
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Deployment and hosting options (e.g.,
-                Netlify, Vercel)
+                <span>{dot}</span> 2 presentations and review.
               </p>{" "}
               <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Continuous integration and deployment (CI/CD)
-                basics
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Final project presentation and review
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Portfolio development and career advice
-              </p>{" "}
-            </section>
-          )}
-        </div>
-        <div>
-          <div
-            className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-full"
-            onClick={tenthM}>
-            {tenthmonth ? (
-              <KeyboardArrowUpIcon fontSize="large" />
-            ) : (
-              <KeyboardArrowDownIcon fontSize="large" />
-            )}
-            <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
-              Month 6: Project Development and Deployment
-            </p>
-          </div>
-          {tenthmonth && (
-            <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Project planning and design
-              </p>
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Building a complete front-end application
-                from scratch
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Deployment and hosting options (e.g.,
-                Netlify, Vercel)
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Continuous integration and deployment (CI/CD)
-                basics
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Final project presentation and review
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Portfolio development and career advice
-              </p>{" "}
-            </section>
-          )}
-        </div>
-        <div>
-          <div
-            className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-full"
-            onClick={eleventhM}>
-            {eleventhmonth ? (
-              <KeyboardArrowUpIcon fontSize="large" />
-            ) : (
-              <KeyboardArrowDownIcon fontSize="large" />
-            )}
-            <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
-              Month 6: Project Development and Deployment
-            </p>
-          </div>
-          {eleventhmonth && (
-            <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Project planning and design
-              </p>
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Building a complete front-end application
-                from scratch
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Deployment and hosting options (e.g.,
-                Netlify, Vercel)
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Continuous integration and deployment (CI/CD)
-                basics
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Final project presentation and review
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Portfolio development and career advice
-              </p>{" "}
-            </section>
-          )}
-        </div>
-        <div>
-          <div
-            className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-full"
-            onClick={twelvethM}>
-            {twelvethmonth ? (
-              <KeyboardArrowUpIcon fontSize="large" />
-            ) : (
-              <KeyboardArrowDownIcon fontSize="large" />
-            )}
-            <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
-              Month 6: Project Development and Deployment
-            </p>
-          </div>
-          {twelvethmonth && (
-            <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Project planning and design
-              </p>
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Building a complete front-end application
-                from scratch
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Deployment and hosting options (e.g.,
-                Netlify, Vercel)
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Continuous integration and deployment (CI/CD)
-                basics
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Final project presentation and review
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Portfolio development and career advice
-              </p>{" "}
-            </section>
-          )}
-        </div>
-        <div>
-          <div
-            className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-full"
-            onClick={thirtheenthM}>
-            {thirtheenthmonth ? (
-              <KeyboardArrowUpIcon fontSize="large" />
-            ) : (
-              <KeyboardArrowDownIcon fontSize="large" />
-            )}
-            <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
-              Month 6: Project Development and Deployment
-            </p>
-          </div>
-          {thirtheenthmonth && (
-            <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Project planning and design
-              </p>
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Building a complete front-end application
-                from scratch
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Deployment and hosting options (e.g.,
-                Netlify, Vercel)
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Continuous integration and deployment (CI/CD)
-                basics
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Final project presentation and review
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Portfolio development and career advice
-              </p>{" "}
-            </section>
-          )}
-        </div>
-        <div>
-          <div
-            className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-full"
-            onClick={fourtenthM}>
-            {fourtenthmonth ? (
-              <KeyboardArrowUpIcon fontSize="large" />
-            ) : (
-              <KeyboardArrowDownIcon fontSize="large" />
-            )}
-            <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
-              Month 6: Project Development and Deployment
-            </p>
-          </div>
-          {fourtenthmonth && (
-            <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Project planning and design
-              </p>
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Building a complete front-end application
-                from scratch
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Deployment and hosting options (e.g.,
-                Netlify, Vercel)
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Continuous integration and deployment (CI/CD)
-                basics
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Final project presentation and review
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Portfolio development and career advice
-              </p>{" "}
-            </section>
-          )}
-        </div>
-        <div>
-          <div
-            className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-full"
-            onClick={fifteenthM}>
-            {fifteenthmonth ? (
-              <KeyboardArrowUpIcon fontSize="large" />
-            ) : (
-              <KeyboardArrowDownIcon fontSize="large" />
-            )}
-            <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
-              Month 6: Project Development and Deployment
-            </p>
-          </div>
-          {fifteenthmonth && (
-            <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Project planning and design
-              </p>
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Building a complete front-end application
-                from scratch
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Deployment and hosting options (e.g.,
-                Netlify, Vercel)
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Continuous integration and deployment (CI/CD)
-                basics
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Final project presentation and review
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Portfolio development and career advice
-              </p>{" "}
-            </section>
-          )}
-        </div>
-        <div>
-          <div
-            className="sm:py-[24px] sm:px-[40px] py-[16px] px-[16px]  flex gap-[10px] sm:items-center bg-[#EBECED]  border-b border-gray-300 cursor-pointer w-full"
-            onClick={sixteenthM}>
-            {sixteenthmonth ? (
-              <KeyboardArrowUpIcon fontSize="large" />
-            ) : (
-              <KeyboardArrowDownIcon fontSize="large" />
-            )}
-            <p className=" sm:text-[20px] text-[18px] md:w-full w-full font-[600] text-[#1A1A1A]">
-              Month 6: Project Development and Deployment
-            </p>
-          </div>
-          {sixteenthmonth && (
-            <section className=" flex flex-col bg-[#F0F0F0] text-[#1A1A1ACC]">
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Project planning and design
-              </p>
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Building a complete front-end application
-                from scratch
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Deployment and hosting options (e.g.,
-                Netlify, Vercel)
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Continuous integration and deployment (CI/CD)
-                basics
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span>Final project presentation and review
-              </p>{" "}
-              <p className=" sm:text-[20px] text-[16px] font-[300] flex gap-[14px] sm:py-[24px] sm:px-[48px] py-[16px] px-[16px] items-center  md:w-full w-[329px]">
-                <span>{dot}</span> Portfolio development and career advice
+                <span>{dot}</span> Feedback and corrections from the
+                facilitator.
               </p>{" "}
             </section>
           )}
