@@ -12,8 +12,8 @@ function MadeCourses() {
   const handleClick = (e) => {
     e.preventDefault(); // Prevent default navigation
     setTimeout(() => {
-      window.open("https://discord.gg/pRMJe6Wv", "_blank"); // Set state to trigger redirect after  seconds
-    }, 2000);
+      window.open("https://discord.gg/pRMJe6Wv"); // Set state to trigger redirect after  seconds
+    }, 1000);
   };
 
   const handleEnrollDisplay = () => {
@@ -195,8 +195,14 @@ function MadeCourses() {
             }>
             <a
               target="_blank"
+              rel="noopener noreferrer"
               className=" border  border-[#0F973D] w-fit p-[10px] rounded-[5px] cursor-pointer "
-              onClick={handleClick}>
+              href="https://discord.gg/pRMJe6Wv"
+              onClick={(e) => {
+                setTimeout(() => {
+                  window.open("https://discord.gg/pRMJe6Wv", "_blank");
+                }, 2000);
+              }}>
               <DiscordLogo />
             </a>
             <div>
