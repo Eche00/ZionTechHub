@@ -514,7 +514,7 @@ function Topheader() {
 
       {/* partnerwithus */}
       <NavLink
-        to="/partnerwithus"
+        to="/partner-with-us"
         className={({ isActive }) =>
           isActive ? " flex w-full  justify-center flex-col" : " hidden"
         }>

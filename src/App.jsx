@@ -27,14 +27,26 @@ function App() {
 
             <Route path="/about-us" element={<About />} />
             <Route path="/data-consultation" element={<Consultation />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/partnerwithus" element={<PartnerWithUs />} />
+            <Route path="/contact-us" element={<Contact />} />
+            <Route path="/partner-with-us" element={<PartnerWithUs />} />
 
-            <Route path="/datascience" element={<DataScience />} />
-            <Route path="/dataanalystics" element={<DataAnalysis />} />
-            <Route path="/webdevelopment" element={<WebDevelopment />} />
-            <Route path="/cloudcomputing" element={<CloudComputing />} />
-            <Route path="/machinelearning" element={<MachineLearning />} />
+            <Route
+              path="/datascdata-analystics-trainingience"
+              element={<DataScience />}
+            />
+            <Route path="/data-science-course" element={<DataAnalysis />} />
+            <Route
+              path="/web-development-training"
+              element={<WebDevelopment />}
+            />
+            <Route
+              path="/cloud-computing-course"
+              element={<CloudComputing />}
+            />
+            <Route
+              path="/machine-learning-course"
+              element={<MachineLearning />}
+            />
           </Route>
           <Route path="/enroll" element={<Enroll />} />
         </Routes>
