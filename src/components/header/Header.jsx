@@ -10,35 +10,35 @@ function Header() {
         <Topheader />
       </div>
       <NavLink
-        to="/dataanalystics"
+        to="/data-analystics-course"
         className={({ isActive }) => (isActive ? " w-full " : " hidden")}>
         <div className="pt-20  z-0">
           <Navbar />
         </div>
       </NavLink>
       <NavLink
-        to="/datascience"
+        to="/data-science-course"
         className={({ isActive }) => (isActive ? " w-full " : " hidden")}>
         <div className="pt-20 o">
           <Navbar />
         </div>
       </NavLink>
       <NavLink
-        to="/webdevelopment"
+        to="/web-development-training"
         className={({ isActive }) => (isActive ? " w-full " : " hidden")}>
         <div className="pt-20 o">
           <Navbar />
         </div>
       </NavLink>
       <NavLink
-        to="/cloudcomputing"
+        to="/cloud-computing-course"
         className={({ isActive }) => (isActive ? " w-full " : " hidden")}>
         <div className="pt-20 o">
           <Navbar />
         </div>
       </NavLink>
       <NavLink
-        to="/machinelearning"
+        to="/machine-learning-course"
         className={({ isActive }) => (isActive ? " w-full " : " hidden")}>
         <div className="pt-20 o">
           <Navbar />

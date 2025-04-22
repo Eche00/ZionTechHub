@@ -51,7 +51,7 @@ function Navbar() {
               Home
             </NavLink>
             <NavLink
-              to="/about"
+              to="/about-us"
               className={({ isActive }) => (isActive ? "text-[#1A1A1A]" : "")}>
               About
             </NavLink>
@@ -62,27 +62,27 @@ function Navbar() {
               <div className=" text-[16px]  font-[400] text-[#1A1A1A80]  flex flex-col items-start gap-[10px] absolute bg-[#F0F0F0]   rounded-tr-[20px] rounded-br-[20px] rounded-bl-[20px] z-40  ">
                 <div className="  font-[400] text-[16px]  p-[12px] hidden group-hover:flex flex-col">
                   <Link
-                    to="/dataanalystics"
+                    to="/data-analystics-course"
                     className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px]">
                     Data Analystics
                   </Link>
                   <Link
-                    to="/datascience"
+                    to="/data-science-course"
                     className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px] ">
                     Data Science
                   </Link>
                   <Link
-                    to="/webdevelopment"
+                    to="/web-development-training"
                     className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px] ">
                     Web Development
                   </Link>
                   <Link
-                    to="/cloudcomputing"
+                    to="/cloud-computing-course"
                     className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px]  whitespace-nowrap">
                     Cloud Computing & DevOps
                   </Link>
                   <Link
-                    to="/machinelearning"
+                    to="/machine-learning-course"
                     className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px] ">
                     Machine Learning
                   </Link>
@@ -91,17 +91,17 @@ function Navbar() {
             </NavLink>
 
             <NavLink
-              to="/consult"
+              to="/data-consultation"
               className={({ isActive }) => (isActive ? "text-[#1A1A1A]" : "")}>
               Consultation
             </NavLink>
             <NavLink
-              to="/partnerwithus"
+              to="/partner-with-us"
               className={({ isActive }) => (isActive ? "text-[#1A1A1A]" : "")}>
               Partner with us
             </NavLink>
             <NavLink
-              to="/contact"
+              to="/contact-us"
               className={({ isActive }) => (isActive ? "text-[#1A1A1A]" : "")}>
               Contact
             </NavLink>
@@ -138,7 +138,7 @@ function Navbar() {
                       Home
                     </Link>
                     <Link
-                      to="/about"
+                      to="/about-us"
                       onClick={() => setNav(false)}
                       className=" py-[15px] px-[20px] text-[14px] text-[#1A1A1A] border-b border-[#C3C3C3]">
                       About Us
@@ -159,27 +159,27 @@ function Navbar() {
                           onClick={handleClose}>
                           <div className=" text-[#1A1A1A]  flex flex-col ">
                             <Link
-                              to="/dataanalystics"
+                              to="/data-analystics-course"
                               className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">
                               Data Analystics <KeyboardArrowRight />
                             </Link>
                             <Link
-                              to="/datascience"
+                              to="/data-science-course"
                               className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">
                               Data Science <KeyboardArrowRight />
                             </Link>
                             <Link
-                              to="/webdevelopment"
+                              to="/web-development-training"
                               className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">
                               Web Development <KeyboardArrowRight />
                             </Link>
                             <Link
-                              to="/cloudcomputing"
+                              to="/cloud-computing-course"
                               className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">
                               Cloud Computing & DevOps <KeyboardArrowRight />
                             </Link>
                             <Link
-                              to="/machinelearning"
+                              to="/machine-learning-course"
                               className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">
                               Machine Learning <KeyboardArrowRight />
                             </Link>
@@ -188,19 +188,19 @@ function Navbar() {
                       )}
                     </p>
                     <Link
-                      to="/consult"
+                      to="/data-consultation"
                       onClick={() => setNav(false)}
                       className=" py-[15px] px-[20px] text-[14px] text-[#1A1A1A] border-b border-[#C3C3C3]">
                       Consultation
                     </Link>
                     <Link
-                      to="/partnerwithus"
+                      to="/partner-with-us"
                       onClick={() => setNav(false)}
                       className=" py-[15px] px-[20px] text-[14px] text-[#1A1A1A] border-b border-[#C3C3C3]">
                       Partner with us
                     </Link>
                     <Link
-                      to="/contact"
+                      to="/contact-us"
                       onClick={() => setNav(false)}
                       className=" py-[15px] px-[20px] text-[14px] text-[#1A1A1A] border-b border-[#C3C3C3]">
                       Contact
