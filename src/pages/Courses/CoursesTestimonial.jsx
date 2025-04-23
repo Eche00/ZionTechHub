@@ -29,6 +29,7 @@ function CoursesTestimonial() {
           {Testimonials.map((testimonial) => (
             <img
               className=" sm:w-[445px] sm:h-[445px] w-[344px] h-[344px] object-cover"
+              key={testimonial.image}
               src={testimonial.image}
               alt=""
             />

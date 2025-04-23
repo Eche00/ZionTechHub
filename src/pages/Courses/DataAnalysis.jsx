@@ -294,7 +294,9 @@ function DataAnalysis() {
           </div>
           <div className="flex flex-wrap py-[68px] sm:gap-y-[68px] sm:gap-x-[48px] gap-y-[24px] lg:gap-x-[5px] ">
             {Expect.map((expect) => (
-              <section className=" flex md:gap-[14px] gap-[5px] sm:py-[48px] py-[36px] sm:px-[36px] lg:px-[16px] px-[10px]  items-baseline bg-[#EBECED] rounded-[10px]">
+              <section
+                key={expect.message}
+                className=" flex md:gap-[14px] gap-[5px] sm:py-[48px] py-[36px] sm:px-[36px] lg:px-[16px] px-[10px]  items-baseline bg-[#EBECED] rounded-[10px]">
                 <span>{dot}</span>
                 <p className="font-[600] sm:text-[20px] text-[16px] text-[#1A1A1ACC] w-[298px] h-[165px]">
                    {" "}
