@@ -31,10 +31,10 @@ function App() {
             <Route path="/partner-with-us" element={<PartnerWithUs />} />
 
             <Route
-              path="/datascdata-analystics-trainingience"
-              element={<DataScience />}
+              path="/data-analystics-training"
+              element={<DataAnalysis />}
             />
-            <Route path="/data-science-course" element={<DataAnalysis />} />
+            <Route path="/data-science-course" element={<DataScience />} />
             <Route
               path="/web-development-training"
               element={<WebDevelopment />}
