@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Head from "./components/Head";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -14,43 +14,37 @@ import DataScience from "./pages/Courses/DataScience";
 import FullHome from "./pages/HomeComponents/FullHome";
 import Scrolltotop from "./components/Scrolltotop";
 import PartnerWithUs from "./pages/PartnerWithUs";
+import googleAnalyticsTracking from "./components/googleAnalyticsTracking";
 
 function App() {
+  googleAnalyticsTracking();
   return (
     <div className=" overflow-hidden">
-      <Router>
-        <Scrolltotop />
+      <Scrolltotop />
 
-        <Routes>
-          <Route path="/" element={<Head />}>
-            <Route path="/" element={<FullHome />} />
+      <Routes>
+        <Route path="/" element={<Head />}>
+          <Route path="/" element={<FullHome />} />
 
-            <Route path="/about-us" element={<About />} />
-            <Route path="/data-consultation" element={<Consultation />} />
-            <Route path="/contact-us" element={<Contact />} />
-            <Route path="/partner-with-us" element={<PartnerWithUs />} />
+          <Route path="/about-us" element={<About />} />
+          <Route path="/data-consultation" element={<Consultation />} />
+          <Route path="/contact-us" element={<Contact />} />
+          <Route path="/partner-with-us" element={<PartnerWithUs />} />
 
-            <Route
-              path="/data-analystics-training"
-              element={<DataAnalysis />}
-            />
-            <Route path="/data-science-course" element={<DataScience />} />
-            <Route
-              path="/web-development-training"
-              element={<WebDevelopment />}
-            />
-            <Route
-              path="/cloud-computing-course"
-              element={<CloudComputing />}
-            />
-            <Route
-              path="/machine-learning-course"
-              element={<MachineLearning />}
-            />
-          </Route>
-          <Route path="/enroll" element={<Enroll />} />
-        </Routes>
-      </Router>
+          <Route path="/data-analystics-training" element={<DataAnalysis />} />
+          <Route path="/data-science-course" element={<DataScience />} />
+          <Route
+            path="/web-development-training"
+            element={<WebDevelopment />}
+          />
+          <Route path="/cloud-computing-course" element={<CloudComputing />} />
+          <Route
+            path="/machine-learning-course"
+            element={<MachineLearning />}
+          />
+        </Route>
+        <Route path="/enroll" element={<Enroll />} />
+      </Routes>
     </div>
   );
 }
