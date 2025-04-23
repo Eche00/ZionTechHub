@@ -8,6 +8,7 @@ import "./Enroll.css";
 import { logo } from "../assets";
 import SubEnroll from "./EnrollTabs/SubEnroll";
 import HealthcareReg from "./EnrollTabs/HealthcareReg";
+import { Helmet } from "react-helmet";
 
 function Enroll() {
   const [enroll, setEnroll] = useState(true);
@@ -47,6 +48,13 @@ function Enroll() {
   };
   return (
     <div className="">
+      <Helmet>
+        <title>Enroll Today, Secure Your Spot Now! | Zion Tech Hub</title>
+        <meta
+          name="description"
+          content="Take the first step toward something great—enroll now! Don’t miss your chance to join a community that’s built for your success."
+        />
+      </Helmet>
       <div className=" flex justify-between items-center max-w-[90%] mx-auto  font-sans py-[10px]">
         {/* logo */}
         <section className=" flex-1 text-xl font-bold flex items-baseline gap-1">

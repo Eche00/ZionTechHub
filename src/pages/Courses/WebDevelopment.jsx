@@ -17,6 +17,7 @@ import ExpectWeb from "../../lib/Expectweb";
 import Webcontent from "./Content/Webcontent";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 function WebDevelopment() {
   const dot = (
@@ -129,6 +130,15 @@ function WebDevelopment() {
   );
   return (
     <div className="bg-[#F5F5F5]">
+      <Helmet>
+        <title>
+          Web Dev Training Online, Start Learning Now | Zion Tech Hub
+        </title>
+        <meta
+          name="description"
+          content="Build stunning websites from scratch! Enroll in our hands-on web development training online. Start coding your future today!"
+        />
+      </Helmet>
       <span className="  md:h-[104px] md:w-[104px] h-[50px] w-[50px]   bg-[#034FE30D] absolute md:top-[50px] md:right-[640px] top-[134px] right-[60px] "></span>
       <span className="  md:h-[104px] md:w-[104px] w-[50px] h-[50px]  bg-[#034FE30D] absolute md:top-[350px] md:left-[314px] top-[282px] left-0  "></span>{" "}
       {/* hero section  */}
@@ -145,6 +155,7 @@ function WebDevelopment() {
               </p>
               <h1 className=" text-[#1A1A1A] font-[700] sm:text-[64px] text-[40px] sm:w-full w-[320px] sm:whitespace-nowrap sm:leading-[130%] sm:tracker-[1.28px] leading-[120%] tracker-[0.8px]">
                 Website <span className=" text-[#034FE3]">Development</span>
+                <br /> Training
               </h1>
               <p className=" text-[#1A1A1A] font-[300] sm:text-[24px] text-[18px] sm:w-[700px] w-[335px]">
                 Get to know your tutors, understand the role of web development,

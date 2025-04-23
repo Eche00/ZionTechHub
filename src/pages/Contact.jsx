@@ -3,6 +3,7 @@ import { div } from "framer-motion/client";
 import React from "react";
 import Contactfaqs from "./Contactuscomponenet/Contactfaqs";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet";
 
 function Contact() {
   const dot = (
@@ -85,6 +86,13 @@ function Contact() {
   );
   return (
     <div className="relative">
+      <Helmet>
+        <title>Get in Touch, We're Ready to Help You | Zion Tech Hub</title>
+        <meta
+          name="description"
+          content="Got questions or ready to connect? Our team is here for you. Click to contact us today and let’s start something amazing together!"
+        />
+      </Helmet>
       <span className="  md:h-[104px] md:w-[104px] h-[50px] w-[50px]   bg-[#034FE30D] absolute md:top-[50px] md:right-[640px] top-[150px] right-[60px] "></span>
       <span className="  md:h-[104px] md:w-[104px] w-[50px] h-[50px]  bg-[#034FE30D] absolute md:top-[417px] md:left-[314px] top-[300px] left-0  "></span>
       <div className=" pt-[130px]    bg-[linear-gradient(to_right,#4f4f4f0e_0.8px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_0.8px,transparent_0.1px)] md:bg-[size:104px_104px] bg-[size:50px_50px]  [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])]   sm:h-[100vh]   w-full border-b">
@@ -98,7 +106,7 @@ function Contact() {
                 {dot} ZION TECH HUB
               </p>
               <h1 className=" text-[#1A1A1A] font-[700] md:text-[64px]  text-[33px]">
-                Contact our team
+                Contact Our Team
               </h1>
               <p className=" text-[#1A1A1A] font-[300] sm:text-[24px] text-[16px]">
                 Let us know how we can help

@@ -111,7 +111,7 @@ function Home() {
                   TRAINING & CONSULTATION
                 </p>
                 <h1 className=" text-[#1A1A1A] font-[700] sm:text-[64px] text-[40px]   sm:w-full w-[340px] sm:leading-[130%] sm:tracker-[1.28px] leading-[120%] tracker-[0.8px]">
-                  Raising World Talents through
+                  Raising World Talents through Tech
                   <span className=" text-[#034FE3]"> Training</span>
                 </h1>
                 <p className=" text-[#1A1A1A] font-[300] sm:text-[24px] text-[18px]  sm:w-full w-[300px]">

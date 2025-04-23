@@ -17,6 +17,7 @@ import CoursesTestimonial from "./CoursesTestimonial";
 import Faqs from "../HomeComponents/Faqs";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 function DataAnalysis() {
   const dot = (
@@ -130,6 +131,13 @@ function DataAnalysis() {
   return (
     <div className="bg-[#F5F5F5] ">
       {" "}
+      <Helmet>
+        <title>Best Data Analytics Training, Enroll Now! | Zion Tech Hub</title>
+        <meta
+          name="description"
+          content="Master in-demand skills with our hands-on data analytics training. Enroll now and turn raw data into real-world insights!"
+        />
+      </Helmet>
       <span className="  md:h-[104px] md:w-[104px] h-[50px] w-[50px]   bg-[#034FE30D] absolute md:top-[50px] md:right-[640px] top-[134px] right-[60px] "></span>
       <span className="  md:h-[104px] md:w-[104px] w-[50px] h-[50px]  bg-[#034FE30D] absolute md:top-[350px] md:left-[314px] top-[282px] left-0  "></span>
       {/* hero section  */}
@@ -144,10 +152,10 @@ function DataAnalysis() {
               <p className=" sm:text-[14px] text-[12px]  font-[400] py-[10px] sm:px-[24px] px-[14px] border rounded-full w-fit ">
                 TRAINING & CONSULTATION
               </p>
-              <h1 className=" text-[#1A1A1A] font-[700] sm:text-[64px] text-[40px] sm:w-full w-[320px] sm:whitespace-nowrap sm:leading-[130%] sm:tracker-[1.28px] leading-[120%] tracker-[0.8px]">
+              <h1 className=" text-[#1A1A1A] font-[700] sm:text-[64px] text-[40px] sm:w-full w-[320px]  sm:leading-[130%] sm:tracker-[1.28px] leading-[120%] tracker-[0.8px] text-wrap">
                 Data Analytics <span className=" text-[#034FE3]">Training</span>
               </h1>
-              <p className=" text-[#1A1A1A] font-[300] sm:text-[24px] text-[18px] sm:w-[650px] w-[335px]">
+              <p className=" text-[#1A1A1A] font-[300] sm:text-[24px] text-[18px] sm:w-full w-[335px]">
                 Get to know your tutors, understand the role of data analytics,{" "}
                 and overview of the data analysis process.
               </p>

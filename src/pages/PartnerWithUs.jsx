@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Faqs from "./HomeComponents/Faqs";
 import IndustryAndExpertise from "./IndustryAndExpertise";
 import { partnerimg1, partnerimg2, partnerimg3 } from "../assets";
+import { Helmet } from "react-helmet";
 
 function PartnerWithUs() {
   const logo = (
@@ -356,6 +357,15 @@ function PartnerWithUs() {
       <span className="  md:h-[104px] md:w-[104px] h-[50px] w-[50px]   bg-[#034FE30D] absolute md:top-[50px] md:right-[640px] top-[150px] right-[60px] "></span>
       <span className="  md:h-[104px] md:w-[104px] w-[50px] h-[50px]  bg-[#034FE30D] absolute md:top-[417px] md:left-[314px] top-[300px] left-0  "></span>
       <div className=" md:pt-[130px] pt-[50px]    bg-[linear-gradient(to_right,#4f4f4f0e_0.8px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_0.8px,transparent_0.1px)] md:bg-[size:104px_104px] bg-[size:50px_50px]  [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])]   sm:h-[100vh]    w-full border-b">
+        <Helmet>
+          <title>
+            Partner With Us Today, Let’s Grow Together | Zion Tech Hub
+          </title>
+          <meta
+            name="description"
+            content="Join forces with a winning team! Discover the benefits of partnering with us to grow your brand. Click now to explore exciting opportunities!"
+          />
+        </Helmet>
         <motion.div
           initial={{ opacity: 0.45 }}
           whileInView={{ opacity: 1 }}
@@ -380,7 +390,7 @@ function PartnerWithUs() {
                 Join a Network Dedicated To
                 <span className=" text-[#034FE3]">
                   {" "}
-                  Excellence and <br className=" md:hidden flex" />
+                  Excellence and <br className=" md:hidden flex" />
                   Result
                 </span>
               </h1>

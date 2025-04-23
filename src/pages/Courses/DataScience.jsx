@@ -17,6 +17,7 @@ import ExpectScience from "../../lib/ExpectScience";
 import ScienceContent from "./Content/ScienceContent";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 function DataScience() {
   const dot = (
@@ -129,6 +130,13 @@ function DataScience() {
   );
   return (
     <div className="bg-[#F5F5F5]">
+      <Helmet>
+        <title>Data Science Course, Start Learning Now! | Zion Tech Hub</title>
+        <meta
+          name="description"
+          content="Master real-world data skills with our industry-ready data science course. Click to enroll and start your journey to becoming a data pro!"
+        />
+      </Helmet>
       <span className="  md:h-[104px] md:w-[104px] h-[50px] w-[50px]   bg-[#034FE30D] absolute md:top-[50px] md:right-[640px] top-[134px] right-[60px] "></span>
       <span className="  md:h-[104px] md:w-[104px] w-[50px] h-[50px]  bg-[#034FE30D] absolute md:top-[350px] md:left-[314px] top-[282px] left-0  "></span>{" "}
       {/* hero section  */}
@@ -144,7 +152,7 @@ function DataScience() {
                 TRAINING & CONSULTATION
               </p>
               <h1 className=" text-[#1A1A1A] font-[700] sm:text-[64px] text-[40px] sm:w-full w-[320px] sm:whitespace-nowrap sm:leading-[130%] sm:tracker-[1.28px] leading-[120%] tracker-[0.8px]">
-                Data Science <span className=" text-[#034FE3]">Training</span>
+                Data Science <span className=" text-[#034FE3]">Course</span>
               </h1>
               <p className=" text-[#1A1A1A] font-[300] sm:text-[24px] text-[18px] sm:w-[650px] w-[335px]">
                 Get to know your tutors, understand the role of data analytics,{" "}

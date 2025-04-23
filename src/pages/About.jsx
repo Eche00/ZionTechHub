@@ -12,10 +12,18 @@ import ContactUs from "./AboutComponents/ContactUs";
 import Faqs from "./HomeComponents/Faqs";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 function About() {
   return (
     <div className=" w-full flex flex-col bg-[#F5F5F5]">
+      <Helmet>
+        <title>About Us, Discover Our Mission & Team | Zion Tech Hub </title>
+        <meta
+          name="description"
+          content="Get to know who we are, what we stand for, and why we’re the right fit for you. Click to learn more about us and our mission!"
+        />
+      </Helmet>
       <span className="  md:h-[104px] md:w-[104px] h-[50px] w-[50px]   bg-[#034FE30D] absolute md:top-[50px] md:right-[640px] top-[150px] right-[60px] "></span>
       <span className="  md:h-[104px] md:w-[104px] w-[50px] h-[50px]  bg-[#034FE30D] absolute md:top-[400px] md:left-[314px] top-[300px] left-0  "></span>
 

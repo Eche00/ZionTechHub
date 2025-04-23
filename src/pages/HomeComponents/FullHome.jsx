@@ -9,10 +9,18 @@ import NextCohort from "./NextCohort";
 import Consultingsection from "./Consultingsection";
 import Faqs from "./Faqs";
 import Services from "./Services";
+import { Helmet } from "react-helmet";
 
 function FullHome() {
   return (
     <div className=" bg-[#F5F5F5] ">
+      <Helmet>
+        <title>Data Consulting Services | Tech Training | Zion Tech Hub</title>
+        <meta
+          name="description"
+          content="Get expert data consulting services and cutting-edge tech training at Zion Tech Hub. Click now to empower your business and career!"
+        />
+      </Helmet>
       <Home />
       <div className=" w-full  backdrop-blur-none z-50 ">
         <div className=" flex flex-col sm:max-w-[80%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%]  mx-auto border-l border-gray-300">
