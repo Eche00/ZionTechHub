@@ -40,7 +40,7 @@ function Topheader() {
 
       {/* data analysis */}
       <NavLink
-        to="/data-analystics-course"
+        to="/data-analystics-training"
         className={({ isActive }) =>
           isActive ? " flex w-full bg-[#1A1A1A] items-center " : " hidden"
         }>
@@ -83,7 +83,7 @@ function Topheader() {
                 <div className=" text-[16px]  font-[400] text-[#1A1A1A80]  flex flex-col items-start gap-[10px] absolute bg-[#F0F0F0]   rounded-tr-[20px] rounded-br-[20px] rounded-bl-[20px] z-40  group">
                   <div className="  font-[400] text-[16px]  p-[12px] flex flex-col ">
                     <Link
-                      to="/data-analystics-course"
+                      to="/data-analystics-training"
                       className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px]">
                       Data Analystics
                     </Link>
@@ -175,7 +175,7 @@ function Topheader() {
                 <div className=" text-[16px]  font-[400] text-[#1A1A1A80]  flex flex-col items-start gap-[10px] absolute bg-[#F0F0F0]   rounded-tr-[20px] rounded-br-[20px] rounded-bl-[20px] z-40  group">
                   <div className="  font-[400] text-[16px]  p-[12px] flex flex-col ">
                     <Link
-                      to="/data-analystics-course"
+                      to="/data-analystics-training"
                       className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px]">
                       Data Analystics
                     </Link>
@@ -267,7 +267,7 @@ function Topheader() {
                 <div className=" text-[16px]  font-[400] text-[#1A1A1A80]  flex flex-col items-start gap-[10px] absolute bg-[#F0F0F0]   rounded-tr-[20px] rounded-br-[20px] rounded-bl-[20px] z-40  group">
                   <div className="  font-[400] text-[16px]  p-[12px] flex flex-col ">
                     <Link
-                      to="/data-analystics-course"
+                      to="/data-analystics-training"
                       className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px]">
                       Data Analystics
                     </Link>
@@ -359,7 +359,7 @@ function Topheader() {
                 <div className=" text-[16px]  font-[400] text-[#1A1A1A80]  flex flex-col items-start gap-[10px] absolute bg-[#F0F0F0]   rounded-tr-[20px] rounded-br-[20px] rounded-bl-[20px] z-40  group">
                   <div className="  font-[400] text-[16px]  p-[12px] flex flex-col ">
                     <Link
-                      to="/data-analystics-course"
+                      to="/data-analystics-training"
                       className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px]">
                       Data Analystics
                     </Link>
@@ -451,7 +451,7 @@ function Topheader() {
                 <div className=" text-[16px]  font-[400] text-[#1A1A1A80]  flex flex-col items-start gap-[10px] absolute bg-[#F0F0F0]   rounded-tr-[20px] rounded-br-[20px] rounded-bl-[20px] z-40  group">
                   <div className="  font-[400] text-[16px]  p-[12px] flex flex-col ">
                     <Link
-                      to="/data-analystics-course"
+                      to="/data-analystics-training"
                       className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px]">
                       Data Analystics
                     </Link>

@@ -10,7 +10,7 @@ function Header() {
         <Topheader />
       </div>
       <NavLink
-        to="/data-analystics-course"
+        to="/data-analystics-training"
         className={({ isActive }) => (isActive ? " w-full " : " hidden")}>
         <div className="pt-20  z-0">
           <Navbar />

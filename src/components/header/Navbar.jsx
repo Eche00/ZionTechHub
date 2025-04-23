@@ -44,7 +44,7 @@ function Navbar() {
           </section>
 
           {/*  navigation  & signin/profile  */}
-          <section className=" sm:flex hidden flex-1 items-center justify-between text-[16px] font-[400]   text-gray-500 ">
+          <section className=" sm:flex hidden flex-1 items-center justify-between text-[16px] text-nowrap font-[400]   text-gray-500  sm:gap-[10px] gap-0">
             <NavLink
               to="/"
               className={({ isActive }) => (isActive ? "text-[#1A1A1A]" : "")}>
@@ -62,7 +62,7 @@ function Navbar() {
               <div className=" text-[16px]  font-[400] text-[#1A1A1A80]  flex flex-col items-start gap-[10px] absolute bg-[#F0F0F0]   rounded-tr-[20px] rounded-br-[20px] rounded-bl-[20px] z-40  ">
                 <div className="  font-[400] text-[16px]  p-[12px] hidden group-hover:flex flex-col">
                   <Link
-                    to="/data-analystics-course"
+                    to="/data-analystics-training"
                     className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px]">
                     Data Analystics
                   </Link>
@@ -159,7 +159,7 @@ function Navbar() {
                           onClick={handleClose}>
                           <div className=" text-[#1A1A1A]  flex flex-col ">
                             <Link
-                              to="/data-analystics-course"
+                              to="/data-analystics-training"
                               className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">
                               Data Analystics <KeyboardArrowRight />
                             </Link>
