@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Head from "./components/Head";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -42,6 +42,7 @@ function App() {
             path="/machine-learning-course"
             element={<MachineLearning />}
           />
+          <Route path="*" element={<Navigate to="/" />} />
         </Route>
         <Route path="/enroll" element={<Enroll />} />
       </Routes>
