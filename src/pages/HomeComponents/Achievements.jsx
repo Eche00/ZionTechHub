@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React from "react";
 
 function Achievements() {
@@ -257,8 +258,15 @@ function Achievements() {
           year.
         </p>
       </div>
+      {/* achievements container  */}
       <div className="flex sm:flex-row  flex-col gap-[30px] sm:items-center sm:h-fit h-[750px]">
-        <section className=" flex-1 flex flex-col items-center justify-center bg-[#D3DDCD66] sm:h-[316px] h-[553px] rounded-[10px] relative">
+        {/* achievement 1 */}
+        <motion.section
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0, ease: "linear" }}
+          viewport={{ once: true }}
+          className=" flex-1 flex flex-col items-center justify-center bg-[#D3DDCD66] sm:h-[316px] h-[553px] rounded-[10px] relative">
           <div className=" flex gap-[14px] items-center justify-center">
             {individual}
             <span className=" sm:text-[64px] text-[48px]  font-[700] text-[#6D9357]">
@@ -287,8 +295,14 @@ function Achievements() {
           <span className=" absolute sm:bottom-[290px] bottom-[210px] sm:left-[160px] left-[100px]">
             {dot5}
           </span>
-        </section>
-        <section className=" flex-1 flex flex-col items-center justify-center bg-[#034FE30D] h-[316px] rounded-[10px] relative">
+        </motion.section>
+        {/* achievement 2 */}
+        <motion.section
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.3, ease: "linear" }}
+          viewport={{ once: true }}
+          className=" flex-1 flex flex-col items-center justify-center bg-[#034FE30D] h-[316px] rounded-[10px] relative">
           <div className=" flex gap-[14px] items-center justify-center">
             {individual2}
             <span className=" sm:text-[64px] text-[48px]  font-[700] text-[#034FE3]">
@@ -317,8 +331,14 @@ function Achievements() {
           <span className=" absolute sm:bottom-[290px] bottom-[210px] sm:left-[160px] left-[100px]">
             {dot10}
           </span>
-        </section>
-        <section className=" flex-1 flex flex-col items-center justify-center bg-[#F1D3AF66] h-[316px] rounded-[10px] relative">
+        </motion.section>
+        {/* achievement 3 */}
+        <motion.section
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 1, ease: "linear" }}
+          viewport={{ once: true }}
+          className=" flex-1 flex flex-col items-center justify-center bg-[#F1D3AF66] h-[316px] rounded-[10px] relative">
           <div className=" flex gap-[14px] items-center justify-center">
             {world}
             <span className=" sm:text-[64px] text-[48px]  font-[700] text-[#DDA249]">
@@ -347,7 +367,7 @@ function Achievements() {
           <span className=" absolute sm:bottom-[290px] bottom-[210px] sm:left-[160px] left-[100px]">
             {dot15}
           </span>
-        </section>
+        </motion.section>
       </div>
     </div>
   );
