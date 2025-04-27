@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Classeshome, Joinhome, Registerhome } from "../../assets";
 import { Link } from "react-router-dom";
 import DiscordLogo from "./DiscordLogo";
+import { motion } from "framer-motion";
 
 function MadeCourses() {
   const [enroll, setEnroll] = useState(true);
@@ -149,7 +150,9 @@ function MadeCourses() {
           tailored to your needs.
         </p>
       </div>
+      {/* made courses container  */}
       <div className=" py-[107px] flex gap-[107px] sm:items-center sm:justify-center  ">
+        {/* made courses card  */}
         <div className="flex flex-col gap-[74px]  w-[357px] sm:px-[30px] relative">
           <span className=" absolute -left-[19px] -top-20 hidden sm:flex">
             {pointer}
@@ -160,6 +163,7 @@ function MadeCourses() {
             } ${join && "h-[320px] duration-500"} ${
               classes && "h-[535px] duration-500"
             }`}></span>
+          {/* made courses section 1  */}
           <section
             onClick={handleEnrollDisplay}
             className={
@@ -180,12 +184,17 @@ function MadeCourses() {
               </p>
             </div>
 
-            <img
-              className=" sm:hidden flex w-[343px] h-[200px] my-2 rounded-[10px] object-cover "
+            <motion.img
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.25, ease: "linear" }}
+              viewport={{ once: true }}
+              className=" sm:hidden flex w-[343px] h-[200px] my-2 rounded-[10px] object-cover  bg-gray-200"
               src={Registerhome}
               alt=""
             />
           </section>
+          {/* made courses section 2  */}
           <section
             onClick={handleJoinDisplay}
             className={
@@ -217,12 +226,17 @@ function MadeCourses() {
               </p>
             </div>
 
-            <img
-              className=" sm:hidden flex w-[343px] h-[200px] my-2 rounded-[10px] object-cover"
+            <motion.img
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.25, ease: "linear" }}
+              viewport={{ once: true }}
+              className=" sm:hidden flex w-[343px] h-[200px] my-2 rounded-[10px] object-cover bg-gray-200"
               src={Joinhome}
               alt=""
             />
           </section>{" "}
+          {/* made courses section 3  */}
           <section
             onClick={handleClassesDisplay}
             className={
@@ -242,36 +256,47 @@ function MadeCourses() {
                 <br /> be held virtually on Google Meet.
               </p>
             </div>
-            <img
-              className=" sm:hidden flex w-[343px] h-[200px] my-2 rounded-[10px] object-cover"
+            <motion.img
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.25, ease: "linear" }}
+              viewport={{ once: true }}
+              className=" sm:hidden flex w-[343px] h-[200px] my-2 rounded-[10px] object-cover bg-gray-200"
               src={Classeshome}
               alt=""
             />
           </section>
         </div>
-        <div className=" flex-1 sm:flex hidden   shadow-xl  rounded-[10px] overflow-y-hidden">
+
+        {/* desktop size images display  */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1, ease: "linear" }}
+          viewport={{ once: true }}
+          className=" flex-1 sm:flex hidden   shadow-xl  rounded-[10px] overflow-y-hidden">
           {enroll && !join && !classes && (
             <img
-              className=" h-[717px] w-full object-cover rounded-t-[10px]"
+              className=" h-[717px] w-full object-cover rounded-t-[10px] bg-gray-200"
               src={Registerhome}
               alt=""
             />
           )}
           {enroll && join && !classes && (
             <img
-              className=" h-[717px] w-full object-cover rounded-t-[10px]"
+              className=" h-[717px] w-full object-cover rounded-t-[10px] bg-gray-200"
               src={Joinhome}
               alt=""
             />
           )}{" "}
           {enroll && join && classes && (
             <img
-              className=" h-[717px] w-full object-cover rounded-t-[10px]"
+              className=" h-[717px] w-full object-cover rounded-t-[10px] bg-gray-200"
               src={Classeshome}
               alt=""
             />
           )}
-        </div>
+        </motion.div>
       </div>
     </div>
   );
