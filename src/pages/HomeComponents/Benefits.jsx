@@ -26,6 +26,7 @@ import {
   unilogo,
   zapier,
 } from "../../assets";
+import { motion } from "framer-motion";
 
 function Benefits() {
   const dot = (
@@ -115,10 +116,17 @@ function Benefits() {
           With these benefits, you wouldn’t want to learn anywhere else :)
         </p>
       </div>
-
+      {/* benefits container  */}
       <div className=" py-[76px] gap-[24px] flex flex-col">
+        {/* Benefits certificates/real world project section  */}
         <div className=" flex sm:flex-row flex-col gap-[24px]">
-          <section className=" flex flex-col   border border-gray-400 rounded-[10px] bg-white sm:py-[14px] sm:pl-[14px] sm:p-0 p-[14px]">
+          {/* cresidentials  */}
+          <motion.section
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: "linear" }}
+            viewport={{ once: true }}
+            className=" flex flex-col   border border-gray-400 rounded-[10px] bg-white sm:py-[14px] sm:pl-[14px] sm:p-0 p-[14px]">
             <div className=" sm:px-[32px] px-[10px] pb-[24px] pt-[36px] text-[#626262] flex flex-col gap-[20px]">
               <p className=" flex sm:text-[12px] text-[10px] font-[700] items-center gap-[5px] px-[14px] sm:py-[10px] py-[8px] bg-[#E2E2E2] rounded-[10px] w-fit">
                 {dot} CREDENTIALS
@@ -139,8 +147,14 @@ function Benefits() {
                 alt="img"
               />
             </div>
-          </section>
-          <section className=" flex flex-col justify-between   border border-gray-400 rounded-[10px] bg-white  pt-[10px]">
+          </motion.section>
+          {/* real world project */}
+          <motion.section
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: "linear" }}
+            viewport={{ once: true }}
+            className=" flex flex-col justify-between   border border-gray-400 rounded-[10px] bg-white  pt-[10px]">
             <div className=" sm:px-[32px] px-[20px] pb-[24px] pt-[36px] text-[#626262] flex flex-col gap-[20px]">
               <p className=" flex sm:text-[12px] text-[10px] font-[700] items-center gap-[5px] px-[14px] sm:py-[10px] py-[8px] bg-[#D6E2D3] rounded-[10px] w-fit text-[#527455]">
                 {greendot} REAL WORLD PRACTICES
@@ -232,11 +246,17 @@ function Benefits() {
                 </div>
               </div>
             </div>
-          </section>
+          </motion.section>
         </div>
-        {/* second part */}
+        {/* optimization/internship section */}
         <div className=" flex sm:flex-row flex-col gap-[24px]">
-          <section className=" flex flex-col justify-between   border border-gray-400 rounded-[10px] bg-[#F5F5F5] overflow-hidden">
+          {/* optimization  */}
+          <motion.section
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: "linear" }}
+            viewport={{ once: true }}
+            className=" flex flex-col justify-between   border border-gray-400 rounded-[10px] bg-[#F5F5F5] overflow-hidden">
             <div className=" sm:px-[32px] px-[20px] pb-[24px] pt-[36px] text-[#626262] flex flex-col gap-[20px]">
               <p className=" flex sm:text-[12px] text-[10px] font-[700] items-center gap-[5px] px-[14px] py-[10px] bg-[#E1E7F5] rounded-[10px] w-fit text-[#4768A8]">
                 {bluedot} OPTIMIZATION
@@ -303,9 +323,14 @@ function Benefits() {
                 </div>
               </div>
             </div>
-          </section>
-          {/* part 2 of part 2 */}
-          <section className=" flex flex-col   border border-gray-400 rounded-[10px] bg-[#F5F5F5] sm:py-[14px] p-[14px] overflow-hidden">
+          </motion.section>
+          {/* internship */}
+          <motion.section
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: "linear" }}
+            viewport={{ once: true }}
+            className=" flex flex-col   border border-gray-400 rounded-[10px] bg-[#F5F5F5] sm:py-[14px] p-[14px] overflow-hidden">
             <div className=" sm:px-[32px] px-[10px] pb-[24px] pt-[20px]  flex flex-col gap-[20px] text-[#A85847]">
               <p className=" flex sm:text-[12px] text-[10px] font-[700] items-center gap-[5px] px-[14px] py-[10px] bg-[#F5E9E1] rounded-[10px] w-fit">
                 {orangedot} INTERNSHIPS
@@ -365,11 +390,17 @@ function Benefits() {
                 />
               </div>
             </div>
-          </section>
+          </motion.section>
         </div>
-        {/* third part */}
+        {/* collaboration/mentorship section */}
         <div className=" flex sm:flex-row flex-col gap-[24px] max-w-[1300px] overflow-hidden">
-          <div className=" w-fit flex flex-col py-[14px] justify-between   border border-gray-400 rounded-[10px] bg-[#F5F5F5]">
+          {/* collaboration */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: "linear" }}
+            viewport={{ once: true }}
+            className=" w-fit flex flex-col py-[14px] justify-between   border border-gray-400 rounded-[10px] bg-[#F5F5F5]">
             <section className=" sm:ml-[14px] px-[14px] sm:px-0 flex  flex-col overflow-scroll  rounded-tl-[10px] rounded-bl-[10px]  sm:w-[617px]">
               <div className="sm:w-[724px]">
                 <img
@@ -391,9 +422,14 @@ function Benefits() {
                 real-world experience.
               </p>
             </section>
-          </div>
-          {/* 3rd part 2 */}
-          <div className="  flex flex-col py-[14px]   border border-gray-400 rounded-[10px] bg-white">
+          </motion.div>
+          {/* mentorship */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: "linear" }}
+            viewport={{ once: true }}
+            className="  flex flex-col py-[14px]   border border-gray-400 rounded-[10px] bg-white">
             <section className=" ml-[14px] flex  flex-col overflow-scroll  rounded-tl-[10px] rounded-bl-[10px] w-[617px] h-[250px] scrollbar-hide">
               <div className="sm:pl-[60px] sm:pt-[50px] pt-[20px]">
                 <section className=" rounded-t-[10px] border border-gray-400  sm:w-fit w-[962px]">
@@ -444,7 +480,7 @@ function Benefits() {
                 your career path with confidence.
               </p>
             </section>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>
