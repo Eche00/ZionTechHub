@@ -5,7 +5,7 @@ import useMeasure from "react-use-measure";
 import { animate, useMotionValue, motion } from "framer-motion";
 import { enterprice, individual, logo, startups } from "../assets";
 import { ArrowForward } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Home() {
   let [ref, { width }] = useMeasure();
@@ -85,6 +85,13 @@ function Home() {
       />
     </svg>
   );
+
+  // handling navigating
+  const navigate = useNavigate();
+  const handleNavigate = (e) => {
+    e.preventDefault();
+    navigate("/enroll");
+  };
   return (
     <div className=" w-full h-fit overflow-hidden relative pt-[130px] z-30">
       <span className="  md:h-[104px] md:w-[104px] h-[50px] w-[50px]   bg-[#034FE30D] absolute md:top-[50px] md:right-[640px] top-[130px] right-[60px] z-50"></span>
@@ -105,7 +112,13 @@ function Home() {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1, ease: "linear" }}
             className="  max-w-[90%] mx-auto flex sm:flex-row md:flex-row flex-col justify-center sm:mb-[100px] mb-[125px] items-center ">
-            <div className=" flex-1 gap-[200px] pt-[180px]">
+            {/* hero left section  */}
+            <motion.div
+              className=" flex-1 gap-[200px] pt-[180px]"
+              initial={{ opacity: 0, x: -100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: "linear" }}>
               <div className=" flex flex-col gap-[24px]">
                 <p className=" text-[14px]  font-[400] py-[10px] px-[24px] border rounded-full w-fit ">
                   TRAINING & CONSULTATION
@@ -119,12 +132,22 @@ function Home() {
                   skills.
                 </p>
               </div>
-              <div className=" flex sm:flex-row flex-col gap-[24px] sm:py-[70px] py-[10px] w-fit">
-                <Link
-                  to="/enroll"
+              <div className=" flex sm:flex-row flex-col gap-[24px] sm:py-[70px] py-[15px] w-fit">
+                <motion.button
+                  whileInView={{
+                    rotate: [0, -10, 10, -10, 10, 0],
+                  }}
+                  transition={{
+                    duration: 5,
+                    delay: 1,
+                    repeatDelay: 10,
+                    repeat: Infinity,
+                    repeatType: "loop", // (optional) smoother looping
+                  }}
+                  onClick={handleNavigate}
                   className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white sm:py-[20px] sm:px-[36px] py-[12px] px-[24px] text-[16px] sm:text-[18px] font-[500] w-fit">
                   Start Your New Chapter <ArrowForward />
-                </Link>
+                </motion.button>
                 <Link
                   to="/consult"
                   className=" sm:py-[10px] py-[12px] px-[24px] text-[16px] sm:text-[18px] font-[400] border  rounded-[10px] flex items-center justify-center">
@@ -132,10 +155,25 @@ function Home() {
                   Book a Consultation
                 </Link>
               </div>
-            </div>
+            </motion.div>
+            {/* hero right section  */}
             <div className=" flex-1 flex  relative sm:pt-[50px] z-10">
-              <section className="sm:flex hidden">{africabig}</section>
-              <section className="flex sm:hidden">{africasmall}</section>
+              <motion.section
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1, ease: "linear" }}
+                viewport={{ once: true }}
+                className="sm:flex hidden">
+                {africabig}
+              </motion.section>
+              <motion.section
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1, ease: "linear" }}
+                viewport={{ once: true }}
+                className="flex sm:hidden">
+                {africasmall}
+              </motion.section>
 
               <div className=" absolute smm:bottom-[100px] smm:right-[130px] sm:bottom-[50px] sm:right-[20px] bottom-8 right-6 ">
                 <section className="sm:flex hidden">{bit}</section>
@@ -143,6 +181,7 @@ function Home() {
               </div>
             </div>
           </motion.div>
+          {/* hero bottom section  */}
           <div className=" flex sm:flex-row flex-col justify-around items-center sm:gap-0 gap-[32px]  max-w-[90%] mx-auto sm:my-[20px] text-[24px] font-[400] text-[#1A1A1A] border border-gray-400 rounded-[10px] sm:py-[30px] py-[20px] md:flex-row">
             <div className=" flex gap-[24px] items-center justify-center ">
               <img src={individual} alt="" /> Individuals
