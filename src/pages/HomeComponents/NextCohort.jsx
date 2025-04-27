@@ -1,5 +1,6 @@
+import { motion } from "framer-motion";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function NextCohort() {
   const individual = (
@@ -100,12 +101,25 @@ function NextCohort() {
       />
     </svg>
   );
+
+  // handling navigating
+  const navigate = useNavigate();
+  const handleNavigate = (e) => {
+    e.preventDefault();
+    navigate("/enroll");
+  };
   return (
     <div className=" bg-[#EBECED]">
       <div className=" flex flex-col sm:max-w-[80%] max-w-full mx-auto sm:border-l sm:border-gray-300 ">
         <div className=" w-full  flex sm:flex-row flex-col items-center py-[82px] md:flex-row">
+          {/* cohort info  */}
           <div className=" flex flex-1 items-center justify-center flex-wrap sm:gap-[24px] gap-[10px] ">
-            <section className="    ">
+            <motion.section
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0, ease: "linear" }}
+              viewport={{ once: true }}
+              className="    ">
               <article className=" flex flex-col sm:gap-[30px] gap-[10px] items-center justify-center sm:w-[290px] sm:h-[335px] w-[160px] h-[180px] bg-white sm:rounded-[30px] rounded-[20px] shadow-lg">
                 <div>{individual}</div>
                 <div className=" flex flex-col items-center justify-center text-[#1A1A1ACC] ">
@@ -117,8 +131,13 @@ function NextCohort() {
                   </p>
                 </div>
               </article>
-            </section>
-            <section className=" shadow-[24px 24px 140px 0px rgba(0, 0, 0, 0.15)]">
+            </motion.section>
+            <motion.section
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 1, ease: "linear" }}
+              viewport={{ once: true }}
+              className=" shadow-[24px 24px 140px 0px rgba(0, 0, 0, 0.15)]">
               <article className=" flex flex-col sm:gap-[30px] gap-[10px] items-center justify-center sm:w-[290px] sm:h-[335px] w-[160px] h-[180px] bg-white sm:rounded-[30px] rounded-[20px] border border-[#1A1A1A4D]">
                 <div>{world}</div>
                 <div className=" flex flex-col items-center justify-center text-[#1A1A1ACC] ">
@@ -128,8 +147,13 @@ function NextCohort() {
                   </p>
                 </div>
               </article>
-            </section>
-            <section className=" shadow-[24px 24px 140px 0px rgba(0, 0, 0, 0.15)]">
+            </motion.section>
+            <motion.section
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 1.35, ease: "linear" }}
+              viewport={{ once: true }}
+              className=" shadow-[24px 24px 140px 0px rgba(0, 0, 0, 0.15)]">
               <article className=" flex flex-col sm:gap-[30px] gap-[10px] items-center justify-center sm:w-[290px] sm:h-[335px] w-[160px] h-[180px] bg-white sm:rounded-[30px] rounded-[20px] border border-[#1A1A1A4D]">
                 <div>{calender}</div>
                 <div className=" flex flex-col items-center justify-center text-[#1A1A1ACC] ">
@@ -139,8 +163,13 @@ function NextCohort() {
                   </p>
                 </div>
               </article>
-            </section>
-            <section className=" shadow-[24px 24px 140px 0px rgba(0, 0, 0, 0.15)]">
+            </motion.section>
+            <motion.section
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.35, ease: "linear" }}
+              viewport={{ once: true }}
+              className=" shadow-[24px 24px 140px 0px rgba(0, 0, 0, 0.15)]">
               <article className=" flex flex-col sm:gap-[30px] gap-[10px] items-center justify-center sm:w-[290px] sm:h-[335px] w-[160px] h-[180px] bg-white sm:rounded-[30px] rounded-[20px] border border-[#1A1A1A4D]">
                 <div>{verified}</div>
                 <div className=" flex flex-col items-center justify-center text-[#1A1A1ACC] ">
@@ -152,8 +181,10 @@ function NextCohort() {
                   </p>
                 </div>
               </article>
-            </section>
+            </motion.section>
           </div>
+
+          {/* Next cohort write up  */}
           <div className=" flex-1 flex flex-col gap-[29px] sm:items-start sm:justify-start items-center justify-center   h-fit">
             <div className=" flex  flex-col gap-[24px] text-[#1A1A1ACC]  ">
               <h1 className=" sm:text-[96px] text-[56px] font-[700] sm:px-0 px-[10px] sm:leading-[130%] sm:tracker-[1.28px] leading-[120%] tracker-[0.8px]">
@@ -167,11 +198,19 @@ function NextCohort() {
               </p>
             </div>
             <div className=" flex sm:gap-[24px] gap-[12px] rounded-[10px] sm:px-0 px-[10px]">
-              <Link
-                to="/enroll"
+              <motion.button
+                onClick={handleNavigate}
+                whileInView={{
+                  rotate: [0, -10, 10, -10, 10, 0],
+                }}
+                transition={{
+                  duration: 5,
+                  delay: 1,
+                }}
+                viewport={{ once: true }}
                 className=" py-[10px] px-[32px] bg-[#034FE3] text-white sm:text-[20px] text-[18px] whitespace-nowrap font-[700] rounded-[5px] shadow-[24px 24px 40px 0px rgba(0, 0, 0, 0.10) flex items-center shadow-lg">
                 Apply now
-              </Link>
+              </motion.button>
               <section className=" sm:py-[10px] py-[8px] text-[#1A1A1ACC] bg-[#F0F0F0] rounded-[10px] flex sm:gap-[12px] gap-[8px]">
                 <div className=" flex flex-col items-center px-[10px]">
                   <p className=" sm:text-[10px] text-[8px] font-[400]">
