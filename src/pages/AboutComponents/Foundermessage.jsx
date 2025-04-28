@@ -1,5 +1,6 @@
 import React from "react";
 import { Reviewimg, SirGodsentprofile } from "../../assets";
+import { motion } from "framer-motion";
 
 function Foundermessage() {
   const linkedld = (
@@ -34,7 +35,11 @@ function Foundermessage() {
             <div className=" sm:p-[37px] md:p-[20px] lg:p-[18px] xl:p-[15px]  border border-[#034FE314] rounded-full">
               <div className=" sm:p-[38px] md:p-[20px] lg:p-[18px] xl:p-[15px]  border border-[#034FE31A] rounded-full">
                 <div className=" sm:p-[39px] md:p-[20px] lg:p-[18px] xl:p-[15px] border border-[#034FE333] rounded-full">
-                  <img
+                  <motion.img
+                    initial={{ opacity: 0.45 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ duration: 1 }}
+                    viewport={{ once: true }}
                     className=" sm:w-[284px] sm:h-[284px]  w-[172px] h-[172px] object-cover rounded-full  "
                     src={SirGodsentprofile}
                     alt=""
@@ -45,7 +50,12 @@ function Foundermessage() {
           </div>
         </div>
 
-        <div className=" flex flex-col gap-[36px] md:items-end sm:items-start">
+        <motion.div
+          initial={{ y: 20 }}
+          whileInView={{ y: 0 }}
+          transition={{ duration: 1, delay: 0.25 }}
+          viewport={{ once: true }}
+          className=" flex flex-col gap-[36px] md:items-end sm:items-start">
           <p className=" sm:w-[620px] md:w-[341px] lg:w-[341px] w-[341px] sm:text-[20px] text-[18px] text-[#1A1A1ACC] font-[300]">
             We envision a transformed Africa, empowered by revolutionary
             technological innovations, and recognized as a global hub of
@@ -60,7 +70,7 @@ function Foundermessage() {
           <p className=" text-[#034FE3] text-[20px] font-[400]">
             ~ Ndoma Godsent
           </p>
-        </div>
+        </motion.div>
         <div>
           <a href="https://www.linkedin.com/company/zion-tech-hub/?viewAsMember=true">
             <button className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white py-[14px] px-[32px] text-[20px] font-[600]">

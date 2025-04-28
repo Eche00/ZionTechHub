@@ -1,5 +1,6 @@
 import React from "react";
 import { Reviewimg, linkedlnprofileimg, mobile } from "../../assets";
+import { motion } from "framer-motion";
 
 function LinkedlnProfile() {
   const linkedld = (
@@ -20,7 +21,12 @@ function LinkedlnProfile() {
       <div className=" flex relative overflow-y-hidden  sm:flex-row flex-col">
         <section className="py-[110px]">
           <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[129px] top-[120px] -left-[1.5px]"></span>
-          <div className=" px-[20px] flex flex-col ">
+          <motion.div
+            initial={{ y: 20 }}
+            whileInView={{ y: 0 }}
+            transition={{ duration: 1, delay: 0.25 }}
+            viewport={{ once: true }}
+            className=" px-[20px] flex flex-col ">
             <p className=" font-[600] sm:text-[48px] text-[36px] w-[265px] sm:w-full text-[#333]">
               Get in touch <span className=" text-[#034FE3]">on LinkedIn</span>
             </p>
@@ -38,11 +44,15 @@ function LinkedlnProfile() {
                 </a>
               </div>
             </section>
-          </div>
+          </motion.div>
         </section>
         <div className="sm:h-fit h-[337px] ">
           <div className=" absolute smm:right-[300px] sm:right-[200px] sm:top-20 top-[60%] p-[32px]">
-            <img
+            <motion.img
+              initial={{ opacity: 0.45 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.25 }}
+              viewport={{ once: true }}
               className=" sm:w-[397px] sm:h-[796.283px] w-[321px] h-[645px] object-cover  "
               src={mobile}
               alt=""

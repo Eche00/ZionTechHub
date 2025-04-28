@@ -46,7 +46,7 @@ function Ourmission() {
           Our <span className=" text-[#034FE3]">mission </span>and{" "}
           <span className=" text-[#034FE3]">vision</span>
         </p>
-
+        {/* buttons  */}
         <div className=" mt-[43px]   flex items-center justify-between bg-[#E9E9E9] rounded-full sm:w-[398px] md:w-[337px] lg:w-[337px] xl:w-[310px]  p-[4px]">
           <button
             onClick={Mission}
@@ -68,6 +68,8 @@ function Ourmission() {
           </button>
         </div>
       </div>
+
+      {/* main container  */}
       {!vision ? (
         <div className="  w-fit mt-[68px] mb-[180px] flex  sm:flex-row flex-col gap-[32px] bg-[#EBECED] rounded-r-[10px]">
           <img
