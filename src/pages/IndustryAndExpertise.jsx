@@ -2,6 +2,7 @@ import { ArrowForward, Star } from "@mui/icons-material";
 import React from "react";
 import { Link } from "react-router-dom";
 import { industryhero } from "../assets";
+import { motion } from "framer-motion";
 
 function IndustryAndExpertise() {
   const star = (
@@ -25,9 +26,14 @@ function IndustryAndExpertise() {
           <span className=" text-[#034FE3]">Our Industry</span> & Expertise
         </p>
       </div>
-
+      {/* Industry container  */}
       <div className="flex md:flex-row flex-col gap-[65px] relative">
-        <div className="px-[20px] flex flex-col gap-[39px]">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: "linear" }}
+          className="px-[20px] flex flex-col gap-[39px]">
           <p className=" text-[#1A1A1AB2] sm:text-[20px] text-[18px] font-[400] md:w-[596px] w-[330px]">
             Our partnership with leading organizations like{" "}
             <b>All Stars Educational Consults Ltd</b> and{" "}
@@ -49,13 +55,28 @@ function IndustryAndExpertise() {
             Partner with us
             <ArrowForward />
           </a>
-        </div>
-        <img
+        </motion.div>
+        <motion.img
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, ease: "linear" }}
+          viewport={{ once: true }}
           className="sm:w-[574px] sm:h-[500px] w-[357px] h-[335px] object-cover rounded-[10px]"
           src={industryhero}
           alt=""
         />
-        <div className=" p-[23px] absolute sm:bottom-[-80px] sm:left-[40%] bottom-[-130px] left-[8%]  bg-white/50 rounded-[16px] flex flex-col md:gap-[14px] gap-[12px]">
+        <motion.div
+          whileInView={{
+            rotate: [0, -10, 10, -10, 10, 0],
+          }}
+          transition={{
+            duration: 5,
+            delay: 1,
+            repeatDelay: 10,
+            repeat: Infinity,
+            repeatType: "loop", // (optional) smoother looping
+          }}
+          className=" p-[23px] absolute sm:bottom-[-80px] sm:left-[40%] bottom-[-130px] left-[8%]  bg-white/50 rounded-[16px] flex flex-col md:gap-[14px] gap-[12px]">
           <p className="md:text-[20px] text-[17px] font-[700] text-[#162915] text-center">
             5-star reviews
           </p>
@@ -72,7 +93,7 @@ function IndustryAndExpertise() {
               measurable impact."
             </i>
           </p>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
