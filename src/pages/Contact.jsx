@@ -116,7 +116,11 @@ function Contact() {
           {/* part 2 */}
           <div className=" flex flex-wrap  gap-[33px] items-center justify-center py-[100px] ">
             {/* count  */}
-            <div className=" py-[25px] px-[40px] flex flex-col gap-[48px] border border-[#1A1A1A33] rounded-[10px] bg-[#F0F0F0] md:w-fit w-[90%]">
+            <motion.div
+              initial={{ y: 30 }}
+              whileInView={{ y: 1 }}
+              transition={{ duration: 1, ease: "linear", delay: 0.25 }}
+              className=" py-[25px] px-[40px] flex flex-col gap-[48px] border border-[#1A1A1A33] rounded-[10px] bg-[#F0F0F0] md:w-fit w-[90%]">
               <span className=" p-[10px] rounded-[5px] border border-[#1A1A1A33] w-fit">
                 {phone}
               </span>
@@ -130,8 +134,13 @@ function Contact() {
                   +234 902 366 7623
                 </p>
               </section>
-            </div>
-            <div className=" py-[25px] px-[40px] flex flex-col gap-[48px] border border-[#1A1A1A33] rounded-[10px] bg-[#F0F0F0] md:w-fit w-[90%] ">
+            </motion.div>
+            {/* count  */}
+            <motion.div
+              initial={{ y: 30 }}
+              whileInView={{ y: 1 }}
+              transition={{ duration: 1, ease: "linear", delay: 0.35 }}
+              className=" py-[25px] px-[40px] flex flex-col gap-[48px] border border-[#1A1A1A33] rounded-[10px] bg-[#F0F0F0] md:w-fit w-[90%] ">
               <span className=" p-[10px] rounded-[5px] border border-[#1A1A1A33] w-fit">
                 {message}
               </span>
@@ -147,9 +156,13 @@ function Contact() {
                   info@ziontechub.com
                 </p>
               </section>
-            </div>
+            </motion.div>
             {/* count  */}
-            <div className=" py-[25px] px-[40px] flex flex-col gap-[48px] border border-[#1A1A1A33] rounded-[10px] bg-[#F0F0F0] md:w-fit w-[90%]">
+            <motion.div
+              initial={{ y: 30 }}
+              whileInView={{ y: 1 }}
+              transition={{ duration: 1, ease: "linear", delay: 0.45 }}
+              className=" py-[25px] px-[40px] flex flex-col gap-[48px] border border-[#1A1A1A33] rounded-[10px] bg-[#F0F0F0] md:w-fit w-[90%]">
               <span className=" p-[10px] rounded-[5px] border border-[#1A1A1A33] w-fit">
                 {chat}
               </span>
@@ -165,9 +178,13 @@ function Contact() {
                   info.sales@ziontechub.com
                 </p>
               </section>
-            </div>
+            </motion.div>
             {/* count  */}
-            <div className=" py-[25px] px-[40px] flex flex-col gap-[48px] border border-[#1A1A1A33] rounded-[10px] bg-[#F0F0F0] md:w-fit w-[90%] ">
+            <motion.div
+              initial={{ y: 30 }}
+              whileInView={{ y: 1 }}
+              transition={{ duration: 1, ease: "linear", delay: 0.55 }}
+              className=" py-[25px] px-[40px] flex flex-col gap-[48px] border border-[#1A1A1A33] rounded-[10px] bg-[#F0F0F0] md:w-fit w-[90%] ">
               <span className=" p-[10px] rounded-[5px] border border-[#1A1A1A33] w-fit">
                 {linkedln}
               </span>
@@ -185,8 +202,7 @@ function Contact() {
                   Click here
                 </a>
               </section>
-            </div>
-            {/* count  */}
+            </motion.div>
           </div>
         </motion.div>
       </div>
