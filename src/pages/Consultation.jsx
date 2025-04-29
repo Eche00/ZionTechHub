@@ -19,10 +19,16 @@ import Industriesserved from "./ConsultationComponent/Industriesserved";
 import { motion } from "framer-motion";
 import ContactUsc from "./ConsultationComponent/AboutUsc";
 import Engagement from "./ConsultationComponent/Engagement";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 function Consultation() {
+  // handling navigating
+  const navigate = useNavigate();
+  const handleNavigate = (e) => {
+    e.preventDefault();
+    navigate("/enroll");
+  };
   return (
     <div className="bg-[#F5F5F5]">
       <Helmet>
@@ -36,13 +42,22 @@ function Consultation() {
       </Helmet>
       <span className="  md:h-[104px] md:w-[104px] h-[50px] w-[50px]   bg-[#034FE30D] absolute md:top-[50px] md:right-[640px] top-[150px] right-[60px] "></span>
       <span className="  md:h-[104px] md:w-[104px] w-[50px] h-[50px]  bg-[#034FE30D] absolute md:top-[400px] md:left-[314px] top-[300px] left-0  "></span>
+
+      {/* hero section  */}
       <div className=" pt-[130px]    bg-[linear-gradient(to_right,#4f4f4f0e_0.8px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_0.8px,transparent_0.1px)] md:bg-[size:104px_104px] bg-[size:50px_50px]  [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])]   sm:h-[100vh]   w-full">
+        {/* hero container  */}
         <motion.div
           initial={{ opacity: 0.45 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1, ease: "linear" }}
           className=" w-[90%] mx-auto flex justify-between   py-[100px] items-center">
-          <div className=" flex-1   flex flex-col justify-end ">
+          {/* hero left section  */}
+          <motion.div
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: "linear" }}
+            className=" flex-1   flex flex-col justify-end ">
             <div className=" flex flex-col gap-[24px]">
               <p className=" sm:text-[14px] text-[12px]  font-[400] py-[10px] sm:px-[24px] px-[14px] border rounded-full w-fit  flex items-center gap-[10px]">
                 <span>
@@ -77,15 +92,30 @@ function Consultation() {
               </p>
             </div>
             <div className=" flex gap-[24px] sm:pt-[70px] pt-[36px]">
-              <Link
-                to="/enroll"
+              <motion.button
+                whileInView={{
+                  rotate: [0, -10, 10, -10, 10, 0],
+                }}
+                transition={{
+                  duration: 5,
+                  delay: 1,
+                  repeatDelay: 10,
+                  repeat: Infinity,
+                  repeatType: "loop", // (optional) smoother looping
+                }}
+                onClick={handleNavigate}
                 className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white sm:py-[20px] sm:px-[36px] py-[12px] px-[24px] sm:text-[18px] text-[16px] font-[500]">
-                Enroll for the next cohort
-                <ArrowForward />
-              </Link>
+                Start Your New Chapter <ArrowForward />
+              </motion.button>
             </div>
-          </div>
-          <div className=" flex-1 sm:flex hidden pl-[50px] items-center">
+          </motion.div>
+          {/* hero right section  */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: "linear" }}
+            viewport={{ once: true }}
+            className=" flex-1 sm:flex hidden pl-[50px] items-center">
             <div className=" flex flex-col  gap-[14px]  h-fit items-end justify-center">
               <section className=" w-[180px] h-[180px] rounded-[10px] flex flex-col bg-[#D3DDCD66] px-[16px] justify-center">
                 <h2 className=" text-[56px] text-[#6D9357] font-[700]">10+</h2>
@@ -176,7 +206,7 @@ function Consultation() {
                 </section>
               </div>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
       {/* second component */}
