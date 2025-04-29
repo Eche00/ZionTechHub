@@ -366,12 +366,19 @@ function PartnerWithUs() {
             content="Join forces with a winning team! Discover the benefits of partnering with us to grow your brand. Click now to explore exciting opportunities!"
           />
         </Helmet>
+        {/* hero  container  */}
         <motion.div
           initial={{ opacity: 0.45 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1, ease: "linear" }}
           className="  max-w-[90%] mx-auto flex sm:flex-row md:flex-row flex-col justify-center sm:mb-[100px] mb-[125px] items-center  md:gap-0 gap-[20px]">
-          <div className=" flex-1 gap-[200px] pt-[150px]">
+          {/* hero left section  */}
+          <motion.div
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: "linear" }}
+            className=" flex-1 gap-[200px] pt-[150px]">
             <div className=" flex flex-col gap-[24px]">
               <p className=" sm:text-[14px] text-[12px]  font-[400] py-[10px] sm:px-[24px] px-[14px] border rounded-full w-fit  flex items-center gap-[10px]">
                 <span>
@@ -401,16 +408,31 @@ function PartnerWithUs() {
               </p>
             </div>
             <div className=" flex sm:flex-row flex-col gap-[24px] sm:py-[70px] py-[10px] w-fit">
-              <a
+              <motion.a
+                whileInView={{
+                  rotate: [0, -10, 10, -10, 10, 0],
+                }}
+                transition={{
+                  duration: 5,
+                  delay: 1,
+                  repeatDelay: 10,
+                  repeat: Infinity,
+                  repeatType: "loop", // (optional) smoother looping
+                }}
                 href="mailto:info@ziontechub.com"
                 className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white sm:py-[20px] sm:px-[36px] py-[12px] px-[24px] text-[16px] sm:text-[18px] font-[500] w-fit">
                 Partner with us
                 <ArrowForward />
-              </a>
+              </motion.a>
             </div>
-          </div>
-          {/* edit  */}
-          <div className=" flex-1 flex  relative sm:pt-[50px] z-10 items-center flex-col gap-0">
+          </motion.div>
+          {/* hero right section   */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: "linear" }}
+            viewport={{ once: true }}
+            className=" flex-1 flex  relative sm:pt-[50px] z-10 items-center flex-col gap-0">
             <div className=" flex  md:gap-[300px] gap-[150px]">
               <article className="p-[24px] rounded-full bg-[#FFFFFF] relative drop-shadow-[ 0px 16px 100px 20px rgba(3, 79, 227, 0.05)] flex items-center justify-center">
                 <img
@@ -462,7 +484,7 @@ function PartnerWithUs() {
                 </span>
               </article>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
       <div className="">
