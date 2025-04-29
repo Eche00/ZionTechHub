@@ -1,5 +1,6 @@
 import React from "react";
 import { overviewimg, Reviewimg } from "../../assets";
+import { motion } from "framer-motion";
 
 function Overview() {
   const dot = (
@@ -34,8 +35,15 @@ function Overview() {
           </p>
         </div>
       </div>
+      {/* overview container  */}
       <div className=" flex flex-col sm:flex-row sm:gap-[72px] gap-[40px] pt-[68px]">
-        <div className=" w-fit relative">
+        {/* left section  */}
+        <motion.div
+          initial={{ opacity: 0.45 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1, ease: "linear" }}
+          viewport={{ once: true }}
+          className=" w-fit relative">
           <section className="md:w-[165px] md:h-[139px]  w-[105px] h-[88px]  bg-[#F5F5F5] rounded-bl-[10px]  absolute top-0 right-0"></section>
 
           <section className="md:w-[155px] md:h-[129px] w-[98px] h-[81px]  bg-[#034FE31A] rounded-[10px] absolute top-0 right-0"></section>
@@ -46,8 +54,15 @@ function Overview() {
           />
           <section className="md:w-[155px] md:h-[129px] w-[98px] h-[81px] bg-[#034FE31A] rounded-[10px] absolute bottom-0 left-0 z-30"></section>
           <section className="md:w-[165px] md:h-[139px] w-[105px] h-[88px] bg-[#F5F5F5] rounded-tr-[10px] absolute bottom-0 left-0 z-10"></section>
-        </div>
-        <div className=" flex flex-col md:gap-[64px] gap-[40px] items-center justify-center">
+        </motion.div>
+
+        {/* right section  */}
+        <motion.div
+          initial={{ y: 50 }}
+          whileInView={{ y: 0 }}
+          transition={{ duration: 1, ease: "linear" }}
+          viewport={{ once: true }}
+          className=" flex flex-col md:gap-[64px] gap-[40px] items-center justify-center">
           <section className=" flex gap-[14px] items-baseline">
             <span>{dot}</span>
             <section className=" flex flex-col gap-[24px]">
@@ -79,7 +94,7 @@ function Overview() {
               </p>
             </section>
           </section>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
