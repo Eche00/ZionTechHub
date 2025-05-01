@@ -163,7 +163,7 @@ function Enroll() {
       {/* buttons  */}
       <div className="one flex md:items-center  flex-col  md:h-[100vh] h-[120vh] gap-[50px]">
         <section className=" flex items-center justify-center w-[90%] mx-auto">
-          <div className="flex items-center bg-gray-300 rounded-[10px] p-[10px] gap-[10px]">
+          {/* <div className="flex items-center bg-gray-300 rounded-[10px] p-[10px] gap-[10px]">
             <button
               id="enroll"
               className={
@@ -184,7 +184,7 @@ function Enroll() {
               onClick={handleSwitch}>
               Health
             </button>
-          </div>
+          </div> */}
         </section>
         <section className="">
           {enroll ? <SubEnroll /> : <HealthcareReg />}
