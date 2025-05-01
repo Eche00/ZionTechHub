@@ -8,7 +8,7 @@ import "../Enroll.css";
 function SubEnroll() {
   const [course, setCourse] = useState(false);
   const [selectCourse, setSelectCourse] = useState(false);
-  const [cohortActive, setCohortActive] = useState(false);
+  const [cohortActive, setCohortActive] = useState(true);
   const [formData, setFormData] = useState({
     name: "",
     course: "Select course",
@@ -54,11 +54,14 @@ function SubEnroll() {
           <div className=" flex flex-col p-[32px] gap-[48px] bg-[#FFFFFF] rounded-[10px]">
             <section className=" flex flex-col items-center justify-center text-center text-[#1A1A1ACC] md:gap-[12px] gap-[8px]">
               <h1 className=" md:text-[32px] text-[24px] font-[600]">
-                Send us a message
+                {/* Send us a message */}
+                Cohort 8.0
               </h1>
               <p className=" md:text-[16px] text-[12px] font-[300] ">
-                Hey 👋 Send us a message on Whatsapp to process <br /> your
-                enrollment. See you at the top!
+                {/* Hey 👋 Send us a message on Whatsapp to process  your
+                enrollment. See you at the top! */}
+                Hey 👋 Click the button below to register for Cohort 8.0 <br />
+                We can’t wait to see you at the top!
               </p>
             </section>
             {cohortActive ? (
@@ -66,7 +69,7 @@ function SubEnroll() {
                 className=" flex flex-col gap-[24px]"
                 onSubmit={handleSubmit}>
                 <section className="flex flex-col gap-[10px]">
-                  <p className=" text-[#6B6F71] text-[12px] font-[500]">
+                  {/*      <p className=" text-[#6B6F71] text-[12px] font-[500]">
                     Full Name
                   </p>
                   <input
@@ -180,10 +183,13 @@ function SubEnroll() {
                     <p className=" text-[16px] font-bold text-red-500 ">
                       Please select a course
                     </p>
-                  )}
-                  <button className="py-[18px] px-[16px] rounded-[10px] text-white bg-[#207C3F] mt-[14px] cursor-not-allowed">
-                    Say Hi
-                  </button>
+                  )} */}
+                  <a
+                    href="https://forms.office.com/r/25cUiU2sBd"
+                    target="_blank"
+                    className="py-[18px] px-[16px] rounded-[10px] text-white bg-[#207C3F] mt-[14px] cursor-pointer text-center">
+                    Register here
+                  </a>
                 </section>
               </form>
             ) : (
