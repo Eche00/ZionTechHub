@@ -40,7 +40,7 @@ function Header() {
       <NavLink
         to="/machine-learning-course"
         className={({ isActive }) => (isActive ? " w-full " : " hidden")}>
-        <div className="pt-20 o">
+        <div className="pt-20 ">
           <Navbar />
         </div>
       </NavLink>

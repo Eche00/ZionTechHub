@@ -539,6 +539,42 @@ function Topheader() {
         </p>
         <Navbar />
       </NavLink>
+      <NavLink
+        to="/webinar"
+        className={({ isActive }) =>
+          isActive ? " flex w-full  justify-center flex-col" : " hidden"
+        }>
+        <p className=" md:text-[18px] lg:text-[14px] text-[12px] text-[#FFFFFF] font-[300]   p-[16px] bg-[#1A1A1A] w-full  text-center">
+          We're offering Data Consultation Services. Book now to get updated
+          with your business.{" "}
+          <span className=" font-[600] underline  px-5">Book Now</span>
+        </p>
+        <Navbar />
+      </NavLink>
+      <NavLink
+        to="/hackathon"
+        className={({ isActive }) =>
+          isActive ? " flex w-full  justify-center flex-col" : " hidden"
+        }>
+        <p className=" md:text-[18px] lg:text-[14px] text-[12px] text-[#FFFFFF] font-[300]   p-[16px] bg-[#1A1A1A] w-full  text-center">
+          We're offering Data Consultation Services. Book now to get updated
+          with your business.{" "}
+          <span className=" font-[600] underline  px-5">Book Now</span>
+        </p>
+        <Navbar />
+      </NavLink>
+      <NavLink
+        to="/blog"
+        className={({ isActive }) =>
+          isActive ? " flex w-full  justify-center flex-col" : " hidden"
+        }>
+        <p className=" md:text-[18px] lg:text-[14px] text-[12px] text-[#FFFFFF] font-[300]   p-[16px] bg-[#1A1A1A] w-full  text-center">
+          We're offering Data Consultation Services. Book now to get updated
+          with your business.{" "}
+          <span className=" font-[600] underline  px-5">Book Now</span>
+        </p>
+        <Navbar />
+      </NavLink>
     </div>
   );
 }
