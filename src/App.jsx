@@ -15,6 +15,9 @@ import FullHome from "./pages/HomeComponents/FullHome";
 import Scrolltotop from "./components/Scrolltotop";
 import PartnerWithUs from "./pages/PartnerWithUs";
 import googleAnalyticsTracking from "./components/googleAnalyticsTracking";
+import Webinar from "./pages/Webinar";
+import Hackathon from "./pages/Hackathon";
+import Blog from "./pages/Blog";
 
 function App() {
   googleAnalyticsTracking();
@@ -42,6 +45,10 @@ function App() {
             path="/machine-learning-course"
             element={<MachineLearning />}
           />
+          <Route path="/webinar" element={<Webinar />} />
+          <Route path="/hackathon" element={<Hackathon />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog:id" element={<Blog />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
         <Route path="/enroll" element={<Enroll />} />
