@@ -11,7 +11,7 @@ export default {
       md: "750px", // tablet view
       lg: "370px", // iPhone sizes
       xl: "300px", // smaller phone sizes
-      "2xl": "1024px", // Desktop, laptops
+      xxl: "1204px", // Desktop, laptops
     },
   },
   plugins: [flowbite.plugin(), require("tailwind-scrollbar-hide")],
