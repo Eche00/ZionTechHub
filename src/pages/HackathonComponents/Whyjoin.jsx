@@ -1,3 +1,5 @@
+import { ArrowForward } from "@mui/icons-material";
+import { motion } from "framer-motion";
 import React from "react";
 
 function Whyjoin() {
@@ -79,6 +81,21 @@ function Whyjoin() {
           </h3>
         </section>
       </div>
+      <motion.button
+        whileInView={{
+          rotate: [0, -10, 10, -10, 10, 0],
+        }}
+        transition={{
+          duration: 5,
+          delay: 1,
+          repeatDelay: 10,
+          repeat: Infinity,
+          repeatType: "loop", // (optional) smoother looping
+        }}
+        className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white sm:py-[20px] sm:px-[36px] py-[12px] px-[24px] sm:text-[18px] text-[16px] font-[500]">
+        Register Now
+        <ArrowForward />
+      </motion.button>
     </div>
   );
 }
