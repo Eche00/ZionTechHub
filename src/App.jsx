@@ -18,6 +18,7 @@ import googleAnalyticsTracking from "./components/googleAnalyticsTracking";
 import Webinar from "./pages/Webinar";
 import Hackathon from "./pages/Hackathon";
 import Blog from "./pages/Blog";
+import EachBlog from "./pages/Blogcomponent/EachBlog";
 
 function App() {
   googleAnalyticsTracking();
@@ -48,7 +49,7 @@ function App() {
           <Route path="/webinar" element={<Webinar />} />
           <Route path="/hackathon" element={<Hackathon />} />
           <Route path="/blog" element={<Blog />} />
-          <Route path="/blog:id" element={<Blog />} />
+          <Route path="/blog/:id" element={<EachBlog />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
         <Route path="/enroll" element={<Enroll />} />
