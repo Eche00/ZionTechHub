@@ -10,10 +10,12 @@ function Hackathon() {
   return (
     <div>
       <Helmet>
-        <title>About Us, Discover Our Mission & Team | Zion Tech Hub </title>
+        <title>
+          Explore Our Blog, Get Tips & Career Hacks! | Zion Tech Hub
+        </title>
         <meta
           name="description"
-          content="Get to know who we are, what we stand for, and why we’re the right fit for you. Click to learn more about us and our mission!"
+          content="Ready to innovate and compete? Join our upcoming hackathon and turn your ideas into impact. Click now to register and show what you've got!"
         />
       </Helmet>
 
