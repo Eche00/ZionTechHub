@@ -2,7 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 import { ArrowForward } from "@mui/icons-material";
-import { overviewimg } from "../assets";
+// import { overviewimg } from "../assets";
+import overviewimg from "../../public/ZthHackathon.png";
 import HowItWorks from "./HackathonComponents/HowItWorks";
 import Whyjoin from "./HackathonComponents/Whyjoin";
 
