@@ -540,7 +540,7 @@ function Topheader() {
         <Navbar />
       </NavLink>
       <NavLink
-        to="/webinar"
+        to="/zion-tech-hub-weekend-webinar"
         className={({ isActive }) =>
           isActive ? " flex w-full  justify-center flex-col" : " hidden"
         }>
@@ -552,7 +552,7 @@ function Topheader() {
         <Navbar />
       </NavLink>
       <NavLink
-        to="/hackathon"
+        to="/zion-tech-hub-hackathon"
         className={({ isActive }) =>
           isActive ? " flex w-full  justify-center flex-col" : " hidden"
         }>
