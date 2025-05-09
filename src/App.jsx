@@ -46,8 +46,8 @@ function App() {
             path="/machine-learning-course"
             element={<MachineLearning />}
           />
-          <Route path="/webinar" element={<Webinar />} />
-          <Route path="/hackathon" element={<Hackathon />} />
+          <Route path="/zion-tech-hub-weekend-webinar" element={<Webinar />} />
+          <Route path="/zion-tech-hub-hackathon" element={<Hackathon />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<EachBlog />} />
           <Route path="*" element={<Navigate to="/" />} />
