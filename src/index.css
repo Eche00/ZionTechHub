@@ -3,3 +3,45 @@
 @tailwind utilities;
 
 
+.blog-content {
+  counter-reset: custom-counter;
+  color: #1A1A1A;
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+
+.blog-content ol {
+  list-style: none;
+  font-size: 28px;
+  font-weight: 500;
+  padding: 20px 0;
+  
+}
+.blog-content p {
+  font-size: 20px;
+  font-weight: 400;
+  color: #1A1A1A;
+}
+.blog-content h1 {
+  list-style: none;
+  padding-left: 1.5rem;
+  font-size: 20px;
+  font-weight: 400;
+}
+.blog-content h2 {
+  list-style: none;
+  padding-left: 1.5rem;
+  font-size: 20px;
+  font-weight: 400;
+  border-left: 3px solid #034FE3;
+}
+.blog-content ul {
+  list-style: none;
+}
+
+.blog-content ol li::before {
+  counter-increment: custom-counter;
+  content: counter(custom-counter) ". ";
+  font-weight: bold;
+}
