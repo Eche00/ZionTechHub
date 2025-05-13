@@ -1,9 +1,54 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 import blogs from "../../lib/Blog";
+import { useParams } from "react-router-dom";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import { db } from "../../lib/Config/firebase";
+import DOMPurify from "dompurify";
 
 function EachBlog() {
+  const { id } = useParams(); // get :id from URL
+  const [blog, setBlog] = useState(null);
+  const [blogs, setBlogs] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchBlogAndBlogs = async () => {
+      setLoading(true);
+      try {
+        // Fetch single blog
+        const docRef = doc(db, "blogs", id);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          setBlog({ id: docSnap.id, ...docSnap.data() });
+        } else {
+          console.log("No such blog!");
+        }
+
+        // Fetch all blogs
+        const querySnapshot = await getDocs(collection(db, "blogs"));
+        const allBlogs = [];
+        querySnapshot.forEach((doc) => {
+          allBlogs.push({ id: doc.id, ...doc.data() });
+        });
+        setBlogs(
+          allBlogs.sort((a, b) => b.createdAt - a.createdAt).slice(0, 3)
+        );
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBlogAndBlogs();
+  }, [id]);
+
+  if (loading) return <p className="pt-32 text-center h-[100vh]">Loading...</p>;
+  if (!blog)
+    return <p className="pt-32 text-center h-[100vh]">Blog not found.</p>;
+
   const dot = (
     <svg
       width="8"
@@ -84,11 +129,11 @@ function EachBlog() {
     </svg>
   );
 
-  const blogsSlice = blogs.slice(0, 3);
+  // const blogsSlice = blogs.slice(0, 3);
   return (
     <div>
       <Helmet>
-        <title>About Us, Discover Our Mission & Team | Zion Tech Hub </title>
+        <title>{blog?.title} | Zion Tech Hub </title>
         <meta
           name="description"
           content="Get to know who we are, what we stand for, and why we’re the right fit for you. Click to learn more about us and our mission!"
@@ -112,13 +157,18 @@ function EachBlog() {
             className=" flex-1   flex items-center justify-center sm:pt-0 pt-[80px] ">
             <div className=" flex flex-col items-center justify-center gap-[24px]">
               <p className=" sm:text-[14px] text-[12px]  font-[400] py-[10px] sm:px-[24px] px-[14px] border rounded-full w-fit  ">
-                Data Analytics
+                {blog?.category}
               </p>
               <h1 className=" text-[#1A1A1AB2] font-[600] sm:text-[64px] text-[32px] sm:w-[941px] w-[320px]  sm:leading-[130%] sm:tracker-[1.28px] leading-[120%] tracker-[0.8px] text-center">
-                5 Essential Tips for Being a Data Analyst in 2025
+                {blog?.title}
               </h1>
               <p className=" text-[#1A1A1A] font-[300] sm:text-[20px] text-[14px] text-center flex items-center gap-[10px]">
-                April 8, 2025 {dot} Ndoma Godsent
+                {blog.createdAt.toDate().toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}{" "}
+                {dot} {blog?.creator}
               </p>
             </div>
           </motion.div>
@@ -127,7 +177,7 @@ function EachBlog() {
       {/* image  */}
       <div className=" w-[90%] mx-auto ">
         <img
-          src=""
+          src={blog?.imageUrl}
           alt="//"
           className="bg-black  w-full h-[652px] object-cover rounded-[20px]"
         />
@@ -138,7 +188,24 @@ function EachBlog() {
         <div className="flex items-start justify-between w-[90%] ml-auto">
           {/* topics  */}
           <section className=" w-[340px] flex flex-col gap-[30px] ">
-            22
+            {/* hello  */}
+            <div className="list-disc pl-5 flex flex-col gap-[36px] border-l border-[#034FE31A] relative">
+              <span className=" w-[3px] h-[30px]  bg-[#034FE3] absolute top-0 -left-[1.5px]"></span>
+
+              <a className="text-[18px] font-[600] text-black">
+                {blog.toc[0].title}
+              </a>
+
+              {blog.toc.slice(1).map((item, index) => (
+                <p key={index}>
+                  <a
+                    href={`#${item.id}`}
+                    className="text-[18px] font-[400] text-[#1A1A1A99]">
+                    {item.title}
+                  </a>
+                </p>
+              ))}
+            </div>
             {/* share article  */}
             <div className="flex flex-col gap-[30px]">
               <p className=" text-[#1A1A1A] font-[600] sm:text-[18px] text-[14px] ">
@@ -153,40 +220,52 @@ function EachBlog() {
           </section>
 
           {/* article */}
-          <section className=" w-[929px] flex items-center justify-between flex-wrap text-white gap-y-[85px] bg-gray-600">
-            22
-          </section>
+          <section
+            className="blog-content w-[929px] flex flex-col items-start "
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(blog?.details || ""),
+            }}></section>
         </div>
       </main>
 
       {/* recommended articles  */}
-      <div className=" w-[90%] mx-auto flex items-center justify-between mb-32">
-        {blogsSlice.map((blog) => (
-          <div className="w-[464px] flex flex-col gap-[24px]">
-            {/* image  */}
-            <div className=" w-full relative">
-              <img
-                src={blog.image}
-                alt=""
-                className="w-full h-[316px] object-cover "
-              />
-              <span className=" absolute bottom-0 left-0 text-[#1A1A1AB2] text-[14px] font-[400] bg-[#FFFFFF] py-[6px] px-[10px]">
-                {blog.category}
-              </span>
+      <section className=" flex flex-col gap-[32px] w-[90%] mx-auto">
+        <h2 className=" text-[] sm:text-[40px] font-[600] text-[#1A1A1A]">
+          Recommended Articles
+        </h2>
+        <div className=" w-full  flex items-center justify-between flex-wrap mb-32">
+          {blogs.map((blog) => (
+            <div className="w-[464px] flex flex-col gap-[24px]">
+              {/* image  */}
+              <div className=" w-full relative">
+                <img
+                  src={blog?.imageUrl}
+                  alt=""
+                  className="w-full h-[316px] object-cover "
+                />
+                <span className=" absolute bottom-0 left-0 text-[#1A1A1AB2] text-[14px] font-[400] bg-[#FFFFFF] py-[6px] px-[10px]">
+                  {blog?.category}
+                </span>
+              </div>
+              {/* info  */}
+              <div className="flex flex-col gap-[14px]">
+                <h3 className=" text-[#1A1A1AB2] text-[24px] font-[600] h-[62px] leading-[130%] w-[400px]">
+                  {blog?.title}
+                </h3>
+                <p className="flex items-center text-[18px] font-[400] text-[#1A1A1AB2] gap-[5px]">
+                  {blog.createdAt.toDate().toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}{" "}
+                  by
+                  <span className=" text-[#034FE3]">{blog?.creator}</span>
+                </p>
+              </div>
             </div>
-            {/* info  */}
-            <div className="flex flex-col gap-[14px]">
-              <h3 className=" text-[#1A1A1AB2] text-[24px] font-[600] h-[62px] leading-[130%] w-[400px]">
-                {blog.title}
-              </h3>
-              <p className="flex items-center text-[18px] font-[400] text-[#1A1A1AB2] gap-[5px]">
-                {blog.date} by
-                <span className=" text-[#034FE3]">{blog.author}</span>
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
