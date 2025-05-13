@@ -97,13 +97,16 @@ function Blog() {
         </motion.div>
       </div>
 
-      {/* Blog section  */}
+      {/* Main section  */}
       <main className=" w-[90%] mx-auto flex flex-col">
-        {/* Blog section  */}
-        <section className="flex items-start justify-between mt-32">
-          <div className=" w-[1000px] flex items-center justify-between flex-wrap text-white gap-y-[85px]">
+        {/* Blog section / Category */}
+        <section className="flex sm:flex-row flex-col-reverse items-start justify-between mt-32">
+          {/* Blog section  */}
+          <div className=" sm:w-[1000px] w-full flex items-center justify-between flex-wrap text-white gap-y-[85px]">
             {blogs.map((blog) => (
-              <div className="w-[487px] flex flex-col gap-[24px]">
+              <div
+                className="sm:w-[487px] w-full flex flex-col gap-[24px]"
+                key={blog.category}>
                 {/* image  */}
                 <div className=" w-full relative">
                   <img
@@ -130,7 +133,7 @@ function Blog() {
           </div>
 
           {/* search / category  */}
-          <div className=" w-[368px] flex flex-col gap-[30px]">
+          <div className=" sm:w-[368px] w-full flex flex-col gap-[30px]">
             {/* search  */}
             <div className=" border-[1px] border-[#1A1A1A66] rounded-[5px] py-[15px] px-[10px] flex items-center gap-[10px]">
               {search}{" "}
