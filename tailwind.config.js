@@ -14,5 +14,9 @@ export default {
       xxl: "1204px", // Desktop, laptops
     },
   },
-  plugins: [flowbite.plugin(), require("tailwind-scrollbar-hide")],
+  plugins: [
+    flowbite.plugin(),
+    require("tailwind-scrollbar-hide"),
+    require("@tailwindcss/typography"),
+  ],
 };
