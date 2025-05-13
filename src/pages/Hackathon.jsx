@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 import { ArrowForward } from "@mui/icons-material";
 // import { overviewimg } from "../assets";
-import overviewimg from "../../public/ZthHackathon.png";
 import HowItWorks from "./HackathonComponents/HowItWorks";
 import Whyjoin from "./HackathonComponents/Whyjoin";
 
@@ -81,7 +80,7 @@ function Hackathon() {
               <section className="md:w-[138px] md:h-[115px] w-[98px] h-[81px]  bg-[#034FE31A] rounded-[10px] absolute top-0 right-0"></section>
               <img
                 className="md:w-[499.17px] md:h-[577px] w-[352px] h-[408px] object-cover rounded-[10px]"
-                src={overviewimg} //change later
+                src="/ZthHackathon.png" //change later
                 alt=""
               />
               <section className="md:w-[138px] md:h-[115px] w-[98px] h-[81px] bg-[#034FE3] rounded-[10px] absolute bottom-0 left-0 z-30"></section>
