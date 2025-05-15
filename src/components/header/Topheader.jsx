@@ -575,6 +575,19 @@ function Topheader() {
         </p>
         <Navbar />
       </NavLink>
+
+      {/* create blog  */}
+      <NavLink
+        to="/eche-acces-create-blog"
+        className={({ isActive }) =>
+          isActive ? " flex w-full  justify-center flex-col" : " hidden"
+        }>
+        <p className=" md:text-[18px] lg:text-[14px] text-[12px] text-[#FFFFFF] font-[300]   p-[16px] bg-[#1A1A1A] w-full  text-center">
+          Create
+          <span className=" font-[600] underline  px-5">Blogs</span>
+        </p>
+        <Navbar />
+      </NavLink>
     </div>
   );
 }

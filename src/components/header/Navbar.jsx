@@ -202,7 +202,7 @@ function Navbar() {
                     <Link
                       to="/contact-us"
                       onClick={() => setNav(false)}
-                      className=" py-[15px] px-[20px] text-[14px] text-[#1A1A1A] border-b border-[#C3C3C3]">
+                      className=" py-[15px] px-[20px] text-[14px] text-[#1A1A1A] border-b border-[#514545]">
                       Contact
                     </Link>
                   </div>
