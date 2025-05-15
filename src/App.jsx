@@ -19,6 +19,7 @@ import Webinar from "./pages/Webinar";
 import Hackathon from "./pages/Hackathon";
 import Blog from "./pages/Blog";
 import EachBlog from "./pages/Blogcomponent/EachBlog";
+import CreateBlog from "./pages/CreateBlog";
 
 function App() {
   googleAnalyticsTracking();
@@ -50,6 +51,8 @@ function App() {
           <Route path="/zion-tech-hub-hackathon" element={<Hackathon />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<EachBlog />} />
+          {/* create blog */}
+          <Route path="/eche-acces-create-blog" element={<CreateBlog />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
         <Route path="/enroll" element={<Enroll />} />
