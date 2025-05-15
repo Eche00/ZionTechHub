@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
-import blogs from "../../lib/Blog";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { db } from "../../lib/Config/firebase";
 import DOMPurify from "dompurify";
@@ -12,7 +11,8 @@ function EachBlog() {
   const [blog, setBlog] = useState(null);
   const [blogs, setBlogs] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const shareUrl = window.location.href;
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchBlogAndBlogs = async () => {
       setLoading(true);
@@ -45,9 +45,36 @@ function EachBlog() {
     fetchBlogAndBlogs();
   }, [id]);
 
-  if (loading) return <p className="pt-32 text-center h-[100vh]">Loading...</p>;
-  if (!blog)
-    return <p className="pt-32 text-center h-[100vh]">Blog not found.</p>;
+  if (loading)
+    return (
+      <div className=" pt-[130px]    overflow-hidden   flex  items-center justify-center  w-full border-b h-[100vh]">
+        <div role="status">
+          <svg
+            aria-hidden="true"
+            className="inline w-20 h-20 text-gray-200 animate-spin dark:text-gray-600 fill-[#034FE3]"
+            viewBox="0 0 100 101"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+              fill="currentColor"
+            />
+            <path
+              d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+              fill="currentFill"
+            />
+          </svg>
+          <span className="sr-only">Loading...</span>
+        </div>
+      </div>
+    );
+  {
+    /* image  */
+  }
+  <div className=" w-[90%] mx-auto ">
+    <span className="bg-gray-300  w-[200px] sm:h-[652px] h-[200px] object-cover rounded-[20px]"></span>
+  </div>;
+  if (!blog) return navigate("/");
 
   const dot = (
     <svg
@@ -129,7 +156,25 @@ function EachBlog() {
     </svg>
   );
 
-  // const blogsSlice = blogs.slice(0, 3);
+  // handling navigate
+  const handleNavigate = (id) => {
+    navigate(`/blog/${id}`);
+  };
+
+  // handling share
+  const handleInstagramShare = () => {
+    if (navigator.share) {
+      navigator
+        .share({
+          title: "title",
+          text: "shareText",
+          url: shareUrl,
+        })
+        .catch((err) => console.error("Share failed:", err));
+    } else {
+      alert("Sharing is not supported on this device");
+    }
+  };
   return (
     <div>
       <Helmet>
@@ -141,7 +186,7 @@ function EachBlog() {
       </Helmet>
 
       {/* hero section  */}
-      <div className=" pt-[130px]    overflow-hidden  sm:h-[70vh]  flex  items-center  w-full border-b">
+      <div className=" pt-[130px]    overflow-hidden  sm:h-[70vh]  flex  items-center  w-full pb-[10px]">
         {/* container   */}
         <motion.div
           initial={{ opacity: 0.45 }}
@@ -175,17 +220,22 @@ function EachBlog() {
         </motion.div>
       </div>
       {/* image  */}
-      <div className=" w-[90%] mx-auto ">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, ease: "linear" }}
+        viewport={{ once: true }}
+        className=" w-[90%] mx-auto ">
         <img
           src={blog?.imageUrl}
           alt="//"
-          className="bg-black  w-full h-[652px] object-cover rounded-[20px]"
+          className="bg-black  w-full sm:h-[652px] h-[200px] object-cover rounded-[20px]"
         />
-      </div>
+      </motion.div>
       {/* info section  */}
       <main className=" w-[90%] mx-auto  my-32">
         {/* topics/article  */}
-        <div className="flex items-start justify-between w-[90%] ml-auto">
+        <div className="flex sm:flex-row flex-col sm:gap-0 gap-[24px] items-start justify-between w-[90%] ml-auto">
           {/* topics  */}
           <section className=" w-[340px] flex flex-col gap-[30px] ">
             {/* hello  */}
@@ -212,16 +262,30 @@ function EachBlog() {
                 Share Article
               </p>
               <ul className="flex items-center gap-[12px]">
-                <a href="">{ig}</a>
-                <a href="">{fb}</a>
-                <a href="">{twitter}</a>
+                <a onClick={handleInstagramShare}>{ig}</a>
+                <a
+                  href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+                    shareUrl
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  {fb}
+                </a>
+                <a
+                  href={`https://www.x.com/sharer/sharer.php?u=${encodeURIComponent(
+                    shareUrl
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  {twitter}
+                </a>
               </ul>
             </div>
           </section>
 
           {/* article */}
           <section
-            className="blog-content w-[929px] flex flex-col items-start "
+            className="blog-content sm:w-[929px] w-full flex flex-col items-start "
             dangerouslySetInnerHTML={{
               __html: DOMPurify.sanitize(blog?.details || ""),
             }}></section>
@@ -233,9 +297,11 @@ function EachBlog() {
         <h2 className=" text-[] sm:text-[40px] font-[600] text-[#1A1A1A]">
           Recommended Articles
         </h2>
-        <div className=" w-full  flex items-center justify-between flex-wrap mb-32">
+        <div className=" w-full  flex items-center justify-between flex-wrap mb-32 gap-[24px]">
           {blogs.map((blog) => (
-            <div className="w-[464px] flex flex-col gap-[24px]">
+            <div
+              className="sm:w-[464px] w-full flex flex-col gap-[24px] cursor-pointer"
+              onClick={() => handleNavigate(blog?.id)}>
               {/* image  */}
               <div className=" w-full relative">
                 <img
