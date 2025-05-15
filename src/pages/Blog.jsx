@@ -1,8 +1,91 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
-import blogs from "../lib/Blog";
+import { db } from "../lib/Config/firebase";
+import { collection, onSnapshot } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 function Blog() {
+  // 🧠 React State
+  const [loading, setLoading] = useState(true);
+  const [blogs, setBlogs] = useState(null); // All blogs from Firestore
+  const [filteredBlogs, setFilteredBlogs] = useState([]); // Blogs filtered by selected category
+  const [selectedCategory, setSelectedCategory] = useState("Data Analytics"); // Default selected category
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // 📄 Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const blogsPerPage = 6;
+
+  const indexOfLastBlog = currentPage * blogsPerPage;
+  const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
+  const currentBlogs = filteredBlogs.slice(indexOfFirstBlog, indexOfLastBlog); // Blogs shown on current page
+  const totalPages = Math.ceil(filteredBlogs.length / blogsPerPage);
+
+  // 🧭 Navigation
+  const navigate = useNavigate();
+
+  // 📚 Blog Categories
+  const categories = [
+    "Data Analytics",
+    "Data Science",
+    "Web Development",
+    "Cloud Computing & DevOps",
+    "Machine Learning",
+  ];
+
+  // ⏳ Loading Skeleton Placeholder
+  const loader = [1, 2, 3, 4, 5, 6];
+
+  // 📡 Fetch Blogs from Firestore
+  useEffect(() => {
+    const unsubscribe = onSnapshot(collection(db, "blogs"), (snapshot) => {
+      const blogData = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      const sortedBlogs = blogData.sort((a, b) => b.createdAt - a.createdAt);
+      setBlogs(sortedBlogs);
+
+      // Filter by category
+      const categoryBlogs = selectedCategory
+        ? sortedBlogs.filter((blog) => blog.category === selectedCategory)
+        : sortedBlogs;
+
+      // Filter by search term
+      const searchFiltered = categoryBlogs.filter((blog) =>
+        blog.title?.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+
+      setFilteredBlogs(searchFiltered);
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, [selectedCategory, searchQuery]);
+
+  // 🔀 Handle Category Selection
+  const handleCategorySelect = (category) => {
+    setCurrentPage(1); // Reset to page 1 when category changes
+    setLoading(true);
+    if (category === "All") {
+      setLoading(false);
+      setSelectedCategory(null);
+      setFilteredBlogs([]);
+    } else {
+      setLoading(false);
+      setSelectedCategory(category);
+      const filtered =
+        blogs?.filter((blog) => blog.category === category) || [];
+      setFilteredBlogs(filtered);
+    }
+  };
+
+  // 🔍 Navigate to Blog Detail Page
+  const handleView = (id) => {
+    navigate(`/blog/${id}`);
+  };
+
   const dot = (
     <svg
       width="9"
@@ -85,9 +168,9 @@ function Blog() {
               <p className=" sm:text-[14px] text-[12px]  font-[400] py-[10px] sm:px-[24px] px-[14px] border rounded-full w-fit  flex items-center justify-center gap-[10px]">
                 {dot} Blog
               </p>
-              <h1 className=" text-[#1A1A1A] font-[700] sm:text-[110px] text-[64px] sm:w-full w-[320px] sm:whitespace-nowrap sm:leading-[130%] sm:tracker-[1.28px] leading-[120%] tracker-[0.8px]">
+              <h1 className=" text-[#1A1A1A] font-[700] sm:text-[110px] text-[40px] text-center sm:w-full w-[320px] sm:whitespace-nowrap sm:leading-[130%] sm:tracker-[1.28px] leading-[120%] tracker-[0.8px]">
                 Inside{" "}
-                <span className=" text-[#034FE3]"> Data Analytics: </span>
+                <span className=" text-[#034FE3]"> {selectedCategory}: </span>
               </h1>
               <p className=" text-[#1A1A1A] font-[500] sm:text-[64px] text-[24px] sm:w-[712px] w-[325px] text-center">
                 Stories and Interviews
@@ -100,36 +183,69 @@ function Blog() {
       {/* Main section  */}
       <main className=" w-[90%] mx-auto flex flex-col">
         {/* Blog section / Category */}
-        <section className="flex sm:flex-row flex-col-reverse items-start justify-between mt-32">
+        <section className="flex smm:flex-row flex-col-reverse smm:gap-[10px] gap-[20px] items-start justify-between mt-32">
           {/* Blog section  */}
           <div className=" sm:w-[1000px] w-full flex items-center justify-between flex-wrap text-white gap-y-[85px]">
-            {blogs.map((blog) => (
-              <div
-                className="sm:w-[487px] w-full flex flex-col gap-[24px]"
-                key={blog.category}>
-                {/* image  */}
-                <div className=" w-full relative">
-                  <img
-                    src={blog.image}
-                    alt=""
-                    className="w-full h-[316px] object-cover "
-                  />
-                  <span className=" absolute bottom-0 left-0 text-[#1A1A1AB2] text-[14px] font-[400] bg-[#FFFFFF] py-[6px] px-[10px]">
-                    {blog.category}
-                  </span>
+            {currentBlogs.length > 0 ? (
+              currentBlogs.map((blog) => (
+                <div
+                  className="sm:w-[487px] w-full flex flex-col gap-[24px] cursor-pointer hover:scale-[101%] duration-300"
+                  key={blog?.id}
+                  onClick={() => handleView(blog?.id)}>
+                  {/* image  */}
+                  <div className=" w-full relative">
+                    <img
+                      src={blog?.imageUrl}
+                      alt=""
+                      className="w-full h-[316px] object-cover "
+                    />
+                    <span className=" absolute bottom-0 left-0 text-[#1A1A1AB2] text-[14px] font-[400] bg-[#FFFFFF] py-[6px] px-[10px]">
+                      {blog?.category}
+                    </span>
+                  </div>
+                  {/* info  */}
+                  <div className="flex flex-col gap-[14px]">
+                    <h3 className=" text-[#1A1A1AB2] text-[24px] font-[600] h-[62px] leading-[130%]">
+                      {blog?.title}
+                    </h3>
+                    <p className="flex items-center text-[18px] font-[400] text-[#1A1A1AB2] gap-[5px]">
+                      {blog?.createdAt.toDate().toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}{" "}
+                      by
+                      <span className=" text-[#034FE3]">{blog?.creator}</span>
+                    </p>
+                  </div>
                 </div>
-                {/* info  */}
-                <div className="flex flex-col gap-[14px]">
-                  <h3 className=" text-[#1A1A1AB2] text-[24px] font-[600] h-[62px] leading-[130%]">
-                    {blog.title}
-                  </h3>
-                  <p className="flex items-center text-[18px] font-[400] text-[#1A1A1AB2] gap-[5px]">
-                    {blog.date} by
-                    <span className=" text-[#034FE3]">{blog.author}</span>
-                  </p>
-                </div>
+              ))
+            ) : (
+              <div className=" sm:w-[1000px] w-full flex items-center justify-between flex-wrap text-white gap-y-[85px]">
+                {loader.map((blog) => (
+                  <div className="sm:w-[487px] w-full flex items-center justify-center gap-[24px] bg-gray-300 sm:h-[400px] h-[300px] rounded-[20px] ">
+                    <div role="status">
+                      <svg
+                        aria-hidden="true"
+                        className="inline w-20 h-20 text-gray-200 animate-spin dark:text-gray-600 fill-[#034FE3]"
+                        viewBox="0 0 100 101"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                          fill="currentColor"
+                        />
+                        <path
+                          d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                          fill="currentFill"
+                        />
+                      </svg>
+                      <span className="sr-only">Loading...</span>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            )}
           </div>
 
           {/* search / category  */}
@@ -139,8 +255,9 @@ function Blog() {
               {search}{" "}
               <input
                 type="text"
-                className=" flex flex-1 border-none outline-none placeholder:text-[#1A1A1A99] text-[18px] font-[500] bg-transparent"
+                className=" flex flex-1 border-none focus:outline-none focus:ring-transparent placeholder:text-[#1A1A1A99] text-[18px] font-[500] bg-transparent"
                 placeholder="Search..."
+                onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
             {/* category  */}
@@ -150,51 +267,77 @@ function Blog() {
               </h2>
               {/* list  */}
               <ul className="flex flex-col gap-[10px]">
-                <li className="text-[#034FE3] text-[20px] font-[400] cursor-pointer">
-                  Data Analytics
-                </li>
-                <li className="text-[#1A1A1A] text-[20px] font-[400] cursor-pointer">
-                  Data Science
-                </li>
-                <li className="text-[#1A1A1A] text-[20px] font-[400] cursor-pointer">
-                  Web Development
-                </li>
-                <li className="text-[#1A1A1A] text-[20px] font-[400] cursor-pointer">
-                  Cloud Computing & DevOps
-                </li>
-                <li className="text-[#1A1A1A] text-[20px] font-[400] cursor-pointer">
-                  Machine Learning
-                </li>
+                {categories.map((category) => (
+                  <li
+                    key={category}
+                    onClick={() => handleCategorySelect(category)}
+                    className={
+                      selectedCategory === category
+                        ? "text-[#034FE3] text-[20px] font-[400] cursor-pointer"
+                        : "text-[#1A1A1A] text-[20px] font-[400] cursor-pointer"
+                    }>
+                    {category}
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
         </section>
 
         {/* bottom section  */}
-        <section className="flex items-center justify-between my-32">
-          <button className=" border-[#1A1A1ACC] border-[1px] rounded-[5px] px-[24px] py-[10px] text-[16px] font-[600] flex items-center gap-[10px]">
+        <section className="flex sm:flex-row flex-col sm:gap-0 gap-[20px] items-center justify-between my-32">
+          {/* Previous Button */}
+          <button
+            disabled={currentPage === 1}
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            className={`border-[#1A1A1ACC] border-[1px] rounded-[5px] px-[24px] py-[10px] text-[16px] font-[600] flex items-center justify-center gap-[10px] sm:w-fit w-[150px] ${
+              currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""
+            }`}>
             {arrowLeft} Previous
           </button>
 
+          {/* Page Numbers */}
           <div className="flex items-center gap-[16px]">
-            <p className=" border-b-[#034FE3] border-b-[3px] px-[20px] py-[10px] text-[#034FE3] text-[20px] font-[600] cursor-pointer">
-              1
-            </p>
-            <p className="  px-[20px] py-[10px] text-[#1A1A1A] text-[20px] font-[600] cursor-pointer">
-              2
-            </p>
-            <p className="  px-[20px] py-[10px] text-[#1A1A1A] text-[20px] font-[600] cursor-pointer">
-              3
-            </p>
-            <p className="  px-[20px] py-[10px] text-[#1A1A1A] text-[20px] font-[600] cursor-pointer">
-              4
-            </p>
-            <p className="  px-[20px] py-[10px] text-[#1A1A1A] text-[20px] font-[600] cursor-pointer">
-              5
-            </p>
+            {(() => {
+              const maxPageButtons = 5;
+              let startPage = Math.max(currentPage - 2, 1);
+              let endPage = startPage + maxPageButtons - 1;
+
+              // Adjust if endPage exceeds totalPages
+              if (endPage > totalPages) {
+                endPage = totalPages;
+                startPage = Math.max(endPage - maxPageButtons + 1, 1);
+              }
+
+              return Array.from({ length: endPage - startPage + 1 }, (_, i) => {
+                const page = startPage + i;
+                const isActive = page === currentPage;
+
+                return (
+                  <p
+                    key={page}
+                    onClick={() => setCurrentPage(page)}
+                    className={`cursor-pointer sm:px-[20px] px-[10px] py-[10px] text-[20px] font-[600] ${
+                      isActive
+                        ? "border-b-[#034FE3] border-b-[3px] text-[#034FE3]"
+                        : "text-[#1A1A1A]"
+                    }`}>
+                    {page}
+                  </p>
+                );
+              });
+            })()}
           </div>
 
-          <button className=" border-[#1A1A1ACC] border-[1px] rounded-[5px] px-[24px] py-[10px] text-[16px] font-[600] flex items-center gap-[10px]">
+          {/* Next Button */}
+          <button
+            disabled={currentPage === totalPages}
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
+            className={`border-[#1A1A1ACC] border-[1px] rounded-[5px] px-[24px] py-[10px] text-[16px] font-[600] flex items-center justify-center gap-[10px] sm:w-fit w-[150px] ${
+              currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""
+            }`}>
             Next {arrowRight}
           </button>
         </section>
