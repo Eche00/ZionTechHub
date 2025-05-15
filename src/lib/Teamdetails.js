@@ -35,19 +35,15 @@ const TeamDetails = [
   },
   {
     img: teamprofile5,
-    name: "Victory Brown",
-    positions: "Chief Growth Officer  ",
+    name: "Muuezah Bello",
+    positions: "Social Media Manager",
   },
   {
     img: teamprofile6,
-    name: "Ibukunoluwa  Deji-Abdul",
-    positions: "Human Resource Personnel",
+    name: "Annabel Uliyemi",
+    positions: "Chief Growth Officer  ",
   },
-  {
-    img: teamprofile7,
-    name: "Lois Ukpong",
-    positions: "Head of Corporate Communications",
-  },
+
   {
     img: teamprofile8,
     name: "Igboekwu Emilia",
