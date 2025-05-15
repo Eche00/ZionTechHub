@@ -1,7 +1,6 @@
 import { ArrowForward } from "@mui/icons-material";
 import React from "react";
 import { abouthero1, abouthero2, abouthero3, googlemeet } from "../assets";
-import { div } from "framer-motion/client";
 import AboutUs from "./AboutComponents/AboutUs";
 import Ourmission from "./AboutComponents/Ourmission";
 import Team from "./AboutComponents/Team";
