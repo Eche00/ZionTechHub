@@ -1,12 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 import { ArrowForward } from "@mui/icons-material";
 // import { overviewimg } from "../assets";
 import HowItWorks from "./HackathonComponents/HowItWorks";
 import Whyjoin from "./HackathonComponents/Whyjoin";
+import { doc, onSnapshot } from "firebase/firestore";
+import { db } from "../lib/Config/firebase";
 
 function Hackathon() {
+  const [hackathon, setHackathon] = useState(null);
+
+  useEffect(() => {
+    const docRef = doc(db, "webinarinfo", "main");
+
+    const unsubscribe = onSnapshot(docRef, (docSnap) => {
+      if (docSnap.exists()) {
+        setHackathon(docSnap.data());
+      } else {
+        setHackathon(null); // Or handle document not existing
+      }
+    });
+
+    // Cleanup listener on unmount
+    return () => unsubscribe();
+  }, []);
   return (
     <div>
       <Helmet>
@@ -49,7 +67,8 @@ function Hackathon() {
             </div>
             <div className=" flex gap-[24px] pt-[70px]">
               <motion.a
-                href="/"
+                href={`${hackathon?.hackathonlink}`}
+                target="_blank"
                 whileInView={{
                   rotate: [0, -10, 10, -10, 10, 0],
                 }}
