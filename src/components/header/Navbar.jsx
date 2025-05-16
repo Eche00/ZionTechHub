@@ -7,6 +7,7 @@ import { KeyboardArrowRight } from "@mui/icons-material";
 
 function Navbar() {
   const [course, setCourse] = useState(false);
+  const [others, setOthers] = useState(false);
   const [nav, setNav] = useState(false);
   const exit = (
     <svg
@@ -24,9 +25,24 @@ function Navbar() {
       />
     </svg>
   );
-  const handleClose = () => {
+  const handleOpen = (e) => {
+    if (e.target.id === "course") {
+      setCourse(!course);
+      setOthers(false);
+    } else if (e.target.id === "others") {
+      setCourse(false);
+      setOthers(!others);
+    }
+  };
+
+  const handleClose = (e) => {
     setNav(false);
-    setCourse(false);
+    if (e.target.id === "course") {
+      setCourse(false);
+    }
+    if (e.target.id === "others") {
+      setOthers(false);
+    }
   };
   return (
     <div>
@@ -55,6 +71,7 @@ function Navbar() {
               className={({ isActive }) => (isActive ? "text-[#1A1A1A]" : "")}>
               About
             </NavLink>
+            {/* Courses  */}
             <NavLink
               className=" group group-hover:block relative  "
               onClick={() => setCourse(!course)}>
@@ -95,11 +112,38 @@ function Navbar() {
               className={({ isActive }) => (isActive ? "text-[#1A1A1A]" : "")}>
               Consultation
             </NavLink>
+            {/* Others  */}
             <NavLink
-              to="/partner-with-us"
-              className={({ isActive }) => (isActive ? "text-[#1A1A1A]" : "")}>
-              Partner with us
+              className=" group group-hover:block relative  "
+              onClick={() => setOthers(!others)}>
+              Others <KeyboardArrowDownIcon />
+              <div className=" text-[16px]  font-[400] text-[#1A1A1A80]  flex flex-col items-start gap-[10px] absolute bg-[#F0F0F0]   rounded-tr-[20px] rounded-br-[20px] rounded-bl-[20px] z-40  ">
+                <div className="  font-[400] text-[16px]  p-[12px] hidden group-hover:flex flex-col">
+                  <Link
+                    to="/blog"
+                    className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px] ">
+                    Blogs
+                  </Link>
+                  <Link
+                    to="/partner-with-us"
+                    className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px]">
+                    Partner with us
+                  </Link>
+
+                  <Link
+                    to="/zion-tech-hub-weekend-webinar"
+                    className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px] ">
+                    Weekend webinar
+                  </Link>
+                  <Link
+                    to="/zion-tech-hub-hackathon"
+                    className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px]  whitespace-nowrap">
+                    Hackathon
+                  </Link>
+                </div>
+              </div>
             </NavLink>
+
             <NavLink
               to="/contact-us"
               className={({ isActive }) => (isActive ? "text-[#1A1A1A]" : "")}>
@@ -143,9 +187,13 @@ function Navbar() {
                       className=" py-[15px] px-[20px] text-[14px] text-[#1A1A1A] border-b border-[#C3C3C3]">
                       About Us
                     </Link>
-                    <p className=" py-[15px] px-[20px] text-[14px] text-[#1A1A1A] flex items-center justify-between border-b border-[#C3C3C3] relative">
+                    {/* courses  */}
+                    <p
+                      className=" py-[15px] px-[20px] text-[14px] text-[#1A1A1A] flex items-center justify-between border-b border-[#C3C3C3] relative z-20"
+                      onClick={handleOpen}
+                      id="course">
                       Courses
-                      <span onClick={() => setCourse(!course)}>
+                      <span>
                         {course ? (
                           <KeyboardArrowUpIcon />
                         ) : (
@@ -156,7 +204,8 @@ function Navbar() {
                       {course && (
                         <div
                           className="    flex flex-col  absolute top-[100%] left-0 right-0 bg-[#F6F6F6]  "
-                          onClick={handleClose}>
+                          onClick={handleClose}
+                          id="course">
                           <div className=" text-[#1A1A1A]  flex flex-col ">
                             <Link
                               to="/data-analystics-training"
@@ -193,12 +242,52 @@ function Navbar() {
                       className=" py-[15px] px-[20px] text-[14px] text-[#1A1A1A] border-b border-[#C3C3C3]">
                       Consultation
                     </Link>
-                    <Link
-                      to="/partner-with-us"
-                      onClick={() => setNav(false)}
-                      className=" py-[15px] px-[20px] text-[14px] text-[#1A1A1A] border-b border-[#C3C3C3]">
-                      Partner with us
-                    </Link>
+
+                    {/* others  */}
+                    <p
+                      className=" py-[15px] px-[20px] text-[14px] text-[#1A1A1A] flex items-center justify-between border-b border-[#C3C3C3] relative z-10"
+                      onClick={handleOpen}
+                      id="others">
+                      Others
+                      <span>
+                        {others ? (
+                          <KeyboardArrowUpIcon />
+                        ) : (
+                          <KeyboardArrowDownIcon />
+                        )}
+                      </span>
+                      {/* opened course content in mobile view  */}
+                      {others && (
+                        <div
+                          className="    flex flex-col  absolute top-[100%] left-0 right-0 bg-[#F6F6F6]  "
+                          onClick={handleClose}
+                          id="others">
+                          <div className=" text-[#1A1A1A]  flex flex-col ">
+                            <Link
+                              to="/blog"
+                              className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">
+                              Blogs <KeyboardArrowRight />
+                            </Link>
+                            <Link
+                              to="/partner-with-us"
+                              className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">
+                              Partner with us <KeyboardArrowRight />
+                            </Link>
+                            <Link
+                              to="/zion-tech-hub-weekend-webinar"
+                              className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">
+                              Weekend webinar
+                              <KeyboardArrowRight />
+                            </Link>
+                            <Link
+                              to="/zion-tech-hub-hackathon"
+                              className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">
+                              Hackathon <KeyboardArrowRight />
+                            </Link>
+                          </div>
+                        </div>
+                      )}
+                    </p>
                     <Link
                       to="/contact-us"
                       onClick={() => setNav(false)}
