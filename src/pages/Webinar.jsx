@@ -122,20 +122,6 @@ function Webinar() {
                     placeholder="Your answer"
                   />
                 </div>
-                {/* input  */}
-                <div className="flex flex-col gap-[10px]">
-                  <label
-                    htmlFor=""
-                    className="text-[14px] text-[#6B6F71] font-[500]">
-                    Choose a name for your Team (e.g Team Emerald){" "}
-                    <span className="text-[#D22616]">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    className=" border-[1px] border-[#C7D1D4] py-[18px] px-[16px] rounded-[10px] w-full placeholder:text-[#1A1A1A33] bg-transparent"
-                    placeholder="Your answer"
-                  />
-                </div>
               </section>
               <button className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white sm:py-[20px] sm:px-[36px] py-[12px] px-[24px] sm:text-[18px] text-[16px] font-[500]">
                 Register Now
