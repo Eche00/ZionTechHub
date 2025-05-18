@@ -2,7 +2,7 @@ import { ArrowForward } from "@mui/icons-material";
 import { motion } from "framer-motion";
 import React from "react";
 
-function WhatYLearn() {
+function WhatYLearn({ scrollTo }) {
   const icon = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -82,6 +82,7 @@ function WhatYLearn() {
         </section>
       </div>
       <motion.button
+        onClick={scrollTo}
         whileInView={{
           rotate: [0, -10, 10, -10, 10, 0],
         }}

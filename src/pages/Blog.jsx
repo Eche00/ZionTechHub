@@ -186,7 +186,7 @@ function Blog() {
         <section className="flex smm:flex-row flex-col-reverse smm:gap-[10px] gap-[20px] items-start justify-between mt-32">
           {/* Blog section  */}
           <div className=" sm:w-[1000px] w-full flex items-center justify-between flex-wrap text-white gap-y-[85px]">
-            {currentBlogs.length > 0 ? (
+            {currentBlogs.length < 0 ? (
               currentBlogs.map((blog) => (
                 <div
                   className="sm:w-[487px] w-full flex flex-col gap-[24px] cursor-pointer hover:scale-[101%] duration-300"

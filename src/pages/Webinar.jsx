@@ -1,11 +1,42 @@
-import React from "react";
+// React & Libraries
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
+
+// Icons
 import { ArrowForward } from "@mui/icons-material";
-import WhatYLearn from "./Webinarcomponents/WhatYLearn";
+
+// Firebase
+import {
+  addDoc,
+  collection,
+  doc,
+  getDocs,
+  onSnapshot,
+  query,
+  serverTimestamp,
+  where,
+} from "firebase/firestore";
+import { db } from "../lib/Config/firebase";
+
+// Components
 import Speaker from "./Webinarcomponents/Speaker";
+import WhatYLearn from "./Webinarcomponents/WhatYLearn";
 
 function Webinar() {
+  // STATE
+  const [formData, setFormData] = useState({
+    Email: "",
+    FName: "",
+    LName: "",
+  });
+
+  const [emailExists, setEmailExists] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [webinar, setWebinar] = useState(null);
+
+  // ICON
   const calendar = (
     <svg
       width="24"
@@ -19,6 +50,84 @@ function Webinar() {
       />
     </svg>
   );
+
+  // FETCH WEBINAR DETAILS
+  useEffect(() => {
+    const docRef = doc(db, "webinarinfo", "main");
+
+    const unsubscribe = onSnapshot(docRef, (docSnap) => {
+      if (docSnap.exists()) {
+        setWebinar(docSnap.data());
+      } else {
+        setWebinar(null); // Or handle document not existing
+      }
+    });
+
+    // Cleanup listener on unmount
+    return () => unsubscribe();
+  }, []);
+
+  // FORM INPUT HANDLER
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  // FORM SUBMISSION
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const q = query(
+        collection(db, "webinarattendees"),
+        where("Email", "==", formData.Email)
+      );
+      const querySnapshot = await getDocs(q);
+
+      if (!querySnapshot.empty) {
+        setEmailExists(true);
+        setSuccessMessage("");
+        return;
+      }
+
+      const docRef = await addDoc(collection(db, "webinarattendees"), {
+        ...formData,
+        createdAt: serverTimestamp(),
+      });
+
+      console.log("Document written with ID: ", docRef.id);
+
+      setFormData({ Email: "", FName: "", LName: "" });
+      setEmailExists(false);
+      setSuccessMessage("Registration successful! Thank you.");
+    } catch (error) {
+      console.error("Error adding document: ", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // AUTO-CLEAR MESSAGES
+  useEffect(() => {
+    if (emailExists || successMessage) {
+      const timer = setTimeout(() => {
+        setEmailExists(false);
+        setSuccessMessage("");
+        setFormData({ Email: "", FName: "", LName: "" });
+        setLoading(false);
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [emailExists, successMessage]);
+
+  // SCROLL TO TOP FUNCTION
+  const scrollTo = () => {
+    window.scrollTo(0, 0);
+  };
 
   return (
     <div className=" w-full flex flex-col bg-[#F5F5F5]">
@@ -63,8 +172,8 @@ function Webinar() {
             </div>
             <div className=" flex gap-[24px] pt-[70px]">
               <button className="flex items-center justify-center sm:gap-[10px] gap-[5px] rounded-[10px] bg-[#E7E7E7] text-[#034FE3] sm:py-[20px] sm:px-[36px] py-[12px] px-[24px] sm:text-[18px] text-[14px] font-[500]">
-                <span>{calendar}</span> 25th of March 10:30 AM PDT (6:30 pm
-                GMT+1)
+                <span>{calendar}</span>
+                {/* {webinar?.event} */}
               </button>
             </div>
           </motion.div>
@@ -76,9 +185,7 @@ function Webinar() {
             transition={{ duration: 1, ease: "linear" }}
             viewport={{ once: true }}
             className=" flex-1 flex  items-center justify-center gap-[24px]">
-            <form
-              action=""
-              className="bg-[#F9F9F9] sm:w-[451px] w-full h-fit p-[21px] rounded-[17.66px] flex flex-col gap-[12px] shadow-lg">
+            <form className="bg-[#F9F9F9] sm:w-[451px] w-full h-fit p-[21px] rounded-[17.66px] flex flex-col gap-[12px] shadow-lg">
               <h2 className=" text-[32px] font-[600] text-[#1A1A1ACC] text-center">
                 ZTH Webinar
               </h2>
@@ -94,6 +201,11 @@ function Webinar() {
                     type="text"
                     className=" border-[1px] border-[#C7D1D4] py-[18px] px-[16px] rounded-[10px] w-full placeholder:text-[#1A1A1A33] bg-transparent"
                     placeholder="Your answer"
+                    name="Email"
+                    id="Email"
+                    onChange={handleChange}
+                    value={formData.Email}
+                    required
                   />
                 </div>
                 {/* input  */}
@@ -107,6 +219,11 @@ function Webinar() {
                     type="text"
                     className=" border-[1px] border-[#C7D1D4] py-[18px] px-[16px] rounded-[10px] w-full placeholder:text-[#1A1A1A33] bg-transparent"
                     placeholder="Your answer"
+                    name="FName"
+                    id="FName"
+                    onChange={handleChange}
+                    value={formData.FName}
+                    required
                   />
                 </div>
                 {/* input  */}
@@ -120,17 +237,65 @@ function Webinar() {
                     type="text"
                     className=" border-[1px] border-[#C7D1D4] py-[18px] px-[16px] rounded-[10px] w-full placeholder:text-[#1A1A1A33] bg-transparent"
                     placeholder="Your answer"
+                    name="LName"
+                    id="LName"
+                    onChange={handleChange}
+                    value={formData.LName}
+                    required
                   />
                 </div>
               </section>
-              <button className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white sm:py-[20px] sm:px-[36px] py-[12px] px-[24px] sm:text-[18px] text-[16px] font-[500]">
-                Register Now
-                <ArrowForward />
+              <button
+                disabled={loading}
+                type="button"
+                // onClick={handleSubmit}
+                className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white sm:py-[20px] sm:px-[36px] py-[12px] px-[24px] sm:text-[18px] text-[16px] font-[500] disabled:cursor-not-allowed cursor-pointer">
+                {loading ? (
+                  <div role="status">
+                    <svg
+                      aria-hidden="true"
+                      className="inline w-8 h-9 8text-gray-200 animate-spin dark:text-gray-600 fill-gray-500"
+                      viewBox="0 0 100 101"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                        fill="currentColor"
+                      />
+                      <path
+                        d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                        fill="currentFill"
+                      />
+                    </svg>
+                    <span className="sr-only">Loading...</span>
+                  </div>
+                ) : (
+                  <span className="flex items-center justify-center gap-[10px]">
+                    Register Now
+                    <ArrowForward />
+                  </span>
+                )}
               </button>
+              {emailExists && (
+                <p className="text-red-500 mt-2 font-bold text-center">
+                  This email is already registered.
+                </p>
+              )}
+              {successMessage && (
+                <p className="text-green-500 mt-2 font-bold text-center">
+                  {successMessage}
+                </p>
+              )}
               <p className="text-[14px] text-[#6B6F71] font-[500] text-center">
                 {" "}
                 Already registered?{" "}
-                <span className="text-[#034FE3]">Join here</span>
+                <a
+                  className="text-[#034FE3]"
+                  // href={`${webinar?.link}`}
+                  // target="_blank"
+                >
+                  Join here
+                </a>
               </p>
             </form>
           </motion.div>
@@ -141,12 +306,12 @@ function Webinar() {
       <div className=" w-full bg-[#F5F5F5]">
         <div className=" w-full  bg-[#EBECED]">
           <div className=" smm:max-w-[90%] md:max-w-[96%] lg:max-w-[96%] xl:max-w-[98%] ml-auto border-l border-[#034FE31A] ">
-            <Speaker />
+            {/* <Speaker /> */}
           </div>
         </div>
 
         <div className=" flex flex-col smm:max-w-[80%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%] mx-auto border-l border-[#034FE31A]  ">
-          <WhatYLearn />
+          <WhatYLearn scrollTo={scrollTo} />
         </div>
       </div>
     </div>
