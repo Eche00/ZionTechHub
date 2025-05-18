@@ -1,7 +1,26 @@
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { db } from "../../lib/Config/firebase";
+import { doc, onSnapshot } from "firebase/firestore";
+import DOMPurify from "dompurify";
 
 function Speaker() {
+  const [webinar, setWebinar] = useState(null);
+
+  useEffect(() => {
+    const docRef = doc(db, "webinarinfo", "main");
+
+    const unsubscribe = onSnapshot(docRef, (docSnap) => {
+      if (docSnap.exists()) {
+        setWebinar(docSnap.data());
+      } else {
+        setWebinar(null); // Or handle document not existing
+      }
+    });
+
+    // Cleanup listener on unmount
+    return () => unsubscribe();
+  }, []);
   const logo = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -33,16 +52,14 @@ function Speaker() {
             viewport={{ once: true }}
             className=" font-[300] sm:text-[20px] text-[18px] sm:w-[530px] w-[317px] text-[#1A1A1ACC]">
             <span className=" text-[#034FE3] font-[600] sm:text-[40px] text-[24px]">
-              About Joy Onuoha
+              About {webinar?.speaker}
             </span>{" "}
-            <br /> <br /> Joy Onuoha is a seasoned data scientist specializing
-            in machine learning, predictive analytics, and cloud technologies.
-            Currently serving as a Pricing Data Scientist at The AA Basingstoke,
-            England, United Kingdom. <br /> <br /> she excels in transforming
-            complex data into actionable insights that drive strategic business
-            decisions. <br /> <br />
-            Joy's expertise lies in developing innovative pricing models and
-            leveraging advanced analytics to optimize business outcomes.
+            <br /> <br />
+            <section
+              className="blog-content "
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(webinar?.details || ""),
+              }}></section>
           </motion.p>
         </section>
         {/* about us img  */}
@@ -54,16 +71,16 @@ function Speaker() {
               transition={{ duration: 1, delay: 0.25 }}
               viewport={{ once: true }}
               className="sm:w-[455px] sm:h-[579px] w-[280px] h-[300px] rounded-[10px] object-cover cursor-pointer duration-300"
-              src="/"
+              src={webinar?.imageUrl}
               alt=""
             />
             <div className=" absolute bottom-[20px] w-[90%] left-[15px]  flex justify-between px-[17px] py-[14px] bg-white/50 backdrop-blur-lg rounded-[10px]">
               <section className=" flex flex-col gap-[6px]">
                 <p className=" sm:text-[20px] text-[16px] font-[600] ">
-                  Joy Onuoha
+                  {webinar?.speaker}
                 </p>
                 <p className=" sm:text-[16px] text-[12px] font-[400]  text-[#1A1A1A80]">
-                  Pricing Data Scientist
+                  {webinar?.category}
                 </p>
               </section>
               <section className=" flex  items-center justify-center">
