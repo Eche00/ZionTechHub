@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 import { ArrowForward } from "@mui/icons-material";
@@ -67,8 +67,8 @@ function Hackathon() {
             </div>
             <div className=" flex gap-[24px] pt-[70px]">
               <motion.a
-                href={`${hackathon?.hackathonlink}`}
-                target="_blank"
+                // href={`${hackathon?.hackathonlink}`}
+                // target="_blank"
                 whileInView={{
                   rotate: [0, -10, 10, -10, 10, 0],
                 }}
@@ -118,7 +118,7 @@ function Hackathon() {
         </div>
 
         <div className=" flex flex-col smm:max-w-[80%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%] mx-auto border-l border-[#034FE31A]  ">
-          <Whyjoin />
+          <Whyjoin hackathon={hackathon} />
         </div>
       </div>
     </div>
