@@ -2,7 +2,7 @@ import { ArrowForward } from "@mui/icons-material";
 import { motion } from "framer-motion";
 import React from "react";
 
-function Whyjoin() {
+function Whyjoin({ hackathon }) {
   const icon = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -24,6 +24,7 @@ function Whyjoin() {
       />
     </svg>
   );
+
   return (
     <div className=" relative pb-[100px]">
       <span className=" w-[3px] h-[36px]  bg-[#034FE3] absolute sm:top-[19px] top-[10px] -left-[1.5px]"></span>
@@ -81,7 +82,9 @@ function Whyjoin() {
           </h3>
         </section>
       </div>
-      <motion.button
+      <motion.a
+        // href={`${hackathon?.hackathonlink}`}
+        // target="_blank"
         whileInView={{
           rotate: [0, -10, 10, -10, 10, 0],
         }}
@@ -92,10 +95,10 @@ function Whyjoin() {
           repeat: Infinity,
           repeatType: "loop", // (optional) smoother looping
         }}
-        className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white sm:py-[20px] sm:px-[36px] py-[12px] px-[24px] sm:text-[18px] text-[16px] font-[500]">
+        className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white sm:py-[20px] sm:px-[36px] py-[12px] px-[24px] sm:text-[18px] text-[16px] font-[500] w-fit">
         Register Now
         <ArrowForward />
-      </motion.button>
+      </motion.a>
     </div>
   );
 }
