@@ -5,6 +5,7 @@ import {
   partnerlogo2,
   partnerlogo3,
 } from "../../assets";
+// import partnerlogo from "/unizikbusinessschool.JPG";
 
 function Partners() {
   return (
@@ -24,14 +25,7 @@ function Partners() {
           <section className=" p-[10px] border-r border-[#034FE31A]">
             <img
               className=" sm:h-[98px] sm:w-[216px] h-[98px] w-[174px] object-cover"
-              src={partnerlogo1}
-              alt=""
-            />
-          </section>
-          <section className=" p-[10px] border-r border-[#034FE31A]">
-            <img
-              className=" sm:h-[98px] sm:w-[216px] h-[98px] w-[174px] object-cover"
-              src={partnerlogo2}
+              src="/unizikbusinessschool.JPG"
               alt=""
             />
           </section>
@@ -42,12 +36,33 @@ function Partners() {
               alt=""
             />
           </section>
+          <section className=" p-[10px] border-r border-[#034FE31A]">
+            <img
+              className=" sm:h-[98px] sm:w-[216px] h-[98px] w-[174px] object-cover"
+              src={partnerlogo2}
+              alt=""
+            />
+          </section>
+
+          <section className=" p-[10px] border-r border-[#034FE31A]">
+            <img
+              className=" sm:h-[98px] sm:w-[216px] h-[98px] w-[174px] object-cover"
+              src={partnerlogo1}
+              alt=""
+            />
+          </section>
         </div>
         {/* section2 */}
         <div className=" flex sm:flex-row flex-col border border-[#034FE31A] w-full justify-between sm:justify-start">
           <section className="  sm:border-r  border-r-0 border-b sm:border-b border-[#034FE31A]">
-            <p className=" sm:text-[24px] text-[18px] font-[600] text-[#140D91] text-center sm:px-[44.5px] py-[23px]">
-              La Grande <br /> Galaxie Consult
+            <p className=" sm:text-[24px] text-[18px] font-[600] text-[#0d6191] text-center sm:px-[44.5px] py-[23px]">
+              Unizik <br /> Business School
+            </p>
+          </section>
+          <section className="  sm:border-r  border-r-0 border-b sm:border-b-0 border-[#034FE31A]  flex items-center text-center justify-center h-full sm:h-fit ">
+            <p className=" sm:text-[24px] text-[18px]  font-[600] text-[#1A1A1A] sm:px-[44.5px] py-[23px]">
+              <span className="text-[#E71B26]">master</span>
+              <span className="text-[#F99E1A]">card</span> <br /> foundation
             </p>
           </section>
           <section className="  sm:border-r  border-r-0 border-b sm:border-b-0 border-[#88a2d61a] flex  h-full items-center  sm:justify-evenly justify-center  sm:h-fit">
@@ -55,10 +70,9 @@ function Partners() {
               Solavise Tech
             </p>
           </section>
-          <section className="  sm:border-r  border-r-0 border-b sm:border-b-0 border-[#034FE31A]  flex items-center text-center justify-center h-full sm:h-fit ">
-            <p className=" sm:text-[24px] text-[18px]  font-[600] text-[#1A1A1A] sm:px-[44.5px] py-[23px]">
-              <span className="text-[#E71B26]">master</span>
-              <span className="text-[#F99E1A]">card</span> <br /> foundation
+          <section className="  sm:border-r  border-r-0 border-b sm:border-b border-[#034FE31A]">
+            <p className=" sm:text-[24px] text-[18px] font-[600] text-[#140D91] text-center sm:px-[44.5px] py-[23px]">
+              La Grande <br /> Galaxie Consult
             </p>
           </section>
         </div>
