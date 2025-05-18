@@ -185,7 +185,7 @@ function SubEnroll() {
                     </p>
                   )} */}
                   <a
-                    href="https://forms.office.com/r/25cUiU2sBd"
+                    href="https://forms.office.com/r/6P5Lu5b9ud"
                     target="_blank"
                     className="py-[18px] px-[16px] rounded-[10px] text-white bg-[#207C3F] mt-[14px] cursor-pointer text-center">
                     Register here
