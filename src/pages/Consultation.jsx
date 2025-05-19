@@ -1,12 +1,10 @@
 import React from "react";
 import {
-  Reviewimg,
   consulthero1,
   consulthero2,
   consulthero3,
   consultprofile,
   googlemeet,
-  individual,
   nigeria,
   uk,
   usa,

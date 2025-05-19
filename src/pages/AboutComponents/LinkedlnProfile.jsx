@@ -1,5 +1,5 @@
 import React from "react";
-import { Reviewimg, linkedlnprofileimg, mobile } from "../../assets";
+import { linkedlnprofileimg, mobile } from "../../assets";
 import { motion } from "framer-motion";
 
 function LinkedlnProfile() {

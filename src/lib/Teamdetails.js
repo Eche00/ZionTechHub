@@ -1,5 +1,4 @@
 import {
-  Reviewimg,
   SirGodsentprofile,
   teamprofile10,
   teamprofile2,

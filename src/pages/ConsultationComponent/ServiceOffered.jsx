@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Reviewimg, consultservice } from "../../assets";
+import { consultservice } from "../../assets";
 import BookConsultation from "./BookConsultation";
 import { motion } from "framer-motion";
 import { Modal } from "flowbite-react";

@@ -1,5 +1,5 @@
 import React from "react";
-import { overviewimg, Reviewimg } from "../../assets";
+import { overviewimg } from "../../assets";
 import { motion } from "framer-motion";
 
 function Overview() {

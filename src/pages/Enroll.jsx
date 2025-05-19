@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { Battery0Bar, Warning } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { KeyboardArrowRight } from "@mui/icons-material";
 import "./Enroll.css";

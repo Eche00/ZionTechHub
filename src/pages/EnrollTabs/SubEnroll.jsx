@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { Battery0Bar, Warning } from "@mui/icons-material";
+import { Warning } from "@mui/icons-material";
 import { techhublogo } from "../../assets";
 import "../Enroll.css";
 

@@ -1,9 +1,10 @@
-import { ArrowForward } from "@mui/icons-material";
 import React from "react";
 
 function ReviewCard({ review }) {
   return (
-    <div className=" flex flex-col rounded-[10px] w-fit p-[24px] bg-black/5 backdrop-blur-lg z-50  gap-[14px]  my-1">
+    <div
+      className=" flex flex-col rounded-[10px] w-fit p-[24px] bg-black/5 backdrop-blur-lg z-50  gap-[14px]  my-1"
+      key={review.img}>
       <div className=" flex gap-[14px] sm:w-[427px] w-[348px]">
         <img
           className=" sm:w-[50px] sm:h-[50px] w-[30px] h-[30px] rounded-full object-cover"

@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Reviewimg,
   SirGodsentprofile,
   amazonlogo,
   applelogo,
@@ -8,14 +7,11 @@ import {
   collabimagehome,
   discord,
   emojiprofile,
-  enterprice,
   excel,
   googleanalytics,
   googlelogo,
   googlesheets,
-  individual,
   linkedlncover,
-  logo,
   metalogo,
   microsoft,
   microsoftlogo,

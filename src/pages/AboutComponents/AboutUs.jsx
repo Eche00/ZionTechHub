@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Reviewimg,
   Sirgodsentsecondprofile,
   abouthero4,
   teamprofile2,

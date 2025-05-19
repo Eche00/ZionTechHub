@@ -59,7 +59,9 @@ function Services() {
             style={{ x: xTranslation }}
             className="  flex  w-full sm:gap-[24px] gap-[20px]  pb-[20px]  ">
             {ServicesContent.map((service) => (
-              <div className=" sm:px-[48px] px-[24px] py-[32px] flex flex-col gap-[32px] border border-t-[8px] border-t-[#034FE3] rounded-[10px] bg-[#FFFFFF]  shadow-xl  shadow-[#1A1A1A1A]">
+              <div
+                className=" sm:px-[48px] px-[24px] py-[32px] flex flex-col gap-[32px] border border-t-[8px] border-t-[#034FE3] rounded-[10px] bg-[#FFFFFF]  shadow-xl  shadow-[#1A1A1A1A]"
+                key={service.message}>
                 <section className=" flex flex-col gap-[24px]">
                   <h2 className=" sm:text-[28px] text-[24px] font-[600] text-[#034FE3]">
                     {service.category}
