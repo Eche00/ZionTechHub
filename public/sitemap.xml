@@ -105,6 +105,46 @@
    <priority>0.5</priority>
 
  </url>
+ <!-- blog  -->
+ <url>
+
+   <loc>https://ziontechub.com/blog</loc>
+
+   <lastmod>2025-04-27</lastmod>
+
+   <priority>0.5</priority>
+
+ </url>
+ <!-- blog/:id  -->
+ <url>
+
+   <loc>https://ziontechub.com/blog/:id </loc>
+
+   <lastmod>2025-04-27</lastmod>
+
+   <priority>0.5</priority>
+
+ </url>
+ <!-- webinar -->
+ <url>
+
+   <loc>https://ziontechub.com/zion-tech-hub-weekend-webinar </loc>
+
+   <lastmod>2025-04-27</lastmod>
+
+   <priority>0.5</priority>
+
+ </url>
+ <!-- hackathon  -->
+ <url>
+
+   <loc>https://ziontechub.com/zion-tech-hub-hackathon </loc>
+
+   <lastmod>2025-04-27</lastmod>
+
+   <priority>0.5</priority>
+
+ </url>
 
  <!-- contact us  -->
  <url>
