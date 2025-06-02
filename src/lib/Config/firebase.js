@@ -3,23 +3,14 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
-// const firebaseConfig = {
-//   apiKey: "AIzaSyCmR8q9uAPD_ulf7HrIKTi8FE_6m5GlAe8",
-//   authDomain: "zion-tech-hub.firebaseapp.com",
-//   projectId: "zion-tech-hub",
-//   storageBucket: "zion-tech-hub.firebasestorage.app",
-//   messagingSenderId: "349282976116",
-//   appId: "1:349282976116:web:46bd165e7f577f317dec21",
-//   measurementId: "G-0J3ZJ7JG3L",
-// };
 const firebaseConfig = {
-  apiKey: "AIzaSyCbU2iGzn39wbd-P3JdBnDuxT-emx_tdwA",
-  authDomain: "chatme-ae9e7.firebaseapp.com",
-  projectId: "chatme-ae9e7",
-  storageBucket: "chatme-ae9e7.appspot.com",
-  messagingSenderId: "704645971111",
-  appId: "1:704645971111:web:522f486b23efc9e5e2af82",
-  measurementId: "G-RZ7B0XL3PE",
+  apiKey: "AIzaSyBueDjAdmkJrioUikm5SpXBXF4UYdbDsVc",
+  authDomain: "zth-official.firebaseapp.com",
+  projectId: "zth-official",
+  storageBucket: "zth-official.firebasestorage.app",
+  messagingSenderId: "480895410150",
+  appId: "1:480895410150:web:9ab2078e520e58044e4027",
+  measurementId: "G-GW57B73HJ4",
 };
 
 // Initialize Firebase
