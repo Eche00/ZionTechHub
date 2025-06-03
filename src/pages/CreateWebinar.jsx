@@ -96,7 +96,7 @@ function CreateWebinar() {
     }
 
     try {
-      const docRef = doc(db, "webinarinfo", "main");
+      const docRef = doc(db, "workshopinfo", "main");
 
       await setDoc(docRef, {
         link: formData.link,
