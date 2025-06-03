@@ -40,7 +40,7 @@ function WhatYLearn({ scrollTo }) {
             {icon}
           </span>
           <h3 className="  font-[600] sm:text-[28px] text-[20px] sm:h-[84px]  w-fit">
-            Understanding <br /> Predictive Analytics
+            Introduction <br /> to Analytics Engineering
           </h3>
         </section>
         {/* why 2  */}
@@ -49,7 +49,7 @@ function WhatYLearn({ scrollTo }) {
             {icon}
           </span>
           <h3 className="  font-[600] sm:text-[28px] text-[20px] h-[84px]  w-fit">
-            Real-World Business <br /> Applications
+            Understanding the Data
           </h3>
         </section>
         {/* why 3  */}
@@ -58,8 +58,7 @@ function WhatYLearn({ scrollTo }) {
             {icon}
           </span>
           <h3 className=" font-[600] sm:text-[28px] text-[20px] h-[84px]  w-fit">
-            Key Tools and <br />
-            Techniques
+            Designing ETL Pipelines
           </h3>
         </section>
         {/* why 4 */}
@@ -68,16 +67,30 @@ function WhatYLearn({ scrollTo }) {
             {icon}
           </span>
           <h3 className="  font-[600] sm:text-[28px] text-[20px] h-[84px]  w-fit">
-            Implementing <br /> Predictive Strategies
+            Data Modeling with dbt
           </h3>
         </section>
+      </div>
+      <h2 className=" font-[600] sm:text-[30px] text-[24px] text-[#333] ">
+        Day 2 – Data Activation & Insight Delivery
+      </h2>
+      <div className=" my-[69px] flex flex-wrap md:gap-[25px]  gap-[69px] max-w-[1265px] text-[#1A1A1A]">
         {/* why 5  */}
         <section className=" sm:py-[40] sm:px-[40px] py-[40px] lg:px-[20px] px-[15px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px]  md:w-fit w-[95%]">
           <span className="w-[45px] h-[45px]  bg-white flex items-center justify-center p-[10px] rounded-[5px] border border-gray-400">
             {icon}
           </span>
           <h3 className="  font-[600] sm:text-[28px] text-[20px] h-[84px]  w-fit">
-            Hands-on Insights and <br /> Case Studies
+            Ensuring Data Quality
+          </h3>
+        </section>
+        {/* why 6  */}
+        <section className=" sm:py-[40] sm:px-[40px] py-[40px] lg:px-[20px] px-[15px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px]  md:w-fit w-[95%]">
+          <span className="w-[45px] h-[45px]  bg-white flex items-center justify-center p-[10px] rounded-[5px] border border-gray-400">
+            {icon}
+          </span>
+          <h3 className="  font-[600] sm:text-[28px] text-[20px] h-[84px]  w-fit">
+            Dashboarding <br /> for Business Insight
           </h3>
         </section>
       </div>

@@ -8,7 +8,7 @@ function Speaker() {
   const [webinar, setWebinar] = useState(null);
 
   useEffect(() => {
-    const docRef = doc(db, "webinarinfo", "main");
+    const docRef = doc(db, "workshopinfo", "main");
 
     const unsubscribe = onSnapshot(docRef, (docSnap) => {
       if (docSnap.exists()) {

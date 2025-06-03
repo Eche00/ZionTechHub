@@ -27,14 +27,14 @@ function Webinar() {
   // STATE
   const [formData, setFormData] = useState({
     Email: "",
-    FName: "",
-    LName: "",
+    Name: "",
+    Country: "",
   });
 
   const [emailExists, setEmailExists] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [loading, setLoading] = useState(false);
-  const [webinar, setWebinar] = useState(null);
+  const [workshop, setWorkShop] = useState(null);
 
   // ICON
   const calendar = (
@@ -53,13 +53,13 @@ function Webinar() {
 
   // FETCH WEBINAR DETAILS
   useEffect(() => {
-    const docRef = doc(db, "webinarinfo", "main");
+    const docRef = doc(db, "workshopinfo", "main");
 
     const unsubscribe = onSnapshot(docRef, (docSnap) => {
       if (docSnap.exists()) {
-        setWebinar(docSnap.data());
+        setWorkShop(docSnap.data());
       } else {
-        setWebinar(null); // Or handle document not existing
+        setWorkShop(null); // Or handle document not existing
       }
     });
 
@@ -82,7 +82,7 @@ function Webinar() {
 
     try {
       const q = query(
-        collection(db, "webinarattendees"),
+        collection(db, "workshopattendees"),
         where("Email", "==", formData.Email)
       );
       const querySnapshot = await getDocs(q);
@@ -93,14 +93,14 @@ function Webinar() {
         return;
       }
 
-      const docRef = await addDoc(collection(db, "webinarattendees"), {
+      const docRef = await addDoc(collection(db, "workshopattendees"), {
         ...formData,
         createdAt: serverTimestamp(),
       });
 
       console.log("Document written with ID: ", docRef.id);
 
-      setFormData({ Email: "", FName: "", LName: "" });
+      setFormData({ Email: "", Name: "", Country: "" });
       setEmailExists(false);
       setSuccessMessage("Registration successful! Thank you.");
     } catch (error) {
@@ -116,7 +116,7 @@ function Webinar() {
       const timer = setTimeout(() => {
         setEmailExists(false);
         setSuccessMessage("");
-        setFormData({ Email: "", FName: "", LName: "" });
+        setFormData({ Email: "", Name: "", Country: "" });
         setLoading(false);
       }, 5000);
 
@@ -129,15 +129,211 @@ function Webinar() {
     window.scrollTo(0, 0);
   };
 
+  // country list
+  const countrieslist = [
+    { name: "Afghanistan" },
+    { name: "Albania" },
+    { name: "Algeria" },
+    { name: "Andorra" },
+    { name: "Angola" },
+    { name: "Antigua and Barbuda" },
+    { name: "Argentina" },
+    { name: "Armenia" },
+    { name: "Australia" },
+    { name: "Austria" },
+    { name: "Azerbaijan" },
+    { name: "Bahamas" },
+    { name: "Bahrain" },
+    { name: "Bangladesh" },
+    { name: "Barbados" },
+    { name: "Belarus" },
+    { name: "Belgium" },
+    { name: "Belize" },
+    { name: "Benin" },
+    { name: "Bhutan" },
+    { name: "Bolivia" },
+    { name: "Bosnia and Herzegovina" },
+    { name: "Botswana" },
+    { name: "Brazil" },
+    { name: "Brunei" },
+    { name: "Bulgaria" },
+    { name: "Burkina Faso" },
+    { name: "Burundi" },
+    { name: "Cabo Verde" },
+    { name: "Cambodia" },
+    { name: "Cameroon" },
+    { name: "Canada" },
+    { name: "Central African Republic" },
+    { name: "Chad" },
+    { name: "Chile" },
+    { name: "China" },
+    { name: "Colombia" },
+    { name: "Comoros" },
+    { name: "Congo (Congo-Brazzaville)" },
+    { name: "Costa Rica" },
+    { name: "Croatia" },
+    { name: "Cuba" },
+    { name: "Cyprus" },
+    { name: "Czech Republic" },
+    { name: "Democratic Republic of the Congo" },
+    { name: "Denmark" },
+    { name: "Djibouti" },
+    { name: "Dominica" },
+    { name: "Dominican Republic" },
+    { name: "Ecuador" },
+    { name: "Egypt" },
+    { name: "El Salvador" },
+    { name: "Equatorial Guinea" },
+    { name: "Eritrea" },
+    { name: "Estonia" },
+    { name: "Eswatini" },
+    { name: "Ethiopia" },
+    { name: "Fiji" },
+    { name: "Finland" },
+    { name: "France" },
+    { name: "Gabon" },
+    { name: "Gambia" },
+    { name: "Georgia" },
+    { name: "Germany" },
+    { name: "Ghana" },
+    { name: "Greece" },
+    { name: "Grenada" },
+    { name: "Guatemala" },
+    { name: "Guinea" },
+    { name: "Guinea-Bissau" },
+    { name: "Guyana" },
+    { name: "Haiti" },
+    { name: "Honduras" },
+    { name: "Hungary" },
+    { name: "Iceland" },
+    { name: "India" },
+    { name: "Indonesia" },
+    { name: "Iran" },
+    { name: "Iraq" },
+    { name: "Ireland" },
+    { name: "Israel" },
+    { name: "Italy" },
+    { name: "Jamaica" },
+    { name: "Japan" },
+    { name: "Jordan" },
+    { name: "Kazakhstan" },
+    { name: "Kenya" },
+    { name: "Kiribati" },
+    { name: "Kuwait" },
+    { name: "Kyrgyzstan" },
+    { name: "Laos" },
+    { name: "Latvia" },
+    { name: "Lebanon" },
+    { name: "Lesotho" },
+    { name: "Liberia" },
+    { name: "Libya" },
+    { name: "Liechtenstein" },
+    { name: "Lithuania" },
+    { name: "Luxembourg" },
+    { name: "Madagascar" },
+    { name: "Malawi" },
+    { name: "Malaysia" },
+    { name: "Maldives" },
+    { name: "Mali" },
+    { name: "Malta" },
+    { name: "Marshall Islands" },
+    { name: "Mauritania" },
+    { name: "Mauritius" },
+    { name: "Mexico" },
+    { name: "Micronesia" },
+    { name: "Moldova" },
+    { name: "Monaco" },
+    { name: "Mongolia" },
+    { name: "Montenegro" },
+    { name: "Morocco" },
+    { name: "Mozambique" },
+    { name: "Myanmar" },
+    { name: "Namibia" },
+    { name: "Nauru" },
+    { name: "Nepal" },
+    { name: "Netherlands" },
+    { name: "New Zealand" },
+    { name: "Nicaragua" },
+    { name: "Niger" },
+    { name: "Nigeria" },
+    { name: "North Korea" },
+    { name: "North Macedonia" },
+    { name: "Norway" },
+    { name: "Oman" },
+    { name: "Pakistan" },
+    { name: "Palau" },
+    { name: "Palestine" },
+    { name: "Panama" },
+    { name: "Papua New Guinea" },
+    { name: "Paraguay" },
+    { name: "Peru" },
+    { name: "Philippines" },
+    { name: "Poland" },
+    { name: "Portugal" },
+    { name: "Qatar" },
+    { name: "Romania" },
+    { name: "Russia" },
+    { name: "Rwanda" },
+    { name: "Saint Kitts and Nevis" },
+    { name: "Saint Lucia" },
+    { name: "Saint Vincent and the Grenadines" },
+    { name: "Samoa" },
+    { name: "San Marino" },
+    { name: "Sao Tome and Principe" },
+    { name: "Saudi Arabia" },
+    { name: "Senegal" },
+    { name: "Serbia" },
+    { name: "Seychelles" },
+    { name: "Sierra Leone" },
+    { name: "Singapore" },
+    { name: "Slovakia" },
+    { name: "Slovenia" },
+    { name: "Solomon Islands" },
+    { name: "Somalia" },
+    { name: "South Africa" },
+    { name: "South Korea" },
+    { name: "South Sudan" },
+    { name: "Spain" },
+    { name: "Sri Lanka" },
+    { name: "Sudan" },
+    { name: "Suriname" },
+    { name: "Sweden" },
+    { name: "Switzerland" },
+    { name: "Syria" },
+    { name: "Tajikistan" },
+    { name: "Tanzania" },
+    { name: "Thailand" },
+    { name: "Timor-Leste" },
+    { name: "Togo" },
+    { name: "Tonga" },
+    { name: "Trinidad and Tobago" },
+    { name: "Tunisia" },
+    { name: "Turkey" },
+    { name: "Turkmenistan" },
+    { name: "Tuvalu" },
+    { name: "Uganda" },
+    { name: "Ukraine" },
+    { name: "United Arab Emirates" },
+    { name: "United Kingdom" },
+    { name: "United States of America" },
+    { name: "Uruguay" },
+    { name: "Uzbekistan" },
+    { name: "Vanuatu" },
+    { name: "Vatican City" },
+    { name: "Venezuela" },
+    { name: "Vietnam" },
+    { name: "Yemen" },
+    { name: "Zambia" },
+    { name: "Zimbabwe" },
+  ];
+
   return (
     <div className=" w-full flex flex-col bg-[#F5F5F5]">
       <Helmet>
-        <title>
-          Join Our Weekend Webinar, Get Tech Skills | Zion Tech Hub{" "}
-        </title>
+        <title>Join Our Workshop, Get Tech Skills | Zion Tech Hub </title>
         <meta
           name="description"
-          content="Don’t miss our power-packed weekend webinar! Learn in-demand tech skills from experts. Click now to reserve your spot—spaces fill fast!"
+          content="Don’t miss our power-packed workshop! Learn in-demand tech skills from experts. Click now to reserve your spot—spaces fill fast!"
         />
       </Helmet>
       <span className="  md:h-[104px] md:w-[104px] h-[50px] w-[50px]   bg-[#034FE30D] absolute md:top-[50px] md:right-[640px] top-[150px] right-[60px] "></span>
@@ -159,21 +355,22 @@ function Webinar() {
             className=" flex-1   flex flex-col justify-end sm:pt-0 pt-[80px] ">
             <div className=" flex flex-col gap-[24px]">
               <p className=" sm:text-[14px] text-[12px]  font-[400] py-[10px] sm:px-[24px] px-[14px] border rounded-full w-fit ">
-                Upcoming Webinar
+                Workshop
               </p>
               <h1 className=" text-[#034FE3] font-[700] sm:text-[64px] text-[40px] sm:w-full w-[320px] sm:leading-[130%] sm:tracker-[1.28px] leading-[120%] tracker-[0.8px]">
-                Leveraging Predictive Analytics to Transform Business
+                Hands-On Analytics Engineering: From Data to Insight for
+                Streaming Platforms
               </h1>
               <p className=" text-[#1A1A1A] font-[300] sm:text-[24px] text-[18px] sm:w-[712px] w-[325px]">
-                The Zion Tech hub weekend webinar is designed to provide clarity
-                and guidance and support to you helping you navigate through
-                your career journey seamlessly and with ease
+                The Zion Tech Hub Workshop is designed to provide clarity,
+                guidance, and support to help you navigate your career journey
+                seamlessly and with ease.
               </p>
             </div>
             <div className=" flex gap-[24px] pt-[70px]">
               <button className="flex items-center justify-center sm:gap-[10px] gap-[5px] rounded-[10px] bg-[#E7E7E7] text-[#034FE3] sm:py-[20px] sm:px-[36px] py-[12px] px-[24px] sm:text-[18px] text-[14px] font-[500]">
                 <span>{calendar}</span>
-                {/* {webinar?.event} */}
+                {workshop?.event}
               </button>
             </div>
           </motion.div>
@@ -187,7 +384,7 @@ function Webinar() {
             className=" flex-1 flex  items-center justify-center gap-[24px]">
             <form className="bg-[#F9F9F9] sm:w-[451px] w-full h-fit p-[21px] rounded-[17.66px] flex flex-col gap-[12px] shadow-lg">
               <h2 className=" text-[32px] font-[600] text-[#1A1A1ACC] text-center">
-                ZTH Webinar
+                ZTH Workshop
               </h2>
               <section className="flex flex-col gap-[14px]">
                 {/* input  */}
@@ -213,16 +410,16 @@ function Webinar() {
                   <label
                     htmlFor=""
                     className="text-[14px] text-[#6B6F71] font-[500]">
-                    First name <span className="text-[#D22616]">*</span>
+                    Name <span className="text-[#D22616]">*</span>
                   </label>
                   <input
                     type="text"
                     className=" border-[1px] border-[#C7D1D4] py-[18px] px-[16px] rounded-[10px] w-full placeholder:text-[#1A1A1A33] bg-transparent"
                     placeholder="Your answer"
-                    name="FName"
-                    id="FName"
+                    name="Name"
+                    id="Name"
                     onChange={handleChange}
-                    value={formData.FName}
+                    value={formData.Name}
                     required
                   />
                 </div>
@@ -231,24 +428,30 @@ function Webinar() {
                   <label
                     htmlFor=""
                     className="text-[14px] text-[#6B6F71] font-[500]">
-                    Last name <span className="text-[#D22616]">*</span>
+                    Country <span className="text-[#D22616]">*</span>
                   </label>
                   <input
                     type="text"
                     className=" border-[1px] border-[#C7D1D4] py-[18px] px-[16px] rounded-[10px] w-full placeholder:text-[#1A1A1A33] bg-transparent"
                     placeholder="Your answer"
-                    name="LName"
-                    id="LName"
+                    name="Country"
+                    id="Country"
                     onChange={handleChange}
-                    value={formData.LName}
+                    value={formData.Country}
                     required
+                    list="countries"
                   />
+                  <datalist id="countries" className=" bg-blue-700">
+                    {countrieslist.map((country) => (
+                      <option value={country.name} key={country.name} />
+                    ))}
+                  </datalist>
                 </div>
               </section>
               <button
                 disabled={loading}
                 type="button"
-                // onClick={handleSubmit}
+                onClick={handleSubmit}
                 className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white sm:py-[20px] sm:px-[36px] py-[12px] px-[24px] sm:text-[18px] text-[16px] font-[500] disabled:cursor-not-allowed cursor-pointer">
                 {loading ? (
                   <div role="status">
@@ -291,9 +494,8 @@ function Webinar() {
                 Already registered?{" "}
                 <a
                   className="text-[#034FE3]"
-                  // href={`${webinar?.link}`}
-                  // target="_blank"
-                >
+                  href={`${workshop?.link}`}
+                  target="_blank">
                   Join here
                 </a>
               </p>
@@ -306,7 +508,7 @@ function Webinar() {
       <div className=" w-full bg-[#F5F5F5]">
         <div className=" w-full  bg-[#EBECED]">
           <div className=" smm:max-w-[90%] md:max-w-[96%] lg:max-w-[96%] xl:max-w-[98%] ml-auto border-l border-[#034FE31A] ">
-            {/* <Speaker /> */}
+            <Speaker />
           </div>
         </div>
 
