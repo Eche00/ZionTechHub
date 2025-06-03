@@ -74,7 +74,7 @@ function Speaker() {
               src={webinar?.imageUrl}
               alt=""
             />
-            <div className=" absolute bottom-[20px] w-[90%] left-[15px]  flex justify-between px-[17px] py-[14px] bg-white/50 backdrop-blur-lg rounded-[10px]">
+            <div className=" absolute sm:bottom-[20px] bottom-2 w-[90%] left-[15px]  flex justify-between px-[17px] py-[14px] bg-white/50 backdrop-blur-lg rounded-[10px]">
               <section className=" flex flex-col gap-[6px]">
                 <p className=" sm:text-[20px] text-[16px] font-[600] ">
                   {webinar?.speaker}
