@@ -13,21 +13,20 @@ gap: 10px;
 
 .blog-content ol {
   list-style: none;
-  font-size: 28px;
+  font-size: 18px;
   font-weight: 500;
   padding: 20px 0;
   
 }
 .blog-content p {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
   color: #1A1A1A;
 }
 .blog-content h1 {
   list-style: none;
-  padding-left: 1.5rem;
-  font-size: 20px;
-  font-weight: 400;
+  font-size: 24px;
+  font-weight: 500;
 }
 .blog-content h2 {
   list-style: none;
@@ -37,7 +36,8 @@ gap: 10px;
   border-left: 3px solid #034FE3;
 }
 .blog-content ul {
-  list-style: none;
+  list-style: disc;
+  padding-left: 50px;
 }
 
 .blog-content ol li::before {
