@@ -11,6 +11,9 @@ function CreateBlog() {
   const [formData, setFormData] = useState({
     title: "",
     creator: "Ndoma Godsent",
+    slug: "Blog-Slug",
+    metadescription: "Meta Description",
+    alt: "Image Alt",
     category: "",
     details: "",
     image: [],
@@ -116,6 +119,9 @@ function CreateBlog() {
     try {
       const docRef = await addDoc(collection(db, "blogs"), {
         title: formData.title,
+        slug: formData.slug,
+        metadescription: formData.metadescription,
+        alt: formData.alt,
         creator: formData.creator,
         category: formData.category,
         details: formData.details,
@@ -127,6 +133,9 @@ function CreateBlog() {
       console.log("Document written with ID: ", docRef.id);
       setFormData({
         title: "",
+        slug: "",
+        metadescription: "",
+        alt: "",
         creator: "",
         category: "",
         details: "",
@@ -212,6 +221,42 @@ function CreateBlog() {
               id="title"
               onChange={handleChange}
               value={formData.title}
+              required
+            />
+          </div>
+          <div className="flex flex-col gap-[5px] my-5">
+            <p>Slug</p>
+            <input
+              className="bg-transparent border-3 border-[#034FE3] w-full rounded-[10px] px-5 py-2 outline-none"
+              type="text"
+              name="slug"
+              id="slug"
+              onChange={handleChange}
+              value={formData.slug}
+              required
+            />
+          </div>
+          <div className="flex flex-col gap-[5px] my-5">
+            <p>Meta Description</p>
+            <input
+              className="bg-transparent border-3 border-[#034FE3] w-full rounded-[10px] px-5 py-2 outline-none"
+              type="text"
+              name="metadescription"
+              id="metadescription"
+              onChange={handleChange}
+              value={formData.metadescription}
+              required
+            />
+          </div>
+          <div className="flex flex-col gap-[5px] my-5">
+            <p>Image alt</p>
+            <input
+              className="bg-transparent border-3 border-[#034FE3] w-full rounded-[10px] px-5 py-2 outline-none"
+              type="text"
+              name="alt"
+              id="alt"
+              onChange={handleChange}
+              value={formData.alt}
               required
             />
           </div>

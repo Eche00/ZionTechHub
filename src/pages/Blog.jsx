@@ -82,8 +82,8 @@ function Blog() {
   };
 
   // 🔍 Navigate to Blog Detail Page
-  const handleView = (id) => {
-    navigate(`/blog/${id}`);
+  const handleView = (slug) => {
+    navigate(`/blog/${slug}`);
   };
 
   const dot = (
@@ -191,7 +191,7 @@ function Blog() {
                 <div
                   className="sm:w-[487px] w-full flex flex-col gap-[24px] cursor-pointer hover:scale-[101%] duration-300"
                   key={blog?.id}
-                  onClick={() => handleView(blog?.id)}>
+                  onClick={() => handleView(blog?.slug)}>
                   {/* image  */}
                   <div className=" w-full relative">
                     <img

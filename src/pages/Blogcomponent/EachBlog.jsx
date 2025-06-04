@@ -2,12 +2,19 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 import { useNavigate, useParams } from "react-router-dom";
-import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 import { db } from "../../lib/Config/firebase";
 import DOMPurify from "dompurify";
 
 function EachBlog() {
-  const { id } = useParams(); // get :id from URL
+  const { slug } = useParams(); // get :id from URL
   const [blog, setBlog] = useState(null);
   const [blogs, setBlogs] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -17,24 +24,27 @@ function EachBlog() {
     const fetchBlogAndBlogs = async () => {
       setLoading(true);
       try {
-        // Fetch single blog
-        const docRef = doc(db, "blogs", id);
-        const docSnap = await getDoc(docRef);
+        // Fetch blog by slug
+        const q = query(collection(db, "blogs"), where("slug", "==", slug));
+        const querySnapshot = await getDocs(q);
 
-        if (docSnap.exists()) {
-          setBlog({ id: docSnap.id, ...docSnap.data() });
+        if (!querySnapshot.empty) {
+          const blogDoc = querySnapshot.docs[0];
+          setBlog({ id: blogDoc.id, ...blogDoc.data() });
         } else {
-          console.log("No such blog!");
+          console.log("No blog found with this slug.");
         }
 
-        // Fetch all blogs
-        const querySnapshot = await getDocs(collection(db, "blogs"));
+        // Fetch latest 3 blogs
+        const allQuery = await getDocs(collection(db, "blogs"));
         const allBlogs = [];
-        querySnapshot.forEach((doc) => {
+        allQuery.forEach((doc) => {
           allBlogs.push({ id: doc.id, ...doc.data() });
         });
         setBlogs(
-          allBlogs.sort((a, b) => b.createdAt - a.createdAt).slice(0, 3)
+          allBlogs
+            .sort((a, b) => b.createdAt?.seconds - a.createdAt?.seconds)
+            .slice(0, 3)
         );
       } catch (error) {
         console.error("Error fetching blogs:", error);
@@ -42,8 +52,9 @@ function EachBlog() {
         setLoading(false);
       }
     };
-    fetchBlogAndBlogs();
-  }, [id]);
+
+    if (slug) fetchBlogAndBlogs();
+  }, [slug]);
 
   if (loading)
     return (
@@ -157,8 +168,8 @@ function EachBlog() {
   );
 
   // handling navigate
-  const handleNavigate = (id) => {
-    navigate(`/blog/${id}`);
+  const handleNavigate = (slug) => {
+    navigate(`/blog/${slug}`);
   };
 
   // handling share
@@ -179,10 +190,7 @@ function EachBlog() {
     <div>
       <Helmet>
         <title>{blog?.title} | Zion Tech Hub </title>
-        <meta
-          name="description"
-          content="Get to know who we are, what we stand for, and why we’re the right fit for you. Click to learn more about us and our mission!"
-        />
+        <meta name="description" content={blog?.metadescription} />
       </Helmet>
 
       {/* hero section  */}
@@ -204,9 +212,9 @@ function EachBlog() {
               <p className=" sm:text-[14px] text-[12px]  font-[400] py-[10px] sm:px-[24px] px-[14px] border rounded-full w-fit  ">
                 {blog?.category}
               </p>
-              <h1 className=" text-[#1A1A1AB2] font-[600] sm:text-[64px] text-[32px] sm:w-[941px] w-[320px]  sm:leading-[130%] sm:tracker-[1.28px] leading-[120%] tracker-[0.8px] text-center">
+              <h2 className=" text-[#1A1A1AB2] font-[600] sm:text-[64px] text-[32px] sm:w-[941px] w-[320px]  sm:leading-[130%] sm:tracker-[1.28px] leading-[120%] tracker-[0.8px] text-center">
                 {blog?.title}
-              </h1>
+              </h2>
               <p className=" text-[#1A1A1A] font-[300] sm:text-[20px] text-[14px] text-center flex items-center gap-[10px]">
                 {blog.createdAt.toDate().toLocaleDateString("en-US", {
                   year: "numeric",
@@ -228,7 +236,7 @@ function EachBlog() {
         className=" w-[90%] mx-auto ">
         <img
           src={blog?.imageUrl}
-          alt="//"
+          alt={blog?.alt}
           className="bg-black  w-full sm:h-[652px] h-[200px] object-cover rounded-[20px]"
         />
       </motion.div>
@@ -301,7 +309,7 @@ function EachBlog() {
           {blogs.map((blog) => (
             <div
               className="sm:w-[464px] w-full flex flex-col gap-[24px] cursor-pointer"
-              onClick={() => handleNavigate(blog?.id)}>
+              onClick={() => handleNavigate(blog?.slug)}>
               {/* image  */}
               <div className=" w-full relative">
                 <img
