@@ -5,16 +5,16 @@ import { doc, onSnapshot } from "firebase/firestore";
 import DOMPurify from "dompurify";
 
 function Speaker() {
-  const [webinar, setWebinar] = useState(null);
+  const [workshop, setWorkShop] = useState(null);
 
   useEffect(() => {
     const docRef = doc(db, "workshopinfo", "main");
 
     const unsubscribe = onSnapshot(docRef, (docSnap) => {
       if (docSnap.exists()) {
-        setWebinar(docSnap.data());
+        setWorkShop(docSnap.data());
       } else {
-        setWebinar(null); // Or handle document not existing
+        setWorkShop(null); // Or handle document not existing
       }
     });
 
@@ -52,13 +52,13 @@ function Speaker() {
             viewport={{ once: true }}
             className=" font-[300] sm:text-[20px] text-[18px] sm:w-[530px] w-[317px] text-[#1A1A1ACC]">
             <span className=" text-[#034FE3] font-[600] sm:text-[40px] text-[24px]">
-              About {webinar?.speaker}
+              About {workshop?.speaker}
             </span>{" "}
             <br /> <br />
             <section
               className="blog-content "
               dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(webinar?.details || ""),
+                __html: DOMPurify.sanitize(workshop?.details || ""),
               }}></section>
           </motion.p>
         </section>
@@ -70,17 +70,17 @@ function Speaker() {
               whileInView={{ scale: 1, opacity: 1 }}
               transition={{ duration: 1, delay: 0.25 }}
               viewport={{ once: true }}
-              className="sm:w-[455px] sm:h-[579px] w-[280px] h-[300px] rounded-[10px] object-cover cursor-pointer duration-300"
-              src={webinar?.imageUrl}
+              className="sm:w-[455px] sm:h-[579px] w-[300px] h-[400px] rounded-[10px] object-cover cursor-pointer duration-300"
+              src={workshop?.imageUrl}
               alt=""
             />
             <div className=" absolute sm:bottom-[20px] bottom-2 w-[90%] left-[15px]  flex justify-between px-[17px] py-[14px] bg-white/50 backdrop-blur-lg rounded-[10px]">
               <section className=" flex flex-col gap-[6px]">
                 <p className=" sm:text-[20px] text-[16px] font-[600] ">
-                  {webinar?.speaker}
+                  {workshop?.speaker}
                 </p>
                 <p className=" sm:text-[16px] text-[12px] font-[400]  text-[#1A1A1A80]">
-                  {webinar?.category}
+                  {workshop?.category}
                 </p>
               </section>
               <section className=" flex  items-center justify-center">

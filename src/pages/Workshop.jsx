@@ -20,10 +20,10 @@ import {
 import { db } from "../lib/Config/firebase";
 
 // Components
-import Speaker from "./Webinarcomponents/Speaker";
-import WhatYLearn from "./Webinarcomponents/WhatYLearn";
+import Speaker from "./workshopcomponents/Speaker";
+import WhatYLearn from "./workshopcomponents/WhatYLearn";
 
-function Webinar() {
+function Workshop() {
   // STATE
   const [formData, setFormData] = useState({
     Email: "",
@@ -51,7 +51,7 @@ function Webinar() {
     </svg>
   );
 
-  // FETCH WEBINAR DETAILS
+  // FETCH WORKSHOP DETAILS
   useEffect(() => {
     const docRef = doc(db, "workshopinfo", "main");
 
@@ -357,14 +357,16 @@ function Webinar() {
               <p className=" sm:text-[14px] text-[12px]  font-[400] py-[10px] sm:px-[24px] px-[14px] border rounded-full w-fit ">
                 Workshop
               </p>
-              <h1 className=" text-[#034FE3] font-[700] sm:text-[64px] text-[40px] sm:w-full w-[320px] sm:leading-[130%] sm:tracker-[1.28px] leading-[120%] tracker-[0.8px]">
-                Hands-On Analytics Engineering: From Data to Insight for
-                Streaming Platforms
+              <h1 className=" text-[#1A1A1A] font-[700] sm:text-[64px] text-[40px] sm:w-full w-[320px] sm:leading-[130%] sm:tracker-[1.28px] leading-[120%] tracker-[0.8px]">
+                Hands-On{" "}
+                <span className=" text-[#034FE3]">Analytics Engineering</span>
               </h1>
               <p className=" text-[#1A1A1A] font-[300] sm:text-[24px] text-[18px] sm:w-[712px] w-[325px]">
-                The Zion Tech Hub Workshop is designed to provide clarity,
-                guidance, and support to help you navigate your career journey
-                seamlessly and with ease.
+                This workshop is a powerful launchpad for aspiring data
+                professionals to gain hands-on experience with real-world tools
+                and workflows, empowering them to build job-ready skills in
+                analytics engineering and transform raw data into actionable
+                insights for modern businesses.
               </p>
             </div>
             <div className=" flex gap-[24px] pt-[70px]">
@@ -520,4 +522,4 @@ function Webinar() {
   );
 }
 
-export default Webinar;
+export default Workshop;
