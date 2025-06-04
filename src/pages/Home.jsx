@@ -190,7 +190,7 @@ function Home() {
               <img src={startups} alt="" /> Startups
             </div>
             <div className=" flex gap-[24px] items-center justify-center">
-              <img src={enterprice} alt="" /> Enterprice{" "}
+              <img src={enterprice} alt="" /> Enterprise{" "}
             </div>
           </div>
         </div>
