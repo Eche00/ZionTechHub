@@ -233,7 +233,7 @@ function EachBlog() {
         />
       </motion.div>
       {/* info section  */}
-      <main className=" w-[90%] mx-auto  my-32">
+      <main className=" sm:w-[90%] w-[95%] sm:mx-auto  my-32">
         {/* topics/article  */}
         <div className="flex sm:flex-row flex-col sm:gap-0 gap-[24px] items-start justify-between w-[90%] ml-auto">
           {/* topics  */}

@@ -77,7 +77,7 @@ function CreateBlog() {
   const handleEditorChange = (value) => {
     const tocHeaders = [];
     const doc = new DOMParser().parseFromString(value, "text/html");
-    const h2Elements = doc.querySelectorAll("ol");
+    const h2Elements = doc.querySelectorAll("h2");
 
     h2Elements.forEach((header, index) => {
       tocHeaders.push({
@@ -285,7 +285,7 @@ function CreateBlog() {
                   ["image"],
                 ],
               }}
-              className="border-3 border-[#034FE3] w-full rounded-[10px] px-5 py-2 outline-none h-80 text-black"
+              className="border-3 border-[#034FE3] w-full rounded-[10px] px-5 py-2 outline-none h-80 text-black bg-transparent"
             />
           </div>
 
