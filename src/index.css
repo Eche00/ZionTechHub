@@ -47,6 +47,11 @@ gap: 10px;
   font-size: 20px;
   font-weight: 500;
 }
+.blog-content h4 {
+  list-style: none;
+  font-size: 24px;
+  font-weight: 500;
+}
 .blog-content ul {
   list-style: disc;
   padding-left: 50px;

@@ -320,7 +320,13 @@ function CreateBlog() {
               onChange={handleEditorChange}
               modules={{
                 toolbar: [
-                  [{ header: "1" }, { header: "2" }, { font: [] }],
+                  [
+                    { header: "1" },
+                    { header: "2" },
+                    { header: "3" },
+                    { header: "4" },
+                    { font: [] },
+                  ],
                   [{ list: "ordered" }, { list: "bullet" }],
                   ["bold", "italic", "underline"],
                   ["link"],

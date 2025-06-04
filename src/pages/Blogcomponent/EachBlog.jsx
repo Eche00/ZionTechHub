@@ -2,14 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  collection,
-  doc,
-  getDoc,
-  getDocs,
-  query,
-  where,
-} from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../lib/Config/firebase";
 import DOMPurify from "dompurify";
 
@@ -212,9 +205,9 @@ function EachBlog() {
               <p className=" sm:text-[14px] text-[12px]  font-[400] py-[10px] sm:px-[24px] px-[14px] border rounded-full w-fit  ">
                 {blog?.category}
               </p>
-              <h2 className=" text-[#1A1A1AB2] font-[600] sm:text-[64px] text-[32px] sm:w-[941px] w-[320px]  sm:leading-[130%] sm:tracker-[1.28px] leading-[120%] tracker-[0.8px] text-center">
+              <h1 className=" text-[#1A1A1AB2] font-[600] sm:text-[64px] text-[32px] sm:w-[941px] w-[320px]  sm:leading-[130%] sm:tracker-[1.28px] leading-[120%] tracker-[0.8px] text-center">
                 {blog?.title}
-              </h2>
+              </h1>
               <p className=" text-[#1A1A1A] font-[300] sm:text-[20px] text-[14px] text-center flex items-center gap-[10px]">
                 {blog.createdAt.toDate().toLocaleDateString("en-US", {
                   year: "numeric",
