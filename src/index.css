@@ -23,6 +23,13 @@ gap: 10px;
   font-weight: 400;
   color: #1A1A1A;
 }
+.blog-content a {
+  font-size: 16px;
+  font-weight: bold;
+  color: #034FE3;
+  text-decoration: underline;
+  cursor: pointer;
+}
 .blog-content h1 {
   list-style: none;
   font-size: 24px;
@@ -34,6 +41,11 @@ gap: 10px;
   font-size: 20px;
   font-weight: 400;
   border-left: 3px solid #034FE3;
+}
+.blog-content h3 {
+  list-style: none;
+  font-size: 20px;
+  font-weight: 500;
 }
 .blog-content ul {
   list-style: disc;
