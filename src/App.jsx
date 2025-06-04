@@ -51,7 +51,7 @@ function App() {
           <Route path="/zion-tech-hub-workshop" element={<Workshop />} />
           <Route path="/zion-tech-hub-hackathon" element={<Hackathon />} />
           <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:id" element={<EachBlog />} />
+          <Route path="/blog/:slug" element={<EachBlog />} />
           {/* create  */}
           <Route path="/eche-acces-create-blog" element={<CreateBlog />} />
           <Route
