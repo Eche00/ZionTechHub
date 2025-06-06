@@ -21,6 +21,7 @@ import Blog from "./pages/Blog";
 import EachBlog from "./pages/Blogcomponent/EachBlog";
 import CreateBlog from "./pages/CreateBlog";
 import CreateWebinar from "./pages/CreateWebinar";
+import Preview from "./pages/Preview";
 
 function App() {
   googleAnalyticsTracking();
@@ -59,6 +60,9 @@ function App() {
             element={<CreateWebinar />}
           />
           <Route path="*" element={<Navigate to="/" />} />
+
+          {/* preview  */}
+          <Route path="/preview" element={<Preview />} />
         </Route>
         <Route path="/enroll" element={<Enroll />} />
       </Routes>
