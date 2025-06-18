@@ -131,9 +131,9 @@ function Navbar() {
                   </Link>
 
                   <Link
-                    to="/zion-tech-hub-workshop"
+                    to="/zion-tech-hub-webinar"
                     className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px] ">
-                    Workshop
+                    Webinar
                   </Link>
                   <Link
                     to="/zion-tech-hub-hackathon"
@@ -274,9 +274,9 @@ function Navbar() {
                               Partner with us <KeyboardArrowRight />
                             </Link>
                             <Link
-                              to="/zion-tech-hub-workshop"
+                              to="/zion-tech-hub-webinar"
                               className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">
-                              Workshop
+                              Webinar
                               <KeyboardArrowRight />
                             </Link>
                             <Link
