@@ -49,7 +49,7 @@ function App() {
             path="/machine-learning-course"
             element={<MachineLearning />}
           />
-          <Route path="/zion-tech-hub-workshop" element={<Workshop />} />
+          <Route path="/zion-tech-hub-webinar" element={<Workshop />} />
           <Route path="/zion-tech-hub-hackathon" element={<Hackathon />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<EachBlog />} />
