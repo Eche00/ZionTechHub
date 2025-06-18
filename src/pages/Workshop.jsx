@@ -355,18 +355,21 @@ function Workshop() {
             className=" flex-1   flex flex-col justify-end sm:pt-0 pt-[80px] ">
             <div className=" flex flex-col gap-[24px]">
               <p className=" sm:text-[14px] text-[12px]  font-[400] py-[10px] sm:px-[24px] px-[14px] border rounded-full w-fit ">
-                Workshop
+                Webinar
               </p>
               <h1 className=" text-[#1A1A1A] font-[700] sm:text-[64px] text-[40px] sm:w-full w-[320px] sm:leading-[130%] sm:tracker-[1.28px] leading-[120%] tracker-[0.8px]">
-                Hands-On{" "}
-                <span className=" text-[#034FE3]">Analytics Engineering</span>
+                The Evolving Role of
+                <span className=" text-[#034FE3]"> Data Analytics:</span>
+                Trends, Tools and Tomorrow
               </h1>
               <p className=" text-[#1A1A1A] font-[300] sm:text-[24px] text-[18px] sm:w-[712px] w-[325px]">
-                This workshop is a powerful launchpad for aspiring data
-                professionals to gain hands-on experience with real-world tools
-                and workflows, empowering them to build job-ready skills in
-                analytics engineering and transform raw data into actionable
-                insights for modern businesses.
+                The traditional data analyst role, centered around Excel, Power
+                BI, and SQL is rapidly transforming. Leading companies like
+                TikTok Netflix, Amazon and Cowrywise are now demanding more:
+                *ETL expertise, predictive analytics, and model deployment* are
+                becoming the new standard. This weekend, I’m hosting Akshay Raj
+                Pallerla, a Data Engineer at TikTok, as we unpack this
+                transformation and what it means for your career
               </p>
             </div>
             <div className=" flex gap-[24px] pt-[70px]">
@@ -386,7 +389,7 @@ function Workshop() {
             className=" flex-1 flex  items-center justify-center gap-[24px]">
             <form className="bg-[#F9F9F9] sm:w-[451px] w-full h-fit p-[21px] rounded-[17.66px] flex flex-col gap-[12px] shadow-lg">
               <h2 className=" text-[32px] font-[600] text-[#1A1A1ACC] text-center">
-                ZTH Workshop
+                ZTH Webinar
               </h2>
               <section className="flex flex-col gap-[14px]">
                 {/* input  */}
