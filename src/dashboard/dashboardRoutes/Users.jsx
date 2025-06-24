@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react";
-import { onSnapshot, collection, getDoc, doc } from "firebase/firestore";
+import {
+  onSnapshot,
+  collection,
+  getDoc,
+  doc,
+  deleteDoc,
+} from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, db } from "../../lib/Config/firebase";
-import { div } from "framer-motion/client";
 import Signup from "./SignUp";
 import { deleteUser, getAuth, onAuthStateChanged } from "firebase/auth";
 
@@ -11,10 +16,26 @@ function Users() {
   const [loading, setLoading] = useState(true);
   const [createUser, setCreateUser] = useState(false);
   const [users, setUsers] = useState([]); // All users from Firestore
-  const [authUser, setAuthUser] = useState(null);
   const navigate = useNavigate();
 
   // 📡 Fetch users from Firestore
+  useEffect(() => {
+    const unsubscribe = onSnapshot(collection(db, "users"), (snapshot) => {
+      const userData = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      const sortedUsers = userData.sort((a, b) => b.createdAt - a.createdAt);
+      setUsers(sortedUsers);
+
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  // fetching currentuser
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser) {
@@ -23,59 +44,25 @@ function Users() {
           const userSnap = await getDoc(userRef);
 
           if (userSnap.exists()) {
-            const userData = userSnap.data();
-            setAuthUser(userData);
-
-            if (userData.role !== "admin") {
-              navigate("/dashboard/home");
-              return;
+            const data = userSnap.data();
+            if (data.role != "admin") {
+              navigate("/dashboard/users");
             }
-
-            // User is admin, fetch all users
-            const unsubscribeUsers = onSnapshot(
-              collection(db, "users"),
-              (snapshot) => {
-                const userData = snapshot.docs.map((doc) => ({
-                  id: doc.id,
-                  ...doc.data(),
-                }));
-
-                const sortedUsers = userData.sort(
-                  (a, b) => b.createdAt - a.createdAt
-                );
-                setUsers(sortedUsers);
-                setLoading(false);
-              }
-            );
-
-            // Clean up users listener
-            return () => unsubscribeUsers();
           } else {
             console.warn("User Firestore document not found.");
-            navigate("/signin");
           }
         } catch (err) {
           console.error("Error fetching user:", err);
         }
       } else {
-        // Not logged in
-        navigate("/signin");
       }
-
-      setLoading(false);
     });
 
-    return () => unsubscribe(); // auth listener cleanup
-  }, [navigate]);
+    return () => unsubscribe();
+  }, []);
 
   const handleDelete = async (id) => {
     try {
-      const user = await getAuth().currentUser;
-      if (user && user.uid === id) {
-        await deleteUser(user);
-      } else {
-        return;
-      }
       await deleteDoc(doc(db, "users", id));
     } catch (error) {
       console.error("Couldn't Delete user:", error);
@@ -133,15 +120,15 @@ function Users() {
               <p>Name</p>
               <p>Email</p>
               <p>Role</p>
-              <p>CreatedAt</p>
+              <p>UserId</p>
               <p className="flex items-center justify-end pr-10">Delete</p>
             </div>
             {users.map((user) => (
               <div
-                className="grid grid-cols-5 gap-4 items-center border-b border-gray-500   p-4 w-full  px-10 py-4  text-white   h-fit cursor-pointer bg-opacity-5"
+                className="grid grid-cols-5 gap-4 items-center border-b border-gray-500   p-4 w-full  px-10 py-4  text-white   h-fit cursor-pointer bg-opacity-5 "
                 key={user?.id}>
                 <p className="text-gray-500 text-sm">
-                  {(user?.username).slice(0, 10)}...
+                  @{(user?.username).slice(0, 10)}...
                 </p>
                 <p className="text-gray-600 text-sm border-l-2 border-gray-500 pl-2 cursor-pointer hover:text-white transition-all duration-300 flex items-center gap-[10px]">
                   {" "}
@@ -150,18 +137,14 @@ function Users() {
                 <p
                   // className="text-gray-500 text-sm"
                   className={
-                    user?.role === "admin" ? "text-green-500" : "text-gray-500"
+                    user?.role === "Admin" ? "text-green-500" : "text-gray-500"
                   }>
                   {" "}
                   {user?.role}
                 </p>
                 <p className="text-gray-500 text-sm">
                   {" "}
-                  {user?.createdAt.toDate().toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
+                  {(user?.id).slice(0, 10)}...
                 </p>
                 {/* buttons  */}
                 <div className="flex items-center gap-[20px] justify-end">

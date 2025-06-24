@@ -12,7 +12,7 @@ function Signup({ setCreateUser }) {
   });
   const [loading, setLoading] = useState(false);
   // password visibility
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
   // error states
   const [error, setError] = useState("");
   const [usernameError, setUsernameError] = useState(false);
