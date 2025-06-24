@@ -77,7 +77,7 @@ function Signin() {
 
     try {
       await signInWithEmailAndPassword(auth, formData.email, formData.password);
-      navigate("/");
+      navigate("/dashboard/home");
     } catch (error) {
     } finally {
       const customErrMessage = handleErrorMessage(error.code);
@@ -111,7 +111,7 @@ function Signin() {
               <p className=" text-gray-500">Email:</p>
               <div className="flex items-center gap-2 bg-black border-2 border-gray-700  w-full px-3 py-4 rounded-[10px] text-white">
                 <span className=" text-gray-500 border-r border-gray-500 pr-2">
-                  E
+                  @
                 </span>
                 <input
                   className="  outline-none text-white flex-1 bg-transparent placeholder:text-gray-500 border-black "
@@ -131,7 +131,7 @@ function Signin() {
                 <span
                   className=" text-gray-500 border-r border-gray-500 pr-2 cursor-pointer"
                   onClick={() => setVisible(!visible)}>
-                  {visible ? "/" : "/"}
+                  {visible ? "<\\>" : "</>"}
                 </span>
                 <input
                   className="  outline-none text-white flex-1 bg-transparent placeholder:text-gray-500 border-black "
