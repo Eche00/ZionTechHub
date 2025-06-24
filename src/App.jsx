@@ -19,9 +19,14 @@ import Workshop from "./pages/Workshop";
 import Hackathon from "./pages/Hackathon";
 import Blog from "./pages/Blog";
 import EachBlog from "./pages/Blogcomponent/EachBlog";
-import CreateBlog from "./pages/CreateBlog";
 import CreateWebinar from "./pages/CreateWebinar";
-import Preview from "./pages/Preview";
+import DashContainer from "./dashboard/DashContainer";
+import Dashboard from "./dashboard/dashboardRoutes/Dashboard";
+import EventAttendees from "./dashboard/dashboardRoutes/EventAttendees";
+import CreateBlog from "./dashboard/dashboardRoutes/CreateBlog";
+import ViewBlogs from "./dashboard/dashboardRoutes/ViewBlogs";
+import Users from "./dashboard/dashboardRoutes/Users";
+import Signin from "./dashboard/dashboardRoutes/Signin";
 
 function App() {
   googleAnalyticsTracking();
@@ -54,7 +59,6 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<EachBlog />} />
           {/* create  */}
-          <Route path="/eche-acces-create-blog" element={<CreateBlog />} />
           <Route
             path="/eche-acces-create-webinar"
             element={<CreateWebinar />}
@@ -62,8 +66,21 @@ function App() {
           <Route path="*" element={<Navigate to="/" />} />
 
           {/* preview  */}
-          <Route path="/preview" element={<Preview />} />
         </Route>
+        {/* Dashboard  */}
+        <Route path="/dashboard" element={<DashContainer />}>
+          <Route path="/dashboard/home" element={<Dashboard />} />
+          <Route path="/dashboard/viewblogs" element={<ViewBlogs />} />
+          <Route path="/dashboard/create-blog" element={<CreateBlog />} />
+          <Route
+            path="/dashboard/event-attendees"
+            element={<EventAttendees />}
+          />
+          <Route path="/dashboard/users" element={<Users />} />
+        </Route>
+        {/* SignIn  */}
+        <Route path="/signin" element={<Signin />} />
+
         <Route path="/enroll" element={<Enroll />} />
       </Routes>
     </div>
