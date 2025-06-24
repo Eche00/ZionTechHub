@@ -127,7 +127,6 @@ function Sidebar() {
                 : "flex items-center  text-gray-300 font-bold py-[10px] px-[12px] rounded-[10px] transition-all duration-300 hover:bg-[#1e222b38] scale-95"
             }>
             {" "}
-            {/* <FindReplaceIcon /> */}
             <span>Users</span>
           </NavLink>
         )}
