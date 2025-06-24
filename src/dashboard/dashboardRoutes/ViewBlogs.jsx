@@ -9,6 +9,8 @@ function ViewBlogs() {
   // 🧠 React State
   const [loading, setLoading] = useState(true);
   const [blogs, setBlogs] = useState([]); // All blogs from Firestore
+  const [confirm, setConfirm] = useState(false);
+  const [confirmingId, setConfirmingId] = useState(null);
 
   const navigate = useNavigate();
 
@@ -35,7 +37,10 @@ function ViewBlogs() {
 
   const handleDelete = async (id) => {
     try {
-      await deleteDoc(doc(db, "blogs", id));
+      if (confirmingId === id) {
+        await deleteDoc(doc(db, "blogs", id));
+        setConfirmingId(null);
+      }
     } catch (error) {
       console.error("Could't Delete Blog:", error);
     }
@@ -51,12 +56,12 @@ function ViewBlogs() {
             Create Blog
           </Link>
           <button className="bg-transparent text-gray-500 border-2 border-gray-700 px-4 py-2 rounded-full cursor-default">
-            Webinar / Workshop Attendees
+            Categorized / Courses
           </button>
         </div>
         {/* message  */}
         <p className="text-gray-500 ">
-          You can click the images on each blog to view specifically or delete..
+          You can click the images on each blog to view specifically & delete..
         </p>
         <section className=" flex items-center justify-between mt-[80px] py-6">
           <p className=" text-white font-bold flex items-center gap-[10px]">
@@ -65,12 +70,6 @@ function ViewBlogs() {
               {blogs.length}
             </span>
           </p>
-
-          <button
-            // onClick={clearAttendees}
-            className="bg-red-600/80 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-all duration-300">
-            Clear Blogs
-          </button>
         </section>
         {/* db  */}
         <div className="flex flex-col w-full  gap-[10px]  bg-black border-2  border-gray-700 rounded-[10px]  overflow-scroll h-[600px] relative ">
@@ -85,16 +84,18 @@ function ViewBlogs() {
           {blogs.map((blog) => (
             <div
               className="grid grid-cols-6 gap-4 items-center border-b border-gray-500   p-4 w-full  px-10 py-4  text-white   h-fit cursor-pointer bg-opacity-5"
-              key={blog?.id}
-              onClick={() => handleView(blog?.slug)}>
+              key={blog?.id}>
               <div className="text-gray-500 ">
                 <img
                   src={blog?.imageUrl}
                   alt=""
                   className="w-14 h-10 rounded-md border-2 border-gray-700 object-cover"
+                  onClick={() => handleView(blog?.slug)}
                 />
               </div>
-              <p className="text-gray-600 text-sm border-l-2 border-gray-500 pl-2 cursor-pointer hover:text-white transition-all duration-300 flex items-center gap-[10px]">
+              <p
+                className="text-gray-600 text-sm border-l-2 border-gray-500 pl-2 cursor-pointer hover:text-white transition-all duration-300 flex items-center gap-[10px]"
+                onClick={() => handleView(blog?.slug)}>
                 {blog?.title.slice(0, 10)}...
               </p>
               <p className="text-gray-500 text-sm"> {blog?.creator}</p>
@@ -109,11 +110,19 @@ function ViewBlogs() {
               </p>
               {/* buttons  */}
               <div className="flex items-center gap-[20px] justify-end">
-                <button
-                  onClick={() => handleDelete(blog?.id)}
-                  className=" bg-[#e30303] text-white font-[500] rounded-full text-[14px] w-[120px] py-[8px] flex items-center justify-center">
-                  Delete
-                </button>
+                {confirmingId === blog.id ? (
+                  <button
+                    onClick={() => handleDelete(blog?.id)}
+                    className=" bg-[#e30303] text-white font-[500] rounded-full text-[14px] w-[120px] py-[8px] flex items-center justify-center">
+                    Confirm
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => setConfirmingId(blog?.id)}
+                    className=" bg-[#e30303] text-white font-[500] rounded-full text-[14px] w-[120px] py-[8px] flex items-center justify-center">
+                    Delete
+                  </button>
+                )}
               </div>
             </div>
           ))}

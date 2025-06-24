@@ -9,13 +9,15 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import { auth, db } from "../../lib/Config/firebase";
 import Signup from "./SignUp";
-import { deleteUser, getAuth, onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 
 function Users() {
   // 🧠 React State
   const [loading, setLoading] = useState(true);
   const [createUser, setCreateUser] = useState(false);
   const [users, setUsers] = useState([]); // All users from Firestore
+  const [confirmingId, setConfirmingId] = useState(null);
+
   const navigate = useNavigate();
 
   // 📡 Fetch users from Firestore
@@ -63,7 +65,10 @@ function Users() {
 
   const handleDelete = async (id) => {
     try {
-      await deleteDoc(doc(db, "users", id));
+      if (confirmingId === id) {
+        await deleteDoc(doc(db, "users", id));
+        setConfirmingId(null);
+      }
     } catch (error) {
       console.error("Couldn't Delete user:", error);
     }
@@ -78,7 +83,7 @@ function Users() {
           Home
         </Link>
         <button className="bg-transparent text-gray-500 border-2 border-gray-700 px-4 py-2 rounded-full cursor-default">
-          Roles: Admin / SEO /
+          Roles: Admin / Team
         </button>
         {createUser && (
           <button
@@ -147,12 +152,21 @@ function Users() {
                   {(user?.id).slice(0, 10)}...
                 </p>
                 {/* buttons  */}
+
                 <div className="flex items-center gap-[20px] justify-end">
-                  <button
-                    onClick={() => handleDelete(user?.id)}
-                    className=" bg-[#e30303] text-white font-[500] rounded-full text-[14px] w-[120px] py-[8px] flex items-center justify-center">
-                    Delete
-                  </button>
+                  {confirmingId === user.id ? (
+                    <button
+                      onClick={() => handleDelete(user?.id)}
+                      className=" bg-[#e30303] text-white font-[500] rounded-full text-[14px] w-[120px] py-[8px] flex items-center justify-center">
+                      Confirm
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => setConfirmingId(user?.id)}
+                      className=" bg-[#e30303] text-white font-[500] rounded-full text-[14px] w-[120px] py-[8px] flex items-center justify-center">
+                      Delete
+                    </button>
+                  )}
                 </div>
               </div>
             ))}
