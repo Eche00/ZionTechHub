@@ -19,7 +19,6 @@ import Workshop from "./pages/Workshop";
 import Hackathon from "./pages/Hackathon";
 import Blog from "./pages/Blog";
 import EachBlog from "./pages/Blogcomponent/EachBlog";
-import CreateWebinar from "./pages/CreateWebinar";
 import DashContainer from "./dashboard/DashContainer";
 import Dashboard from "./dashboard/dashboardRoutes/Dashboard";
 import EventAttendees from "./dashboard/dashboardRoutes/EventAttendees";
@@ -27,6 +26,7 @@ import CreateBlog from "./dashboard/dashboardRoutes/CreateBlog";
 import ViewBlogs from "./dashboard/dashboardRoutes/ViewBlogs";
 import Users from "./dashboard/dashboardRoutes/Users";
 import Signin from "./dashboard/dashboardRoutes/Signin";
+import CreateWebinar from "./dashboard/dashboardRoutes/CreateWebinar";
 
 function App() {
   googleAnalyticsTracking();
@@ -76,6 +76,7 @@ function App() {
             path="/dashboard/event-attendees"
             element={<EventAttendees />}
           />
+          <Route path="/dashboard/create-webinar" element={<CreateWebinar />} />
           <Route path="/dashboard/users" element={<Users />} />
         </Route>
         {/* SignIn  */}
