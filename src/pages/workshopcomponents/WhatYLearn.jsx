@@ -35,52 +35,50 @@ function WhatYLearn({ scrollTo }) {
 
       <div className=" my-[69px] flex flex-wrap md:gap-[25px]  gap-[69px] max-w-[1265px] text-[#1A1A1A]">
         {/* why 1  */}
-        <section className="   sm:py-[40] sm:px-[40px] py-[40px] lg:px-[20px] px-[15px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px] md:w-fit w-[95%]">
+        <section className="   sm:py-[40] sm:px-[40px] py-[40px] lg:px-[20px] px-[15px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px] md:w-[500px] w-[95%]">
           <span className="w-[45px] h-[45px]  bg-white flex items-center justify-center p-[10px] rounded-[5px] border border-gray-400">
             {icon}
           </span>
-          <h3 className="  font-[600] sm:text-[28px] text-[20px] sm:h-[84px]  w-fit">
-            How to evolve from dashboard <br />
-            creator to decision enabler
+          <h3 className="  font-[600] sm:text-[28px] text-[20px] w-fit">
+            How to evolve from dashboard creator to decision enabler
           </h3>
         </section>
         {/* why 2  */}
-        <section className="sm:py-[40] sm:px-[40px] py-[40px] lg:px-[20px] px-[15px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px]  md:w-fit w-[95%]">
+        <section className="   sm:py-[40] sm:px-[40px] py-[40px] lg:px-[20px] px-[15px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px] md:w-[500px] w-[95%]">
           <span className="w-[45px] h-[45px]  bg-white flex items-center justify-center p-[10px] rounded-[5px] border border-gray-400">
             {icon}
           </span>
-          <h3 className="  font-[600] sm:text-[28px] text-[20px] h-[84px]  w-fit">
-            What Agentic Analytics is and <br /> why it's a game-changer
+          <h3 className="  font-[600] sm:text-[28px] text-[20px]  w-fit">
+            What Agentic Analytics is and why it's a game-changer
           </h3>
         </section>
         {/* why 3  */}
-        <section className=" sm:py-[40] sm:px-[40px] py-[40px] lg:px-[20px] px-[15px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px] md:w-fit w-[95%]">
+        <section className="   sm:py-[40] sm:px-[40px] py-[40px] lg:px-[20px] px-[15px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px] md:w-[500px] w-[95%]">
           <span className="w-[45px] h-[45px]  bg-white flex items-center justify-center p-[10px] rounded-[5px] border border-gray-400">
             {icon}
           </span>
-          <h3 className=" font-[600] sm:text-[28px] text-[20px] h-[84px]  w-fit">
-            How TikTok and other global brands <br /> use data to forecast, act,
-            and adapt
+          <h3 className=" font-[600] sm:text-[28px] text-[20px]  w-fit">
+            How TikTok and other global brands use data to forecast, act, and
+            adapt
           </h3>
         </section>
         {/* why 4 */}
-        <section className=" sm:py-[40] sm:px-[40px] py-[40px] lg:px-[20px] px-[15px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px] md:w-fit w-[95%]">
+        <section className="   sm:py-[40] sm:px-[40px] py-[40px] lg:px-[20px] px-[15px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px] md:w-[500px] w-[95%]">
           <span className="w-[45px] h-[45px]  bg-white flex items-center justify-center p-[10px] rounded-[5px] border border-gray-400">
             {icon}
           </span>
-          <h3 className="  font-[600] sm:text-[28px] text-[20px] h-[84px]  w-fit">
-            What tools and technologies you <br />
-            must master to stay relevant
+          <h3 className="  font-[600] sm:text-[28px] text-[20px]  w-fit">
+            What tools and technologies you must master to stay relevant
           </h3>
         </section>
         {/* why 5 */}
-        <section className=" sm:py-[40] sm:px-[40px] py-[40px] lg:px-[20px] px-[15px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px] md:w-fit w-[95%]">
+        <section className="   sm:py-[40] sm:px-[40px] py-[40px] lg:px-[20px] px-[15px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px] md:w-[500px] w-[95%]">
           <span className="w-[45px] h-[45px]  bg-white flex items-center justify-center p-[10px] rounded-[5px] border border-gray-400">
             {icon}
           </span>
-          <h3 className="  font-[600] sm:text-[28px] text-[20px] h-[84px]  w-fit">
-            How to future-proof your career in a <br /> landscape where roles
-            are merging
+          <h3 className="  font-[600] sm:text-[28px] text-[20px]  w-fit">
+            How to future-proof your career in a landscape where roles are
+            merging
           </h3>
         </section>
       </div>
