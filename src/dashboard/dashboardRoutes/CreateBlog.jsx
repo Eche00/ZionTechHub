@@ -160,15 +160,16 @@ function CreateBlog() {
   };
 
   return (
-    <div className="h-[100vh] pt-10 overflow-scroll">
+    <div className="h-fit pt-10">
       <main className="relative mb-[50px]">
         {success && (
-          <div className="fixed top-0 left-0 w-full h-full bg-black/20 backdrop-blur-sm text-white flex items-center justify-center">
-            <p className="bg-black border-3 border-2  border-gray-700 font-bold text-[20px] px-[30px] py-[10px] rounded-[10px] backdrop-blur-sm">
-              Blog Created
+          <div className="fixed top-0 w-full h-full bg-black/20 backdrop-blur-sm text-white flex items-center justify-center">
+            <p className="bg-black border-3 border-[#034FE3] font-bold text-[20px] px-[30px] py-[10px] rounded-[10px] backdrop-blur-sm">
+              Product Added!
             </p>
           </div>
         )}
+
         <div className="flex items-center gap-[20px] border-b-2 border-gray-700 py-[10px]">
           <h1 className="text-3xl font-bold text-white">Create Blog</h1>
           <Link
