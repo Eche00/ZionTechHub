@@ -107,7 +107,7 @@ function Sidebar() {
           <span>Event Attendees</span>
         </NavLink>
         <NavLink
-          to="/search"
+          to="/dashboard/create-webinar"
           className={({ isActive }) =>
             isActive
               ? "flex items-center  gap-[5px] bg-[#1e222b]  font-extrabold py-[10px] px-[12px] rounded-[10px] text-white transition-all duration-300 "
