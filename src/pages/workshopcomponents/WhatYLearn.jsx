@@ -1,8 +1,28 @@
 import { ArrowForward } from "@mui/icons-material";
+import { doc, onSnapshot } from "firebase/firestore";
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { db } from "../../lib/Config/firebase";
 
 function WhatYLearn({ scrollTo }) {
+  const [workshop, setWorkShop] = useState(null);
+
+  // FETCH WORKSHOP DETAILS
+  useEffect(() => {
+    const docRef = doc(db, "workshopinfo", "main");
+
+    const unsubscribe = onSnapshot(docRef, (docSnap) => {
+      if (docSnap.exists()) {
+        setWorkShop(docSnap.data());
+      } else {
+        setWorkShop(null); // Or handle document not existing
+      }
+    });
+
+    // Cleanup listener on unmount
+    return () => unsubscribe();
+  }, []);
+
   const icon = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -33,78 +53,23 @@ function WhatYLearn({ scrollTo }) {
         </p>
       </div>
 
+      {/* what you will learn list  */}
       <div className=" my-[69px] flex flex-wrap md:gap-[25px]  gap-[69px] max-w-[1265px] text-[#1A1A1A]">
-        {/* why 1  */}
-        <section className="   sm:py-[40] sm:px-[40px] py-[40px] lg:px-[20px] px-[15px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px] md:w-[500px] w-[95%]">
-          <span className="w-[45px] h-[45px]  bg-white flex items-center justify-center p-[10px] rounded-[5px] border border-gray-400">
-            {icon}
-          </span>
-          <h3 className="  font-[600] sm:text-[28px] text-[20px] w-fit">
-            How to evolve from dashboard creator to decision enabler
-          </h3>
-        </section>
-        {/* why 2  */}
-        <section className="   sm:py-[40] sm:px-[40px] py-[40px] lg:px-[20px] px-[15px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px] md:w-[500px] w-[95%]">
-          <span className="w-[45px] h-[45px]  bg-white flex items-center justify-center p-[10px] rounded-[5px] border border-gray-400">
-            {icon}
-          </span>
-          <h3 className="  font-[600] sm:text-[28px] text-[20px]  w-fit">
-            What Agentic Analytics is and why it's a game-changer
-          </h3>
-        </section>
-        {/* why 3  */}
-        <section className="   sm:py-[40] sm:px-[40px] py-[40px] lg:px-[20px] px-[15px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px] md:w-[500px] w-[95%]">
-          <span className="w-[45px] h-[45px]  bg-white flex items-center justify-center p-[10px] rounded-[5px] border border-gray-400">
-            {icon}
-          </span>
-          <h3 className=" font-[600] sm:text-[28px] text-[20px]  w-fit">
-            How TikTok and other global brands use data to forecast, act, and
-            adapt
-          </h3>
-        </section>
-        {/* why 4 */}
-        <section className="   sm:py-[40] sm:px-[40px] py-[40px] lg:px-[20px] px-[15px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px] md:w-[500px] w-[95%]">
-          <span className="w-[45px] h-[45px]  bg-white flex items-center justify-center p-[10px] rounded-[5px] border border-gray-400">
-            {icon}
-          </span>
-          <h3 className="  font-[600] sm:text-[28px] text-[20px]  w-fit">
-            What tools and technologies you must master to stay relevant
-          </h3>
-        </section>
-        {/* why 5 */}
-        <section className="   sm:py-[40] sm:px-[40px] py-[40px] lg:px-[20px] px-[15px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px] md:w-[500px] w-[95%]">
-          <span className="w-[45px] h-[45px]  bg-white flex items-center justify-center p-[10px] rounded-[5px] border border-gray-400">
-            {icon}
-          </span>
-          <h3 className="  font-[600] sm:text-[28px] text-[20px]  w-fit">
-            How to future-proof your career in a landscape where roles are
-            merging
-          </h3>
-        </section>
+        {Array.isArray(workshop?.aim) &&
+          workshop.aim.map((aim, index) => (
+            <section
+              className="   sm:py-[40] sm:px-[40px] py-[40px] lg:px-[20px] px-[15px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px] md:w-[500px] w-[95%]"
+              key={index}>
+              <span className="w-[45px] h-[45px]  bg-white flex items-center justify-center p-[10px] rounded-[5px] border border-gray-400">
+                {icon}
+              </span>
+              <h3 className="  font-[600] sm:text-[28px] text-[20px] w-fit">
+                {aim}
+              </h3>
+            </section>
+          ))}
       </div>
-      {/* <h2 className=" font-[600] sm:text-[30px] text-[24px] text-[#333] ">
-        Day 2 – Data Activation & Insight Delivery
-      </h2>
-      <div className=" my-[69px] flex flex-wrap md:gap-[25px]  gap-[69px] max-w-[1265px] text-[#1A1A1A]">
-       why 5  
-        <section className=" sm:py-[40] sm:px-[40px] py-[40px] lg:px-[20px] px-[15px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px]  md:w-fit w-[95%]">
-          <span className="w-[45px] h-[45px]  bg-white flex items-center justify-center p-[10px] rounded-[5px] border border-gray-400">
-            {icon}
-          </span>
-          <h3 className="  font-[600] sm:text-[28px] text-[20px] h-[84px]  w-fit">
-            Ensuring Data Quality
-          </h3>
-        </section>
-       why 6  
-        <section className=" sm:py-[40] sm:px-[40px] py-[40px] lg:px-[20px] px-[15px] rounded-[10px] bg-[#EBECED] flex flex-col gap-[12px]  md:w-fit w-[95%]">
-          <span className="w-[45px] h-[45px]  bg-white flex items-center justify-center p-[10px] rounded-[5px] border border-gray-400">
-            {icon}
-          </span>
-          <h3 className="  font-[600] sm:text-[28px] text-[20px] h-[84px]  w-fit">
-            Dashboarding <br /> for Business Insight
-          </h3>
-        </section>
-      </div> */}
+
       <motion.button
         onClick={scrollTo}
         whileInView={{
