@@ -7,6 +7,7 @@ import "react-quill/dist/quill.snow.css";
 import { db, storageF } from "../../lib/Config/firebase";
 
 function CreateWebinar() {
+  // Hooks and refs
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     link: "Webinar link",
@@ -21,7 +22,6 @@ function CreateWebinar() {
     event: "25th of March 10:30 AM PDT (5:30 pm GMT+1)",
     aim: [],
   });
-
   const [files, setFiles] = useState([]);
   const imageRef = useRef();
   const [error, setError] = useState(false);
@@ -31,6 +31,7 @@ function CreateWebinar() {
   const [success, setSuccess] = useState(false);
   const [typee, setType] = useState(false);
 
+  // Handle image upload and preview
   const handleImageChange = (e) => {
     setImgError(false);
     const selectedFile = e.target.files[0];
@@ -67,6 +68,7 @@ function CreateWebinar() {
     }
   };
 
+  // Handle input field changes
   const handleChange = (e) => {
     setError(false);
     setSuccess(false);
@@ -76,7 +78,8 @@ function CreateWebinar() {
     });
   };
 
-  const [currentAim, setCurrentAim] = useState(""); // new state for textarea input
+  // Handle pushing text to "aim" array
+  const [currentAim, setCurrentAim] = useState(""); // Aim to push to array state
 
   const handlePush = (e) => {
     e.preventDefault();
@@ -86,7 +89,7 @@ function CreateWebinar() {
           ...prevFormData,
           aim: [...prevFormData.aim, currentAim],
         }));
-        setCurrentAim(""); // clear textarea
+        setCurrentAim(""); // Clear textarea
       }
     } catch (error) {
       console.error(error);
@@ -95,6 +98,7 @@ function CreateWebinar() {
     }
   };
 
+  // Handle rich text input change
   const handleQuillChange = (value) => {
     setFormData({
       ...formData,
@@ -102,6 +106,7 @@ function CreateWebinar() {
     });
   };
 
+  // Submit form data to Firestore
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -109,6 +114,7 @@ function CreateWebinar() {
     setImgError(false);
     setSuccess(false);
 
+    // Validate image upload
     if (
       !formData.image ||
       formData.image.length === 0 ||
@@ -123,6 +129,10 @@ function CreateWebinar() {
       const docRef = doc(db, "workshopinfo", "main");
 
       await setDoc(docRef, {
+        title: formData.title,
+        type: formData.type,
+        subtitle: formData.subtitle,
+        aim: formData.aim,
         link: formData.link,
         hackathonlink: formData.hackathonlink,
         speaker: formData.speaker,
@@ -133,8 +143,12 @@ function CreateWebinar() {
         updatedAt: serverTimestamp(),
       });
 
+      // Reset form after success
       setFormData({
         title: "",
+        subtitle: "",
+        type: "",
+        aim: [],
         link: "",
         hackathonlink: "",
         speaker: "",
@@ -147,8 +161,13 @@ function CreateWebinar() {
       setSuccess(true);
       setProgress(0);
       setLoading(false);
-      setTimeout(() => setSuccess(false), 2000);
-      // navigate("/blog");
+
+      // Clear success state after 2s
+      setTimeout(() => {
+        setSuccess(false);
+        navigate("/dashboard/home");
+      }, 2000);
+      // navigate("/blog"); // Uncomment if redirection is needed
     } catch (e) {
       console.error("Error adding document: ", e);
       setError(true);
@@ -157,16 +176,16 @@ function CreateWebinar() {
     }
   };
 
-  // categories
+  // Available types
   const type = [{ name: "Webinar" }, { name: "Workshop" }];
 
   return (
     <div className="h-fit pt-10">
       <main className="relative mb-[50px]">
         {success && (
-          <div className="fixed top-0 w-full h-full bg-black/20 backdrop-blur-sm text-white flex items-center justify-center">
+          <div className="fixed left-0 top-0 w-full h-full bg-black/20 backdrop-blur-sm text-white flex items-center justify-center">
             <p className="bg-black border-3 border-[#034FE3] font-bold text-[20px] px-[30px] py-[10px] rounded-[10px] backdrop-blur-sm">
-              Product Added!
+              {formData.type} Added!
             </p>
           </div>
         )}

@@ -6,15 +6,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { db } from "../../lib/Config/firebase";
 
 function ViewBlogs() {
-  // 🧠 React State
+  //  React State
   const [loading, setLoading] = useState(true);
-  const [blogs, setBlogs] = useState([]); // All blogs from Firestore
-  const [confirm, setConfirm] = useState(false);
+  const [blogs, setBlogs] = useState([]);
   const [confirmingId, setConfirmingId] = useState(null);
 
   const navigate = useNavigate();
 
-  // 📡 Fetch Blogs from Firestore
+  // Fetch Blogs from Firestore
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, "blogs"), (snapshot) => {
       const blogData = snapshot.docs.map((doc) => ({
@@ -30,11 +29,12 @@ function ViewBlogs() {
 
     return () => unsubscribe();
   }, []);
-  // 🔍 Navigate to Blog Detail Page
+  //  Navigate to Blog Detail Page
   const handleView = (slug) => {
     navigate(`/blog/${slug}`);
   };
 
+  // handling delete blog
   const handleDelete = async (id) => {
     try {
       if (confirmingId === id) {

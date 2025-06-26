@@ -8,7 +8,10 @@ import "react-quill/dist/quill.snow.css";
 import { db, storageF } from "../../lib/Config/firebase";
 
 function CreateBlog() {
+  // React and Firebase hooks
   const navigate = useNavigate();
+
+  // Form data state
   const [formData, setFormData] = useState({
     title: "",
     creator: "Ndoma Godsent",
@@ -21,20 +24,26 @@ function CreateBlog() {
     toc: [],
     createdAt: "",
   });
+
+  // Image file handling
   const [files, setFiles] = useState([]);
   const imageRef = useRef();
 
+  // Status and error handling
   const [error, setError] = useState(false);
   const [imgError, setImgError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [success, setSucesss] = useState(false);
 
+  // Optional: store TOC separately if needed
   const [toc, setToc] = useState([]);
 
+  // Handle image upload to Firebase Storage
   const handleImageChange = (e) => {
     setImgError(false);
     const selectedFile = e.target.files[0];
+
     if (selectedFile) {
       const storageRef = ref(storageF, `images/${selectedFile.name}`);
       const previewUrl = URL.createObjectURL(selectedFile);
@@ -69,6 +78,7 @@ function CreateBlog() {
     }
   };
 
+  // Handle input field changes
   const handleChange = (e) => {
     setError(false);
     setSucesss(false);
@@ -78,6 +88,7 @@ function CreateBlog() {
     });
   };
 
+  // Handle content editor changes and generate table of contents
   const handleEditorChange = (value) => {
     const tocHeaders = [];
     const doc = new DOMParser().parseFromString(value, "text/html");
@@ -93,12 +104,13 @@ function CreateBlog() {
     setFormData((prev) => ({
       ...prev,
       details: value,
-      toc: tocHeaders, //  store TOC inside formData
+      toc: tocHeaders, // store TOC inside formData
     }));
 
-    setToc(tocHeaders); // (optional) if you still want it in a separate state
+    setToc(tocHeaders); // optional: update separate TOC state
   };
 
+  // Submit blog data to Firestore
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -106,6 +118,7 @@ function CreateBlog() {
     setImgError(false);
     setSucesss(false);
 
+    // Validate image upload
     if (
       !formData.image ||
       formData.image.length === 0 ||
@@ -118,6 +131,7 @@ function CreateBlog() {
     }
 
     try {
+      // Add blog document to Firestore
       const docRef = await addDoc(collection(db, "blogs"), {
         title: formData.title,
         slug: formData.slug,
@@ -132,6 +146,8 @@ function CreateBlog() {
       });
 
       console.log("Document written with ID: ", docRef.id);
+
+      // Reset form data and state
       setFormData({
         title: "",
         slug: "",
@@ -147,6 +163,8 @@ function CreateBlog() {
       setLoading(false);
       setError(false);
       setSucesss(true);
+
+      // Redirect after success
       setTimeout(() => {
         setSucesss(false);
         setProgress(null);
@@ -163,7 +181,7 @@ function CreateBlog() {
     <div className="h-fit pt-10">
       <main className="relative mb-[50px]">
         {success && (
-          <div className="fixed top-0 w-full h-full bg-black/20 backdrop-blur-sm text-white flex items-center justify-center">
+          <div className="fixed left-0 top-0 w-full h-full bg-black/20 backdrop-blur-sm text-white flex items-center justify-center">
             <p className="bg-black border-3 border-[#034FE3] font-bold text-[20px] px-[30px] py-[10px] rounded-[10px] backdrop-blur-sm">
               Product Added!
             </p>
@@ -188,7 +206,7 @@ function CreateBlog() {
         </p>
 
         <form
-          className="md:w-[70%] sm:w-[60%] w-[90%] mx-auto overflow-scroll h-fit pb-[100px] mt-10"
+          className="md:w-[70%] sm:w-[60%] w-[90%] mx-auto overflow-scroll h-[100vh] pb-[400px] mt-10 "
           onSubmit={handleSubmit}>
           <div className="flex items-center my-5 gap-[10px]">
             <label

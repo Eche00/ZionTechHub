@@ -20,7 +20,7 @@ function Users() {
 
   const navigate = useNavigate();
 
-  // 📡 Fetch users from Firestore
+  //  Fetch users from Firestore
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, "users"), (snapshot) => {
       const userData = snapshot.docs.map((doc) => ({
@@ -63,6 +63,7 @@ function Users() {
     return () => unsubscribe();
   }, []);
 
+  // handling user delete
   const handleDelete = async (id) => {
     try {
       if (confirmingId === id) {

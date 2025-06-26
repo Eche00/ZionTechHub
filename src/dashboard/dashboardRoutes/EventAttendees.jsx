@@ -12,10 +12,12 @@ import { db } from "../../lib/Config/firebase";
 // import { db } from "../lib/Config/firebase";
 
 function EventAttendees() {
+  // React states
   const [attendees, setAttendees] = useState([]);
   const [copied, setCopied] = useState(null);
   const pdfRef = useRef();
 
+  // Getting attendee lists
   useEffect(() => {
     const unsubscribe = onSnapshot(
       collection(db, "workshopattendees"),
@@ -31,6 +33,7 @@ function EventAttendees() {
     return () => unsubscribe();
   }, []);
 
+  // Downloading as pdf
   const downloadPDF = () => {
     const input = pdfRef.current;
 
@@ -60,6 +63,7 @@ function EventAttendees() {
     });
   };
 
+  // copy email
   const handleCopy = (id, email) => {
     navigator.clipboard
       .writeText(email)
@@ -74,7 +78,7 @@ function EventAttendees() {
       });
   };
 
-  // clear Attendees
+  // Delete/clear Attendees
   const clearAttendees = async () => {
     try {
       const querySnapshot = await getDocs(collection(db, "workshopattendees"));

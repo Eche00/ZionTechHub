@@ -32,17 +32,17 @@ function App() {
   googleAnalyticsTracking();
   return (
     <div className=" overflow-hidden">
+      {/* scroll to top on reroute  */}
       <Scrolltotop />
-
+      {/* General route  */}
       <Routes>
+        {/* Client routes   */}
         <Route path="/" element={<Head />}>
           <Route path="/" element={<FullHome />} />
-
           <Route path="/about-us" element={<About />} />
           <Route path="/data-consultation" element={<Consultation />} />
           <Route path="/contact-us" element={<Contact />} />
           <Route path="/partner-with-us" element={<PartnerWithUs />} />
-
           <Route path="/data-analystics-training" element={<DataAnalysis />} />
           <Route path="/data-science-course" element={<DataScience />} />
           <Route
@@ -64,10 +64,9 @@ function App() {
             element={<CreateWebinar />}
           />
           <Route path="*" element={<Navigate to="/" />} />
-
-          {/* preview  */}
         </Route>
-        {/* Dashboard  */}
+
+        {/* Dashboard Routes  */}
         <Route path="/dashboard" element={<DashContainer />}>
           <Route path="/dashboard/home" element={<Dashboard />} />
           <Route path="/dashboard/viewblogs" element={<ViewBlogs />} />
@@ -79,9 +78,9 @@ function App() {
           <Route path="/dashboard/create-webinar" element={<CreateWebinar />} />
           <Route path="/dashboard/users" element={<Users />} />
         </Route>
-        {/* SignIn  */}
-        <Route path="/signin" element={<Signin />} />
 
+        {/* Personal route(no header/footer)  */}
+        <Route path="/signin" element={<Signin />} />
         <Route path="/enroll" element={<Enroll />} />
       </Routes>
     </div>

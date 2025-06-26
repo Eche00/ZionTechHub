@@ -9,8 +9,8 @@ import { doc, getDoc } from "firebase/firestore";
 function Sidebar() {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [isAdmin, setisAdmin] = useState(true);
 
+  // getting currentuser for admin access
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser) {

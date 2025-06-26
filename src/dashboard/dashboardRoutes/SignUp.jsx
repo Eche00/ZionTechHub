@@ -33,7 +33,6 @@ function Signup({ setCreateUser }) {
   };
 
   // handle submit
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
