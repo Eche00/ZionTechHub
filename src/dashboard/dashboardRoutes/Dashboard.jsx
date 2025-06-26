@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Chart from "../dashboardcomponents/Chart";
+import Links from "../dashboardcomponents/Links";
 
 function Dashboard() {
   return (
@@ -25,7 +26,10 @@ function Dashboard() {
         {/* bottom section  */}
         <section className=" flex w-full  gap-10">
           <div className="flex flex-1  gap-2  border-4 border-gray-700  w-full px-3 py-4 rounded-[10px]  "></div>
-          <div className="flex flex-1  gap-2  border-4 border-gray-700  w-full px-3 py-4 rounded-[10px]  "></div>
+          {/* link  */}
+          <div className="flex w-[40%] gap-2  border-4 border-gray-700  px-3 py-4 rounded-[10px]  ">
+            <Links />
+          </div>
         </section>
       </main>
     </div>
