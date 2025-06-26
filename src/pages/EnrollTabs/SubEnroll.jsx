@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Warning } from "@mui/icons-material";
 import { techhublogo } from "../../assets";
 import "../Enroll.css";
+import { db } from "../../lib/Config/firebase";
+import { doc, onSnapshot } from "firebase/firestore";
 
 function SubEnroll() {
   const [course, setCourse] = useState(false);
@@ -38,6 +40,26 @@ function SubEnroll() {
     alert("Registration for Cohort 7.0 has ended.");
     console.log(formData);
   };
+
+  //  React State
+  const [link, setLink] = useState(null);
+
+  // FETCH WORKSHOP DETAILS
+  useEffect(() => {
+    const docRef = doc(db, "enroll", "main");
+
+    const unsubscribe = onSnapshot(docRef, (docSnap) => {
+      if (docSnap.exists()) {
+        setLink(docSnap.data());
+      } else {
+        setLink(null); // Or handle document not existing
+      }
+    });
+
+    // Cleanup listener on unmount
+    return () => unsubscribe();
+  }, []);
+
   return (
     <div className="">
       <div className=" ">
@@ -53,12 +75,13 @@ function SubEnroll() {
             <section className=" flex flex-col items-center justify-center text-center text-[#1A1A1ACC] md:gap-[12px] gap-[8px]">
               <h1 className=" md:text-[32px] text-[24px] font-[600]">
                 {/* Send us a message */}
-                Cohort 8.0
+                {link?.title}
               </h1>
               <p className=" md:text-[16px] text-[12px] font-[300] ">
                 {/* Hey 👋 Send us a message on Whatsapp to process  your
                 enrollment. See you at the top! */}
-                Hey 👋 Click the button below to register for Cohort 8.0 <br />
+                Hey 👋 Click the button below to register for {link?.title}{" "}
+                <br />
                 We can’t wait to see you at the top!
               </p>
             </section>
@@ -183,7 +206,7 @@ function SubEnroll() {
                     </p>
                   )} */}
                   <a
-                    href="https://forms.office.com/r/6P5Lu5b9ud"
+                    href={link?.enrollLink}
                     target="_blank"
                     className="py-[18px] px-[16px] rounded-[10px] text-white bg-[#207C3F] mt-[14px] cursor-pointer text-center">
                     Register here
