@@ -111,7 +111,7 @@ function Chart() {
   return (
     <div className="flex xxl:flex-row flex-col w-full gap-14 items-center justify-evenly ">
       {/* Attendee Doughnut */}
-      <div className="max-w-fit w-full flex sm:flex-row  flex-col">
+      <div className="max-w-fit w-full flex flex-1 sm:flex-row  flex-col">
         {/* attendee  graph  */}
         <div className="max-w-lg w-full  flex-1  flex items-center justify-center">
           {" "}
@@ -141,8 +141,9 @@ function Chart() {
       <div className=" xxl:w-[2px] w-full xxl:h-full h-[2px] bg-gray-500"></div>
       {/* Blogs Doughnut */}
       <div className="max-w-sm w-full flex flex-1 sm:flex-row flex-col sm:items-start items-center justify-center ">
-        <Doughnut data={blogChartData} options={blogOptions} />
-
+        <div className="max-w-lg w-full  flex-1  flex items-center justify-center">
+          <Doughnut data={blogChartData} options={blogOptions} />
+        </div>
         {/* blogs count  */}
         <div className="flex sm:flex-col flex-row sm:items-start items-center gap-[10px] sm:mt-0 mt-3">
           <p className=" text-white font-bold flex items-center gap-[10px]">
