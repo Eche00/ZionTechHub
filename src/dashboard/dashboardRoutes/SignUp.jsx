@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { serverTimestamp } from "firebase/firestore";
 import { handleRegistration } from "../../lib/regLogic";
+import { EmailOutlined, Lock, LockOpen } from "@mui/icons-material";
 
 function Signup({ setCreateUser }) {
   const [formData, setFormData] = useState({
@@ -12,7 +13,7 @@ function Signup({ setCreateUser }) {
   });
   const [loading, setLoading] = useState(false);
   // password visibility
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
   // error states
   const [error, setError] = useState("");
   const [usernameError, setUsernameError] = useState(false);
@@ -97,7 +98,7 @@ function Signup({ setCreateUser }) {
               <p className=" text-gray-500">Email:</p>
               <div className="flex items-center gap-2 bg-black border-1 border-gray-700  w-full px-3 py-4 rounded-[10px]  text-white">
                 <span className=" text-gray-500  border-r border-gray-500 pr-2">
-                  @
+                  <EmailOutlined fontSize="" />
                 </span>
                 <input
                   className="  outline-none text-white  flex-1 placeholder:text-gray-500 bg-transparent border-transparent"
@@ -118,7 +119,7 @@ function Signup({ setCreateUser }) {
                 <span
                   className=" text-gray-500  border-r border-gray-500 pr-2 cursor-pointer"
                   onClick={() => setVisible(!visible)}>
-                  {visible ? `<\\>` : "</>"}
+                  {visible ? <Lock fontSize="" /> : <LockOpen fontSize="" />}
                 </span>
                 <input
                   className="  outline-none text-white  flex-1 placeholder:text-gray-500 bg-transparent border-transparent"
@@ -165,7 +166,7 @@ function Signup({ setCreateUser }) {
                     <span className="sr-only">Loading...</span>
                   </div>
                 ) : (
-                  "Sign Up"
+                  "Create User"
                 )}
               </button>
             </div>

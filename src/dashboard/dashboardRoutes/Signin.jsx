@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
-
+import { EmailOutlined, Lock, LockOpen } from "@mui/icons-material";
 import { auth } from "../../lib/Config/firebase";
 import { techhublogo } from "../../assets";
 
@@ -110,7 +110,7 @@ function Signin() {
               <p className=" text-gray-500">Email:</p>
               <div className="flex items-center gap-2 bg-black border-2 border-gray-700  w-full px-3 py-4 rounded-[10px] text-white">
                 <span className=" text-gray-500 border-r border-gray-500 pr-2">
-                  @
+                  <EmailOutlined />
                 </span>
                 <input
                   className="  outline-none text-white flex-1 bg-transparent placeholder:text-gray-500 border-black "
@@ -130,7 +130,7 @@ function Signin() {
                 <span
                   className=" text-gray-500 border-r border-gray-500 pr-2 cursor-pointer"
                   onClick={() => setVisible(!visible)}>
-                  {visible ? "<\\>" : "</>"}
+                  {visible ? <Lock fontSize="" /> : <LockOpen fontSize="" />}
                 </span>
                 <input
                   className="  outline-none text-white flex-1 bg-transparent placeholder:text-gray-500 border-black "
