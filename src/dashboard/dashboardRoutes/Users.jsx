@@ -75,7 +75,7 @@ function Users() {
     }
   };
   return (
-    <div className="  py-10 px-4">
+    <div className="  py-10 px-4 h-[100vh] overflow-scroll">
       <div className="flex items-center gap-[20px] border-b-2 border-gray-700 py-[10px]">
         <h1 className="text-3xl font-bold text-white">Users</h1>
         <Link
@@ -95,10 +95,11 @@ function Users() {
         )}
       </div>
       {/* message  */}
-      <p className="text-gray-500 ">
-        Page only accessible to Admin, admin can delete / create user..
-      </p>
-
+      <ul className="text-gray-500  list-disc pl-5 pt-2">
+        <li> Page only accessible to Admin.</li>
+        <li>Only Admin can delete / create user. </li>
+        <li>You can click the delete and confirm to delete blogs. </li>
+      </ul>
       {/* auth / user db  */}
       {createUser ? (
         <div>
