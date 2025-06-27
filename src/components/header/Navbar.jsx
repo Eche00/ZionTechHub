@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { logo } from "../../assets";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { KeyboardArrowRight } from "@mui/icons-material";
+import { doc, onSnapshot } from "firebase/firestore";
+import { db } from "../../lib/Config/firebase";
 
 function Navbar() {
   const [course, setCourse] = useState(false);
@@ -25,6 +27,26 @@ function Navbar() {
       />
     </svg>
   );
+
+  const [workshop, setWorkShop] = useState(null);
+
+  // FETCH WORKSHOP DETAILS
+  useEffect(() => {
+    const docRef = doc(db, "workshopinfo", "main");
+
+    const unsubscribe = onSnapshot(docRef, (docSnap) => {
+      if (docSnap.exists()) {
+        setWorkShop(docSnap.data());
+        console.log(docSnap.data());
+      } else {
+        setWorkShop(null); // Or handle document not existing
+      }
+    });
+
+    // Cleanup listener on unmount
+    return () => unsubscribe();
+  }, []);
+
   const handleOpen = (e) => {
     if (e.target.id === "course") {
       setCourse(!course);
@@ -131,9 +153,9 @@ function Navbar() {
                   </Link>
 
                   <Link
-                    to="/zion-tech-hub-webinar"
+                    to={`/zion-tech-hub-${workshop?.type}`}
                     className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px] ">
-                    Webinar
+                    {workshop?.type === "Webinar" ? "Webinar" : "Workshop"}
                   </Link>
                   <Link
                     to="/zion-tech-hub-hackathon"
@@ -274,9 +296,12 @@ function Navbar() {
                               Partner with us <KeyboardArrowRight />
                             </Link>
                             <Link
-                              to="/zion-tech-hub-webinar"
+                              to={`/zion-tech-hub-${workshop?.type}`}
                               className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">
-                              Webinar
+                              {workshop?.type === "Webinar"
+                                ? "Webinar"
+                                : "Workshop"}
+
                               <KeyboardArrowRight />
                             </Link>
                             <Link

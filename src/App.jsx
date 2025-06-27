@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Head from "./components/Head";
 import Home from "./pages/Home";
@@ -27,9 +27,28 @@ import ViewBlogs from "./dashboard/dashboardRoutes/ViewBlogs";
 import Users from "./dashboard/dashboardRoutes/Users";
 import Signin from "./dashboard/dashboardRoutes/Signin";
 import CreateWebinar from "./dashboard/dashboardRoutes/CreateWebinar";
+import { doc, onSnapshot } from "firebase/firestore";
+import { db } from "./lib/Config/firebase";
 
 function App() {
   googleAnalyticsTracking();
+  const [workshop, setWorkShop] = useState(null);
+
+  // FETCH WORKSHOP DETAILS
+  useEffect(() => {
+    const docRef = doc(db, "workshopinfo", "main");
+
+    const unsubscribe = onSnapshot(docRef, (docSnap) => {
+      if (docSnap.exists()) {
+        setWorkShop(docSnap.data());
+      } else {
+        setWorkShop(null); // Or handle document not existing
+      }
+    });
+
+    // Cleanup listener on unmount
+    return () => unsubscribe();
+  }, []);
   return (
     <div className=" overflow-hidden">
       {/* scroll to top on reroute  */}
@@ -54,15 +73,14 @@ function App() {
             path="/machine-learning-course"
             element={<MachineLearning />}
           />
-          <Route path="/zion-tech-hub-webinar" element={<Workshop />} />
+          <Route
+            path={`/zion-tech-hub-${workshop?.type}`}
+            element={<Workshop />}
+          />
           <Route path="/zion-tech-hub-hackathon" element={<Hackathon />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<EachBlog />} />
-          {/* create  */}
-          <Route
-            path="/eche-acces-create-webinar"
-            element={<CreateWebinar />}
-          />
+
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
 
