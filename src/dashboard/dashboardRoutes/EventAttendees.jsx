@@ -94,7 +94,7 @@ function EventAttendees() {
     }
   };
   return (
-    <div className="  py-10 px-4">
+    <div className="  py-10 px-4 h-[100vh] overflow-scroll">
       <div className="flex items-center gap-[20px] border-b-2 border-gray-700 py-[10px]">
         <h1 className="text-3xl font-bold text-white">Event Attendees</h1>
         <button
@@ -107,9 +107,14 @@ function EventAttendees() {
         </button>
       </div>
       {/* message  */}
-      <p className="text-gray-500 ">
-        You can click the email to copy or click send to send direct emails..
-      </p>
+      <ul className="text-gray-500  list-disc pl-5 pt-2">
+        <li>You can click the email to copy to clipboard.</li>
+
+        <li>
+          Click 'send' to send direct emails with the email currently on your
+          mailbox{" "}
+        </li>
+      </ul>
       <section className=" flex items-center justify-between mt-[80px] py-6">
         <p className=" text-white font-bold flex items-center gap-[10px]">
           Attendes:{" "}

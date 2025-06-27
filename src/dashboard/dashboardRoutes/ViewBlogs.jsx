@@ -46,7 +46,7 @@ function ViewBlogs() {
     }
   };
   return (
-    <div className="  py-10 px-4">
+    <div className="  py-10 px-4 h-[100vh] overflow-scroll">
       <div className="  w-full">
         <div className="flex items-center gap-[20px] border-b-2 border-gray-700 py-[10px]">
           <h1 className="text-3xl font-bold text-white">Blogs</h1>
@@ -60,9 +60,10 @@ function ViewBlogs() {
           </button>
         </div>
         {/* message  */}
-        <p className="text-gray-500 ">
-          You can click the images on each blog to view specifically & delete..
-        </p>
+        <ul className="text-gray-500  list-disc pl-5 pt-2">
+          <li>You can click the images on each blog to view specifically. </li>
+          <li>You can click the delete and confirm to delete blogs. </li>
+        </ul>
         <section className=" flex items-center justify-between mt-[80px] py-6">
           <p className=" text-white font-bold flex items-center gap-[10px]">
             Blogs:{" "}
