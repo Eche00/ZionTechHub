@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { db, storageF } from "../../lib/Config/firebase";
+import { Check } from "@mui/icons-material";
 
 function CreateWebinar() {
   // Hooks and refs
@@ -14,7 +15,7 @@ function CreateWebinar() {
     title: "Title",
     hackathonlink: "hackathonlink link",
     speaker: "Eche_Codes",
-    category: "Pricing Data Scientist",
+    category: "Software Developer",
     type: "Select Type",
     details: "Speaker info",
     subtitle: "",
@@ -184,8 +185,11 @@ function CreateWebinar() {
       <main className="relative mb-[50px]">
         {success && (
           <div className="fixed left-0 top-0 w-full h-full bg-black/20 backdrop-blur-sm text-white flex items-center justify-center">
-            <p className="bg-black border-3 border-[#034FE3] font-bold text-[20px] px-[30px] py-[10px] rounded-[10px] backdrop-blur-sm">
-              {formData.type} Added!
+            <p className="bg-[#034FE3] border-3 border-[#034FE3] font-bold text-[20px] px-[70px] py-[20px] rounded-[10px] backdrop-blur-sm flex flex-col items-center justify-center gap-[15px] ">
+              <span className=" border-2 border-white px-4 py-2 rounded-full">
+                <Check />
+              </span>
+              {formData?.type} Updated!{" "}
             </p>
           </div>
         )}
@@ -201,10 +205,14 @@ function CreateWebinar() {
           </button>
         </div>
         {/* message  */}
-        <p className="text-gray-500 ">
-          H2's are the table of contents and would appear when selected.. <br />
-          Do Not Use H1 inthe details input.
-        </p>
+        <ul className="text-gray-500  list-disc pl-5 pt-2">
+          <li>Make sure to upload an image(Speaker Image).</li>
+          <li>
+            Type the aim(What you will learn).. and click 'Add' to add to your
+            list.
+          </li>
+          <li>Apply date as shown. </li>
+        </ul>
         <form
           className="md:w-[70%] sm:w-[60%] w-[90%] mx-auto overflow-scroll h-[100vh] pb-[400px] mt-10 "
           onSubmit={handleSubmit}>
