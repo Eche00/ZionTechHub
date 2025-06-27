@@ -3,7 +3,7 @@ import { serverTimestamp, setDoc, doc } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
 import "react-quill/dist/quill.snow.css";
 import { db } from "../../lib/Config/firebase";
-
+import { Check } from "@mui/icons-material";
 function Links() {
   // Hooks and refs
   const navigate = useNavigate();
@@ -67,8 +67,11 @@ function Links() {
       <main className="relative">
         {success && (
           <div className="fixed left-0 top-0 w-full h-full bg-black/20 backdrop-blur-sm text-white flex items-center justify-center">
-            <p className="bg-black border-3 border-[#034FE3] font-bold text-[20px] px-[30px] py-[10px] rounded-[10px] backdrop-blur-sm">
-              {formData.type} Added!
+            <p className="bg-[#034FE3] border-3 border-[#034FE3] font-bold text-[20px] px-[70px] py-[20px] rounded-[10px] backdrop-blur-sm flex flex-col items-center justify-center gap-[15px] ">
+              <span className=" border-2 border-white px-4 py-2 rounded-full">
+                <Check />
+              </span>
+              {formData?.title} Updated!{" "}
             </p>
           </div>
         )}
@@ -79,9 +82,6 @@ function Links() {
             className="bg-transparent text-gray-500 border-2 border-gray-700 px-4 py-2 rounded-full hover:scale-[102%] transition">
             Enroll
           </Link>
-          <button className="bg-transparent text-gray-500 border-2 border-gray-700 px-4 py-2 rounded-full cursor-default">
-            Update Enroll Link
-          </button>
         </div>
         {/* Title / Enroll link schedule  */}
         <form className=" w-full flex flex-col gap-4 " onSubmit={handleSubmit}>
