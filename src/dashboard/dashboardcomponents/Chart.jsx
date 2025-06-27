@@ -138,7 +138,7 @@ function Chart() {
           </Link>
         </div>
       </div>
-      <div className=" xxl:w-[2px] w-full xxl:h-full h-[2px] bg-gray-500"></div>
+      <div className=" xxl:w-1 w-full xxl:h-full h-[2px] bg-gray-500 rounded-full"></div>
       {/* Blogs Doughnut */}
       <div className="max-w-sm w-full flex flex-1 sm:flex-row flex-col sm:items-start items-center justify-center ">
         <div className="max-w-lg w-full  flex-1  flex items-center justify-center">
