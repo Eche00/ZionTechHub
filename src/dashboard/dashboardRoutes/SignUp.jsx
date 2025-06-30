@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { serverTimestamp } from "firebase/firestore";
 import { handleRegistration } from "../../lib/regLogic";
 import { EmailOutlined, Lock, LockOpen } from "@mui/icons-material";
+import { auth } from "../../lib/Config/firebase";
 
 function Signup({ setCreateUser }) {
   const [formData, setFormData] = useState({
@@ -54,6 +55,7 @@ function Signup({ setCreateUser }) {
     try {
       await handleRegistration(formData);
       setCreateUser(false);
+      signOut(auth);
     } catch (error) {
       setError(error.message);
     } finally {
