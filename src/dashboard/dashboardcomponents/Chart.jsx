@@ -118,7 +118,7 @@ function Chart() {
           {attendeeLabels.length > 0 ? (
             <Pie data={attendeeChartData} options={attendeeOptions} />
           ) : (
-            <p className="text-gray-500 text-center">
+            <p className="text-gray-500 text-center border-2 border-gray-700 px-4 py-2 rounded-full mr-2">
               No attendee data to display
             </p>
           )}
