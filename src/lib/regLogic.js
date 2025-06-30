@@ -1,5 +1,8 @@
 // regLogic to handle the registration process
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+} from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { auth, db } from "./Config/firebase";
 
@@ -15,6 +18,8 @@ export const handleRegistration = async (formData) => {
     );
     const user = userCresidentials.user;
 
+    // send email verification
+    await sendEmailVerification(user);
     // Store additional user details in Firestore
     await setDoc(doc(db, "users", user.uid), {
       username,
