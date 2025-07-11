@@ -12,6 +12,7 @@ function Signup({ setCreateUser }) {
     role: "Team",
     createdAt: serverTimestamp(),
   });
+
   const [loading, setLoading] = useState(false);
   // password visibility
   const [visible, setVisible] = useState(false);
@@ -54,8 +55,8 @@ function Signup({ setCreateUser }) {
     //  handling registeration
     try {
       await handleRegistration(formData);
-      setCreateUser(false);
       signOut(auth);
+      setCreateUser(false);
     } catch (error) {
       setError(error.message);
     } finally {

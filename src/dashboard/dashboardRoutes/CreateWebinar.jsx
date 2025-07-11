@@ -435,7 +435,7 @@ function CreateWebinar() {
           <button
             className="bg-[#034FE3] py-[15px] text-[16px] font-bold text-white rounded-[10px] my-[10px] w-full"
             type="submit">
-            {loading ? "Creating..." : "Create Blog"}
+            {loading ? "Updating..." : "Update Page"}
           </button>
 
           {error && (

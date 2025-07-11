@@ -98,7 +98,12 @@ function Users() {
       <ul className="text-gray-500  list-disc pl-5 pt-2">
         <li> Page only accessible to Admin.</li>
         <li>Only Admin can delete / create user. </li>
-        <li>You can click the delete and confirm to delete blogs. </li>
+        <li>After creation of user, user created should confirm email. </li>
+        <li>You can click the delete and confirm to delete user. </li>
+        <li>
+          After creation of user, admin would be automatically logged
+          out(security measures), kindly login again for confirmation.{" "}
+        </li>
       </ul>
       {/* auth / user db  */}
       {createUser ? (
