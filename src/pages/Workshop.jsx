@@ -30,7 +30,6 @@ function Workshop() {
     Name: "",
     Country: "",
   });
-
   const [emailExists, setEmailExists] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [loading, setLoading] = useState(false);
