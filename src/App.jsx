@@ -32,23 +32,7 @@ import { db } from "./lib/Config/firebase";
 
 function App() {
   googleAnalyticsTracking();
-  const [workshop, setWorkShop] = useState(null);
 
-  // FETCH WORKSHOP DETAILS
-  useEffect(() => {
-    const docRef = doc(db, "workshopinfo", "main");
-
-    const unsubscribe = onSnapshot(docRef, (docSnap) => {
-      if (docSnap.exists()) {
-        setWorkShop(docSnap.data());
-      } else {
-        setWorkShop(null); // Or handle document not existing
-      }
-    });
-
-    // Cleanup listener on unmount
-    return () => unsubscribe();
-  }, []);
   return (
     <div className=" overflow-hidden">
       {/* scroll to top on reroute  */}
@@ -74,7 +58,7 @@ function App() {
             element={<MachineLearning />}
           />
           <Route
-            path={`/zion-tech-hub-${workshop?.type}`}
+            path={`/zion-tech-hub-workshop-webinar`}
             element={<Workshop />}
           />
           <Route path="/zion-tech-hub-hackathon" element={<Hackathon />} />
