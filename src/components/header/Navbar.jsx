@@ -153,7 +153,7 @@ function Navbar() {
                   </Link>
 
                   <Link
-                    to={`/zion-tech-hub-${workshop?.type}`}
+                    to={`/zion-tech-hub-workshop-webinar`}
                     className=" p-[16px] hover:bg-[#1A1A1A26] rounded-[5px] ">
                     {workshop?.type === "Webinar" ? "Webinar" : "Workshop"}
                   </Link>
@@ -296,7 +296,7 @@ function Navbar() {
                               Partner with us <KeyboardArrowRight />
                             </Link>
                             <Link
-                              to={`/zion-tech-hub-${workshop?.type}`}
+                              to={`/zion-tech-hub-workshop-webinar`}
                               className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">
                               {workshop?.type === "Webinar"
                                 ? "Webinar"
