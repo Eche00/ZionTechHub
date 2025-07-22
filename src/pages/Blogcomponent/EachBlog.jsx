@@ -244,7 +244,7 @@ function EachBlog() {
               <span className=" w-[3px] h-[30px]  bg-[#034FE3] absolute top-0 -left-[1.5px]"></span>
 
               <a className="text-[18px] font-[600] text-black">
-                {blog.toc[0].title}
+                {blog?.toc[0]?.title}
               </a>
 
               {blog.toc.slice(1).map((item, index) => (
