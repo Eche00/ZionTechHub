@@ -1,24 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
+
+// Components
 import Head from "./components/Head";
-import Home from "./pages/Home";
+import Scrolltotop from "./components/Scrolltotop";
+import googleAnalyticsTracking from "./components/googleAnalyticsTracking";
+
+// Pages
+import FullHome from "./pages/HomeComponents/FullHome";
 import About from "./pages/About";
 import Consultation from "./pages/Consultation";
 import Contact from "./pages/Contact";
+import PartnerWithUs from "./pages/PartnerWithUs";
 import Enroll from "./pages/Enroll";
+
+// Course Pages
 import MachineLearning from "./pages/Courses/MachineLearning";
 import CloudComputing from "./pages/Courses/CloudComputing";
 import WebDevelopment from "./pages/Courses/WebDevelopment";
 import DataAnalysis from "./pages/Courses/DataAnalysis";
 import DataScience from "./pages/Courses/DataScience";
-import FullHome from "./pages/HomeComponents/FullHome";
-import Scrolltotop from "./components/Scrolltotop";
-import PartnerWithUs from "./pages/PartnerWithUs";
-import googleAnalyticsTracking from "./components/googleAnalyticsTracking";
+
+// Events & Blog
 import Workshop from "./pages/Workshop";
 import Hackathon from "./pages/Hackathon";
 import Blog from "./pages/Blog";
 import EachBlog from "./pages/Blogcomponent/EachBlog";
+
+// Dashboard
 import DashContainer from "./dashboard/DashContainer";
 import Dashboard from "./dashboard/dashboardRoutes/Dashboard";
 import EventAttendees from "./dashboard/dashboardRoutes/EventAttendees";
@@ -27,61 +36,55 @@ import ViewBlogs from "./dashboard/dashboardRoutes/ViewBlogs";
 import Users from "./dashboard/dashboardRoutes/Users";
 import Signin from "./dashboard/dashboardRoutes/Signin";
 import CreateWebinar from "./dashboard/dashboardRoutes/CreateWebinar";
-import { doc, onSnapshot } from "firebase/firestore";
-import { db } from "./lib/Config/firebase";
 
 function App() {
+  // Initialize Google Analytics tracking
   googleAnalyticsTracking();
 
   return (
-    <div className=" overflow-hidden">
-      {/* scroll to top on reroute  */}
+    <div className="overflow-hidden">
+      {/* Always scroll to top when navigating */}
       <Scrolltotop />
-      {/* General route  */}
+
       <Routes>
-        {/* Client routes   */}
+        {/* Public Website Routes (with Header & Footer) */}
         <Route path="/" element={<Head />}>
-          <Route path="/" element={<FullHome />} />
-          <Route path="/about-us" element={<About />} />
-          <Route path="/data-consultation" element={<Consultation />} />
-          <Route path="/contact-us" element={<Contact />} />
-          <Route path="/partner-with-us" element={<PartnerWithUs />} />
-          <Route path="/data-analystics-training" element={<DataAnalysis />} />
-          <Route path="/data-science-course" element={<DataScience />} />
-          <Route
-            path="/web-development-training"
-            element={<WebDevelopment />}
-          />
-          <Route path="/cloud-computing-course" element={<CloudComputing />} />
-          <Route
-            path="/machine-learning-course"
-            element={<MachineLearning />}
-          />
-          <Route
-            path={`/zion-tech-hub-workshop-webinar`}
-            element={<Workshop />}
-          />
-          <Route path="/zion-tech-hub-hackathon" element={<Hackathon />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<EachBlog />} />
+          <Route index element={<FullHome />} />
+          <Route path="about-us" element={<About />} />
+          <Route path="data-consultation" element={<Consultation />} />
+          <Route path="contact-us" element={<Contact />} />
+          <Route path="partner-with-us" element={<PartnerWithUs />} />
 
-          <Route path="*" element={<Navigate to="/" />} />
+          {/* Courses */}
+          <Route path="data-analystics-training" element={<DataAnalysis />} />
+          <Route path="data-science-course" element={<DataScience />} />
+          <Route path="web-development-training" element={<WebDevelopment />} />
+          <Route path="cloud-computing-course" element={<CloudComputing />} />
+          <Route path="machine-learning-course" element={<MachineLearning />} />
+
+          {/* Events */}
+          <Route path="zion-tech-hub-workshop-webinar" element={<Workshop />} />
+          <Route path="zion-tech-hub-hackathon" element={<Hackathon />} />
+
+          {/* Blog */}
+          <Route path="blog" element={<Blog />} />
+          <Route path="blog/:slug" element={<EachBlog />} />
+
+          {/* Catch-all: redirect to home */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
 
-        {/* Dashboard Routes  */}
+        {/* Dashboard Routes (with dashboard layout) */}
         <Route path="/dashboard" element={<DashContainer />}>
-          <Route path="/dashboard/home" element={<Dashboard />} />
-          <Route path="/dashboard/viewblogs" element={<ViewBlogs />} />
-          <Route path="/dashboard/create-blog" element={<CreateBlog />} />
-          <Route
-            path="/dashboard/event-attendees"
-            element={<EventAttendees />}
-          />
-          <Route path="/dashboard/create-webinar" element={<CreateWebinar />} />
-          <Route path="/dashboard/users" element={<Users />} />
+          <Route path="home" element={<Dashboard />} />
+          <Route path="viewblogs" element={<ViewBlogs />} />
+          <Route path="create-blog" element={<CreateBlog />} />
+          <Route path="event-attendees" element={<EventAttendees />} />
+          <Route path="create-webinar" element={<CreateWebinar />} />
+          <Route path="users" element={<Users />} />
         </Route>
 
-        {/* Personal route(no header/footer)  */}
+        {/* Standalone Routes (no header/footer) */}
         <Route path="/signin" element={<Signin />} />
         <Route path="/enroll" element={<Enroll />} />
       </Routes>

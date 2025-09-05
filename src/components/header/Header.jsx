@@ -1,49 +1,36 @@
-import React, { useState } from "react";
+import React from "react";
 import Topheader from "./Topheader";
 import Navbar from "./Navbar";
 import { NavLink } from "react-router-dom";
 
 function Header() {
+  // all routes where Navbar should show
+  const navbarRoutes = [
+    "/data-analystics-training",
+    "/data-science-course",
+    "/web-development-training",
+    "/cloud-computing-course",
+    "/machine-learning-course",
+  ];
+
   return (
     <header>
-      <div className=" w-full   fixed  z-50 bg-[#F5F5F5]/60  backdrop-blur-sm ">
+      {/* Fixed top header */}
+      <div className="w-full fixed z-50 bg-[#F5F5F5]/60 backdrop-blur-sm">
         <Topheader />
       </div>
-      <NavLink
-        to="/data-analystics-training"
-        className={({ isActive }) => (isActive ? " w-full " : " hidden")}>
-        <div className="pt-20  z-0">
-          <Navbar />
-        </div>
-      </NavLink>
-      <NavLink
-        to="/data-science-course"
-        className={({ isActive }) => (isActive ? " w-full " : " hidden")}>
-        <div className="pt-20 o">
-          <Navbar />
-        </div>
-      </NavLink>
-      <NavLink
-        to="/web-development-training"
-        className={({ isActive }) => (isActive ? " w-full " : " hidden")}>
-        <div className="pt-20 o">
-          <Navbar />
-        </div>
-      </NavLink>
-      <NavLink
-        to="/cloud-computing-course"
-        className={({ isActive }) => (isActive ? " w-full " : " hidden")}>
-        <div className="pt-20 o">
-          <Navbar />
-        </div>
-      </NavLink>
-      <NavLink
-        to="/machine-learning-course"
-        className={({ isActive }) => (isActive ? " w-full " : " hidden")}>
-        <div className="pt-20 ">
-          <Navbar />
-        </div>
-      </NavLink>
+
+      {/* Render Navbar only when route is active */}
+      {navbarRoutes.map((route) => (
+        <NavLink
+          key={route}
+          to={route}
+          className={({ isActive }) => (isActive ? "w-full" : "hidden")}>
+          <div className="pt-20">
+            <Navbar />
+          </div>
+        </NavLink>
+      ))}
     </header>
   );
 }
