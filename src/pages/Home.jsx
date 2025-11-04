@@ -6,10 +6,9 @@ import { animate, useMotionValue, motion } from "framer-motion";
 import { enterprice, individual, startups } from "../assets";
 import { ArrowForward } from "@mui/icons-material";
 import { Link, useNavigate } from "react-router-dom";
-import Icons from "../lib/icons";
+import Icons from "../lib/Icons";
 
 function Home() {
-  const [duration, setDuration] = useState(Slow_Duration);
 
   // handling navigating
   const navigate = useNavigate();
@@ -17,7 +16,9 @@ function Home() {
   let [ref, { width }] = useMeasure();
   const xTranslation = useMotionValue(0);
   const Slow_Duration = 100;
+  const [duration, setDuration] = useState(Slow_Duration);
 
+  
   useEffect(() => {
     let controls;
     let finalPosition = -width / 2 - 24;
@@ -36,6 +37,7 @@ function Home() {
     e.preventDefault();
     navigate("/enroll");
   };
+
   return (
     <div className=" w-full h-fit overflow-hidden relative pt-[130px] z-30">
       <span className="  md:h-[104px] md:w-[104px] h-[50px] w-[50px]   bg-[#034FE30D] absolute md:top-[50px] md:right-[640px] top-[130px] right-[60px] z-50"></span>
