@@ -1,9 +1,8 @@
-import React from "react";
 import {
-  Reviewimg,
   partnerlogo1,
   partnerlogo2,
   partnerlogo3,
+  partnerlogo4
 } from "../../assets";
 // import partnerlogo from "/unizikbusinessschool.JPG";
 
@@ -36,18 +35,26 @@ function Partners() {
               alt=""
             />
           </section>
+         
+
           <section className=" p-[10px] border-r border-[#034FE31A]">
+            <img
+              className=" sm:h-[98px] sm:w-[216px] h-[98px] w-[174px] object-cover"
+              src={partnerlogo1}
+              alt=""
+            />
+          </section>
+           <section className=" p-[10px] border-r border-[#034FE31A]">
             <img
               className=" sm:h-[98px] sm:w-[216px] h-[98px] w-[174px] object-cover"
               src={partnerlogo2}
               alt=""
             />
           </section>
-
-          <section className=" p-[10px] border-r border-[#034FE31A]">
+           <section className=" p-[10px] border-r border-[#034FE31A]">
             <img
               className=" sm:h-[98px] sm:w-[216px] h-[98px] w-[174px] object-cover"
-              src={partnerlogo1}
+              src={partnerlogo4}
               alt=""
             />
           </section>
@@ -65,14 +72,20 @@ function Partners() {
               <span className="text-[#F99E1A]">card</span> <br /> foundation
             </p>
           </section>
-          <section className="  sm:border-r  border-r-0 border-b sm:border-b-0 border-[#88a2d61a] flex  h-full items-center  sm:justify-evenly justify-center  sm:h-fit">
-            <p className=" sm:text-[24px] text-[18px]  font-[600] text-[#D89A0C] sm:px-[44.5px] py-[40px]">
-              Solavise Tech
-            </p>
-          </section>
+          
           <section className="  sm:border-r  border-r-0 border-b sm:border-b border-[#034FE31A]">
             <p className=" sm:text-[24px] text-[18px] font-[600] text-[#140D91] text-center sm:px-[44.5px] py-[23px]">
               La Grande <br /> Galaxie Consult
+            </p>
+          </section>
+          <section className="  sm:border-r  border-r-0 border-b sm:border-b-0 border-[#88a2d61a] flex  h-full items-center  sm:justify-evenly justify-center  sm:h-fit">
+            <p className=" sm:text-[28px] text-[24px]  font-[600] text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-300 sm:px-[44.5px] py-[40px]">
+              Afriq IQ 
+            </p>
+          </section>
+          <section className="  sm:border-r  border-r-0 border-b sm:border-b-0 border-[#88a2d61a] flex  h-full items-center  sm:justify-evenly justify-center  sm:h-fit">
+            <p className=" sm:text-[24px] text-[18px]  font-[600] text-[#3A8DFF] sm:px-[44.5px] py-[40px]">
+              DataVerse Africa
             </p>
           </section>
         </div>

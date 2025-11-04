@@ -99,6 +99,7 @@ import teamprofile10 from "./teamprofile10.webp";
 import partnerlogo1 from "./partnerlogo1.webp";
 import partnerlogo2 from "./partnerlogo2.webp";
 import partnerlogo3 from "./partnerlogo3.webp";
+import partnerlogo4 from "./partnerlogo4.webp";
 
 // Linkedln
 import linkedlnprofileimg from "./linkedlnprofileimg.webp";
@@ -343,6 +344,7 @@ export {
   partnerimg1,
   partnerimg2,
   partnerimg3,
+  partnerlogo4,
   industryhero,
   consultationpopup,
 };
