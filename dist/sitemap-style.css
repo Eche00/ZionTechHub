@@ -1,0 +1,87 @@
+/* sitemap-style.css */
+
+/* Set a nice background and center everything */
+body {
+  background: #f5f7fa;
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+  color: #333;
+  padding: 40px;
+  line-height: 1.6;
+  margin: 20px;
+}
+/* logo  */
+svg{
+  width: 200px;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 5px rgb(26, 115, 232);
+  border-radius: 9999px;
+  padding: 10px;
+  object-position: center;
+  margin: 0px;
+}
+/* text  */
+text{
+  font-weight: bold;
+  font-size: 20px;
+  color: rgb(26, 115, 232);
+}
+/* Style the main sitemap container */
+urlset {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 900px;
+  margin: 50px auto;
+}
+
+/* Each URL block */
+url {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+url:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Location (URL link) */
+loc {
+  display: block;
+  font-size: 18px;
+  color: #1a73e8;
+  font-weight: bold;
+  margin-bottom: 10px;
+  word-break: break-word;
+}
+
+/* Last modified date */
+lastmod {
+  display: block;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+/* Priority */
+priority {
+  display: inline-block;
+  font-size: 14px;
+  background: #e0f2fe;
+  color: #0284c7;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+
+
+  
