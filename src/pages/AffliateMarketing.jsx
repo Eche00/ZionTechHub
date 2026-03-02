@@ -19,12 +19,14 @@ function AffliateMarketing() {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
     const [successMessage, setSuccessMessage] = useState('')
-
+    const [showSuccessPopup, setShowSuccessPopup] = useState(false)
+    const [generatedCode, setGeneratedCode] = useState('')
     const [formData, setFormData] = useState({
         username: "",
         email: "",
         country: "",
         role: "Affiliate",
+        approved: false,
         referralCode: "",
         referrals: [],
         createdAt: serverTimestamp(),
@@ -55,7 +57,7 @@ function AffliateMarketing() {
 
         try {
 
-            // check duplicate email
+            // check if user already exists
             const q = query(
                 collection(db, "users"),
                 where("email", "==", formData.email)
@@ -63,12 +65,23 @@ function AffliateMarketing() {
 
             const snapshot = await getDocs(q)
 
+            //  USER EXISTS
             if (!snapshot.empty) {
-                setError("This email is already registered.")
-                setLoading(false)
-                return
+
+                const userDoc = snapshot.docs[0].data()
+
+                //  already an affiliate
+                if (
+                    userDoc.referralCode &&
+                    userDoc.referralCode.trim() !== ""
+                ) {
+                    setError("You are already registered as an affiliate.")
+                    setLoading(false)
+                    return
+                }
             }
 
+            //  generate new referral code
             const referralCode = generateReferralCode(formData.username)
 
             await addDoc(collection(db, "users"), {
@@ -77,9 +90,8 @@ function AffliateMarketing() {
                 createdAt: serverTimestamp(),
             })
 
-            setSuccessMessage(
-                `Registration successful, Your affiliate code is ${referralCode}`
-            )
+            setGeneratedCode(referralCode)
+            setShowSuccessPopup(true)
 
             // reset form
             setFormData({
@@ -88,6 +100,7 @@ function AffliateMarketing() {
                 country: "",
                 role: "Affiliate",
                 referralCode: "",
+                approved: false,
                 referrals: [],
                 createdAt: serverTimestamp(),
             })
@@ -99,7 +112,13 @@ function AffliateMarketing() {
 
         setLoading(false)
     }
-
+    const copyCode = async () => {
+        try {
+            await navigator.clipboard.writeText(generatedCode)
+        } catch (err) {
+            console.error("Copy failed")
+        }
+    }
     return (
         <div className="w-full flex flex-col bg-[#F5F5F5]">
 
@@ -206,7 +225,6 @@ function AffliateMarketing() {
                                 className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white py-[16px]"
                             >
                                 {loading ? "Registering..." : "Register Now"}
-                                <ArrowForward />
                             </button>
 
                             {/* ERROR */}
@@ -228,6 +246,55 @@ function AffliateMarketing() {
                     </motion.div>
                 </motion.div>
             </div>
+
+            {/* SUCCESS POPUP */}
+            {showSuccessPopup && (
+                <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 px-4">
+
+                    <motion.div
+                        initial={{ scale: 0.7, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        className="bg-white rounded-[16px] p-6 max-w-[420px] w-full text-center shadow-xl"
+                    >
+
+                        <h2 className="text-[24px] font-bold mb-3 text-[#034FE3]">
+                            Registration Pending
+                        </h2>
+
+                        <p className="text-[#555] mb-4">
+                            Copy your referral code below and await approval
+                            to become an Affiliate Marketer.
+                        </p>
+
+                        {/* CODE BOX */}
+                        <div className="border rounded-[10px] flex items-center justify-between px-4 py-3 mb-4 bg-gray-50">
+                            <span className="font-bold text-lg">
+                                {generatedCode}
+                            </span>
+
+                            <button
+                                onClick={copyCode}
+                                className="bg-[#034FE3] text-white px-3 py-1 rounded-md text-sm"
+                            >
+                                Copy
+                            </button>
+                        </div>
+
+                        <p className="text-sm text-gray-500 mb-5">
+                            Approval usually takes a short while.
+                            You will be notified via email once approved.
+                        </p>
+
+                        <button
+                            onClick={() => setShowSuccessPopup(false)}
+                            className="w-full bg-[#034FE3] text-white py-3 rounded-[10px]"
+                        >
+                            Close
+                        </button>
+
+                    </motion.div>
+                </div>
+            )}
         </div>
     )
 }
