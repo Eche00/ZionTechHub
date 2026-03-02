@@ -15,7 +15,7 @@ function PopularCourses() {
         </p>
       </div>
       <div className=" overflow-x-scroll  scrollbar-hide">
-        <div className=" relative flex sm:w-[1800px] w-[1500px] gap-[36px] overflow-scroll  pr-[10px] scrollbar-hide">
+        <div className=" relative flex sm:w-[2500px] w-[2300px] gap-[36px] overflow-scroll  pr-[10px] scrollbar-hide">
           {PopularCourseslib.map((course) => (
             <Coursecard key={course.message} course={course} />
           ))}

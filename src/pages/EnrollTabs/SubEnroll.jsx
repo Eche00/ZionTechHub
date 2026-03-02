@@ -1,44 +1,102 @@
 import React, { useEffect, useState } from "react";
-import { Warning } from "@mui/icons-material";
+import { Battery0Bar, KeyboardArrowDown, KeyboardArrowUp, Warning } from "@mui/icons-material";
 import { techhublogo } from "../../assets";
 import "../Enroll.css";
 import { db } from "../../lib/Config/firebase";
-import { doc, onSnapshot } from "firebase/firestore";
-
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  updateDoc,
+  doc,
+  arrayUnion,
+  onSnapshot
+} from "firebase/firestore";
 function SubEnroll() {
   const [course, setCourse] = useState(false);
   const [selectCourse, setSelectCourse] = useState(false);
   const [cohortActive, setCohortActive] = useState(true);
   const [formData, setFormData] = useState({
     name: "",
+    refferalId: "",
     course: "Select course",
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (formData.course === "Select course") {
       setSelectCourse(true);
       return;
     }
+
+    setLoading(true);
+
     try {
-      let number = "+2348055094738";
-      let url =
-        "https://wa.me/" +
-        number +
-        "?text=" +
-        "FullName: " +
-        " " +
-        formData.name +
-        "%0a" +
-        "Course: " +
-        " " +
-        formData.course +
-        "%0a";
-      window.open(url, "_blank").focus();
-    } catch (error) {}
+      /*       1. FIND AFFILIATE
+    */
+      const q = query(
+        collection(db, "users"),
+        where("referralCode", "==", formData.refferalId.trim())
+      );
+
+      const snapshot = await getDocs(q);
+
+      if (snapshot.empty) {
+        alert("Invalid Referral ID");
+        setLoading(false);
+        return;
+      }
+
+      /*       2. GET AFFILIATE DOC
+    */
+      const affiliateDoc = snapshot.docs[0];
+      const affiliateRef = doc(db, "users", affiliateDoc.id);
+
+      /*       3. CREATE REGISTERED USER DATA
+    */
+      const newReferral = {
+        name: formData.name,
+        course: formData.course,
+        referralId: formData.refferalId,
+        registeredAt: new Date(),
+      };
+
+      /*       4. UPDATE REFERRALS ARRAY
+    */
+      await updateDoc(affiliateRef, {
+        referrals: arrayUnion(newReferral),
+      });
+
+      alert("Registration successful ! You will be redirected to WhatsApp in 10 seconds.");
+
+      /*       5. WAIT 10 SECONDS
+    */
+      setTimeout(() => {
+        let number = "+2348055094738";
+
+        let url =
+          "https://wa.me/" +
+          number +
+          "?text=" +
+          "FullName: " +
+          formData.name +
+          "%0a" +
+          "Course: " +
+          formData.course +
+          "%0a";
+
+        window.open(url, "_blank").focus();
+      }, 10000);
+
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong");
+    }
+
+    setLoading(false);
     setSelectCourse(false);
-    alert("Registration for Cohort 7.0 has ended.");
-    console.log(formData);
   };
 
   //  React State
@@ -74,13 +132,14 @@ function SubEnroll() {
           <div className=" flex flex-col p-[32px] gap-[48px] bg-[#FFFFFF] rounded-[10px]">
             <section className=" flex flex-col items-center justify-center text-center text-[#1A1A1ACC] md:gap-[12px] gap-[8px]">
               <h1 className=" md:text-[32px] text-[24px] font-[600]">
-                {/* Send us a message */}
-                {link?.title}
+                Join the next Cohort Now !
+                {/* {link?.title} */}
               </h1>
               <p className=" md:text-[16px] text-[12px] font-[300] ">
                 {/* Hey 👋 Send us a message on Whatsapp to process  your
                 enrollment. See you at the top! */}
-                Hey 👋 Click the button below to register for {link?.title}{" "}
+                Hey 👋 Click the button below to register,
+                {/*for {link?.title}{" "} */}
                 <br />
                 We can’t wait to see you at the top!
               </p>
@@ -90,7 +149,7 @@ function SubEnroll() {
                 className=" flex flex-col gap-[24px]"
                 onSubmit={handleSubmit}>
                 <section className="flex flex-col gap-[10px]">
-                  {/*      <p className=" text-[#6B6F71] text-[12px] font-[500]">
+                  <p className=" text-[#6B6F71] text-[12px] font-[500]">
                     Full Name
                   </p>
                   <input
@@ -99,6 +158,20 @@ function SubEnroll() {
                     placeholder="Enter your full name"
                     onChange={(e) =>
                       setFormData({ ...formData, name: e.target.value })
+                    }
+                    required
+                  />
+                </section>
+                <section className="flex flex-col gap-[10px]">
+                  <p className=" text-[#6B6F71] text-[12px] font-[500]">
+                    Refferal ID
+                  </p>
+                  <input
+                    className=" py-[18px] px-[16px] border border-[#C7D1D4] rounded-[10px] text-[#1A1A1ACC] placeholder:text-[#1A1A1A33]"
+                    type="text"
+                    placeholder="Enter Enter refferal ID"
+                    onChange={(e) =>
+                      setFormData({ ...formData, refferalId: e.target.value })
                     }
                     required
                   />
@@ -117,9 +190,9 @@ function SubEnroll() {
                       onClick={() => setCourse(!course)}>
                       {" "}
                       {course ? (
-                        <KeyboardArrowUpIcon fontSize="medium" />
+                        <KeyboardArrowUp fontSize="medium" />
                       ) : (
-                        <KeyboardArrowDownIcon fontSize="medium" />
+                        <KeyboardArrowDown fontSize="medium" />
                       )}
                     </span>
                     {course && (
@@ -197,6 +270,20 @@ function SubEnroll() {
                           </span>{" "}
                           Machine Learning
                         </button>
+                        <button
+                          value="
+                       Digital Marketing
+                      "
+                          type="button"
+                          className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
+                          onClick={(e) =>
+                            setFormData({ ...formData, course: e.target.value })
+                          }>
+                          <span>
+                            <Battery0Bar />
+                          </span>{" "}
+                          Digital Marketing
+                        </button>
                       </div>
                     )}
                   </div>
@@ -204,7 +291,7 @@ function SubEnroll() {
                     <p className=" text-[16px] font-bold text-red-500 ">
                       Please select a course
                     </p>
-                  )} */}
+                  )}
                   <a
                     href={link?.enrollLink}
                     target="_blank"

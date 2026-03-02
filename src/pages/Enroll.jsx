@@ -137,6 +137,11 @@ function Enroll() {
                             className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">
                             Machine Learning <KeyboardArrowRight />
                           </Link>
+                          <Link
+                            to="/machinelearning"
+                            className=" py-[17px] px-[20px] font-[400]  flex items-center justify-between w-full">
+                            Digital Marketing <KeyboardArrowRight />
+                          </Link>
                         </div>
                       </div>
                     )}
@@ -161,7 +166,7 @@ function Enroll() {
       </div>
       {/* buttons  */}
       <div className="one flex md:items-center  flex-col  md:h-[100vh] h-[120vh] gap-[50px]">
-        <section className=" flex items-center justify-center w-[90%] mx-auto">
+        {/* <section className=" flex items-center justify-center w-[90%] mx-auto">
           {/* <div className="flex items-center bg-gray-300 rounded-[10px] p-[10px] gap-[10px]">
             <button
               id="enroll"
@@ -183,8 +188,9 @@ function Enroll() {
               onClick={handleSwitch}>
               Health
             </button>
-          </div> */}
-        </section>
+          </div> 
+        </section> 
+        */}
         <section className="">
           {enroll ? <SubEnroll /> : <HealthcareReg />}
         </section>

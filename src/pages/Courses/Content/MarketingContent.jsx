@@ -18,83 +18,142 @@ function MarketingContent() {
 
     const weeks = [
         {
-            title: "Week 1: Introduction to Digital Marketing",
-            aims: [
-                "Understanding digital marketing ecosystem",
-                "Marketing channels overview",
-                "Customer journey & funnels",
-                "Digital branding basics",
-                "Setting marketing goals"
+            title: "Week 1: Foundations & Strategy",
+            sessionTitle1: "Introduction to Digital Marketing",
+            sessionTitle2: "Digital Strategy & Audience Targeting",
+            session1: [
+                "What is digital marketing?",
+                "Customer journey & digital ecosystem",
+                "Marketing funnels & key channels (SEO, Social, Ads, Email, Content)",
+                "Understanding marketing funnels",
+                "Assignment: Pick a brand for final project"
+            ],
+            session2: [
+                "Market research basics",
+                "Customer personas",
+                "Value proposition & competitor analysis",
+                "Setting SMART marketing goals",
+                "Practical: Build persona + draft strategy"
             ],
         },
         {
-            title: "Week 2: Audience & Content Strategy",
-            aims: [
-                "Audience research techniques",
-                "Buyer persona creation",
-                "Content marketing strategy",
-                "Social media positioning",
-                "Content planning tools"
+            title: "Week 2: Content & Branding",
+            sessionTitle1: "Content Marketing & Storytelling",
+            sessionTitle2: "Social Media Marketing",
+            session1: [
+                "Content pillars",
+                "Brand voice & messaging",
+                "Content pillars & content types",
+                "30-day content planning",
+                "Practical: Develop content calendar"
             ],
-        },
-        {
-            title: "Week 3: Social Media Marketing",
-            aims: [
-                "Instagram, Facebook & LinkedIn marketing",
+            session2: [
+                "Platform breakdown: Instagram, LinkedIn, TikTok, X",
                 "Organic growth strategies",
-                "Content scheduling",
-                "Community engagement",
-                "Performance tracking"
+                "Engagement tactics",
+                "Hashtags & algorithm basics",
+                "Practical: Write 5 optimized posts"
             ],
         },
         {
-            title: "Week 4: Search Engine Optimization (SEO)",
-            aims: [
-                "Keyword research fundamentals",
-                "On-page SEO optimization",
-                "Technical SEO basics",
-                "Website visibility improvement",
-                "SEO tools usage"
+            title: "Week 3: Design & Tools",
+            sessionTitle1: "Visual Content Creation",
+            sessionTitle2: "Video & Short-form Content",
+            session1: [
+                "Canva fundamentals",
+                "Basic design principles",
+                "Creating carousels, ads, thumbnails",
+                "Practical: Design 3 social creatives"
+            ], session2: [
+                "Reels/TikTok strategy",
+                "Hooks & scripting",
+                "Basic editing tools",
+                "Practical: Script + record short promo video"
+            ],
+        },
+        {
+            title: "Week 4: SEO & Website Optimization",
+            sessionTitle1: "Search Engine Optimization (SEO)",
+            sessionTitle2: "Website & Conversion Optimization",
+            session1: [
+                "How search engines work",
+                "Keyword research",
+                "On-page SEO",
+                "Blog optimization",
+                "Practical: Optimize a blog article"
+            ], session2: [
+                "Landing page fundamentals",
+                "Copywriting for conversion",
+                "Call-to-action strategies",
+                "Introduction to Google Analytics",
+                "Practical: Landing page audit"
             ],
         },
         {
             title: "Week 5: Paid Advertising",
-            aims: [
-                "Google Ads introduction",
-                "Meta Ads setup",
-                "Audience targeting",
-                "Retargeting campaigns",
-                "Ad budgeting strategies"
+            sessionTitle1: "Meta Ads (Facebook & Instagram)",
+            sessionTitle2: "Google Ads & PPC",
+            session1: [
+                "Ads Manager walkthrough",
+                "Campaign objectives",
+                "Targeting & audience segmentation",
+                "Budgeting basics",
+                "Practical: Build ad campaign draft"
+            ], session2: [
+                "Search vs Display Ads",
+                "Keyword bidding basics",
+                "Writing ad copy",
+                "Practical: Create Google Search ad mockup"
             ],
         },
         {
-            title: "Week 6: Email & Conversion Marketing",
-            aims: [
-                "Email marketing setup",
-                "Lead generation funnels",
-                "Landing page optimization",
-                "Conversion strategies",
-                "Automation tools"
+            title: "Week 6: Analytics & Performance",
+            sessionTitle1: "Data & Performance Tracking",
+            sessionTitle2: "Campaign Optimization",
+            session1: [
+                "KPIs per channel (Google, Meta, TikTok, LinkedIn)",
+                "Understanding impressions, CTR, CPC, CAC",
+                "Reading analytics dashboards",
+                "Practical: Analyze sample campaign data"
+            ], session2: [
+                "A/B testing",
+                "Scaling winning ads",
+                "Improving conversion rates",
+                "Practical: Optimize underperforming campaign"
             ],
         },
         {
-            title: "Week 7: Analytics & Performance Tracking",
-            aims: [
-                "Marketing KPIs",
-                "Google Analytics basics",
-                "Campaign performance tracking",
-                "Data-driven decisions",
-                "Reporting dashboards"
+            title: "Week 7: Email & Automation",
+            sessionTitle1: "Email Marketing",
+            sessionTitle2: "Funnel Management & CRM",
+            session1: [
+                "Building an email list",
+                "Lead magnets",
+                "Writing high-converting emails",
+                "Tools overview: Mailerlite, KIT"
+            ], session2: [
+                "User acquisition strategies",
+                "User retention tactics",
+                "Funnel stages and optimization",
+                "CRM tools introduction"
             ],
         },
         {
-            title: "Week 8: Strategy & Capstone Project",
-            aims: [
-                "Full marketing strategy creation",
-                "Campaign planning",
-                "Real-world project execution",
-                "Performance evaluation",
-                "Final presentation"
+            title: "Week 8: Career & Capstone",
+            sessionTitle1: "Freelancing, Job Readiness & Personal Branding",
+            sessionTitle2: "Capstone Presentations",
+            session1: [
+                "Building a marketing portfolio",
+                "LinkedIn optimization",
+                "How to pitch clients",
+                "Pricing your services",
+                "CV & interview tips"
+            ], session2: [
+                "Present: Digital strategy",
+                "Present: Content calendar + Ad campaign draf",
+                "Present: Email funnel + Analytics plan",
+                "Certification awarded",
+                "Internship placement"
             ],
         },
     ];
@@ -139,7 +198,19 @@ function MarketingContent() {
                             {/* WEEK CONTENT */}
                             {activeWeek === index && (
                                 <section className="bg-[#F0F0F0]">
-                                    {week.aims.map((aim, i) => (
+                                    <p className=" my-2 ml-[16px] text-[#034FE3] text-[18px]">{week.sessionTitle1}</p>
+                                    {week.session1.map((aim, i) => (
+                                        <p
+                                            key={i}
+                                            className="flex gap-[12px] p-[16px]"
+                                        >
+                                            <span>{dot}</span>
+                                            {aim}
+                                        </p>
+                                    ))}
+                                    <hr className=" h-1 w-[80%] mx-auto rounded-full bg-[#034FE3] border-none" />
+                                    <p className=" my-2 ml-[16px] text-[#034FE3] text-[18px]">{week.sessionTitle2}</p>
+                                    {week.session2.map((aim, i) => (
                                         <p
                                             key={i}
                                             className="flex gap-[12px] p-[16px]"

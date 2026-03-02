@@ -3,6 +3,8 @@ import {
   popularcourseimg2,
   popularcourseimg3,
   popularcourseimg4,
+  popularcourseimg5,
+  popularcourseimg6,
 } from "../assets";
 
 const PopularCourseslib = [
@@ -47,6 +49,28 @@ const PopularCourseslib = [
     Videotime: "1hr 25mins",
     time: "24 weeks long",
     category: "Cloud Computing & DevOps",
+    rating: "4.8",
+    price: "99",
+  },
+  {
+    img: popularcourseimg5,
+    message:
+      "This course will take you through the basics and fundamentals of machine learning.",
+    views: "122",
+    Videotime: "1hr 25mins",
+    time: "24 weeks long",
+    category: "Machine Learning",
+    rating: "4.8",
+    price: "99",
+  },
+  {
+    img: popularcourseimg6,
+    message:
+      "This course will take you through the basics and fundamentals of digital marketing.",
+    views: "122",
+    Videotime: "1hr 25mins",
+    time: "24 weeks long",
+    category: "Digital Marketing",
     rating: "4.8",
     price: "99",
   },

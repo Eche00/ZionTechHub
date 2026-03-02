@@ -61,10 +61,12 @@ import testimonial17 from "./testimonial17.webp";
 import testimonial18 from "./testimonial18.webp";
 
 // Popular courses
-import popularcourseimg1 from "./popularcourseimg1.webp";
-import popularcourseimg2 from "./popularcourseimg2.webp";
-import popularcourseimg3 from "./popularcourseimg3.webp";
-import popularcourseimg4 from "./popularcourseimg4.webp";
+import popularcourseimg1 from "./popularcourseimg1.jpeg";
+import popularcourseimg2 from "./popularcourseimg2.jpeg";
+import popularcourseimg3 from "./popularcourseimg3.jpeg";
+import popularcourseimg4 from "./popularcourseimg4.jpeg";
+import popularcourseimg5 from "./popularcourseimg5.jpeg";
+import popularcourseimg6 from "./popularcourseimg6.jpeg";
 
 // consultancy
 import consultancyhome from "./consultancyhome.webp";
@@ -255,6 +257,8 @@ export {
   popularcourseimg2,
   popularcourseimg3,
   popularcourseimg4,
+  popularcourseimg5,
+  popularcourseimg6,
   slack,
   googleanalytics,
   rstudio,

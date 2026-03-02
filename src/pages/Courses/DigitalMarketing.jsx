@@ -153,7 +153,7 @@ function DigitalMarketing() {
                                 TRAINING & CONSULTATION
                             </p>
                             <h1 className="text-[#1A1A1A] font-[700] sm:text-[64px] text-[40px] sm:w-full w-[320px] sm:leading-[130%] sm:tracking-[1.28px] leading-[120%] tracking-[0.8px] text-wrap">
-                                Digital Marketing <span className="text-[#034FE3]">Training  — $99</span>
+                                Digital Marketing <span className="text-[#034FE3]">Training</span>
                             </h1>
 
                             <p className="text-[#1A1A1A] font-[300] sm:text-[24px] text-[18px] sm:w-full w-[335px]">

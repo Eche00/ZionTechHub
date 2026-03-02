@@ -30,6 +30,11 @@ const ServicesContent = [
       "Our Web Development Tech Training program is designed to equip you with the skills needed to excel in the fast-paced world of web development. Whether you're a beginner or looking to upgrade your skills, our comprehensive courses will guide you through every aspect of web development.",
   },
   {
+    category: "Digital Marketing (Tech Training) ",
+    message:
+      "Build in-demand digital marketing skills through our hands-on training program covering strategy, content creation, SEO, paid ads, analytics, and real-world campaign execution.",
+  },
+  {
     category: "Comprehensive Mentorship and Coaching ",
     message:
       "Elevate your learning experience with our dedicated Mentorship and Coaching program, available for all our courses.  ",
