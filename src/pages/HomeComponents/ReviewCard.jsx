@@ -9,7 +9,7 @@ function ReviewCard({ review }) {
         <img
           className=" sm:w-[50px] sm:h-[50px] w-[30px] h-[30px] rounded-full object-cover"
           src={review.img}
-          alt=""
+          alt={review.message}
         />
         <p className=" text-[12px] sm:text-[16px] text-[#1A1A1A] font-[400] sm:w-[363px] w-[270px] ">
           {" "}

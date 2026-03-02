@@ -11,6 +11,7 @@ function Header() {
     "/web-development-training",
     "/cloud-computing-course",
     "/machine-learning-course",
+    "/digital-marketing-training",
   ];
 
   return (

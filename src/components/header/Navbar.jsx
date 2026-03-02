@@ -49,6 +49,7 @@ function Navbar() {
     { to: "/web-development-training", label: "Web Development" },
     { to: "/cloud-computing-course", label: "Cloud Computing & DevOps" },
     { to: "/machine-learning-course", label: "Machine Learning" },
+    { to: "/digital-marketing-training", label: "Digital Marketing" },
   ];
 
   // Shared others links
@@ -60,11 +61,12 @@ function Navbar() {
       label: workshop?.type === "Webinar" ? "Webinar" : "Workshop",
     },
     { to: "/zion-tech-hub-hackathon", label: "Hackathon" },
+    { to: "/affiliate-program", label: "Affiliate Program" },
   ];
 
   // Reusable dropdown (desktop)
   const Dropdown = ({ links }) => (
-    <div className="hidden group-hover:flex flex-col text-[16px] font-[400] text-[#1A1A1A80] absolute bg-[#F0F0F0] rounded-tr-[20px] rounded-br-[20px] rounded-bl-[20px] z-40 p-[12px]">
+    <div className="hidden group-hover:flex flex-col text-[16px] font-[400] text-[#1A1A1A80] absolute bg-[#F0F0F0] rounded-tr-[20px] rounded-br-[20px] rounded-bl-[20px] z-40 p-[12px] text-nowrap">
       {links.map((link) => (
         <Link
           key={link.to}
@@ -190,7 +192,7 @@ function Navbar() {
                 {courseOpen ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
               </button>
               {courseOpen && (
-                <div className="flex flex-col bg-[#F6F6F6]">
+                <div className="flex flex-col bg-[#F6F6F6] ">
                   {courseLinks.map((link) => (
                     <Link
                       key={link.to}

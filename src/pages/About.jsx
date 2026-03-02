@@ -54,8 +54,7 @@ function About() {
                 Who We Are -<span className=" text-[#034FE3]"> Our Story</span>
               </h1>
               <p className=" text-[#1A1A1A] font-[300] sm:text-[24px] text-[18px] sm:w-[712px] w-[325px]">
-                Our philosophy is simple; train great people and recommended
-                them to great companies to do their best work.
+                At Zion Tech Hub, we equip learners with high-demand digital skills that power careers and businesses. Our programs combine hands-on projects, real industry tools, mentorship, and practical outcomes.
               </p>
               <p className=" text-[#1A1A1A66] font-[300] text-[20px]  items-center gap-[12px]  sm:flex hidden">
                 Live on{" "}

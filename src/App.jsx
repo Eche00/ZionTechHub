@@ -36,6 +36,8 @@ import ViewBlogs from "./dashboard/dashboardRoutes/ViewBlogs";
 import Users from "./dashboard/dashboardRoutes/Users";
 import Signin from "./dashboard/dashboardRoutes/Signin";
 import CreateWebinar from "./dashboard/dashboardRoutes/CreateWebinar";
+import DigitalMarketing from "./pages/Courses/DigitalMarketing";
+import AffliateMarketing from "./pages/AffliateMarketing";
 
 function App() {
   // Initialize Google Analytics tracking
@@ -61,10 +63,12 @@ function App() {
           <Route path="web-development-training" element={<WebDevelopment />} />
           <Route path="cloud-computing-course" element={<CloudComputing />} />
           <Route path="machine-learning-course" element={<MachineLearning />} />
+          <Route path="digital-marketing-training" element={<DigitalMarketing />} />
 
           {/* Events */}
           <Route path="zion-tech-hub-workshop-webinar" element={<Workshop />} />
           <Route path="zion-tech-hub-hackathon" element={<Hackathon />} />
+          <Route path="affiliate-program" element={<AffliateMarketing />} />
 
           {/* Blog */}
           <Route path="blog" element={<Blog />} />

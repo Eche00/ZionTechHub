@@ -11,8 +11,11 @@ function Topheader() {
   // Reusable banner text
   const bannerMessage = (
     <p className="md:text-[18px] lg:text-[14px] text-[12px] text-[#FFFFFF] font-[300] p-[16px] bg-[#1A1A1A] w-full text-center">
-      We're offering Data Consultation Services. Book now to get updated with
-      your business. <span className="font-[600] underline px-5">Book Now</span>
+      {/* We're offering Data Consultation Services. Book now to get updated with
+      your business.  */}
+      Join our Affliate Marketing Program and earn up to 20% commission on every referral!
+
+      <Link to="/affiliate-program" className="font-[600] underline px-5">Join Now</Link>
     </p>
   );
 
@@ -46,6 +49,11 @@ function Topheader() {
             className="p-[16px] hover:bg-[#1A1A1A26] rounded-[5px]">
             Machine Learning
           </Link>
+          <Link
+            to="/digital-marketing-training"
+            className="p-[16px] hover:bg-[#1A1A1A26] rounded-[5px]">
+            Digital Marketing
+          </Link>
         </div>
       </div>
     );
@@ -76,6 +84,7 @@ function Topheader() {
     "/web-development-training": "Complete Web Development Course:",
     "/cloud-computing-course": "Cloud Computing & DevOps:",
     "/machine-learning-course": "Machine Learning:",
+    "/digital-marketing-training": "Digital Marketing:",
   };
 
   return (
@@ -90,13 +99,13 @@ function Topheader() {
         "/zion-tech-hub-workshop-webinar",
         "/zion-tech-hub-hackathon",
         "/blog",
-        "/eche-acces-create-blog",
+        "/affiliate-program",
       ].includes(pathname) && (
-        <>
-          {bannerMessage}
-          <Navbar />
-        </>
-      )}
+          <>
+            {bannerMessage}
+            <Navbar />
+          </>
+        )}
 
       {/* Course pages with detailed headers */}
       {Object.keys(courseBanners).map(
@@ -120,9 +129,7 @@ function Topheader() {
                       (75,765 reviews)
                     </p>
                   </article>
-                  <p className="sm:text-[14px] text-[12px] font-[700] text-white">
-                    Starts Aug 21
-                  </p>
+
                 </section>
 
                 {/* Right section: navigation */}

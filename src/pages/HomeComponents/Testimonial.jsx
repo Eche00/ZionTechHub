@@ -32,7 +32,7 @@ function Testimonial() {
             <img
               className=" sm:w-[445px] sm:h-[445px] w-[344px] h-[344px] object-cover"
               src={testimonial.image}
-              alt=""
+              alt={testimonial.image}
             />
           ))}
         </div>

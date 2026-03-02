@@ -205,7 +205,7 @@ function Blog() {
                   </div>
                   {/* info  */}
                   <div className="flex flex-col gap-[14px]">
-                    <h3 className=" text-[#1A1A1AB2] text-[24px] font-[600] h-[62px] leading-[130%]">
+                    <h3 className=" text-[#1A1A1AB2] text-[24px] font-[600] min-h-[62px] leading-[130%]">
                       {blog?.title}
                     </h3>
                     <p className="flex items-center text-[18px] font-[400] text-[#1A1A1AB2] gap-[5px]">
@@ -290,9 +290,8 @@ function Blog() {
           <button
             disabled={currentPage === 1}
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-            className={`border-[#1A1A1ACC] border-[1px] rounded-[5px] px-[24px] py-[10px] text-[16px] font-[600] flex items-center justify-center gap-[10px] sm:w-fit w-[150px] ${
-              currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""
-            }`}>
+            className={`border-[#1A1A1ACC] border-[1px] rounded-[5px] px-[24px] py-[10px] text-[16px] font-[600] flex items-center justify-center gap-[10px] sm:w-fit w-[150px] ${currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""
+              }`}>
             {arrowLeft} Previous
           </button>
 
@@ -317,11 +316,10 @@ function Blog() {
                   <p
                     key={page}
                     onClick={() => setCurrentPage(page)}
-                    className={`cursor-pointer sm:px-[20px] px-[10px] py-[10px] text-[20px] font-[600] ${
-                      isActive
+                    className={`cursor-pointer sm:px-[20px] px-[10px] py-[10px] text-[20px] font-[600] ${isActive
                         ? "border-b-[#034FE3] border-b-[3px] text-[#034FE3]"
                         : "text-[#1A1A1A]"
-                    }`}>
+                      }`}>
                     {page}
                   </p>
                 );
@@ -335,9 +333,8 @@ function Blog() {
             onClick={() =>
               setCurrentPage((prev) => Math.min(prev + 1, totalPages))
             }
-            className={`border-[#1A1A1ACC] border-[1px] rounded-[5px] px-[24px] py-[10px] text-[16px] font-[600] flex items-center justify-center gap-[10px] sm:w-fit w-[150px] ${
-              currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""
-            }`}>
+            className={`border-[#1A1A1ACC] border-[1px] rounded-[5px] px-[24px] py-[10px] text-[16px] font-[600] flex items-center justify-center gap-[10px] sm:w-fit w-[150px] ${currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""
+              }`}>
             Next {arrowRight}
           </button>
         </section>

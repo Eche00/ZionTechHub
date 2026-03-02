@@ -22,14 +22,14 @@ function Coursecard({ course }) {
         <img
           className=" sm:w-[414.772px] sm:h-[220.536px] w-[350px] h-[220.536px] object-cover border-[#034FE3]  border-2 overflow-hidden rounded-[10px]"
           src={course.img}
-          alt=""
+          alt=" Course image"
         />
         <section className=" absolute bottom-0 px-[14px] py-[10px] z-10 bg-[#1E1E1E99] backdrop-blur-md flex items-center justify-between w-full text-white text-[14px] font-[400]">
           <p className=" flex items-center justify-center gap-[10px]  ">
             <img
               className=" w-[20px] h-[20px] object-cover"
               src={individual}
-              alt=""
+              alt=" Views icon"
             />
             <span>{course.views}</span>
           </p>
@@ -37,7 +37,7 @@ function Coursecard({ course }) {
             <img
               className=" w-[20px] h-[20px] object-cover"
               src={individual}
-              alt=""
+              alt=" Video time icon"
             />
             <span>{course.Videotime}</span>
           </p>
@@ -60,7 +60,7 @@ function Coursecard({ course }) {
             <img
               className=" w-[32px] h-[32px] rounded-full object-cover"
               src={SirGodsentprofile}
-              alt=""
+              alt="Sir Godsent profile image"
             />
             <div className=" flex flex-col justify-center text-[#1A1A1ACC] ">
               <p className=" text-[16px] font-[700] font-[Lato]">

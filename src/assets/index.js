@@ -144,12 +144,12 @@ import partnerimg3 from "./partnerimg3.webp";
 import industryhero from "./industryhero.webp";
 
 // ---------- Courses ----------
-import analysticshero1 from "./analysticshero1.webp";
-import analysticshero2 from "./analysticshero2.webp";
-import analysticshero3 from "./analysticshero3.webp";
-import analysticshero4 from "./analysticshero4.webp";
-import analysticshero5 from "./analysticshero5.webp";
-import analysticshero6 from "./analysticshero6.webp";
+import analyticshero1 from "./analyticshero1.webp";
+import analyticshero2 from "./analyticshero2.webp";
+import analyticshero3 from "./analyticshero3.webp";
+import analyticshero4 from "./analyticshero4.webp";
+import analyticshero5 from "./analyticshero5.webp";
+import analyticshero6 from "./analyticshero6.webp";
 
 import sciencehero1 from "./sciencehero1.webp";
 import sciencehero2 from "./sciencehero2.webp";
@@ -178,6 +178,13 @@ import machinehero3 from "./machinehero3.webp";
 import machinehero4 from "./machinehero4.webp";
 import machinehero5 from "./machinehero5.webp";
 import machinehero6 from "./machinehero6.webp";
+
+import marketing1 from "./marketing1.jpg";
+import marketing2 from "./marketing2.jpg";
+import marketing3 from "./marketing3.jpg";
+import marketing4 from "./marketing4.jpg";
+import marketing5 from "./marketing5.jpg";
+import marketing6 from "./marketing6.jpg";
 
 // ----- Certificates -----
 import certificate1 from "./certificate1.webp";
@@ -285,12 +292,12 @@ export {
   teamprofile7,
   teamprofile8,
   teamprofile9,
-  analysticshero1,
-  analysticshero2,
-  analysticshero3,
-  analysticshero4,
-  analysticshero5,
-  analysticshero6,
+  analyticshero1,
+  analyticshero2,
+  analyticshero3,
+  analyticshero4,
+  analyticshero5,
+  analyticshero6,
   sciencehero1,
   sciencehero2,
   sciencehero3,
@@ -315,6 +322,12 @@ export {
   machinehero4,
   machinehero5,
   machinehero6,
+  marketing1,
+  marketing2,
+  marketing3,
+  marketing4,
+  marketing5,
+  marketing6,
   certificate1,
   certificate2,
   consulthero1,

@@ -13,9 +13,9 @@ const PopularCourseslib = [
     views: "122",
     Videotime: "1hr 25mins",
     time: "12 weeks long",
-    category: "Data Analystics",
+    category: "Data Analytics",
     rating: "4.8",
-    price: "65.5",
+    price: "99",
   },
   {
     img: popularcourseimg2,
@@ -26,7 +26,7 @@ const PopularCourseslib = [
     time: "24 weeks long",
     category: "Data Science",
     rating: "4.8",
-    price: "65.5",
+    price: "99",
   },
   {
     img: popularcourseimg3,
@@ -37,7 +37,7 @@ const PopularCourseslib = [
     time: "24 weeks long",
     category: "Web Development",
     rating: "4.8",
-    price: "65.5",
+    price: "99",
   },
   {
     img: popularcourseimg4,
@@ -48,7 +48,7 @@ const PopularCourseslib = [
     time: "24 weeks long",
     category: "Cloud Computing & DevOps",
     rating: "4.8",
-    price: "65.5",
+    price: "99",
   },
 ];
 

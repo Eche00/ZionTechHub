@@ -1,12 +1,12 @@
 import { ArrowForward, Star } from "@mui/icons-material";
 import React from "react";
 import {
-  analysticshero1,
-  analysticshero2,
-  analysticshero3,
-  analysticshero4,
-  analysticshero5,
-  analysticshero6,
+  analyticshero1,
+  analyticshero2,
+  analyticshero3,
+  analyticshero4,
+  analyticshero5,
+  analyticshero6,
   certificate1,
   certificate2,
   googlemeet,
@@ -184,32 +184,32 @@ function DataAnalysis() {
               <div className=" grid grid-cols-3 sm:gap-x-[31.6px] sm:gap-y-[19.25px] gap-x-[15px] gap-y-[12px]">
                 <img
                   className=" sm:w-[146.64px] sm:h-[146.64px] w-[97px] h-[97px] rounded-[10px] object-cover"
-                  src={analysticshero1}
+                  src={analyticshero1}
                   alt=""
                 />
                 <img
                   className=" sm:w-[146.64px] sm:h-[146.64px] w-[97px] h-[97px] rounded-[10px] object-cover"
-                  src={analysticshero2}
+                  src={analyticshero2}
                   alt=""
                 />
                 <img
                   className=" sm:w-[146.64px] sm:h-[146.64px] w-[97px] h-[97px] rounded-[10px] object-cover"
-                  src={analysticshero3}
+                  src={analyticshero3}
                   alt=""
                 />
                 <img
                   className=" sm:w-[146.64px] sm:h-[146.64px] w-[97px] h-[97px] rounded-[10px] object-cover"
-                  src={analysticshero4}
+                  src={analyticshero4}
                   alt=""
                 />
                 <img
                   className=" sm:w-[146.64px] sm:h-[146.64px] w-[97px] h-[97px] rounded-[10px] object-cover"
-                  src={analysticshero5}
+                  src={analyticshero5}
                   alt=""
                 />
                 <img
                   className=" sm:w-[146.64px] sm:h-[146.64px] w-[97px] h-[97px] rounded-[10px] object-cover"
-                  src={analysticshero6}
+                  src={analyticshero6}
                   alt=""
                 />
               </div>
@@ -299,7 +299,7 @@ function DataAnalysis() {
                 className=" flex md:gap-[14px] gap-[5px] sm:py-[48px] py-[36px] sm:px-[36px] lg:px-[16px] px-[10px]  items-baseline bg-[#EBECED] rounded-[10px]">
                 <span>{dot}</span>
                 <p className="font-[600] sm:text-[20px] text-[16px] text-[#1A1A1ACC] w-[298px] h-[165px]">
-                   {" "}
+                  {" "}
                   <span className="text-[#034FE3] ">
                     {expect.headmsg} <br />
                   </span>

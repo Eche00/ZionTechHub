@@ -140,7 +140,7 @@ function Benefits() {
               <img
                 className=" sm:w-[381px] sm:h-[268px] w-[244px] h-[172px] object-cover rounded-[10px]"
                 src={certificatehome}
-                alt="img"
+                alt=" Certificate image"
               />
             </div>
           </motion.section>
@@ -179,7 +179,7 @@ function Benefits() {
                     <img
                       className=" sm:w-[45px] sm:h-[45px] w-[36px] h-[36px] rounded-full object-cover"
                       src={zapier}
-                      alt=""
+                      alt="Zapier logo"
                     />
                     <span className=" pr-[10px]">Zapier</span>{" "}
                   </p>
@@ -187,7 +187,7 @@ function Benefits() {
                     <img
                       className=" sm:w-[45px] sm:h-[45px] w-[36px] h-[36px] rounded-full object-cover"
                       src={slack}
-                      alt=""
+                      alt="Slack logo"
                     />
                     <span className=" pr-[10px]">Slack</span>
                   </p>
@@ -195,7 +195,7 @@ function Benefits() {
                     <img
                       className=" sm:w-[45px] sm:h-[45px] w-[36px] h-[36px] rounded-full object-cover"
                       src={googleanalytics}
-                      alt=""
+                      alt="Google Analytics logo"
                     />
                     <span className=" pr-[10px]">Google Analystics</span>
                   </p>
@@ -203,7 +203,7 @@ function Benefits() {
                     <img
                       className=" sm:w-[45px] sm:h-[45px] w-[36px] h-[36px] rounded-full object-cover"
                       src={rstudio}
-                      alt=""
+                      alt="R Studio logo"
                     />
                     <span className=" pr-[10px]">R Studio</span>
                   </p>
@@ -211,7 +211,7 @@ function Benefits() {
                     <img
                       className=" sm:w-[45px] sm:h-[45px] w-[36px] h-[36px] rounded-full object-cover"
                       src={googlesheets}
-                      alt=""
+                      alt="Google Sheets logo"
                     />
                     <span className=" pr-[10px]">Google Sheets</span>
                   </p>
@@ -219,7 +219,7 @@ function Benefits() {
                     <img
                       className=" sm:w-[45px] sm:h-[45px] w-[36px] h-[36px] rounded-full object-cover"
                       src={excel}
-                      alt=""
+                      alt="Excel logo"
                     />
                     <span className=" pr-[10px]">Excel</span>
                   </p>
@@ -227,7 +227,7 @@ function Benefits() {
                     <img
                       className=" sm:w-[45px] sm:h-[45px] w-[36px] h-[36px] rounded-full object-cover"
                       src={discord}
-                      alt=""
+                      alt="Discord logo"
                     />
                     <span className=" pr-[10px]">Discord</span>
                   </p>
@@ -235,7 +235,7 @@ function Benefits() {
                     <img
                       className=" sm:w-[45px] sm:h-[45px] w-[36px] h-[36px] rounded-full object-cover"
                       src={microsoft}
-                      alt=""
+                      alt="Microsoft logo"
                     />
                     <span className=" pr-[10px]">Microsoft</span>
                   </p>
@@ -273,13 +273,13 @@ function Benefits() {
                 <img
                   className=" w-full sm:h-[172px] h-[120px] object-cover"
                   src={linkedlncover}
-                  alt=""
+                  alt="LinkedIn cover image"
                 />
                 <div className=" flex sm:justify-between relative">
                   <img
                     className=" absolute sm:w-[120px] sm:h-[120px] w-[60px] h-[60px] rounded-full sm:-top-[80px] sm:left-5 -top-[30px] left-5 border-[4px] border-white object-cover"
                     src={SirGodsentprofile}
-                    alt=""
+                    alt="Sir Godsent profile image"
                   />
                   <section className=" flex  flex-col flex-1 sm:px-[27px] px-[20px] sm:pt-[44px] pt-[24px]">
                     <p className=" sm:text-[24px] text-[16px] font-[600] text-[#1A1A1ACC]">
@@ -298,7 +298,7 @@ function Benefits() {
                         <img
                           className="w-[40px] sm:h-[40px]  h-[30px]"
                           src={secondlogo}
-                          alt=""
+                          alt="Zion Tech Hub logo"
                         />{" "}
                         <p className=" sm:text-[16px] text-[10px] font-[600] text-[#1A1A1ACC] pb-[8px]">
                           Zion Tech Hub
@@ -308,7 +308,7 @@ function Benefits() {
                         <img
                           className="w-[40px] sm:h-[40px]  h-[30px]"
                           src={unilogo}
-                          alt=""
+                          alt="University of PH logo"
                         />{" "}
                         <p className=" sm:text-[16px] text-[10px] font-[600] text-[#1A1A1ACC] pb-[8px]">
                           Univesity of PH
@@ -349,7 +349,7 @@ function Benefits() {
                       <img
                         className=" sm:w-[100px] sm:h-[100px] w-[84px] h-[84px] object-cover rounded-full  "
                         src={emojiprofile}
-                        alt=""
+                        alt="Emoji profile image"
                       />
                     </div>
                   </div>
@@ -357,32 +357,32 @@ function Benefits() {
                 <img
                   className=" sm:w-[60px] sm:h-[60px] w-[50px] h-[50px] rounded-full object-cover absolute bottom-[42%] sm:left-5 left-8"
                   src={metalogo}
-                  alt=""
+                  alt="Meta logo"
                 />
                 <img
                   className="  sm:w-[60px] sm:h-[60px] w-[50px] h-[50px]  rounded-full object-cover absolute bottom-[60%] left-[55px]"
                   src={applelogo}
-                  alt=""
+                  alt="Apple logo"
                 />
                 <img
                   className="  sm:w-[60px] sm:h-[60px] w-[50px] h-[50px]  rounded-full object-cover absolute bottom-[80%] left-[120px]"
                   src={googlelogo}
-                  alt=""
+                  alt="Google logo"
                 />
                 <img
                   className="  sm:w-[60px] sm:h-[60px] w-[50px] h-[50px]  rounded-full object-cover absolute bottom-[72%] right-[160px]"
                   src={microsoftlogo}
-                  alt=""
+                  alt="Microsoft logo"
                 />
                 <img
                   className="  sm:w-[60px] sm:h-[60px] w-[50px] h-[50px]  rounded-full object-cover absolute bottom-[60%] right-[55px]"
                   src={amazonlogo}
-                  alt=""
+                  alt="Amazon logo"
                 />
                 <img
                   className="  sm:w-[60px] sm:h-[60px] w-[50px] h-[50px]  rounded-full object-cover absolute bottom-[38.5%] sm:right-5 right-8"
                   src={notionlogo}
-                  alt=""
+                  alt="Notion logo"
                 />
               </div>
             </div>

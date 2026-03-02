@@ -217,7 +217,8 @@ function NextCohort() {
                     START DATE
                   </p>{" "}
                   <p className=" text-[#034FE3] sm:p-[8px] p-[4] sm:text-[16px] text-[14px] font-[400]">
-                    23/04/24
+                    {/* 23/04/26 */}
+                    Starting Soon
                   </p>
                 </div>
                 <span className=" w-[1px] h-[50px] bg-[#1A1A1A1A]"></span>
@@ -226,7 +227,8 @@ function NextCohort() {
                     END DATE
                   </p>{" "}
                   <p className=" text-[#034FE3] sm:p-[8px] p-[4] sm:text-[16px] text-[14px] font-[400]">
-                    07/07/24
+                    {/* 07/07/26 */}
+                    Upon Completion
                   </p>
                 </div>
               </section>

@@ -158,11 +158,9 @@ function MadeCourses() {
             {pointer}
           </span>
           <span
-            className={` absolute -left-[4px] -top-16 hidden sm:flex p-[4px] bg-[#034FE3]  rounded-b-full  ${
-              enroll && "h-[100px] duration-500"
-            } ${join && "h-[320px] duration-500"} ${
-              classes && "h-[535px] duration-500"
-            }`}></span>
+            className={` absolute -left-[4px] -top-16 hidden sm:flex p-[4px] bg-[#034FE3]  rounded-b-full  ${enroll && "h-[100px] duration-500"
+              } ${join && "h-[320px] duration-500"} ${classes && "h-[535px] duration-500"
+              }`}></span>
           {/* made courses section 1  */}
           <section
             onClick={handleEnrollDisplay}
@@ -191,7 +189,7 @@ function MadeCourses() {
               viewport={{ once: true }}
               className=" sm:hidden flex w-[343px] h-[200px] my-2 rounded-[10px] object-cover  bg-gray-200"
               src={Registerhome}
-              alt=""
+              alt="Register hero image"
             />
           </section>
           {/* made courses section 2  */}
@@ -233,7 +231,7 @@ function MadeCourses() {
               viewport={{ once: true }}
               className=" sm:hidden flex w-[343px] h-[200px] my-2 rounded-[10px] object-cover bg-gray-200"
               src={Joinhome}
-              alt=""
+              alt="Join hero image"
             />
           </section>{" "}
           {/* made courses section 3  */}
@@ -263,7 +261,7 @@ function MadeCourses() {
               viewport={{ once: true }}
               className=" sm:hidden flex w-[343px] h-[200px] my-2 rounded-[10px] object-cover bg-gray-200"
               src={Classeshome}
-              alt=""
+              alt=" Classes hero image"
             />
           </section>
         </div>
@@ -286,14 +284,14 @@ function MadeCourses() {
             <img
               className=" h-[717px] w-full object-cover rounded-t-[10px] bg-gray-200"
               src={Joinhome}
-              alt=""
+              alt=" Join hero image"
             />
           )}{" "}
           {enroll && join && classes && (
             <img
               className=" h-[717px] w-full object-cover rounded-t-[10px] bg-gray-200"
               src={Classeshome}
-              alt=""
+              alt=" Classes hero image"
             />
           )}
         </motion.div>

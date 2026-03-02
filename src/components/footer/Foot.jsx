@@ -128,7 +128,7 @@ function Foot() {
         </div>
 
         {/* Bottom Section: Background Branding Text */}
-        <div className="sm:text-[220px] md:text-[120px] text-[80px] whitespace-nowrap font-[900] text-[#C3C3C333] p-0 m-0">
+        <div className="sm:text-[220px] md:text-[120px] text-[80px] whitespace-nowrap font-[900] text-[#C3C3C333] p-0 m-0 w-fit mx-auto">
           ZION TECH HUB
         </div>
       </div>
