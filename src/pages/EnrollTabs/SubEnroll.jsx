@@ -13,94 +13,41 @@ import {
   arrayUnion,
   onSnapshot
 } from "firebase/firestore";
+import toast from "react-hot-toast";
+import { useLocation } from "react-router-dom";
 function SubEnroll() {
+  // STATE
   const [course, setCourse] = useState(false);
   const [selectCourse, setSelectCourse] = useState(false);
   const [cohortActive, setCohortActive] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [link, setLink] = useState(null);
+
   const [formData, setFormData] = useState({
     name: "",
-    refferalId: "",
+    email: "",
+    referralId: "",
     course: "Select course",
   });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const location = useLocation();
 
-    if (formData.course === "Select course") {
-      setSelectCourse(true);
-      return;
+
+  // AUTO-SET REFERRAL FROM URL
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+
+    // your link uses ?affliate=
+    const affiliateCode = params.get("affliate");
+
+    if (affiliateCode) {
+      setFormData((prev) => ({
+        ...prev,
+        referralId: affiliateCode,
+      }));
     }
+  }, [location.search]);
 
-    setLoading(true);
-
-    try {
-      /*       1. FIND AFFILIATE
-    */
-      const q = query(
-        collection(db, "users"),
-        where("referralCode", "==", formData.refferalId.trim())
-      );
-
-      const snapshot = await getDocs(q);
-
-      if (snapshot.empty) {
-        alert("Invalid Referral ID");
-        setLoading(false);
-        return;
-      }
-
-      /*       2. GET AFFILIATE DOC
-    */
-      const affiliateDoc = snapshot.docs[0];
-      const affiliateRef = doc(db, "users", affiliateDoc.id);
-
-      /*       3. CREATE REGISTERED USER DATA
-    */
-      const newReferral = {
-        name: formData.name,
-        course: formData.course,
-        referralId: formData.refferalId,
-        registeredAt: new Date(),
-      };
-
-      /*       4. UPDATE REFERRALS ARRAY
-    */
-      await updateDoc(affiliateRef, {
-        referrals: arrayUnion(newReferral),
-      });
-
-      alert("Registration successful ! You will be redirected to WhatsApp in 10 seconds.");
-
-      /*       5. WAIT 10 SECONDS
-    */
-      setTimeout(() => {
-        let number = "+2348055094738";
-
-        let url =
-          "https://wa.me/" +
-          number +
-          "?text=" +
-          "FullName: " +
-          formData.name +
-          "%0a" +
-          "Course: " +
-          formData.course +
-          "%0a";
-
-        window.open(url, "_blank").focus();
-      }, 10000);
-
-    } catch (error) {
-      console.error(error);
-      alert("Something went wrong");
-    }
-
-    setLoading(false);
-    setSelectCourse(false);
-  };
-
-  //  React State
-  const [link, setLink] = useState(null);
 
   // FETCH WORKSHOP DETAILS
   useEffect(() => {
@@ -118,6 +65,109 @@ function SubEnroll() {
     return () => unsubscribe();
   }, []);
 
+
+  // HANDLE SUBMIT
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (formData.course === "Select course") {
+      setSelectCourse(true);
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const referralId = formData.referralId?.trim();
+      const email = formData.email?.trim().toLowerCase();
+
+      // IF NO REFERRAL ID → CONTINUE
+      if (!referralId) {
+        toast.success(
+          "Registration successful! Redirecting to WhatsApp in 10 seconds..."
+        );
+      } else {
+        // 1. FIND AFFILIATE
+        const q = query(
+          collection(db, "users"),
+          where("referralCode", "==", referralId)
+        );
+
+        const snapshot = await getDocs(q);
+
+        if (snapshot.empty) {
+          toast.error("Invalid Referral ID");
+          setLoading(false);
+          return;
+        }
+
+        const affiliateDoc = snapshot.docs[0];
+        const affiliateData = affiliateDoc.data();
+        const affiliateRef = doc(db, "users", affiliateDoc.id);
+
+        // 2. PREVENT DUPLICATE BY EMAIL
+        const alreadyReferred = affiliateData.referrals?.some(
+          (ref) =>
+            ref.email?.toLowerCase() === email &&
+            ref.course === formData.course
+        );
+
+        if (alreadyReferred) {
+          toast.error(
+            "This email has already registered under this referral ID."
+          );
+          setLoading(false);
+          return;
+        }
+
+        // 3. CREATE REFERRAL DATA
+        const newReferral = {
+          name: formData.name,
+          email: email,
+          course: formData.course,
+          referralId: referralId,
+          registeredAt: new Date(),
+        };
+
+        // 4. UPDATE AFFILIATE REFERRALS
+        await updateDoc(affiliateRef, {
+          referrals: arrayUnion(newReferral),
+        });
+
+        toast.success(
+          "Registration successful! Redirecting to WhatsApp in 10 seconds..."
+        );
+      }
+
+      // WAIT 10 SECONDS BEFORE NAVIGATION
+      setTimeout(() => {
+        let number = "+2348055094738";
+
+        let url =
+          "https://wa.me/" +
+          number +
+          "?text=" +
+          "FullName: " +
+          formData.name +
+          "%0a" +
+          "Email: " +
+          email +
+          "%0a" +
+          "Course: " +
+          formData.course +
+          "%0a";
+
+        window.location.href = url;
+      }, 10000);
+
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong");
+    }
+
+    setLoading(false);
+    setSelectCourse(false);
+  };
   return (
     <div className="">
       <div className=" ">
@@ -164,16 +214,30 @@ function SubEnroll() {
                 </section>
                 <section className="flex flex-col gap-[10px]">
                   <p className=" text-[#6B6F71] text-[12px] font-[500]">
-                    Refferal ID
+                    Email
                   </p>
                   <input
                     className=" py-[18px] px-[16px] border border-[#C7D1D4] rounded-[10px] text-[#1A1A1ACC] placeholder:text-[#1A1A1A33]"
-                    type="text"
-                    placeholder="Enter Enter refferal ID"
+                    type="email"
+                    placeholder="Enter your email"
                     onChange={(e) =>
-                      setFormData({ ...formData, refferalId: e.target.value })
+                      setFormData({ ...formData, email: e.target.value })
                     }
                     required
+                  />
+                </section>
+                <section className="flex flex-col gap-[10px]">
+                  <p className=" text-[#6B6F71] text-[12px] font-[500]">
+                    Referral ID
+                  </p>
+                  <input
+                    className="py-[18px] px-[16px] border border-[#C7D1D4] rounded-[10px]"
+                    type="text"
+                    placeholder="Enter referral ID"
+                    value={formData.referralId}
+                    onChange={(e) =>
+                      setFormData({ ...formData, referralId: e.target.value })
+                    }
                   />
                 </section>
                 <section className="flex flex-col gap-[10px]">
@@ -186,7 +250,7 @@ function SubEnroll() {
                     {formData.course}
 
                     <span
-                      className="text-[#1A1A1ACC]"
+                      className="text-[#1A1A1ACC] cursor-pointer"
                       onClick={() => setCourse(!course)}>
                       {" "}
                       {course ? (
@@ -197,7 +261,7 @@ function SubEnroll() {
                     </span>
                     {course && (
                       <div
-                        className=" absolute  -left-[1px] -right-[1px] top-[50px] border border-[#C7D1D4] bg-[#FFFFFF] text-[12px] font-[500] text-[#1A1A1A99] rounded-b-[10px] overflow-hidden"
+                        className="py-5 absolute  -left-[1px] -right-[1px] bottom-[50px] border-x border-t border-[#C7D1D4] bg-[#FFFFFF] text-[12px] font-[500] text-[#1A1A1A99] rounded-t-[10px] overflow-scroll"
                         onClick={() => setCourse(!course)}>
                         <button
                           value="
@@ -292,12 +356,13 @@ function SubEnroll() {
                       Please select a course
                     </p>
                   )}
-                  <a
-                    href={link?.enrollLink}
-                    target="_blank"
+                  <button
+                    // href={link?.enrollLink}
+                    // target="_blank"
+                    onClick={handleSubmit}
                     className="py-[18px] px-[16px] rounded-[10px] text-white bg-[#207C3F] mt-[14px] cursor-pointer text-center">
-                    Register here
-                  </a>
+                    {loading ? "Registering..." : "Register Now"}
+                  </button>
                 </section>
               </form>
             ) : (

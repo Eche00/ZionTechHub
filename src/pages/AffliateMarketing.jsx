@@ -13,17 +13,17 @@ import {
     serverTimestamp,
 } from 'firebase/firestore'
 import { db } from '../lib/Config/firebase'
+import toast from 'react-hot-toast'
 
 function AffliateMarketing() {
 
     const [loading, setLoading] = useState(false)
-    const [error, setError] = useState('')
-    const [successMessage, setSuccessMessage] = useState('')
     const [showSuccessPopup, setShowSuccessPopup] = useState(false)
     const [generatedCode, setGeneratedCode] = useState('')
     const [formData, setFormData] = useState({
         username: "",
         email: "",
+        phone: "",
         country: "",
         role: "Affiliate",
         approved: false,
@@ -49,74 +49,83 @@ function AffliateMarketing() {
 
     //  submit
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
-        setLoading(true)
-        setError('')
-        setSuccessMessage('')
+        setLoading(true);
+
+        const loadingToast = toast.loading("Processing registration...");
 
         try {
+            const normalizedEmail = formData.email.toLowerCase().trim();
 
-            // check if user already exists
+            // CHECK IF USER EXISTS
             const q = query(
                 collection(db, "users"),
-                where("email", "==", formData.email)
-            )
+                where("email", "==", normalizedEmail)
+            );
 
-            const snapshot = await getDocs(q)
+            const snapshot = await getDocs(q);
 
-            //  USER EXISTS
             if (!snapshot.empty) {
+                const userDoc = snapshot.docs[0].data();
 
-                const userDoc = snapshot.docs[0].data()
-
-                //  already an affiliate
                 if (
                     userDoc.referralCode &&
                     userDoc.referralCode.trim() !== ""
                 ) {
-                    setError("You are already registered as an affiliate.")
-                    setLoading(false)
-                    return
+                    toast.dismiss(loadingToast);
+                    toast.error("You are already registered as an affiliate.");
+                    setLoading(false);
+                    return;
                 }
             }
 
-            //  generate new referral code
-            const referralCode = generateReferralCode(formData.username)
+            // GENERATE REFERRAL CODE
+            const referralCode = generateReferralCode(formData.username);
 
             await addDoc(collection(db, "users"), {
                 ...formData,
+                email: normalizedEmail,
                 referralCode,
                 createdAt: serverTimestamp(),
-            })
+            });
 
-            setGeneratedCode(referralCode)
-            setShowSuccessPopup(true)
+            toast.dismiss(loadingToast);
 
-            // reset form
+            //  Show success toast FIRST
+            toast.success("Registration submitted successfully.");
+
+            //  Then show popup
+            setGeneratedCode(referralCode);
+            setShowSuccessPopup(true);
+
+            // RESET FORM
             setFormData({
                 username: "",
                 email: "",
+                phone: "",
                 country: "",
                 role: "Affiliate",
-                referralCode: "",
                 approved: false,
+                referralCode: "",
                 referrals: [],
-                createdAt: serverTimestamp(),
-            })
+            });
 
         } catch (err) {
-            console.error(err)
-            setError("Something went wrong. Try again.")
+            console.error(err);
+            toast.dismiss(loadingToast);
+            toast.error("Something went wrong. Please try again.");
         }
 
-        setLoading(false)
-    }
+        setLoading(false);
+    };
     const copyCode = async () => {
         try {
             await navigator.clipboard.writeText(generatedCode)
+            toast.success("Referral code copied to clipboard");
         } catch (err) {
             console.error("Copy failed")
+            toast.error("Failed to copy referral code");
         }
     }
     return (
@@ -210,6 +219,16 @@ function AffliateMarketing() {
                             {/* COUNTRY */}
                             <input
                                 type="text"
+                                name="phone"
+                                value={formData.phone}
+                                onChange={handleChange}
+                                placeholder="Phone Number"
+                                required
+                                className="border py-[18px] px-[16px] rounded-[10px]"
+                            />
+                            {/* COUNTRY */}
+                            <input
+                                type="text"
                                 name="country"
                                 value={formData.country}
                                 onChange={handleChange}
@@ -224,22 +243,8 @@ function AffliateMarketing() {
                                 disabled={loading}
                                 className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white py-[16px]"
                             >
-                                {loading ? "Registering..." : "Register Now"}
+                                {loading ? <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div> : "Register Now"}
                             </button>
-
-                            {/* ERROR */}
-                            {error && (
-                                <p className="text-red-500 font-bold text-center">
-                                    {error}
-                                </p>
-                            )}
-
-                            {/* SUCCESS */}
-                            {successMessage && (
-                                <p className="text-green-500 font-bold text-center">
-                                    {successMessage}
-                                </p>
-                            )}
 
                         </form>
 

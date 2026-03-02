@@ -38,6 +38,7 @@ import Signin from "./dashboard/dashboardRoutes/Signin";
 import CreateWebinar from "./dashboard/dashboardRoutes/CreateWebinar";
 import DigitalMarketing from "./pages/Courses/DigitalMarketing";
 import AffliateMarketing from "./pages/AffliateMarketing";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   // Initialize Google Analytics tracking
@@ -47,7 +48,7 @@ function App() {
     <div className="overflow-hidden">
       {/* Always scroll to top when navigating */}
       <Scrolltotop />
-
+      <Toaster position="top-right" />
       <Routes>
         {/* Public Website Routes (with Header & Footer) */}
         <Route path="/" element={<Head />}>

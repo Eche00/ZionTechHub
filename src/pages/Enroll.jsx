@@ -165,7 +165,7 @@ function Enroll() {
         </div>
       </div>
       {/* buttons  */}
-      <div className="one flex md:items-center  flex-col  md:h-[100vh] h-[120vh] gap-[50px]">
+      <div className="one flex md:items-center  flex-col  md:min-h-[100vh] min-h-[120vh] gap-[50px] py-10">
         {/* <section className=" flex items-center justify-center w-[90%] mx-auto">
           {/* <div className="flex items-center bg-gray-300 rounded-[10px] p-[10px] gap-[10px]">
             <button

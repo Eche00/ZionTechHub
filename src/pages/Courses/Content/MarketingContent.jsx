@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { SirGodsentprofile, googlemeet } from "../../../assets";
+import { ElsieProfile, googlemeet } from "../../../assets";
 
 function MarketingContent() {
 
@@ -242,11 +242,11 @@ function MarketingContent() {
                         <section className=" flex  gap-[14px] ">
                             <img
                                 className="sm:w-[60px] sm:h-[60px] w-[50px] h-[50px] object-cover rounded-full"
-                                src={SirGodsentprofile}
+                                src={ElsieProfile}
                                 alt=""
                             />
                             <div className=" flex flex-col text-[#1A1A1A] w-fit">
-                                <p className=" text-[18px] font-[600]">Ndoma Godsent</p>
+                                <p className=" text-[18px] font-[600]">Elsie Ndoma</p>
                                 <p className=" text-[12px] font-[300]">
                                     Co-Founder, Data Analyst
                                 </p>

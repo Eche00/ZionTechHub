@@ -208,6 +208,10 @@ import chiefoperator from "./chiefoperatorprofile.png";
 import techhublogo from "./techhublogo.webp";
 import enrollbg from "./enrollbg.png";
 
+//  Elsie 
+import ElsieProfile from "./ElsieProfile.jpeg";
+
+
 export {
   logo,
   Reviewimg,
@@ -364,4 +368,5 @@ export {
   partnerlogo4,
   industryhero,
   consultationpopup,
+  ElsieProfile,
 };
