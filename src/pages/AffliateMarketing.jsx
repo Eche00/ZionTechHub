@@ -60,7 +60,7 @@ function AffliateMarketing() {
 
             // CHECK IF USER EXISTS
             const q = query(
-                collection(db, "users"),
+                collection(db, "affliates"),
                 where("email", "==", normalizedEmail)
             );
 
@@ -83,7 +83,7 @@ function AffliateMarketing() {
             // GENERATE REFERRAL CODE
             const referralCode = generateReferralCode(formData.username);
 
-            await addDoc(collection(db, "users"), {
+            await addDoc(collection(db, "affliates"), {
                 ...formData,
                 email: normalizedEmail,
                 referralCode,

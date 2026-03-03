@@ -70,6 +70,11 @@ function SubEnroll() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!formData.name.trim() || !formData.email.trim()) {
+      toast.error("Please fill in all required fields");
+      return;
+    }
+
     if (formData.course === "Select course") {
       setSelectCourse(true);
       return;
@@ -81,46 +86,49 @@ function SubEnroll() {
       const referralId = formData.referralId?.trim();
       const email = formData.email?.trim().toLowerCase();
 
-      // IF NO REFERRAL ID → CONTINUE
+      //  IF NO REFERRAL → NORMAL FLOW
       if (!referralId) {
         toast.success(
           "Registration successful! Redirecting to WhatsApp in 10 seconds..."
         );
       } else {
-        // 1. FIND AFFILIATE
+        //  1. FIND AFFILIATE BY REFERRAL CODE
         const q = query(
-          collection(db, "users"),
+          collection(db, "affliates"),
           where("referralCode", "==", referralId)
         );
 
         const snapshot = await getDocs(q);
 
+        //  REFERRAL CODE DOES NOT EXIST
         if (snapshot.empty) {
           toast.error("Invalid Referral ID");
           setLoading(false);
           return;
         }
 
+        //  REFERRAL CODE EXISTS
         const affiliateDoc = snapshot.docs[0];
         const affiliateData = affiliateDoc.data();
-        const affiliateRef = doc(db, "users", affiliateDoc.id);
+        const affiliateRef = doc(db, "affliates", affiliateDoc.id);
 
-        // 2. PREVENT DUPLICATE BY EMAIL
-        const alreadyReferred = affiliateData.referrals?.some(
-          (ref) =>
-            ref.email?.toLowerCase() === email &&
-            ref.course === formData.course
-        );
+        //  2. CHECK IF EMAIL ALREADY REGISTERED UNDER THIS REFERRAL
+        const alreadyReferred =
+          affiliateData.referrals?.some(
+            (ref) =>
+              ref.email?.toLowerCase() === email &&
+              ref.course === formData.course
+          ) || false;
 
         if (alreadyReferred) {
           toast.error(
-            "This email has already registered under this referral ID."
+            "You have already registered under this Referral ID for this course."
           );
           setLoading(false);
           return;
         }
 
-        // 3. CREATE REFERRAL DATA
+        //  3. CREATE REFERRAL RECORD
         const newReferral = {
           name: formData.name,
           email: email,
@@ -129,7 +137,7 @@ function SubEnroll() {
           registeredAt: new Date(),
         };
 
-        // 4. UPDATE AFFILIATE REFERRALS
+        //  4. SAVE REFERRAL
         await updateDoc(affiliateRef, {
           referrals: arrayUnion(newReferral),
         });
@@ -139,7 +147,7 @@ function SubEnroll() {
         );
       }
 
-      // WAIT 10 SECONDS BEFORE NAVIGATION
+      //  REDIRECT AFTER 10 SECONDS
       setTimeout(() => {
         let number = "+2348055094738";
 
@@ -209,7 +217,6 @@ function SubEnroll() {
                     onChange={(e) =>
                       setFormData({ ...formData, name: e.target.value })
                     }
-                    required
                   />
                 </section>
                 <section className="flex flex-col gap-[10px]">
@@ -223,7 +230,6 @@ function SubEnroll() {
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
-                    required
                   />
                 </section>
                 <section className="flex flex-col gap-[10px]">
@@ -233,7 +239,7 @@ function SubEnroll() {
                   <input
                     className="py-[18px] px-[16px] border border-[#C7D1D4] rounded-[10px]"
                     type="text"
-                    placeholder="Enter referral ID"
+                    placeholder="Enter referral ID (Optional)"
                     value={formData.referralId}
                     onChange={(e) =>
                       setFormData({ ...formData, referralId: e.target.value })
@@ -364,6 +370,7 @@ function SubEnroll() {
                     {loading ? "Registering..." : "Register Now"}
                   </button>
                 </section>
+
               </form>
             ) : (
               <p className=" text-[16px] font-bold text-red-500  text-center">
@@ -373,6 +380,7 @@ function SubEnroll() {
           </div>
         </div>
       </div>
+
     </div>
   );
 }

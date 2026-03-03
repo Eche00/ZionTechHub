@@ -39,6 +39,8 @@ import CreateWebinar from "./dashboard/dashboardRoutes/CreateWebinar";
 import DigitalMarketing from "./pages/Courses/DigitalMarketing";
 import AffliateMarketing from "./pages/AffliateMarketing";
 import { Toaster } from "react-hot-toast";
+import Signup from "./dashboard/dashboardRoutes/SignUp";
+import Affliates from "./dashboard/dashboardRoutes/Affliates";
 
 function App() {
   // Initialize Google Analytics tracking
@@ -84,6 +86,7 @@ function App() {
           <Route path="home" element={<Dashboard />} />
           <Route path="viewblogs" element={<ViewBlogs />} />
           <Route path="create-blog" element={<CreateBlog />} />
+          <Route path="affliate-marketers" element={<Affliates />} />
           <Route path="event-attendees" element={<EventAttendees />} />
           <Route path="create-webinar" element={<CreateWebinar />} />
           <Route path="users" element={<Users />} />
@@ -91,6 +94,7 @@ function App() {
 
         {/* Standalone Routes (no header/footer) */}
         <Route path="/signin" element={<Signin />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/enroll" element={<Enroll />} />
       </Routes>
     </div>

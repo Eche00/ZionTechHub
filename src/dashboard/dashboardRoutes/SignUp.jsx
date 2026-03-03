@@ -3,6 +3,9 @@ import { serverTimestamp } from "firebase/firestore";
 import { handleRegistration } from "../../lib/regLogic";
 import { EmailOutlined, Lock, LockOpen } from "@mui/icons-material";
 import { auth } from "../../lib/Config/firebase";
+import { signOut } from "firebase/auth";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 function Signup({ setCreateUser }) {
   const [formData, setFormData] = useState({
@@ -12,7 +15,7 @@ function Signup({ setCreateUser }) {
     role: "Team",
     createdAt: serverTimestamp(),
   });
-
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   // password visibility
   const [visible, setVisible] = useState(false);
@@ -55,10 +58,11 @@ function Signup({ setCreateUser }) {
     //  handling registeration
     try {
       await handleRegistration(formData);
-      signOut(auth);
-      setCreateUser(false);
+      toast.success("User created successfully!");
+      navigate("/dashboard/home");
     } catch (error) {
       setError(error.message);
+      toast.error("Failed to create user. Please try again.");
     } finally {
       setLoading(false);
     }

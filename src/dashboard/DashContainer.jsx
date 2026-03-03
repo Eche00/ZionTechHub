@@ -69,7 +69,7 @@ function DashContainer() {
         </div>
       )}
       <section className=" w-full flex  relative bg-white dark:bg-[rgb(31,31,31)]">
-        <div className="hidden md:flex fixed left-0">
+        <div className="flex fixed left-0 z-50">
           <Sidebar compress={compress} setCompress={setCompress} />
         </div>
         <div

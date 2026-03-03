@@ -233,7 +233,7 @@ function MarketingContent() {
                         <section className=" flex flex-col">
                             {" "}
                             <h2 className=" sm:text-[24px] text-[20px] text-[#034FE3] font-[600] w-fit">
-                                Instructor
+                                Program Facilitator
                             </h2>
                             <p className=" text-[16px] text-[#1A1A1ACC] font-[300] w-fit">
                                 Certified Trainer at Zion Tech Hub
@@ -241,14 +241,14 @@ function MarketingContent() {
                         </section>
                         <section className=" flex  gap-[14px] ">
                             <img
-                                className="sm:w-[60px] sm:h-[60px] w-[50px] h-[50px] object-cover rounded-full"
+                                className="sm:w-[60px] sm:h-[60px] w-[50px] h-[50px] object-cover object-top rounded-full"
                                 src={ElsieProfile}
                                 alt=""
                             />
                             <div className=" flex flex-col text-[#1A1A1A] w-fit">
-                                <p className=" text-[18px] font-[600]">Elsie Ndoma</p>
+                                <p className=" text-[18px] font-[600]">Elsie Emesomi Ogianyo</p>
                                 <p className=" text-[12px] font-[300]">
-                                    Co-Founder, Data Analyst
+                                    Marketing Professional.
                                 </p>
                             </div>
                         </section>

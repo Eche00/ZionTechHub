@@ -9,6 +9,7 @@ import {
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { db } from "../../lib/Config/firebase";
+import { Public } from "@mui/icons-material";
 // import { db } from "../lib/Config/firebase";
 
 function EventAttendees() {
@@ -155,7 +156,7 @@ function EventAttendees() {
                 </span>
               )}
             </p>
-            <p className="text-gray-500 text-sm">🌍 {attendee.Country}</p>
+            <p className="text-gray-500 text-sm"><Public /> {attendee.Country}</p>
             {/* buttons  */}
             <div className="flex items-center gap-[20px] justify-end">
               <a

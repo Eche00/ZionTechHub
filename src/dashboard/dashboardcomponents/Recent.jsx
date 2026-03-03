@@ -54,10 +54,10 @@ function Recent() {
             View
           </Link>
         </div>
-        <div className=" w-full  flex items-center justify-center  gap-[24px] overflow-scroll">
+        <div className=" w-full  flex sm:flex-row flex-col items-center justify-center  gap-[24px] overflow-scroll">
           {blogs?.map((blog) => (
             <div
-              className="sm:w-[464px] w-full flex flex-col gap-[24px] cursor-pointer"
+              className="sm:max-w-[364px] w-full flex flex-col gap-[24px] cursor-pointer"
               onClick={() => handleNavigate(blog?.slug)}>
               {/* image  */}
               <div className=" w-full relative">
@@ -72,8 +72,8 @@ function Recent() {
               </div>
               {/* info  */}
               <div className="flex flex-col gap-[14px]">
-                <h3 className=" text-gray-500 text-[24px] font-[600] h-[62px] leading-[130%] w-[400px]">
-                  {blog?.title}
+                <h3 className=" text-gray-500 text-[24px] font-[600] min-h-[62px] leading-[130%] sm:w-[400px] w-full">
+                  {blog?.title.slice(0, 50)}...
                 </h3>
                 <p className="flex items-center text-[18px] font-[400] text-white gap-[5px]">
                   {blog.createdAt.toDate().toLocaleDateString("en-US", {

@@ -9,6 +9,7 @@ import {
   Newspaper,
   Person,
   Work,
+  WorkHistory,
 } from "@mui/icons-material";
 import { NavLink } from "react-router-dom";
 import { techhublogo } from "../assets";
@@ -59,7 +60,7 @@ function Sidebar({ compress, setCompress }) {
     <div
       className={
         compress
-          ? "w-fit h-[100vh] bg-[#034FE3] transition-all duration-500"
+          ? "w-fit h-[100vh] sm:bg-[#034FE3] bg-[#034FE3]/30 transition-all duration-500"
           : "w-[300px] h-[100vh] bg-[#034FE3]  transition-all duration-500"
       }>
       <nav className=" flex flex-col   text-[14px] px-[20px] py-[10px] gap-[5px]">
@@ -147,6 +148,17 @@ function Sidebar({ compress, setCompress }) {
           <Work />
           {!compress && <span>Webinar/workshop</span>}
         </NavLink>
+        <NavLink
+          to="/dashboard/affliate-marketers"
+          className={({ isActive }) =>
+            isActive
+              ? "flex items-center  gap-[5px] bg-[#1e222b]  font-extrabold py-[10px] px-[12px] rounded-[10px] text-white transition-all duration-300 "
+              : "flex items-center  text-gray-300 gap-[5px] font-bold py-[10px] px-[12px] rounded-[10px] transition-all duration-300 hover:bg-[#1e222b38] scale-95"
+          }>
+          {" "}
+          <WorkHistory />
+          {!compress && <span>Affliate Marketers</span>}
+        </NavLink>
 
         {user?.role === "Admin" && (
           <NavLink
@@ -163,9 +175,8 @@ function Sidebar({ compress, setCompress }) {
         )}
 
         <button
-          className={`bg-red-600 shadow-md text-white py-3 rounded-lg transition-all duration-300 my-10 absolute bottom-0 left-4 ${
-            !compress ? "w-[90%] px-0" : "w-fit px-5"
-          } mx-auto  hover:scale-[102%] flex items-center  justify-center gap-[5px]`}
+          className={`bg-red-600 shadow-md text-white py-3 rounded-lg transition-all duration-300 my-10 absolute bottom-0 left-4 ${!compress ? "w-[90%] px-0" : "w-fit px-5"
+            } mx-auto  hover:scale-[102%] flex items-center  justify-center gap-[5px]`}
           onClick={handleDelete}>
           {!compress && "Logout"}
           <Logout />
