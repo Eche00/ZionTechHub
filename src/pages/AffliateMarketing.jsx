@@ -135,7 +135,7 @@ function AffliateMarketing() {
                 <title>
                     Join Our Affiliate Marketing program | Zion Tech Hub
                 </title>
-                <meta name="description" content="Don’t miss our power-packed Learn in-demand tech skills from experts. Click now to reserve your spot—spaces fill fast!" />
+                <meta name="description" content="Join our affiliate marketing program and earn passive income by promoting our tech courses and resources. Learn how to build a successful affiliate business with our expert-led workshops." />
             </Helmet>
             <span className=" md:h-[104px] md:w-[104px] h-[50px] w-[50px] bg-[#034FE30D] absolute md:top-[50px] md:right-[640px] top-[150px] right-[60px] "></span> <span className=" md:h-[104px] md:w-[104px] w-[50px] h-[50px] bg-[#034FE30D] absolute md:top-[400px] md:left-[314px] top-[300px] left-0 "></span>
             {/* HERO */}
