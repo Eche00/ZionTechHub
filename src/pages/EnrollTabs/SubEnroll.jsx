@@ -149,7 +149,7 @@ function SubEnroll() {
 
       //  REDIRECT AFTER 10 SECONDS
       setTimeout(() => {
-        let number = "+2348055094738";
+        let number = "+2347087737321";
 
         let url =
           "https://wa.me/" +
