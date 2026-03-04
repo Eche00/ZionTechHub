@@ -134,7 +134,7 @@ function Affliates() {
       </ul>
       <section className=" flex items-center justify-between mt-[80px] py-6">
         <p className=" text-white font-bold flex items-center gap-[10px]">
-          Attendes:{" "}
+          Affliates:{" "}
           <span className="bg-transparent text-gray-500 border-2 border-gray-700 px-4 py-1 rounded-[10px] ">
             {affliates.length}
           </span>

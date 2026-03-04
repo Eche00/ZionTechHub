@@ -132,7 +132,7 @@ function DigitalMarketing() {
         <div className="bg-[#F5F5F5] ">
             {" "}
             <Helmet>
-                <title>Best Digital Marketing Training, Enroll Now! | Zion Tech Hub</title>
+                <title>Best Digital Marketing Training Lagos, Enroll Now! | Zion Tech Hub</title>
                 <meta
                     name="description"
                     content="Learn SEO, social media marketing, paid ads and email marketing in our 8-week practical training."
@@ -157,8 +157,7 @@ function DigitalMarketing() {
                             </h1>
 
                             <p className="text-[#1A1A1A] font-[300] sm:text-[24px] text-[18px] sm:w-full w-[335px]">
-                                Learn from industry experts, understand modern marketing strategies,
-                                and gain practical skills in social media, content, email Marketing and online growth.
+                                Learn from industry experts. Master modern marketing strategies. Build real-world skills that help you grow businesses, brands, and careers.
                             </p>
                             <p className=" text-[#1A1A1A66] font-[300] text-[20px] flex items-center gap-[12px] ">
                                 Live on{" "}
