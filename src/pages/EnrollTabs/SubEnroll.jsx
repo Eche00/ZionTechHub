@@ -86,13 +86,13 @@ function SubEnroll() {
       const referralId = formData.referralId?.trim();
       const email = formData.email?.trim().toLowerCase();
 
-      //  IF NO REFERRAL → NORMAL FLOW
+      // NORMAL FLOW (NO REFERRAL)
       if (!referralId) {
         toast.success(
           "Registration successful! Redirecting to WhatsApp in 10 seconds..."
         );
       } else {
-        //  1. FIND AFFILIATE BY REFERRAL CODE
+        // FIND AFFILIATE
         const q = query(
           collection(db, "affliates"),
           where("referralCode", "==", referralId)
@@ -100,19 +100,31 @@ function SubEnroll() {
 
         const snapshot = await getDocs(q);
 
-        //  REFERRAL CODE DOES NOT EXIST
+        // INVALID REFERRAL CODE
         if (snapshot.empty) {
           toast.error("Invalid Referral ID");
           setLoading(false);
           return;
         }
 
-        //  REFERRAL CODE EXISTS
         const affiliateDoc = snapshot.docs[0];
         const affiliateData = affiliateDoc.data();
         const affiliateRef = doc(db, "affliates", affiliateDoc.id);
 
-        //  2. CHECK IF EMAIL ALREADY REGISTERED UNDER THIS REFERRAL
+        // CHECK IF AFFILIATE IS APPROVED
+        if (affiliateData.approved === false) {
+          toast.error("This referrer has been declined");
+          setLoading(false);
+          return;
+        }
+
+        if (affiliateData.approved === null) {
+          toast.error("This referral code is still pending approval");
+          setLoading(false);
+          return;
+        }
+
+        // CHECK IF EMAIL ALREADY USED FOR THIS COURSE
         const alreadyReferred =
           affiliateData.referrals?.some(
             (ref) =>
@@ -128,7 +140,7 @@ function SubEnroll() {
           return;
         }
 
-        //  3. CREATE REFERRAL RECORD
+        // CREATE REFERRAL
         const newReferral = {
           name: formData.name,
           email: email,
@@ -137,36 +149,28 @@ function SubEnroll() {
           registeredAt: new Date(),
         };
 
-        //  4. SAVE REFERRAL
+        // SAVE REFERRAL
         await updateDoc(affiliateRef, {
           referrals: arrayUnion(newReferral),
         });
 
         toast.success(
-          "Registration successful! Redirecting to WhatsApp in 10 seconds..."
+          "Registration successful! Redirecting to WhatsApp in 2 seconds..."
         );
       }
 
-      //  REDIRECT AFTER 10 SECONDS
+      // REDIRECT
       setTimeout(() => {
-        let number = "+2347087737321";
+        let number = "2347087737321";
 
         let url =
-          "https://wa.me/" +
-          number +
-          "?text=" +
-          "FullName: " +
-          formData.name +
-          "%0a" +
-          "Email: " +
-          email +
-          "%0a" +
-          "Course: " +
-          formData.course +
-          "%0a";
+          `https://wa.me/${number}?text=` +
+          `FullName: ${formData.name}%0a` +
+          `Email: ${email}%0a` +
+          `Course: ${formData.course}%0a`;
 
         window.location.href = url;
-      }, 10000);
+      }, 2000);
 
     } catch (error) {
       console.error(error);
@@ -270,9 +274,7 @@ function SubEnroll() {
                         className="py-5 absolute  -left-[1px] -right-[1px] bottom-[50px] border-x border-t border-[#C7D1D4] bg-[#FFFFFF] text-[12px] font-[500] text-[#1A1A1A99] rounded-t-[10px] overflow-scroll"
                         onClick={() => setCourse(!course)}>
                         <button
-                          value="
-                      Data Analytics
-                      "
+                          value="Data Analytics"
                           type="button"
                           className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
                           onClick={(e) =>
@@ -284,9 +286,7 @@ function SubEnroll() {
                           Data Analytics
                         </button>
                         <button
-                          value="
-                      Data Science
-                      "
+                          value="Data Science"
                           type="button"
                           className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
                           onClick={(e) =>
@@ -298,9 +298,7 @@ function SubEnroll() {
                           Data Science
                         </button>
                         <button
-                          value="
-                      Web Development
-                      "
+                          value="Web Development"
                           type="button"
                           className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
                           onClick={(e) =>
@@ -313,9 +311,7 @@ function SubEnroll() {
                         </button>
 
                         <button
-                          value="
-                      Cloud Computing & DevOps
-                      "
+                          value="Cloud Computing & DevOps"
                           type="button"
                           className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
                           onClick={(e) =>
@@ -327,9 +323,7 @@ function SubEnroll() {
                           Cloud Computing & DevOps
                         </button>
                         <button
-                          value="
-                       Machine Learning
-                      "
+                          value="Machine Learning"
                           type="button"
                           className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
                           onClick={(e) =>
@@ -341,9 +335,7 @@ function SubEnroll() {
                           Machine Learning
                         </button>
                         <button
-                          value="
-                       Digital Marketing
-                      "
+                          value="Digital Marketing"
                           type="button"
                           className="  flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full"
                           onClick={(e) =>

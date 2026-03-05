@@ -113,6 +113,33 @@ function Affliates() {
       });
     }
   };
+  const declineAffliate = async (id) => {
+    const toastId = toast.loading("Declining affiliate...");
+
+    try {
+      const affiliateRef = doc(db, "affliates", id);
+
+      await updateDoc(affiliateRef, {
+        approved: false,
+      });
+
+      setSelectedAffiliate((prev) => ({
+        ...prev,
+        approved: false,
+      }));
+
+      toast.success("Affiliate declined successfully", {
+        id: toastId,
+      });
+
+    } catch (error) {
+      console.error(error);
+
+      toast.error("Failed to decline affiliate", {
+        id: toastId,
+      });
+    }
+  };
 
   return (
     <div className="  py-10 px-4 h-[100vh] overflow-scroll">
@@ -217,22 +244,41 @@ function Affliates() {
               <p><strong>Referral Link:</strong> https://ziontechub.com/enroll/?affliate={selectedAffiliate.referralCode}</p>
               <p>
                 <strong>Status:</strong>{" "}
-                {selectedAffiliate.approved ? (
-                  <span className="text-green-600">Approved</span>
-                ) : (
-                  <span className="text-yellow-600">Pending</span>
-                )}
+                <span
+                  className={
+                    selectedAffiliate?.approved === true
+                      ? "text-green-600"
+                      : selectedAffiliate?.approved === false
+                        ? "text-red-600"
+                        : "text-yellow-600"
+                  }
+                >
+                  {selectedAffiliate?.approved === true
+                    ? "Approved"
+                    : selectedAffiliate?.approved === false
+                      ? "Declined"
+                      : "Pending"}
+                </span>
               </p>
             </div>
 
             {/* Approve Button */}
-            {!selectedAffiliate.approved && (
-              <button
-                onClick={() => approveAffliate(selectedAffiliate.id)}
-                className="mt-4 bg-green-600 text-white px-4 py-2 rounded w-full"
-              >
-                Approve Affiliate
-              </button>
+            {selectedAffiliate?.approved === null && (
+              <div>
+                <button
+                  onClick={() => approveAffliate(selectedAffiliate.id)}
+                  className="mt-4 bg-green-600 text-white px-4 py-2 rounded w-full"
+                >
+                  Approve Affiliate
+                </button>
+
+                <button
+                  onClick={() => declineAffliate(selectedAffiliate.id)}
+                  className="mt-4 bg-red-600 text-white px-4 py-2 rounded w-full"
+                >
+                  Decline Affiliate
+                </button>
+              </div>
             )}
 
             {/* Referrals Section */}

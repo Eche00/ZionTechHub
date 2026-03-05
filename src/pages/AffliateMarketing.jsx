@@ -26,7 +26,7 @@ function AffliateMarketing() {
         phone: "",
         country: "",
         role: "Affiliate",
-        approved: false,
+        approved: null,
         referralCode: "",
         referrals: [],
         createdAt: serverTimestamp(),
