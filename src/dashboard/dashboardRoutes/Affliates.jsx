@@ -141,6 +141,47 @@ function Affliates() {
     }
   };
 
+  const mailAffiliateDetails = (affiliate) => {
+    const subject = "Your Affiliate Details - Zion Tech Hub";
+
+    const body = `
+Hello ${affiliate.username},
+
+Here are your Affiliate Details:
+
+Name: ${affiliate.username}
+Email: ${affiliate.email}
+Phone: ${affiliate.phone}
+Country: ${affiliate.country}
+
+Referral Code:
+${affiliate.referralCode}
+
+Referral Link:
+https://ziontechub.com/enroll/?affliate=${affiliate.referralCode}
+
+Status:
+${affiliate.approved === true
+        ? "Approved"
+        : affiliate.approved === false
+          ? "Declined"
+          : "Pending Approval"
+      }
+
+Total Referrals:
+${affiliate.referrals?.length || 0}
+
+Best regards,
+Zion Tech Hub
+`;
+
+    const mailtoLink = `mailto:${affiliate.email}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailtoLink;
+  };
+
   return (
     <div className="  py-10 px-4 h-[100vh] overflow-scroll">
       <div className="flex items-center gap-[20px] border-b-2 border-gray-700 py-[10px]">
@@ -176,16 +217,16 @@ function Affliates() {
       <div
         ref={pdfRef}
         className="flex flex-col w-full  gap-[10px]  bg-black border-2  border-gray-700 rounded-[10px]  overflow-scroll h-[600px] relative ">
-        <div className=" text-white font-bold w-full bg-gray-700  sticky top-0 left-0 py-[20px]  grid grid-cols-5 gap-4 items-center px-14 h-fit">
+        <div className=" text-white font-bold w-full bg-gray-700  sticky top-0 left-0 py-[20px]  grid sm:grid-cols-5 grid-cols-3 gap-4 items-center sm:px-14 px-4 h-fit">
           <p>Name</p>
           <p>Email</p>
-          <p>Phone</p>
-          <p>country</p>
-          <p className="flex items-center justify-end pr-10">Direct Mail</p>
+          <p className="sm:flex hidden">Phone</p>
+          <p className="sm:flex hidden">country</p>
+          <p className="flex items-center justify-end sm:pr-10">Direct Mail</p>
         </div>
         {affliates.map((affliate) => (
           <div
-            className="grid grid-cols-5 gap-4 items-center border-b border-gray-500   p-4 w-full  px-10 py-4  text-white   h-fit"
+            className="grid sm:grid-cols-5 grid-cols-3 gap-4 items-center border-b border-gray-500   p-4 w-full  sm:px-10 px-2 py-4  text-white   h-fit"
             key={affliate.id}>
             <h2 className="text-gray-500 ">{affliate.username}</h2>
             <p
@@ -200,8 +241,8 @@ function Affliates() {
                 </span>
               )}
             </p>
-            <p className="text-gray-500 text-sm">{affliate.phone}</p>
-            <p className="text-gray-500 text-sm"><Public /> {affliate.country}</p>
+            <p className="text-gray-500 text-sm sm:flex hidden">{affliate.phone}</p>
+            <p className="text-gray-500 text-sm sm:flex hidden"><Public /> {affliate.country}</p>
             {/* buttons  */}
             <div className="flex items-center gap-2 justify-end">
               <button
@@ -209,11 +250,11 @@ function Affliates() {
                 className=" text-[#034FE3] underline font-[500] rounded-full text-[14px] w-[100px] py-[8px] flex items-center justify-center">
                 <Visibility fontSize="small" /> View
               </button>
-              <a
-                href={`mailto:${affliate.email}`}
-                className=" bg-[#034FE3] text-white font-[500] rounded-full text-[14px] w-[100px] py-[8px] flex items-center justify-center">
+              <button
+                onClick={() => mailAffiliateDetails(affliate)}
+                className=" bg-[#034FE3] text-white font-[500] rounded-full text-[14px] w-[100px] py-[8px]  items-center justify-center sm:flex hidden">
                 Mail
-              </a>
+              </button>
             </div>
           </div>
         ))}
