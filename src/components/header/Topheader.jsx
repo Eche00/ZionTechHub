@@ -13,7 +13,7 @@ function Topheader() {
     <p className="md:text-[18px] lg:text-[14px] text-[12px] text-[#FFFFFF] font-[300] p-[16px] bg-[#1A1A1A] w-full text-center">
       {/* We're offering Data Consultation Services. Book now to get updated with
       your business.  */}
-      Join our Affliate Marketing Program and earn up to 20% commission on every referral!
+      Join our Affliate Marketing Program and earn up to 10% commission on every referral!
 
       <Link to="/affiliate-program" className="font-[600] underline px-5">Join Now</Link>
     </p>

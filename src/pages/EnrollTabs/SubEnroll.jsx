@@ -158,11 +158,11 @@ function SubEnroll() {
           "Registration successful! Redirecting to WhatsApp in 2 seconds..."
         );
       }
-
+      let number = formData.course === "Digital Marketing"
+        ? "2347087737321"
+        : "2349047214533";
       // REDIRECT
       setTimeout(() => {
-        let number = "2347087737321";
-
         let url =
           `https://wa.me/${number}?text=` +
           `FullName: ${formData.name}%0a` +
@@ -357,7 +357,7 @@ function SubEnroll() {
                   <button
                     // href={link?.enrollLink}
                     // target="_blank"
-                    onClick={handleSubmit}
+                    type="submit"
                     className="py-[18px] px-[16px] rounded-[10px] text-white bg-[#207C3F] mt-[14px] cursor-pointer text-center">
                     {loading ? "Registering..." : "Register Now"}
                   </button>
