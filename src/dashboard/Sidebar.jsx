@@ -159,6 +159,17 @@ function Sidebar({ compress, setCompress }) {
           <WorkHistory />
           {!compress && <span>Affliate Marketers</span>}
         </NavLink>
+        <NavLink
+          to="/dashboard/course-registrants"
+          className={({ isActive }) =>
+            isActive
+              ? "flex items-center  gap-[5px] bg-[#1e222b]  font-extrabold py-[10px] px-[12px] rounded-[10px] text-white transition-all duration-300 "
+              : "flex items-center  text-gray-300 gap-[5px] font-bold py-[10px] px-[12px] rounded-[10px] transition-all duration-300 hover:bg-[#1e222b38] scale-95"
+          }>
+          {" "}
+          <WorkHistory />
+          {!compress && <span>Course Registrants</span>}
+        </NavLink>
 
         {user?.role === "Admin" && (
           <NavLink

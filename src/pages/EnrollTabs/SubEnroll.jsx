@@ -11,7 +11,8 @@ import {
   updateDoc,
   doc,
   arrayUnion,
-  onSnapshot
+  onSnapshot,
+  addDoc
 } from "firebase/firestore";
 import toast from "react-hot-toast";
 import { useLocation } from "react-router-dom";
@@ -27,6 +28,7 @@ function SubEnroll() {
     name: "",
     email: "",
     referralId: "",
+    mobile: 0,
     course: "Select course",
   });
 
@@ -86,13 +88,33 @@ function SubEnroll() {
       const referralId = formData.referralId?.trim();
       const email = formData.email?.trim().toLowerCase();
 
-      // NORMAL FLOW (NO REFERRAL)
-      if (!referralId) {
-        toast.success(
-          "Registration successful! Redirecting to WhatsApp in 10 seconds..."
-        );
-      } else {
-        // FIND AFFILIATE
+      // OPTIONAL: PREVENT DUPLICATE REGISTRATION (GLOBAL)
+      const existingQuery = query(
+        collection(db, "course-registrants"),
+        where("email", "==", email),
+        where("course", "==", formData.course)
+      );
+
+      const existingSnap = await getDocs(existingQuery);
+
+      if (!existingSnap.empty) {
+        toast.error("You have already registered for this course.");
+        setLoading(false);
+        return;
+      }
+
+      // SAVE EVERY REGISTRANT (WITH OR WITHOUT REFERRAL)
+      await addDoc(collection(db, "course-registrants"), {
+        name: formData.name,
+        email: email,
+        mobile: formData.mobile,
+        course: formData.course,
+        referralId: referralId || null,
+        registeredAt: new Date(),
+      });
+
+      // 🔥 AFFILIATE FLOW (ONLY IF REFERRAL EXISTS)
+      if (referralId) {
         const q = query(
           collection(db, "affliates"),
           where("referralCode", "==", referralId)
@@ -111,7 +133,7 @@ function SubEnroll() {
         const affiliateData = affiliateDoc.data();
         const affiliateRef = doc(db, "affliates", affiliateDoc.id);
 
-        // CHECK IF AFFILIATE IS APPROVED
+        // CHECK APPROVAL
         if (affiliateData.approved === false) {
           toast.error("This referrer has been declined");
           setLoading(false);
@@ -124,7 +146,7 @@ function SubEnroll() {
           return;
         }
 
-        // CHECK IF EMAIL ALREADY USED FOR THIS COURSE
+        // CHECK DUPLICATE UNDER SAME REFERRAL
         const alreadyReferred =
           affiliateData.referrals?.some(
             (ref) =>
@@ -146,10 +168,11 @@ function SubEnroll() {
           email: email,
           course: formData.course,
           referralId: referralId,
+          mobile: formData.mobile,
           registeredAt: new Date(),
         };
 
-        // SAVE REFERRAL
+        // SAVE TO AFFILIATE
         await updateDoc(affiliateRef, {
           referrals: arrayUnion(newReferral),
         });
@@ -157,11 +180,19 @@ function SubEnroll() {
         toast.success(
           "Registration successful! Redirecting to WhatsApp in 2 seconds..."
         );
+      } else {
+        // NO REFERRAL
+        toast.success(
+          "Registration successful! Redirecting to WhatsApp in 2 seconds..."
+        );
       }
-      let number = formData.course === "Digital Marketing"
-        ? "2347087737321"
-        : "2349047214533";
+
       // REDIRECT
+      let number =
+        formData.course === "Digital Marketing"
+          ? "2347087737321"
+          : "2349047214533";
+
       setTimeout(() => {
         let url =
           `https://wa.me/${number}?text=` +
@@ -233,6 +264,19 @@ function SubEnroll() {
                     placeholder="Enter your email"
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
+                    }
+                  />
+                </section>
+                <section className="flex flex-col gap-[10px]">
+                  <p className=" text-[#6B6F71] text-[12px] font-[500]">
+                    Mobile
+                  </p>
+                  <input
+                    className=" py-[18px] px-[16px] border border-[#C7D1D4] rounded-[10px] text-[#1A1A1ACC] placeholder:text-[#1A1A1A33]"
+                    type="number"
+                    placeholder="xxx xxx xxx xxxx"
+                    onChange={(e) =>
+                      setFormData({ ...formData, mobile: e.target.value })
                     }
                   />
                 </section>
