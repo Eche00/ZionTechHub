@@ -9,6 +9,7 @@ import {
 import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "../../lib/Config/firebase";
 
+
 function Navbar() {
   const [courseOpen, setCourseOpen] = useState(false);
   const [othersOpen, setOthersOpen] = useState(false);
