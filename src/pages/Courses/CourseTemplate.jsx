@@ -114,12 +114,13 @@ function CourseTemplate({
                             </p>
                         </div>
                         <div className="flex gap-[24px] sm:pt-[70px] pt-[36px]">
-                            <Link
-                                to="/enroll"
-                                className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white sm:py-[20px] sm:px-[36px] py-[12px] px-[24px] sm:text-[18px] text-[16px] font-[500]">
-                                Enroll for the next cohort
-                                <ArrowForward />
-                            </Link>
+                        <Link
+                            to="/enroll"
+                            state={{ selectedCourse: courseTitle }}
+                            className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white sm:py-[20px] sm:px-[36px] py-[12px] px-[24px] sm:text-[18px] text-[16px] font-[500]">
+                            Enroll for the next cohort
+                            <ArrowForward />
+                        </Link>
                         </div>
                     </div>
                     
