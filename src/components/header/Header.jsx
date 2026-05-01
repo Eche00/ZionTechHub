@@ -6,12 +6,21 @@ import { NavLink } from "react-router-dom";
 function Header() {
   // all routes where Navbar should show
   const navbarRoutes = [
-    "/data-analystics-training",
+    // Old courses
+    /*"/data-analystics-training",
     "/data-science-course",
     "/web-development-training",
     "/cloud-computing-course",
     "/machine-learning-course",
-    "/digital-marketing-training",
+    "/digital-marketing-training",*/
+    
+    // New courses
+    "/healthcare-data-analytics",
+    "/financial-data-analytics",
+    "/sales-marketing-data-analytics",
+    "/supply-chain-analytics",
+    "/data-science-and-ai",
+    "/ai-automation",
   ];
 
   return (
