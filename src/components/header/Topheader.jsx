@@ -11,10 +11,7 @@ function Topheader() {
   // Reusable banner text
   const bannerMessage = (
     <p className="md:text-[18px] lg:text-[14px] text-[12px] text-[#FFFFFF] font-[300] p-[16px] bg-[#1A1A1A] w-full text-center">
-      {/* We're offering Data Consultation Services. Book now to get updated with
-      your business.  */}
       Join our Affliate Marketing Program and earn up to 10% commission on every referral!
-
       <Link to="/affiliate-program" className="font-[600] underline px-5">Join Now</Link>
     </p>
   );
@@ -24,35 +21,37 @@ function Topheader() {
     course && (
       <div className="text-[16px] font-[400] text-[#1A1A1A80] flex flex-col items-start gap-[10px] absolute bg-[#F0F0F0] rounded-tr-[20px] rounded-br-[20px] rounded-bl-[20px] z-40">
         <div className="font-[400] text-[16px] p-[12px] flex flex-col">
+         
+          {/* New Courses */}
           <Link
-            to="/data-analystics-training"
+            to="/healthcare-data-analytics"
             className="p-[16px] hover:bg-[#1A1A1A26] rounded-[5px]">
-            Data Analytics
+            Healthcare Data Analytics
           </Link>
           <Link
-            to="/data-science-course"
+            to="/financial-data-analytics"
             className="p-[16px] hover:bg-[#1A1A1A26] rounded-[5px]">
-            Data Science
+            Financial Data Analytics
           </Link>
           <Link
-            to="/web-development-training"
+            to="/sales-marketing-data-analytics"
             className="p-[16px] hover:bg-[#1A1A1A26] rounded-[5px]">
-            Web Development
+            Sales & Marketing Data Analytics
           </Link>
           <Link
-            to="/cloud-computing-course"
-            className="p-[16px] hover:bg-[#1A1A1A26] rounded-[5px] whitespace-nowrap">
-            Cloud Computing & DevOps
+            to="/supply-chain-analytics"
+            className="p-[16px] hover:bg-[#1A1A1A26] rounded-[5px]">
+            Supply Chain Analytics
           </Link>
           <Link
-            to="/machine-learning-course"
+            to="/data-science-and-ai"
             className="p-[16px] hover:bg-[#1A1A1A26] rounded-[5px]">
-            Machine Learning
+            Data Science and AI
           </Link>
           <Link
-            to="/digital-marketing-training"
+            to="/ai-automation"
             className="p-[16px] hover:bg-[#1A1A1A26] rounded-[5px]">
-            Digital Marketing
+            AI Automation
           </Link>
         </div>
       </div>
@@ -77,14 +76,23 @@ function Topheader() {
     </section>
   );
 
-  // Dynamic banner configs for courses
+  // Dynamic banner configs for courses (old and new)
   const courseBanners = {
+    // Old courses
     "/data-analystics-training": "Complete Data Analytics Course:",
     "/data-science-course": "Complete Data Science Course:",
     "/web-development-training": "Complete Web Development Course:",
     "/cloud-computing-course": "Cloud Computing & DevOps:",
     "/machine-learning-course": "Machine Learning:",
     "/digital-marketing-training": "Digital Marketing:",
+    
+    // New courses
+    "/healthcare-data-analytics": "Healthcare Data Analytics Course:",
+    "/financial-data-analytics": "Financial Data Analytics Course:",
+    "/sales-marketing-data-analytics": "Sales & Marketing Data Analytics Course:",
+    "/supply-chain-analytics": "Supply Chain Analytics Course:",
+    "/data-science-and-ai": "Data Science and AI Course:",
+    "/ai-automation": "AI Automation Course:",
   };
 
   return (
@@ -129,7 +137,6 @@ function Topheader() {
                       (75,765 reviews)
                     </p>
                   </article>
-
                 </section>
 
                 {/* Right section: navigation */}
