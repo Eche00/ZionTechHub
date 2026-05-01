@@ -16,44 +16,30 @@ function Topheader() {
     </p>
   );
 
-  // Reusable dropdown menu for courses (includes old and new courses)
+  // All courses (old and new)
+  const allCourses = [
+   { to: "/healthcare-data-analytics", label: "Healthcare Data Analytics" },
+    { to: "/financial-data-analytics", label: "Financial Data Analytics" },
+    { to: "/sales-marketing-data-analytics", label: "Sales & Marketing Data Analytics" },
+    { to: "/supply-chain-analytics", label: "Supply Chain Analytics" },
+    { to: "/data-science-and-ai", label: "Data Science and AI" },
+    { to: "/ai-automation", label: "AI Automation" },
+  ];
+
+  // Reusable dropdown menu for courses (grid layout)
   const CoursesDropdown = () =>
     course && (
-      <div className="text-[16px] font-[400] text-[#1A1A1A80] flex flex-col items-start gap-[10px] absolute bg-[#F0F0F0] rounded-tr-[20px] rounded-br-[20px] rounded-bl-[20px] z-40">
-        <div className="font-[400] text-[16px] p-[12px] flex flex-col">
-          {/* Old Courses */}
-         
-          {/* New Courses */}
-          <Link
-            to="/healthcare-data-analytics"
-            className="p-[16px] hover:bg-[#1A1A1A26] rounded-[5px]">
-            Healthcare Data Analytics
-          </Link>
-          <Link
-            to="/financial-data-analytics"
-            className="p-[16px] hover:bg-[#1A1A1A26] rounded-[5px]">
-            Financial Data Analytics
-          </Link>
-          <Link
-            to="/sales-marketing-data-analytics"
-            className="p-[16px] hover:bg-[#1A1A1A26] rounded-[5px]">
-            Sales & Marketing Data Analytics
-          </Link>
-          <Link
-            to="/supply-chain-analytics"
-            className="p-[16px] hover:bg-[#1A1A1A26] rounded-[5px]">
-            Supply Chain Analytics
-          </Link>
-          <Link
-            to="/data-science-and-ai"
-            className="p-[16px] hover:bg-[#1A1A1A26] rounded-[5px]">
-            Data Science and AI
-          </Link>
-          <Link
-            to="/ai-automation"
-            className="p-[16px] hover:bg-[#1A1A1A26] rounded-[5px]">
-            AI Automation
-          </Link>
+      <div className="text-[16px] font-[400] text-[#1A1A1A80] absolute bg-[#F0F0F0] rounded-[20px] z-40 mt-2">
+        <div className="grid grid-cols-2 gap-2 p-[20px] min-w-[500px]">
+          {allCourses.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              className="p-[12px] hover:bg-[#1A1A1A26] rounded-[8px] whitespace-nowrap"
+              onClick={() => setCourse(false)}>
+              {link.label}
+            </Link>
+          ))}
         </div>
       </div>
     );
@@ -65,8 +51,11 @@ function Topheader() {
       <NavLink to="/about-us">About</NavLink>
       <div
         className="relative cursor-pointer"
-        onClick={() => setCourse((prev) => !prev)}>
-        Courses <KeyboardArrowDownIcon />
+        onMouseEnter={() => setCourse(true)}
+        onMouseLeave={() => setCourse(false)}>
+        <span className="flex items-center">
+          Courses <KeyboardArrowDownIcon />
+        </span>
         <CoursesDropdown />
       </div>
       <NavLink to="/data-consultation">Consultation</NavLink>
@@ -77,16 +66,9 @@ function Topheader() {
     </section>
   );
 
-  // Dynamic banner configs for courses (old and new)
+  // Dynamic banner configs for all courses
   const courseBanners = {
-    // Old courses
-    "/data-analystics-training": "Complete Data Analytics Course:",
-    "/data-science-course": "Complete Data Science Course:",
-    "/web-development-training": "Complete Web Development Course:",
-    "/cloud-computing-course": "Cloud Computing & DevOps:",
-    "/machine-learning-course": "Machine Learning:",
-    "/digital-marketing-training": "Digital Marketing:",
-    
+  
     // New courses
     "/healthcare-data-analytics": "Healthcare Data Analytics Course:",
     "/financial-data-analytics": "Financial Data Analytics Course:",
