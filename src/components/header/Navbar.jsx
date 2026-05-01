@@ -45,12 +45,12 @@ function Navbar() {
 
   // Updated course links to match new offerings
   const courseLinks = [
-      { to: "/data-analystics-training", label: "Data Analytics" },
-    { to: "/data-science-course", label: "Data Science" },
-    { to: "/web-development-training", label: "Web Development" },
-    { to: "/cloud-computing-course", label: "Cloud Computing & DevOps" },
-    { to: "/machine-learning-course", label: "Machine Learning" },
-    { to: "/digital-marketing-training", label: "Digital Marketing" },
+   { to: "/healthcare-data-analytics", label: "Healthcare Data Analytics" },
+    { to: "/financial-data-analytics", label: "Financial Data Analytics" },
+    { to: "/sales-marketing-data-analytics", label: "Sales and Marketing Data Analytics" },
+    { to: "/supply-chain-analytics", label: "Supply Chain Analytics" },
+    { to: "/data-science-and-ai", label: "Data Science and AI" },
+    { to: "/ai-automation", label: "AI Automation" },
   ];
 
   // Shared others links
