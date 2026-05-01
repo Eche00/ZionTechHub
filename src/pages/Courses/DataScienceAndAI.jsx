@@ -1,12 +1,12 @@
 import React from "react";
 import CourseTemplate from "./CourseTemplate";
 import {
-    datascience1,
-    datascience2,
-    datascience3,
-    datascience4,
-    datascience5,
-    datascience6
+    marketing1,
+    marketing2,
+    marketing3,
+    marketing4,
+    marketing5,
+    marketing6
 } from "../../assets";
 
 const DataScienceAndAI = () => {
@@ -23,6 +23,25 @@ const DataScienceAndAI = () => {
                     <path d="M5 14L14 5" stroke="#034FE3" strokeWidth="1.5" strokeLinecap="round"/>
                     <circle cx="6.5" cy="12.5" r="2" fill="#034FE3"/>
                     <circle cx="12.5" cy="6.5" r="2" fill="#034FE3"/>
+                </svg>
+            </section>
+            <section className="p-[13px] bg-[#FFFFFF] rounded-full">
+                <svg width="19" height="19" viewBox="0 0 19 19" fill="none">
+                    <rect x="4" y="6" width="11" height="8" rx="1" stroke="#034FE3" strokeWidth="1.5"/>
+                    <path d="M7 9H12" stroke="#034FE3" strokeWidth="1.5" strokeLinecap="round"/>
+                    <path d="M9 6V14" stroke="#034FE3" strokeWidth="1.5" strokeLinecap="round"/>
+                </svg>
+            </section>
+            <section className="p-[13px] bg-[#FFFFFF] rounded-full">
+                <svg width="19" height="19" viewBox="0 0 19 19" fill="none">
+                    <path d="M4 7L9 12L14 7" stroke="#034FE3" strokeWidth="1.5" strokeLinecap="round"/>
+                    <path d="M9 12V15" stroke="#034FE3" strokeWidth="1.5" strokeLinecap="round"/>
+                </svg>
+            </section>
+            <section className="p-[13px] bg-[#FFFFFF] rounded-full">
+                <svg width="19" height="19" viewBox="0 0 19 19" fill="none">
+                    <circle cx="9.5" cy="8.5" r="3" stroke="#034FE3" strokeWidth="1.5"/>
+                    <path d="M9.5 11.5V14.5" stroke="#034FE3" strokeWidth="1.5" strokeLinecap="round"/>
                 </svg>
             </section>
         </>
@@ -83,7 +102,7 @@ const DataScienceAndAI = () => {
             courseTitle="Data Science and AI"
             courseSubtitle="Build the Future with AI"
             courseDescription="Master machine learning, deep learning, artificial intelligence, and MLOps to build intelligent systems and solve complex real-world problems."
-            courseImages={[datascience1, datascience2, datascience3, datascience4, datascience5, datascience6]}
+            courseImages={[marketing1, marketing2, marketing3, marketing4, marketing5, marketing6]}
             courseModules={modules}
             skillsToGain={skills}
             targetAudience={audience}
