@@ -1,12 +1,12 @@
 import React from "react";
 import CourseTemplate from "./CourseTemplate";
 import {
-    healthcare1,
-    healthcare2,
-    healthcare3,
-    healthcare4,
-    healthcare5,
-    healthcare6
+    marketing1,
+    marketing2,
+    marketing3,
+    marketing4,
+    marketing5,
+    marketing6
 } from "../../assets";
 
 const HealthcareDataAnalytics = () => {
@@ -22,6 +22,24 @@ const HealthcareDataAnalytics = () => {
                 <svg width="19" height="19" viewBox="0 0 19 19" fill="none">
                     <path d="M4 14L7 11L10 14L15 8" stroke="#034FE3" strokeWidth="1.5" strokeLinecap="round"/>
                     <path d="M12 8H15V11" stroke="#034FE3" strokeWidth="1.5" strokeLinecap="round"/>
+                </svg>
+            </section>
+            <section className="p-[13px] bg-[#FFFFFF] rounded-full">
+                <svg width="19" height="19" viewBox="0 0 19 19" fill="none">
+                    <path d="M2 12L7 7L12 12L17 7" stroke="#034FE3" strokeWidth="1.5" strokeLinecap="round"/>
+                    <path d="M5 12V8" stroke="#034FE3" strokeWidth="1.5" strokeLinecap="round"/>
+                </svg>
+            </section>
+            <section className="p-[13px] bg-[#FFFFFF] rounded-full">
+                <svg width="19" height="19" viewBox="0 0 19 19" fill="none">
+                    <circle cx="9.5" cy="9.5" r="7" stroke="#034FE3" strokeWidth="1.5"/>
+                    <path d="M9.5 5.5V9.5L12 12" stroke="#034FE3" strokeWidth="1.5" strokeLinecap="round"/>
+                </svg>
+            </section>
+            <section className="p-[13px] bg-[#FFFFFF] rounded-full">
+                <svg width="19" height="19" viewBox="0 0 19 19" fill="none">
+                    <rect x="4" y="6" width="11" height="8" rx="1" stroke="#034FE3" strokeWidth="1.5"/>
+                    <path d="M7 10H12" stroke="#034FE3" strokeWidth="1.5" strokeLinecap="round"/>
                 </svg>
             </section>
         </>
@@ -82,7 +100,7 @@ const HealthcareDataAnalytics = () => {
             courseTitle="Healthcare Data Analytics"
             courseSubtitle="Transform Healthcare Through Data"
             courseDescription="Learn to analyze medical data, improve patient outcomes, and drive healthcare innovation using advanced analytics techniques and industry-standard tools."
-            courseImages={[healthcare1, healthcare2, healthcare3, healthcare4, healthcare5, healthcare6]}
+            courseImages={[marketing1, marketing2, marketing3, marketing4, marketing5, marketing6]}
             courseModules={modules}
             skillsToGain={skills}
             targetAudience={audience}
