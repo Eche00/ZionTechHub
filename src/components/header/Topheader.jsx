@@ -16,11 +16,12 @@ function Topheader() {
     </p>
   );
 
-  // Reusable dropdown menu for courses
+  // Reusable dropdown menu for courses (includes old and new courses)
   const CoursesDropdown = () =>
     course && (
       <div className="text-[16px] font-[400] text-[#1A1A1A80] flex flex-col items-start gap-[10px] absolute bg-[#F0F0F0] rounded-tr-[20px] rounded-br-[20px] rounded-bl-[20px] z-40">
         <div className="font-[400] text-[16px] p-[12px] flex flex-col">
+          {/* Old Courses */}
          
           {/* New Courses */}
           <Link
