@@ -16,9 +16,9 @@ function Topheader() {
     </p>
   );
 
-  // All courses (old and new)
+  // All courses (new courses only)
   const allCourses = [
-   { to: "/healthcare-data-analytics", label: "Healthcare Data Analytics" },
+    { to: "/healthcare-data-analytics", label: "Healthcare Data Analytics" },
     { to: "/financial-data-analytics", label: "Financial Data Analytics" },
     { to: "/sales-marketing-data-analytics", label: "Sales & Marketing Data Analytics" },
     { to: "/supply-chain-analytics", label: "Supply Chain Analytics" },
@@ -26,11 +26,11 @@ function Topheader() {
     { to: "/ai-automation", label: "AI Automation" },
   ];
 
-  // Reusable dropdown menu for courses (grid layout)
+  // Reusable dropdown menu for courses (block layout)
   const CoursesDropdown = () =>
     course && (
       <div className="text-[16px] font-[400] text-[#1A1A1A80] absolute bg-[#F0F0F0] rounded-[20px] z-40 mt-2">
-        <div className="grid grid-cols-2 gap-2 p-[20px] min-w-[500px]">
+        <div className="flex flex-col p-[12px] min-w-[250px]">
           {allCourses.map((link) => (
             <Link
               key={link.to}
@@ -68,7 +68,6 @@ function Topheader() {
 
   // Dynamic banner configs for all courses
   const courseBanners = {
-  
     // New courses
     "/healthcare-data-analytics": "Healthcare Data Analytics Course:",
     "/financial-data-analytics": "Financial Data Analytics Course:",
