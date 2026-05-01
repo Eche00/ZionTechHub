@@ -9,7 +9,6 @@ import {
 import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "../../lib/Config/firebase";
 
-
 function Navbar() {
   const [courseOpen, setCourseOpen] = useState(false);
   const [othersOpen, setOthersOpen] = useState(false);
@@ -43,11 +42,13 @@ function Navbar() {
     </svg>
   );
 
-  // Updated course links to match new offerings
+  // Updated course links with all old and new courses
   const courseLinks = [
-   { to: "/healthcare-data-analytics", label: "Healthcare Data Analytics" },
+ 
+    // New Courses
+    { to: "/healthcare-data-analytics", label: "Healthcare Data Analytics" },
     { to: "/financial-data-analytics", label: "Financial Data Analytics" },
-    { to: "/sales-marketing-data-analytics", label: "Sales and Marketing Data Analytics" },
+    { to: "/sales-marketing-data-analytics", label: "Sales & Marketing Data Analytics" },
     { to: "/supply-chain-analytics", label: "Supply Chain Analytics" },
     { to: "/data-science-and-ai", label: "Data Science and AI" },
     { to: "/ai-automation", label: "AI Automation" },
