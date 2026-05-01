@@ -21,11 +21,11 @@ function AffliateMarketing() {
     const [showSuccessPopup, setShowSuccessPopup] = useState(false)
     const [generatedCode, setGeneratedCode] = useState('')
     const [formData, setFormData] = useState({
-        username: "",
+        fullname: "",
         email: "",
         phone: "",
         country: "",
-        role: "Affiliate",
+        role: "Partnership",
         approved: null,
         referralCode: "",
         referrals: [],
@@ -40,7 +40,7 @@ function AffliateMarketing() {
         }))
     }
 
-    //  generate affiliate code
+    //  generate Partnership code
     const generateReferralCode = (name) => {
         const clean = name.replace(/\s/g, '').toUpperCase()
         const random = Math.floor(1000 + Math.random() * 9000)
@@ -74,14 +74,14 @@ function AffliateMarketing() {
                     userDoc.referralCode.trim() !== ""
                 ) {
                     toast.dismiss(loadingToast);
-                    toast.error("You are already registered as an affiliate.");
+                    toast.error("You are already registered as an Partnership.");
                     setLoading(false);
                     return;
                 }
             }
 
             // GENERATE REFERRAL CODE
-            const referralCode = generateReferralCode(formData.username);
+            const referralCode = generateReferralCode(formData.fullname);
 
             await addDoc(collection(db, "affliates"), {
                 ...formData,
@@ -101,11 +101,11 @@ function AffliateMarketing() {
 
             // RESET FORM
             setFormData({
-                username: "",
+                fullname: "",
                 email: "",
                 phone: "",
                 country: "",
-                role: "Affiliate",
+                role: "Partnership",
                 approved: false,
                 referralCode: "",
                 referrals: [],
@@ -133,9 +133,9 @@ function AffliateMarketing() {
 
             <Helmet>
                 <title>
-                    Join Our Affiliate Marketing program | Zion Tech Hub
+                    Join Our Zion Tech Hub Partnership Program | Zion Tech Hub
                 </title>
-                <meta name="description" content="Join our affiliate marketing program and earn passive income by promoting our tech courses and resources. Learn how to build a successful affiliate business with our expert-led workshops." />
+                <meta name="description" content="Join our Zion Tech Hub Partnership Program and earn passive income by promoting our tech courses and resources. Learn how to build a successful Partnership business with our expert-led workshops." />
             </Helmet>
             <span className=" md:h-[104px] md:w-[104px] h-[50px] w-[50px] bg-[#034FE30D] absolute md:top-[50px] md:right-[640px] top-[150px] right-[60px] "></span> <span className=" md:h-[104px] md:w-[104px] w-[50px] h-[50px] bg-[#034FE30D] absolute md:top-[400px] md:left-[314px] top-[300px] left-0 "></span>
             {/* HERO */}
@@ -162,23 +162,15 @@ function AffliateMarketing() {
 
                             {/* Heading */}
                             <h1 className="text-[#111111] font-bold text-[42px] sm:text-[64px] leading-[115%] tracking-tight">
-                                Affiliate <span className='text-[#034FE3]'>Marketing</span>
+                                Partnership <span className='text-[#034FE3]'>Program</span>
                             </h1>
 
                             {/* Description */}
                             <p className="text-[#4A4A4A] font-normal text-[16px] sm:text-[20px] leading-[160%]">
-                                Join our affiliate marketing workshop and learn how to earn passive income by promoting products and services online.
-                                Our expert-led sessions will teach you proven strategies and practical tools to succeed in the world of affiliate marketing.
-                                Don’t miss this opportunity to boost your income potential.
-                            </p>
+                              Join our Zion Tech Hub Partnership Program workshop to discover proven strategies and practical tools for earning passive income online through collaboration, professional growth, and shared success.
+                              </p>
 
-                            {/* CTA Buttons */}
-                            <div className="flex flex-wrap gap-4 pt-6">
-                                <button className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white sm:py-[20px] sm:px-[36px] py-[12px] px-[24px] sm:text-[18px] text-[16px] font-[500]">
-                                    Learn More
-                                </button>
-
-                            </div>
+                            
 
                         </div>
                     </motion.div>
@@ -191,7 +183,7 @@ function AffliateMarketing() {
                         >
 
                             <h2 className="text-[32px] font-[600] text-center">
-                                ZTH Affiliate Program
+                                ZTH Partnership Program
                             </h2>
 
                             {/* EMAIL */}
@@ -208,10 +200,10 @@ function AffliateMarketing() {
                             {/* NAME */}
                             <input
                                 type="text"
-                                name="username"
-                                value={formData.username}
+                                name="fullname"
+                                value={formData.fullname}
                                 onChange={handleChange}
-                                placeholder="UserName"
+                                placeholder="Full Name"
                                 required
                                 className="border py-[18px] px-[16px] rounded-[10px]"
                             />
@@ -268,7 +260,7 @@ function AffliateMarketing() {
 
                         <p className="text-[#555] mb-4">
                             Copy your referral code below and await approval
-                            to become an Affiliate Marketer.
+                            to become a Partner.
                         </p>
 
                         {/* CODE BOX */}
