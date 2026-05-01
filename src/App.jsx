@@ -20,6 +20,15 @@ import CloudComputing from "./pages/Courses/CloudComputing";
 import WebDevelopment from "./pages/Courses/WebDevelopment";
 import DataAnalysis from "./pages/Courses/DataAnalysis";
 import DataScience from "./pages/Courses/DataScience";
+import DigitalMarketing from "./pages/Courses/DigitalMarketing";
+
+// New Course Pages (to be created)
+import HealthcareDataAnalytics from "./pages/Courses/HealthcareDataAnalytics";
+import FinancialDataAnalytics from "./pages/Courses/FinancialDataAnalytics";
+import SalesMarketingDataAnalytics from "./pages/Courses/SalesMarketingDataAnalytics";
+import SupplyChainAnalytics from "./pages/Courses/SupplyChainAnalytics";
+import DataScienceAndAI from "./pages/Courses/DataScienceAndAI";
+import AIAutomation from "./pages/Courses/AIAutomation";
 
 // Events & Blog
 import Workshop from "./pages/Workshop";
@@ -36,7 +45,6 @@ import ViewBlogs from "./dashboard/dashboardRoutes/ViewBlogs";
 import Users from "./dashboard/dashboardRoutes/Users";
 import Signin from "./dashboard/dashboardRoutes/Signin";
 import CreateWebinar from "./dashboard/dashboardRoutes/CreateWebinar";
-import DigitalMarketing from "./pages/Courses/DigitalMarketing";
 import AffliateMarketing from "./pages/AffliateMarketing";
 import { Toaster } from "react-hot-toast";
 import Signup from "./dashboard/dashboardRoutes/SignUp";
@@ -61,13 +69,21 @@ function App() {
           <Route path="contact-us" element={<Contact />} />
           <Route path="partner-with-us" element={<PartnerWithUs />} />
 
-          {/* Courses */}
+          {/* Old Courses (keeping for backward compatibility/redirects) */}
           <Route path="data-analystics-training" element={<DataAnalysis />} />
           <Route path="data-science-course" element={<DataScience />} />
           <Route path="web-development-training" element={<WebDevelopment />} />
           <Route path="cloud-computing-course" element={<CloudComputing />} />
           <Route path="machine-learning-course" element={<MachineLearning />} />
           <Route path="digital-marketing-training" element={<DigitalMarketing />} />
+
+          {/* New Courses */}
+          <Route path="healthcare-data-analytics" element={<HealthcareDataAnalytics />} />
+          <Route path="financial-data-analytics" element={<FinancialDataAnalytics />} />
+          <Route path="sales-marketing-data-analytics" element={<SalesMarketingDataAnalytics />} />
+          <Route path="supply-chain-analytics" element={<SupplyChainAnalytics />} />
+          <Route path="data-science-and-ai" element={<DataScienceAndAI />} />
+          <Route path="ai-automation" element={<AIAutomation />} />
 
           {/* Events */}
           <Route path="zion-tech-hub-workshop-webinar" element={<Workshop />} />
