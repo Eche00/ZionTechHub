@@ -1,12 +1,12 @@
 import React from "react";
 import CourseTemplate from "./CourseTemplate";
 import {
-    supplychain1,
-    supplychain2,
-    supplychain3,
-    supplychain4,
-    supplychain5,
-    supplychain6
+    marketing1,
+    marketing2,
+    marketing3,
+    marketing4,
+    marketing5,
+    marketing6
 } from "../../assets";
 
 const SupplyChainAnalytics = () => {
@@ -23,6 +23,24 @@ const SupplyChainAnalytics = () => {
                 <svg width="19" height="19" viewBox="0 0 19 19" fill="none">
                     <path d="M4 9L9 4L14 9" stroke="#034FE3" strokeWidth="1.5" strokeLinecap="round"/>
                     <path d="M9 4V15" stroke="#034FE3" strokeWidth="1.5" strokeLinecap="round"/>
+                </svg>
+            </section>
+            <section className="p-[13px] bg-[#FFFFFF] rounded-full">
+                <svg width="19" height="19" viewBox="0 0 19 19" fill="none">
+                    <rect x="3" y="8" width="13" height="6" rx="1" stroke="#034FE3" strokeWidth="1.5"/>
+                    <path d="M6 11H13" stroke="#034FE3" strokeWidth="1.5" strokeLinecap="round"/>
+                </svg>
+            </section>
+            <section className="p-[13px] bg-[#FFFFFF] rounded-full">
+                <svg width="19" height="19" viewBox="0 0 19 19" fill="none">
+                    <path d="M3 7L9 3L15 7L9 11L3 7Z" stroke="#034FE3" strokeWidth="1.5"/>
+                    <path d="M9 11V15" stroke="#034FE3" strokeWidth="1.5" strokeLinecap="round"/>
+                </svg>
+            </section>
+            <section className="p-[13px] bg-[#FFFFFF] rounded-full">
+                <svg width="19" height="19" viewBox="0 0 19 19" fill="none">
+                    <path d="M5 5H14V12H5V5Z" stroke="#034FE3" strokeWidth="1.5"/>
+                    <circle cx="9.5" cy="8.5" r="1.5" fill="#034FE3"/>
                 </svg>
             </section>
         </>
@@ -83,7 +101,7 @@ const SupplyChainAnalytics = () => {
             courseTitle="Supply Chain Analytics"
             courseSubtitle="Optimize Your Supply Chain"
             courseDescription="Master demand forecasting, logistics optimization, inventory management, and supply chain risk analysis using advanced analytics techniques."
-            courseImages={[supplychain1, supplychain2, supplychain3, supplychain4, supplychain5, supplychain6]}
+            courseImages={[marketing1, marketing2, marketing3, marketing4, marketing5, marketing6]}
             courseModules={modules}
             skillsToGain={skills}
             targetAudience={audience}
