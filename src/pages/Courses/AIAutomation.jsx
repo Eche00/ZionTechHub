@@ -1,12 +1,12 @@
 import React from "react";
 import CourseTemplate from "./CourseTemplate";
 import {
-    automation1,
-    automation2,
-    automation3,
-    automation4,
-    automation5,
-    automation6
+    marketing1,
+    marketing2,
+    marketing3,
+    marketing4,
+    marketing5,
+    marketing6
 } from "../../assets";
 
 const AIAutomation = () => {
@@ -24,6 +24,24 @@ const AIAutomation = () => {
                     <path d="M4 6L7 9L4 12" stroke="#034FE3" strokeWidth="1.5" strokeLinecap="round"/>
                     <path d="M15 6L12 9L15 12" stroke="#034FE3" strokeWidth="1.5" strokeLinecap="round"/>
                     <path d="M8 14L11 4" stroke="#034FE3" strokeWidth="1.5" strokeLinecap="round"/>
+                </svg>
+            </section>
+            <section className="p-[13px] bg-[#FFFFFF] rounded-full">
+                <svg width="19" height="19" viewBox="0 0 19 19" fill="none">
+                    <rect x="5" y="7" width="9" height="6" rx="1" stroke="#034FE3" strokeWidth="1.5"/>
+                    <path d="M8 10H11" stroke="#034FE3" strokeWidth="1.5" strokeLinecap="round"/>
+                </svg>
+            </section>
+            <section className="p-[13px] bg-[#FFFFFF] rounded-full">
+                <svg width="19" height="19" viewBox="0 0 19 19" fill="none">
+                    <path d="M3 5H16V13H3V5Z" stroke="#034FE3" strokeWidth="1.5"/>
+                    <path d="M7 8H12" stroke="#034FE3" strokeWidth="1.5" strokeLinecap="round"/>
+                </svg>
+            </section>
+            <section className="p-[13px] bg-[#FFFFFF] rounded-full">
+                <svg width="19" height="19" viewBox="0 0 19 19" fill="none">
+                    <circle cx="9.5" cy="8.5" r="2" stroke="#034FE3" strokeWidth="1.5"/>
+                    <path d="M9.5 10.5V14.5" stroke="#034FE3" strokeWidth="1.5" strokeLinecap="round"/>
                 </svg>
             </section>
         </>
@@ -84,7 +102,7 @@ const AIAutomation = () => {
             courseTitle="AI Automation"
             courseSubtitle="Automate Smarter with AI"
             courseDescription="Master RPA, intelligent automation, workflow optimization, and AI-powered process automation to drive business efficiency and digital transformation."
-            courseImages={[automation1, automation2, automation3, automation4, automation5, automation6]}
+            courseImages={[marketing1, marketing2, marketing3, marketing4, marketing5, marketing6]}
             courseModules={modules}
             skillsToGain={skills}
             targetAudience={audience}
