@@ -147,34 +147,10 @@ function CourseTemplate({
                     </div>
                 </motion.div>
                 
-                {/* Course Info Bar */}
-                <div className="flex sm:flex-row flex-col justify-around sm:items-center smm:max-w-[80%] sm:max-w-[88%] max-w-[90%] mx-auto text-[24px] font-[400] text-[#1A1A1A] bg-[#EBECED] rounded-[10px] py-[36px] sm:px-0 px-[40px] sm:gap-0 gap-[24px] shadow-2xl">
-                    <section className="flex flex-col">
-                        <h3 className="text-[24px] font-[600] text-[#1A1A1A] flex gap-[8px] items-center">
-                            <span className="text-[#034FE3]"><Star /></span>
-                            4.8
-                        </h3>
-                        <p className="text-[16px] font-[300] text-[#1A1A1A]">(75,000+ learner reviews)</p>
-                    </section>
-                    <span className="sm:bg-[#034FE3] sm:w-[1px] sm:h-[44px] h-[0px] sm:border-none border border-dashed border-[#034FE34D]" />
-                    <section className="flex flex-col">
-                        <h3 className="text-[24px] font-[600] text-[#1A1A1A]">Course Overview</h3>
-                        <p className="text-[16px] font-[300] text-[#1A1A1A]">{courseOverview}</p>
-                    </section>
-                    <span className="sm:bg-[#034FE3] sm:w-[1px] sm:h-[44px] h-[0px] sm:border-none border border-dashed border-[#034FE34D]" />
-                    <section className="flex flex-col">
-                        <h3 className="text-[24px] font-[600] text-[#1A1A1A]">Program Duration</h3>
-                        <p className="text-[16px] font-[300] text-[#1A1A1A]">{duration || "8-12 Weeks"} comprehensive training program</p>
-                    </section>
-                    <span className="sm:bg-[#034FE3] sm:w-[1px] sm:h-[44px] h-[0px] sm:border-none border border-dashed border-[#034FE34D]" />
-                    <section className="flex flex-col">
-                        <h3 className="text-[24px] font-[600] text-[#1A1A1A]">Earn a certificate</h3>
-                        <p className="text-[16px] font-[300] text-[#1A1A1A]">Showcase verified {courseTitle.toLowerCase()} expertise</p>
-                    </section>
-                </div>
+                
             </div>
-            
-            {/* What to Expect Section */}
+
+             {/* What to Expect Section */}
             <div className="sm:pt-[310px] pt-[180px] smm:max-w-[80%] sm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%] mx-auto border-l border-gray-200 relative">
                 <span className="h-[100px] w-[100px] bg-[#EBECED] border-[1px] border-[#034FE30D] absolute top-[280px] right-[100px] md:flex hidden"></span>
                 <span className="h-[100px] w-[100px] bg-[#EBECED] border-[1px] border-[#034FE30D] absolute top-[180px] right-[0px] md:flex hidden"></span>
@@ -196,6 +172,33 @@ function CourseTemplate({
                     ))}
                 </div>
             </div>
+           
+            {/* Course Info Bar */}
+                <div className="flex sm:flex-row flex-col justify-center sm:items-center smm:max-w-[80%] sm:max-w-[88%] max-w-[90%] mx-auto text-[24px] font-[400] text-[#1A1A1A] bg-[#EBECED] rounded-[10px] py-[36px]  sm:px-0 px-[40px] sm:gap-0 mt-2 gap-[24px] shadow-2xl">
+                    <section className="flex flex-col px-10">
+                        <h3 className="text-center text-[24px] font-[600] text-[#1A1A1A] flex gap-[8px] items-center">
+                            <span className="text-[#034FE3]"><Star /></span>
+                            4.8
+                        </h3>
+                        <p className="text-[16px] font-[300] text-[#1A1A1A]">(75,000+ learner reviews)</p>
+                    </section>
+                    <span className="sm:bg-[#034FE3] sm:w-[1px] sm:h-[44px] h-[0px] sm:border-none border border-dashed border-[#034FE34D]" />
+                    <section className="flex px-10 flex-col">
+                        <h3 className="text-[24px] font-[600] text-[#1A1A1A]">Course Overview</h3>
+                        <p className="text-[16px] font-[300] text-[#1A1A1A]">{courseOverview}</p>
+                    </section>
+                    <span className="sm:bg-[#034FE3] sm:w-[1px] sm:h-[44px] h-[0px] sm:border-none border border-dashed border-[#034FE34D]" />
+                    <section className="flex px-10 flex-col">
+                        <h3 className="text-[24px] font-[600] text-[#1A1A1A]">Program Duration</h3>
+                        <p className="text-[16px] font-[300] text-[#1A1A1A]">{duration || "8-12 Weeks"} comprehensive training program</p>
+                    </section>
+                    <span className="sm:bg-[#034FE3] sm:w-[1px] sm:h-[44px] h-[0px] sm:border-none border border-dashed border-[#034FE34D]" />
+                    <section className="flex px-10 flex-col">
+                        <h3 className="text-[24px] font-[600] text-[#1A1A1A]">Earn a certificate</h3>
+                        <p className="text-[16px] font-[300] text-[#1A1A1A]">Showcase verified {courseTitle.toLowerCase()} expertise</p>
+                    </section>
+                </div>
+
             
             {/* Skills to Gain Section */}
             <div className="py-[160px] smm:max-w-[80%] sm:max-w-[88%] md:max-w-[92%] lg:max-w-[92%] max-w-[96%] mx-auto border-l border-gray-200 relative">
