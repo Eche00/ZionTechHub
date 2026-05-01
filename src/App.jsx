@@ -14,7 +14,7 @@ import Contact from "./pages/Contact";
 import PartnerWithUs from "./pages/PartnerWithUs";
 import Enroll from "./pages/Enroll";
 
-// Course Pages
+// Old Course Pages
 import MachineLearning from "./pages/Courses/MachineLearning";
 import CloudComputing from "./pages/Courses/CloudComputing";
 import WebDevelopment from "./pages/Courses/WebDevelopment";
@@ -22,7 +22,7 @@ import DataAnalysis from "./pages/Courses/DataAnalysis";
 import DataScience from "./pages/Courses/DataScience";
 import DigitalMarketing from "./pages/Courses/DigitalMarketing";
 
-// New Course Pages (to be created)
+// New Course Pages
 import HealthcareDataAnalytics from "./pages/Courses/HealthcareDataAnalytics";
 import FinancialDataAnalytics from "./pages/Courses/FinancialDataAnalytics";
 import SalesMarketingDataAnalytics from "./pages/Courses/SalesMarketingDataAnalytics";
@@ -69,7 +69,7 @@ function App() {
           <Route path="contact-us" element={<Contact />} />
           <Route path="partner-with-us" element={<PartnerWithUs />} />
 
-          {/* Old Courses (keeping for backward compatibility/redirects) */}
+          {/* Old Courses (keeping for backward compatibility) */}
           <Route path="data-analystics-training" element={<DataAnalysis />} />
           <Route path="data-science-course" element={<DataScience />} />
           <Route path="web-development-training" element={<WebDevelopment />} />
@@ -88,7 +88,7 @@ function App() {
           {/* Events */}
           <Route path="zion-tech-hub-workshop-webinar" element={<Workshop />} />
           <Route path="zion-tech-hub-hackathon" element={<Hackathon />} />
-          <Route path="affiliate-program" element={<AffliateMarketing />} />
+          <Route path="zth-partnership-program" element={<AffliateMarketing />} />
 
           {/* Blog */}
           <Route path="blog" element={<Blog />} />
