@@ -1,33 +1,33 @@
-name: Deploy React to cPanel via FTP
+name: Deploy to cPanel
 
 on:
   push:
-    branches:
-      - main # Trigger on push to the main branch
+    branches: [ main ] # Triggers on push to main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4 # Checkout the latest code
+      - name: Get Code
+        uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: npm install # Install project dependencies
-
-      - name: Build the app
-        run: npm run build # Build the React app
-
-      - name: Install lftp
-        run: sudo apt-get install lftp # Install lftp for FTPS support
-
-      - name: Deploy to cPanel via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          server: ftp.ziontechub.com # FTP Server Address (or use the IP address directly if DNS is an issue)
-          username: ${{ secrets.FTP_USERNAME }} # FTP Username
-          password: ${{ secrets.FTP_PASSWORD }} # FTP Password
-          local-dir: dist/ # Local build directory
-          server-dir: public_html/ # Destination directory on the FTP server (with trailing slash)
-          protocol: ftp # Use "ftp" for FTP (or "ftps" for FTPS)
+          node-version: '20'
+
+      - name: Install and Build
+        run: |
+          npm install
+          npm run build
+        # The 'build' script creates a folder (e.g., 'build' or 'dist')
+
+      - name: Deploy to Truehost (cPanel)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.FTP_SERVER_DIR }} # Usually /public_html/
+          local-dir: ./build/ # <<< CRITICAL: Change this!
+          # If your project uses Vite, change 'build' to 'dist'
