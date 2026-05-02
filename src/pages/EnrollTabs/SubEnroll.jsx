@@ -241,25 +241,25 @@ function SubEnroll() {
       // Route to different WhatsApp numbers based on course
       switch(formData.course) {
         case "Healthcare Data Analytics":
-          number = "2347087737321";
+          number = "2348055094738";
           break;
         case "Financial Data Analytics":
-          number = "2349047214533";
+          number = "2348055094738";
           break;
         case "Sales and Marketing Data Analytics":
-          number = "2349047214533";
+          number = "2348055094738";
           break;
         case "Supply Chain Analytics":
-          number = "2347087737321";
+          number = "2348055094738";
           break;
         case "Data Science and AI":
-          number = "2349047214533";
+          number = "2348055094738";
           break;
         case "AI Automation":
-          number = "2347087737321";
+          number = "2348055094738";
           break;
         default:
-          number = "2349047214533";
+          number = "2348055094738";
       }
 
       setTimeout(() => {
