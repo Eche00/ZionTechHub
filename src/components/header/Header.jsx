@@ -1,18 +1,14 @@
 import React from "react";
 import Topheader from "./Topheader";
 import Navbar from "./Navbar";
-import { NavLink } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 function Header() {
-  // all routes where Navbar should show
-  const navbarRoutes = [
-    // Old courses
-    /*"/data-analystics-training",
-    "/data-science-course",
-    "/web-development-training",
-    "/cloud-computing-course",
-    "/machine-learning-course",
-    "/digital-marketing-training",*/
+  const location = useLocation();
+  
+  // All course routes (old and new)
+  const courseRoutes = [
+   
     
     // New courses
     "/healthcare-data-analytics",
@@ -22,25 +18,23 @@ function Header() {
     "/data-science-and-ai",
     "/ai-automation",
   ];
+  
+  // Check if current route is a course route
+  const isCourseRoute = courseRoutes.includes(location.pathname);
 
   return (
     <header>
-      {/* Fixed top header */}
+      {/* Fixed top header - always show on all pages */}
       <div className="w-full fixed z-50 bg-[#F5F5F5]/60 backdrop-blur-sm">
         <Topheader />
       </div>
 
-      {/* Render Navbar only when route is active */}
-      {navbarRoutes.map((route) => (
-        <NavLink
-          key={route}
-          to={route}
-          className={({ isActive }) => (isActive ? "w-full" : "hidden")}>
-          <div className="pt-20">
-            <Navbar />
-          </div>
-        </NavLink>
-      ))}
+      {/* Render Navbar only on course routes */}
+      {isCourseRoute && (
+        <div className="pt-20">
+          <Navbar />
+        </div>
+      )}
     </header>
   );
 }

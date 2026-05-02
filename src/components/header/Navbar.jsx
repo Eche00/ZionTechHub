@@ -63,7 +63,7 @@ function Navbar() {
       label: workshop?.type === "Webinar" ? "Webinar" : "Workshop",
     },
     { to: "/zion-tech-hub-hackathon", label: "Hackathon" },
-    { to: "/affiliate-program", label: "Affiliate Program" },
+    { to: "/zth-partnership-program", label: "ZTH Partnership Program" },
   ];
 
   // Reusable dropdown (desktop)

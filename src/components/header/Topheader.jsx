@@ -11,8 +11,8 @@ function Topheader() {
   // Reusable banner text
   const bannerMessage = (
     <p className="md:text-[18px] lg:text-[14px] text-[12px] text-[#FFFFFF] font-[300] p-[16px] bg-[#1A1A1A] w-full text-center">
-      Join our Affliate Marketing Program and earn up to 10% commission on every referral!
-      <Link to="/affiliate-program" className="font-[600] underline px-5">Join Now</Link>
+      Join our Partnership Program and earn up to 10% commission on every referral!
+      <Link to="/zth-partnership-program" className="font-[600] underline px-5">Join Now</Link>
     </p>
   );
 
@@ -89,7 +89,7 @@ function Topheader() {
         "/zion-tech-hub-workshop-webinar",
         "/zion-tech-hub-hackathon",
         "/blog",
-        "/affiliate-program",
+        "/zth-partnership-program",
       ].includes(pathname) && (
           <>
             {bannerMessage}
