@@ -3,7 +3,7 @@ name: Deploy React to cPanel via FTP
 on:
   push:
     branches:
-      - main # Trigger on push to the main branch
+      - main
 
 jobs:
   deploy:
@@ -11,23 +11,32 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4 # Checkout the latest code
+        uses: actions/checkout@v4
 
       - name: Install dependencies
-        run: npm install # Install project dependencies
+        run: npm install
 
       - name: Build the app
-        run: npm run build # Build the React app
+        run: npm run build
 
-      - name: Install lftp
-        run: sudo apt-get install lftp # Install lftp for FTPS support
+      - name: Determine build folder
+        id: check
+        run: |
+          if [ -d "dist" ]; then
+            echo "folder=dist/" >> $GITHUB_OUTPUT
+          elif [ -d "build" ]; then
+            echo "folder=build/" >> $GITHUB_OUTPUT
+          else
+            echo "folder=./" >> $GITHUB_OUTPUT
+          fi
 
       - name: Deploy to cPanel via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ftp.ziontechub.com # FTP Server Address (or use the IP address directly if DNS is an issue)
-          username: ${{ secrets.FTP_USERNAME }} # FTP Username
-          password: ${{ secrets.FTP_PASSWORD }} # FTP Password
-          local-dir: dist/ # Local build directory
-          server-dir: public_html/ # Destination directory on the FTP server (with trailing slash)
-          protocol: ftp # Use "ftp" for FTP (or "ftps" for FTPS)
+          server: 123.456.789.0  # CHANGE THIS to your Truehost IP address
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ${{ steps.check.outputs.folder }}
+          server-dir: /public_html/
+          protocol: ftp
+          port: 21
