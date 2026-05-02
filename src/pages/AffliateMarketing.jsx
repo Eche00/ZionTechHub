@@ -135,7 +135,7 @@ function AffliateMarketing() {
                 <title>
                     Join Our Zion Tech Hub Partnership Program | Zion Tech Hub
                 </title>
-                <meta name="description" content="Join our Zion Tech Hub Partnership Program and earn passive income by promoting our tech courses and resources. Learn how to build a successful Partnership business with our expert-led workshops." />
+                <meta name="description" content="Our Partnership Program empowers alumni and data professionals in our network to refer aspiring learners to our programs and earn a 10% cash reward for every successful enrollment. It’s our way of rewarding you for creating opportunities and growing the community together" />
             </Helmet>
             <span className=" md:h-[104px] md:w-[104px] h-[50px] w-[50px] bg-[#034FE30D] absolute md:top-[50px] md:right-[640px] top-[150px] right-[60px] "></span> <span className=" md:h-[104px] md:w-[104px] w-[50px] h-[50px] bg-[#034FE30D] absolute md:top-[400px] md:left-[314px] top-[300px] left-0 "></span>
             {/* HERO */}
@@ -167,7 +167,7 @@ function AffliateMarketing() {
 
                             {/* Description */}
                             <p className="text-[#4A4A4A] font-normal text-[16px] sm:text-[20px] leading-[160%]">
-                              Join our Zion Tech Hub Partnership Program workshop to discover proven strategies and practical tools for earning passive income online through collaboration, professional growth, and shared success.
+                              Our Partnership Program empowers alumni and data professionals in our network to refer aspiring learners to our programs and earn a 10% cash reward for every successful enrollment. It’s our way of rewarding you for creating opportunities and growing the community together
                               </p>
 
                             
