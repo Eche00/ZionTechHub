@@ -19,24 +19,13 @@ jobs:
       - name: Build the app
         run: npm run build
 
-      - name: Determine build folder
-        id: check
-        run: |
-          if [ -d "dist" ]; then
-            echo "folder=dist/" >> $GITHUB_OUTPUT
-          elif [ -d "build" ]; then
-            echo "folder=build/" >> $GITHUB_OUTPUT
-          else
-            echo "folder=./" >> $GITHUB_OUTPUT
-          fi
-
       - name: Deploy to cPanel via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: 123.456.789.0  # CHANGE THIS to your Truehost IP address
+          server: 102.212.247.83
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ${{ steps.check.outputs.folder }}
+          local-dir: dist/
           server-dir: /public_html/
           protocol: ftp
           port: 21
