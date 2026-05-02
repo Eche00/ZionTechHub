@@ -35,7 +35,6 @@ function SubEnroll() {
     referralId: "",
     mobile: 0,
     course: "Select course",
-    programType: "No", // Partnership Program (Yes/No)
   });
 
   // Course list
@@ -47,6 +46,15 @@ function SubEnroll() {
     "Data Science and AI",
     "AI Automation"
   ];
+
+  // Function to generate unique referral code
+  const generateReferralCode = (name, email) => {
+    // Take first 4 letters of name (remove spaces) + random 4 digit number
+    const namePart = name.replace(/\s/g, '').substring(0, 4).toUpperCase();
+    const randomNum = Math.floor(1000 + Math.random() * 9000);
+    const emailPart = email.split('@')[0].substring(0, 3).toUpperCase();
+    return `${namePart}${emailPart}${randomNum}`;
+  };
 
   // AUTO-SET COURSE FROM NAVIGATION STATE (when coming from course page)
   useEffect(() => {
@@ -130,6 +138,7 @@ function SubEnroll() {
     try {
       const referralId = formData.referralId?.trim();
       const email = formData.email?.trim().toLowerCase();
+      const name = formData.name?.trim();
 
       // OPTIONAL: PREVENT DUPLICATE REGISTRATION (GLOBAL)
       const existingQuery = query(
@@ -146,17 +155,44 @@ function SubEnroll() {
         return;
       }
 
+      // Generate unique referral code for the registrant
+      const generatedReferralCode = generateReferralCode(name, email);
+      
+      // Check if generated code already exists (to ensure uniqueness)
+      const codeCheckQuery = query(
+        collection(db, "course-registrants"),
+        where("generatedReferralCode", "==", generatedReferralCode)
+      );
+      const codeCheckSnap = await getDocs(codeCheckQuery);
+      
+      let finalReferralCode = generatedReferralCode;
+      if (!codeCheckSnap.empty) {
+        // If code exists, add timestamp to make it unique
+        finalReferralCode = `${generatedReferralCode}${Date.now().toString().slice(-4)}`;
+      }
+
       // SAVE EVERY REGISTRANT (WITH OR WITHOUT REFERRAL)
       await addDoc(collection(db, "course-registrants"), {
         name: formData.name,
         email: email,
         mobile: formData.mobile,
         course: formData.course,
-        programType: formData.programType, // Partnership Program (Yes/No)
         referralId: referralId || null,
+        generatedReferralCode: finalReferralCode, // Store the generated code
         registeredAt: new Date(),
         registrationTimestamp: serverTimestamp(), // Firestore timestamp
-        programName: "Partnership Program",
+        canRefer: true, // Flag indicating this user can refer others
+      });
+
+      // Also add to a separate collection for referrers
+      await addDoc(collection(db, "referrers"), {
+        name: formData.name,
+        email: email,
+        referralCode: finalReferralCode,
+        course: formData.course,
+        createdAt: serverTimestamp(),
+        totalReferrals: 0,
+        approved: true, // Automatically approved
       });
 
       // 🔥 AFFILIATE FLOW (ONLY IF REFERRAL EXISTS)
@@ -213,11 +249,11 @@ function SubEnroll() {
           name: formData.name,
           email: email,
           course: formData.course,
-          programType: formData.programType,
           referralId: referralId,
           mobile: formData.mobile,
           registeredAt: new Date(),
           registrationTimestamp: new Date().toISOString(),
+          generatedReferralCode: finalReferralCode,
         };
 
         // SAVE TO AFFILIATE
@@ -226,12 +262,12 @@ function SubEnroll() {
         });
 
         toast.success(
-          "Registration successful! Redirecting to WhatsApp in 2 seconds..."
+          `Registration successful! Your referral code: ${finalReferralCode}\nRedirecting to WhatsApp in 2 seconds...`
         );
       } else {
         // NO REFERRAL
         toast.success(
-          "Registration successful! Redirecting to WhatsApp in 2 seconds..."
+          `Registration successful! Your referral code: ${finalReferralCode}\nRedirecting to WhatsApp in 2 seconds...`
         );
       }
 
@@ -265,10 +301,13 @@ function SubEnroll() {
       setTimeout(() => {
         let url =
           `https://wa.me/${number}?text=` +
+          `🎉 Registration Successful! 🎉%0a%0a` +
           `FullName: ${formData.name}%0a` +
           `Email: ${email}%0a` +
           `Course: ${formData.course}%0a` +
-          `Program Type: Partnership Program - ${formData.programType}%0a`;
+          `Your Referral Code: ${finalReferralCode}%0a%0a` +
+          `Share this code with others to earn rewards! 🔥%0a` +
+          `Referral Link: https://ziontechhub.com/enroll?affliate=${finalReferralCode}`;
 
         window.location.href = url;
       }, 2000);
@@ -353,54 +392,22 @@ function SubEnroll() {
                   />
                 </section>
                 
-                {/* Program Type - Partnership Program (Yes/No) */}
                 <section className="flex flex-col gap-[10px]">
                   <p className=" text-[#6B6F71] text-[12px] font-[500]">
-                    Partnership Program <span className="text-red-500">*</span>
-                  </p>
-                  <div className="flex gap-[24px] py-[12px]">
-                    <label className="flex items-center gap-[8px] cursor-pointer">
-                      <input
-                        type="radio"
-                        name="programType"
-                        value="Yes"
-                        checked={formData.programType === "Yes"}
-                        onChange={(e) =>
-                          setFormData({ ...formData, programType: e.target.value })
-                        }
-                        className="w-[18px] h-[18px] accent-[#207C3F]"
-                      />
-                      <span className="text-[#1A1A1A] text-[14px]">Yes</span>
-                    </label>
-                    <label className="flex items-center gap-[8px] cursor-pointer">
-                      <input
-                        type="radio"
-                        name="programType"
-                        value="No"
-                        checked={formData.programType === "No"}
-                        onChange={(e) =>
-                          setFormData({ ...formData, programType: e.target.value })
-                        }
-                        className="w-[18px] h-[18px] accent-[#207C3F]"
-                      />
-                      <span className="text-[#1A1A1A] text-[14px]">No</span>
-                    </label>
-                  </div>
-                </section>
-                
-                <section className="flex flex-col gap-[10px]">
-                  <p className=" text-[#6B6F71] text-[12px] font-[500]">
-                    Referral ID
+                    Referral ID (Optional)
                   </p>
                   <input
                     className="py-[18px] px-[16px] border border-[#C7D1D4] rounded-[10px]"
                     type="text"
-                    placeholder="Enter referral ID (Optional)"
+                    placeholder="Enter referral ID if you have one"
                     value={formData.referralId}
                     onChange={(e) =>
                       setFormData({ ...formData, referralId: e.target.value })
                     }
                   />
+                  <p className="text-xs text-gray-500 mt-1">
+                    Don't have one? Leave blank - you'll get your own referral code after registration!
+                  </p>
                 </section>
                 
                 <section className="flex flex-col gap-[10px]">
