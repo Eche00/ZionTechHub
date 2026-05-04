@@ -306,8 +306,8 @@ function SubEnroll() {
           `Email: ${email}%0a` +
           `Course: ${formData.course}%0a` +
           `My Partnership Referral Code: ${finalReferralCode}%0a%0a` +
-          `Share this code with others to earn rewards! 🔥%0a` +
-          `Referral Link: https://ziontechhub.com/enroll?affliate=${finalReferralCode}`;
+          `%0a` +
+          `My Referral Link: https://ziontechhub.com/enroll?affliate=${finalReferralCode}`;
 
         window.location.href = url;
       }, 2000);
@@ -478,7 +478,7 @@ function SubEnroll() {
                     type="submit"
                     className="py-[18px] px-[16px] rounded-[10px] text-white bg-[#207C3F] mt-[14px] cursor-pointer text-center hover:bg-[#1a5f30] transition-colors"
                     disabled={loading}>
-                    {loading ? "Registering now..." : "Register"}
+                    {loading ? "Registering..." : "Register"}
                   </button>
                 </section>
               </form>
