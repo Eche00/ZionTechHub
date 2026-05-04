@@ -9,7 +9,6 @@ import {
 import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "../../lib/Config/firebase";
 
-
 function Navbar() {
   const [courseOpen, setCourseOpen] = useState(false);
   const [othersOpen, setOthersOpen] = useState(false);
@@ -64,7 +63,7 @@ function Navbar() {
       label: workshop?.type === "Webinar" ? "Webinar" : "Workshop",
     },
     { to: "/zion-tech-hub-hackathon", label: "Hackathon" },
-    { to: "/zth-partnership-program", label: "ZTH Partnership Program" },
+   /* { to: "/zth-partnership-program", label: "ZTH Partnership Program" },*/
   ];
 
   // Reusable dropdown (desktop)
