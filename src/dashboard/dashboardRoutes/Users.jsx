@@ -5,11 +5,8 @@ import {
   getDoc,
   doc,
   deleteDoc,
-  updateDoc,
   setDoc,
   serverTimestamp,
-  query,
-  where,
   getDocs
 } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
@@ -18,17 +15,31 @@ import { onAuthStateChanged, sendEmailVerification } from "firebase/auth";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import toast from "react-hot-toast";
 import {
-  Plus,
-  Trash2,
-  CheckCircle,
-  XCircle,
-  UserPlus,
-  Shield,
-  Users as UsersIcon,
-  Mail,
-  Key,
-  AlertCircle
-} from "lucide-react";
+  PersonAdd as PersonAddIcon,
+  Delete as DeleteIcon,
+  CheckCircle as CheckCircleIcon,
+  Close as CloseIcon,
+  AdminPanelSettings as AdminIcon,
+  Group as GroupIcon,
+  Email as EmailIcon,
+  VpnKey as KeyIcon,
+  Warning as WarningIcon,
+  Dashboard as DashboardIcon
+} from "@mui/icons-material";
+import {
+  Box,
+  Typography,
+  Button,
+  TextField,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  CircularProgress,
+  Alert,
+  Paper,
+  Chip
+} from "@mui/material";
 
 function Users() {
   const [loading, setLoading] = useState(true);
@@ -49,12 +60,12 @@ function Users() {
 
   const navigate = useNavigate();
 
-  // Check current user and authorization (UPDATED)
+  // Check current user and authorization
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser) {
         try {
-          // FIRST: Check in admins collection
+          // Check in admins collection
           let adminDoc = await getDoc(doc(db, "admins", currentUser.uid));
           let userData = null;
           
@@ -63,24 +74,22 @@ function Users() {
             userData.id = currentUser.uid;
             userData.role = "Admin";
             userData.username = userData.name || "Admin";
-            console.log("✅ Admin found in admins collection:", userData.email);
+            console.log("✅ Admin found in admins collection");
           } else {
-            // SECOND: Check in users collection
+            // Check in users collection
             const userRef = doc(db, "users", currentUser.uid);
             const userSnap = await getDoc(userRef);
             if (userSnap.exists()) {
               userData = userSnap.data();
               userData.id = currentUser.uid;
-              console.log("✅ User found in users collection:", userData.email);
+              console.log("✅ User found in users collection");
             }
           }
 
           if (userData && (userData.role === "Admin" || userData.role === "super_admin")) {
             setCurrentAdmin(userData);
             setIsAuthorized(true);
-            console.log("✅ Authorization granted. Role:", userData.role);
           } else {
-            console.log("❌ Not authorized. Role:", userData?.role);
             toast.error("Access denied. Admin only.");
             navigate("/dashboard/home");
           }
@@ -90,7 +99,6 @@ function Users() {
           navigate("/dashboard/home");
         }
       } else {
-        console.log("No user logged in");
         navigate("/signin");
       }
     });
@@ -98,7 +106,7 @@ function Users() {
     return () => unsubscribe();
   }, [navigate]);
 
-  // Fetch users from BOTH collections (UPDATED)
+  // Fetch users from BOTH collections
   useEffect(() => {
     if (!isAuthorized) return;
 
@@ -126,7 +134,7 @@ function Users() {
           });
         });
         
-        // Remove duplicates and sort
+        // Remove duplicates
         const uniqueUsers = allUsers.filter((user, index, self) => 
           index === self.findIndex((u) => u.id === user.id)
         );
@@ -147,7 +155,6 @@ function Users() {
 
     fetchAllUsers();
     
-    // Set up real-time listeners for both collections
     const unsubscribeAdmins = onSnapshot(collection(db, "admins"), () => {
       fetchAllUsers();
     });
@@ -162,11 +169,10 @@ function Users() {
     };
   }, [isAuthorized]);
 
-  // Handle user deletion (UPDATED)
+  // Handle user deletion
   const handleDelete = async (id) => {
     if (confirmingId === id) {
       try {
-        // Try to delete from admins collection first
         const adminRef = doc(db, "admins", id);
         const adminDoc = await getDoc(adminRef);
         
@@ -174,7 +180,6 @@ function Users() {
           await deleteDoc(adminRef);
           toast.success("Admin deleted successfully");
         } else {
-          // If not in admins, delete from users
           await deleteDoc(doc(db, "users", id));
           toast.success("User deleted successfully");
         }
@@ -190,7 +195,7 @@ function Users() {
     }
   };
 
-  // Handle creating new user (UPDATED)
+  // Handle creating new user
   const handleCreateUser = async (e) => {
     e.preventDefault();
     setCreatingUser(true);
@@ -213,7 +218,6 @@ function Users() {
       
       await sendEmailVerification(user);
       
-      // Store in appropriate collection
       const collectionName = newUser.role === "Admin" ? "admins" : "users";
       
       const userData = {
@@ -257,275 +261,193 @@ function Users() {
 
   if (!isAuthorized) {
     return (
-      <div className="flex items-center justify-center h-[80vh]">
-        <div className="text-center">
-          <AlertCircle className="w-16 h-16 text-red-500 mx-auto mb-4" />
-          <h2 className="text-xl font-bold text-white mb-2">Access Denied</h2>
-          <p className="text-gray-400">You don't have permission to view this page.</p>
-          <Link to="/dashboard/home" className="inline-block mt-4 text-blue-400 hover:text-blue-300">
+      <Box display="flex" justifyContent="center" alignItems="center" minHeight="80vh">
+        <Paper sx={{ p: 4, textAlign: "center", bgcolor: "#1f1f1f", color: "white" }}>
+          <WarningIcon sx={{ fontSize: 60, color: "red", mb: 2 }} />
+          <Typography variant="h5" gutterBottom>Access Denied</Typography>
+          <Typography variant="body2" color="gray">You don't have permission to view this page.</Typography>
+          <Button component={Link} to="/dashboard/home" sx={{ mt: 3 }} variant="contained">
             Return to Dashboard
-          </Link>
-        </div>
-      </div>
+          </Button>
+        </Paper>
+      </Box>
     );
   }
 
   return (
-    <div className="py-6 px-4 min-h-screen bg-gray-900">
+    <Box sx={{ py: 3, px: 2, minHeight: "100vh", bgcolor: "#0a0a0a" }}>
       {/* Header */}
-      <div className="flex items-center justify-between border-b border-gray-700 pb-4 mb-6">
-        <div className="flex items-center gap-4">
-          <UsersIcon className="w-8 h-8 text-blue-400" />
-          <h1 className="text-2xl font-bold text-white">User Management</h1>
-        </div>
-        <div className="flex items-center gap-3">
-          <Link
-            to="/dashboard/home"
-            className="text-gray-400 hover:text-white transition-colors px-3 py-1 rounded-lg bg-gray-800"
-          >
+      <Box display="flex" justifyContent="space-between" alignItems="center" borderBottom="1px solid #333" pb={2} mb={3}>
+        <Box display="flex" alignItems="center" gap={2}>
+          <AdminIcon sx={{ fontSize: 32, color: "#3b82f6" }} />
+          <Typography variant="h4" sx={{ color: "white", fontWeight: "bold" }}>
+            User Management
+          </Typography>
+        </Box>
+        <Box display="flex" gap={2}>
+          <Button component={Link} to="/dashboard/home" variant="outlined" startIcon={<DashboardIcon />}>
             Dashboard
-          </Link>
+          </Button>
           {!createUser && (
-            <button
-              onClick={() => setCreateUser(true)}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-all"
-            >
-              <UserPlus className="w-4 h-4" />
+            <Button variant="contained" startIcon={<PersonAddIcon />} onClick={() => setCreateUser(true)}>
               Create User
-            </button>
+            </Button>
           )}
-        </div>
-      </div>
+        </Box>
+      </Box>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        <div className="bg-gray-800 rounded-lg p-4 border border-gray-700">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-gray-400 text-sm">Total Users</p>
-              <p className="text-2xl font-bold text-white">{users.length}</p>
-            </div>
-            <UsersIcon className="w-8 h-8 text-blue-400 opacity-50" />
-          </div>
-        </div>
-        <div className="bg-gray-800 rounded-lg p-4 border border-gray-700">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-gray-400 text-sm">Admins</p>
-              <p className="text-2xl font-bold text-white">
-                {users.filter(u => u.role === "Admin" || u.role === "super_admin").length}
-              </p>
-            </div>
-            <Shield className="w-8 h-8 text-green-400 opacity-50" />
-          </div>
-        </div>
-        <div className="bg-gray-800 rounded-lg p-4 border border-gray-700">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-gray-400 text-sm">Team Members</p>
-              <p className="text-2xl font-bold text-white">
-                {users.filter(u => u.role === "Team").length}
-              </p>
-            </div>
-            <UsersIcon className="w-8 h-8 text-purple-400 opacity-50" />
-          </div>
-        </div>
-      </div>
+      <Box display="grid" gridTemplateColumns={{ xs: "1fr", sm: "repeat(3, 1fr)" }} gap={3} mb={4}>
+        <Paper sx={{ p: 2, bgcolor: "#1a1a1a", color: "white" }}>
+          <Box display="flex" justifyContent="space-between" alignItems="center">
+            <Box>
+              <Typography color="gray" variant="caption">Total Users</Typography>
+              <Typography variant="h4">{users.length}</Typography>
+            </Box>
+            <GroupIcon sx={{ fontSize: 40, opacity: 0.5 }} />
+          </Box>
+        </Paper>
+        <Paper sx={{ p: 2, bgcolor: "#1a1a1a", color: "white" }}>
+          <Box display="flex" justifyContent="space-between" alignItems="center">
+            <Box>
+              <Typography color="gray" variant="caption">Admins</Typography>
+              <Typography variant="h4">{users.filter(u => u.role === "Admin" || u.role === "super_admin").length}</Typography>
+            </Box>
+            <AdminIcon sx={{ fontSize: 40, opacity: 0.5, color: "#4caf50" }} />
+          </Box>
+        </Paper>
+        <Paper sx={{ p: 2, bgcolor: "#1a1a1a", color: "white" }}>
+          <Box display="flex" justifyContent="space-between" alignItems="center">
+            <Box>
+              <Typography color="gray" variant="caption">Team Members</Typography>
+              <Typography variant="h4">{users.filter(u => u.role === "Team").length}</Typography>
+            </Box>
+            <GroupIcon sx={{ fontSize: 40, opacity: 0.5, color: "#9c27b0" }} />
+          </Box>
+        </Paper>
+      </Box>
 
-      {/* Info Banner */}
-      <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4 mb-6">
-        <h3 className="text-blue-400 font-semibold mb-2 flex items-center gap-2">
-          <Shield className="w-4 h-4" />
-          Admin Access Granted
-        </h3>
-        <ul className="text-gray-300 text-sm space-y-1 ml-6 list-disc">
-          <li>You are logged in as: <span className="text-blue-400">{currentAdmin?.email}</span></li>
-          <li>Your role: <span className="text-green-400">Administrator</span></li>
-          <li>You have full access to manage all users</li>
-        </ul>
-      </div>
+      {/* Info Alert */}
+      <Alert severity="info" sx={{ mb: 3, bgcolor: "#1a3a5c", color: "#90caf9" }}>
+        <Typography variant="body2">
+          <strong>Admin Access Granted</strong><br />
+          You are logged in as: {currentAdmin?.email} | Role: Administrator | You have full access to manage all users
+        </Typography>
+      </Alert>
 
       {/* Create User Form */}
       {createUser && (
-        <div className="bg-gray-800 rounded-xl p-6 mb-6 border border-gray-700">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-bold text-white flex items-center gap-2">
-              <UserPlus className="w-5 h-5 text-blue-400" />
-              Create New User
-            </h2>
-            <button
-              onClick={() => setCreateUser(false)}
-              className="text-gray-400 hover:text-white transition-colors"
-            >
-              <XCircle className="w-6 h-6" />
-            </button>
-          </div>
+        <Paper sx={{ p: 3, mb: 3, bgcolor: "#1a1a1a" }}>
+          <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
+            <Typography variant="h6" sx={{ color: "white", display: "flex", alignItems: "center", gap: 1 }}>
+              <PersonAddIcon sx={{ color: "#3b82f6" }} /> Create New User
+            </Typography>
+            <Button onClick={() => setCreateUser(false)} startIcon={<CloseIcon />}>Cancel</Button>
+          </Box>
           
-          <form onSubmit={handleCreateUser} className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-gray-300 text-sm mb-2 flex items-center gap-2">
-                  <UsersIcon className="w-4 h-4" />
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  value={newUser.username}
-                  onChange={(e) => setNewUser({ ...newUser, username: e.target.value })}
-                  className={`w-full px-4 py-2 bg-gray-900 border ${formErrors.username ? 'border-red-500' : 'border-gray-700'} rounded-lg text-white focus:outline-none focus:border-blue-500`}
-                  placeholder="John Doe"
-                />
-                {formErrors.username && <p className="text-red-500 text-xs mt-1">{formErrors.username}</p>}
-              </div>
-              
-              <div>
-                <label className="block text-gray-300 text-sm mb-2 flex items-center gap-2">
-                  <Mail className="w-4 h-4" />
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  value={newUser.email}
-                  onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
-                  className={`w-full px-4 py-2 bg-gray-900 border ${formErrors.email ? 'border-red-500' : 'border-gray-700'} rounded-lg text-white focus:outline-none focus:border-blue-500`}
-                  placeholder="user@example.com"
-                />
-                {formErrors.email && <p className="text-red-500 text-xs mt-1">{formErrors.email}</p>}
-              </div>
-              
-              <div>
-                <label className="block text-gray-300 text-sm mb-2 flex items-center gap-2">
-                  <Key className="w-4 h-4" />
-                  Password
-                </label>
-                <input
-                  type="password"
-                  value={newUser.password}
-                  onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
-                  className={`w-full px-4 py-2 bg-gray-900 border ${formErrors.password ? 'border-red-500' : 'border-gray-700'} rounded-lg text-white focus:outline-none focus:border-blue-500`}
-                  placeholder="********"
-                />
-                {formErrors.password && <p className="text-red-500 text-xs mt-1">{formErrors.password}</p>}
-              </div>
-              
-              <div>
-                <label className="block text-gray-300 text-sm mb-2 flex items-center gap-2">
-                  <Shield className="w-4 h-4" />
-                  Role
-                </label>
-                <select
+          <form onSubmit={handleCreateUser}>
+            <Box display="grid" gridTemplateColumns={{ xs: "1fr", md: "1fr 1fr" }} gap={2}>
+              <TextField
+                label="Full Name"
+                value={newUser.username}
+                onChange={(e) => setNewUser({ ...newUser, username: e.target.value })}
+                error={!!formErrors.username}
+                helperText={formErrors.username}
+                sx={{ input: { color: "white" }, label: { color: "gray" } }}
+              />
+              <TextField
+                label="Email Address"
+                type="email"
+                value={newUser.email}
+                onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
+                error={!!formErrors.email}
+                helperText={formErrors.email}
+                sx={{ input: { color: "white" }, label: { color: "gray" } }}
+              />
+              <TextField
+                label="Password"
+                type="password"
+                value={newUser.password}
+                onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
+                error={!!formErrors.password}
+                helperText={formErrors.password || "Must be at least 6 characters"}
+                sx={{ input: { color: "white" }, label: { color: "gray" } }}
+              />
+              <FormControl>
+                <InputLabel sx={{ color: "gray" }}>Role</InputLabel>
+                <Select
                   value={newUser.role}
                   onChange={(e) => setNewUser({ ...newUser, role: e.target.value })}
-                  className="w-full px-4 py-2 bg-gray-900 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-blue-500"
+                  sx={{ color: "white" }}
                 >
-                  <option value="Team">Team Member</option>
-                  <option value="Admin">Administrator</option>
-                </select>
-              </div>
-            </div>
+                  <MenuItem value="Team">Team Member</MenuItem>
+                  <MenuItem value="Admin">Administrator</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
             
-            <div className="flex gap-3 pt-4">
-              <button
-                type="submit"
-                disabled={creatingUser}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg flex items-center gap-2 transition-all disabled:opacity-50"
-              >
-                {creatingUser ? (
-                  <>
-                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                    Creating...
-                  </>
-                ) : (
-                  <>
-                    <UserPlus className="w-4 h-4" />
-                    Create User
-                  </>
-                )}
-              </button>
-              <button
-                type="button"
-                onClick={() => setCreateUser(false)}
-                className="bg-gray-700 hover:bg-gray-600 text-white px-6 py-2 rounded-lg transition-all"
-              >
-                Cancel
-              </button>
-            </div>
+            <Button type="submit" variant="contained" disabled={creatingUser} sx={{ mt: 3 }} fullWidth>
+              {creatingUser ? <CircularProgress size={24} /> : "Create User"}
+            </Button>
           </form>
-        </div>
+        </Paper>
       )}
 
       {/* Users Table */}
-      <div className="bg-gray-800 rounded-xl border border-gray-700 overflow-hidden">
-        <div className="grid grid-cols-5 gap-4 items-center bg-gray-700 px-6 py-3 text-white font-semibold">
-          <div>Name</div>
-          <div>Email</div>
-          <div>Role</div>
-          <div>User ID</div>
-          <div className="text-right">Actions</div>
-        </div>
-        
-        <div className="divide-y divide-gray-700">
-          {users.length === 0 ? (
-            <div className="text-center py-12 text-gray-400">
-              <UsersIcon className="w-12 h-12 mx-auto mb-3 opacity-50" />
-              <p>No users found</p>
-            </div>
-          ) : (
-            users.map((user) => (
-              <div
-                key={user.id}
-                className="grid grid-cols-5 gap-4 items-center px-6 py-4 hover:bg-gray-700/50 transition-colors"
-              >
-                <div className="text-gray-200">
-                  {user.username?.length > 15 ? user.username.slice(0, 15) + "..." : user.username || user.name}
-                </div>
-                <div className="text-gray-400 text-sm truncate">{user.email}</div>
-                <div>
-                  {user.role === "Admin" || user.role === "super_admin" ? (
-                    <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 text-green-400">
-                      <Shield className="w-3 h-3" />
-                      Admin
-                    </span>
+      <Paper sx={{ bgcolor: "#1a1a1a", overflow: "hidden" }}>
+        <Box sx={{ overflowX: "auto" }}>
+          <Box sx={{ minWidth: 800 }}>
+            {/* Header */}
+            <Box display="grid" gridTemplateColumns="1.5fr 2fr 1fr 1.5fr 1fr" gap={2} sx={{ bgcolor: "#333", p: 2, fontWeight: "bold", color: "white" }}>
+              <Typography>Name</Typography>
+              <Typography>Email</Typography>
+              <Typography>Role</Typography>
+              <Typography>User ID</Typography>
+              <Typography textAlign="right">Actions</Typography>
+            </Box>
+            
+            {/* Body */}
+            {users.map((user) => (
+              <Box key={user.id} display="grid" gridTemplateColumns="1.5fr 2fr 1fr 1.5fr 1fr" gap={2} sx={{ p: 2, borderBottom: "1px solid #333", alignItems: "center" }}>
+                <Typography sx={{ color: "#ccc" }}>{user.username?.length > 15 ? user.username.slice(0, 15) + "..." : user.username || user.name}</Typography>
+                <Typography sx={{ color: "#999", fontSize: "0.875rem" }}>{user.email}</Typography>
+                <Box>
+                  {(user.role === "Admin" || user.role === "super_admin") ? (
+                    <Chip label="Admin" size="small" sx={{ bgcolor: "#4caf50", color: "white" }} icon={<AdminIcon sx={{ fontSize: 14 }} />} />
                   ) : (
-                    <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium bg-blue-500/20 text-blue-400">
-                      <UsersIcon className="w-3 h-3" />
-                      Team
-                    </span>
+                    <Chip label="Team" size="small" variant="outlined" sx={{ color: "#3b82f6", borderColor: "#3b82f6" }} />
                   )}
-                </div>
-                <div className="text-gray-500 text-xs font-mono">
-                  {user.id?.slice(0, 8)}...
-                </div>
-                <div className="flex items-center justify-end gap-2">
+                </Box>
+                <Typography sx={{ color: "#666", fontSize: "0.75rem", fontFamily: "monospace" }}>{user.id?.slice(0, 8)}...</Typography>
+                <Box display="flex" justifyContent="flex-end">
                   {user.id !== currentAdmin?.id && (
                     confirmingId === user.id ? (
-                      <button
-                        onClick={() => handleDelete(user.id)}
-                        className="bg-red-600 hover:bg-red-700 text-white px-4 py-1 rounded-lg text-sm flex items-center gap-1 transition-all"
-                      >
-                        <CheckCircle className="w-3 h-3" />
+                      <Button size="small" variant="contained" color="error" onClick={() => handleDelete(user.id)} startIcon={<CheckCircleIcon />}>
                         Confirm
-                      </button>
+                      </Button>
                     ) : (
-                      <button
-                        onClick={() => setConfirmingId(user.id)}
-                        className="bg-gray-700 hover:bg-red-600 text-gray-300 hover:text-white px-4 py-1 rounded-lg text-sm flex items-center gap-1 transition-all"
-                      >
-                        <Trash2 className="w-3 h-3" />
+                      <Button size="small" variant="outlined" color="error" onClick={() => setConfirmingId(user.id)} startIcon={<DeleteIcon />}>
                         Delete
-                      </button>
+                      </Button>
                     )
                   )}
                   {user.id === currentAdmin?.id && (
-                    <span className="text-xs text-gray-500">(You)</span>
+                    <Typography variant="caption" sx={{ color: "#666" }}>(You)</Typography>
                   )}
-                </div>
-              </div>
-            ))
-          )}
-        </div>
-      </div>
-    </div>
+                </Box>
+              </Box>
+            ))}
+            
+            {users.length === 0 && (
+              <Box sx={{ p: 4, textAlign: "center", color: "#666" }}>
+                <GroupIcon sx={{ fontSize: 48, mb: 1, opacity: 0.5 }} />
+                <Typography>No users found</Typography>
+              </Box>
+            )}
+          </Box>
+        </Box>
+      </Paper>
+    </Box>
   );
 }
 
