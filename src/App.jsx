@@ -14,15 +14,7 @@ import Contact from "./pages/Contact";
 import PartnerWithUs from "./pages/PartnerWithUs";
 import Enroll from "./pages/Enroll";
 
-// Old Course Pages
-import MachineLearning from "./pages/Courses/MachineLearning";
-import CloudComputing from "./pages/Courses/CloudComputing";
-import WebDevelopment from "./pages/Courses/WebDevelopment";
-import DataAnalysis from "./pages/Courses/DataAnalysis";
-import DataScience from "./pages/Courses/DataScience";
-import DigitalMarketing from "./pages/Courses/DigitalMarketing";
-
-// New Course Pages
+// Course Pages
 import HealthcareDataAnalytics from "./pages/Courses/HealthcareDataAnalytics";
 import FinancialDataAnalytics from "./pages/Courses/FinancialDataAnalytics";
 import SalesMarketingDataAnalytics from "./pages/Courses/SalesMarketingDataAnalytics";
@@ -52,16 +44,14 @@ import Affliates from "./dashboard/dashboardRoutes/Affliates";
 import CourseRegistrants from "./dashboard/dashboardRoutes/CourseRegistrants";
 
 function App() {
-  // Initialize Google Analytics tracking
   googleAnalyticsTracking();
 
   return (
     <div className="overflow-hidden">
-      {/* Always scroll to top when navigating */}
       <Scrolltotop />
       <Toaster position="top-right" />
       <Routes>
-        {/* Public Website Routes (with Header & Footer) */}
+        {/* Public Website Routes */}
         <Route path="/" element={<Head />}>
           <Route index element={<FullHome />} />
           <Route path="about-us" element={<About />} />
@@ -69,15 +59,7 @@ function App() {
           <Route path="contact-us" element={<Contact />} />
           <Route path="partner-with-us" element={<PartnerWithUs />} />
 
-          {/* Old Courses (keeping for backward compatibility) */}
-          <Route path="data-analystics-training" element={<DataAnalysis />} />
-          <Route path="data-science-course" element={<DataScience />} />
-          <Route path="web-development-training" element={<WebDevelopment />} />
-          <Route path="cloud-computing-course" element={<CloudComputing />} />
-          <Route path="machine-learning-course" element={<MachineLearning />} />
-          <Route path="digital-marketing-training" element={<DigitalMarketing />} />
-
-          {/* New Courses */}
+          {/* Course Routes */}
           <Route path="healthcare-data-analytics" element={<HealthcareDataAnalytics />} />
           <Route path="financial-data-analytics" element={<FinancialDataAnalytics />} />
           <Route path="sales-marketing-data-analytics" element={<SalesMarketingDataAnalytics />} />
@@ -94,11 +76,10 @@ function App() {
           <Route path="blog" element={<Blog />} />
           <Route path="blog/:slug" element={<EachBlog />} />
 
-          {/* Catch-all: redirect to home */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
 
-        {/* Dashboard Routes (with dashboard layout) */}
+        {/* Dashboard Routes */}
         <Route path="/dashboard" element={<DashContainer />}>
           <Route path="home" element={<Dashboard />} />
           <Route path="viewblogs" element={<ViewBlogs />} />
@@ -110,7 +91,7 @@ function App() {
           <Route path="users" element={<Users />} />
         </Route>
 
-        {/* Standalone Routes (no header/footer) */}
+        {/* Standalone Routes */}
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/enroll" element={<Enroll />} />
