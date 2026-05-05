@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { EmailOutlined, Lock, LockOpen, AdminPanelSettings } from "@mui/icons-material";
 import { auth, db } from "../../lib/Config/firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc, serverTimestamp } from "firebase/firestore";
 import { techhublogo } from "../../assets";
 import toast from "react-hot-toast";
 
@@ -17,12 +17,8 @@ function Signin() {
   const [error, setError] = useState("");
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
-  const [resetMode, setResetMode] = useState(false);
-  const [resetEmail, setResetEmail] = useState("");
-  const [resetLoading, setResetLoading] = useState(false);
 
   const navigate = useNavigate();
-  const location = useLocation();
 
   // Check if user is already logged in as admin
   useEffect(() => {
@@ -30,7 +26,7 @@ function Signin() {
       if (user) {
         // Check if user is admin in Firestore
         const adminDoc = await getDoc(doc(db, "admins", user.uid));
-        if (adminDoc.exists()) {
+        if (adminDoc.exists() && adminDoc.data().isActive === true) {
           navigate("/dashboard/home");
         } else {
           // Not admin, sign out
@@ -47,25 +43,6 @@ function Signin() {
     setEmailError(false);
     setPasswordError(false);
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleErrorMessage = (errorCode) => {
-    switch (errorCode) {
-      case "auth/invalid-email":
-        return "Invalid email address format.";
-      case "auth/user-disabled":
-        return "This account has been disabled.";
-      case "auth/user-not-found":
-        return "No admin account found with this email.";
-      case "auth/wrong-password":
-        return "Incorrect password. Please try again.";
-      case "auth/too-many-requests":
-        return "Too many login attempts. Please try again later.";
-      case "auth/network-request-failed":
-        return "Network error. Check your internet connection.";
-      default:
-        return "Login failed. Please try again.";
-    }
   };
 
   const handleSubmit = async (e) => {
@@ -86,7 +63,7 @@ function Signin() {
     }
 
     try {
-      // First, sign in the user
+      // Sign in the user
       const userCredential = await signInWithEmailAndPassword(auth, formData.email, formData.password);
       const user = userCredential.user;
       
@@ -94,7 +71,7 @@ function Signin() {
       const adminDoc = await getDoc(doc(db, "admins", user.uid));
       
       if (!adminDoc.exists()) {
-        // Not an admin - sign out and show error
+        // Not an admin - sign out
         await auth.signOut();
         setError("Access Denied: You are not authorized as an administrator.");
         toast.error("Access Denied. Admin only.");
@@ -105,112 +82,36 @@ function Signin() {
       const adminData = adminDoc.data();
       
       if (!adminData.isActive) {
-        // Admin account is disabled
         await auth.signOut();
-        setError("Your admin account has been disabled. Please contact support.");
+        setError("Your admin account has been disabled.");
         toast.error("Account disabled.");
         setLoading(false);
         return;
       }
       
-      // SUCCESS - Admin logged in
+      // If we get here, admin login is successful regardless of email verification
       toast.success(`Welcome back, ${adminData.name || 'Admin'}!`);
       navigate("/dashboard/home");
       
     } catch (error) {
       console.error("Login error:", error);
-      const errorMessage = handleErrorMessage(error.code);
-      setError(errorMessage);
-      toast.error(errorMessage);
+      
+      // Handle specific Firebase auth errors
+      if (error.code === "auth/user-not-found") {
+        setError("No admin account found with this email.");
+      } else if (error.code === "auth/wrong-password") {
+        setError("Incorrect password. Please try again.");
+      } else if (error.code === "auth/too-many-requests") {
+        setError("Too many login attempts. Please try again later.");
+      } else {
+        setError("Login failed. Please try again.");
+      }
+      toast.error(setError);
     } finally {
       setLoading(false);
     }
   };
 
-  const handlePasswordReset = async () => {
-    if (!resetEmail) {
-      toast.error("Please enter your email address");
-      return;
-    }
-
-    setResetLoading(true);
-    try {
-      const { sendPasswordResetEmail } = await import("firebase/auth");
-      await sendPasswordResetEmail(auth, resetEmail);
-      toast.success("Password reset email sent! Check your inbox.");
-      setResetMode(false);
-      setResetEmail("");
-    } catch (error) {
-      console.error("Reset error:", error);
-      toast.error(error.message || "Failed to send reset email");
-    } finally {
-      setResetLoading(false);
-    }
-  };
-
-  // If in reset mode, show reset form
-  if (resetMode) {
-    return (
-      <div className="sm:flex sm:items-center sm:justify-center h-[100vh] bg-[#1F1F1F] overflow-hidden overscroll-none">
-        <main className="relative flex flex-col sm:shadow-2xl sm:rounded-2xl sm:h-fit h-screen sm:w-[700px] w-full p-[20px] sm:border-2 border-gray-700">
-          <Link to="/" className="rounded-full p-2 w-fit">
-            <img
-              src={techhublogo}
-              alt="logo"
-              className="w-[50px] h-[50px] object-cover border-gray-500 border-2 rounded-full"
-            />
-          </Link>
-
-          <div className="w-[90%] mx-auto md:w-[60%]">
-            <h1 className="text-start text-white font-bold my-[30px] text-[20px]">
-              Reset Admin Password
-            </h1>
-            
-            <div className="w-full">
-              <div className="flex flex-col gap-[5px] my-5">
-                <p className="text-gray-500">Email Address:</p>
-                <div className="flex items-center gap-2 bg-black border-2 border-gray-700 w-full px-3 py-4 rounded-[10px] text-white">
-                  <span className="text-gray-500 border-r border-gray-500 pr-2">
-                    <EmailOutlined />
-                  </span>
-                  <input
-                    className="outline-none text-white flex-1 bg-transparent placeholder:text-gray-500"
-                    type="email"
-                    value={resetEmail}
-                    onChange={(e) => setResetEmail(e.target.value)}
-                    placeholder="Enter your admin email"
-                  />
-                </div>
-              </div>
-
-              <div className="flex items-center gap-[10px] my-4">
-                <span className="flex-1 bg-gray-700 h-[0.2px]"></span>
-                <span className="text-gray-400">*</span>
-                <span className="flex-1 bg-gray-700 h-[0.2px]"></span>
-              </div>
-
-              <button
-                className="bg-blue-600 w-full py-[10px] text-[12px] font-bold text-white rounded-[10px] my-[10px] cursor-pointer hover:bg-blue-700 transition-colors"
-                onClick={handlePasswordReset}
-                disabled={resetLoading}
-              >
-                {resetLoading ? "Sending..." : "Send Reset Email"}
-              </button>
-
-              <button
-                className="text-gray-400 w-full text-center text-sm mt-2 hover:text-white transition-colors"
-                onClick={() => setResetMode(false)}
-              >
-                ← Back to Login
-              </button>
-            </div>
-          </div>
-        </main>
-      </div>
-    );
-  }
-
-  // Main login form
   return (
     <div className="sm:flex sm:items-center sm:justify-center h-[100vh] bg-[#1F1F1F] overflow-hidden overscroll-none">
       <main className="relative flex flex-col sm:shadow-2xl sm:rounded-2xl sm:h-fit h-screen sm:w-[700px] w-full p-[20px] sm:border-2 border-gray-700">
@@ -292,16 +193,6 @@ function Signin() {
               )}
             </div>
 
-            <div className="text-right mb-4">
-              <button
-                type="button"
-                onClick={() => setResetMode(true)}
-                className="text-gray-400 text-xs hover:text-blue-400 transition-colors"
-              >
-                Forgot password?
-              </button>
-            </div>
-
             <div className="flex items-center gap-[10px] my-4">
               <span className="flex-1 bg-gray-700 h-[0.2px]"></span>
               <span className="text-gray-400 text-xs">Secure Admin Area</span>
@@ -345,12 +236,6 @@ function Signin() {
                 Return to Website
               </Link>
             </p>
-
-            <div className="mt-6 p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
-              <p className="text-yellow-400 text-xs text-center">
-                ⚠️ This area is restricted to authorized administrators only.
-              </p>
-            </div>
           </form>
         </div>
       </main>
