@@ -1,153 +1,443 @@
-import React, { useEffect, useState, useRef } from "react";
+
+import React, { useState, useEffect } from 'react';
 import {
-    collection,
-    deleteDoc,
-    doc,
-    getDoc,
-    getDocs,
-    onSnapshot,
-    updateDoc,
-} from "firebase/firestore";
-import { db } from "../../lib/Config/firebase";
-import { Close, Public, Visibility } from "@mui/icons-material";
-import toast from "react-hot-toast";
+  collection,
+  query,
+  getDocs,
+  orderBy,
+  doc,
+  updateDoc,
+  deleteDoc,
+  serverTimestamp
+} from 'firebase/firestore';
+import { db } from '../../lib/Config/firebase';
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  TablePagination,
+  Box,
+  Typography,
+  Button,
+  TextField,
+  IconButton,
+  Chip,
+  Tooltip,
+  InputAdornment,
+  Menu,
+  MenuItem,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Select,
+  FormControl,
+  InputLabel,
+  Alert,
+  Snackbar,
+  Card,
+  CardContent,
+  Grid
+} from '@mui/material';
+import {
+  Download as DownloadIcon,
+  Search as SearchIcon,
+  WhatsApp as WhatsAppIcon,
+  Edit as EditIcon,
+  Delete as DeleteIcon,
+  FilterList as FilterListIcon,
+  Visibility as VisibilityIcon,
+  Refresh as RefreshIcon,
+  People as PeopleIcon,
+  School as SchoolIcon,
+  Today as TodayIcon
+} from '@mui/icons-material';
+import { format } from 'date-fns';
 
 function CourseRegistrants() {
-    // React states
-    const [registrants, setRegistrants] = useState([]);
-    const [copied, setCopied] = useState(null);
-    const pdfRef = useRef();
-    const [viewModal, setViewModal] = useState(false);
-    const [selectedAffiliate, setSelectedAffiliate] = useState(null);
+  const [registrations, setRegistrations] = useState([]);
+  const [filteredRegistrations, setFilteredRegistrations] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filterCourse, setFilterCourse] = useState('all');
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [openDialog, setOpenDialog] = useState(false);
+  const [selectedReg, setSelectedReg] = useState(null);
+  const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
+  const [stats, setStats] = useState({
+    total: 0,
+    today: 0,
+    thisWeek: 0,
+    byCourse: {}
+  });
 
-    // Getting registrants lists
-    useEffect(() => {
-        const unsubscribe = onSnapshot(
-            collection(db, "course-registrants"),
-            (snapshot) => {
-                const updated = snapshot.docs.map((doc) => ({
-                    id: doc.id,
-                    ...doc.data(),
-                }));
-                setRegistrants(updated);
-            }
-        );
+  useEffect(() => {
+    fetchRegistrations();
+  }, []);
 
-        return () => unsubscribe();
-    }, []);
+  const fetchRegistrations = async () => {
+    setLoading(true);
+    try {
+      const q = query(
+        collection(db, 'course-registrants'),
+        orderBy('registrationTimestamp', 'desc')
+      );
+      const snapshot = await getDocs(q);
+      const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      setRegistrations(data);
+      calculateStats(data);
+      applyFilters(data);
+    } catch (error) {
+      console.error('Error fetching registrations:', error);
+      showSnackbar('Error fetching data', 'error');
+    }
+    setLoading(false);
+  };
 
+  const calculateStats = (data) => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    
+    const weekAgo = new Date();
+    weekAgo.setDate(weekAgo.getDate() - 7);
 
-    // copy email
-    const handleCopy = (id, email) => {
-        navigator.clipboard
-            .writeText(email)
-            .then(() => {
-                setCopied(id);
-                setTimeout(() => {
-                    setCopied(null);
-                }, 1000);
-            })
-            .catch((err) => {
-                console.error("Failed to copy: ", err);
-            });
+    const todayRegs = data.filter(reg => {
+      const date = reg.registeredAt?.toDate();
+      return date && date >= today;
+    }).length;
+
+    const weekRegs = data.filter(reg => {
+      const date = reg.registeredAt?.toDate();
+      return date && date >= weekAgo;
+    }).length;
+
+    const courseCount = {};
+    data.forEach(reg => {
+      courseCount[reg.course] = (courseCount[reg.course] || 0) + 1;
+    });
+
+    setStats({
+      total: data.length,
+      today: todayRegs,
+      thisWeek: weekRegs,
+      byCourse: courseCount
+    });
+  };
+
+  const applyFilters = (data) => {
+    let filtered = data;
+    
+    if (searchTerm) {
+      filtered = filtered.filter(reg =>
+        reg.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        reg.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        reg.mobile?.includes(searchTerm) ||
+        reg.generatedReferralCode?.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+    
+    if (filterCourse !== 'all') {
+      filtered = filtered.filter(reg => reg.course === filterCourse);
+    }
+    
+    setFilteredRegistrations(filtered);
+  };
+
+  useEffect(() => {
+    applyFilters(registrations);
+  }, [searchTerm, filterCourse, registrations]);
+
+  const showSnackbar = (message, severity) => {
+    setSnackbar({ open: true, message, severity });
+  };
+
+  const handleUpdateStatus = async (id, status) => {
+    try {
+      const docRef = doc(db, 'course-registrants', id);
+      await updateDoc(docRef, { status, updatedAt: serverTimestamp() });
+      showSnackbar('Status updated successfully', 'success');
+      fetchRegistrations();
+    } catch (error) {
+      showSnackbar('Error updating status', 'error');
+    }
+  };
+
+  const handleDelete = async (id) => {
+    if (window.confirm('Are you sure you want to delete this registration?')) {
+      try {
+        await deleteDoc(doc(db, 'course-registrants', id));
+        showSnackbar('Registration deleted successfully', 'success');
+        fetchRegistrations();
+      } catch (error) {
+        showSnackbar('Error deleting registration', 'error');
+      }
+    }
+  };
+
+  const exportToCSV = () => {
+    const headers = ['Name', 'Email', 'Mobile', 'Course', 'Referral Code', 'Registration Date', 'Status', 'Payment Status'];
+    const csvData = filteredRegistrations.map(reg => [
+      reg.name,
+      reg.email,
+      reg.mobile,
+      reg.course,
+      reg.generatedReferralCode,
+      reg.registeredAt?.toDate() ? format(reg.registeredAt.toDate(), 'yyyy-MM-dd HH:mm:ss') : 'N/A',
+      reg.status || 'active',
+      reg.paymentStatus || 'pending'
+    ]);
+    
+    const csvContent = [headers, ...csvData].map(row => row.join(',')).join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `course-registrations-${format(new Date(), 'yyyy-MM-dd')}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+    showSnackbar('Export completed', 'success');
+  };
+
+  const getCourseColor = (course) => {
+    const colors = {
+      'Healthcare Data Analytics': '#10b981',
+      'Financial Data Analytics': '#3b82f6',
+      'Sales and Marketing Data Analytics': '#f59e0b',
+      'Supply Chain Analytics': '#8b5cf6',
+      'Data Science and AI': '#ef4444',
+      'AI Automation': '#06b6d4'
     };
+    return colors[course] || '#6b7280';
+  };
 
-    // Delete/clear registrantts
-    const clearRegistrants = async () => {
-        try {
-            const querySnapshot = await getDocs(collection(db, "course-registrants"));
+  return (
+    <div className="p-6">
+      <Typography variant="h4" gutterBottom className="mb-6">
+        Course Registrations Management
+      </Typography>
 
-            const deletePromises = querySnapshot.docs.map((docSnap) =>
-                deleteDoc(doc(db, "course-registrants", docSnap.id))
-            );
+      {/* Stats Cards */}
+      <Grid container spacing={3} className="mb-6">
+        <Grid item xs={12} sm={6} md={3}>
+          <Card>
+            <CardContent>
+              <Box display="flex" justifyContent="space-between" alignItems="center">
+                <Box>
+                  <Typography color="textSecondary" variant="caption">
+                    Total Registrations
+                  </Typography>
+                  <Typography variant="h4">{stats.total}</Typography>
+                </Box>
+                <PeopleIcon sx={{ fontSize: 40, color: '#3b82f6' }} />
+              </Box>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+          <Card>
+            <CardContent>
+              <Box display="flex" justifyContent="space-between" alignItems="center">
+                <Box>
+                  <Typography color="textSecondary" variant="caption">
+                    Today's Registrations
+                  </Typography>
+                  <Typography variant="h4">{stats.today}</Typography>
+                </Box>
+                <TodayIcon sx={{ fontSize: 40, color: '#10b981' }} />
+              </Box>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+          <Card>
+            <CardContent>
+              <Box display="flex" justifyContent="space-between" alignItems="center">
+                <Box>
+                  <Typography color="textSecondary" variant="caption">
+                    This Week
+                  </Typography>
+                  <Typography variant="h4">{stats.thisWeek}</Typography>
+                </Box>
+                <SchoolIcon sx={{ fontSize: 40, color: '#f59e0b' }} />
+              </Box>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+          <Card>
+            <CardContent>
+              <Box display="flex" justifyContent="space-between" alignItems="center">
+                <Box>
+                  <Typography color="textSecondary" variant="caption">
+                    Unique Courses
+                  </Typography>
+                  <Typography variant="h4">{Object.keys(stats.byCourse).length}</Typography>
+                </Box>
+                <VisibilityIcon sx={{ fontSize: 40, color: '#8b5cf6' }} />
+              </Box>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
 
-            await Promise.all(deletePromises);
-            console.log("All registrants cleared!");
-            toast.success("All registrants cleared successfully");
-        } catch (error) {
-            console.error("Error clearing registrants:", error);
-            toast.error("Failed to clear registrants");
-        }
-    };
+      {/* Filters and Actions */}
+      <Paper className="mb-6 p-4">
+        <Box display="flex" justifyContent="space-between" alignItems="center" flexWrap="wrap" gap={2}>
+          <TextField
+            size="small"
+            placeholder="Search by name, email, phone or referral code..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+            }}
+            sx={{ minWidth: 300 }}
+          />
+          <Box display="flex" gap={2}>
+            <Button
+              variant="outlined"
+              startIcon={<FilterListIcon />}
+              onClick={(e) => setAnchorEl(e.currentTarget)}
+            >
+              {filterCourse === 'all' ? 'All Courses' : filterCourse}
+            </Button>
+            <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={() => setAnchorEl(null)}>
+              <MenuItem onClick={() => { setFilterCourse('all'); setAnchorEl(null); }}>All Courses</MenuItem>
+              {Object.keys(stats.byCourse).map(course => (
+                <MenuItem key={course} onClick={() => { setFilterCourse(course); setAnchorEl(null); }}>
+                  {course}
+                </MenuItem>
+              ))}
+            </Menu>
+            <Button
+              variant="contained"
+              startIcon={<DownloadIcon />}
+              onClick={exportToCSV}
+            >
+              Export CSV
+            </Button>
+            <Button
+              variant="outlined"
+              startIcon={<RefreshIcon />}
+              onClick={fetchRegistrations}
+            >
+              Refresh
+            </Button>
+          </Box>
+        </Box>
+      </Paper>
 
+      {/* Registrations Table */}
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow sx={{ bgcolor: '#f3f4f6' }}>
+              <TableCell><strong>Name</strong></TableCell>
+              <TableCell><strong>Email</strong></TableCell>
+              <TableCell><strong>Mobile</strong></TableCell>
+              <TableCell><strong>Course</strong></TableCell>
+              <TableCell><strong>Referral Code</strong></TableCell>
+              <TableCell><strong>Registration Date</strong></TableCell>
+              <TableCell><strong>Status</strong></TableCell>
+              <TableCell><strong>Payment</strong></TableCell>
+              <TableCell><strong>Actions</strong></TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {filteredRegistrations
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((reg) => (
+                <TableRow key={reg.id} hover>
+                  <TableCell>{reg.name}</TableCell>
+                  <TableCell>{reg.email}</TableCell>
+                  <TableCell>{reg.mobile}</TableCell>
+                  <TableCell>
+                    <Chip
+                      label={reg.course}
+                      size="small"
+                      sx={{ bgcolor: getCourseColor(reg.course), color: 'white' }}
+                    />
+                  </TableCell>
+                  <TableCell>
+                    <Chip
+                      label={reg.generatedReferralCode}
+                      variant="outlined"
+                      size="small"
+                    />
+                  </TableCell>
+                  <TableCell>
+                    {reg.registeredAt?.toDate() ? format(reg.registeredAt.toDate(), 'dd/MM/yyyy HH:mm') : 'N/A'}
+                  </TableCell>
+                  <TableCell>
+                    <Select
+                      size="small"
+                      value={reg.status || 'active'}
+                      onChange={(e) => handleUpdateStatus(reg.id, e.target.value)}
+                      sx={{ minWidth: 100 }}
+                    >
+                      <MenuItem value="active">Active</MenuItem>
+                      <MenuItem value="completed">Completed</MenuItem>
+                      <MenuItem value="cancelled">Cancelled</MenuItem>
+                    </Select>
+                  </TableCell>
+                  <TableCell>
+                    <Chip
+                      label={reg.paymentStatus || 'pending'}
+                      color={reg.paymentStatus === 'paid' ? 'success' : reg.paymentStatus === 'failed' ? 'error' : 'warning'}
+                      size="small"
+                    />
+                  </TableCell>
+                  <TableCell>
+                    <Tooltip title="WhatsApp">
+                      <IconButton size="small" href={`https://wa.me/${reg.mobile}`} target="_blank">
+                        <WhatsAppIcon fontSize="small" />
+                      </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Delete">
+                      <IconButton size="small" onClick={() => handleDelete(reg.id)}>
+                        <DeleteIcon fontSize="small" />
+                      </IconButton>
+                    </Tooltip>
+                  </TableCell>
+                </TableRow>
+              ))}
+          </TableBody>
+        </Table>
+        <TablePagination
+          rowsPerPageOptions={[10, 25, 50, 100]}
+          component="div"
+          count={filteredRegistrations.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={(e, newPage) => setPage(newPage)}
+          onRowsPerPageChange={(e) => {
+            setRowsPerPage(parseInt(e.target.value, 10));
+            setPage(0);
+          }}
+        />
+      </TableContainer>
 
-
-    return (
-        <div className="  py-10 px-4 h-[100vh] overflow-scroll">
-            <div className="flex items-center gap-[20px] border-b-2 border-gray-700 py-[10px]">
-                <h1 className="text-3xl font-bold text-white">Registrants</h1>
-
-                <button className="bg-transparent text-gray-500 border-2 border-gray-700 px-4 py-2 rounded-full cursor-default">
-                    Course Registrants
-                </button>
-            </div>
-            {/* message  */}
-            <ul className="text-gray-500  list-disc pl-5 pt-2">
-                <li>You can click the email to copy to clipboard.</li>
-
-                <li>
-                    Click 'send' to send direct emails with the email currently on your
-                    mailbox{" "}
-                </li>
-            </ul>
-            <section className=" flex items-center justify-between mt-[80px] py-6">
-                <p className=" text-white font-bold flex items-center gap-[10px]">
-                    Registrants:{" "}
-                    <span className="bg-transparent text-gray-500 border-2 border-gray-700 px-4 py-1 rounded-[10px] ">
-                        {registrants.length}
-                    </span>
-                </p>
-
-                <button
-                    onClick={clearRegistrants}
-                    className="bg-red-600/80 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-all duration-300">
-                    Clear Registrants
-                </button>
-            </section>
-            <div
-                ref={pdfRef}
-                className="flex flex-col w-full  gap-[10px]  bg-black border-2  border-gray-700 rounded-[10px]  overflow-scroll h-[600px] relative ">
-                <div className=" text-white font-bold w-full bg-gray-700  sticky top-0 left-0 py-[20px]  grid sm:grid-cols-5 grid-cols-3 gap-4 items-center sm:px-14 px-4 h-fit">
-                    <p>Name</p>
-                    <p>Email</p>
-                    <p className="sm:flex hidden">Phone</p>
-                    <p className="sm:flex hidden">Course</p>
-                    <p className="flex items-center justify-end sm:pr-10">Direct Mail</p>
-                </div>
-                {registrants.map((registrant) => (
-                    <div
-                        className="grid sm:grid-cols-5 grid-cols-3 gap-4 items-center border-b border-gray-500   p-4 w-full  sm:px-10 px-2 py-4  text-white   h-fit"
-                        key={registrant.id}>
-                        <h2 className="text-gray-500 ">{registrant.name}</h2>
-                        <p
-                            className="text-gray-600 text-sm border-l-2 border-gray-500 pl-2 cursor-pointer hover:text-white transition-all duration-300 flex items-center gap-[10px]"
-                            id="copyEmail"
-                            onClick={() => handleCopy(registrant.id, registrant.email)}>
-                            {registrant.email}
-                            {/* copied  */}
-                            {copied === registrant.id && (
-                                <span className=" bg-gray-700 rounded-[5px] text-white px-3 py-[3px]">
-                                    Copied
-                                </span>
-                            )}
-                        </p>
-                        <p className="text-gray-500 text-sm sm:flex hidden">{registrant.mobile}</p>
-                        <p className="text-gray-500 text-sm sm:flex hidden">{registrant.course}</p>
-                        {/* buttons  */}
-                        <div className="flex items-center gap-2 justify-end">
-
-                            <a
-                                href={`mailto:${registrant.email}`}
-                                className=" bg-[#034FE3] text-white font-[500] rounded-full text-[14px] w-[100px] py-[8px]  items-center justify-center sm:flex hidden">
-                                Mail
-                            </a>
-                        </div>
-                    </div>
-                ))}
-            </div>
-
-        </div>
-    );
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={6000}
+        onClose={() => setSnackbar({ ...snackbar, open: false })}
+      >
+        <Alert severity={snackbar.severity} onClose={() => setSnackbar({ ...snackbar, open: false })}>
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
+    </div>
+  );
 }
 
 export default CourseRegistrants;
