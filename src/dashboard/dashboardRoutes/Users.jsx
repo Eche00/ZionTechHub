@@ -7,7 +7,10 @@ import {
   deleteDoc,
   updateDoc,
   setDoc,
-  serverTimestamp
+  serverTimestamp,
+  query,
+  where,
+  getDocs
 } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, db } from "../../lib/Config/firebase";
@@ -28,7 +31,6 @@ import {
 } from "lucide-react";
 
 function Users() {
-  // State
   const [loading, setLoading] = useState(true);
   const [createUser, setCreateUser] = useState(false);
   const [users, setUsers] = useState([]);
@@ -36,7 +38,6 @@ function Users() {
   const [currentAdmin, setCurrentAdmin] = useState(null);
   const [isAuthorized, setIsAuthorized] = useState(false);
   
-  // Create user form state
   const [newUser, setNewUser] = useState({
     username: "",
     email: "",
@@ -48,12 +49,12 @@ function Users() {
 
   const navigate = useNavigate();
 
-  // Check current user and authorization
+  // Check current user and authorization (UPDATED)
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser) {
         try {
-          // Check in admins collection first
+          // FIRST: Check in admins collection
           let adminDoc = await getDoc(doc(db, "admins", currentUser.uid));
           let userData = null;
           
@@ -62,20 +63,24 @@ function Users() {
             userData.id = currentUser.uid;
             userData.role = "Admin";
             userData.username = userData.name || "Admin";
+            console.log("✅ Admin found in admins collection:", userData.email);
           } else {
-            // Check in users collection
+            // SECOND: Check in users collection
             const userRef = doc(db, "users", currentUser.uid);
             const userSnap = await getDoc(userRef);
             if (userSnap.exists()) {
               userData = userSnap.data();
               userData.id = currentUser.uid;
+              console.log("✅ User found in users collection:", userData.email);
             }
           }
 
           if (userData && (userData.role === "Admin" || userData.role === "super_admin")) {
             setCurrentAdmin(userData);
             setIsAuthorized(true);
+            console.log("✅ Authorization granted. Role:", userData.role);
           } else {
+            console.log("❌ Not authorized. Role:", userData?.role);
             toast.error("Access denied. Admin only.");
             navigate("/dashboard/home");
           }
@@ -85,6 +90,7 @@ function Users() {
           navigate("/dashboard/home");
         }
       } else {
+        console.log("No user logged in");
         navigate("/signin");
       }
     });
@@ -92,28 +98,35 @@ function Users() {
     return () => unsubscribe();
   }, [navigate]);
 
-  // Fetch users from Firestore
+  // Fetch users from BOTH collections (UPDATED)
   useEffect(() => {
     if (!isAuthorized) return;
 
-    const unsubscribe = onSnapshot(collection(db, "users"), (snapshot) => {
-      const userData = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      
-      // Also fetch admins from admins collection
-      const unsubscribeAdmins = onSnapshot(collection(db, "admins"), (adminSnapshot) => {
-        const adminData = adminSnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-          role: "Admin",
-          username: doc.data().name || "Admin",
-          email: doc.data().email,
-        }));
+    const fetchAllUsers = async () => {
+      try {
+        const allUsers = [];
         
-        // Combine both collections
-        const allUsers = [...userData, ...adminData];
+        // Get from admins collection
+        const adminsSnapshot = await getDocs(collection(db, "admins"));
+        adminsSnapshot.forEach((doc) => {
+          allUsers.push({
+            id: doc.id,
+            ...doc.data(),
+            role: "Admin",
+            username: doc.data().name || "Admin",
+          });
+        });
+        
+        // Get from users collection
+        const usersSnapshot = await getDocs(collection(db, "users"));
+        usersSnapshot.forEach((doc) => {
+          allUsers.push({
+            id: doc.id,
+            ...doc.data(),
+          });
+        });
+        
+        // Remove duplicates and sort
         const uniqueUsers = allUsers.filter((user, index, self) => 
           index === self.findIndex((u) => u.id === user.id)
         );
@@ -126,29 +139,46 @@ function Users() {
         
         setUsers(sortedUsers);
         setLoading(false);
-      });
-      
-      return () => unsubscribeAdmins();
-    });
+      } catch (error) {
+        console.error("Error fetching users:", error);
+        setLoading(false);
+      }
+    };
 
-    return () => unsubscribe();
+    fetchAllUsers();
+    
+    // Set up real-time listeners for both collections
+    const unsubscribeAdmins = onSnapshot(collection(db, "admins"), () => {
+      fetchAllUsers();
+    });
+    
+    const unsubscribeUsers = onSnapshot(collection(db, "users"), () => {
+      fetchAllUsers();
+    });
+    
+    return () => {
+      unsubscribeAdmins();
+      unsubscribeUsers();
+    };
   }, [isAuthorized]);
 
-  // Handle user deletion
+  // Handle user deletion (UPDATED)
   const handleDelete = async (id) => {
     if (confirmingId === id) {
       try {
-        // Check if user exists in admins collection
+        // Try to delete from admins collection first
         const adminRef = doc(db, "admins", id);
         const adminDoc = await getDoc(adminRef);
         
         if (adminDoc.exists()) {
           await deleteDoc(adminRef);
+          toast.success("Admin deleted successfully");
         } else {
+          // If not in admins, delete from users
           await deleteDoc(doc(db, "users", id));
+          toast.success("User deleted successfully");
         }
         
-        toast.success("User deleted successfully");
         setConfirmingId(null);
       } catch (error) {
         console.error("Couldn't delete user:", error);
@@ -160,13 +190,12 @@ function Users() {
     }
   };
 
-  // Handle creating new user
+  // Handle creating new user (UPDATED)
   const handleCreateUser = async (e) => {
     e.preventDefault();
     setCreatingUser(true);
     setFormErrors({});
 
-    // Validation
     const errors = {};
     if (newUser.username.length < 3) errors.username = "Username must be at least 3 characters";
     if (!newUser.email.includes("@")) errors.email = "Valid email required";
@@ -179,49 +208,45 @@ function Users() {
     }
 
     try {
-      // Create user in Firebase Auth
       const userCredential = await createUserWithEmailAndPassword(auth, newUser.email, newUser.password);
       const user = userCredential.user;
       
-      // Send verification email
       await sendEmailVerification(user);
       
-      // Determine which collection to save to
+      // Store in appropriate collection
       const collectionName = newUser.role === "Admin" ? "admins" : "users";
       
-      // Save user data to Firestore
-      await setDoc(doc(db, collectionName, user.uid), {
+      const userData = {
         uid: user.uid,
-        username: newUser.username,
         email: newUser.email.toLowerCase(),
-        role: newUser.role,
         createdAt: serverTimestamp(),
         createdBy: currentAdmin?.id,
         emailVerified: false
-      });
+      };
+      
+      if (newUser.role === "Admin") {
+        userData.name = newUser.username;
+        userData.role = "super_admin";
+        userData.isActive = true;
+        userData.permissions = ["all"];
+      } else {
+        userData.username = newUser.username;
+        userData.role = "Team";
+      }
+      
+      await setDoc(doc(db, collectionName, user.uid), userData);
       
       toast.success(`User created successfully! Verification email sent to ${newUser.email}`);
       
-      // Reset form
-      setNewUser({
-        username: "",
-        email: "",
-        password: "",
-        role: "Team",
-      });
+      setNewUser({ username: "", email: "", password: "", role: "Team" });
       setCreateUser(false);
-      
-      // Optional: Sign out and back in to refresh permissions
-      if (newUser.role === "Admin") {
-        toast.info("Admin created. Please ask them to verify their email.");
-      }
       
     } catch (error) {
       console.error("Creation error:", error);
       if (error.code === "auth/email-already-in-use") {
         toast.error("Email already in use");
       } else if (error.code === "auth/weak-password") {
-        toast.error("Password too weak. Use at least 6 characters");
+        toast.error("Password too weak");
       } else {
         toast.error(error.message);
       }
@@ -272,7 +297,7 @@ function Users() {
         </div>
       </div>
 
-      {/* Info Cards */}
+      {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         <div className="bg-gray-800 rounded-lg p-4 border border-gray-700">
           <div className="flex items-center justify-between">
@@ -307,18 +332,16 @@ function Users() {
         </div>
       </div>
 
-      {/* Important Information */}
-      <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4 mb-6">
-        <h3 className="text-yellow-400 font-semibold mb-2 flex items-center gap-2">
-          <AlertCircle className="w-4 h-4" />
-          Important Notes:
+      {/* Info Banner */}
+      <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4 mb-6">
+        <h3 className="text-blue-400 font-semibold mb-2 flex items-center gap-2">
+          <Shield className="w-4 h-4" />
+          Admin Access Granted
         </h3>
         <ul className="text-gray-300 text-sm space-y-1 ml-6 list-disc">
-          <li>Page only accessible to Administrators</li>
-          <li>Only Admins can create or delete users</li>
-          <li>New users will receive an email verification link</li>
-          <li>Click delete once to confirm, twice to delete</li>
-          <li>Admin accounts are stored in the "admins" collection</li>
+          <li>You are logged in as: <span className="text-blue-400">{currentAdmin?.email}</span></li>
+          <li>Your role: <span className="text-green-400">Administrator</span></li>
+          <li>You have full access to manage all users</li>
         </ul>
       </div>
 
@@ -433,7 +456,6 @@ function Users() {
 
       {/* Users Table */}
       <div className="bg-gray-800 rounded-xl border border-gray-700 overflow-hidden">
-        {/* Table Header */}
         <div className="grid grid-cols-5 gap-4 items-center bg-gray-700 px-6 py-3 text-white font-semibold">
           <div>Name</div>
           <div>Email</div>
@@ -442,19 +464,11 @@ function Users() {
           <div className="text-right">Actions</div>
         </div>
         
-        {/* Table Body */}
         <div className="divide-y divide-gray-700">
           {users.length === 0 ? (
             <div className="text-center py-12 text-gray-400">
               <UsersIcon className="w-12 h-12 mx-auto mb-3 opacity-50" />
               <p>No users found</p>
-              <button
-                onClick={() => setCreateUser(true)}
-                className="mt-3 text-blue-400 hover:text-blue-300 inline-flex items-center gap-1"
-              >
-                <Plus className="w-4 h-4" />
-                Create your first user
-              </button>
             </div>
           ) : (
             users.map((user) => (
@@ -463,7 +477,7 @@ function Users() {
                 className="grid grid-cols-5 gap-4 items-center px-6 py-4 hover:bg-gray-700/50 transition-colors"
               >
                 <div className="text-gray-200">
-                  @{user.username?.length > 15 ? user.username.slice(0, 15) + "..." : user.username}
+                  {user.username?.length > 15 ? user.username.slice(0, 15) + "..." : user.username || user.name}
                 </div>
                 <div className="text-gray-400 text-sm truncate">{user.email}</div>
                 <div>
@@ -483,7 +497,6 @@ function Users() {
                   {user.id?.slice(0, 8)}...
                 </div>
                 <div className="flex items-center justify-end gap-2">
-                  {/* Don't allow deleting yourself */}
                   {user.id !== currentAdmin?.id && (
                     confirmingId === user.id ? (
                       <button
@@ -512,15 +525,6 @@ function Users() {
           )}
         </div>
       </div>
-      
-      {/* Statistics Footer */}
-      {users.length > 0 && (
-        <div className="mt-4 text-center text-gray-500 text-sm">
-          Total: {users.length} users | 
-          Admins: {users.filter(u => u.role === "Admin" || u.role === "super_admin").length} | 
-          Team: {users.filter(u => u.role === "Team").length}
-        </div>
-      )}
     </div>
   );
 }
