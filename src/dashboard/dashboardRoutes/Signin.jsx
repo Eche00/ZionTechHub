@@ -1,9 +1,11 @@
+// src/dashboard/dashboardRoutes/Signin.jsx
 import React, { useEffect, useState } from "react";
-import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
-import { Link, useNavigate } from "react-router-dom";
-import { EmailOutlined, Lock, LockOpen } from "@mui/icons-material";
-import { auth } from "../../lib/Config/firebase";
+import { onAuthStateChanged } from "firebase/auth";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { EmailOutlined, Lock, LockOpen, AdminPanelSettings } from "@mui/icons-material";
+import { auth, adminLogin, isAdminUser } from "../../lib/Config/firebase";
 import { techhublogo } from "../../assets";
+import toast from "react-hot-toast";
 
 function Signin() {
   const [formData, setFormData] = useState({
@@ -11,156 +13,178 @@ function Signin() {
     password: "",
   });
   const [loading, setLoading] = useState(false);
-  // password visibility
   const [visible, setVisible] = useState(false);
-  // error states
   const [error, setError] = useState("");
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
+  const [resetMode, setResetMode] = useState(false);
+  const [resetEmail, setResetEmail] = useState("");
+  const [resetLoading, setResetLoading] = useState(false);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
-  // user
+  // Check if user is already logged in as admin
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        navigate("/dashboard/home");
+        const isAdmin = await isAdminUser(user.uid);
+        if (isAdmin) {
+          navigate("/dashboard/home");
+        } else {
+          // Not admin, sign out
+          await auth.signOut();
+          toast.error("Access denied. Admin only.");
+        }
       }
     });
     return () => unsubscribe();
   }, [navigate]);
 
-  // error switching
-  const handleErrorMessage = (errorCode) => {
-    switch (errorCode) {
-      case "auth/invalid-email":
-        return "Invalid email address format. Please check your email.";
-      case "auth/user-disabled":
-        return "This account has been disabled. Please contact support.";
-      case "auth/user-not-found":
-      case "auth/wrong-password":
-        return "Invalid email or password. Please try again.";
-      case "auth/too-many-requests":
-        return "Too many login attempts. Please try again later.";
-      case "auth/network-request-failed":
-        return "Network error. Please check your internet connection.";
-      default:
-        return "An unexpected error occurred. Please try again.";
-    }
-  };
-
-  // handling change function
   const handleChange = (e) => {
     e.preventDefault();
-    // error reset
     setError("");
     setEmailError(false);
     setPasswordError(false);
-
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  // handle submit
+  const handleErrorMessage = (error) => {
+    if (error.message?.includes("NO_ADMIN")) {
+      return "Access Denied: This email is not registered as an administrator.";
+    }
+    if (error.message?.includes("ACCOUNT_DISABLED")) {
+      return "Your admin account has been disabled. Please contact support.";
+    }
+    if (error.code === "auth/invalid-email") {
+      return "Invalid email address format.";
+    }
+    if (error.code === "auth/user-disabled") {
+      return "This account has been disabled.";
+    }
+    if (error.code === "auth/user-not-found" || error.code === "auth/wrong-password") {
+      return "Invalid email or password. Admin access only.";
+    }
+    if (error.code === "auth/too-many-requests") {
+      return "Too many login attempts. Please try again later.";
+    }
+    if (error.code === "auth/network-request-failed") {
+      return "Network error. Check your internet connection.";
+    }
+    return error.message || "Login failed. Please try again.";
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    // error handling
     setError("");
+
+    // Validate
     if (!formData.email.includes("@")) {
       setEmailError(true);
+      setLoading(false);
       return;
-    } else if (formData.password.length <= 0) {
+    }
+    if (formData.password.length < 6) {
       setPasswordError(true);
+      setLoading(false);
+      toast.error("Password must be at least 6 characters");
       return;
     }
 
     try {
-      await signInWithEmailAndPassword(auth, formData.email, formData.password);
-      navigate("/dashboard/home");
+      // Use adminLogin instead of regular signIn
+      const result = await adminLogin(formData.email, formData.password);
+      
+      if (result.success) {
+        toast.success(`Welcome back, ${result.adminData.name || 'Admin'}!`);
+        navigate("/dashboard/home");
+      }
     } catch (error) {
+      const errorMessage = handleErrorMessage(error);
+      setError(errorMessage);
+      toast.error(errorMessage);
+      console.error("Login error:", error);
     } finally {
-      const customErrMessage = handleErrorMessage(error.code);
-      setError(customErrMessage);
       setLoading(false);
     }
   };
 
-  return (
-    <div className=" sm:flex sm:items-center sm:justify-center h-[100vh] bg-[#1F1F1F] overflow-hidden overscroll-none ">
-      {/* mobile container   */}
-      <main className=" relative flex flex-col  sm:shadow-2xl   sm:rounded-2xl  sm:h-fit h-screen  sm:w-[700px] w-full p-[20px] sm:border-2 border-gray-700">
-        {/* exit page */}
-        <Link to="/" className="rounded-full p-2 ">
-          <img
-            src={techhublogo}
-            alt="logo"
-            className="w-[50px] h-[50px] object-cover border-gray-500 border-2 rounded-full "
-          />
-        </Link>
+  const handlePasswordReset = async () => {
+    if (!resetEmail) {
+      toast.error("Please enter your email address");
+      return;
+    }
 
-        {/* subcontainer  */}
-        <div className=" w-[90%] mx-auto md:w-[60%]">
-          <h1 className=" text-start text-white font-bold  my-[30px]  text-[20px]">
-            Login to Dashboard
-          </h1>
-          {/* form container  */}
-          <form className="w-full" onSubmit={handleSubmit}>
-            {error && <p className=" text-red-500 ">{error}</p>}
-            <div className=" flex flex-col gap-[5px] my-5 ">
-              <p className=" text-gray-500">Email:</p>
-              <div className="flex items-center gap-2 bg-black border-2 border-gray-700  w-full px-3 py-4 rounded-[10px] text-white">
-                <span className=" text-gray-500 border-r border-gray-500 pr-2">
-                  <EmailOutlined />
-                </span>
-                <input
-                  className="  outline-none text-white flex-1 bg-transparent placeholder:text-gray-500 border-black "
-                  type="text"
-                  name="email"
-                  onChange={handleChange}
-                  placeholder="Enter your email"
-                />
+    setResetLoading(true);
+    try {
+      const { adminPasswordReset } = await import("../../lib/Config/firebase");
+      await adminPasswordReset(resetEmail);
+      toast.success("Password reset email sent! Check your inbox.");
+      setResetMode(false);
+      setResetEmail("");
+    } catch (error) {
+      toast.error(error.message || "Failed to send reset email");
+    } finally {
+      setResetLoading(false);
+    }
+  };
+
+  // If in reset mode, show reset form
+  if (resetMode) {
+    return (
+      <div className="sm:flex sm:items-center sm:justify-center h-[100vh] bg-[#1F1F1F] overflow-hidden overscroll-none">
+        <main className="relative flex flex-col sm:shadow-2xl sm:rounded-2xl sm:h-fit h-screen sm:w-[700px] w-full p-[20px] sm:border-2 border-gray-700">
+          <Link to="/" className="rounded-full p-2">
+            <img
+              src={techhublogo}
+              alt="logo"
+              className="w-[50px] h-[50px] object-cover border-gray-500 border-2 rounded-full"
+            />
+          </Link>
+
+          <div className="w-[90%] mx-auto md:w-[60%]">
+            <h1 className="text-start text-white font-bold my-[30px] text-[20px]">
+              Reset Admin Password
+            </h1>
+            
+            <div className="w-full">
+              <div className="flex flex-col gap-[5px] my-5">
+                <p className="text-gray-500">Email Address:</p>
+                <div className="flex items-center gap-2 bg-black border-2 border-gray-700 w-full px-3 py-4 rounded-[10px] text-white">
+                  <span className="text-gray-500 border-r border-gray-500 pr-2">
+                    <EmailOutlined />
+                  </span>
+                  <input
+                    className="outline-none text-white flex-1 bg-transparent placeholder:text-gray-500"
+                    type="email"
+                    value={resetEmail}
+                    onChange={(e) => setResetEmail(e.target.value)}
+                    placeholder="Enter your admin email"
+                  />
+                </div>
               </div>
-              {emailError && (
-                <p className=" text-red-500 ">email missing '@'</p>
-              )}
-            </div>
-            <div className=" flex flex-col gap-[5px] my-5 ">
-              <p className=" text-gray-500">Password:</p>
-              <div className="flex items-center gap-2 bg-black border-2 border-gray-700  w-full px-3 py-4 rounded-[10px] text-white">
-                <span
-                  className=" text-gray-500 border-r border-gray-500 pr-2 cursor-pointer"
-                  onClick={() => setVisible(!visible)}>
-                  {visible ? <Lock fontSize="" /> : <LockOpen fontSize="" />}
-                </span>
-                <input
-                  className="  outline-none text-white flex-1 bg-transparent placeholder:text-gray-500 border-black "
-                  type={visible ? "text" : "password"}
-                  name="password"
-                  placeholder="Enter your password"
-                  onChange={handleChange}
-                />
+
+              <div className="flex items-center gap-[10px] my-4">
+                <span className="flex-1 bg-gray-700 h-[0.2px]"></span>
+                <span className="text-gray-400">*</span>
+                <span className="flex-1 bg-gray-700 h-[0.2px]"></span>
               </div>
-              {passwordError && (
-                <p className=" text-red-500 ">Type in Your Password</p>
-              )}
-            </div>
-            <div className="  flex items-center gap-[10px] ">
-              <span className="flex-1 bg-gray-300 dark:bg-gray-700 h-[0.2px] "></span>
-              <span className=" text-gray-400 dark:text-gray-700"> *</span>
-              <span className="flex-1 bg-gray-300 dark:bg-gray-700 h-[0.2px] "></span>
-            </div>
-            <div className=" w-full flex items-center justify-center flex-col">
+
               <button
-                className="bg-blue-600 w-full py-[10px] text-[12px] font-bold text-white rounded-[10px] my-[10px] cursor-pointer"
-                type="submit">
-                {loading ? (
+                className="bg-blue-600 w-full py-[10px] text-[12px] font-bold text-white rounded-[10px] my-[10px] cursor-pointer hover:bg-blue-700 transition-colors"
+                onClick={handlePasswordReset}
+                disabled={resetLoading}
+              >
+                {resetLoading ? (
                   <div role="status">
                     <svg
                       aria-hidden="true"
-                      className="inline w-4 h-4 text-gray-200 animate-spin dark:text-gray-600 fill-[#1e222b]"
+                      className="inline w-4 h-4 text-gray-200 animate-spin fill-blue-600"
                       viewBox="0 0 100 101"
                       fill="none"
-                      xmlns="http://www.w3.org/2000/svg">
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <path
                         d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
                         fill="currentColor"
@@ -170,18 +194,172 @@ function Signin() {
                         fill="currentFill"
                       />
                     </svg>
-                    <span className="sr-only">Loading...</span>
+                    <span className="sr-only">Sending...</span>
                   </div>
                 ) : (
-                  "Sign in"
+                  "Send Reset Email"
+                )}
+              </button>
+
+              <button
+                className="text-gray-400 w-full text-center text-sm mt-2 hover:text-white transition-colors"
+                onClick={() => setResetMode(false)}
+              >
+                ← Back to Login
+              </button>
+            </div>
+          </div>
+        </main>
+      </div>
+    );
+  }
+
+  // Main login form
+  return (
+    <div className="sm:flex sm:items-center sm:justify-center h-[100vh] bg-[#1F1F1F] overflow-hidden overscroll-none">
+      <main className="relative flex flex-col sm:shadow-2xl sm:rounded-2xl sm:h-fit h-screen sm:w-[700px] w-full p-[20px] sm:border-2 border-gray-700">
+        {/* Admin Badge */}
+        <div className="absolute top-4 right-4">
+          <div className="flex items-center gap-1 bg-blue-600/20 text-blue-400 px-3 py-1 rounded-full text-xs">
+            <AdminPanelSettings sx={{ fontSize: 14 }} />
+            <span>Admin Access Only</span>
+          </div>
+        </div>
+
+        {/* Exit page */}
+        <Link to="/" className="rounded-full p-2 w-fit">
+          <img
+            src={techhublogo}
+            alt="logo"
+            className="w-[50px] h-[50px] object-cover border-gray-500 border-2 rounded-full"
+          />
+        </Link>
+
+        {/* Subcontainer */}
+        <div className="w-[90%] mx-auto md:w-[60%]">
+          <div className="text-center mb-6">
+            <AdminPanelSettings sx={{ fontSize: 48, color: "#3b82f6", margin: "0 auto" }} />
+            <h1 className="text-white font-bold mt-4 text-[24px]">
+              Admin Dashboard Login
+            </h1>
+            <p className="text-gray-400 text-sm mt-2">
+              Enter your administrator credentials
+            </p>
+          </div>
+
+          {/* Form container */}
+          <form className="w-full" onSubmit={handleSubmit}>
+            {error && (
+              <div className="bg-red-500/10 border border-red-500/50 text-red-400 px-4 py-2 rounded-lg text-sm mb-4">
+                {error}
+              </div>
+            )}
+
+            <div className="flex flex-col gap-[5px] my-5">
+              <p className="text-gray-400 text-sm">Admin Email:</p>
+              <div className="flex items-center gap-2 bg-black border-2 border-gray-700 w-full px-3 py-4 rounded-[10px] text-white focus-within:border-blue-500 transition-colors">
+                <span className="text-gray-500 border-r border-gray-500 pr-2">
+                  <EmailOutlined />
+                </span>
+                <input
+                  className="outline-none text-white flex-1 bg-transparent placeholder:text-gray-500"
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="admin@example.com"
+                  autoComplete="email"
+                />
+              </div>
+              {emailError && (
+                <p className="text-red-500 text-sm mt-1">Email must contain '@' symbol</p>
+              )}
+            </div>
+
+            <div className="flex flex-col gap-[5px] my-5">
+              <p className="text-gray-400 text-sm">Password:</p>
+              <div className="flex items-center gap-2 bg-black border-2 border-gray-700 w-full px-3 py-4 rounded-[10px] text-white focus-within:border-blue-500 transition-colors">
+                <span
+                  className="text-gray-500 border-r border-gray-500 pr-2 cursor-pointer hover:text-gray-300"
+                  onClick={() => setVisible(!visible)}
+                >
+                  {visible ? <Lock fontSize="small" /> : <LockOpen fontSize="small" />}
+                </span>
+                <input
+                  className="outline-none text-white flex-1 bg-transparent placeholder:text-gray-500"
+                  type={visible ? "text" : "password"}
+                  name="password"
+                  placeholder="Enter your password"
+                  onChange={handleChange}
+                  autoComplete="current-password"
+                />
+              </div>
+              {passwordError && (
+                <p className="text-red-500 text-sm mt-1">Please enter your password</p>
+              )}
+            </div>
+
+            <div className="text-right mb-4">
+              <button
+                type="button"
+                onClick={() => setResetMode(true)}
+                className="text-gray-400 text-xs hover:text-blue-400 transition-colors"
+              >
+                Forgot password?
+              </button>
+            </div>
+
+            <div className="flex items-center gap-[10px] my-4">
+              <span className="flex-1 bg-gray-700 h-[0.2px]"></span>
+              <span className="text-gray-400 text-xs">Secure Admin Area</span>
+              <span className="flex-1 bg-gray-700 h-[0.2px]"></span>
+            </div>
+
+            <div className="w-full flex items-center justify-center flex-col">
+              <button
+                className="bg-blue-600 w-full py-[12px] text-[14px] font-bold text-white rounded-[10px] my-[10px] cursor-pointer hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                type="submit"
+                disabled={loading}
+              >
+                {loading ? (
+                  <div role="status" className="flex items-center justify-center gap-2">
+                    <svg
+                      aria-hidden="true"
+                      className="w-4 h-4 text-gray-200 animate-spin fill-white"
+                      viewBox="0 0 100 101"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                        fill="currentColor"
+                      />
+                      <path
+                        d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                        fill="currentFill"
+                      />
+                    </svg>
+                    <span>Authenticating...</span>
+                  </div>
+                ) : (
+                  "Sign In as Admin"
                 )}
               </button>
             </div>
-            <p className="text-sm font-bold text-center dark:text-white text-black">
-              <Link to="/" className=" underline text-blue-600">
-                Home
+
+            <p className="text-xs text-center text-gray-500 mt-4">
+              <Link to="/" className="underline text-blue-400 hover:text-blue-300">
+                Return to Website
               </Link>
             </p>
+
+            <div className="mt-6 p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
+              <p className="text-yellow-400 text-xs text-center">
+                ⚠️ This area is restricted to authorized administrators only.
+                <br />
+                All access attempts are logged and monitored.
+              </p>
+            </div>
           </form>
         </div>
       </main>
