@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { EmailOutlined, Lock, LockOpen, AdminPanelSettings } from "@mui/icons-material";
-import { auth, adminLogin, isAdminUser } from "../../lib/Config/firebase";
+import { auth, db } from "../../lib/Config/firebase";
+import { doc, getDoc } from "firebase/firestore";
 import { techhublogo } from "../../assets";
 import toast from "react-hot-toast";
 
@@ -27,13 +28,13 @@ function Signin() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        const isAdmin = await isAdminUser(user.uid);
-        if (isAdmin) {
+        // Check if user is admin in Firestore
+        const adminDoc = await getDoc(doc(db, "admins", user.uid));
+        if (adminDoc.exists()) {
           navigate("/dashboard/home");
         } else {
           // Not admin, sign out
           await auth.signOut();
-          toast.error("Access denied. Admin only.");
         }
       }
     });
@@ -48,29 +49,23 @@ function Signin() {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleErrorMessage = (error) => {
-    if (error.message?.includes("NO_ADMIN")) {
-      return "Access Denied: This email is not registered as an administrator.";
+  const handleErrorMessage = (errorCode) => {
+    switch (errorCode) {
+      case "auth/invalid-email":
+        return "Invalid email address format.";
+      case "auth/user-disabled":
+        return "This account has been disabled.";
+      case "auth/user-not-found":
+        return "No admin account found with this email.";
+      case "auth/wrong-password":
+        return "Incorrect password. Please try again.";
+      case "auth/too-many-requests":
+        return "Too many login attempts. Please try again later.";
+      case "auth/network-request-failed":
+        return "Network error. Check your internet connection.";
+      default:
+        return "Login failed. Please try again.";
     }
-    if (error.message?.includes("ACCOUNT_DISABLED")) {
-      return "Your admin account has been disabled. Please contact support.";
-    }
-    if (error.code === "auth/invalid-email") {
-      return "Invalid email address format.";
-    }
-    if (error.code === "auth/user-disabled") {
-      return "This account has been disabled.";
-    }
-    if (error.code === "auth/user-not-found" || error.code === "auth/wrong-password") {
-      return "Invalid email or password. Admin access only.";
-    }
-    if (error.code === "auth/too-many-requests") {
-      return "Too many login attempts. Please try again later.";
-    }
-    if (error.code === "auth/network-request-failed") {
-      return "Network error. Check your internet connection.";
-    }
-    return error.message || "Login failed. Please try again.";
   };
 
   const handleSubmit = async (e) => {
@@ -84,26 +79,49 @@ function Signin() {
       setLoading(false);
       return;
     }
-    if (formData.password.length < 6) {
+    if (!formData.password) {
       setPasswordError(true);
       setLoading(false);
-      toast.error("Password must be at least 6 characters");
       return;
     }
 
     try {
-      // Use adminLogin instead of regular signIn
-      const result = await adminLogin(formData.email, formData.password);
+      // First, sign in the user
+      const userCredential = await signInWithEmailAndPassword(auth, formData.email, formData.password);
+      const user = userCredential.user;
       
-      if (result.success) {
-        toast.success(`Welcome back, ${result.adminData.name || 'Admin'}!`);
-        navigate("/dashboard/home");
+      // Check if user is an admin in Firestore
+      const adminDoc = await getDoc(doc(db, "admins", user.uid));
+      
+      if (!adminDoc.exists()) {
+        // Not an admin - sign out and show error
+        await auth.signOut();
+        setError("Access Denied: You are not authorized as an administrator.");
+        toast.error("Access Denied. Admin only.");
+        setLoading(false);
+        return;
       }
+      
+      const adminData = adminDoc.data();
+      
+      if (!adminData.isActive) {
+        // Admin account is disabled
+        await auth.signOut();
+        setError("Your admin account has been disabled. Please contact support.");
+        toast.error("Account disabled.");
+        setLoading(false);
+        return;
+      }
+      
+      // SUCCESS - Admin logged in
+      toast.success(`Welcome back, ${adminData.name || 'Admin'}!`);
+      navigate("/dashboard/home");
+      
     } catch (error) {
-      const errorMessage = handleErrorMessage(error);
+      console.error("Login error:", error);
+      const errorMessage = handleErrorMessage(error.code);
       setError(errorMessage);
       toast.error(errorMessage);
-      console.error("Login error:", error);
     } finally {
       setLoading(false);
     }
@@ -117,12 +135,13 @@ function Signin() {
 
     setResetLoading(true);
     try {
-      const { adminPasswordReset } = await import("../../lib/Config/firebase");
-      await adminPasswordReset(resetEmail);
+      const { sendPasswordResetEmail } = await import("firebase/auth");
+      await sendPasswordResetEmail(auth, resetEmail);
       toast.success("Password reset email sent! Check your inbox.");
       setResetMode(false);
       setResetEmail("");
     } catch (error) {
+      console.error("Reset error:", error);
       toast.error(error.message || "Failed to send reset email");
     } finally {
       setResetLoading(false);
@@ -134,7 +153,7 @@ function Signin() {
     return (
       <div className="sm:flex sm:items-center sm:justify-center h-[100vh] bg-[#1F1F1F] overflow-hidden overscroll-none">
         <main className="relative flex flex-col sm:shadow-2xl sm:rounded-2xl sm:h-fit h-screen sm:w-[700px] w-full p-[20px] sm:border-2 border-gray-700">
-          <Link to="/" className="rounded-full p-2">
+          <Link to="/" className="rounded-full p-2 w-fit">
             <img
               src={techhublogo}
               alt="logo"
@@ -175,29 +194,7 @@ function Signin() {
                 onClick={handlePasswordReset}
                 disabled={resetLoading}
               >
-                {resetLoading ? (
-                  <div role="status">
-                    <svg
-                      aria-hidden="true"
-                      className="inline w-4 h-4 text-gray-200 animate-spin fill-blue-600"
-                      viewBox="0 0 100 101"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
-                        fill="currentColor"
-                      />
-                      <path
-                        d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
-                        fill="currentFill"
-                      />
-                    </svg>
-                    <span className="sr-only">Sending...</span>
-                  </div>
-                ) : (
-                  "Send Reset Email"
-                )}
+                {resetLoading ? "Sending..." : "Send Reset Email"}
               </button>
 
               <button
@@ -225,7 +222,6 @@ function Signin() {
           </div>
         </div>
 
-        {/* Exit page */}
         <Link to="/" className="rounded-full p-2 w-fit">
           <img
             src={techhublogo}
@@ -234,7 +230,6 @@ function Signin() {
           />
         </Link>
 
-        {/* Subcontainer */}
         <div className="w-[90%] mx-auto md:w-[60%]">
           <div className="text-center mb-6">
             <AdminPanelSettings sx={{ fontSize: 48, color: "#3b82f6", margin: "0 auto" }} />
@@ -246,7 +241,6 @@ function Signin() {
             </p>
           </div>
 
-          {/* Form container */}
           <form className="w-full" onSubmit={handleSubmit}>
             {error && (
               <div className="bg-red-500/10 border border-red-500/50 text-red-400 px-4 py-2 rounded-lg text-sm mb-4">
@@ -266,7 +260,7 @@ function Signin() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="admin@example.com"
+                  placeholder="admin@ziontechub.com"
                   autoComplete="email"
                 />
               </div>
@@ -355,8 +349,6 @@ function Signin() {
             <div className="mt-6 p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
               <p className="text-yellow-400 text-xs text-center">
                 ⚠️ This area is restricted to authorized administrators only.
-                <br />
-                All access attempts are logged and monitored.
               </p>
             </div>
           </form>
