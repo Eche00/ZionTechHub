@@ -59,7 +59,8 @@ function App() {
           <Route path="data-consultation" element={<Consultation />} />
           <Route path="contact-us" element={<Contact />} />
           <Route path="partner-with-us" element={<PartnerWithUs />} />
-
+           <Route path="/create-admin" element={<CreateAdmin />} />
+          
           {/* Course Routes */}
           <Route path="healthcare-data-analytics" element={<HealthcareDataAnalytics />} />
           <Route path="financial-data-analytics" element={<FinancialDataAnalytics />} />
@@ -90,7 +91,7 @@ function App() {
           <Route path="event-attendees" element={<EventAttendees />} />
           <Route path="create-webinar" element={<CreateWebinar />} />
           <Route path="users" element={<Users />} />
-          <Route path="/create-admin" element={<CreateAdmin />} />
+         
         </Route>
          
         
