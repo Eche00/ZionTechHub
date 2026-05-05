@@ -42,7 +42,7 @@ function AffliateMarketing() {
         return `ZTH-${clean.slice(0, 4)}${timestamp}${random}`
     }
 
-    // submit - NO DUPLICATE CHECK - UNLIMITED REGISTRATIONS
+    // submit - NO DUPLICATE CHECK AT ALL
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -56,7 +56,7 @@ function AffliateMarketing() {
             // Generate unique referral code
             const referralCode = generateReferralCode(fullname);
 
-            // Save registration - NO CHECK for existing email
+            // Create registration data
             const registrationData = {
                 fullname: formData.fullname,
                 email: normalizedEmail,
@@ -70,23 +70,22 @@ function AffliateMarketing() {
                 registrationId: `${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
             };
 
+            // Save to Firebase - NO CHECK for existing email
             await addDoc(collection(db, "affliates"), registrationData);
 
             toast.dismiss(loadingToast);
             
-            // Success toast with referral code
+            // Success message
             toast.success(
-                `✅ Registration successful!\n` +
-                `Your referral code: ${referralCode}\n` +
-                `Code copied to clipboard!`,
+                `✅ Registration Successful!\nYour referral code: ${referralCode}`,
                 { duration: 5000 }
             );
 
             // Auto copy to clipboard
             await navigator.clipboard.writeText(referralCode);
-            toast.success("📋 Referral code copied!", { duration: 2000 });
+            toast.success("📋 Referral code copied to clipboard!", { duration: 2000 });
 
-            // RESET FORM for next registration
+            // Reset form
             setFormData({
                 fullname: "",
                 email: "",
@@ -242,9 +241,8 @@ function AffliateMarketing() {
                                 )}
                             </button>
 
-                            <p className="text-xs text-gray-400 text-center mt-2">
-                                🎯 Register as many times as you want! 
-                                <span className="text-green-600 font-medium"> Each registration = NEW referral code!</span>
+                            <p className="text-xs text-gray-500 text-center mt-2">
+                                ✨ Register multiple times - get a new referral code each time!
                             </p>
 
                             <p className="text-xs text-gray-400 text-center">
