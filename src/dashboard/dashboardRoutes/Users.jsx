@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import {
-  onSnapshot,
   collection,
   getDoc,
   doc,
@@ -11,8 +10,7 @@ import {
 } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, db } from "../../lib/Config/firebase";
-import { onAuthStateChanged, sendEmailVerification } from "firebase/auth";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { onAuthStateChanged, sendEmailVerification, createUserWithEmailAndPassword } from "firebase/auth";
 import toast from "react-hot-toast";
 import {
   PersonAdd as PersonAddIcon,
@@ -65,7 +63,6 @@ function Users() {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser) {
         try {
-          // Check in admins collection
           let adminDoc = await getDoc(doc(db, "admins", currentUser.uid));
           let userData = null;
           
@@ -74,15 +71,12 @@ function Users() {
             userData.id = currentUser.uid;
             userData.role = "Admin";
             userData.username = userData.name || "Admin";
-            console.log("✅ Admin found in admins collection");
           } else {
-            // Check in users collection
             const userRef = doc(db, "users", currentUser.uid);
             const userSnap = await getDoc(userRef);
             if (userSnap.exists()) {
               userData = userSnap.data();
               userData.id = currentUser.uid;
-              console.log("✅ User found in users collection");
             }
           }
 
@@ -114,7 +108,6 @@ function Users() {
       try {
         const allUsers = [];
         
-        // Get from admins collection
         const adminsSnapshot = await getDocs(collection(db, "admins"));
         adminsSnapshot.forEach((doc) => {
           allUsers.push({
@@ -125,7 +118,6 @@ function Users() {
           });
         });
         
-        // Get from users collection
         const usersSnapshot = await getDocs(collection(db, "users"));
         usersSnapshot.forEach((doc) => {
           allUsers.push({
@@ -134,7 +126,6 @@ function Users() {
           });
         });
         
-        // Remove duplicates
         const uniqueUsers = allUsers.filter((user, index, self) => 
           index === self.findIndex((u) => u.id === user.id)
         );
@@ -154,22 +145,8 @@ function Users() {
     };
 
     fetchAllUsers();
-    
-    const unsubscribeAdmins = onSnapshot(collection(db, "admins"), () => {
-      fetchAllUsers();
-    });
-    
-    const unsubscribeUsers = onSnapshot(collection(db, "users"), () => {
-      fetchAllUsers();
-    });
-    
-    return () => {
-      unsubscribeAdmins();
-      unsubscribeUsers();
-    };
   }, [isAuthorized]);
 
-  // Handle user deletion
   const handleDelete = async (id) => {
     if (confirmingId === id) {
       try {
@@ -185,6 +162,8 @@ function Users() {
         }
         
         setConfirmingId(null);
+        // Refresh user list
+        window.location.reload();
       } catch (error) {
         console.error("Couldn't delete user:", error);
         toast.error("Failed to delete user");
@@ -195,7 +174,6 @@ function Users() {
     }
   };
 
-  // Handle creating new user
   const handleCreateUser = async (e) => {
     e.preventDefault();
     setCreatingUser(true);
@@ -244,6 +222,7 @@ function Users() {
       
       setNewUser({ username: "", email: "", password: "", role: "Team" });
       setCreateUser(false);
+      window.location.reload();
       
     } catch (error) {
       console.error("Creation error:", error);
@@ -277,7 +256,7 @@ function Users() {
   return (
     <Box sx={{ py: 3, px: 2, minHeight: "100vh", bgcolor: "#0a0a0a" }}>
       {/* Header */}
-      <Box display="flex" justifyContent="space-between" alignItems="center" borderBottom="1px solid #333" pb={2} mb={3}>
+      <Box display="flex" justifyContent="space-between" alignItems="center" borderBottom="1px solid #333" pb={2} mb={3} flexWrap="wrap" gap={2}>
         <Box display="flex" alignItems="center" gap={2}>
           <AdminIcon sx={{ fontSize: 32, color: "#3b82f6" }} />
           <Typography variant="h4" sx={{ color: "white", fontWeight: "bold" }}>
@@ -330,8 +309,8 @@ function Users() {
       {/* Info Alert */}
       <Alert severity="info" sx={{ mb: 3, bgcolor: "#1a3a5c", color: "#90caf9" }}>
         <Typography variant="body2">
-          <strong>Admin Access Granted</strong><br />
-          You are logged in as: {currentAdmin?.email} | Role: Administrator | You have full access to manage all users
+          <strong>✓ Admin Access Granted</strong><br />
+          Logged in as: <strong>{currentAdmin?.email}</strong> | Role: <strong>Administrator</strong>
         </Typography>
       </Alert>
 
@@ -353,7 +332,7 @@ function Users() {
                 onChange={(e) => setNewUser({ ...newUser, username: e.target.value })}
                 error={!!formErrors.username}
                 helperText={formErrors.username}
-                sx={{ input: { color: "white" }, label: { color: "gray" } }}
+                sx={{ input: { color: "white" }, label: { color: "gray" }, '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: '#333' } } }}
               />
               <TextField
                 label="Email Address"
@@ -362,7 +341,7 @@ function Users() {
                 onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
                 error={!!formErrors.email}
                 helperText={formErrors.email}
-                sx={{ input: { color: "white" }, label: { color: "gray" } }}
+                sx={{ input: { color: "white" }, label: { color: "gray" }, '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: '#333' } } }}
               />
               <TextField
                 label="Password"
@@ -371,14 +350,14 @@ function Users() {
                 onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
                 error={!!formErrors.password}
                 helperText={formErrors.password || "Must be at least 6 characters"}
-                sx={{ input: { color: "white" }, label: { color: "gray" } }}
+                sx={{ input: { color: "white" }, label: { color: "gray" }, '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: '#333' } } }}
               />
               <FormControl>
                 <InputLabel sx={{ color: "gray" }}>Role</InputLabel>
                 <Select
                   value={newUser.role}
                   onChange={(e) => setNewUser({ ...newUser, role: e.target.value })}
-                  sx={{ color: "white" }}
+                  sx={{ color: "white", '& .MuiOutlinedInput-notchedOutline': { borderColor: '#333' } }}
                 >
                   <MenuItem value="Team">Team Member</MenuItem>
                   <MenuItem value="Admin">Administrator</MenuItem>
@@ -442,6 +421,9 @@ function Users() {
               <Box sx={{ p: 4, textAlign: "center", color: "#666" }}>
                 <GroupIcon sx={{ fontSize: 48, mb: 1, opacity: 0.5 }} />
                 <Typography>No users found</Typography>
+                <Button onClick={() => setCreateUser(true)} sx={{ mt: 2 }} variant="contained" startIcon={<PersonAddIcon />}>
+                  Create First User
+                </Button>
               </Box>
             )}
           </Box>
