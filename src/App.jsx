@@ -2,6 +2,7 @@ import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import CreateAdmin from "./scripts/CreateAdmin";
 import RegistrationsManagement from "./dashboard/dashboardRoutes/RegistrationsManagement";
+import CoursesManagement from "./dashboard/dashboardRoutes/CoursesManagement";
 
 // Components
 import Head from "./components/Head";
@@ -93,6 +94,7 @@ function App() {
           <Route path="create-webinar" element={<CreateWebinar />} />
           <Route path="users" element={<Users />} />
           <Route path="registrations" element={<RegistrationsManagement />} />
+          <Route path="courses" element={<CoursesManagement />} />
          
         </Route>
          
