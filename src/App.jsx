@@ -59,7 +59,7 @@ function App() {
           <Route path="data-consultation" element={<Consultation />} />
           <Route path="contact-us" element={<Contact />} />
           <Route path="partner-with-us" element={<PartnerWithUs />} />
-           <Route path="/create-admin" element={<CreateAdmin />} />
+          
           
           {/* Course Routes */}
           <Route path="healthcare-data-analytics" element={<HealthcareDataAnalytics />} />
@@ -80,7 +80,7 @@ function App() {
 
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
-
+         <Route path="/create-admin" element={<CreateAdmin />} />
         {/* Dashboard Routes */}
         <Route path="/dashboard" element={<DashContainer />}>
           <Route path="home" element={<Dashboard />} />
