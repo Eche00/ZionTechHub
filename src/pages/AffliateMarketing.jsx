@@ -11,6 +11,8 @@ import {
     where,
     getDocs,
     serverTimestamp,
+    orderBy,
+    limit
 } from 'firebase/firestore'
 import { db } from '../lib/Config/firebase'
 import toast from 'react-hot-toast'
@@ -20,6 +22,7 @@ function AffliateMarketing() {
     const [loading, setLoading] = useState(false)
     const [showSuccessPopup, setShowSuccessPopup] = useState(false)
     const [generatedCode, setGeneratedCode] = useState('')
+    const [applicationCount, setApplicationCount] = useState(0)
     const [formData, setFormData] = useState({
         fullname: "",
         email: "",
@@ -32,7 +35,7 @@ function AffliateMarketing() {
         createdAt: serverTimestamp(),
     })
 
-    //  handle inputs
+    // handle inputs
     const handleChange = (e) => {
         setFormData(prev => ({
             ...prev,
@@ -40,62 +43,112 @@ function AffliateMarketing() {
         }))
     }
 
-    //  generate Partnership code
-    const generateReferralCode = (name) => {
+    // generate Partnership code with count
+    const generateReferralCode = (name, count) => {
         const clean = name.replace(/\s/g, '').toUpperCase()
         const random = Math.floor(1000 + Math.random() * 9000)
-        return `ZTH-${clean.slice(0, 4)}${random}`
+        const countSuffix = count > 0 ? `-V${count + 1}` : ''
+        return `ZTH-${clean.slice(0, 4)}${random}${countSuffix}`
     }
 
-    //  submit
+    // Get user's application count
+    const getUserApplicationCount = async (email) => {
+        try {
+            const q = query(
+                collection(db, "affliates"),
+                where("email", "==", email.toLowerCase()),
+                orderBy("createdAt", "desc")
+            )
+            const snapshot = await getDocs(q)
+            return snapshot.size
+        } catch (error) {
+            console.error("Error getting count:", error)
+            return 0
+        }
+    }
+
+    // Get user's latest application
+    const getLatestApplication = async (email) => {
+        try {
+            const q = query(
+                collection(db, "affliates"),
+                where("email", "==", email.toLowerCase()),
+                orderBy("createdAt", "desc"),
+                limit(1)
+            )
+            const snapshot = await getDocs(q)
+            if (!snapshot.empty) {
+                return { id: snapshot.docs[0].id, ...snapshot.docs[0].data() }
+            }
+            return null
+        } catch (error) {
+            console.error("Error getting latest application:", error)
+            return null
+        }
+    }
+
+    // submit - ALLOWING MULTIPLE APPLICATIONS
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         setLoading(true);
 
-        const loadingToast = toast.loading("Processing registration...");
+        const loadingToast = toast.loading("Processing your application...");
 
         try {
             const normalizedEmail = formData.email.toLowerCase().trim();
+            const fullname = formData.fullname.trim();
 
-            // CHECK IF USER EXISTS
-            const q = query(
-                collection(db, "affliates"),
-                where("email", "==", normalizedEmail)
-            );
+            // Get how many times this email has applied before
+            const existingCount = await getUserApplicationCount(normalizedEmail);
+            const newCount = existingCount + 1;
+            setApplicationCount(newCount);
 
-            const snapshot = await getDocs(q);
-
-            if (!snapshot.empty) {
-                const userDoc = snapshot.docs[0].data();
-
-                if (
-                    userDoc.referralCode &&
-                    userDoc.referralCode.trim() !== ""
-                ) {
-                    toast.dismiss(loadingToast);
-                    toast.error("You are already registered as an Partnership.");
-                    setLoading(false);
-                    return;
+            // Get latest application status if exists
+            const latestApp = await getLatestApplication(normalizedEmail);
+            
+            let applicationMessage = "";
+            
+            if (latestApp) {
+                if (latestApp.approved === true) {
+                    applicationMessage = `You have ${existingCount} approved application(s). This will be your ${newCount}${getOrdinalSuffix(newCount)} application!`;
+                } else if (latestApp.approved === false) {
+                    applicationMessage = `Your previous application was declined. This will be your ${newCount}${getOrdinalSuffix(newCount)} application for review.`;
+                } else {
+                    applicationMessage = `You have ${existingCount} pending application(s). This will be your ${newCount}${getOrdinalSuffix(newCount)} application.`;
                 }
             }
 
-            // GENERATE REFERRAL CODE
-            const referralCode = generateReferralCode(formData.fullname);
+            // Generate unique referral code for THIS application
+            const referralCode = generateReferralCode(fullname, existingCount);
 
-            await addDoc(collection(db, "affliates"), {
-                ...formData,
+            // Create application data with tracking
+            const applicationData = {
+                fullname: formData.fullname,
                 email: normalizedEmail,
-                referralCode,
+                phone: formData.phone,
+                country: formData.country,
+                role: "Partnership",
+                approved: null,
+                referralCode: referralCode,
+                referrals: [],
                 createdAt: serverTimestamp(),
-            });
+                applicationNumber: newCount,
+                applicationId: `${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+                previousApplications: existingCount,
+                status: "pending_review"
+            };
+
+            await addDoc(collection(db, "affliates"), applicationData);
 
             toast.dismiss(loadingToast);
 
-            //  Show success toast FIRST
-            toast.success("Registration submitted successfully.");
+            // Show success message with application count
+            toast.success(
+                `Application #${newCount} submitted successfully! ${applicationMessage}`,
+                { duration: 5000 }
+            );
 
-            //  Then show popup
+            // Show popup with code
             setGeneratedCode(referralCode);
             setShowSuccessPopup(true);
 
@@ -106,7 +159,7 @@ function AffliateMarketing() {
                 phone: "",
                 country: "",
                 role: "Partnership",
-                approved: false,
+                approved: null,
                 referralCode: "",
                 referrals: [],
             });
@@ -119,6 +172,14 @@ function AffliateMarketing() {
 
         setLoading(false);
     };
+
+    const getOrdinalSuffix = (n) => {
+        if (n === 1) return "st";
+        if (n === 2) return "nd";
+        if (n === 3) return "rd";
+        return "th";
+    };
+
     const copyCode = async () => {
         try {
             await navigator.clipboard.writeText(generatedCode)
@@ -128,6 +189,7 @@ function AffliateMarketing() {
             toast.error("Failed to copy referral code");
         }
     }
+
     return (
         <div className="w-full flex flex-col bg-[#F5F5F5]">
 
@@ -137,7 +199,10 @@ function AffliateMarketing() {
                 </title>
                 <meta name="description" content="Our Partnership Program empowers alumni and data professionals in our network to refer aspiring learners to our programs and earn a 10% cash reward for every successful enrollment. It’s our way of rewarding you for creating opportunities and growing the community together" />
             </Helmet>
-            <span className=" md:h-[104px] md:w-[104px] h-[50px] w-[50px] bg-[#034FE30D] absolute md:top-[50px] md:right-[640px] top-[150px] right-[60px] "></span> <span className=" md:h-[104px] md:w-[104px] w-[50px] h-[50px] bg-[#034FE30D] absolute md:top-[400px] md:left-[314px] top-[300px] left-0 "></span>
+            
+            <span className=" md:h-[104px] md:w-[104px] h-[50px] w-[50px] bg-[#034FE30D] absolute md:top-[50px] md:right-[640px] top-[150px] right-[60px] "></span> 
+            <span className=" md:h-[104px] md:w-[104px] w-[50px] h-[50px] bg-[#034FE30D] absolute md:top-[400px] md:left-[314px] top-[300px] left-0 "></span>
+            
             {/* HERO */}
             <div className=" pt-[130px] bg-[linear-gradient(to_right,#4f4f4f0e_0.8px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_0.8px,transparent_0.1px)] md:bg-[size:104px_104px] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])] overflow-hidden sm:h-[100vh] flex items-center w-full border-b">
 
@@ -167,13 +232,22 @@ function AffliateMarketing() {
 
                             {/* Description */}
                             <p className="text-[#4A4A4A] font-normal text-[16px] sm:text-[20px] leading-[160%]">
-                              Our Partnership Program empowers alumni and data professionals in our network to refer aspiring learners to our programs and earn a 10% cash reward for every successful enrollment. It’s our way of rewarding you for creating opportunities and growing the community together
-                              </p>
+                                Our Partnership Program empowers alumni and data professionals in our network to refer aspiring learners to our programs and earn a 10% cash reward for every successful enrollment. It’s our way of rewarding you for creating opportunities and growing the community together
+                            </p>
 
-                            
+                            {/* Multiple Applications Notice */}
+                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                                <p className="text-blue-700 text-sm font-medium">
+                                    ✨ Multiple Applications Allowed! ✨
+                                </p>
+                                <p className="text-blue-600 text-xs mt-1">
+                                    You can apply multiple times with the same email. Each application gets a unique referral code!
+                                </p>
+                            </div>
 
                         </div>
                     </motion.div>
+                    
                     {/* RIGHT FORM */}
                     <motion.div className="flex-1 flex justify-center">
 
@@ -186,6 +260,10 @@ function AffliateMarketing() {
                                 ZTH Partnership Program
                             </h2>
 
+                            <p className="text-xs text-gray-500 text-center -mt-2">
+                                Apply multiple times - each application gives you a NEW referral code!
+                            </p>
+
                             {/* EMAIL */}
                             <input
                                 type="email"
@@ -194,7 +272,7 @@ function AffliateMarketing() {
                                 onChange={handleChange}
                                 placeholder="Email Address"
                                 required
-                                className="border py-[18px] px-[16px] rounded-[10px]"
+                                className="border py-[18px] px-[16px] rounded-[10px] focus:outline-none focus:border-[#034FE3] transition-colors"
                             />
 
                             {/* NAME */}
@@ -205,19 +283,20 @@ function AffliateMarketing() {
                                 onChange={handleChange}
                                 placeholder="Full Name"
                                 required
-                                className="border py-[18px] px-[16px] rounded-[10px]"
+                                className="border py-[18px] px-[16px] rounded-[10px] focus:outline-none focus:border-[#034FE3] transition-colors"
                             />
 
-                            {/* COUNTRY */}
+                            {/* PHONE */}
                             <input
-                                type="text"
+                                type="tel"
                                 name="phone"
                                 value={formData.phone}
                                 onChange={handleChange}
                                 placeholder="Phone Number"
                                 required
-                                className="border py-[18px] px-[16px] rounded-[10px]"
+                                className="border py-[18px] px-[16px] rounded-[10px] focus:outline-none focus:border-[#034FE3] transition-colors"
                             />
+                            
                             {/* COUNTRY */}
                             <input
                                 type="text"
@@ -226,17 +305,29 @@ function AffliateMarketing() {
                                 onChange={handleChange}
                                 placeholder="Country"
                                 required
-                                className="border py-[18px] px-[16px] rounded-[10px]"
+                                className="border py-[18px] px-[16px] rounded-[10px] focus:outline-none focus:border-[#034FE3] transition-colors"
                             />
 
                             {/* BUTTON */}
                             <button
                                 type="submit"
                                 disabled={loading}
-                                className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white py-[16px]"
+                                className="flex items-center justify-center gap-[10px] rounded-[10px] bg-[#034FE3] text-white py-[16px] hover:bg-[#023bb5] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                             >
-                                {loading ? <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div> : "Register Now"}
+                                {loading ? (
+                                    <>
+                                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                                        Processing...
+                                    </>
+                                ) : (
+                                    "Register Now"
+                                )}
                             </button>
+
+                            <p className="text-xs text-gray-400 text-center mt-2">
+                                By registering, you agree to our partnership terms and conditions.
+                                Each application is reviewed individually.
+                            </p>
 
                         </form>
 
@@ -254,39 +345,59 @@ function AffliateMarketing() {
                         className="bg-white rounded-[16px] p-6 max-w-[420px] w-full text-center shadow-xl"
                     >
 
-                        <h2 className="text-[24px] font-bold mb-3 text-[#034FE3]">
-                            Registration Pending
+                        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg className="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+
+                        <h2 className="text-[24px] font-bold mb-2 text-[#034FE3]">
+                            Application #{applicationCount} Submitted!
                         </h2>
 
                         <p className="text-[#555] mb-4">
-                            Copy your referral code below and await approval
-                            to become a Partner.
+                            {applicationCount === 1 
+                                ? "Your first application has been submitted successfully!" 
+                                : `This is your ${applicationCount}${getOrdinalSuffix(applicationCount)} application!`}
+                        </p>
+
+                        <p className="text-sm text-gray-600 mb-2">
+                            Your unique referral code for this application:
                         </p>
 
                         {/* CODE BOX */}
                         <div className="border rounded-[10px] flex items-center justify-between px-4 py-3 mb-4 bg-gray-50">
-                            <span className="font-bold text-lg">
+                            <span className="font-bold text-lg font-mono">
                                 {generatedCode}
                             </span>
 
                             <button
                                 onClick={copyCode}
-                                className="bg-[#034FE3] text-white px-3 py-1 rounded-md text-sm"
+                                className="bg-[#034FE3] text-white px-3 py-1 rounded-md text-sm hover:bg-[#023bb5] transition-colors"
                             >
                                 Copy
                             </button>
                         </div>
 
-                        <p className="text-sm text-gray-500 mb-5">
-                            Approval usually takes a short while.
-                            You will be notified via email once approved.
-                        </p>
+                        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mb-4">
+                            <p className="text-sm text-yellow-700">
+                                ⏳ Pending Approval
+                            </p>
+                            <p className="text-xs text-yellow-600 mt-1">
+                                Your application is pending review. You will be notified once approved.
+                                You can apply again with the same email for additional referral codes!
+                            </p>
+                        </div>
 
                         <button
-                            onClick={() => setShowSuccessPopup(false)}
-                            className="w-full bg-[#034FE3] text-white py-3 rounded-[10px]"
+                            onClick={() => {
+                                setShowSuccessPopup(false);
+                                // Scroll to form for another application
+                                document.querySelector('form')?.scrollIntoView({ behavior: 'smooth' });
+                            }}
+                            className="w-full bg-[#034FE3] text-white py-3 rounded-[10px] hover:bg-[#023bb5] transition-colors"
                         >
-                            Close
+                            Apply Again
                         </button>
 
                     </motion.div>
