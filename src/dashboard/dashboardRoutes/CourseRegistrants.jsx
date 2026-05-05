@@ -40,14 +40,12 @@ import {
   Snackbar,
   Card,
   CardContent,
-  Grid,
-  Menu as MenuDropdown
+  Grid
 } from '@mui/material';
 import {
   Download as DownloadIcon,
   Search as SearchIcon,
   WhatsApp as WhatsAppIcon,
-  Edit as EditIcon,
   Delete as DeleteIcon,
   FilterList as FilterListIcon,
   Visibility as VisibilityIcon,
@@ -64,7 +62,6 @@ import {
 import { format } from 'date-fns';
 import toast from 'react-hot-toast';
 import jsPDF from 'jspdf';
-import 'jspdf-autotable';
 
 function CourseRegistrants() {
   const [registrations, setRegistrations] = useState([]);
@@ -198,57 +195,103 @@ function CourseRegistrants() {
     return `https://ziontechhub.com/enroll?affliate=${referralCode}`;
   };
 
-  // PDF Generation Functions
+  // Manual PDF Table Generation (without jspdf-autotable)
+  const generatePDFTable = (doc, data, startY, title) => {
+    const headers = ['Name', 'Email', 'Mobile', 'Course', 'Referral Code', 'Referral Link', 'Date', 'Status'];
+    const columnWidths = [30, 40, 30, 35, 35, 50, 30, 20];
+    let y = startY;
+    
+    // Headers
+    doc.setFillColor(59, 130, 246);
+    doc.setTextColor(255, 255, 255);
+    doc.setFont('helvetica', 'bold');
+    let x = 14;
+    headers.forEach((header, i) => {
+      doc.rect(x, y, columnWidths[i], 8, 'F');
+      doc.text(header, x + 2, y + 5);
+      x += columnWidths[i];
+    });
+    
+    // Rows
+    doc.setTextColor(0, 0, 0);
+    doc.setFont('helvetica', 'normal');
+    y += 8;
+    
+    data.forEach((row, rowIndex) => {
+      let xPos = 14;
+      const rowData = [
+        row.name || '',
+        row.email || '',
+        row.mobile || '',
+        row.course || '',
+        row.generatedReferralCode || '',
+        getReferralLink(row.generatedReferralCode || '').substring(0, 35),
+        row.registeredAt?.toDate() ? format(row.registeredAt.toDate(), 'dd/MM/yy') : 'N/A',
+        row.status || 'active'
+      ];
+      
+      // Alternate row colors
+      if (rowIndex % 2 === 0) {
+        doc.setFillColor(245, 245, 245);
+        doc.rect(14, y, 270, 8, 'F');
+      }
+      
+      rowData.forEach((value, i) => {
+        doc.text(String(value), xPos + 2, y + 5);
+        xPos += columnWidths[i];
+      });
+      y += 8;
+      
+      // Add new page if needed
+      if (y > 280) {
+        doc.addPage();
+        y = 20;
+      }
+    });
+    
+    return y;
+  };
+
   const generatePDF = (data, title, isSingle = false) => {
     const doc = new jsPDF('landscape');
+    let yPos = 20;
     
     // Add header
-    doc.setFontSize(20);
-    doc.setTextColor(33, 33, 33);
-    doc.text(title, 14, 20);
+    doc.setFontSize(22);
+    doc.setTextColor(59, 130, 246);
+    doc.text('ZION TECH HUB', 105, yPos, { align: 'center' });
     
-    // Add date
+    yPos += 10;
+    doc.setFontSize(16);
+    doc.setTextColor(33, 33, 33);
+    doc.text(title, 105, yPos, { align: 'center' });
+    
+    yPos += 8;
     doc.setFontSize(10);
     doc.setTextColor(100, 100, 100);
-    doc.text(`Generated on: ${format(new Date(), 'dd/MM/yyyy HH:mm:ss')}`, 14, 30);
+    doc.text(`Generated: ${format(new Date(), 'dd/MM/yyyy HH:mm:ss')}`, 105, yPos, { align: 'center' });
     
-    // Add stats
+    yPos += 8;
     doc.setFontSize(12);
     doc.setTextColor(0, 0, 0);
-    doc.text(`Total Registrations: ${data.length}`, 14, 40);
+    doc.text(`Total Registrations: ${data.length}`, 14, yPos);
     
-    // Prepare table data
-    const tableColumn = [
-      'Name',
-      'Email',
-      'Mobile',
-      'Course',
-      'Referral Code',
-      'Referral Link',
-      'Registration Date',
-      'Status'
-    ];
+    yPos += 8;
+    doc.line(14, yPos, 296, yPos);
+    yPos += 8;
     
-    const tableRows = data.map(reg => [
-      reg.name || '',
-      reg.email || '',
-      reg.mobile || '',
-      reg.course || '',
-      reg.generatedReferralCode || '',
-      getReferralLink(reg.generatedReferralCode || ''),
-      reg.registeredAt?.toDate() ? format(reg.registeredAt.toDate(), 'dd/MM/yyyy HH:mm') : 'N/A',
-      reg.status || 'active'
-    ]);
+    // Generate table
+    generatePDFTable(doc, data, yPos, title);
     
-    // Add table
-    doc.autoTable({
-      head: [tableColumn],
-      body: tableRows,
-      startY: 50,
-      styles: { fontSize: 8, cellPadding: 2 },
-      headStyles: { fillColor: [59, 130, 246], textColor: [255, 255, 255], fontStyle: 'bold' },
-      alternateRowStyles: { fillColor: [240, 240, 240] }
-    });
+    // Footer
+    const pageCount = doc.internal.getNumberOfPages();
+    for (let i = 1; i <= pageCount; i++) {
+      doc.setPage(i);
+      doc.setFontSize(8);
+      doc.setTextColor(150, 150, 150);
+      doc.text('Zion Tech Hub - Partnership Program Report', 105, 285, { align: 'center' });
+      doc.text(`Page ${i} of ${pageCount}`, 280, 285);
+    }
     
     // Save PDF
     const fileName = `${title.replace(/\s/g, '_')}_${format(new Date(), 'yyyy-MM-dd')}.pdf`;
@@ -259,53 +302,58 @@ function CourseRegistrants() {
 
   const generateSingleRegistrationPDF = (reg) => {
     const doc = new jsPDF();
+    let yPos = 20;
     
     // Header
     doc.setFontSize(22);
     doc.setTextColor(59, 130, 246);
-    doc.text('Zion Tech Hub', 105, 20, { align: 'center' });
+    doc.text('ZION TECH HUB', 105, yPos, { align: 'center' });
     
+    yPos += 10;
     doc.setFontSize(16);
     doc.setTextColor(33, 33, 33);
-    doc.text('Registration Details', 105, 35, { align: 'center' });
+    doc.text('Registration Details', 105, yPos, { align: 'center' });
     
+    yPos += 8;
     doc.setFontSize(10);
     doc.setTextColor(100, 100, 100);
-    doc.text(`Generated: ${format(new Date(), 'dd/MM/yyyy HH:mm:ss')}`, 105, 45, { align: 'center' });
+    doc.text(`Generated: ${format(new Date(), 'dd/MM/yyyy HH:mm:ss')}`, 105, yPos, { align: 'center' });
     
-    doc.line(20, 50, 190, 50);
+    yPos += 8;
+    doc.line(20, yPos, 190, yPos);
+    yPos += 10;
     
     // Registration Details
-    let yPos = 65;
-    
-    const addField = (label, value, y) => {
+    const addField = (label, value) => {
       doc.setFontSize(11);
       doc.setTextColor(80, 80, 80);
-      doc.text(label + ':', 20, y);
+      doc.text(label + ':', 20, yPos);
       doc.setTextColor(0, 0, 0);
-      doc.text(value || 'N/A', 70, y);
-      return y + 10;
+      doc.text(value || 'N/A', 70, yPos);
+      yPos += 8;
     };
     
-    yPos = addField('Full Name', reg.name, yPos);
-    yPos = addField('Email Address', reg.email, yPos);
-    yPos = addField('Mobile Number', reg.mobile, yPos);
-    yPos = addField('Course', reg.course, yPos);
-    yPos = addField('Generated Referral Code', reg.generatedReferralCode, yPos);
-    yPos = addField('Used Referral ID', reg.referralId || 'None', yPos);
-    yPos = addField('Registration ID', reg.registrationId || 'N/A', yPos);
-    yPos = addField('Status', reg.status || 'active', yPos);
-    yPos = addField('Payment Status', reg.paymentStatus || 'pending', yPos);
-    yPos = addField('Registration Date', reg.registeredAt?.toDate() ? format(reg.registeredAt.toDate(), 'dd/MM/yyyy HH:mm:ss') : 'N/A', yPos);
+    addField('Full Name', reg.name);
+    addField('Email Address', reg.email);
+    addField('Mobile Number', reg.mobile);
+    addField('Course', reg.course);
+    addField('Generated Referral Code', reg.generatedReferralCode);
+    addField('Used Referral ID', reg.referralId || 'None');
+    addField('Registration ID', reg.registrationId || 'N/A');
+    addField('Status', reg.status || 'active');
+    addField('Payment Status', reg.paymentStatus || 'pending');
+    addField('Registration Date', reg.registeredAt?.toDate() ? format(reg.registeredAt.toDate(), 'dd/MM/yyyy HH:mm:ss') : 'N/A');
     
-    // Referral Link Section
     yPos += 5;
     doc.setFontSize(11);
     doc.setTextColor(59, 130, 246);
     doc.text('Referral Link:', 20, yPos);
-    doc.setTextColor(0, 0, 0);
+    yPos += 6;
     doc.setFontSize(9);
-    doc.text(getReferralLink(reg.generatedReferralCode || ''), 20, yPos + 6);
+    doc.setTextColor(0, 0, 0);
+    const link = getReferralLink(reg.generatedReferralCode || '');
+    const splitLink = doc.splitTextToSize(link, 170);
+    doc.text(splitLink, 20, yPos);
     
     // Footer
     const pageHeight = doc.internal.pageSize.height;
@@ -314,7 +362,7 @@ function CourseRegistrants() {
     doc.text('Zion Tech Hub - Partnership Program', 105, pageHeight - 10, { align: 'center' });
     
     // Save PDF
-    const fileName = `${reg.name.replace(/\s/g, '_')}_Registration_${format(new Date(), 'yyyy-MM-dd')}.pdf`;
+    const fileName = `${reg.name?.replace(/\s/g, '_') || 'Registration'}_${format(new Date(), 'yyyy-MM-dd')}.pdf`;
     doc.save(fileName);
     
     showSnackbar('Registration PDF downloaded successfully!', 'success');
@@ -322,14 +370,14 @@ function CourseRegistrants() {
 
   const handlePDFDownload = (type) => {
     if (type === 'all') {
-      generatePDF(filteredRegistrations, 'All_Registrations_Report');
+      generatePDF(registrations, 'All_Registrations_Report');
     } else if (type === 'filtered') {
       generatePDF(filteredRegistrations, 'Filtered_Registrations_Report');
     } else if (type === 'today') {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
       const todayRegs = registrations.filter(reg => {
         const date = reg.registeredAt?.toDate();
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
         return date && date >= today;
       });
       generatePDF(todayRegs, 'Today_Registrations_Report');
@@ -492,7 +540,7 @@ function CourseRegistrants() {
               ))}
             </Menu>
             
-            {/* PDF Download Button with Dropdown */}
+            {/* PDF Download Button */}
             <Button
               variant="contained"
               startIcon={<PdfIcon />}
@@ -677,7 +725,7 @@ function CourseRegistrants() {
         />
       </TableContainer>
 
-      {/* Details Dialog with Referral Link */}
+      {/* Details Dialog */}
       <Dialog open={openDialog} onClose={() => setOpenDialog(false)} maxWidth="md" fullWidth>
         <DialogTitle>Registration Details</DialogTitle>
         <DialogContent>
