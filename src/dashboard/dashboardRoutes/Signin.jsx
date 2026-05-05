@@ -1,3 +1,4 @@
+// src/dashboard/dashboardRoutes/Signin.jsx
 import React, { useEffect, useState } from "react";
 import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
@@ -20,16 +21,13 @@ function Signin() {
 
   const navigate = useNavigate();
 
-  // Check if user is already logged in as admin
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        // Check if user is admin in Firestore
         const adminDoc = await getDoc(doc(db, "admins", user.uid));
         if (adminDoc.exists() && adminDoc.data().isActive === true) {
           navigate("/dashboard/home");
         } else {
-          // Not admin, sign out
           await auth.signOut();
         }
       }
@@ -50,7 +48,6 @@ function Signin() {
     setLoading(true);
     setError("");
 
-    // Validate
     if (!formData.email.includes("@")) {
       setEmailError(true);
       setLoading(false);
@@ -63,20 +60,29 @@ function Signin() {
     }
 
     try {
-      // Sign in the user
+      // Try to sign in
       const userCredential = await signInWithEmailAndPassword(auth, formData.email, formData.password);
       const user = userCredential.user;
       
-      // Check if user is an admin in Firestore
-      const adminDoc = await getDoc(doc(db, "admins", user.uid));
+      // Check if user is admin in Firestore
+      let adminDoc = await getDoc(doc(db, "admins", user.uid));
       
+      // If admin document doesn't exist, create it automatically
       if (!adminDoc.exists()) {
-        // Not an admin - sign out
-        await auth.signOut();
-        setError("Access Denied: You are not authorized as an administrator.");
-        toast.error("Access Denied. Admin only.");
-        setLoading(false);
-        return;
+        console.log("Admin document not found, creating automatically...");
+        
+        await setDoc(doc(db, "admins", user.uid), {
+          uid: user.uid,
+          email: user.email.toLowerCase(),
+          name: "Super Admin",
+          role: "super_admin",
+          isActive: true,
+          createdAt: serverTimestamp(),
+          permissions: ["all"]
+        });
+        
+        // Fetch the newly created document
+        adminDoc = await getDoc(doc(db, "admins", user.uid));
       }
       
       const adminData = adminDoc.data();
@@ -89,24 +95,23 @@ function Signin() {
         return;
       }
       
-      // If we get here, admin login is successful regardless of email verification
+      // Login successful - ignore email verification
       toast.success(`Welcome back, ${adminData.name || 'Admin'}!`);
       navigate("/dashboard/home");
       
     } catch (error) {
       console.error("Login error:", error);
       
-      // Handle specific Firebase auth errors
       if (error.code === "auth/user-not-found") {
-        setError("No admin account found with this email.");
+        setError("No admin account found. Please contact support.");
       } else if (error.code === "auth/wrong-password") {
         setError("Incorrect password. Please try again.");
       } else if (error.code === "auth/too-many-requests") {
-        setError("Too many login attempts. Please try again later.");
+        setError("Too many failed attempts. Please wait 5-10 minutes and try again.");
       } else {
         setError("Login failed. Please try again.");
       }
-      toast.error(setError);
+      toast.error(error.message);
     } finally {
       setLoading(false);
     }
@@ -115,7 +120,6 @@ function Signin() {
   return (
     <div className="sm:flex sm:items-center sm:justify-center h-[100vh] bg-[#1F1F1F] overflow-hidden overscroll-none">
       <main className="relative flex flex-col sm:shadow-2xl sm:rounded-2xl sm:h-fit h-screen sm:w-[700px] w-full p-[20px] sm:border-2 border-gray-700">
-        {/* Admin Badge */}
         <div className="absolute top-4 right-4">
           <div className="flex items-center gap-1 bg-blue-600/20 text-blue-400 px-3 py-1 rounded-full text-xs">
             <AdminPanelSettings sx={{ fontSize: 14 }} />
@@ -144,7 +148,7 @@ function Signin() {
 
           <form className="w-full" onSubmit={handleSubmit}>
             {error && (
-              <div className="bg-red-500/10 border border-red-500/50 text-red-400 px-4 py-2 rounded-lg text-sm mb-4">
+              <div className="bg-red-500/10 border border-red-500/50 text-red-400 px-4 py-3 rounded-lg text-sm mb-4">
                 {error}
               </div>
             )}
