@@ -1,6 +1,5 @@
-// src/dashboard/dashboardRoutes/Signin.jsx
 import React, { useEffect, useState } from "react";
-import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { onAuthStateChanged, signInWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { EmailOutlined, Lock, LockOpen, AdminPanelSettings } from "@mui/icons-material";
 import { auth, db } from "../../lib/Config/firebase";
@@ -24,10 +23,18 @@ function Signin() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
+        // Check if user is admin in Firestore
         const adminDoc = await getDoc(doc(db, "admins", user.uid));
+        
+        // If admin document exists and is active, redirect to dashboard
         if (adminDoc.exists() && adminDoc.data().isActive === true) {
           navigate("/dashboard/home");
+        } else if (adminDoc.exists() && !adminDoc.data().isActive) {
+          // Admin exists but is disabled
+          await auth.signOut();
+          toast.error("Your admin account has been disabled.");
         } else {
+          // No admin document - sign out
           await auth.signOut();
         }
       }
@@ -64,13 +71,14 @@ function Signin() {
       const userCredential = await signInWithEmailAndPassword(auth, formData.email, formData.password);
       const user = userCredential.user;
       
-      // Check if user is admin in Firestore
+      // CHECK IF ADMIN DOCUMENT EXISTS
       let adminDoc = await getDoc(doc(db, "admins", user.uid));
       
-      // If admin document doesn't exist, create it automatically
+      // If admin document doesn't exist, CREATE IT AUTOMATICALLY
       if (!adminDoc.exists()) {
-        console.log("Admin document not found, creating automatically...");
+        console.log("Admin document not found. Creating automatically...");
         
+        // Create admin document in Firestore
         await setDoc(doc(db, "admins", user.uid), {
           uid: user.uid,
           email: user.email.toLowerCase(),
@@ -78,8 +86,11 @@ function Signin() {
           role: "super_admin",
           isActive: true,
           createdAt: serverTimestamp(),
-          permissions: ["all"]
+          permissions: ["all"],
+          createdBy: "auto_login"
         });
+        
+        console.log("✅ Admin document created successfully!");
         
         // Fetch the newly created document
         adminDoc = await getDoc(doc(db, "admins", user.uid));
@@ -87,31 +98,49 @@ function Signin() {
       
       const adminData = adminDoc.data();
       
+      // Check if admin is active
       if (!adminData.isActive) {
         await auth.signOut();
-        setError("Your admin account has been disabled.");
+        setError("Your admin account has been disabled. Please contact support.");
         toast.error("Account disabled.");
         setLoading(false);
         return;
       }
       
-      // Login successful - ignore email verification
-      toast.success(`Welcome back, ${adminData.name || 'Admin'}!`);
+      // Check email verification (optional - can be bypassed for admin)
+      if (!user.emailVerified) {
+        // Send verification email but don't block login
+        try {
+          await sendEmailVerification(user);
+          console.log("Verification email sent");
+        } catch (emailError) {
+          console.log("Could not send verification email:", emailError.message);
+        }
+        
+        // Show warning but still allow login
+        toast.success("Please check your email to verify your account. You can still access the dashboard.");
+      }
+      
+      // SUCCESSFUL LOGIN
+      toast.success(`Welcome ${adminData.name || 'Admin'}!`);
       navigate("/dashboard/home");
       
     } catch (error) {
       console.error("Login error:", error);
       
       if (error.code === "auth/user-not-found") {
-        setError("No admin account found. Please contact support.");
+        setError("No account found with this email. Please contact support.");
+        toast.error("Account not found");
       } else if (error.code === "auth/wrong-password") {
         setError("Incorrect password. Please try again.");
+        toast.error("Wrong password");
       } else if (error.code === "auth/too-many-requests") {
-        setError("Too many failed attempts. Please wait 5-10 minutes and try again.");
+        setError("Too many failed attempts. Please wait 10 minutes and try again.");
+        toast.error("Too many attempts");
       } else {
         setError("Login failed. Please try again.");
+        toast.error(error.message);
       }
-      toast.error(error.message);
     } finally {
       setLoading(false);
     }
@@ -120,6 +149,7 @@ function Signin() {
   return (
     <div className="sm:flex sm:items-center sm:justify-center h-[100vh] bg-[#1F1F1F] overflow-hidden overscroll-none">
       <main className="relative flex flex-col sm:shadow-2xl sm:rounded-2xl sm:h-fit h-screen sm:w-[700px] w-full p-[20px] sm:border-2 border-gray-700">
+        {/* Admin Badge */}
         <div className="absolute top-4 right-4">
           <div className="flex items-center gap-1 bg-blue-600/20 text-blue-400 px-3 py-1 rounded-full text-xs">
             <AdminPanelSettings sx={{ fontSize: 14 }} />
