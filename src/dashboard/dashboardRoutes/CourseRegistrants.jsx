@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import {
   collection,
@@ -54,9 +53,13 @@ import {
   Refresh as RefreshIcon,
   People as PeopleIcon,
   School as SchoolIcon,
-  Today as TodayIcon
+  Today as TodayIcon,
+  Link as LinkIcon,
+  ContentCopy as CopyIcon,
+  Share as ShareIcon
 } from '@mui/icons-material';
 import { format } from 'date-fns';
+import toast from 'react-hot-toast';
 
 function CourseRegistrants() {
   const [registrations, setRegistrations] = useState([]);
@@ -180,14 +183,24 @@ function CourseRegistrants() {
     }
   };
 
+  const copyToClipboard = (text, type) => {
+    navigator.clipboard.writeText(text);
+    toast.success(`${type} copied to clipboard!`);
+  };
+
+  const getReferralLink = (referralCode) => {
+    return `https://ziontechhub.com/enroll?affliate=${referralCode}`;
+  };
+
   const exportToCSV = () => {
-    const headers = ['Name', 'Email', 'Mobile', 'Course', 'Referral Code', 'Registration Date', 'Status', 'Payment Status'];
+    const headers = ['Name', 'Email', 'Mobile', 'Course', 'Referral Code', 'Referral Link', 'Registration Date', 'Status', 'Payment Status'];
     const csvData = filteredRegistrations.map(reg => [
       reg.name,
       reg.email,
       reg.mobile,
       reg.course,
       reg.generatedReferralCode,
+      getReferralLink(reg.generatedReferralCode),
       reg.registeredAt?.toDate() ? format(reg.registeredAt.toDate(), 'yyyy-MM-dd HH:mm:ss') : 'N/A',
       reg.status || 'active',
       reg.paymentStatus || 'pending'
@@ -214,6 +227,13 @@ function CourseRegistrants() {
       'AI Automation': '#06b6d4'
     };
     return colors[course] || '#6b7280';
+  };
+
+  // Share referral link via WhatsApp
+  const shareViaWhatsApp = (referralCode, name) => {
+    const link = getReferralLink(referralCode);
+    const message = `🎉 Join me at Zion Tech Hub! 🎉%0a%0aUse my referral link to register:%0a${link}%0a%0aReferral Code: ${referralCode}%0a%0aDon't miss this opportunity!`;
+    window.open(`https://wa.me/?text=${message}`, '_blank');
   };
 
   return (
@@ -347,6 +367,7 @@ function CourseRegistrants() {
               <TableCell><strong>Mobile</strong></TableCell>
               <TableCell><strong>Course</strong></TableCell>
               <TableCell><strong>Referral Code</strong></TableCell>
+              <TableCell><strong>Referral Link</strong></TableCell>
               <TableCell><strong>Registration Date</strong></TableCell>
               <TableCell><strong>Status</strong></TableCell>
               <TableCell><strong>Payment</strong></TableCell>
@@ -356,61 +377,101 @@ function CourseRegistrants() {
           <TableBody>
             {filteredRegistrations
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((reg) => (
-                <TableRow key={reg.id} hover>
-                  <TableCell>{reg.name}</TableCell>
-                  <TableCell>{reg.email}</TableCell>
-                  <TableCell>{reg.mobile}</TableCell>
-                  <TableCell>
-                    <Chip
-                      label={reg.course}
-                      size="small"
-                      sx={{ bgcolor: getCourseColor(reg.course), color: 'white' }}
-                    />
-                  </TableCell>
-                  <TableCell>
-                    <Chip
-                      label={reg.generatedReferralCode}
-                      variant="outlined"
-                      size="small"
-                    />
-                  </TableCell>
-                  <TableCell>
-                    {reg.registeredAt?.toDate() ? format(reg.registeredAt.toDate(), 'dd/MM/yyyy HH:mm') : 'N/A'}
-                  </TableCell>
-                  <TableCell>
-                    <Select
-                      size="small"
-                      value={reg.status || 'active'}
-                      onChange={(e) => handleUpdateStatus(reg.id, e.target.value)}
-                      sx={{ minWidth: 100 }}
-                    >
-                      <MenuItem value="active">Active</MenuItem>
-                      <MenuItem value="completed">Completed</MenuItem>
-                      <MenuItem value="cancelled">Cancelled</MenuItem>
-                    </Select>
-                  </TableCell>
-                  <TableCell>
-                    <Chip
-                      label={reg.paymentStatus || 'pending'}
-                      color={reg.paymentStatus === 'paid' ? 'success' : reg.paymentStatus === 'failed' ? 'error' : 'warning'}
-                      size="small"
-                    />
-                  </TableCell>
-                  <TableCell>
-                    <Tooltip title="WhatsApp">
-                      <IconButton size="small" href={`https://wa.me/${reg.mobile}`} target="_blank">
-                        <WhatsAppIcon fontSize="small" />
-                      </IconButton>
-                    </Tooltip>
-                    <Tooltip title="Delete">
-                      <IconButton size="small" onClick={() => handleDelete(reg.id)}>
-                        <DeleteIcon fontSize="small" />
-                      </IconButton>
-                    </Tooltip>
-                  </TableCell>
-                </TableRow>
-              ))}
+              .map((reg) => {
+                const referralLink = getReferralLink(reg.generatedReferralCode);
+                return (
+                  <TableRow key={reg.id} hover>
+                    <TableCell>{reg.name}</TableCell>
+                    <TableCell>{reg.email}</TableCell>
+                    <TableCell>{reg.mobile}</TableCell>
+                    <TableCell>
+                      <Chip
+                        label={reg.course}
+                        size="small"
+                        sx={{ bgcolor: getCourseColor(reg.course), color: 'white' }}
+                      />
+                    </TableCell>
+                    <TableCell>
+                      <Box display="flex" alignItems="center" gap={1}>
+                        <Chip
+                          label={reg.generatedReferralCode}
+                          variant="outlined"
+                          size="small"
+                          sx={{ fontFamily: 'monospace' }}
+                        />
+                        <Tooltip title="Copy Referral Code">
+                          <IconButton 
+                            size="small" 
+                            onClick={() => copyToClipboard(reg.generatedReferralCode, 'Referral Code')}
+                          >
+                            <CopyIcon fontSize="small" />
+                          </IconButton>
+                        </Tooltip>
+                      </Box>
+                    </TableCell>
+                    <TableCell>
+                      <Box display="flex" alignItems="center" gap={1}>
+                        <Chip
+                          label={referralLink.substring(0, 35) + '...'}
+                          size="small"
+                          variant="outlined"
+                          sx={{ fontFamily: 'monospace', fontSize: '0.7rem' }}
+                        />
+                        <Tooltip title="Copy Referral Link">
+                          <IconButton 
+                            size="small" 
+                            onClick={() => copyToClipboard(referralLink, 'Referral Link')}
+                          >
+                            <LinkIcon fontSize="small" sx={{ color: '#3b82f6' }} />
+                          </IconButton>
+                        </Tooltip>
+                        <Tooltip title="Share on WhatsApp">
+                          <IconButton 
+                            size="small" 
+                            onClick={() => shareViaWhatsApp(reg.generatedReferralCode, reg.name)}
+                          >
+                            <ShareIcon fontSize="small" sx={{ color: '#25D366' }} />
+                          </IconButton>
+                        </Tooltip>
+                      </Box>
+                    </TableCell>
+                    <TableCell>
+                      {reg.registeredAt?.toDate() ? format(reg.registeredAt.toDate(), 'dd/MM/yyyy HH:mm') : 'N/A'}
+                    </TableCell>
+                    <TableCell>
+                      <Select
+                        size="small"
+                        value={reg.status || 'active'}
+                        onChange={(e) => handleUpdateStatus(reg.id, e.target.value)}
+                        sx={{ minWidth: 100 }}
+                      >
+                        <MenuItem value="active">Active</MenuItem>
+                        <MenuItem value="completed">Completed</MenuItem>
+                        <MenuItem value="cancelled">Cancelled</MenuItem>
+                      </Select>
+                    </TableCell>
+                    <TableCell>
+                      <Chip
+                        label={reg.paymentStatus || 'pending'}
+                        color={reg.paymentStatus === 'paid' ? 'success' : reg.paymentStatus === 'failed' ? 'error' : 'warning'}
+                        size="small"
+                      />
+                    </TableCell>
+                    <TableCell>
+                      <Tooltip title="WhatsApp">
+                        <IconButton size="small" href={`https://wa.me/${reg.mobile}`} target="_blank">
+                          <WhatsAppIcon fontSize="small" sx={{ color: '#25D366' }} />
+                        </IconButton>
+                      </Tooltip>
+                      <Tooltip title="Delete">
+                        <IconButton size="small" onClick={() => handleDelete(reg.id)}>
+                          <DeleteIcon fontSize="small" sx={{ color: '#ef4444' }} />
+                        </IconButton>
+                      </Tooltip>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
           </TableBody>
         </Table>
         <TablePagination
@@ -426,6 +487,67 @@ function CourseRegistrants() {
           }}
         />
       </TableContainer>
+
+      {/* Details Dialog with Referral Link */}
+      <Dialog open={openDialog} onClose={() => setOpenDialog(false)} maxWidth="md" fullWidth>
+        <DialogTitle>Registration Details</DialogTitle>
+        <DialogContent>
+          {selectedReg && (
+            <Box sx={{ p: 2 }}>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                  <Typography variant="subtitle2" color="textSecondary">Name</Typography>
+                  <Typography variant="body1">{selectedReg.name}</Typography>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Typography variant="subtitle2" color="textSecondary">Email</Typography>
+                  <Typography variant="body1">{selectedReg.email}</Typography>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Typography variant="subtitle2" color="textSecondary">Mobile</Typography>
+                  <Typography variant="body1">{selectedReg.mobile}</Typography>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Typography variant="subtitle2" color="textSecondary">Course</Typography>
+                  <Typography variant="body1">{selectedReg.course}</Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography variant="subtitle2" color="textSecondary">Referral Code</Typography>
+                  <Box display="flex" alignItems="center" gap={1}>
+                    <Typography variant="body1" sx={{ fontFamily: 'monospace' }}>{selectedReg.generatedReferralCode}</Typography>
+                    <IconButton size="small" onClick={() => copyToClipboard(selectedReg.generatedReferralCode, 'Referral Code')}>
+                      <CopyIcon fontSize="small" />
+                    </IconButton>
+                  </Box>
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography variant="subtitle2" color="textSecondary">Referral Link</Typography>
+                  <Box display="flex" alignItems="center" gap={1} flexWrap="wrap">
+                    <Typography variant="body2" sx={{ fontFamily: 'monospace', wordBreak: 'break-all' }}>
+                      {getReferralLink(selectedReg.generatedReferralCode)}
+                    </Typography>
+                    <IconButton size="small" onClick={() => copyToClipboard(getReferralLink(selectedReg.generatedReferralCode), 'Referral Link')}>
+                      <CopyIcon fontSize="small" />
+                    </IconButton>
+                    <IconButton size="small" onClick={() => shareViaWhatsApp(selectedReg.generatedReferralCode, selectedReg.name)}>
+                      <WhatsAppIcon fontSize="small" sx={{ color: '#25D366' }} />
+                    </IconButton>
+                  </Box>
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography variant="subtitle2" color="textSecondary">Registration Date</Typography>
+                  <Typography variant="body1">
+                    {selectedReg.registeredAt?.toDate() ? format(selectedReg.registeredAt.toDate(), 'dd/MM/yyyy HH:mm:ss') : 'N/A'}
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Box>
+          )}
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setOpenDialog(false)}>Close</Button>
+        </DialogActions>
+      </Dialog>
 
       <Snackbar
         open={snackbar.open}
