@@ -1,20 +1,22 @@
-import { initializeApp } from 'firebase/app'
-import { getFirestore } from 'firebase/firestore'
-import { getStorage } from 'firebase/storage'
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBcPc-YBlhZlH2OJmEtQreeK0j2ubQROy0",
-    authDomain: "ziontechhub-affiliates.firebaseapp.com",
-    projectId: "ziontechhub-affiliates",
-    storageBucket: "ziontechhub-affiliates.firebasestorage.app",
-    messagingSenderId: "253323308856",
-    appId: "1:253323308856:web:5cd9289aa5591bb9741bcd",
-    measurementId: "G-9GZDQ1HHXL"
-}
+  apiKey: "AIzaSyBueDjAdmkJrioUikm5SpXBXF4UYdbDsVc",
+  authDomain: "zth-official.firebaseapp.com",
+  projectId: "zth-official",
+  storageBucket: "zth-official.firebasestorage.app",
+  messagingSenderId: "480895410150",
+  appId: "1:480895410150:web:9ab2078e520e58044e4027",
+  measurementId: "G-GW57B73HJ4",
+};
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig)
-const db = getFirestore(app)
-const storage = getStorage(app)
+const app = initializeApp(firebaseConfig);
 
-export { app, db, storage }
+// Initialize firebase services
+export const auth = getAuth(app);
+export const db = getFirestore(app);
+export const storageF = getStorage(app);
