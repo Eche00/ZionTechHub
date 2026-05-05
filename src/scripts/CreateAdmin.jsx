@@ -120,6 +120,7 @@ function CreateAdmin() {
             {loading ? "Creating..." : "Create Admin Account"}
           </button>
         </form>
+        
 
         <p className="text-center text-gray-500 text-xs mt-4">
           This page should be removed after creating the first admin
