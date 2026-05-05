@@ -1,4 +1,3 @@
-// src/dashboard/dashboardRoutes/Signin.jsx
 import React, { useEffect, useState } from "react";
 import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
