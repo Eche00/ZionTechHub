@@ -1,5 +1,6 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
+import CreateAdmin from "./scripts/CreateAdmin";
 
 // Components
 import Head from "./components/Head";
@@ -13,8 +14,6 @@ import Consultation from "./pages/Consultation";
 import Contact from "./pages/Contact";
 import PartnerWithUs from "./pages/PartnerWithUs";
 import Enroll from "./pages/Enroll";
-import ResetPassword from "./dashboard/dashboardRoutes/ResetPassword";
-import ProfileSettings from "./dashboard/dashboardRoutes/ProfileSettings";
 
 // Course Pages
 import HealthcareDataAnalytics from "./pages/Courses/HealthcareDataAnalytics";
@@ -91,9 +90,9 @@ function App() {
           <Route path="event-attendees" element={<EventAttendees />} />
           <Route path="create-webinar" element={<CreateWebinar />} />
           <Route path="users" element={<Users />} />
+          <Route path="/create-admin" element={<CreateAdmin />} />
         </Route>
-          <Route path="/reset-password" element={<ResetPassword />} />
-          <Route path="/dashboard/profile" element={<ProfileSettings />} />
+         
         
         {/* Standalone Routes */}
         <Route path="/signin" element={<Signin />} />
