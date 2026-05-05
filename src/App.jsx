@@ -13,6 +13,8 @@ import Consultation from "./pages/Consultation";
 import Contact from "./pages/Contact";
 import PartnerWithUs from "./pages/PartnerWithUs";
 import Enroll from "./pages/Enroll";
+import ResetPassword from "./dashboard/dashboardRoutes/ResetPassword";
+import ProfileSettings from "./dashboard/dashboardRoutes/ProfileSettings";
 
 // Course Pages
 import HealthcareDataAnalytics from "./pages/Courses/HealthcareDataAnalytics";
@@ -90,7 +92,9 @@ function App() {
           <Route path="create-webinar" element={<CreateWebinar />} />
           <Route path="users" element={<Users />} />
         </Route>
-
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/dashboard/profile" element={<ProfileSettings />} />
+        
         {/* Standalone Routes */}
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
