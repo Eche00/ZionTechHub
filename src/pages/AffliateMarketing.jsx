@@ -6,11 +6,7 @@ import { Helmet } from 'react-helmet'
 import {
     collection,
     addDoc,
-    getDocs,
-    query,
-    where,
     serverTimestamp,
-    orderBy
 } from 'firebase/firestore'
 import { db } from '../lib/Config/firebase'
 import toast from 'react-hot-toast'
@@ -46,22 +42,7 @@ function AffliateMarketing() {
         return `ZTH-${clean.slice(0, 4)}${timestamp}${random}`
     }
 
-    // Get user's registration count (for display only)
-    const getUserRegistrationCount = async (email) => {
-        try {
-            const q = query(
-                collection(db, "affliates"),
-                where("email", "==", email.toLowerCase()),
-                orderBy("createdAt", "desc")
-            )
-            const snapshot = await getDocs(q)
-            return snapshot.size
-        } catch (error) {
-            return 0
-        }
-    }
-
-    // submit - ALLOWS UNLIMITED REGISTRATIONS, NO POPUP
+    // submit - NO DUPLICATE CHECK - UNLIMITED REGISTRATIONS
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -72,14 +53,10 @@ function AffliateMarketing() {
             const normalizedEmail = formData.email.toLowerCase().trim();
             const fullname = formData.fullname.trim();
 
-            // Get count for display (NOT to block)
-            const existingCount = await getUserRegistrationCount(normalizedEmail);
-            const newCount = existingCount + 1;
-
             // Generate unique referral code
             const referralCode = generateReferralCode(fullname);
 
-            // Save registration
+            // Save registration - NO CHECK for existing email
             const registrationData = {
                 fullname: formData.fullname,
                 email: normalizedEmail,
@@ -90,7 +67,6 @@ function AffliateMarketing() {
                 referralCode: referralCode,
                 referrals: [],
                 createdAt: serverTimestamp(),
-                registrationNumber: newCount,
                 registrationId: `${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
             };
 
@@ -98,17 +74,17 @@ function AffliateMarketing() {
 
             toast.dismiss(loadingToast);
             
-            // Single toast notification - NO POPUP
+            // Success toast with referral code
             toast.success(
-                `✅ Registration #${newCount} successful!\n` +
+                `✅ Registration successful!\n` +
                 `Your referral code: ${referralCode}\n` +
-                `You can register again anytime for another code!`,
-                { duration: 4000 }
+                `Code copied to clipboard!`,
+                { duration: 5000 }
             );
 
-            // Copy to clipboard automatically
+            // Auto copy to clipboard
             await navigator.clipboard.writeText(referralCode);
-            toast.success("📋 Referral code copied to clipboard!", { duration: 2000 });
+            toast.success("📋 Referral code copied!", { duration: 2000 });
 
             // RESET FORM for next registration
             setFormData({
@@ -179,11 +155,11 @@ function AffliateMarketing() {
                             {/* Multiple Registrations Notice */}
                             <div className="bg-green-50 border border-green-200 rounded-lg p-4 mt-4">
                                 <p className="text-green-700 text-sm font-medium">
-                                    🚀 Unlimited Registrations Allowed!
+                                    🚀 Register Unlimited Times!
                                 </p>
                                 <p className="text-green-600 text-xs mt-1">
-                                    Register as many times as you want with the same email. 
-                                    Each registration gives you a NEW referral code automatically copied to your clipboard!
+                                    You can register as many times as you want with the SAME email. 
+                                    Each registration gives you a NEW referral code!
                                 </p>
                             </div>
 
@@ -267,12 +243,12 @@ function AffliateMarketing() {
                             </button>
 
                             <p className="text-xs text-gray-400 text-center mt-2">
-                                🎯 Register as many times as you want! Each registration gives you a 
-                                <span className="text-green-600 font-medium"> NEW referral code</span>.
+                                🎯 Register as many times as you want! 
+                                <span className="text-green-600 font-medium"> Each registration = NEW referral code!</span>
                             </p>
 
                             <p className="text-xs text-gray-400 text-center">
-                                Your referral code will be automatically copied to your clipboard after registration.
+                                Your referral code will be automatically copied to your clipboard.
                             </p>
 
                         </form>
