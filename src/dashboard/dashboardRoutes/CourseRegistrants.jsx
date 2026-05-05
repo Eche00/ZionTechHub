@@ -40,7 +40,8 @@ import {
   Snackbar,
   Card,
   CardContent,
-  Grid
+  Grid,
+  Menu as MenuDropdown
 } from '@mui/material';
 import {
   Download as DownloadIcon,
@@ -56,10 +57,14 @@ import {
   Today as TodayIcon,
   Link as LinkIcon,
   ContentCopy as CopyIcon,
-  Share as ShareIcon
+  Share as ShareIcon,
+  PictureAsPdf as PdfIcon,
+  FileDownload as FileDownloadIcon
 } from '@mui/icons-material';
 import { format } from 'date-fns';
 import toast from 'react-hot-toast';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 function CourseRegistrants() {
   const [registrations, setRegistrations] = useState([]);
@@ -70,6 +75,7 @@ function CourseRegistrants() {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterCourse, setFilterCourse] = useState('all');
   const [anchorEl, setAnchorEl] = useState(null);
+  const [pdfMenuAnchor, setPdfMenuAnchor] = useState(null);
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedReg, setSelectedReg] = useState(null);
   const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
@@ -192,6 +198,153 @@ function CourseRegistrants() {
     return `https://ziontechhub.com/enroll?affliate=${referralCode}`;
   };
 
+  // PDF Generation Functions
+  const generatePDF = (data, title, isSingle = false) => {
+    const doc = new jsPDF('landscape');
+    
+    // Add header
+    doc.setFontSize(20);
+    doc.setTextColor(33, 33, 33);
+    doc.text(title, 14, 20);
+    
+    // Add date
+    doc.setFontSize(10);
+    doc.setTextColor(100, 100, 100);
+    doc.text(`Generated on: ${format(new Date(), 'dd/MM/yyyy HH:mm:ss')}`, 14, 30);
+    
+    // Add stats
+    doc.setFontSize(12);
+    doc.setTextColor(0, 0, 0);
+    doc.text(`Total Registrations: ${data.length}`, 14, 40);
+    
+    // Prepare table data
+    const tableColumn = [
+      'Name',
+      'Email',
+      'Mobile',
+      'Course',
+      'Referral Code',
+      'Referral Link',
+      'Registration Date',
+      'Status'
+    ];
+    
+    const tableRows = data.map(reg => [
+      reg.name || '',
+      reg.email || '',
+      reg.mobile || '',
+      reg.course || '',
+      reg.generatedReferralCode || '',
+      getReferralLink(reg.generatedReferralCode || ''),
+      reg.registeredAt?.toDate() ? format(reg.registeredAt.toDate(), 'dd/MM/yyyy HH:mm') : 'N/A',
+      reg.status || 'active'
+    ]);
+    
+    // Add table
+    doc.autoTable({
+      head: [tableColumn],
+      body: tableRows,
+      startY: 50,
+      styles: { fontSize: 8, cellPadding: 2 },
+      headStyles: { fillColor: [59, 130, 246], textColor: [255, 255, 255], fontStyle: 'bold' },
+      alternateRowStyles: { fillColor: [240, 240, 240] }
+    });
+    
+    // Save PDF
+    const fileName = `${title.replace(/\s/g, '_')}_${format(new Date(), 'yyyy-MM-dd')}.pdf`;
+    doc.save(fileName);
+    
+    showSnackbar(`PDF downloaded successfully!`, 'success');
+  };
+
+  const generateSingleRegistrationPDF = (reg) => {
+    const doc = new jsPDF();
+    
+    // Header
+    doc.setFontSize(22);
+    doc.setTextColor(59, 130, 246);
+    doc.text('Zion Tech Hub', 105, 20, { align: 'center' });
+    
+    doc.setFontSize(16);
+    doc.setTextColor(33, 33, 33);
+    doc.text('Registration Details', 105, 35, { align: 'center' });
+    
+    doc.setFontSize(10);
+    doc.setTextColor(100, 100, 100);
+    doc.text(`Generated: ${format(new Date(), 'dd/MM/yyyy HH:mm:ss')}`, 105, 45, { align: 'center' });
+    
+    doc.line(20, 50, 190, 50);
+    
+    // Registration Details
+    let yPos = 65;
+    
+    const addField = (label, value, y) => {
+      doc.setFontSize(11);
+      doc.setTextColor(80, 80, 80);
+      doc.text(label + ':', 20, y);
+      doc.setTextColor(0, 0, 0);
+      doc.text(value || 'N/A', 70, y);
+      return y + 10;
+    };
+    
+    yPos = addField('Full Name', reg.name, yPos);
+    yPos = addField('Email Address', reg.email, yPos);
+    yPos = addField('Mobile Number', reg.mobile, yPos);
+    yPos = addField('Course', reg.course, yPos);
+    yPos = addField('Generated Referral Code', reg.generatedReferralCode, yPos);
+    yPos = addField('Used Referral ID', reg.referralId || 'None', yPos);
+    yPos = addField('Registration ID', reg.registrationId || 'N/A', yPos);
+    yPos = addField('Status', reg.status || 'active', yPos);
+    yPos = addField('Payment Status', reg.paymentStatus || 'pending', yPos);
+    yPos = addField('Registration Date', reg.registeredAt?.toDate() ? format(reg.registeredAt.toDate(), 'dd/MM/yyyy HH:mm:ss') : 'N/A', yPos);
+    
+    // Referral Link Section
+    yPos += 5;
+    doc.setFontSize(11);
+    doc.setTextColor(59, 130, 246);
+    doc.text('Referral Link:', 20, yPos);
+    doc.setTextColor(0, 0, 0);
+    doc.setFontSize(9);
+    doc.text(getReferralLink(reg.generatedReferralCode || ''), 20, yPos + 6);
+    
+    // Footer
+    const pageHeight = doc.internal.pageSize.height;
+    doc.setFontSize(8);
+    doc.setTextColor(150, 150, 150);
+    doc.text('Zion Tech Hub - Partnership Program', 105, pageHeight - 10, { align: 'center' });
+    
+    // Save PDF
+    const fileName = `${reg.name.replace(/\s/g, '_')}_Registration_${format(new Date(), 'yyyy-MM-dd')}.pdf`;
+    doc.save(fileName);
+    
+    showSnackbar('Registration PDF downloaded successfully!', 'success');
+  };
+
+  const handlePDFDownload = (type) => {
+    if (type === 'all') {
+      generatePDF(filteredRegistrations, 'All_Registrations_Report');
+    } else if (type === 'filtered') {
+      generatePDF(filteredRegistrations, 'Filtered_Registrations_Report');
+    } else if (type === 'today') {
+      const todayRegs = registrations.filter(reg => {
+        const date = reg.registeredAt?.toDate();
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        return date && date >= today;
+      });
+      generatePDF(todayRegs, 'Today_Registrations_Report');
+    } else if (type === 'week') {
+      const weekAgo = new Date();
+      weekAgo.setDate(weekAgo.getDate() - 7);
+      const weekRegs = registrations.filter(reg => {
+        const date = reg.registeredAt?.toDate();
+        return date && date >= weekAgo;
+      });
+      generatePDF(weekRegs, 'Weekly_Registrations_Report');
+    }
+    setPdfMenuAnchor(null);
+  };
+
   const exportToCSV = () => {
     const headers = ['Name', 'Email', 'Mobile', 'Course', 'Referral Code', 'Referral Link', 'Registration Date', 'Status', 'Payment Status'];
     const csvData = filteredRegistrations.map(reg => [
@@ -229,7 +382,6 @@ function CourseRegistrants() {
     return colors[course] || '#6b7280';
   };
 
-  // Share referral link via WhatsApp
   const shareViaWhatsApp = (referralCode, name) => {
     const link = getReferralLink(referralCode);
     const message = `🎉 Join me at Zion Tech Hub! 🎉%0a%0aUse my referral link to register:%0a${link}%0a%0aReferral Code: ${referralCode}%0a%0aDon't miss this opportunity!`;
@@ -323,7 +475,7 @@ function CourseRegistrants() {
             }}
             sx={{ minWidth: 300 }}
           />
-          <Box display="flex" gap={2}>
+          <Box display="flex" gap={2} flexWrap="wrap">
             <Button
               variant="outlined"
               startIcon={<FilterListIcon />}
@@ -339,6 +491,35 @@ function CourseRegistrants() {
                 </MenuItem>
               ))}
             </Menu>
+            
+            {/* PDF Download Button with Dropdown */}
+            <Button
+              variant="contained"
+              startIcon={<PdfIcon />}
+              onClick={(e) => setPdfMenuAnchor(e.currentTarget)}
+              sx={{ bgcolor: '#dc2626', '&:hover': { bgcolor: '#b91c1c' } }}
+            >
+              Download PDF
+            </Button>
+            <Menu
+              anchorEl={pdfMenuAnchor}
+              open={Boolean(pdfMenuAnchor)}
+              onClose={() => setPdfMenuAnchor(null)}
+            >
+              <MenuItem onClick={() => handlePDFDownload('all')}>
+                <FileDownloadIcon fontSize="small" sx={{ mr: 1 }} /> All Registrations
+              </MenuItem>
+              <MenuItem onClick={() => handlePDFDownload('filtered')}>
+                <FileDownloadIcon fontSize="small" sx={{ mr: 1 }} /> Current View
+              </MenuItem>
+              <MenuItem onClick={() => handlePDFDownload('today')}>
+                <FileDownloadIcon fontSize="small" sx={{ mr: 1 }} /> Today's Registrations
+              </MenuItem>
+              <MenuItem onClick={() => handlePDFDownload('week')}>
+                <FileDownloadIcon fontSize="small" sx={{ mr: 1 }} /> This Week
+              </MenuItem>
+            </Menu>
+            
             <Button
               variant="contained"
               startIcon={<DownloadIcon />}
@@ -431,6 +612,14 @@ function CourseRegistrants() {
                             onClick={() => shareViaWhatsApp(reg.generatedReferralCode, reg.name)}
                           >
                             <ShareIcon fontSize="small" sx={{ color: '#25D366' }} />
+                          </IconButton>
+                        </Tooltip>
+                        <Tooltip title="Download PDF">
+                          <IconButton 
+                            size="small" 
+                            onClick={() => generateSingleRegistrationPDF(reg)}
+                          >
+                            <PdfIcon fontSize="small" sx={{ color: '#dc2626' }} />
                           </IconButton>
                         </Tooltip>
                       </Box>
@@ -545,6 +734,15 @@ function CourseRegistrants() {
           )}
         </DialogContent>
         <DialogActions>
+          {selectedReg && (
+            <Button 
+              onClick={() => generateSingleRegistrationPDF(selectedReg)} 
+              startIcon={<PdfIcon />}
+              sx={{ color: '#dc2626' }}
+            >
+              Download PDF
+            </Button>
+          )}
           <Button onClick={() => setOpenDialog(false)}>Close</Button>
         </DialogActions>
       </Dialog>
