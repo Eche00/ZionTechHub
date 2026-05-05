@@ -40,7 +40,8 @@ import {
   Snackbar,
   Card,
   CardContent,
-  Grid
+  Grid,
+  CircularProgress
 } from '@mui/material';
 import {
   Download as DownloadIcon,
@@ -57,11 +58,17 @@ import {
   ContentCopy as CopyIcon,
   Share as ShareIcon,
   PictureAsPdf as PdfIcon,
-  FileDownload as FileDownloadIcon
+  FileDownload as FileDownloadIcon,
+  Email as EmailIcon,
+  Send as SendIcon
 } from '@mui/icons-material';
 import { format } from 'date-fns';
 import toast from 'react-hot-toast';
 import jsPDF from 'jspdf';
+import emailjs from '@emailjs/browser';
+
+// Initialize EmailJS with your public key (replace with your actual keys)
+emailjs.init("YOUR_PUBLIC_KEY");
 
 function CourseRegistrants() {
   const [registrations, setRegistrations] = useState([]);
@@ -74,7 +81,11 @@ function CourseRegistrants() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [pdfMenuAnchor, setPdfMenuAnchor] = useState(null);
   const [openDialog, setOpenDialog] = useState(false);
+  const [openMessageDialog, setOpenMessageDialog] = useState(false);
   const [selectedReg, setSelectedReg] = useState(null);
+  const [messageType, setMessageType] = useState('');
+  const [messageContent, setMessageContent] = useState('');
+  const [sendingMessage, setSendingMessage] = useState(false);
   const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
   const [stats, setStats] = useState({
     total: 0,
@@ -195,13 +206,154 @@ function CourseRegistrants() {
     return `https://ziontechhub.com/enroll?affliate=${referralCode}`;
   };
 
-  // Manual PDF Table Generation (without jspdf-autotable)
+  // Send WhatsApp Message
+  const sendWhatsAppMessage = (phoneNumber, name, referralCode) => {
+    const link = getReferralLink(referralCode);
+    const message = `🎉 Hello ${name}! 🎉%0a%0a` +
+      `Thank you for registering with Zion Tech Hub Partnership Program!%0a%0a` +
+      `📚 Course: ${selectedReg?.course || 'Data Analytics'}%0a` +
+      `🔑 Your Referral Code: ${referralCode}%0a` +
+      `🔗 Referral Link: ${link}%0a%0a` +
+      `Share your referral link with friends and earn commissions!%0a%0a` +
+      `Need help? Contact us anytime.%0a%0a` +
+      `Best regards,%0a` +
+      `Zion Tech Hub Team`;
+    
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+  };
+
+  // Send Bulk WhatsApp Messages
+  const sendBulkWhatsApp = () => {
+    const numbers = filteredRegistrations.map(reg => reg.mobile).filter(Boolean);
+    if (numbers.length === 0) {
+      showSnackbar('No phone numbers found', 'error');
+      return;
+    }
+    
+    const message = `📢 Hello! This is a message from Zion Tech Hub.%0a%0a` +
+      `Thank you for being part of our Partnership Program!%0a%0a` +
+      `We have exciting updates and opportunities coming soon.%0a%0a` +
+      `Stay tuned and keep sharing your referral link!%0a%0a` +
+      `Best regards,%0a` +
+      `Zion Tech Hub Team`;
+    
+    // Open first WhatsApp chat
+    window.open(`https://wa.me/${numbers[0]}?text=${message}`, '_blank');
+    showSnackbar(`Opening WhatsApp for the first contact. You can manually send to others.`, 'info');
+  };
+
+  // Send Email using EmailJS
+  const sendEmail = async (email, name, referralCode) => {
+    const templateParams = {
+      to_email: email,
+      to_name: name,
+      from_name: "Zion Tech Hub",
+      message: `
+        Hello ${name},
+
+        Thank you for registering with Zion Tech Hub Partnership Program!
+
+        Your Referral Code: ${referralCode}
+        Your Referral Link: ${getReferralLink(referralCode)}
+
+        Share your referral link with friends and family. You earn commissions for every successful registration!
+
+        Course: ${selectedReg?.course || 'Data Analytics'}
+        Registration Date: ${format(new Date(), 'dd/MM/yyyy')}
+
+        Need assistance? Reply to this email.
+
+        Best regards,
+        Zion Tech Hub Team
+      `,
+      reply_to: "support@ziontechhub.com"
+    };
+
+    try {
+      await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams);
+      showSnackbar(`Email sent to ${email} successfully!`, 'success');
+    } catch (error) {
+      console.error('Email sending failed:', error);
+      showSnackbar('Failed to send email. Please configure EmailJS.', 'error');
+    }
+  };
+
+  // Send Bulk Emails
+  const sendBulkEmails = async () => {
+    const recipients = filteredRegistrations.filter(reg => reg.email);
+    if (recipients.length === 0) {
+      showSnackbar('No email addresses found', 'error');
+      return;
+    }
+
+    setSendingMessage(true);
+    let successCount = 0;
+    let failCount = 0;
+
+    for (const reg of recipients) {
+      try {
+        await sendEmail(reg.email, reg.name, reg.generatedReferralCode);
+        successCount++;
+        // Add delay to avoid rate limiting
+        await new Promise(resolve => setTimeout(resolve, 1000));
+      } catch (error) {
+        failCount++;
+      }
+    }
+
+    setSendingMessage(false);
+    showSnackbar(`Emails sent: ${successCount} successful, ${failCount} failed`, 'info');
+  };
+
+  // Open Message Dialog
+  const openMessageDialogFunc = (reg, type) => {
+    setSelectedReg(reg);
+    setMessageType(type);
+    setMessageContent('');
+    setOpenMessageDialog(true);
+  };
+
+  // Send Custom Message
+  const sendCustomMessage = async () => {
+    if (!messageContent.trim()) {
+      showSnackbar('Please enter a message', 'error');
+      return;
+    }
+
+    setSendingMessage(true);
+    
+    if (messageType === 'whatsapp') {
+      const encodedMessage = encodeURIComponent(messageContent);
+      window.open(`https://wa.me/${selectedReg.mobile}?text=${encodedMessage}`, '_blank');
+      showSnackbar('WhatsApp opened with your message', 'success');
+    } else if (messageType === 'email') {
+      try {
+        const templateParams = {
+          to_email: selectedReg.email,
+          to_name: selectedReg.name,
+          from_name: "Zion Tech Hub",
+          message: messageContent,
+          reply_to: "support@ziontechhub.com"
+        };
+        
+        await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams);
+        showSnackbar(`Email sent to ${selectedReg.email}`, 'success');
+      } catch (error) {
+        console.error('Email sending failed:', error);
+        showSnackbar('Failed to send email. Please configure EmailJS.', 'error');
+      }
+    }
+    
+    setSendingMessage(false);
+    setOpenMessageDialog(false);
+  };
+
+  // Manual PDF Table Generation
   const generatePDFTable = (doc, data, startY, title) => {
     const headers = ['Name', 'Email', 'Mobile', 'Course', 'Referral Code', 'Referral Link', 'Date', 'Status'];
     const columnWidths = [30, 40, 30, 35, 35, 50, 30, 20];
     let y = startY;
     
-    // Headers
     doc.setFillColor(59, 130, 246);
     doc.setTextColor(255, 255, 255);
     doc.setFont('helvetica', 'bold');
@@ -212,7 +364,6 @@ function CourseRegistrants() {
       x += columnWidths[i];
     });
     
-    // Rows
     doc.setTextColor(0, 0, 0);
     doc.setFont('helvetica', 'normal');
     y += 8;
@@ -230,7 +381,6 @@ function CourseRegistrants() {
         row.status || 'active'
       ];
       
-      // Alternate row colors
       if (rowIndex % 2 === 0) {
         doc.setFillColor(245, 245, 245);
         doc.rect(14, y, 270, 8, 'F');
@@ -242,7 +392,6 @@ function CourseRegistrants() {
       });
       y += 8;
       
-      // Add new page if needed
       if (y > 280) {
         doc.addPage();
         y = 20;
@@ -252,11 +401,10 @@ function CourseRegistrants() {
     return y;
   };
 
-  const generatePDF = (data, title, isSingle = false) => {
+  const generatePDF = (data, title) => {
     const doc = new jsPDF('landscape');
     let yPos = 20;
     
-    // Add header
     doc.setFontSize(22);
     doc.setTextColor(59, 130, 246);
     doc.text('ZION TECH HUB', 105, yPos, { align: 'center' });
@@ -280,10 +428,8 @@ function CourseRegistrants() {
     doc.line(14, yPos, 296, yPos);
     yPos += 8;
     
-    // Generate table
     generatePDFTable(doc, data, yPos, title);
     
-    // Footer
     const pageCount = doc.internal.getNumberOfPages();
     for (let i = 1; i <= pageCount; i++) {
       doc.setPage(i);
@@ -293,10 +439,8 @@ function CourseRegistrants() {
       doc.text(`Page ${i} of ${pageCount}`, 280, 285);
     }
     
-    // Save PDF
     const fileName = `${title.replace(/\s/g, '_')}_${format(new Date(), 'yyyy-MM-dd')}.pdf`;
     doc.save(fileName);
-    
     showSnackbar(`PDF downloaded successfully!`, 'success');
   };
 
@@ -304,7 +448,6 @@ function CourseRegistrants() {
     const doc = new jsPDF();
     let yPos = 20;
     
-    // Header
     doc.setFontSize(22);
     doc.setTextColor(59, 130, 246);
     doc.text('ZION TECH HUB', 105, yPos, { align: 'center' });
@@ -323,7 +466,6 @@ function CourseRegistrants() {
     doc.line(20, yPos, 190, yPos);
     yPos += 10;
     
-    // Registration Details
     const addField = (label, value) => {
       doc.setFontSize(11);
       doc.setTextColor(80, 80, 80);
@@ -355,16 +497,13 @@ function CourseRegistrants() {
     const splitLink = doc.splitTextToSize(link, 170);
     doc.text(splitLink, 20, yPos);
     
-    // Footer
     const pageHeight = doc.internal.pageSize.height;
     doc.setFontSize(8);
     doc.setTextColor(150, 150, 150);
     doc.text('Zion Tech Hub - Partnership Program', 105, pageHeight - 10, { align: 'center' });
     
-    // Save PDF
     const fileName = `${reg.name?.replace(/\s/g, '_') || 'Registration'}_${format(new Date(), 'yyyy-MM-dd')}.pdf`;
     doc.save(fileName);
-    
     showSnackbar('Registration PDF downloaded successfully!', 'success');
   };
 
@@ -540,6 +679,25 @@ function CourseRegistrants() {
               ))}
             </Menu>
             
+            {/* Bulk Actions */}
+            <Button
+              variant="outlined"
+              startIcon={<WhatsAppIcon />}
+              onClick={sendBulkWhatsApp}
+              sx={{ borderColor: '#25D366', color: '#25D366' }}
+            >
+              Bulk WhatsApp
+            </Button>
+            <Button
+              variant="outlined"
+              startIcon={<EmailIcon />}
+              onClick={sendBulkEmails}
+              disabled={sendingMessage}
+              sx={{ borderColor: '#ea4335', color: '#ea4335' }}
+            >
+              {sendingMessage ? <CircularProgress size={24} /> : 'Bulk Email'}
+            </Button>
+            
             {/* PDF Download Button */}
             <Button
               variant="contained"
@@ -695,16 +853,29 @@ function CourseRegistrants() {
                       />
                     </TableCell>
                     <TableCell>
-                      <Tooltip title="WhatsApp">
-                        <IconButton size="small" href={`https://wa.me/${reg.mobile}`} target="_blank">
-                          <WhatsAppIcon fontSize="small" sx={{ color: '#25D366' }} />
-                        </IconButton>
-                      </Tooltip>
-                      <Tooltip title="Delete">
-                        <IconButton size="small" onClick={() => handleDelete(reg.id)}>
-                          <DeleteIcon fontSize="small" sx={{ color: '#ef4444' }} />
-                        </IconButton>
-                      </Tooltip>
+                      <Box display="flex" gap={0.5}>
+                        <Tooltip title="Send WhatsApp">
+                          <IconButton 
+                            size="small" 
+                            onClick={() => sendWhatsAppMessage(reg.mobile, reg.name, reg.generatedReferralCode)}
+                          >
+                            <WhatsAppIcon fontSize="small" sx={{ color: '#25D366' }} />
+                          </IconButton>
+                        </Tooltip>
+                        <Tooltip title="Send Email">
+                          <IconButton 
+                            size="small" 
+                            onClick={() => sendEmail(reg.email, reg.name, reg.generatedReferralCode)}
+                          >
+                            <EmailIcon fontSize="small" sx={{ color: '#ea4335' }} />
+                          </IconButton>
+                        </Tooltip>
+                        <Tooltip title="Delete">
+                          <IconButton size="small" onClick={() => handleDelete(reg.id)}>
+                            <DeleteIcon fontSize="small" sx={{ color: '#ef4444' }} />
+                          </IconButton>
+                        </Tooltip>
+                      </Box>
                     </TableCell>
                   </TableRow>
                 );
@@ -783,15 +954,66 @@ function CourseRegistrants() {
         </DialogContent>
         <DialogActions>
           {selectedReg && (
-            <Button 
-              onClick={() => generateSingleRegistrationPDF(selectedReg)} 
-              startIcon={<PdfIcon />}
-              sx={{ color: '#dc2626' }}
-            >
-              Download PDF
-            </Button>
+            <>
+              <Button 
+                onClick={() => sendWhatsAppMessage(selectedReg.mobile, selectedReg.name, selectedReg.generatedReferralCode)} 
+                startIcon={<WhatsAppIcon />}
+                sx={{ color: '#25D366' }}
+              >
+                WhatsApp
+              </Button>
+              <Button 
+                onClick={() => sendEmail(selectedReg.email, selectedReg.name, selectedReg.generatedReferralCode)} 
+                startIcon={<EmailIcon />}
+                sx={{ color: '#ea4335' }}
+              >
+                Email
+              </Button>
+              <Button 
+                onClick={() => generateSingleRegistrationPDF(selectedReg)} 
+                startIcon={<PdfIcon />}
+                sx={{ color: '#dc2626' }}
+              >
+                Download PDF
+              </Button>
+            </>
           )}
           <Button onClick={() => setOpenDialog(false)}>Close</Button>
+        </DialogActions>
+      </Dialog>
+
+      {/* Custom Message Dialog */}
+      <Dialog open={openMessageDialog} onClose={() => setOpenMessageDialog(false)} maxWidth="sm" fullWidth>
+        <DialogTitle>
+          Send {messageType === 'whatsapp' ? 'WhatsApp' : 'Email'} to {selectedReg?.name}
+        </DialogTitle>
+        <DialogContent>
+          <TextField
+            fullWidth
+            multiline
+            rows={6}
+            variant="outlined"
+            placeholder={`Type your ${messageType === 'whatsapp' ? 'WhatsApp' : 'email'} message here...`}
+            value={messageContent}
+            onChange={(e) => setMessageContent(e.target.value)}
+            sx={{ mt: 2 }}
+          />
+          {messageType === 'whatsapp' && (
+            <Typography variant="caption" color="textSecondary" sx={{ mt: 1, display: 'block' }}>
+              Note: This will open WhatsApp with your message pre-filled. You'll need to click send.
+            </Typography>
+          )}
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setOpenMessageDialog(false)}>Cancel</Button>
+          <Button 
+            onClick={sendCustomMessage} 
+            variant="contained" 
+            startIcon={messageType === 'whatsapp' ? <WhatsAppIcon /> : <SendIcon />}
+            disabled={sendingMessage}
+          >
+            {sendingMessage ? <CircularProgress size={24} /> : 'Send Message'}
+          </Button>
         </DialogActions>
       </Dialog>
 
