@@ -22,7 +22,7 @@ import {
   arrayUnion,
   arrayRemove
 } from "firebase/firestore";
-import { getStorage } from "firebase/storage";
+import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBueDjAdmkJrioUikm5SpXBXF4UYdbDsVc",
@@ -40,7 +40,8 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firebase services
 export const auth = getAuth(app);
 export const db = getFirestore(app);
-export const storageService = getStorage(app);
+export const storage = getStorage(app);  // <-- FIXED: Changed from storageF to storage
+export const storageF = getStorage(app); // <-- ADDED: Alias for backward compatibility
 
 // ==================== ADMIN AUTHENTICATION FUNCTIONS ====================
 
@@ -263,87 +264,35 @@ export const createAdmin = async (email, password, name) => {
 };
 
 /**
- * Get all users (admins + regular users)
- * @returns {Promise<Array>} - List of all users
+ * Upload image to Firebase Storage
+ * @param {File} file - Image file
+ * @param {string} path - Storage path
+ * @returns {Promise<string>} - Download URL
  */
-export const getAllUsers = async () => {
+export const uploadImage = async (file, path) => {
   try {
-    const users = [];
-    
-    // Get from admins collection
-    const adminsSnapshot = await getDocs(collection(db, "admins"));
-    adminsSnapshot.forEach(doc => {
-      users.push({ id: doc.id, ...doc.data(), source: "admins" });
-    });
-    
-    // Get from users collection
-    const usersSnapshot = await getDocs(collection(db, "users"));
-    usersSnapshot.forEach(doc => {
-      users.push({ id: doc.id, ...doc.data(), source: "users" });
-    });
-    
-    return users;
+    const storageRef = ref(storage, path);
+    await uploadBytes(storageRef, file);
+    const downloadURL = await getDownloadURL(storageRef);
+    return downloadURL;
   } catch (error) {
-    console.error("Error getting users:", error);
-    return [];
+    console.error("Error uploading image:", error);
+    throw error;
   }
 };
 
 /**
- * Update admin status (activate/deactivate)
- * @param {string} adminId - Admin UID
- * @param {boolean} isActive - Active status
- * @returns {Promise<Object>} - Update result
+ * Delete image from Firebase Storage
+ * @param {string} path - Storage path
+ * @returns {Promise<void>}
  */
-export const updateAdminStatus = async (adminId, isActive) => {
+export const deleteImage = async (path) => {
   try {
-    await updateDoc(doc(db, "admins", adminId), {
-      isActive: isActive,
-      updatedAt: serverTimestamp()
-    });
-    return { success: true };
+    const storageRef = ref(storage, path);
+    await deleteObject(storageRef);
   } catch (error) {
-    console.error("Error updating admin status:", error);
-    return { success: false, error: error.message };
-  }
-};
-
-/**
- * Delete a user (admin or regular)
- * @param {string} userId - User UID
- * @param {string} source - 'admins' or 'users'
- * @returns {Promise<Object>} - Delete result
- */
-export const deleteUser = async (userId, source = "users") => {
-  try {
-    if (source === "admins") {
-      await deleteDoc(doc(db, "admins", userId));
-    } else {
-      await deleteDoc(doc(db, "users", userId));
-    }
-    
-    // Note: Deleting from Firebase Auth requires admin SDK or cloud function
-    return { success: true };
-  } catch (error) {
-    console.error("Error deleting user:", error);
-    return { success: false, error: error.message };
-  }
-};
-
-/**
- * Get current admin user data
- * @returns {Promise<Object|null>} - Current admin data
- */
-export const getCurrentAdmin = async () => {
-  try {
-    const user = auth.currentUser;
-    if (!user) return null;
-    
-    const adminData = await getAdminData(user.uid);
-    return adminData;
-  } catch (error) {
-    console.error("Error getting current admin:", error);
-    return null;
+    console.error("Error deleting image:", error);
+    throw error;
   }
 };
 
@@ -351,15 +300,14 @@ export const getCurrentAdmin = async () => {
 export default {
   auth,
   db,
-  storageService,
+  storage,
+  storageF: storage, // Alias for backward compatibility
   isAdminUser,
   getAdminData,
   adminLogin,
   adminLogout,
   adminPasswordReset,
   createAdmin,
-  getAllUsers,
-  updateAdminStatus,
-  deleteUser,
-  getCurrentAdmin
+  uploadImage,
+  deleteImage
 };
