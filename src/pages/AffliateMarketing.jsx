@@ -134,26 +134,15 @@ function AffliateMarketing() {
                                 Partnership <span className='text-[#034FE3]'>Program</span>
                             </h1>
                             <p className="text-[#4A4A4A] font-normal text-[16px] sm:text-[20px] leading-[160%]">
-                                Register multiple times with the SAME email. Each registration gives you a NEW referral code to share and earn commissions!
-                            </p>
-                            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                                <p className="text-green-700 text-sm font-medium">✅ Unlimited Registrations Allowed!</p>
-                                <p className="text-green-600 text-xs mt-1">You can register as many times as you want. Each time = New referral code!</p>
-                            </div>
-                            {/* WhatsApp Group Info */}
-                            <div className="bg-green-50 border border-green-200 rounded-lg p-4 mt-2">
-                                <p className="text-green-700 text-sm font-medium">💬 Join Our WhatsApp Community!</p>
-                                <p className="text-green-600 text-xs mt-1">After registration, you'll be automatically redirected to our WhatsApp group to connect with other partners!</p>
-                            </div>
+                              Our Partnership Program empowers alumni and data professionals in our network to refer aspiring learners to our programs and earn a 10% cash reward for every successful enrollment. It’s our way of rewarding you for creating opportunities and growing the community together    </p>
+                            
                         </div>
                     </div>
                     
                     <div className="flex-1 flex justify-center">
                         <form onSubmit={handleSubmit} className="bg-[#F9F9F9] sm:w-[451px] w-full p-[21px] rounded-[17px] flex flex-col gap-[12px] shadow-lg">
                             <h2 className="text-[32px] font-[600] text-center">Partnership Program</h2>
-                            <p className="text-xs text-green-600 text-center -mt-2 font-bold">✨ Register as many times as you want! ✨</p>
-                            
-                            <input 
+                    
                                 type="email" 
                                 name="email" 
                                 value={formData.email} 
@@ -205,17 +194,11 @@ function AffliateMarketing() {
                                         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                             <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 2.02.886 3.115.887h.01c3.18 0 5.767-2.586 5.768-5.766.001-3.18-2.585-5.766-5.766-5.766zm0 10.53h-.008c-1.133-.001-2.246-.296-3.209-.844l-.23-.136-1.453.38.39-1.422-.15-.238c-.6-.962-.924-2.08-.924-3.248.001-2.88 2.343-5.222 5.225-5.222 2.882 0 5.222 2.342 5.223 5.222.001 2.88-2.342 5.222-5.224 5.222zm2.836-3.917c-.153-.077-.904-.446-1.044-.497-.14-.051-.242-.077-.344.077-.102.154-.396.497-.485.599-.089.102-.178.115-.33.038-.152-.077-.642-.236-1.222-.753-.452-.403-.756-.9-.845-1.052-.09-.152-.01-.234.067-.31.069-.069.153-.179.23-.269.077-.09.103-.154.154-.256.05-.103.025-.192-.013-.269-.038-.077-.344-.828-.47-1.134-.124-.297-.252-.256-.344-.262-.089-.005-.19-.006-.29-.006-.103 0-.269.039-.41.192-.14.154-.537.525-.537 1.28 0 .756.55 1.486.627 1.59.077.103 1.082 1.652 2.62 2.316.366.158.651.252.874.322.367.117.701.1.966.06.295-.044.904-.369 1.031-.727.128-.358.128-.665.09-.729-.038-.064-.14-.103-.292-.18z"/>
                                         </svg>
-                                        Register & Join WhatsApp Group
+                                        Register
                                     </>
                                 )}
                             </button>
-                            
-                            <p className="text-xs text-gray-500 text-center">
-                                ⭐ Register again for another referral code!
-                            </p>
-                            <p className="text-xs text-green-600 text-center">
-                                💬 You'll be added to our WhatsApp group after registration!
-                            </p>
+                           
                         </form>
                     </div>
                 </div>
