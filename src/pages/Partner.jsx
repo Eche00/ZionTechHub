@@ -22,11 +22,11 @@ function Partner() {
     const [showSuccessPopup, setShowSuccessPopup] = useState(false)
     const [generatedCode, setGeneratedCode] = useState('')
     const [formData, setFormData] = useState({
-        username: "",
+        name: "",
         email: "",
         phone: "",
         country: "",
-        role: "Affiliate",
+        role: "partner",
         approved: null,
         referralCode: "",
         referrals: [],
@@ -41,11 +41,12 @@ function Partner() {
         }))
     }
 
-    //  generate affiliate code
+    //  generate partner code
     const generateReferralCode = (name) => {
         const clean = name.replace(/\s/g, '').toUpperCase()
-        const random = Math.floor(1000 + Math.random() * 9000)
-        return `ZTH-${clean.slice(0, 4)}${random}`
+        const random = Date.now().toString().slice(-6)
+
+        return `ZTH-${clean.slice(0, 4)}-${random}`
     }
 
     //  submit
@@ -59,30 +60,8 @@ function Partner() {
         try {
             const normalizedEmail = formData.email.toLowerCase().trim();
 
-            // CHECK IF USER EXISTS
-            const q = query(
-                collection(db, "partnership-registrants"),
-                where("email", "==", normalizedEmail)
-            );
-
-            const snapshot = await getDocs(q);
-
-            if (!snapshot.empty) {
-                const userDoc = snapshot.docs[0].data();
-
-                if (
-                    userDoc.referralCode &&
-                    userDoc.referralCode.trim() !== ""
-                ) {
-                    toast.dismiss(loadingToast);
-                    toast.error("You are already registered as an affiliate.");
-                    setLoading(false);
-                    return;
-                }
-            }
-
-            // GENERATE REFERRAL CODE
-            const referralCode = generateReferralCode(formData.username);
+            // Generate referral code
+            const referralCode = generateReferralCode(formData.name);
 
             await addDoc(collection(db, "partnership-registrants"), {
                 ...formData,
@@ -92,21 +71,17 @@ function Partner() {
             });
 
             toast.dismiss(loadingToast);
-
-            //  Show success toast FIRST
             toast.success("Registration submitted successfully.");
 
-            //  Then show popup
             setGeneratedCode(referralCode);
             setShowSuccessPopup(true);
 
-            // RESET FORM
             setFormData({
-                username: "",
+                name: "",
                 email: "",
                 phone: "",
                 country: "",
-                role: "Affiliate",
+                role: "partner",
                 approved: false,
                 referralCode: "",
                 referrals: [],
@@ -134,9 +109,9 @@ function Partner() {
 
             <Helmet>
                 <title>
-                    Join Our Affiliate Marketing program | Zion Tech Hub
+                    Join Our Partnership program | Zion Tech Hub
                 </title>
-                <meta name="description" content="Join our affiliate marketing program and earn passive income by promoting our tech courses and resources. Learn how to build a successful affiliate business with our expert-led workshops." />
+                <meta name="description" content="Join our partnership program and earn passive income by promoting our tech courses and resources. Learn how to build a successful partner business with our expert-led workshops." />
             </Helmet>
             <span className=" md:h-[104px] md:w-[104px] h-[50px] w-[50px] bg-[#034FE30D] absolute md:top-[50px] md:right-[640px] top-[150px] right-[60px] "></span> <span className=" md:h-[104px] md:w-[104px] w-[50px] h-[50px] bg-[#034FE30D] absolute md:top-[400px] md:left-[314px] top-[300px] left-0 "></span>
             {/* HERO */}
@@ -192,7 +167,16 @@ function Partner() {
                             <h2 className="text-[32px] font-[600] text-center">
                                 Partnership Program
                             </h2>
-
+                            {/* NAME */}
+                            <input
+                                type="text"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleChange}
+                                placeholder="Name"
+                                required
+                                className="border py-[18px] px-[16px] rounded-[10px]"
+                            />
                             {/* EMAIL */}
                             <input
                                 type="email"
@@ -200,17 +184,6 @@ function Partner() {
                                 value={formData.email}
                                 onChange={handleChange}
                                 placeholder="Email Address"
-                                required
-                                className="border py-[18px] px-[16px] rounded-[10px]"
-                            />
-
-                            {/* NAME */}
-                            <input
-                                type="text"
-                                name="username"
-                                value={formData.username}
-                                onChange={handleChange}
-                                placeholder="UserName"
                                 required
                                 className="border py-[18px] px-[16px] rounded-[10px]"
                             />
@@ -254,7 +227,11 @@ function Partner() {
             {/* SUCCESS POPUP */}
             {showSuccessPopup && (
                 <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 px-4">
-
+                    <div className="relative">
+                        <button onClick={() => setShowSuccessPopup(false)} className="absolute top-4 right-4 text-white bg-black/70 w-14 h-14 rounded-full text-xl font-bold">
+                            X
+                        </button>
+                    </div>
                     <motion.div
                         initial={{ scale: 0.7, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
@@ -267,7 +244,7 @@ function Partner() {
 
                         <p className="text-[#555] mb-4">
                             Copy your referral code below and await approval
-                            to become an Affiliate Marketer.
+                            to become a Partner.
                         </p>
 
                         {/* CODE BOX */}
@@ -291,10 +268,15 @@ function Partner() {
                         </p>
 
                         <button
-                            onClick={() => setShowSuccessPopup(false)}
+                            onClick={() =>
+                                window.open(
+                                    "https://chat.whatsapp.com/DnsEcvW3w3NDD13DmQnKmr",
+                                    "_blank"
+                                )
+                            }
                             className="w-full bg-[#034FE3] text-white py-3 rounded-[10px] cursor-pointer"
                         >
-                            Whatsapp
+                            Join WhatsApp Group
                         </button>
 
                     </motion.div>
