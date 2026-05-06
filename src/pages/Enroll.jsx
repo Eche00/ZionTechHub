@@ -166,31 +166,6 @@ function Enroll() {
       </div>
       {/* buttons  */}
       <div className="one flex md:items-center  flex-col  md:min-h-[100vh] min-h-[120vh] gap-[50px] py-10">
-        {/* <section className=" flex items-center justify-center w-[90%] mx-auto">
-          {/* <div className="flex items-center bg-gray-300 rounded-[10px] p-[10px] gap-[10px]">
-            <button
-              id="enroll"
-              className={
-                enroll
-                  ? " bg-[#034FE3] text-white font-bold rounded-[10px] text-[14px] px-[16px] py-[8px] duration-500"
-                  : "  font-[500]  text-[14px] px-[16px] py-[8px] text-gray-700 duration-500"
-              }
-              onClick={handleSwitch}>
-              Cohort
-            </button>
-            <button
-              id="health"
-              className={
-                health
-                  ? " bg-[#034FE3] text-white font-bold rounded-[10px] text-[14px] px-[16px] py-[8px] duration-500"
-                  : "  font-[500]  text-[14px] px-[16px] py-[8px] text-gray-700 duration-500"
-              }
-              onClick={handleSwitch}>
-              Health
-            </button>
-          </div> 
-        </section> 
-        */}
         <section className="">
           {enroll ? <SubEnroll /> : <HealthcareReg />}
         </section>

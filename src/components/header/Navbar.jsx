@@ -44,7 +44,7 @@ function Navbar() {
 
   // Updated course links with all old and new courses
   const courseLinks = [
- 
+
     // New Courses
     { to: "/healthcare-data-analytics", label: "Healthcare Data Analytics" },
     { to: "/financial-data-analytics", label: "Financial Data Analytics" },
@@ -63,7 +63,7 @@ function Navbar() {
       label: workshop?.type === "Webinar" ? "Webinar" : "Workshop",
     },
     { to: "/zion-tech-hub-hackathon", label: "Hackathon" },
-   /* { to: "/zth-partnership-program", label: "ZTH Partnership Program" },*/
+    { to: "/zth-partnership-program", label: "ZTH Partnership Program" },
   ];
 
   // Reusable dropdown (desktop)

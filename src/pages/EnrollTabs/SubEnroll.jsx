@@ -60,7 +60,7 @@ function SubEnroll() {
   // AUTO-SET COURSE FROM NAVIGATION STATE (when coming from course page)
   useEffect(() => {
     const passedCourse = location.state?.selectedCourse;
-    
+
     if (passedCourse) {
       const courseMapping = {
         "Healthcare Data Analytics": "Healthcare Data Analytics",
@@ -76,9 +76,9 @@ function SubEnroll() {
         "Supply Chain": "Supply Chain Analytics",
         "AI & Automation": "AI Automation",
       };
-      
+
       const mappedCourse = courseMapping[passedCourse] || passedCourse;
-      
+
       if (courseList.includes(mappedCourse)) {
         setFormData(prev => ({
           ...prev,
@@ -168,14 +168,14 @@ function SubEnroll() {
 
       // Generate unique referral code for each registration
       const generatedReferralCode = generateReferralCode(name, email, registrationTimestamp);
-      
+
       // Check if generated code already exists (unlikely but possible)
       const codeCheckQuery = query(
         collection(db, "course-registrants"),
         where("generatedReferralCode", "==", generatedReferralCode)
       );
       const codeCheckSnap = await getDocs(codeCheckQuery);
-      
+
       let finalReferralCode = generatedReferralCode;
       if (!codeCheckSnap.empty) {
         // If code exists, add more random numbers
@@ -209,9 +209,9 @@ function SubEnroll() {
         where("email", "==", email),
         where("course", "==", formData.course)
       );
-      
+
       const existingReferrerSnap = await getDocs(existingReferrerQuery);
-      
+
       if (existingReferrerSnap.empty) {
         // Only add to referrers if this is their first time for this course
         await addDoc(collection(db, "referrers"), {
@@ -229,7 +229,7 @@ function SubEnroll() {
         // Optionally update their referrer entry with latest registration info
         const referrerDoc = existingReferrerSnap.docs[0];
         const referrerRef = doc(db, "referrers", referrerDoc.id);
-        
+
         await updateDoc(referrerRef, {
           lastRegistrationDate: serverTimestamp(),
           lastRegistrationCode: finalReferralCode,
@@ -304,8 +304,8 @@ function SubEnroll() {
 
       // REDIRECT - Update WhatsApp numbers based on course
       let number = "2349047214533"; // Default number
-      
-      switch(formData.course) {
+
+      switch (formData.course) {
         case "Healthcare Data Analytics":
           number = "2348055094738";
           break;
@@ -397,7 +397,7 @@ function SubEnroll() {
                     }
                   />
                 </section>
-                
+
                 <section className="flex flex-col gap-[10px]">
                   <p className=" text-[#6B6F71] text-[12px] font-[500]">
                     Email <span className="text-red-500">*</span>
@@ -416,7 +416,7 @@ function SubEnroll() {
                     You can register multiple times with the same email
                   </p>
                 </section>
-                
+
                 <section className="flex flex-col gap-[10px]">
                   <p className=" text-[#6B6F71] text-[12px] font-[500]">
                     Mobile Number <span className="text-red-500">*</span>
@@ -432,7 +432,7 @@ function SubEnroll() {
                     }
                   />
                 </section>
-                
+
                 <section className="flex flex-col gap-[10px]">
                   <p className=" text-[#6B6F71] text-[12px] font-[500]">
                     Referral ID (Optional)
@@ -450,15 +450,14 @@ function SubEnroll() {
                     You'll get a new referral code for EACH registration!
                   </p>
                 </section>
-                
+
                 <section className="flex flex-col gap-[10px]">
                   <p className=" text-[#6B6F71] text-[12px] font-[500]">
                     Select Course <span className="text-red-500">*</span>
                   </p>
                   <div
-                    className={`py-[18px] px-[16px] text-[14px] font-[400] border border-[#C7D1D4] rounded-[10px] flex justify-between items-center relative ${
-                      isCourseDisabled ? "bg-[#f5f5f5] cursor-not-allowed" : ""
-                    }`}
+                    className={`py-[18px] px-[16px] text-[14px] font-[400] border border-[#C7D1D4] rounded-[10px] flex justify-between items-center relative ${isCourseDisabled ? "bg-[#f5f5f5] cursor-not-allowed" : ""
+                      }`}
                     style={{
                       backgroundColor: isCourseDisabled ? "#f5f5f5" : "white",
                       opacity: isCourseDisabled ? 0.8 : 1
@@ -502,28 +501,28 @@ function SubEnroll() {
                       </div>
                     )}
                   </div>
-                  
+
                   {isCourseDisabled && (
                     <p className="text-sm text-gray-500 mt-1">
                       Course has been preselected based on your previous selection.
                     </p>
                   )}
-                  
+
                   {selectCourse && (
                     <p className=" text-[16px] font-bold text-red-500 ">
                       Please select a course
                     </p>
                   )}
-                  
+
                   <button
                     type="submit"
                     className="py-[18px] px-[16px] rounded-[10px] text-white bg-[#207C3F] mt-[14px] cursor-pointer text-center hover:bg-[#1a5f30] transition-colors"
                     disabled={loading}>
                     {loading ? "Registering..." : "Register"}
                   </button>
-                  
+
                   <p className="text-xs text-center text-gray-500 mt-2">
-                    ✨ You can register multiple times with the same email! ✨
+                    You can register multiple times with the same email!
                   </p>
                 </section>
               </form>

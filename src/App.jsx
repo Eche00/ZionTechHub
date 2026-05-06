@@ -45,6 +45,7 @@ import { Toaster } from "react-hot-toast";
 import Signup from "./dashboard/dashboardRoutes/SignUp";
 import Affliates from "./dashboard/dashboardRoutes/Affliates";
 import CourseRegistrants from "./dashboard/dashboardRoutes/CourseRegistrants";
+import Partner from "./pages/Partner";
 
 function App() {
   googleAnalyticsTracking();
@@ -61,8 +62,8 @@ function App() {
           <Route path="data-consultation" element={<Consultation />} />
           <Route path="contact-us" element={<Contact />} />
           <Route path="partner-with-us" element={<PartnerWithUs />} />
-          
-          
+
+
           {/* Course Routes */}
           <Route path="healthcare-data-analytics" element={<HealthcareDataAnalytics />} />
           <Route path="financial-data-analytics" element={<FinancialDataAnalytics />} />
@@ -74,7 +75,8 @@ function App() {
           {/* Events */}
           <Route path="zion-tech-hub-workshop-webinar" element={<Workshop />} />
           <Route path="zion-tech-hub-hackathon" element={<Hackathon />} />
-          <Route path="zth-partnership-program" element={<AffliateMarketing />} />
+          {/* <Route path="zth-partnership-program" element={<AffliateMarketing />} /> */}
+          <Route path="zth-partnership-program" element={<Partner />} />
 
           {/* Blog */}
           <Route path="blog" element={<Blog />} />
@@ -82,7 +84,7 @@ function App() {
 
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
-         <Route path="/create-admin" element={<CreateAdmin />} />
+        <Route path="/create-admin" element={<CreateAdmin />} />
         {/* Dashboard Routes */}
         <Route path="/dashboard" element={<DashContainer />}>
           <Route path="home" element={<Dashboard />} />
@@ -95,10 +97,10 @@ function App() {
           <Route path="users" element={<Users />} />
           <Route path="registrations" element={<RegistrationsManagement />} />
           <Route path="courses" element={<CoursesManagement />} />
-         
+
         </Route>
-         
-        
+
+
         {/* Standalone Routes */}
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
