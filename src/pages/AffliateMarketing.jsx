@@ -142,7 +142,7 @@ function AffliateMarketing() {
                     <div className="flex-1 flex justify-center">
                         <form onSubmit={handleSubmit} className="bg-[#F9F9F9] sm:w-[451px] w-full p-[21px] rounded-[17px] flex flex-col gap-[12px] shadow-lg">
                             <h2 className="text-[32px] font-[600] text-center">Partnership Program</h2>
-                    
+                            <input 
                                 type="email" 
                                 name="email" 
                                 value={formData.email} 
