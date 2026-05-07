@@ -136,7 +136,7 @@ function Partners() {
 
   // REFERRAL LINK
   const getReferralLink = (code) => {
-    return `https://ziontechhub.com/register?ref=${code}`;
+    return `https://ziontechhub.com/enroll?ref=${code}`;
   };
 
   // EMAIL
