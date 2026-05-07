@@ -95,8 +95,6 @@ function SubEnroll() {
           ...prev,
           course: mappedCourse,
         }));
-
-        setIsCourseDisabled(true);
       }
     }
   }, [location.state]);
@@ -122,6 +120,7 @@ function SubEnroll() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (loading) return;
+
     if (!formData.name.trim() || !formData.email.trim()) {
       toast.error("Please fill in all required fields");
       return;
@@ -138,132 +137,85 @@ function SubEnroll() {
       const referralId = formData.referralId?.trim();
       const email = formData.email?.trim().toLowerCase();
 
-      // PREVENT DUPLICATE REGISTRATION
-      const existingQuery = query(
-        collection(db, "course-registrants"),
-        where("email", "==", email),
-        where("course", "==", formData.course)
-      );
+      let validReferralDoc = null;
 
-      const existingSnap = await getDocs(existingQuery);
-
-      if (!existingSnap.empty) {
-        toast.error("You have already registered for this course.");
-        setLoading(false);
-        return;
-      }
-
-      // VALIDATE REFERRAL FIRST
+      // ONLY CHECK IF REFERRAL EXISTS
       if (referralId) {
-        const q = query(
+        const referralQuery = query(
           collection(db, "partnership-registrants"),
           where("referralCode", "==", referralId)
         );
 
-        const snapshot = await getDocs(q);
+        const referralSnap = await getDocs(referralQuery);
 
-        if (snapshot.empty) {
+        if (referralSnap.empty) {
           toast.error("Invalid Referral ID");
-          setLoading(false);
           return;
         }
 
-        const partnerDoc = snapshot.docs[0];
-        const partnerData = partnerDoc.data();
+        validReferralDoc = referralSnap.docs[0];
+      }
 
-        if (partnerData.approved === false) {
-          toast.error("This referrer has been declined");
-          setLoading(false);
-          return;
-        }
+      // SAVE REGISTRANT (always)
+      await addDoc(collection(db, "course-registrants"), {
+        name: formData.name,
+        email,
+        mobile: formData.mobile,
+        course: formData.course,
+        referralId: referralId || null,
+        country: formData.country,
+        registeredAt: serverTimestamp(),
+      });
 
-        if (partnerData.approved === null) {
-          toast.error("This referral code is still pending approval");
-          setLoading(false);
-          return;
-        }
-
-        const alreadyReferred =
-          partnerData.referrals?.some(
-            (ref) =>
-              ref.email?.toLowerCase() === email &&
-              ref.course === formData.course
-          ) || false;
-
-        if (alreadyReferred) {
-          toast.error(
-            "You have already registered under this Referral ID for this course."
-          );
-          setLoading(false);
-          return;
-        }
-
-        // SAVE REGISTRANT
-        await addDoc(collection(db, "course-registrants"), {
-          name: formData.name,
-          email,
-          mobile: formData.mobile,
-          course: formData.course,
-          referralId,
-          country: formData.country,
-          registeredAt: serverTimestamp(),
-        });
-
-        // SAVE REFERRAL
-        const partnerRef = doc(db, "partnership-registrants", partnerDoc.id);
-
-        const newReferral = {
-          name: formData.name,
-          email,
-          course: formData.course,
-          referralId,
-          mobile: formData.mobile,
-          country: formData.country,
-          registeredAt: serverTimestamp(),
-        };
+      // SAVE REFERRAL (only if exists)
+      if (validReferralDoc) {
+        const partnerRef = doc(
+          db,
+          "partnership-registrants",
+          validReferralDoc.id
+        );
 
         await updateDoc(partnerRef, {
-          referrals: arrayUnion(newReferral),
-        });
-      } else {
-        // NO REFERRAL
-        await addDoc(collection(db, "course-registrants"), {
-          name: formData.name,
-          email,
-          mobile: formData.mobile,
-          course: formData.course,
-          referralId: null,
-          country: formData.country,
-          registeredAt: serverTimestamp(),
+          referrals: arrayUnion({
+            name: formData.name,
+            email,
+            course: formData.course,
+            referralId,
+            mobile: formData.mobile,
+            country: formData.country,
+            registeredAt: Date.now(),
+          }),
         });
       }
 
       toast.success(
         "Registration successful! Redirecting to WhatsApp in 2 seconds..."
       );
-
-      // REDIRECT
-      let number =
-        formData.course === "Digital Marketing"
-          ? "2347087737321"
-          : "2349047214533";
+      setFormData({
+        name: "",
+        email: "",
+        referralId: "",
+        mobile: "",
+        country: "",
+        course: "Select course",
+      });
+      const number = "2348055094738";
 
       setTimeout(() => {
-        let url =
+        const url =
           `https://wa.me/${number}?text=` +
-          `Hi, My Name is: ${formData.name}%0a` +
-          `and i just registered for: ${formData.course}%0a`;
+          `Hi, My Name is ${formData.name}%0a` +
+          `and i just registered for ${formData.course}%0a`;
 
         window.location.href = url;
       }, 2000);
-
     } catch (error) {
       console.error(error);
       toast.error("Something went wrong");
+    } finally {
+      setLoading(false);
+      setSelectCourse(false);
     }
-
-    setLoading(false);
-    setSelectCourse(false);
   };
 
   return (
@@ -414,7 +366,7 @@ function SubEnroll() {
                             type="button"
                             className="flex gap-[12px] py-[14px] px-[18px] hover:bg-[#F5F5F5] hover:text-black w-full text-left"
                             onClick={() => {
-                              setFormData({ ...formData, course: courseName });
+                              setFormData((prev) => ({ ...prev, course: courseName }));
                               setCourse(false);
                             }}>
                             <span>
@@ -443,12 +395,10 @@ function SubEnroll() {
                     type="submit"
                     className="py-[18px] px-[16px] rounded-[10px] text-white bg-[#207C3F] mt-[14px] cursor-pointer text-center hover:bg-[#1a5f30] transition-colors"
                     disabled={loading}>
-                    {loading ? "Registering..." : "Register"}
+                    {loading ? <div className="mx-auto w-6 h-6 rounded-full bg-transparent border-2 border-t-white border-gray-400 animate-spin"></div> : "Register"}
                   </button>
 
-                  <p className="text-xs text-center text-gray-500 mt-2">
-                    You can register multiple times with the same email!
-                  </p>
+
                 </section>
               </form>
             ) : (
