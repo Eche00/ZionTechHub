@@ -251,10 +251,8 @@ function SubEnroll() {
       setTimeout(() => {
         let url =
           `https://wa.me/${number}?text=` +
-          `FullName: ${formData.name}%0a` +
-          `Email: ${email}%0a` +
-          `Course: ${formData.course}%0a` +
-          `Country: ${formData.country}%0a`;
+          `Hi, My Name is: ${formData.name}%0a` +
+          `and i just registered for: ${formData.course}%0a`;
 
         window.location.href = url;
       }, 2000);
