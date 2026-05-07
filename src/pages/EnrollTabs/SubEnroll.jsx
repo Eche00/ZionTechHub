@@ -54,17 +54,18 @@ function SubEnroll() {
   useEffect(() => {
     const params = new URLSearchParams(location.search);
 
-    // your link uses ?partnership-registrants=
-    const partnerCode = params.get("partnership-registrants");
+    // gets ?ref=ZTH-EZEE-013843
+    const referralCode = params.get("ref");
 
-    if (partnerCode) {
+    if (referralCode) {
       setFormData((prev) => ({
         ...prev,
-        referralId: partnerCode,
+        referralId: referralCode,
       }));
+
+      toast.success("Referral code detected");
     }
   }, [location.search]);
-
 
   // AUTO-SET COURSE FROM NAVIGATION STATE
   useEffect(() => {

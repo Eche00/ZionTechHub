@@ -40,12 +40,11 @@ import ViewBlogs from "./dashboard/dashboardRoutes/ViewBlogs";
 import Users from "./dashboard/dashboardRoutes/Users";
 import Signin from "./dashboard/dashboardRoutes/Signin";
 import CreateWebinar from "./dashboard/dashboardRoutes/CreateWebinar";
-import AffliateMarketing from "./pages/AffliateMarketing";
 import { Toaster } from "react-hot-toast";
 import Signup from "./dashboard/dashboardRoutes/SignUp";
-import Affliates from "./dashboard/dashboardRoutes/Affliates";
 import CourseRegistrants from "./dashboard/dashboardRoutes/CourseRegistrants";
 import Partner from "./pages/Partner";
+import Partners from "./dashboard/dashboardRoutes/Partners";
 
 function App() {
   googleAnalyticsTracking();
@@ -75,7 +74,6 @@ function App() {
           {/* Events */}
           <Route path="zion-tech-hub-workshop-webinar" element={<Workshop />} />
           <Route path="zion-tech-hub-hackathon" element={<Hackathon />} />
-          {/* <Route path="zth-partnership-program" element={<AffliateMarketing />} /> */}
           <Route path="zth-partnership-program" element={<Partner />} />
 
           {/* Blog */}
@@ -90,7 +88,7 @@ function App() {
           <Route path="home" element={<Dashboard />} />
           <Route path="viewblogs" element={<ViewBlogs />} />
           <Route path="create-blog" element={<CreateBlog />} />
-          <Route path="affliate-marketers" element={<Affliates />} />
+          <Route path="partnership-program" element={<Partners />} />
           <Route path="course-registrants" element={<CourseRegistrants />} />
           <Route path="event-attendees" element={<EventAttendees />} />
           <Route path="create-webinar" element={<CreateWebinar />} />

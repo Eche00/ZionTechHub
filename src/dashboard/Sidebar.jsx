@@ -149,7 +149,7 @@ function Sidebar({ compress, setCompress }) {
           {!compress && <span>Webinar/workshop</span>}
         </NavLink>
         <NavLink
-          to="/dashboard/affliate-marketers"
+          to="/dashboard/partnership-program"
           className={({ isActive }) =>
             isActive
               ? "flex items-center  gap-[5px] bg-[#1e222b]  font-extrabold py-[10px] px-[12px] rounded-[10px] text-white transition-all duration-300 "
@@ -157,7 +157,7 @@ function Sidebar({ compress, setCompress }) {
           }>
           {" "}
           <WorkHistory />
-          {!compress && <span>Affliate Marketers</span>}
+          {!compress && <span>Partners</span>}
         </NavLink>
         <NavLink
           to="/dashboard/course-registrants"
