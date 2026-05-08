@@ -185,7 +185,6 @@ function EachBlog() {
         <title>{blog?.title} | Zion Tech Hub </title>
         <meta name="description" content={blog?.metadescription} />
       </Helmet>
-
       {/* hero section  */}
       <div className=" pt-[130px]    overflow-hidden  sm:h-[70vh]  flex  items-center  w-full pb-[10px]">
         {/* container   */}
@@ -205,7 +204,7 @@ function EachBlog() {
               <p className=" sm:text-[14px] text-[12px]  font-[400] py-[10px] sm:px-[24px] px-[14px] border rounded-full w-fit  ">
                 {blog?.category}
               </p>
-              <h1 className=" text-[#1A1A1AB2] font-[600] sm:text-[64px] text-[32px] sm:w-[941px] w-[320px]  sm:leading-[130%] sm:tracker-[1.28px] leading-[120%] tracker-[0.8px] text-center">
+              <h1 className=" text-[#1A1A1AB2] font-[600] sm:text-[54px] text-[32px] sm:w-[941px] w-[320px]  sm:leading-[130%] sm:tracker-[1.28px] leading-[120%] tracker-[0.8px] text-center">
                 {blog?.title}
               </h1>
               <p className=" text-[#1A1A1A] font-[300] sm:text-[20px] text-[14px] text-center flex items-center gap-[10px]">
@@ -298,35 +297,42 @@ function EachBlog() {
         <h2 className=" text-[] sm:text-[40px] font-[600] text-[#1A1A1A]">
           Recommended Articles
         </h2>
-        <div className=" w-full  flex items-center justify-between flex-wrap mb-32 gap-[24px]">
+        <div className=" w-full  flex items-center justify-center flex-wrap mb-32 gap-[24px]">
           {blogs.map((blog) => (
             <div
-              className="sm:w-[464px] w-full flex flex-col gap-[24px] cursor-pointer"
-              onClick={() => handleNavigate(blog?.slug)}>
-              {/* image  */}
-              <div className=" w-full relative">
+              key={blog?.id}
+              onClick={() => handleNavigate(blog?.slug)}
+              className="sm:w-[460px] w-full group cursor-pointer bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+            >
+              {/* image */}
+              <div className="relative h-[260px] overflow-hidden">
                 <img
                   src={blog?.imageUrl}
                   alt=""
-                  className="w-full h-[316px] object-cover "
+                  className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                 />
-                <span className=" absolute bottom-0 left-0 text-[#1A1A1AB2] text-[14px] font-[400] bg-[#FFFFFF] py-[6px] px-[10px]">
+
+                <span className="absolute bottom-3 left-3 text-[12px] font-medium bg-white/90 backdrop-blur px-3 py-1 rounded-full text-gray-800 border border-gray-200">
                   {blog?.category}
                 </span>
               </div>
-              {/* info  */}
-              <div className="flex flex-col gap-[14px]">
-                <h3 className=" text-[#1A1A1AB2] text-[24px] font-[600] h-[62px] leading-[130%] w-[400px]">
-                  {blog?.title}
+
+              {/* content */}
+              <div className="p-5 flex flex-col gap-3">
+                <h3 className="text-[#1A1A1A] text-[20px] font-semibold leading-[130%] group-hover:text-[#034FE3] transition line-clamp-1">
+                  {blog?.title}...
                 </h3>
-                <p className="flex items-center text-[18px] font-[400] text-[#1A1A1AB2] gap-[5px]">
-                  {blog.createdAt.toDate().toLocaleDateString("en-US", {
+
+                <p className="text-gray-500 text-[14px] flex items-center gap-2">
+                  {blog?.createdAt.toDate().toLocaleDateString("en-US", {
                     year: "numeric",
-                    month: "long",
+                    month: "short",
                     day: "numeric",
-                  })}{" "}
-                  by
-                  <span className=" text-[#034FE3]">{blog?.creator}</span>
+                  })}
+                  <span>•</span>
+                  <span className="text-[#034FE3] font-medium">
+                    {blog?.creator}
+                  </span>
                 </p>
               </div>
             </div>

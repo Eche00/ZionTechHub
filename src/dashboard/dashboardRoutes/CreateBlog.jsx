@@ -252,7 +252,7 @@ function CreateBlog() {
             </option>
             <option value="Machine Learning">Machine Learning</option>
 
-            {/* Added from image */}
+            {/* Added */}
             <option value="Healthcare Data Analytics">
               Healthcare Data Analytics
             </option>

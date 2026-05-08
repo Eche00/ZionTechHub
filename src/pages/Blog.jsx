@@ -4,15 +4,16 @@ import { Helmet } from "react-helmet";
 import { db } from "../lib/Config/firebase";
 import { collection, onSnapshot } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { HourglassEmpty } from "@mui/icons-material";
 function Blog() {
-  // 🧠 React State
+  //  React State
   const [loading, setLoading] = useState(true);
   const [blogs, setBlogs] = useState(null); // All blogs from Firestore
   const [filteredBlogs, setFilteredBlogs] = useState([]); // Blogs filtered by selected category
-  const [selectedCategory, setSelectedCategory] = useState("Data Analytics"); // Default selected category
+  const [selectedCategory, setSelectedCategory] = useState(null); // Default selected category
   const [searchQuery, setSearchQuery] = useState("");
 
-  // 📄 Pagination
+  //  Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const blogsPerPage = 6;
 
@@ -21,22 +22,29 @@ function Blog() {
   const currentBlogs = filteredBlogs.slice(indexOfFirstBlog, indexOfLastBlog); // Blogs shown on current page
   const totalPages = Math.ceil(filteredBlogs.length / blogsPerPage);
 
-  // 🧭 Navigation
+  //  Navigation
   const navigate = useNavigate();
 
-  // 📚 Blog Categories
+  //  Blog Categories
   const categories = [
+    "All",
     "Data Analytics",
     "Data Science",
     "Web Development",
     "Cloud Computing & DevOps",
     "Machine Learning",
+    "Healthcare Data Analytics",
+    "Financial Data Analytics",
+    "Sales & Marketing Data Analytics",
+    "Supply Chain Analytics",
+    "Data Science and AI",
+    "AI Automation",
   ];
 
-  // ⏳ Loading Skeleton Placeholder
+  //  Loading Skeleton Placeholder
   const loader = [1, 2, 3, 4, 5, 6];
 
-  // 📡 Fetch Blogs from Firestore
+  //  Fetch Blogs from Firestore
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, "blogs"), (snapshot) => {
       const blogData = snapshot.docs.map((doc) => ({
@@ -48,10 +56,10 @@ function Blog() {
       setBlogs(sortedBlogs);
 
       // Filter by category
-      const categoryBlogs = selectedCategory
-        ? sortedBlogs.filter((blog) => blog.category === selectedCategory)
-        : sortedBlogs;
-
+      const categoryBlogs =
+        selectedCategory && selectedCategory !== "All"
+          ? sortedBlogs.filter((blog) => blog.category === selectedCategory)
+          : sortedBlogs;
       // Filter by search term
       const searchFiltered = categoryBlogs.filter((blog) =>
         blog.title?.toLowerCase().includes(searchQuery.toLowerCase())
@@ -64,24 +72,23 @@ function Blog() {
     return () => unsubscribe();
   }, [selectedCategory, searchQuery]);
 
-  // 🔀 Handle Category Selection
+  //  Handle Category Selection
   const handleCategorySelect = (category) => {
-    setCurrentPage(1); // Reset to page 1 when category changes
+    setCurrentPage(1);
     setLoading(true);
-    if (category === "All") {
-      setLoading(false);
-      setSelectedCategory(null);
-      setFilteredBlogs([]);
-    } else {
-      setLoading(false);
-      setSelectedCategory(category);
-      const filtered =
-        blogs?.filter((blog) => blog.category === category) || [];
-      setFilteredBlogs(filtered);
-    }
+
+    setSelectedCategory(category === "All" ? null : category);
+
+    const filtered =
+      category === "All"
+        ? blogs || []
+        : blogs?.filter((blog) => blog.category === category) || [];
+
+    setFilteredBlogs(filtered);
+    setLoading(false);
   };
 
-  // 🔍 Navigate to Blog Detail Page
+  //  Navigate to Blog Detail Page
   const handleView = (slug) => {
     navigate(`/blog/${slug}`);
   };
@@ -150,7 +157,7 @@ function Blog() {
       <span className="  md:h-[104px] md:w-[104px] h-[50px] w-[50px]   bg-[#034FE30D] absolute md:top-[50px] md:right-[640px] top-[150px] right-[60px] "></span>
       <span className="  md:h-[104px] md:w-[104px] w-[50px] h-[50px]  bg-[#034FE30D] absolute md:top-[400px] md:left-[314px] top-[300px] left-0  "></span>
       {/* hero section  */}
-      <div className=" pt-[130px]    bg-[linear-gradient(to_right,#4f4f4f0e_0.8px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_0.8px,transparent_0.1px)] md:bg-[size:104px_104px] bg-[size:50px_50px]  [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])] overflow-hidden  sm:h-[100vh]  flex  items-center  w-full border-b">
+      <div className=" pt-[130px]    bg-[linear-gradient(to_right,#4f4f4f0e_0.8px,transparent_0.1px),linear-gradient(to_bottom,#4f4f4f0e_0.8px,transparent_0.1px)] md:bg-[size:104px_104px] bg-[size:50px_50px]  [mask-image:radial-gradient(ellipse_100%_70%_at_50%_100%,#000_70%,transparent_[200%])] overflow-hidden  flex  items-center  w-full border-b">
         {/* container   */}
         <motion.div
           initial={{ opacity: 0.45 }}
@@ -162,19 +169,30 @@ function Blog() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1, ease: "linear" }}
-            className=" flex-1   flex items-center justify-center sm:pt-0 pt-[80px] ">
-            <div className=" flex flex-col items-center justify-center gap-[24px]">
-              <p className=" sm:text-[14px] text-[12px]  font-[400] py-[10px] sm:px-[24px] px-[14px] border rounded-full w-fit  flex items-center justify-center gap-[10px]">
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="flex-1 flex items-center justify-center sm:pt-0 pt-[80px]"
+          >
+            {/* HERO CONTENT WRAPPER */}
+            <div className="flex flex-col items-center justify-center gap-[18px] text-center">
+
+              {/* BLOG BADGE */}
+              <p className="sm:text-[14px] text-[12px] font-[400] py-[8px] px-[16px] border rounded-full w-fit flex items-center gap-[10px]">
                 {dot} Blog
               </p>
-              <h1 className=" text-[#1A1A1A] font-[700] sm:text-[110px] text-[40px] text-center sm:w-full w-[320px] sm:whitespace-nowrap sm:leading-[130%] sm:tracker-[1.28px] leading-[120%] tracker-[0.8px]">
+
+              {/* MAIN TITLE */}
+              <h1 className="text-[#1A1A1A] font-[700] sm:text-[90px] text-[40px] sm:leading-[120%] leading-[120%] text-center sm:whitespace-nowrap">
                 Inside{" "}
-                <span className=" text-[#034FE3]"> {selectedCategory}: </span>
+                <span className="text-[#034FE3]">
+                  {selectedCategory || "All Categories"}:
+                </span>
               </h1>
-              <p className=" text-[#1A1A1A] font-[500] sm:text-[64px] text-[24px] sm:w-[712px] w-[325px] text-center">
-                Stories and Interviews
+
+              {/* SUBTITLE */}
+              <p className="text-[#1A1A1A] font-[500] sm:text-[40px] text-[24px] sm:w-[700px] w-[320px] text-center leading-[130%]">
+                Stories, Insights & Interviews
               </p>
+
             </div>
           </motion.div>
         </motion.div>
@@ -185,65 +203,83 @@ function Blog() {
         {/* Blog section / Category */}
         <section className="flex smm:flex-row flex-col-reverse smm:gap-[10px] gap-[20px] items-start justify-between mt-32">
           {/* Blog section  */}
-          <div className=" sm:w-[1000px] w-full flex items-center justify-between flex-wrap text-white gap-y-[85px]">
-            {currentBlogs.length > 0 ? (
+          <div className="sm:w-[1000px] w-full flex flex-wrap items-stretch gap-[40px]">
+            {loading ? (
+              loader.map((item) => (
+                <div
+                  key={item}
+                  className="sm:w-[480px] w-full bg-white border border-gray-200 rounded-2xl overflow-hidden animate-pulse shadow-sm"
+                >
+                  <div className="h-[260px] bg-gray-200" />
+                  <div className="p-5 flex flex-col gap-4">
+                    <div className="h-4 w-24 bg-gray-200 rounded" />
+                    <div className="h-6 w-full bg-gray-200 rounded" />
+                    <div className="h-4 w-3/4 bg-gray-200 rounded" />
+                  </div>
+                </div>
+              ))
+            ) : currentBlogs.length > 0 ? (
               currentBlogs.map((blog) => (
                 <div
-                  className="sm:w-[487px] w-full flex flex-col gap-[24px] cursor-pointer hover:scale-[101%] duration-300"
                   key={blog?.id}
-                  onClick={() => handleView(blog?.slug)}>
-                  {/* image  */}
-                  <div className=" w-full relative">
+                  onClick={() => handleView(blog?.slug)}
+                  className="sm:w-[480px] w-full group cursor-pointer bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                >
+                  {/* image */}
+                  <div className="relative h-[260px] overflow-hidden">
                     <img
                       src={blog?.imageUrl}
                       alt=""
-                      className="w-full h-[316px] object-cover "
+                      className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                     />
-                    <span className=" absolute bottom-0 left-0 text-[#1A1A1AB2] text-[14px] font-[400] bg-[#FFFFFF] py-[6px] px-[10px]">
+
+                    <span className="absolute bottom-3 left-3 text-[12px] font-medium bg-white/90 backdrop-blur px-3 py-1 rounded-full text-gray-800 border border-gray-200">
                       {blog?.category}
                     </span>
                   </div>
-                  {/* info  */}
-                  <div className="flex flex-col gap-[14px]">
-                    <h3 className=" text-[#1A1A1AB2] text-[24px] font-[600] min-h-[62px] leading-[130%]">
-                      {blog?.title}
+
+                  {/* content */}
+                  <div className="p-5 flex flex-col gap-3">
+                    <h3 className="text-[#1A1A1A] text-[20px] font-semibold leading-[130%] group-hover:text-[#034FE3] transition line-clamp-1">
+                      {blog?.title}...
                     </h3>
-                    <p className="flex items-center text-[18px] font-[400] text-[#1A1A1AB2] gap-[5px]">
+
+                    <p className="text-gray-500 text-[14px] flex items-center gap-2">
                       {blog?.createdAt.toDate().toLocaleDateString("en-US", {
                         year: "numeric",
-                        month: "long",
+                        month: "short",
                         day: "numeric",
-                      })}{" "}
-                      by
-                      <span className=" text-[#034FE3]">{blog?.creator}</span>
+                      })}
+                      <span>•</span>
+                      <span className="text-[#034FE3] font-medium">
+                        {blog?.creator}
+                      </span>
                     </p>
                   </div>
                 </div>
               ))
             ) : (
-              <div className=" sm:w-[1000px] w-full flex items-center justify-between flex-wrap text-white gap-y-[85px]">
-                {loader.map((blog) => (
-                  <div className="sm:w-[487px] w-full flex items-center justify-center gap-[24px] bg-gray-300 sm:h-[400px] h-[300px] rounded-[20px] ">
-                    <div role="status">
-                      <svg
-                        aria-hidden="true"
-                        className="inline w-20 h-20 text-gray-200 animate-spin dark:text-gray-600 fill-[#034FE3]"
-                        viewBox="0 0 100 101"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
-                          fill="currentColor"
-                        />
-                        <path
-                          d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
-                          fill="currentFill"
-                        />
-                      </svg>
-                      <span className="sr-only">Loading...</span>
-                    </div>
+              <div className="w-full flex items-center justify-center py-24">
+                <div className="text-center max-w-md">
+
+                  {/* Icon */}
+                  <div className="flex justify-center mb-4">
+                    <HourglassEmpty
+                      sx={{ fontSize: 48, color: "#1A1A1A66" }}
+                    />
                   </div>
-                ))}
+
+                  {/* Title */}
+                  <h2 className="text-[#1A1A1A] text-[20px] font-semibold mb-2">
+                    No blogs found in this category
+                  </h2>
+
+                  {/* Description */}
+                  <p className="text-[#1A1A1A99] text-[15px] leading-relaxed">
+                    We couldn’t find any posts in this category yet. Try selecting another category or check back later.
+                  </p>
+
+                </div>
               </div>
             )}
           </div>
@@ -266,19 +302,41 @@ function Blog() {
                 Categories
               </h2>
               {/* list  */}
-              <ul className="flex flex-col gap-[10px]">
-                {categories.map((category) => (
-                  <li
-                    key={category}
-                    onClick={() => handleCategorySelect(category)}
-                    className={
-                      selectedCategory === category
-                        ? "text-[#034FE3] text-[20px] font-[400] cursor-pointer"
-                        : "text-[#1A1A1A] text-[20px] font-[400] cursor-pointer"
-                    }>
-                    {category}
-                  </li>
-                ))}
+              <ul className="flex flex-col gap-2">
+                {categories.map((category) => {
+                  const isActive =
+                    (category === "All" && !selectedCategory) ||
+                    selectedCategory === category;
+                  return (
+                    <li
+                      key={category}
+                      onClick={() => handleCategorySelect(category)}
+                      className={`relative flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-all duration-200 group
+          ${isActive
+                          ? "bg-[#034FE3]/10 text-[#034FE3] font-semibold"
+                          : "text-[#1A1A1A] hover:bg-[#034FE3]/5 hover:text-[#034FE3]"
+                        }`}
+                    >
+                      {/* Active indicator dot */}
+                      <span
+                        className={`h-2 w-2 rounded-full transition-all duration-200
+            ${isActive
+                            ? "bg-[#034FE3]"
+                            : "bg-transparent group-hover:bg-[#034FE3]/40"
+                          }`}
+                      />
+
+                      <span className="text-[18px] leading-tight">
+                        {category}
+                      </span>
+
+                      {/* subtle right arrow on hover */}
+                      <span className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-[#034FE3]">
+                        →
+                      </span>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </div>
@@ -317,8 +375,8 @@ function Blog() {
                     key={page}
                     onClick={() => setCurrentPage(page)}
                     className={`cursor-pointer sm:px-[20px] px-[10px] py-[10px] text-[20px] font-[600] ${isActive
-                        ? "border-b-[#034FE3] border-b-[3px] text-[#034FE3]"
-                        : "text-[#1A1A1A]"
+                      ? "border-b-[#034FE3] border-b-[3px] text-[#034FE3]"
+                      : "text-[#1A1A1A]"
                       }`}>
                     {page}
                   </p>
