@@ -1,19 +1,31 @@
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { Helmet } from "react-helmet";
-import { collection, deleteDoc, doc, onSnapshot } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  onSnapshot,
+} from "firebase/firestore";
 import { db } from "../../lib/Config/firebase";
+import { format } from "date-fns";
+import jsPDF from "jspdf";
+import toast from "react-hot-toast";
 
 function ViewBlogs() {
-  //  React State
   const [loading, setLoading] = useState(true);
   const [blogs, setBlogs] = useState([]);
+  const [filteredBlogs, setFilteredBlogs] = useState([]);
   const [confirmingId, setConfirmingId] = useState(null);
+
+  // new features
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filterCategory, setFilterCategory] = useState("all");
+  const [page, setPage] = useState(0);
+  const [rowsPerPage] = useState(10);
 
   const navigate = useNavigate();
 
-  // Fetch Blogs from Firestore
+  // Fetch Blogs
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, "blogs"), (snapshot) => {
       const blogData = snapshot.docs.map((doc) => ({
@@ -21,112 +33,272 @@ function ViewBlogs() {
         ...doc.data(),
       }));
 
-      const sortedBlogs = blogData.sort((a, b) => b.createdAt - a.createdAt);
-      setBlogs(sortedBlogs);
+      const sortedBlogs = blogData.sort(
+        (a, b) => b.createdAt?.seconds - a.createdAt?.seconds
+      );
 
+      setBlogs(sortedBlogs);
       setLoading(false);
     });
 
     return () => unsubscribe();
   }, []);
-  //  Navigate to Blog Detail Page
+
+  // Apply filters
+  useEffect(() => {
+    let filtered = blogs;
+
+    if (searchTerm) {
+      filtered = filtered.filter(
+        (blog) =>
+          blog.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          blog.creator?.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    if (filterCategory !== "all") {
+      filtered = filtered.filter(
+        (blog) => blog.category === filterCategory
+      );
+    }
+
+    setFilteredBlogs(filtered);
+    setPage(0);
+  }, [blogs, searchTerm, filterCategory]);
+
   const handleView = (slug) => {
     navigate(`/blog/${slug}`);
   };
 
-  // handling delete blog
   const handleDelete = async (id) => {
     try {
       if (confirmingId === id) {
         await deleteDoc(doc(db, "blogs", id));
+        toast.success("Blog deleted successfully");
         setConfirmingId(null);
       }
     } catch (error) {
-      console.error("Could't Delete Blog:", error);
+      console.error("Couldn't Delete Blog:", error);
+      toast.error("Failed to delete blog");
     }
   };
+
+  // Export blogs to CSV
+  const exportToCSV = () => {
+    const headers = ["Title", "Creator", "Category", "Created At"];
+
+    const rows = filteredBlogs.map((blog) => [
+      blog.title,
+      blog.creator,
+      blog.category,
+      blog.createdAt?.toDate()
+        ? format(blog.createdAt.toDate(), "dd/MM/yyyy")
+        : "N/A",
+    ]);
+
+    const csvContent = [headers, ...rows]
+      .map((row) => row.join(","))
+      .join("\n");
+
+    const blob = new Blob([csvContent], {
+      type: "text/csv",
+    });
+
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+
+    a.href = url;
+    a.download = `blogs-${format(new Date(), "yyyy-MM-dd")}.csv`;
+    a.click();
+
+    URL.revokeObjectURL(url);
+
+    toast.success("CSV exported successfully");
+  };
+
+  // Export single blog PDF
+  const generateBlogPDF = (blog) => {
+    const pdf = new jsPDF();
+
+    pdf.setFontSize(20);
+    pdf.text("Blog Details", 20, 20);
+
+    pdf.setFontSize(12);
+    pdf.text(`Title: ${blog.title}`, 20, 40);
+    pdf.text(`Creator: ${blog.creator}`, 20, 50);
+    pdf.text(`Category: ${blog.category}`, 20, 60);
+    pdf.text(
+      `Created At: ${blog.createdAt?.toDate()
+        ? format(blog.createdAt.toDate(), "dd/MM/yyyy HH:mm")
+        : "N/A"
+      }`,
+      20,
+      70
+    );
+
+    pdf.save(`${blog.title}.pdf`);
+    toast.success("PDF downloaded");
+  };
+
+  const categories = [...new Set(blogs.map((blog) => blog.category))];
+
   return (
-    <div className="  py-10 px-4 h-[100vh] overflow-scroll">
-      <div className="  w-full">
-        <div className="flex items-center gap-[20px] border-b-2 border-gray-700 py-[10px]">
-          <h1 className="text-3xl font-bold text-white">Blogs</h1>
-          <Link
-            to="/dashboard/create-blog"
-            className="bg-transparent text-gray-500 border-2 border-gray-700 px-4 py-2 rounded-full hover:scale-[102%] transition">
-            Create Blog
-          </Link>
-          <button className="bg-transparent text-gray-500 border-2 border-gray-700 px-4 py-2 rounded-full cursor-default">
-            Categorized / Courses
-          </button>
+    <div className="h-screen overflow-y-auto bg-[#050814] text-white p-4 md:p-6 space-y-6">
+
+      {/* HEADER */}
+      <div className="rounded-2xl p-6 bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-white/10">
+        <h2 className="text-2xl font-bold">Blogs</h2>
+        <p className="text-gray-400 text-sm">
+          Manage blogs, search, export & delete
+        </p>
+      </div>
+
+      {/* STATS */}
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="bg-[#0b1220] p-4 rounded-2xl border border-white/10">
+          <p className="text-gray-400 text-xs">Total Blogs</p>
+          <h3 className="text-2xl font-bold">{blogs.length}</h3>
         </div>
-        {/* message  */}
-        <ul className="text-gray-500  list-disc pl-5 pt-2">
-          <li>You can click the images on each blog to view specifically. </li>
-          <li>You can click the delete and confirm to delete blogs. </li>
-        </ul>
-        <section className=" flex items-center justify-between mt-[80px] py-6">
-          <p className=" text-white font-bold flex items-center gap-[10px]">
-            Blogs:{" "}
-            <span className="bg-transparent text-gray-500 border-2 border-gray-700 px-4 py-1 rounded-[10px] ">
-              {blogs.length}
-            </span>
-          </p>
-        </section>
-        {/* db  */}
-        <div className="flex flex-col w-full  gap-[10px]  bg-black border-2  border-gray-700 rounded-[10px]  overflow-scroll h-[600px] relative ">
-          <div className=" text-white font-bold w-full bg-gray-700  sticky top-0 left-0 py-[20px]  grid grid-cols-6 gap-4 items-center px-14 h-fit">
-            <p>Image</p>
-            <p>Title</p>
-            <p>Creator</p>
-            <p>Category</p>
-            <p>CreatedAt</p>
-            <p className="flex items-center justify-end pr-10">Delete</p>
-          </div>
-          {blogs.map((blog) => (
-            <div
-              className="grid grid-cols-6 gap-4 items-center border-b border-gray-500   p-4 w-full  px-10 py-4  text-white   h-fit cursor-pointer bg-opacity-5"
-              key={blog?.id}>
-              <div className="text-gray-500 ">
-                <img
-                  src={blog?.imageUrl}
-                  alt=""
-                  className="w-14 h-10 rounded-md border-2 border-gray-700 object-cover"
-                  onClick={() => handleView(blog?.slug)}
-                />
-              </div>
-              <p
-                className="text-gray-600 text-sm border-l-2 border-gray-500 pl-2 cursor-pointer hover:text-white transition-all duration-300 flex items-center gap-[10px]"
-                onClick={() => handleView(blog?.slug)}>
-                {blog?.title.slice(0, 10)}...
-              </p>
-              <p className="text-gray-500 text-sm"> {blog?.creator}</p>
-              <p className="text-gray-500 text-sm"> {blog?.category}</p>
-              <p className="text-gray-500 text-sm">
-                {" "}
-                {blog?.createdAt.toDate().toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </p>
-              {/* buttons  */}
-              <div className="flex items-center gap-[20px] justify-end">
-                {confirmingId === blog.id ? (
-                  <button
-                    onClick={() => handleDelete(blog?.id)}
-                    className=" bg-[#e30303] text-white font-[500] rounded-full text-[14px] w-[120px] py-[8px] flex items-center justify-center">
-                    Confirm
-                  </button>
-                ) : (
-                  <button
-                    onClick={() => setConfirmingId(blog?.id)}
-                    className=" bg-[#e30303] text-white font-[500] rounded-full text-[14px] w-[120px] py-[8px] flex items-center justify-center">
-                    Delete
-                  </button>
-                )}
-              </div>
-            </div>
+
+        <div className="bg-[#0b1220] p-4 rounded-2xl border border-white/10">
+          <p className="text-gray-400 text-xs">Categories</p>
+          <h3 className="text-2xl font-bold">{categories.length}</h3>
+        </div>
+
+        <Link
+          to="/dashboard/create-blog"
+          className="bg-blue-600 flex items-center justify-center rounded-2xl font-medium"
+        >
+          Create Blog
+        </Link>
+      </div>
+
+      {/* FILTERS */}
+      <div className="flex flex-col md:flex-row gap-3">
+        <input
+          type="text"
+          placeholder="Search title or creator..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="bg-[#0b1220] border border-white/10 px-4 py-2 rounded-full w-full md:w-80"
+        />
+
+        <select
+          value={filterCategory}
+          onChange={(e) => setFilterCategory(e.target.value)}
+          className="bg-[#0b1220] border border-white/10 px-4 py-2 rounded-full"
+        >
+          <option value="all">All Categories</option>
+          {categories.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
           ))}
+        </select>
+
+        <button
+          onClick={exportToCSV}
+          className="px-4 py-2 bg-green-600 rounded-full text-sm"
+        >
+          Export CSV
+        </button>
+      </div>
+
+      {/* TABLE */}
+      <div className="overflow-x-auto border border-white/10 rounded-2xl">
+        <table className="min-w-[900px] w-full text-sm">
+          <thead className="bg-[#0b1220] text-gray-300">
+            <tr>
+              <th className="p-3 text-left">Image</th>
+              <th className="p-3 text-left">Title</th>
+              <th className="p-3 text-left">Creator</th>
+              <th className="p-3 text-left">Category</th>
+              <th className="p-3 text-left">Date</th>
+              <th className="p-3 text-left">Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {filteredBlogs
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((blog) => (
+                <tr key={blog.id} className="border-b border-white/5 hover:bg-white/5">
+                  <td className="p-3">
+                    <img
+                      src={blog.imageUrl}
+                      alt="blog"
+                      className="w-14 h-10 rounded-md object-cover cursor-pointer"
+                      onClick={() => handleView(blog.slug)}
+                    />
+                  </td>
+
+                  <td className="p-3 cursor-pointer" onClick={() => handleView(blog.slug)}>
+                    {blog.title?.slice(0, 30)}...
+                  </td>
+
+                  <td className="p-3">{blog.creator}</td>
+                  <td className="p-3">{blog.category}</td>
+
+                  <td className="p-3">
+                    {blog.createdAt?.toDate()
+                      ? format(blog.createdAt.toDate(), "dd/MM/yyyy")
+                      : "N/A"}
+                  </td>
+
+                  <td className="p-3 flex gap-2">
+                    <button
+                      onClick={() => generateBlogPDF(blog)}
+                      className="px-3 py-1 bg-blue-600 rounded-lg text-xs"
+                    >
+                      PDF
+                    </button>
+
+                    {confirmingId === blog.id ? (
+                      <button
+                        onClick={() => handleDelete(blog.id)}
+                        className="px-3 py-1 bg-red-700 rounded-lg text-xs"
+                      >
+                        Confirm
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => setConfirmingId(blog.id)}
+                        className="px-3 py-1 bg-red-600 rounded-lg text-xs"
+                      >
+                        Delete
+                      </button>
+                    )}
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* PAGINATION */}
+      <div className="flex justify-between text-sm text-gray-400">
+        <p>
+          Showing {page * rowsPerPage + 1} - {Math.min((page + 1) * rowsPerPage, filteredBlogs.length)} of {filteredBlogs.length}
+        </p>
+
+        <div className="flex gap-2">
+          <button
+            onClick={() => setPage((p) => Math.max(p - 1, 0))}
+            className="px-3 py-1 bg-[#0b1220] border border-white/10 rounded"
+          >
+            Prev
+          </button>
+
+          <button
+            onClick={() =>
+              setPage((p) =>
+                (p + 1) * rowsPerPage < filteredBlogs.length ? p + 1 : p
+              )
+            }
+            className="px-3 py-1 bg-[#0b1220] border border-white/10 rounded"
+          >
+            Next
+          </button>
         </div>
       </div>
     </div>

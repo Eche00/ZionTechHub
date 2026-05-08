@@ -75,8 +75,8 @@ function DashContainer() {
         <div
           className={
             compress
-              ? "ml-0 md:ml-[80px] flex-1 p-5 h-[100vh] bg-[#1F1F1F] "
-              : "ml-0 md:ml-[300px] flex-1 p-5 h-[100vh] bg-[#1F1F1F] "
+              ? "ml-0 md:ml-[80px] flex-1  h-[100vh] bg-[#1F1F1F] "
+              : "ml-0 md:ml-[300px] flex-1  h-[100vh] bg-[#1F1F1F] "
           }>
           <Outlet />
         </div>

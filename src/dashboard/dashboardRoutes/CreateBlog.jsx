@@ -1,24 +1,21 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { Link, useNavigate } from "react-router-dom";
-// import { db, storageF } from "../lib/Config/firebase";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { db, storageF } from "../../lib/Config/firebase";
 import { Check } from "@mui/icons-material";
 
 function CreateBlog() {
-  // React and Firebase hooks
   const navigate = useNavigate();
 
-  // Form data state
   const [formData, setFormData] = useState({
     title: "",
-    creator: "Ndoma Godsent",
-    slug: "Blog-Slug",
-    metadescription: "Meta Description",
-    alt: "Image Alt",
+    creator: "",
+    slug: "",
+    metadescription: "",
+    alt: "",
     category: "",
     details: "",
     image: [],
@@ -26,21 +23,16 @@ function CreateBlog() {
     createdAt: "",
   });
 
-  // Image file handling
   const [files, setFiles] = useState([]);
   const imageRef = useRef();
 
-  // Status and error handling
   const [error, setError] = useState(false);
   const [imgError, setImgError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [success, setSucesss] = useState(false);
-
-  // Optional: store TOC separately if needed
   const [toc, setToc] = useState([]);
 
-  // Handle image upload to Firebase Storage
   const handleImageChange = (e) => {
     setImgError(false);
     const selectedFile = e.target.files[0];
@@ -71,25 +63,19 @@ function CreateBlog() {
               image: [{ file: selectedFile, url: downloadURL }],
             }));
             setFiles([{ url: downloadURL, file: selectedFile }]);
-            setImgError(false);
-            setSucesss(false);
           });
         }
       );
     }
   };
 
-  // Handle input field changes
   const handleChange = (e) => {
-    setError(false);
-    setSucesss(false);
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  // Handle content editor changes and generate table of contents
   const handleEditorChange = (value) => {
     const tocHeaders = [];
     const doc = new DOMParser().parseFromString(value, "text/html");
@@ -105,35 +91,24 @@ function CreateBlog() {
     setFormData((prev) => ({
       ...prev,
       details: value,
-      toc: tocHeaders, // store TOC inside formData
+      toc: tocHeaders,
     }));
 
-    setToc(tocHeaders); // optional: update separate TOC state
+    setToc(tocHeaders);
   };
 
-  // Submit blog data to Firestore
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError(false);
-    setImgError(false);
-    setSucesss(false);
 
-    // Validate image upload
-    if (
-      !formData.image ||
-      formData.image.length === 0 ||
-      !formData.image[0].url
-    ) {
-      console.error("Image upload failed or not completed.");
+    if (!formData.image?.[0]?.url) {
       setImgError(true);
       setLoading(false);
       return;
     }
 
     try {
-      // Add blog document to Firestore
-      const docRef = await addDoc(collection(db, "blogs"), {
+      await addDoc(collection(db, "blogs"), {
         title: formData.title,
         slug: formData.slug,
         metadescription: formData.metadescription,
@@ -146,273 +121,202 @@ function CreateBlog() {
         createdAt: serverTimestamp(),
       });
 
-      console.log("Document written with ID: ", docRef.id);
-
-      // Reset form data and state
-      setFormData({
-        title: "",
-        slug: "",
-        metadescription: "",
-        alt: "",
-        creator: "",
-        category: "",
-        details: "",
-        image: [],
-        toc: [],
-      });
-      setFiles([]);
-      setLoading(false);
-      setError(false);
       setSucesss(true);
+      setLoading(false);
 
-      // Redirect after success
       setTimeout(() => {
-        setSucesss(false);
-        setProgress(null);
         navigate("/dashboard/viewblogs");
       }, 2000);
-    } catch (e) {
-      console.error("Error adding document: ", e);
+    } catch (error) {
+      console.error(error);
       setError(true);
-      setSucesss(false);
+      setLoading(false);
     }
   };
 
   return (
-    <div className="h-fit pt-10">
-      <main className="relative mb-[50px]">
-        {success && (
-          <div className="fixed left-0 top-0 w-full h-full bg-black/20 backdrop-blur-sm text-white flex items-center justify-center">
-            <p className="bg-[#034FE3] border-3 border-[#034FE3] font-bold text-[20px] px-[70px] py-[20px] rounded-[10px] backdrop-blur-sm flex flex-col items-center justify-center gap-[15px] ">
-              <span className=" border-2 border-white px-4 py-2 rounded-full">
-                <Check />
-              </span>
-              Blog Created!{" "}
+    <div className="h-screen overflow-y-auto bg-[#050814] text-white p-4 md:p-6 space-y-6 mb-2">
+      {success && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
+          <div className="bg-blue-600 rounded-2xl p-8 flex flex-col items-center gap-4">
+            <div className="w-16 h-16 rounded-full border border-white flex items-center justify-center">
+              <Check />
+            </div>
+            <p className="text-xl font-bold">Blog Created Successfully</p>
+          </div>
+        </div>
+      )}
+
+      {/* HEADER */}
+      <div className="rounded-2xl p-6 bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-white/10">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <h2 className="text-2xl font-bold">Create Blog</h2>
+            <p className="text-gray-400 text-sm">
+              Publish blog posts with SEO fields, image upload and TOC generation
             </p>
+          </div>
+
+          <Link
+            to="/dashboard/viewblogs"
+            className="px-4 py-2 bg-[#0b1220] border border-white/10 rounded-full text-sm"
+          >
+            View Blogs
+          </Link>
+        </div>
+      </div>
+
+      {/* INFO */}
+      <div className="bg-[#0b1220] border border-white/10 rounded-2xl p-4 text-sm text-gray-400">
+        <ul className="list-disc pl-5 space-y-2">
+          <li>Upload only one image per blog.</li>
+          <li>H2 tags automatically generate your table of contents.</li>
+          <li>Do not use H1 tags inside blog details.</li>
+        </ul>
+      </div>
+
+      <form onSubmit={handleSubmit} className="space-y-6">
+
+        {/* IMAGE */}
+        <div className="bg-[#0b1220] border border-white/10 rounded-2xl p-5">
+          <label
+            htmlFor="image"
+            className="inline-block px-4 py-2 bg-blue-600 rounded-full cursor-pointer text-sm"
+          >
+            Upload Blog Image
+          </label>
+
+          <input
+            type="file"
+            id="image"
+            accept="image/*"
+            onChange={handleImageChange}
+            hidden
+          />
+
+          {progress > 0 && (
+            <p className="text-sm text-green-400 mt-3">
+              Upload Progress: {progress}%
+            </p>
+          )}
+
+          {imgError && (
+            <p className="text-red-500 text-sm mt-2">Image upload failed</p>
+          )}
+
+          {files.length > 0 && (
+            <img
+              src={files[0].url}
+              alt="preview"
+              className="w-full h-[300px] object-cover rounded-xl mt-4"
+            />
+          )}
+        </div>
+
+        {/* INPUT GRID */}
+        <div className="grid md:grid-cols-2 gap-4">
+          {[
+            "title",
+            "slug",
+            "metadescription",
+            "alt",
+            "creator",
+          ].map((field) => (
+            <input
+              key={field}
+              type="text"
+              name={field}
+              value={formData[field]}
+              onChange={handleChange}
+              placeholder={field}
+              className="bg-[#0b1220] border border-white/10 px-4 py-3 rounded-xl outline-none"
+              required
+            />
+          ))}
+
+          <select
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+            className="bg-[#0b1220] border border-white/10 px-4 py-3 rounded-xl"
+            required
+          >
+            <option value="">Select Category</option>
+
+            {/* Existing Categories */}
+            <option value="Data Analytics">Data Analytics</option>
+            <option value="Data Science">Data Science</option>
+            <option value="Web Development">Web Development</option>
+            <option value="Cloud Computing & DevOps">
+              Cloud Computing & DevOps
+            </option>
+            <option value="Machine Learning">Machine Learning</option>
+
+            {/* Added from image */}
+            <option value="Healthcare Data Analytics">
+              Healthcare Data Analytics
+            </option>
+            <option value="Financial Data Analytics">
+              Financial Data Analytics
+            </option>
+            <option value="Sales & Marketing Data Analytics">
+              Sales & Marketing Data Analytics
+            </option>
+            <option value="Supply Chain Analytics">
+              Supply Chain Analytics
+            </option>
+            <option value="Data Science and AI">
+              Data Science and AI
+            </option>
+            <option value="AI Automation">
+              AI Automation
+            </option>
+          </select>
+        </div>
+
+        {/* TOC */}
+        {toc.length > 0 && (
+          <div className="bg-[#0b1220] border border-white/10 rounded-2xl p-5">
+            <h3 className="font-semibold mb-3">Generated Table of Contents</h3>
+            <ul className="space-y-2 text-blue-400 text-sm">
+              {toc.map((item, index) => (
+                <li key={index}>{item.title}</li>
+              ))}
+            </ul>
           </div>
         )}
 
-        <div className="flex items-center gap-[20px] border-b-2 border-gray-700 py-[10px]">
-          <h1 className="text-3xl font-bold text-white">Create Blog</h1>
-          <Link
-            to="/dashboard/viewblogs"
-            className="bg-transparent text-gray-500 border-2 border-gray-700 px-4 py-2 rounded-full hover:scale-[102%] transition">
-            View Blogs
-          </Link>
-          <button className="bg-transparent text-gray-500 border-2 border-gray-700 px-4 py-2 rounded-full cursor-default">
-            1 Image per Blog / Title = Meta title
-          </button>
+        {/* QUILL */}
+        <div className="bg-white rounded-2xl overflow-hidden">
+          <ReactQuill
+            value={formData.details}
+            onChange={handleEditorChange}
+            modules={{
+              toolbar: [
+                [{ header: [1, 2, 3, false] }],
+                ["bold", "italic", "underline"],
+                [{ list: "ordered" }, { list: "bullet" }],
+                ["link", "image"],
+              ],
+            }}
+            className="h-96 text-black"
+          />
         </div>
-        {/* message  */}
-        <ul className="text-gray-500  list-disc pl-5 pt-2">
-          <li>Make sure to upload an image(1 per blog).</li>
-          <li>
-            H2's are the table of contents and would appear when selected.
-          </li>
-          <li>Do Not Use H1 in the details input. </li>
-        </ul>
-        <form
-          className="md:w-[70%] sm:w-[60%] w-[90%] mx-auto overflow-scroll h-[100vh] pb-[400px] mt-10 "
-          onSubmit={handleSubmit}>
-          <div className="flex items-center my-5 gap-[10px]">
-            <label
-              htmlFor="image"
-              className="bg-transparent text-gray-500 border-2 border-gray-700 px-4 py-2 rounded-full hover:scale-[102%] transition cursor-pointer"
-              ref={imageRef}>
-              Add Image
-            </label>
 
-            <p className="text-[14px] font-[400] text-gray-500">
-              Click to add Photo <br />
-              {progress > 0 && (
-                <span className="text-sm">
-                  Upload Progress:{" "}
-                  <span className="text-green-600">{progress}%</span>
-                </span>
-              )}
-              {imgError > 0 && (
-                <span className="text-sm text-red-600">Upload Failed</span>
-              )}
-            </p>
-            <input
-              type="file"
-              accept="image/*"
-              style={{ display: "none" }}
-              name="image"
-              id="image"
-              onChange={handleImageChange}
-            />
-          </div>
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full py-4 bg-blue-600 rounded-2xl font-bold "
+        >
+          {loading ? "Creating Blog..." : "Create Blog"}
+        </button>
 
-          {files.length > 0 && (
-            <div>
-              <img
-                src={files[0].url}
-                alt={files[0].file.name}
-                className="w-full h-[300px] rounded-[10px] object-cover"
-              />
-            </div>
-          )}
-
-          <div className="flex flex-col gap-[5px] my-5">
-            <p className="text-gray-500 ">Title</p>
-            <input
-              className=" border-3 bg-black border-2  border-gray-700 w-full rounded-[10px] px-5 py-4 outline-none text-gray-500"
-              type="text"
-              name="title"
-              id="title"
-              onChange={handleChange}
-              value={formData.title}
-              required
-            />
-          </div>
-          {/* slug / description  */}
-          <section className=" flex items-center gap-[20px]">
-            <div className="flex flex-1 flex-col gap-[5px] my-5">
-              <p className="text-gray-500 ">Slug</p>
-              <input
-                className=" border-3 bg-black border-2  border-gray-700 w-full rounded-[10px] px-5 py-4 outline-none text-gray-500"
-                type="text"
-                name="slug"
-                id="slug"
-                onChange={handleChange}
-                value={formData.slug}
-                required
-              />
-            </div>
-            <div className="flex flex-1 flex-col gap-[5px] my-5">
-              <p className="text-gray-500 ">Meta Description</p>
-              <input
-                className=" border-3 bg-black border-2  border-gray-700 w-full rounded-[10px] px-5 py-4 outline-none text-gray-500"
-                type="text"
-                name="metadescription"
-                id="metadescription"
-                onChange={handleChange}
-                value={formData.metadescription}
-                required
-              />
-            </div>
-          </section>
-
-          <div className="flex flex-col gap-[5px] my-5">
-            <p className="text-gray-500 ">Image alt</p>
-            <input
-              className=" border-3 bg-black border-2  border-gray-700 w-full rounded-[10px] px-5 py-4 outline-none text-gray-500"
-              type="text"
-              name="alt"
-              id="alt"
-              onChange={handleChange}
-              value={formData.alt}
-              required
-            />
-          </div>
-
-          {/* creator / category   */}
-          <section className=" flex items-center gap-[20px]">
-            <div className="flex flex-1 flex-col gap-[5px] my-5">
-              <p className="text-gray-500 ">Creator</p>
-              <input
-                className=" border-3 bg-black border-2  border-gray-700 w-full rounded-[10px] px-5 py-4 outline-none text-gray-500"
-                type="text"
-                name="creator"
-                id="creator"
-                onChange={handleChange}
-                value={formData.creator}
-                required
-              />
-            </div>
-
-            <div className="flex flex-1 flex-col gap-[5px] my-5">
-              <p className="text-gray-500 ">Category</p>
-              <select
-                className=" border-3 bg-black border-2  border-gray-700 w-full rounded-[10px] px-5 py-4 outline-none text-gray-500 cursor-pointer"
-                required
-                id="category"
-                name="category"
-                onChange={handleChange}
-                value={formData.category}>
-                <option value="" disabled>
-                  Select a Category
-                </option>
-                <option value="Data Analytics">Data Analytics</option>
-                <option value="Data Science">Data Science</option>
-                <option value="Web Development">Web Development</option>
-                <option value="Cloud Computing & DevOps">
-                  Cloud Computing & DevOps
-                </option>
-                <option value="Machine Learning">Machine Learning</option>
-              </select>
-            </div>
-          </section>
-
-          {toc.length > 0 && (
-            <div className="my-5">
-              <h2 className="text-xl font-semibold mb-4 text-gray-500 ">
-                Table of Contents
-              </h2>
-              <ul>
-                {toc.map((item, index) => (
-                  <li key={index}>
-                    <a
-                      href={`#${item.id}`}
-                      className="text-[#034FE3] font-medium">
-                      {item.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          <div className="flex flex-col gap-[5px] sm:mb-20 mb-32 text-black">
-            <p className="text-gray-500 ">Details</p>
-            <ReactQuill
-              value={formData.details}
-              onChange={handleEditorChange}
-              modules={{
-                toolbar: [
-                  [
-                    { header: "1" },
-                    { header: "2" },
-                    { header: "3" },
-                    { header: "4" },
-                    { font: [] },
-                  ],
-                  [{ list: "ordered" }, { list: "bullet" }],
-                  ["bold", "italic", "underline"],
-                  ["link"],
-                  ["blockquote"],
-                  [{ direction: "rtl" }],
-                  [{ align: [] }],
-                  ["image"],
-                ],
-              }}
-              className="border-3 bg-white border-2  border-gray-700 w-full rounded-[10px] px-5 py-4 pb-20 outline-none  h-96 text-black overflow-hidden "
-            />
-          </div>
-
-          <button
-            className="bg-[#034FE3] py-[15px] text-[16px] font-bold text-white rounded-[10px] my-[10px] w-full"
-            type="submit"
-            disabled={loading}>
-            {loading ? "Creating..." : "Create Blog"}
-          </button>
-
-          {error && (
-            <p className="text-lg py-[5px] text-red-600 text-center font-bold">
-              Error uploading form <br />
-              <span className="text-sm text-white">please try again!</span>
-            </p>
-          )}
-          {success && (
-            <div className="flex items-center justify-center w-full ">
-              <p className="text-lg py-[5px] text-green-400 text-center font-bold">
-                Blog has been successfully created !!
-              </p>
-            </div>
-          )}
-        </form>
-      </main>
+        {error && (
+          <p className="text-red-500 text-center">
+            Error uploading blog. Please try again.
+          </p>
+        )}
+      </form>
     </div>
   );
 }
