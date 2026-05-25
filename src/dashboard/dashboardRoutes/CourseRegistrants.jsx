@@ -22,6 +22,9 @@ import toast from 'react-hot-toast';
 import jsPDF from 'jspdf';
 import emailjs from '@emailjs/browser';
 
+import * as XLSX from "xlsx";
+import { saveAs } from "file-saver";
+
 // Initialize EmailJS with your public key
 emailjs.init("YOUR_PUBLIC_KEY");
 
@@ -589,7 +592,81 @@ Zion Tech Hub Team
       'success'
     );
   };
+  const exportToExcel = () => {
+    try {
+      const excelData = filteredRegistrations.map((reg, index) => ({
+        "S/N": index + 1,
+        Name: reg.name || "",
+        Email: reg.email || "",
+        Mobile: reg.mobile || "",
+        Course: reg.course || "",
+        Status: reg.status || "active",
+        PaymentStatus: reg.paymentStatus || "pending",
 
+        RegistrationDate: reg.registeredAt?.toDate()
+          ? format(
+            reg.registeredAt.toDate(),
+            "dd/MM/yyyy HH:mm"
+          )
+          : "N/A",
+      }));
+
+      // create worksheet
+      const worksheet =
+        XLSX.utils.json_to_sheet(excelData);
+
+      // create workbook
+      const workbook =
+        XLSX.utils.book_new();
+
+      // append sheet
+      XLSX.utils.book_append_sheet(
+        workbook,
+        worksheet,
+        "Registrations"
+      );
+
+      // generate excel buffer
+      const excelBuffer = XLSX.write(
+        workbook,
+        {
+          bookType: "xlsx",
+          type: "array",
+        }
+      );
+
+      // create blob
+      const data = new Blob(
+        [excelBuffer],
+        {
+          type:
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8",
+        }
+      );
+
+      // save file
+      saveAs(
+        data,
+        `course-registrations-${format(
+          new Date(),
+          "yyyy-MM-dd"
+        )}.xlsx`
+      );
+
+      showSnackbar(
+        "Excel exported successfully",
+        "success"
+      );
+
+    } catch (error) {
+      console.error(error);
+
+      showSnackbar(
+        "Failed to export excel",
+        "error"
+      );
+    }
+  };
   return (
     <div className="h-screen overflow-y-auto bg-[#050814] text-white p-4 md:p-6 space-y-6">
 
@@ -676,6 +753,12 @@ Zion Tech Hub Team
           className="px-4 py-2 bg-blue-600 rounded-full text-sm"
         >
           Refresh
+        </button>
+        <button
+          onClick={exportToExcel}
+          className="px-4 py-2 bg-blue-600 rounded-full text-sm"
+        >
+          Export Excel
         </button>
       </div>
 
