@@ -1,0 +1,43 @@
+import {
+    ZionStudentTestimonial1,
+    ZionStudentTestimonial10,
+    ZionStudentTestimonial11,
+    ZionStudentTestimonial12,
+    ZionStudentTestimonial13,
+    ZionStudentTestimonial14,
+    ZionStudentTestimonial15,
+    ZionStudentTestimonial16,
+    ZionStudentTestimonial17,
+    ZionStudentTestimonial18,
+    ZionStudentTestimonial2,
+    ZionStudentTestimonial3,
+    ZionStudentTestimonial4,
+    ZionStudentTestimonial5,
+    ZionStudentTestimonial6,
+    ZionStudentTestimonial7,
+    ZionStudentTestimonial8,
+    ZionStudentTestimonial9,
+} from "../assets";
+
+const StudentTestimonials = [
+    { image: ZionStudentTestimonial1 },
+    { image: ZionStudentTestimonial2 },
+    { image: ZionStudentTestimonial3 },
+    { image: ZionStudentTestimonial4 },
+    { image: ZionStudentTestimonial5 },
+    { image: ZionStudentTestimonial6 },
+    { image: ZionStudentTestimonial7 },
+    { image: ZionStudentTestimonial8 },
+    { image: ZionStudentTestimonial9 },
+    { image: ZionStudentTestimonial11 },
+    { image: ZionStudentTestimonial10 },
+    { image: ZionStudentTestimonial12 },
+    { image: ZionStudentTestimonial13 },
+    { image: ZionStudentTestimonial14 },
+    { image: ZionStudentTestimonial15 },
+    { image: ZionStudentTestimonial16 },
+    { image: ZionStudentTestimonial17 },
+    { image: ZionStudentTestimonial18 },
+];
+
+export default StudentTestimonials;
