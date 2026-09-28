@@ -158,7 +158,7 @@ function Enroll() {
       </Helmet>
 
       {/* Header */}
-      <div className="flex justify-between items-center max-w-[90%] mx-auto font-sans py-[10px]">
+      <div className="flex justify-between items-center max-w-[90%] mx-auto font-sans py-[10px] z-50">
 
         {/* Logo */}
         <section className="flex-1 text-xl font-bold flex items-baseline gap-1">
@@ -172,124 +172,10 @@ function Enroll() {
             </Link>
           </div>
         </section>
-
-        {/* Mobile menu */}
-        <div className="sm:hidden flex gap-[27px] items-center z-0">
-
-          <span
-            className="text-[28px] text-[#333333] cursor-pointer"
-            onClick={() => setNav(true)}
-          >
-            &#9776;
-          </span>
-
-          {nav && (
-            <div className="bg-black/50 absolute top-0 left-0 right-0 bottom-0 z-10 h-screen">
-
-              <div className="flex sm:hidden flex-col absolute left-0 right-0 top-0 bg-[#FFFFFF] duration-300 z-50">
-
-                <section className="flex items-center justify-end">
-                  <span
-                    className="py-[24px] px-[20px]"
-                    onClick={() => setNav(false)}
-                  >
-                    {exit}
-                  </span>
-                </section>
-
-                <div className="flex flex-col">
-
-                  <Link
-                    to="/"
-                    onClick={() => setNav(false)}
-                    className="py-[15px] px-[20px] text-[14px] text-[#1A1A1A] border-b border-[#C3C3C3]"
-                  >
-                    Home
-                  </Link>
-
-                  <Link
-                    to="/about"
-                    onClick={() => setNav(false)}
-                    className="py-[15px] px-[20px] text-[14px] text-[#1A1A1A] border-b border-[#C3C3C3]"
-                  >
-                    About Us
-                  </Link>
-
-                  <p className="py-[15px] px-[20px] text-[14px] text-[#1A1A1A] flex items-center justify-between border-b border-[#C3C3C3] relative">
-
-                    Courses
-
-                    <span onClick={() => setCoursee(!coursee)}>
-                      {coursee ? (
-                        <KeyboardArrowUpIcon />
-                      ) : (
-                        <KeyboardArrowDownIcon />
-                      )}
-                    </span>
-
-                    {coursee && (
-                      <div
-                        className="flex flex-col absolute top-[100%] left-0 right-0 bg-[#F6F6F6]"
-                        onClick={handleClose}
-                      >
-                        <div className="text-[#1A1A1A] flex flex-col">
-
-                          <Link
-                            to="/healthcare-data-analytics"
-                            className="py-[17px] px-[20px] font-[400] flex items-center justify-between w-full"
-                          >
-                            Data Analytics
-                            <KeyboardArrowRight />
-                          </Link>
-
-                          <Link
-                            to="/financial-data-analytics"
-                            className="py-[17px] px-[20px] font-[400] flex items-center justify-between w-full"
-                          >
-                            Data Science
-                            <KeyboardArrowRight />
-                          </Link>
-
-                          <Link
-                            to="/advanced-data-analytics"
-                            className="py-[17px] px-[20px] font-[400] flex items-center justify-between w-full"
-                          >
-                            Web Development
-                            <KeyboardArrowRight />
-                          </Link>
-
-                        </div>
-                      </div>
-                    )}
-
-                  </p>
-
-                  <Link
-                    to="/consult"
-                    onClick={() => setNav(false)}
-                    className="py-[15px] px-[20px] text-[14px] text-[#1A1A1A] border-b border-[#C3C3C3]"
-                  >
-                    Consultation
-                  </Link>
-
-                  <Link
-                    to="/contact"
-                    onClick={() => setNav(false)}
-                    className="py-[15px] px-[20px] text-[14px] text-[#1A1A1A] border-b border-[#C3C3C3]"
-                  >
-                    Contact
-                  </Link>
-
-                </div>
-              </div>
-            </div>
-          )}
-
-        </div>
       </div>
 
       {/* Main */}
-      <div className="one flex md:items-center flex-col md:min-h-[100vh] min-h-[120vh] gap-[50px] pt-10">
+      <div className="one flex md:items-center flex-col md:min-h-[100vh] min-h-[120vh] gap-[50px] pt-10 z-10">
 
         <section className="w-full">
 

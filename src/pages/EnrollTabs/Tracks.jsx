@@ -178,7 +178,7 @@ function Tracks({ tracks,
                                         text-[#034FE3]
                                         transition-all duration-200
                                         hover:border-[#034FE3]
-                                        hover:bg-[#F5F8FF] z-40
+                                        hover:bg-[#F5F8FF] 
                                     ">
                                         Read More
 
@@ -195,8 +195,8 @@ function Tracks({ tracks,
                                         bg-[#034FE3] text-[10px] font-semibold
                                         text-white
                                         transition-all duration-200
-                                        hover:bg-[#023DB0]cn.bck  nxmn inmlxx we should add  fhdnxljj
-                                         z-40
+                                        hover:bg-[#023DB0]
+                                         
                                     "
                                     >
                                         Continue
