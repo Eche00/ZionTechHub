@@ -499,11 +499,10 @@ Zion Tech Hub Team
     addField('Full Name', reg.name);
     addField('Email Address', reg.email);
     addField('Mobile Number', reg.mobile);
+    addField('Country', reg.country);
     addField('Course', reg.course);
-    addField(
-      'Registration ID',
-      reg.registrationId || 'N/A'
-    );
+    addField('Package', reg.enrollmentPackage);
+    addField('Heard About Us', reg.heardAboutUs);
 
     addField(
       'Status',
@@ -777,6 +776,9 @@ Zion Tech Hub Team
               </th>
 
               <th className="p-3 text-left">
+                Package
+              </th>
+              <th className="p-3 text-left">
                 Date
               </th>
 
@@ -816,6 +818,9 @@ Zion Tech Hub Team
                       <p className="text-xs text-gray-500">
                         {reg.mobile}
                       </p>
+                      <p className="text-xs text-gray-500">
+                        {reg.country}
+                      </p>
                     </div>
                   </td>
 
@@ -823,6 +828,12 @@ Zion Tech Hub Team
                   <td className="p-3">
                     <span className="text-xs px-2 py-1 rounded-full bg-blue-600/30">
                       {reg.course}
+                    </span>
+                  </td>
+                  {/* PACKAGE */}
+                  <td className="p-3 text-center text-nowrap">
+                    <span className="text-xs py-1 text-center">
+                      {reg.enrollmentPackage}
                     </span>
                   </td>
 
@@ -834,6 +845,9 @@ Zion Tech Hub Team
                         "dd/MM/yy HH:mm"
                       )
                       : "N/A"}
+                    <br />
+                    {reg.heardAboutUs}
+
                   </td>
 
                   {/* STATUS */}

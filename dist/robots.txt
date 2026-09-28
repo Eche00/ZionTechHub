@@ -1,9 +1,0 @@
-User-agent: *
-
-Allow: /
-
- 
-
-Sitemap: https://ziontechub.com/sitemap.xml
-
- 
