@@ -27,7 +27,7 @@ function Hero({ setStep }) {
                 }}
             />
             {/* Hero */}
-            <section className='w-[90%] mx-auto'>
+            <section className='sm:w-[90%] w-full mx-auto'>
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -51,7 +51,7 @@ function Hero({ setStep }) {
 
 
                             {/* Heading */}
-                            <h1 className="mx-auto max-w-4xl text-[30px] font-bold leading-[1.12] tracking-[-0.8px] text-[#1A1A1A] sm:text-[44px] sm:tracking-[-1.2px] lg:text-[54px]">
+                            <h1 className="mx-auto max-w-4xl text-[30px] font-bold leading-[1.12] tracking-[-0.8px] text-[#1A1A1A] sm:tracking-[-1.2px] sm:text-[54px]">
                                 Go From Beginner to{" "}
                                 <span className="text-[#034FE3]">
                                     Job-Ready Data Analyst
@@ -148,7 +148,7 @@ function Hero({ setStep }) {
                         {/* VIDEOS */}
                         <section
                             id="program-video"
-                            className="mx-auto mt-10 w-[90%] pb-8 sm:mt-14 sm:w-[85%] sm:pb-12 lg:w-[75%]"
+                            className="mx-auto mt-10 w-full pb-8 sm:mt-14 smm:w-[85%] sm:pb-12 "
                         >
                             {/* Section Header */}
                             <div className="mb-7 text-center">
@@ -236,9 +236,9 @@ function Hero({ setStep }) {
                             </div>
                         </section>
                         {/*  BENEFITS  */}
-                        <div className="mx-auto mt-10 max-w-5xl sm:mt-12">
+                        <div className="mx-auto mt-10 max-w-5xl w-full sm:mt-12">
 
-                            <div className="grid grid-cols-2 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm lg:grid-cols-4">
+                            <div className="grid grid-cols-2 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm sm:grid-cols-4">
 
                                 {/* Practical Skills */}
                                 <div className="border-b border-r border-gray-200 p-4 sm:p-5 lg:border-b-0">
