@@ -671,33 +671,42 @@ function Packages({
 
                             {/* BENEFITS */}
                             <div className="space-y-2.5">
-                                {plan.benefits.map((benefit) => (
-                                    <div
-                                        key={benefit}
-                                        className="flex items-start gap-2"
-                                    >
-                                        <span className="mt-[1px] flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#D9F8E8]">
-                                            <svg
-                                                width="8"
-                                                height="8"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                            >
-                                                <path
-                                                    d="M5 12.5L10 17L19 7"
-                                                    stroke="#168653"
-                                                    strokeWidth="2.5"
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                />
-                                            </svg>
-                                        </span>
+                                {plan.benefits.map((benefit, index) => {
+                                    const isLastBenefit = index === plan.benefits.length - 1;
 
-                                        <span className="text-[10px] leading-4 text-[#667085]">
-                                            {benefit}
-                                        </span>
-                                    </div>
-                                ))}
+                                    return (
+                                        <div
+                                            key={benefit}
+                                            className="flex items-start gap-2"
+                                        >
+                                            <span className="mt-[1px] flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#D9F8E8]">
+                                                <svg
+                                                    width="8"
+                                                    height="8"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                >
+                                                    <path
+                                                        d="M5 12.5L10 17L19 7"
+                                                        stroke="#168653"
+                                                        strokeWidth="2.5"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                    />
+                                                </svg>
+                                            </span>
+
+                                            <span
+                                                className={`text-[10px] leading-4 text-[#667085] ${isLastBenefit
+                                                    ? "font-extrabold uppercase text-black"
+                                                    : ""
+                                                    }`}
+                                            >
+                                                {benefit}
+                                            </span>
+                                        </div>
+                                    );
+                                })}
                             </div>
 
                             {/* PLACEMENT CONDITION */}

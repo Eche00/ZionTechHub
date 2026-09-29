@@ -153,161 +153,6 @@ function Form({
     }, []);
 
     // handle submit
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-
-    //     if (loading) return;
-
-    //     // Required fields
-    //     if (
-    //         !formData.name.trim() ||
-    //         !formData.email.trim() ||
-    //         !formData.country.trim() ||
-    //         !formData.mobile.trim()
-    //     ) {
-    //         toast.error("Please fill in all required fields");
-    //         return;
-    //     }
-
-    //     // Course is required
-    //     if (!formData.course) {
-    //         setSelectCourse(true);
-    //         toast.error("Please select a track");
-    //         return;
-    //     }
-
-    //     // Enrollment package is required
-    //     if (!formData.enrollmentPackage) {
-    //         toast.error("Please select an enrollment package");
-    //         return;
-    //     }
-
-    //     // How did you hear about us is required
-    //     if (!formData.heardAboutUs) {
-    //         toast.error("Please tell us how you heard about Zion Tech Hub");
-    //         return;
-    //     }
-
-    //     setLoading(true);
-
-    //     try {
-    //         const referralId = formData.referralId?.trim();
-    //         const email = formData.email?.trim().toLowerCase();
-
-    //         let validReferralDoc = null;
-
-    //         // Check referral only when provided
-    //         if (referralId) {
-    //             const referralQuery = query(
-    //                 collection(db, "partnership-registrants"),
-    //                 where("referralCode", "==", referralId)
-    //             );
-
-    //             const referralSnap = await getDocs(referralQuery);
-
-    //             if (referralSnap.empty) {
-    //                 toast.error("Invalid Referral ID");
-    //                 setLoading(false);
-    //                 return;
-    //             }
-
-    //             validReferralDoc = referralSnap.docs[0];
-    //         }
-
-    //         // Save registrant
-    //         await addDoc(collection(db, "course-registrants"), {
-    //             name: formData.name.trim(),
-    //             email,
-    //             mobile: formData.mobile.trim(),
-    //             country: formData.country.trim(),
-    //             course: formData.course,
-    //             enrollmentPackage: formData.enrollmentPackage,
-    //             heardAboutUs: formData.heardAboutUs,
-    //             referralId: referralId || null,
-    //             registeredAt: serverTimestamp(),
-    //         });
-
-    //         // Send to Zapier
-    //         const payload = new FormData();
-
-    //         payload.append("name", formData.name.trim());
-    //         payload.append("email", email);
-    //         payload.append("course", formData.course);
-    //         payload.append("enrollmentPackage", formData.enrollmentPackage);
-    //         payload.append("heardAboutUs", formData.heardAboutUs);
-    //         payload.append("mobile", formData.mobile.trim());
-    //         payload.append("referralId", referralId || "");
-    //         payload.append("country", formData.country.trim());
-
-    //         await fetch(
-    //             "https://hooks.zapier.com/hooks/catch/28045596/421gzed/",
-    //             {
-    //                 method: "POST",
-    //                 body: payload,
-    //             }
-    //         );
-
-    //         // Save referral
-    //         if (validReferralDoc) {
-    //             const partnerRef = doc(
-    //                 db,
-    //                 "partnership-registrants",
-    //                 validReferralDoc.id
-    //             );
-
-    //             await updateDoc(partnerRef, {
-    //                 referrals: arrayUnion({
-    //                     name: formData.name.trim(),
-    //                     email,
-    //                     course: formData.course,
-    //                     enrollmentPackage: formData.enrollmentPackage,
-    //                     referralId,
-    //                     mobile: formData.mobile.trim(),
-    //                     country: formData.country.trim(),
-    //                     registeredAt: Date.now(),
-    //                 }),
-    //             });
-    //         }
-
-    //         toast.success(
-    //             "Registration successful! Redirecting to WhatsApp in 2 seconds..."
-    //         );
-
-    //         const whatsappNumber = "2348055094738";
-
-    //         const registeredName = formData.name.trim();
-    //         const registeredCourse = formData.course;
-
-    //         setFormData({
-    //             name: "",
-    //             email: "",
-    //             country: "",
-    //             mobile: "",
-    //             referralId: "",
-    //             course: "",
-    //             enrollmentPackage: "",
-    //             heardAboutUs: "",
-    //         });
-
-    //         setTimeout(() => {
-    //             const url =
-    //                 `https://wa.me/${whatsappNumber}?text=` +
-    //                 `Hi, My Name is ${encodeURIComponent(registeredName)}%0a` +
-    //                 `and I just registered for ${encodeURIComponent(
-    //                     registeredCourse
-    //                 )}%0a`;
-
-    //             window.location.href = url;
-    //         }, 2000);
-    //     } catch (error) {
-    //         console.error("Registration error:", error);
-    //         toast.error("Something went wrong. Please try again.");
-    //     } finally {
-    //         setLoading(false);
-    //         setSelectCourse(false);
-    //     }
-    // };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -382,6 +227,26 @@ function Form({
                 registeredAt: serverTimestamp(),
             });
 
+            // Send to Zapier
+            const payload = new FormData();
+
+            payload.append("name", formData.name.trim());
+            payload.append("email", email);
+            payload.append("course", formData.course);
+            payload.append("enrollmentPackage", formData.enrollmentPackage);
+            payload.append("heardAboutUs", formData.heardAboutUs);
+            payload.append("mobile", formData.mobile.trim());
+            payload.append("referralId", referralId || "");
+            payload.append("country", formData.country.trim());
+
+            await fetch(
+                "https://hooks.zapier.com/hooks/catch/28045596/421gzed/",
+                {
+                    method: "POST",
+                    body: payload,
+                }
+            );
+
             // Save referral
             if (validReferralDoc) {
                 const partnerRef = doc(
@@ -442,6 +307,8 @@ function Form({
             setSelectCourse(false);
         }
     };
+
+
     return (
         <div className="min-h-screen bg-white py-8 sm:py-12 px-4">
             {/* Dotted Background */}
@@ -834,7 +701,7 @@ function Form({
                                         <div className="w-5 h-5 rounded-full border-2 border-white/30 border-t-white animate-spin" />
                                     ) : (
                                         <>
-                                            <span>Proceed to Enrollment</span>
+                                            <span>Register</span>
                                         </>
                                     )}
                                 </button>
