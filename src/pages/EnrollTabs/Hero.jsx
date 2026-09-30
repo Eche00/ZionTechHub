@@ -148,7 +148,7 @@ function Hero({ setStep }) {
                         {/* VIDEOS */}
                         <section
                             id="program-video"
-                            className="mx-auto mt-10 w-full pb-8 sm:mt-14 smm:w-[85%] sm:pb-12 "
+                            className="mx-auto mt-10 w-full pb-8 sm:mt-14 sm:w-[85%] sm:pb-12 "
                         >
                             {/* Section Header */}
                             <div className="mb-7 text-center">

@@ -57,7 +57,7 @@ function JoinWhatsapp() {
 
                     {/* Button */}
                     <a
-                        href=""
+                        href="https://chat.whatsapp.com/Dlrzt1SyKuOHKeYInUmd1X?mode=gi_t"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2 bg-[#034FE3] hover:bg-[#0242BE] text-white text-[14px] font-[500] px-5 py-3 rounded-[8px] transition-colors duration-200"
