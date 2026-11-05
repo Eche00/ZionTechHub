@@ -127,43 +127,87 @@ function Dashboard() {
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, async (user) => {
-      if (!user) return navigate("/signin");
+      if (!user) {
+        navigate("/signin");
+        return;
+      }
 
       try {
-        const adminDoc = await getDoc(doc(db, "admins", user.uid));
+        let accountData = null;
+        let accountRole = "Team";
 
-        let adminData = null;
+        // Check Super Admin
+        const superAdminDoc = await getDoc(
+          doc(db, "super-admins", user.uid)
+        );
 
-        if (adminDoc.exists()) {
-          adminData = adminDoc.data();
-        } else {
-          const userDoc = await getDoc(doc(db, "users", user.uid));
-          if (userDoc.exists() && userDoc.data().role === "Admin") {
-            adminData = userDoc.data();
+        if (superAdminDoc.exists()) {
+          accountData = superAdminDoc.data();
+          accountRole = "Super Admin";
+        }
+
+        // Check Admin
+        if (!accountData) {
+          const adminDoc = await getDoc(
+            doc(db, "admins", user.uid)
+          );
+
+          if (adminDoc.exists()) {
+            accountData = adminDoc.data();
+            accountRole = "Admin";
           }
         }
 
-        if (!adminData) {
-          toast.error("Access denied");
-          return navigate("/signin");
+        // Check regular registered users
+        if (!accountData) {
+          const userDoc = await getDoc(
+            doc(db, "users", user.uid)
+          );
+
+          if (userDoc.exists()) {
+            accountData = userDoc.data();
+            accountRole = accountData.role || "Team";
+          }
         }
 
+        // No profile found
+        if (!accountData) {
+          console.error("No Firestore profile found for:", user.uid);
+          toast.error("Your account profile could not be found.");
+          navigate("/signin");
+          return;
+        }
+
+        console.log("Authenticated account:", {
+          uid: user.uid,
+          role: accountRole,
+          profile: accountData,
+        });
+
         setAdminName(
-          adminData.name || adminData.username || "Admin"
+          accountData.name ||
+          accountData.username ||
+          accountData.fullName ||
+          user.displayName ||
+          "User"
         );
+
         setIsAuthorized(true);
 
         await fetchDashboardStats();
         await fetchRecentRegistrations();
-        setLoading(false);
+
       } catch (err) {
+        console.error("Dashboard authentication error:", err);
         toast.error("Auth error");
         navigate("/signin");
+      } finally {
+        setLoading(false);
       }
     });
 
     return () => unsub();
-  }, []);
+  }, [navigate]);
 
   if (loading)
     return (

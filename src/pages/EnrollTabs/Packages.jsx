@@ -721,32 +721,7 @@ function Packages({
                                 </div>
                             )}
 
-                            {/* CTA */}
-                            <button
-                                type="button"
-                                onClick={(e) => {
-                                    e.stopPropagation();
 
-                                    if (isSelected) {
-                                        setStep((prev) => prev + 1);
-                                    } else {
-                                        setSelectedPackage(plan.key);
-                                    }
-                                }}
-                                className={`
-                        mt-5 flex h-11 w-full items-center justify-center
-                        rounded-lg text-[11px] font-semibold
-                        transition-all duration-200
-                        ${isSelected
-                                        ? "bg-[#034FE3] text-white hover:bg-[#023DB0]"
-                                        : "border border-[#D0D5DD] bg-white text-[#034FE3] hover:border-[#034FE3] hover:bg-[#F5F8FF]"
-                                    }
-                    `}
-                            >
-                                {isSelected
-                                    ? "Selected — Scroll down to proceed"
-                                    : plan.cta || `Select ${plan.title}`}
-                            </button>
                         </div>
                     );
                 })}

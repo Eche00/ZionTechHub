@@ -13,7 +13,6 @@ import { auth, db } from "../../lib/Config/firebase";
 import {
   onAuthStateChanged,
   sendEmailVerification,
-  createUserWithEmailAndPassword
 } from "firebase/auth";
 import toast from "react-hot-toast";
 import {
@@ -28,7 +27,6 @@ import {
 
 function Users() {
   const [loading, setLoading] = useState(true);
-  const [createUser, setCreateUser] = useState(false);
   const [users, setUsers] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -178,82 +176,6 @@ function Users() {
     }
   };
 
-  // ---------------- CREATE USER LOGIC (UNCHANGED)
-  const handleCreateUser = async (e) => {
-    e.preventDefault();
-    setCreatingUser(true);
-    setFormErrors({});
-
-    const errors = {};
-
-    if (newUser.username.length < 3)
-      errors.username = "Username too short";
-    if (!newUser.email.includes("@"))
-      errors.email = "Valid email required";
-    if (newUser.password.length < 6)
-      errors.password = "Password too short";
-
-    if (Object.keys(errors).length > 0) {
-      setFormErrors(errors);
-      setCreatingUser(false);
-      return;
-    }
-
-    try {
-      const userCredential =
-        await createUserWithEmailAndPassword(
-          auth,
-          newUser.email,
-          newUser.password
-        );
-
-      const user = userCredential.user;
-
-      await sendEmailVerification(user);
-
-      const collectionName =
-        newUser.role === "Admin"
-          ? "admins"
-          : "users";
-
-      const userData = {
-        uid: user.uid,
-        email: newUser.email.toLowerCase(),
-        createdAt: serverTimestamp(),
-        createdBy: currentAdmin?.id,
-        emailVerified: false
-      };
-
-      if (newUser.role === "Admin") {
-        userData.name = newUser.username;
-        userData.role = "super_admin";
-      } else {
-        userData.username = newUser.username;
-        userData.role = "Team";
-      }
-
-      await setDoc(
-        doc(db, collectionName, user.uid),
-        userData
-      );
-
-      toast.success("User created successfully");
-
-      setNewUser({
-        username: "",
-        email: "",
-        password: "",
-        role: "Team"
-      });
-
-      setCreateUser(false);
-      fetchUsers();
-    } catch (error) {
-      toast.error(error.message);
-    } finally {
-      setCreatingUser(false);
-    }
-  };
 
   if (!isAuthorized) {
     return (
@@ -350,95 +272,10 @@ function Users() {
           Refresh
         </button>
 
-        <button
-          onClick={() =>
-            setCreateUser(!createUser)
-          }
-          className="px-4 py-2 bg-green-600 rounded-full flex items-center gap-2"
-        >
-          <PersonAddIcon fontSize="small" />
-          Create User
-        </button>
+
       </div>
 
-      {/* CREATE USER FORM */}
-      {createUser && (
-        <div className="bg-[#0b1220] border border-white/10 rounded-2xl p-6">
-          <h3 className="text-lg font-bold mb-4">
-            Create New User
-          </h3>
 
-          <form
-            onSubmit={handleCreateUser}
-            className="grid md:grid-cols-2 gap-4"
-          >
-            <input
-              placeholder="Full name"
-              value={newUser.username}
-              onChange={(e) =>
-                setNewUser({
-                  ...newUser,
-                  username: e.target.value
-                })
-              }
-              className="bg-[#111827] p-3 rounded-xl"
-            />
-
-            <input
-              placeholder="Email"
-              type="email"
-              value={newUser.email}
-              onChange={(e) =>
-                setNewUser({
-                  ...newUser,
-                  email: e.target.value
-                })
-              }
-              className="bg-[#111827] p-3 rounded-xl"
-            />
-
-            <input
-              placeholder="Password"
-              type="password"
-              value={newUser.password}
-              onChange={(e) =>
-                setNewUser({
-                  ...newUser,
-                  password: e.target.value
-                })
-              }
-              className="bg-[#111827] p-3 rounded-xl"
-            />
-
-            <select
-              value={newUser.role}
-              onChange={(e) =>
-                setNewUser({
-                  ...newUser,
-                  role: e.target.value
-                })
-              }
-              className="bg-[#111827] p-3 rounded-xl"
-            >
-              <option value="Team">
-                Team Member
-              </option>
-              <option value="Admin">
-                Admin
-              </option>
-            </select>
-
-            <button
-              className="col-span-full bg-blue-600 py-3 rounded-xl font-semibold"
-              disabled={creatingUser}
-            >
-              {creatingUser
-                ? "Creating..."
-                : "Create User"}
-            </button>
-          </form>
-        </div>
-      )}
 
       {/* USERS TABLE */}
       <div className="overflow-x-auto border border-white/10 rounded-2xl">

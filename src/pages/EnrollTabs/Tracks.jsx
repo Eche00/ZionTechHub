@@ -199,7 +199,7 @@ function Tracks({ tracks,
                                          
                                     "
                                     >
-                                        Continue
+                                        Next
 
                                         <svg
                                             width="14"
@@ -302,7 +302,7 @@ function Tracks({ tracks,
                             sm:w-auto
                         "
                     >
-                        Continue
+                        Next
 
                         <svg
                             width="14"

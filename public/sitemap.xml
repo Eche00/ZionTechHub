@@ -3,173 +3,112 @@
 
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
 
-  
-<!-- home  -->
- <url>
 
-   <loc>https://ziontechub.com/</loc>
-
-   <lastmod>2025-04-27</lastmod>
-
-   <priority>1.0</priority>
-
- </url>
-
- 
-<!-- about us  -->
- <url>
-
-   <loc>https://ziontechub.com/about-us</loc>
-
-   <lastmod>2025-04-27</lastmod>
-
-   <priority>0.9</priority>
-
- </url>
-
- 
-<!-- data analystics  -->
- <url>
-
-   <loc>https://ziontechub.com/data-analystics-training</loc>
-
-   <lastmod>2025-04-27</lastmod>
-
-   <priority>0.8</priority>
-
- </url>
-
- 
-<!-- data science  -->
- <url>
-
-   <loc>https://ziontechub.com/data-science-course</loc>
-
-   <lastmod>2025-04-27</lastmod>
-
-   <priority>0.75</priority>
-
- </url>
-
- <!-- web development  -->
- <url>
-
-   <loc>https://ziontechub.com/web-development-training</loc>
-
-   <lastmod>2025-04-27</lastmod>
-
-   <priority>0.7</priority>
-
- </url>
-
- <!-- cloud computing  -->
- <url>
-
-   <loc>https://ziontechub.com/cloud-computing-course</loc>
-
-   <lastmod>2025-04-27</lastmod>
-
-   <priority>0.65</priority>
-
- </url>
-
- <!-- machine learning -->
- <url>
-
-   <loc>https://ziontechub.com/machine-learning-course</loc>
-
-   <lastmod>2025-04-27</lastmod>
-
-   <priority>0.6</priority>
-
- </url>
-
- <!-- data consultation  -->
- <url>
-
-   <loc>https://ziontechub.com/data-consultation</loc>
-
-   <lastmod>2025-04-27</lastmod>
-
-   <priority>0.55</priority>
-
- </url>
-
- <!-- partner with us  -->
- <url>
-
-   <loc>https://ziontechub.com/partner-with-us</loc>
-
-   <lastmod>2025-04-27</lastmod>
-
-   <priority>0.5</priority>
-
- </url>
- <!-- blog  -->
- <url>
-
-   <loc>https://ziontechub.com/blog</loc>
-
-   <lastmod>2025-04-27</lastmod>
-
-   <priority>0.5</priority>
-
- </url>
- <!-- blog/:id  -->
- <url>
-
-   <loc>https://ziontechub.com/blog/:id </loc>
-
-   <lastmod>2025-04-27</lastmod>
-
-   <priority>0.5</priority>
-
- </url>
- <!-- webinar -->
- <url>
-
-   <loc>https://ziontechub.com/zion-tech-hub-weekend-webinar </loc>
-
-   <lastmod>2025-04-27</lastmod>
-
-   <priority>0.5</priority>
-
- </url>
- <!-- hackathon  -->
- <url>
-
-   <loc>https://ziontechub.com/zion-tech-hub-hackathon </loc>
-
-   <lastmod>2025-04-27</lastmod>
-
-   <priority>0.5</priority>
-
- </url>
-
- <!-- contact us  -->
- <url>
-
-   <loc>https://ziontechub.com/contact-us</loc>
-
-   <lastmod>2025-04-27</lastmod>
-
-   <priority>0.5</priority>
-
- </url>
-
- <!-- enroll  -->
- <url>
-
-   <loc>https://ziontechub.com/enroll</loc>
-
-   <lastmod>2025-04-27</lastmod>
-
-   <priority>0.45</priority>
-
- </url>
-
- 
+  <!-- Home -->
+  <url>
+    <loc>https://ziontechub.com/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- About Us -->
+  <url>
+    <loc>https://ziontechub.com/about-us</loc>
+    <lastmod>2026-11-05</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Courses -->
+  <url>
+    <loc>https://ziontechub.com/healthcare-data-analytics</loc>
+    <lastmod>2026-11-05</lastmod>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://ziontechub.com/financial-data-analytics</loc>
+    <lastmod>2026-11-05</lastmod>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://ziontechub.com/data-analytics</loc>
+    <lastmod>2026-11-05</lastmod>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://ziontechub.com/ai-ml-engineering</loc>
+    <lastmod>2026-11-05</lastmod>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://ziontechub.com/data-science-and-ai</loc>
+    <lastmod>2026-11-05</lastmod>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Consultation -->
+  <url>
+    <loc>https://ziontechub.com/data-consultation</loc>
+    <lastmod>2026-11-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Partnership -->
+  <url>
+    <loc>https://ziontechub.com/zth-partnership-program</loc>
+    <lastmod>2026-11-05</lastmod>
+    <priority>0.75</priority>
+  </url>
+
+  <url>
+    <loc>https://ziontechub.com/partner-with-us</loc>
+    <lastmod>2026-11-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Blog -->
+  <url>
+    <loc>https://ziontechub.com/blog</loc>
+    <lastmod>2026-11-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Certificates -->
+  <url>
+    <loc>https://ziontechub.com/certificates</loc>
+    <lastmod>2026-11-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Workshop / Webinar -->
+  <url>
+    <loc>https://ziontechub.com/zion-tech-hub-workshop-webinar</loc>
+    <lastmod>2026-11-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Hackathon -->
+  <url>
+    <loc>https://ziontechub.com/zion-tech-hub-hackathon</loc>
+    <lastmod>2026-11-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Contact Us -->
+  <url>
+    <loc>https://ziontechub.com/contact-us</loc>
+    <lastmod>2026-11-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Enrollment -->
+  <url>
+    <loc>https://ziontechub.com/enroll</loc>
+    <lastmod>2026-11-05</lastmod>
+    <priority>0.65</priority>
+  </url>
 
 </urlset>
-
- 
